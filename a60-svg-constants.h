@@ -12,8 +12,10 @@ namespace svg::constants {
 /// v == vertical aka portrait
 constexpr area<float> letter_mm_h = { 216, 279 };
 
+constexpr area<float> a2_mm_h = { 420, 594 };
 constexpr area<float> a4_mm_h = { 210, 297 };
-constexpr area<float> a5_mm_h = { 210, 297 };
+constexpr area<float> a5_mm_h = { 148, 210 };
+constexpr area<float> a6_mm_h = { 105, 148 };
 
 /// Pixel areas are using 96 PPI unless otherwise noted.
 constexpr area<> letter_096_v = { 816, 1056 };
@@ -22,10 +24,12 @@ constexpr area<> letter_096_h = { 1056, 816 };
 constexpr area<> a2_096_h = { 2245, 1587 };
 constexpr area<> a4_096_h = { 1123, 794 };
 constexpr area<> a5_096_h = { 794, 559 };
+constexpr area<> a6_096_h = { 559, 397 };
 
 constexpr area<> a2_096_v = { 1587, 2245 };
 constexpr area<> a4_096_v = { 794, 1123 };
 constexpr area<> a5_096_v = { 559, 794 };
+constexpr area<> a6_096_v = { 397, 559 };
 
 constexpr area<> instagram_090_v = { 1080, 1350 };
 constexpr area<> instagram_096_h = { 1440, 1152 };
