@@ -7,57 +7,75 @@
 
 namespace svg::constants {
 
-  /// Useful area constants.
-  constexpr area<float> mm_letter = { 215.9, 279.4 };
-  constexpr area<float> mm_a4 = { 210, 297 };
+/// Useful area constants.
+/// h == horizontal aka landscape
+/// v == vertical aka portrait
+constexpr area<float> letter_mm_h = { 216, 279 };
 
-  constexpr area<> px_letter_area = { 765, 990 };
-  constexpr area<> px_a4_area = { 765, 990 };
-  constexpr area<> px_720p_area = { 1280, 720 };
-  constexpr area<> px_instagram_area = { 1080, 1350 };
-  constexpr area<> px_1080p_area = { 1920, 1080 };
+constexpr area<float> a4_mm_h = { 210, 297 };
+constexpr area<float> a5_mm_h = { 210, 297 };
 
-  /// Style constants.
-  const colorq whiteq(colore::white);
-  const colorq blackq(colore::black);
-  const style w_style = { whiteq, 1.0, blackq, 0.0, 0 };
-  const style b_style = { blackq, 1.0, whiteq, 0.0, 0 };
+/// Pixel areas are using 96 PPI unless otherwise noted.
+constexpr area<> letter_096_v = { 816, 1056 };
+constexpr area<> letter_096_h = { 1056, 816 };
 
-  /// Useful typography constants.
-  typography::anchor a = typography::anchor::middle;
-  typography::align al = typography::align::center;
-  typography::weight w = typography::weight::normal;
-  typography::property p = typography::property::normal;
+constexpr area<> a2_096_h = { 2245, 1587 };
+constexpr area<> a4_096_h = { 1123, 794 };
+constexpr area<> a5_096_h = { 794, 559 };
 
-  const char* sserif = "Source Serif Pro";
-  const char* ssans = "Source Sans Pro";
-  const char* smono = "Source Code Pro";
-  const char* shsans = "Source Han Sans CN";
-  const char* aprcu = "Apercu";
-  const char* ccode = "Calling Code";
-  const char* zslab = "Zilla Slab";
-  const char* mexcellent = "Mexcellent";
-  const typography smono_typo = { smono, 12, b_style, a, al, w, p };
-  const typography sserif_typo = { sserif, 12, b_style, a, al, w, p };
-  const typography ssans_typo = { ssans, 12, b_style, a, al, w, p };
-  const typography shsans_typo = { shsans, 12, b_style, a, al, w, p };
-  const typography apercu_typo = { aprcu, 4, b_style, a, al, w, p };
-  const typography ccode_typo = { ccode, 12, b_style, a, al, w, p };
-  const typography zslab_typo = { zslab, 12, b_style, a, al, w, p };
-  const typography mxcllnt_typo = { mexcellent, 12, b_style, a, al, w, p };
+constexpr area<> a2_096_v = { 1587, 2245 };
+constexpr area<> a4_096_v = { 794, 1123 };
+constexpr area<> a5_096_v = { 559, 794 };
 
-  /**
-     Default typography.
+constexpr area<> instagram_090_v = { 1080, 1350 };
+constexpr area<> instagram_096_h = { 1440, 1152 };
+constexpr area<> instagram_096_v = { 1152, 1440 };
 
-     NB: Using a global locale. So, filenames are in multiple
-     languages, not just en_US.
+constexpr area<> v1080p_096_h = { 2048, 1152 };
+constexpr area<> v1080p_096_v = { 1152, 2048 };
 
-     Make sure that the font with the largest support for random
-     characters is used, ie some variant of Source Sans, Source Han
-     Sans XX, etc. Otherwise, blank spaces in rendered output are
-     likely.
-  */
-  const typography d_typo = shsans_typo;
+
+/// Style constants.
+const colorq whiteq(colore::white);
+const colorq blackq(colore::black);
+const style w_style = { whiteq, 1.0, blackq, 0.0, 0 };
+const style b_style = { blackq, 1.0, whiteq, 0.0, 0 };
+
+
+/// Useful typography constants.
+typography::anchor a = typography::anchor::middle;
+typography::align al = typography::align::center;
+typography::weight w = typography::weight::normal;
+typography::property p = typography::property::normal;
+
+const char* sserif = "Source Serif Pro";
+const char* ssans = "Source Sans Pro";
+const char* smono = "Source Code Pro";
+const char* shsans = "Source Han Sans CN";
+const char* aprcu = "Apercu";
+const char* ccode = "Calling Code";
+const char* zslab = "Zilla Slab";
+const char* mexcellent = "Mexcellent";
+const typography smono_typo = { smono, 12, b_style, a, al, w, p };
+const typography sserif_typo = { sserif, 12, b_style, a, al, w, p };
+const typography ssans_typo = { ssans, 12, b_style, a, al, w, p };
+const typography shsans_typo = { shsans, 12, b_style, a, al, w, p };
+const typography apercu_typo = { aprcu, 4, b_style, a, al, w, p };
+const typography ccode_typo = { ccode, 12, b_style, a, al, w, p };
+const typography zslab_typo = { zslab, 12, b_style, a, al, w, p };
+const typography mxcllnt_typo = { mexcellent, 12, b_style, a, al, w, p };
+
+/**
+   Default typography.
+
+   NB: Using a global locale. So, filenames are in multiple
+   languages, not just en_US.
+
+   Make sure that the font with the largest support for random
+   characters is used, ie some variant of Source Sans, Source Han Sans
+   XX, etc. Otherwise, blank spaces in rendered output are likely.
+*/
+const typography d_typo = shsans_typo;
 
 } // namespace svg::constants
 
