@@ -522,7 +522,7 @@ struct svg_element : virtual public element_base
   const unit		_M_unit;
   const typography&	_M_typo;
 
-  svg_element(const string __title, const area& __cv = k::px_letter_area,
+  svg_element(const string __title, const area& __cv = k::a4_096_v,
 	      const unit u = svg::unit::pixel,
 	      const typography& __typo = k::smono_typo)
     : _M_name(__title), _M_area(__cv), _M_unit(u), _M_typo(__typo)

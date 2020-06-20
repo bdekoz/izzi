@@ -35,8 +35,11 @@ constexpr area<> instagram_090_v = { 1080, 1350 };
 constexpr area<> instagram_096_h = { 1440, 1152 };
 constexpr area<> instagram_096_v = { 1152, 1440 };
 
-constexpr area<> v1080p_096_h = { 2048, 1152 };
-constexpr area<> v1080p_096_v = { 1152, 2048 };
+constexpr area<> v1080p_090_h = { 2048, 1152 };
+constexpr area<> v1080p_090_v = { 1152, 2048 };
+
+constexpr area<> v1080p_h = { 1920, 1080 };
+constexpr area<> v1080p_v = { 1080, 1920 };
 
 
 /// Style constants.

@@ -55,7 +55,7 @@ enum class unit
    centimeter,		// cm
    millimeter,		// mm
    inch,		// in
-   pixel		// px, 1 pixel = .264583 mm
+   pixel		// px, 1 pixel x 96 PPI = .264583 mm
   };
 
 const string
@@ -156,7 +156,7 @@ struct filter
   }
 };
 
-  
+
 /// Datum consolidating transform preferences.
 struct transform
 {
