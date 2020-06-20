@@ -26,12 +26,9 @@
 #include <algorithm>
 
 #include "a60-svg.h"
-#include "a60-svg-collection-color.h"
 
 
 namespace svg {
-
-using strings = a60::strings;
 
 // Or use set with lt.
 void
@@ -42,18 +39,16 @@ sort_strings_by_size(strings& ids)
   sort(ids.begin(), ids.end(), lsizeless);
 }
 
-using space_type = a60::space_type;
-using point_2t = a60::point_2t;
-using point_2tn = std::tuple<point_2t, size_type>;
 
 /// Hash map of unique id to (not necessarily) unique value.
 /// Use this for sorting by id.
-using id_value_umap = std::unordered_map<string, size_type>;
+using value_type = long long;
+using id_value_umap = std::unordered_map<string, value_type>;
 
 /// Hash multimap of unique value to (perhaps multiple) unique ids.
 /// Use this form for sorting by value.
-using value_id_ummap = std::unordered_multimap<size_type, string>;
-using value_set = std::set<size_type>;
+using value_id_ummap = std::unordered_multimap<value_type, string>;
+using value_set = std::set<value_type>;
 
 /// Remove all from map that match the input (matches) strings.
 /// Return found match entries.
@@ -197,12 +192,12 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
 
   // Define arc.
   std::ostringstream ossa;
-  ossa << "M" << k::space << a60::to_string(p0) << k::space;
+  ossa << "M" << k::space << to_string(p0) << k::space;
   ossa << "A" << k::space;
   ossa << std::to_string(r) << k::comma << std::to_string(r) << k::space;
   ossa << align_angle_to_glyph(1) << k::space;
   ossa << "1, 1" << k::space;
-  ossa << a60::to_string(p4) << k::space;
+  ossa << to_string(p4) << k::space;
 
   // Adjust style so the stroke color matches the fill color.
   s._M_stroke_color = s._M_fill_color;
@@ -220,12 +215,12 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
 
   // Define marker.
   std::ostringstream ossm;
-  ossm << "M" << k::space << a60::to_string(p4) << k::space;
+  ossm << "M" << k::space << to_string(p4) << k::space;
   ossm << "L" << k::space;
-  ossm << a60::to_string(p5) << k::space;
-  ossm << a60::to_string(p6) << k::space;
-  ossm << a60::to_string(p7) << k::space;
-  ossm << a60::to_string(p4) << k::space;
+  ossm << to_string(p5) << k::space;
+  ossm << to_string(p6) << k::space;
+  ossm << to_string(p7) << k::space;
+  ossm << to_string(p4) << k::space;
 
   // Adjust style so that fill will be shown, and stroke hidden.
   s._M_fill_opacity = 1;

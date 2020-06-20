@@ -16,6 +16,10 @@
 #ifndef MiL_SVG_H
 #define MiL_SVG_H 1
 
+#include <string>
+#include <vector>
+#include <tuple>
+#include <sstream>
 
 /**
  *  Scalable Vector Graphics (SVG) namespace
@@ -24,12 +28,27 @@ namespace svg {
 
   //  Using size_type = std::size_t;
   using size_type = int;
+
   using std::string;
+  using strings = std::vector<string>;
+
+  using space_type = double;
+  using point_2t = std::tuple<space_type, space_type>;
+  using point_2tn = std::tuple<point_2t, size_type>;
+
+  string
+  to_string(point_2t p)
+  {
+    auto [ x, y ] = p;
+    std::ostringstream oss;
+    oss << x << ',' << y;
+    return oss.str();
+  }
 
 } // namespace svg
 
 
-#include "a60-svg-color.h"  			// colore, colorq, colorband
+#include "a60-svg-color.h"			// colore, colorq, colorband
 #include "a60-svg-base.h"	  // area, style, filter, transform, typography
 #include "a60-svg-constants.h"
 #include "a60-svg-elements.h"
