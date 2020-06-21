@@ -5,6 +5,7 @@
 #ifndef MiL_SVG_RENDER_BASICS_H
 #define MiL_SVG_RENDER_BASICS_H 1
 
+#include <unordered_map>
 
 namespace svg {
 
@@ -366,7 +367,6 @@ insert_svg_at_center(svg_element& obj, const double isize, const string ifile)
   // scaled
   const double origsize(185); // 185
   const double scalex(isize / origsize);
-  std::clog << "scale factor: " << scalex << k::tab << isize << std::endl;
 
   string xformscale;
   if (scalex > 1)
