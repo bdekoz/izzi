@@ -524,6 +524,80 @@ is_collision_detected(const point_2t& p1, const int r1,
 }
 
 
+void
+kusama_collision_transforms(const point_2t origin,
+			    std::vector<size_type> vuvalues,
+			    std::vector<point_2tn>& vpointns,
+			    const size_type value_max, const int radius,
+			    const bool outwardp = true)
+{
+  // Threshold is the range such that a value is considered adjacent
+  // for collisions. If v > previous value + threshold, then the
+  // points are not considered neighbors.
+  const int threshold(200);
+
+  // Massage data to fit without overlaps, given:
+  // 1 unique set of values
+  // 2 for each unique value, the ids that match
+  // 3 for each unique value, the proposed point and size of the circle
+  for (uint i = 0; i < vpointns.size(); ++i)
+    {
+      auto v = vuvalues[i];
+      auto& pn = vpointns[i];
+      auto& [ p, n ] = pn;
+      double rcur = radius * n; // ??? XXX
+
+      // Fixed angle, just push point along ray from origin until no conflicts.
+      const double angled = get_angle(v, value_max);
+      double angler = (k::pi / 180.0) * angled;
+
+      // Points near p that are under threshold (and lower-indexed in vpointns).
+      uint neighbors(0);
+
+      // Find neighbors.
+      uint j(i);
+      while (i > 0 && j > 0)
+	{
+	  j -= 1;
+
+	  // Only if within threshold, know values are ordered.
+	  if (vuvalues[i] - vuvalues[j] < threshold)
+	    ++neighbors;
+	  else
+	    break;
+	}
+      std::clog << i << k::tab << "neighbors: " << neighbors << std::endl;
+
+      // Search backward and fixup.... in practice results in overlap with
+      // lowest-index or highest-index neighbor.
+      //
+      // So... search forward and fixup. Not ideal; either this or
+      // move to collision detection with multiple neighbor points.
+      //
+      // If collisions, extend radius outward from origin and try
+      // again until the collision is removed and the previous
+      // neighbor circles don't overlap.
+      double rext = radius + rcur; // ??? XXX
+      for (uint k = neighbors; k > 0; --k)
+	{
+	  // Get neighbor point, starting with lowest-index neighbor.
+	  auto& prevpn = vpointns[i - k];
+	  auto& [ prevp, prevn ] = prevpn;
+	  double rprev = radius * prevn; // ??? XXX
+
+	  while (is_collision_detected(p, rcur, prevp, rprev))
+	    {
+	      // Find new point further out from origin.
+	      if (outwardp)
+		rext += (2.5 * rcur);
+	      else
+		rext -= (2.5 * rcur);
+	      p = get_circumference_point(angler, rext, origin);
+	    }
+	}
+    }
+}
+
 /**
    Radiate as above *_per_uvalue_on_arc function, but group similar
    values such that they are globbed into a sattelite circle, ids
@@ -542,15 +616,17 @@ svg_element
 kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			     const typography& typo, const id_value_umap& ivm,
 			     const size_type value_max, const int radius,
-			     const int rspace)
+			     const int rspace, const bool arrowp = false)
 {
-  // Make circle perimeter with an arrow to orientate display of data.
   svg::style styl(typo._M_style);
   styl._M_fill_color = svg::colore::black;
   styl._M_fill_opacity = 0;
   styl._M_stroke_opacity = 1;
   styl._M_stroke_size = 3;
-  // insert_direction_arc_at(obj, origin, radius, styl);
+
+  // Make circle perimeter with an arrow to orientate display of data.
+  if (arrowp)
+    insert_direction_arc_at(obj, origin, radius, styl);
 
   // Convert from string id-keys to int value-keys, plus an ordered set of all
   // the unique values.
@@ -605,71 +681,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 
   // Further normalization and collision-avoidance.
 #if 0
-  // Threshold is the range such that a value is considered adjacent
-  // for collisions. If v > previous value + threshold, then the
-  // points are not considered neighbors.
-  const int threshold(200);
-
-  // Massage data to fit without overlaps, given:
-  // 1 unique set of values
-  // 2 for each unique value, the ids that match
-  // 3 for each unique value, the proposed point and size of the circle
-  for (uint i = 0; i < vpointns.size(); ++i)
-    {
-      auto v = vuvalues[i];
-      auto& pn = vpointns[i];
-      auto& [ p, n ] = pn;
-      double rcur = rad* n;
-
-      // Fixed angle, just push point along ray from origin until no conflicts.
-      const double angled = get_angle(v, value_max);
-      double angler = (k::pi / 180.0) * angled;
-
-      // Points near p that are under threshold (and lower-indexed in vpointns).
-      uint neighbors(0);
-
-      // Find neighbors.
-      uint j(i);
-      while (i > 0 && j > 0)
-	{
-	  j -= 1;
-
-	  // Only if within threshold, know values are ordered.
-	  if (vuvalues[i] - vuvalues[j] < threshold)
-	    ++neighbors;
-	  else
-	    break;
-	}
-      std::clog << i << k::tab << "neighbors: " << neighbors << std::endl;
-
-      // Search backward and fixup.... in practice results in overlap with
-      // lowest-index or highest-index neighbor.
-      //
-      // So... search forward and fixup. Not ideal; either this or
-      // move to collision detection with multiple neighbor points.
-      //
-      // If collisions, extend radius outward from origin and try
-      // again until the collision is removed and the previous
-      // neighbor circles don't overlap.
-      double rext = r + rcur;
-      for (uint k = neighbors; k > 0; --k)
-	{
-	  // Get neighbor point, starting with lowest-index neighbor.
-	  auto& prevpn = vpointns[i - k];
-	  auto& [ prevp, prevn ] = prevpn;
-	  double rprev = rbase * prevn;
-
-	  while (is_collision_detected(p, rcur, prevp, rprev))
-	    {
-	      // Find new point further out from origin.
-	      if (outwardp)
-		rext += (2.5 * rcur);
-	      else
-		rext -= (2.5 * rcur);
-	      p = get_circumference_point(angler, rext, origin);
-	    }
-	}
-    }
+  kusama_collision_transforms(origin, vuvalues, vpointns, value_max, radius);
 #endif
 
   // Draw resulting points, ids, values.
@@ -678,6 +690,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       auto v = vuvalues[i];
       auto& pn = vpointns[i];
       auto& [ p, n ] = pn;
+      auto [ x, y] = p;
 
       // Draw this id's kusama circle on the circumference of origin circle.
 
@@ -686,7 +699,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       // with the max (male, cis). So, take the minimum here.
       double rfactor = std::min(value_max, v * n);
       double rr = (rfactor / value_max) * radius;
-      auto [ x, y] = p;
+
       point_2d_to_circle(obj, x, y, styl, rr);
 
       // Find point aligned with this value's origin point (same arc),
