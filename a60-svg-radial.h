@@ -527,8 +527,7 @@ is_collision_detected(const point_2t& p1, const int r1,
 // Rotate and stack ids at origin point, extending radius for each
 // from point of origin.
 void
-kusama_ids_at_point(svg_element& obj, const typography& typo,
-		    const strings& ids,
+kusama_ids_at_point(svg_element& obj, const style& styl, const strings& ids,
 		    const point_2t p, double r)
 {
   string scat;
@@ -540,8 +539,6 @@ kusama_ids_at_point(svg_element& obj, const typography& typo,
     }
 
   auto [ x, y] = p;
-  auto styl = typo._M_style;
-  styl._M_stroke_opacity = 0.0;
   point_2d_to_circle(obj, x, y, styl, r);
 }
 
@@ -694,9 +691,6 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
     }
 #endif
 
-  // Typography for values.
-  typography typon;
-
   // Draw resulting points, ids, values.
   for (uint i = 0; i < vpointns.size(); ++i)
     {
@@ -711,7 +705,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       // with the max (male, cis). So, take the minimum here.
       double rfactor = std::min(value_max, v * n);
       double rr = (rfactor / value_max) * radius;
-      kusama_ids_at_point(obj, typo, vids[i], p, rr);
+      kusama_ids_at_point(obj, styl, vids[i], p, rr);
 
       // Find point aligned with this value's origin point (same arc),
       // but on the circumference of the kusama circle, not original circle.
