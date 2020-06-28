@@ -27,7 +27,8 @@ namespace constants {
      legend		= 1u << 6, ///> torrent collection glyph
      exitnode		= 1u << 7, ///> tor exit node infrastructure
      telecom		= 1u << 8, ///> telecom infrastructure
-     all		= 1u << 9, ///> all elements and layers
+     glyph		= 1u << 9, ///> glyph
+     all		= 1u << 10, ///> all elements and layers
      _S_end		= 1u << 16 ///> future use 10-16
     };
 
