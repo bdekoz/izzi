@@ -16,6 +16,7 @@
 #ifndef MiL_SVG_H
 #define MiL_SVG_H 1
 
+#include <cmath>
 #include <string>
 #include <vector>
 #include <tuple>
