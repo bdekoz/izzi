@@ -252,11 +252,6 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
 }
 
 
-// RADIAL 1
-// Radiate clockwise from 0 to 35x degrees about origin, placing each
-// id at a point on the circumference. Duplicate points overlap.
-
-
 string
 make_label_for_value(string pname, size_type pvalue, const uint valuewidth = 9)
 {
@@ -268,6 +263,10 @@ make_label_for_value(string pname, size_type pvalue, const uint valuewidth = 9)
   return label;
 }
 
+
+// RADIAL 1
+// Radiate clockwise from 0 to 35x degrees about origin, placing each
+// id at a point on the circumference. Duplicate points overlap.
 
 /*
   Draw text on the circumference of a circle of radius r centered at (cx, cy)
@@ -499,31 +498,6 @@ radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 // circle whos radius is proportionate to the number of duplicate ids
 // at that point.  Duplicate ids splay, stack, or
 // append/concatencate at, after, or around that point cluster.
-
-double
-distance_cartesian(const point_2t& p1, const point_2t& p2)
-{
-  auto [ x1, y1 ] = p1;
-  auto [ x2, y2 ] = p2;
-  auto distancex = (x2 - x1) * (x2 - x1);
-  auto distancey = (y2 - y1) * (y2 - y1);
-  double distance = sqrt(distancex + distancey);
-  return distance;
-}
-
-
-// https://developer.mozilla.org x 2D_collision_detection
-bool
-is_collision_detected(const point_2t& p1, const int r1,
-		      const point_2t& p2, const int r2)
-{
-  bool ret(false);
-  if (distance_cartesian(p1, p2) < r1 + r2)
-    ret = true;
-  return ret;
-}
-
-
 void
 kusama_collision_transforms(const point_2t origin,
 			    std::vector<size_type> vuvalues,
@@ -687,6 +661,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   // Draw resulting points, ids, values.
   for (uint i = 0; i < vpointns.size(); ++i)
     {
+      auto& ids = vids[i];
       auto v = vuvalues[i];
       auto& pn = vpointns[i];
       auto& [ p, n ] = pn;
@@ -699,7 +674,6 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       // with the max (male, cis). So, take the minimum here.
       double rfactor = std::min(value_max, v * n);
       double rr = (rfactor / value_max) * radius;
-
       point_2d_to_circle(obj, x, y, styl, rr);
 
       // Find point aligned with this value's origin point (same arc),
@@ -715,8 +689,9 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 
       // Draw ids.
       rspacex += (3 * rspace);
-      // append_ids_at(obj, typo, vids[i], angled, p, rspacex);
-      splay_ids_around(obj, typo, vids[i], angled, p, rspacex, rspace);
+
+      // append_ids_at(obj, typo, ids, angled, p, rspacex);
+      splay_ids_around(obj, typo, ids, angled, p, rspacex, rspace);
     }
 
   return obj;
