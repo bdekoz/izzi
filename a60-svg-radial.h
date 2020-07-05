@@ -491,6 +491,44 @@ radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 }
 
 
+/// Datum to take id string and tie it to visual representation.
+struct id_render_state: public render_state_base
+{
+  style		styl;
+  string	file;
+
+  explicit
+  id_render_state(const style s = k::b_style, const string f = "")
+  : styl(s), file(f) { }
+
+  id_render_state(const id_render_state&) = default;
+};
+
+using id_render_state_umap = std::unordered_map<string, id_render_state>;
+
+
+id_render_state_umap&
+get_id_render_state_cache()
+{
+  static id_render_state_umap cache;
+  return cache;
+}
+
+
+id_render_state
+get_id_render_state(string id)
+{
+  id_render_state ret;
+  id_render_state_umap& cache = get_id_render_state_cache();
+  if (cache.count(id) == 1)
+    {
+      auto iter = cache.find(id);
+      ret = iter->second;
+    }
+  return ret;
+}
+
+
 // RADIAL 3
 // Radiate clockwise from 0 to 35x degrees about origin, placing each
 // id at a point cluster on the circumference. A point cluster is a
@@ -570,6 +608,53 @@ kusama_collision_transforms(const point_2t origin,
 	}
     }
 }
+
+
+/// 1
+/// Draw these ids as a kusama circle on the circumference of origin circle.
+///
+/// Simplest version, make satellite circle on circumfrence and splay
+/// or append id's around it
+void
+kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
+		      const point_2t p, const size_type n, const size_type v,
+		      const strings& ids, const size_type value_max,
+		      const int radius, const int rspace)
+{
+  svg::style styl(typo._M_style);
+  styl._M_fill_color = svg::colore::black;
+  styl._M_fill_opacity = 0;
+  styl._M_stroke_opacity = 1;
+  styl._M_stroke_size = 3;
+
+  // NB: Don't want this radius be larger than the original
+  // radius, but some dimensions (sexuality) have multiple id's
+  // with the max (male, cis). So, take the minimum here.
+  auto [ x, y] = p;
+  double rfactor = std::min(value_max, v * n);
+  double rr = (rfactor / value_max) * radius;
+  point_2d_to_circle(obj, x, y, styl, rr);
+
+  // Find point aligned with this value's origin point (same arc),
+  // but on the circumference of the kusama circle, not original circle.
+  const double angled = get_angle(v, value_max);
+
+  // Draw value and pointer to center of clustered ids.
+  auto rspacex = rr + rspace;
+  const auto& plabel = get_circumference_point_d(angled, rspacex, p);
+  auto [xlabel, ylabel] = plabel;
+  string label = make_label_for_value("", v, 2);
+  place_text_at_angle(obj, typo, label, xlabel, ylabel, angled);
+
+  // Draw ids.
+  rspacex += (3 * rspace);
+#if 0
+  append_ids_at(obj, typo, ids, angled, p, rspacex);
+#else
+  splay_ids_around(obj, typo, ids, angled, p, rspacex, rspace);
+#endif
+}
+
 
 /**
    Radiate as above *_per_uvalue_on_arc function, but group similar
@@ -664,33 +749,9 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       auto v = vuvalues[i];
       auto& pn = vpointns[i];
       auto& [ p, n ] = pn;
-      auto [ x, y] = p;
 
       // Draw this id's kusama circle on the circumference of origin circle.
-
-      // NB: Don't want this radius be larger than the original
-      // radius, but some dimensions (sexuality) have multiple id's
-      // with the max (male, cis). So, take the minimum here.
-      double rfactor = std::min(value_max, v * n);
-      double rr = (rfactor / value_max) * radius;
-      point_2d_to_circle(obj, x, y, styl, rr);
-
-      // Find point aligned with this value's origin point (same arc),
-      // but on the circumference of the kusama circle, not original circle.
-      const double angled = get_angle(v, value_max);
-
-      // Draw value and pointer to center of clustered ids.
-      auto rspacex = rr + rspace;
-      const auto& plabel = get_circumference_point_d(angled, rspacex, p);
-      auto [xlabel, ylabel] = plabel;
-      string label = make_label_for_value("", v, 2);
-      place_text_at_angle(obj, typo, label, xlabel, ylabel, angled);
-
-      // Draw ids.
-      rspacex += (3 * rspace);
-
-      // append_ids_at(obj, typo, ids, angled, p, rspacex);
-      splay_ids_around(obj, typo, ids, angled, p, rspacex, rspace);
+      kusama_id_by_uvalue_1(obj, typo, p, n, v, ids, value_max, radius, rspace);
     }
 
   return obj;
