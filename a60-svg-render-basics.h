@@ -28,7 +28,9 @@ namespace constants {
      exitnode		= 1u << 7, ///> tor exit node infrastructure
      telecom		= 1u << 8, ///> telecom infrastructure
      glyph		= 1u << 9, ///> glyph
-     all		= 1u << 10, ///> all elements and layers
+     image		= 1u << 10, ///> image
+     svg		= 1u << 11, ///> svg element, perhaps nested
+     all		= 1u << 12, ///> all elements and layers
      _S_end		= 1u << 16 ///> future use 10-16
     };
 
@@ -102,7 +104,7 @@ struct render_state_base
 
   render_state_base(const double o = 0.10,
 		    const k::scale rscale = k::scale::medium)
-  : visible_mode(k::select::vector), outline_mode(k::select::none),
+  : visible_mode(k::select::none), outline_mode(k::select::none),
     scale_mode(rscale), opacity(o),
     weigh(false), color_generated(true), alt(false)
   { }
@@ -327,11 +329,14 @@ point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
 }
 
 
-/// Origin of glyph placement is center of SVG.
+/// Embed svg in group element.
+/// origin is where glyph placement is inside containing svg element.
 /// iflile is a plain SVG file with a 1:1 aspect ratio.
-/// isize is image size, base svg image is 185 pixels.
+/// isize is image width/height
 svg_element
-insert_svg_at_center(svg_element& obj, const double isize, const string ifile)
+insert_svg_at(svg_element& obj, const string ifile,
+	      const point_2t origin, const double origsize, const double isize,
+	      const double angled = 0)
 {
   // Read SVG to insert.
   std::ifstream ifs(ifile);
@@ -360,23 +365,31 @@ insert_svg_at_center(svg_element& obj, const double isize, const string ifile)
   // Insert nested SVG element.
 
   // offset
-  auto [ objx, objy ] = obj.center_point();
+  auto [ objx, objy ] = origin;
   const int x = objx - (isize / 2);
   const int y = objy - (isize / 2);
   string xformtranslate(transform::translate(x, y));
 
   // scaled
-  const double origsize(185); // 185
-  const double scalex(isize / origsize);
-
   string xformscale;
-  if (scalex > 1)
-    xformscale = transform::scale(scalex);
+  if (isize != origsize)
+    {
+      const double scalex(isize / origsize);
+      xformscale = transform::scale(scalex);
+    }
 
-  string ts(xformtranslate + k::space + xformscale);
+  // rotated
+  string xformrotate;
+  if (angled != 0)
+    {
+      xformrotate = transform::rotate(90 - angled, objx, objy);
+    }
+
+  // Order of transformations matters...
+  string ts(xformrotate + k::space + xformtranslate + k::space + xformscale);
 
   group_element gsvg;
-  gsvg.start_element("mozilla inset radial svg", transform(), ts);
+  gsvg.start_element("inset radial svg", transform(), ts);
   gsvg.add_raw(isvg);
   gsvg.finish_element();
   obj.add_element(gsvg);

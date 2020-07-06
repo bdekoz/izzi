@@ -315,7 +315,7 @@ struct typography
     const std::string align("__align");
 
     std::string strip1 =						\
-      R"(font-family="__name" font-size="__size" text-align="__align" )";
+      R"(font-family="__name" font-size="__sizepx" text-align="__align" )";
 
     string_replace(strip1, name, _M_face);
     string_replace(strip1, size, std::to_string(_M_size));
