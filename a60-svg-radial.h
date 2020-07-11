@@ -679,7 +679,7 @@ kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
 /// Simplest version, for gender male/female glyphs using unicode
 void
 kusama_id_by_uvalue_2(svg_element& obj, const typography& typo,
-		      const style styl, const point_2t origin,
+		      const style styl [[gnu::unused]], const point_2t origin,
 		      const point_2t p, const size_type n, const size_type v,
 		      const strings& ids, const size_type value_max,
 		      const int radius, const int rspace)
@@ -693,7 +693,8 @@ kusama_id_by_uvalue_2(svg_element& obj, const typography& typo,
   const double anglet = angled - kusama_label_angle_adjust();
 
   // Possibly changed style object.
-  style stylused = styl;
+  id_render_state dst = cache[""];
+  style stylused = dst.styl;
 
   // Loop through specialized list, and do these first.
   strings idsremaining;
