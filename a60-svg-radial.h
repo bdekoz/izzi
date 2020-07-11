@@ -117,12 +117,22 @@ get_id_render_state_cache()
 id_render_state
 get_id_render_state(string id)
 {
-  id_render_state ret;
   id_render_state_umap& cache = get_id_render_state_cache();
+
+  id_render_state ret;
   if (cache.count(id) == 1)
     {
       auto iter = cache.find(id);
       ret = iter->second;
+    }
+  else
+    {
+      // If default string is set in the cache, use it.
+      if (cache.count("") == 1)
+	{
+	  auto iter = cache.find("");
+	  ret = iter->second;
+	}
     }
   return ret;
 }
@@ -777,14 +787,15 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			     const int rspace, const bool arrowp = false)
 {
   svg::style styl(typo._M_style);
-  styl._M_fill_color = svg::colore::black;
-  styl._M_fill_opacity = 0;
-  styl._M_stroke_opacity = 1;
-  styl._M_stroke_size = 3;
+
+  svg::style stylinset(styl);
+  stylinset._M_fill_opacity = 0;
+  stylinset._M_stroke_opacity = 1;
+  stylinset._M_stroke_size = 3;
 
   // Make circle perimeter with an arrow to orientate display of data.
   if (arrowp)
-    insert_direction_arc_at(obj, origin, radius, styl);
+    insert_direction_arc_at(obj, origin, radius, stylinset);
 
   // Convert from string id-keys to int value-keys, plus an ordered set of all
   // the unique values.
@@ -854,10 +865,8 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       auto& [ p, n ] = pn;
 
       // Draw this id's kusama circle on the circumference of origin circle.
-      const colorq dcolor(colore::gray50);
-      style dstyl = { dcolor, 0.0, dcolor, 1.0, 3 };
-      kusama_id_by_uvalue_2(obj, typo, dstyl, origin, p, n, v, ids, value_max,
-			    radius, rspace);
+      kusama_id_by_uvalue_2(obj, typo, typo._M_style, origin, p, n, v, ids,
+			    value_max, radius, rspace);
     }
 
   return obj;
