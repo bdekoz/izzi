@@ -117,7 +117,7 @@ get_id_render_state_cache()
 id_render_state
 get_id_render_state(string id)
 {
-  id_render_state_umap& cache = get_id_render_state_cache();
+  const id_render_state_umap& cache = get_id_render_state_cache();
 
   id_render_state ret;
   if (cache.count(id) == 1)
@@ -165,16 +165,21 @@ align_angle_to_glyph(double angled)
 }
 
 
-// Given rdenom scaling factor and SVG canvas, compute effective radius value.
+// Given rdenom scaling factor and SVG canvas, compute effective
+// radius value.
 inline double
 get_radius(const svg_element& obj, const uint rdenom)
-{ return std::min(obj._M_area._M_height, obj._M_area._M_width) / rdenom; }
+{
+  auto leastside = std::min(obj._M_area._M_height, obj._M_area._M_width);
+  return leastside / rdenom;
+}
 
 
 // Max number of non-overlapping degrees in circle, such that the
 // beginning and the end have a discernable gap. Total degrees in a
 // circle are 360, but then the beginning and the end of the radial
-// display are in the same place. So, shave a bit off both for the optics.
+// display are in the same place. So, shave a bit off both for the
+// optics.
 constexpr double mindeg = 10;
 constexpr double maxdeg = 350;
 
@@ -183,8 +188,8 @@ inline double
 get_angle(size_type pvalue, size_type pmax)
 {
   // Normalize [0, pmax] to range [mindeg, maxdeg] and put pvalue in it.
-  double angled = normalize_value_on_range(pvalue, 0, pmax, mindeg, maxdeg);
-  return align_angle_to_glyph(angled);
+  double d = normalize_value_on_range(pvalue, 0, pmax, mindeg, maxdeg);
+  return align_angle_to_glyph(d);
 }
 
 
@@ -211,8 +216,8 @@ get_circumference_point_d(const double ad, const double r,
 
 
 void
-place_text_at_angle(svg_element& obj, const typography& typo, string label,
-		    int tx, int ty, const double deg = 0.0)
+place_text_at_angle(svg_element& obj, const typography& typo,
+		    string label, int tx, int ty, const double deg = 0.0)
 {
   typography typot(typo);
   typot._M_a = svg::typography::anchor::start;
@@ -233,10 +238,12 @@ place_text_at_angle(svg_element& obj, const typography& typo, string label,
 }
 
 
-/// Insert arc + arrow glyph that traces path of start to finish trajectory.
+/// Insert arc + arrow glyph that traces path of start to finish
+/// trajectory.
 svg_element
 insert_direction_arc_at(svg_element& obj, const point_2t origin,
-			const double rr, svg::style s, const uint spacer = 10)
+			const double rr, svg::style s,
+			const uint spacer = 10)
 {
   const double r = rr - spacer;
   point_2t p0 = get_circumference_point_d(align_angle_to_glyph(mindeg),
@@ -261,11 +268,12 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
   point_2t p5 = get_circumference_point_d(anglemax, r + rspacer, origin);
   point_2t p7 = get_circumference_point_d(anglemax, r - rspacer, origin);
 
-  // Circumference arc length desired is radius times the angle of the arc.
+  // Circumference arc length desired is radius times the angle of the
+  // arc.
   auto theta = 2 * rspacer / r;
   auto thetad = theta * 180 / k::pi;
-  point_2t p6 = get_circumference_point_d(align_angle_to_glyph(maxdeg + thetad),
-					  r, origin);
+  auto alignd = align_angle_to_glyph(maxdeg + thetad);
+  point_2t p6 = get_circumference_point_d(alignd, r, origin);
 
   // Define marker.
   std::ostringstream ossm;
@@ -307,12 +315,14 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
 
 
 string
-make_label_for_value(string pname, size_type pvalue, const uint valuewidth = 9)
+make_label_for_value(string pname, size_type pvalue,
+		     const uint valuewidth = 9)
 {
   // Consolidate label text to be "VALUE -> NAME"
   std::ostringstream oss;
   oss.imbue(std::locale(""));
-  oss << std::setfill(' ') << std::setw(valuewidth) << std::left << pvalue;
+  oss << std::setfill(' ') << std::setw(valuewidth)
+      << std::left << pvalue;
   string label = oss.str() + " -> " + pname;
   return label;
 }
@@ -322,10 +332,13 @@ make_label_for_value(string pname, size_type pvalue, const uint valuewidth = 9)
 // Radiate clockwise from 0 to 35x degrees about origin, placing each
 // id at a point on the circumference. Duplicate points overlap.
 
-// Circumference adjustment such that lable is hight-centered in kusama circle.
+// Circumference adjustment such that lable is hight-centered in
+// kusama circle.
 size_type
 kusama_label_angle_adjust()
-{ return 3; }
+{
+  return 3;
+}
 
 /*
   Draw text on the circumference of a circle of radius r centered at (cx, cy)
@@ -334,9 +347,11 @@ kusama_label_angle_adjust()
 void
 radiate_id_by_value(svg_element& obj, const point_2t origin,
 		    const typography& typo, string pname,
-		    size_type pvalue, size_type pmax, double r, bool rotatep)
+		    size_type pvalue, size_type pmax, double r,
+		    bool rotatep)
 {
-  const double angled = get_angle(pvalue, pmax) - kusama_label_angle_adjust();
+  auto adj = kusama_label_angle_adjust();
+  const double angled = get_angle(pvalue, pmax) - adj;
   auto [ x, y ] = get_circumference_point_d(angled, r, origin);
 
   string label = make_label_for_value(pname, pvalue, 2);
@@ -357,12 +372,14 @@ radiate_id_by_value(svg_element& obj, const point_2t origin,
  rdenom == scaling factor for radius of circle used for display, where
   larger values (used as a denominator) make smaller (tighter) circles.
 
- rotatep == rotate name text to be on an arc from the origin of the circle.
+ rotatep == rotate name text to be on an arc from the origin of the
+ circle.
 
 */
 svg_element
 radiate_ids_per_value_on_arc(svg_element& obj, const point_2t origin,
-			     const typography& typo, const id_value_umap& ivm,
+			     const typography& typo,
+			     const id_value_umap& ivm,
 			     const size_type value_max,
 			     const int rdenom, bool rotatep)
 {
@@ -387,20 +404,36 @@ radiate_ids_per_value_on_arc(svg_element& obj, const point_2t origin,
 // id at a point on the circumference. Duplicate ids splay, stack,
 // or append/concatencate at, after, or around that point.
 
-// Spread ids on either side of an origin point, along circumference path.
+// Spread ids on either side of an origin point, along circumference
+// path.
 void
-splay_ids_around(svg_element& obj, const typography& typo, const strings& ids,
-		 const double angled, const point_2t origin,
-		 double r, double rspace)
+splay_ids_around(svg_element& obj, const typography& typo,
+		 const strings& ids, const double angled,
+		 const point_2t origin, double r, double rspace,
+		 const bool ringp = false)
 {
   // Angle inbetween sequential id's.
   double angledelta = typo._M_size;
   const double maxdeg = angledelta * (ids.size() - 1);
   double angled2 = angled - (maxdeg / 2);
-  double rprime = r + (rspace * 2);
+
+  // NB: value label is at r + rspace, so rprime has to be longer.
+  double rlabel = r + rspace;
+  double rprime = rlabel + (rspace * 2);
   for (const string& s: ids)
     {
-      auto [ x2, y2 ] = get_circumference_point_d(angled2, rprime, origin);
+      if (ringp)
+	{
+	  // Make a ring on point on the kusama circle for the id.
+	  auto [ x, y ] = get_circumference_point_d(angled2, r, origin);
+	  auto rring = rspace / 2;
+	  const id_render_state ridst = get_id_render_state(s);
+	  style rstyl = ridst.styl;
+	  point_2d_to_circle(obj, x, y, rstyl, rring);
+	}
+
+      auto p2 = get_circumference_point_d(angled2, rprime, origin);
+      auto [ x2, y2 ] = p2;
       place_text_at_angle(obj, typo, s, x2, y2, angled2);
       angled2 += angledelta;
     }
@@ -409,15 +442,16 @@ splay_ids_around(svg_element& obj, const typography& typo, const strings& ids,
 
 // Spread ids past the origin point, along circumference path.
 void
-splay_ids_after(svg_element& obj, const typography& typo, const strings& ids,
-		const double angled, const point_2t origin,
-		 double r, double rspace)
+splay_ids_after(svg_element& obj, const typography& typo,
+		const strings& ids, const double angled,
+		const point_2t origin, double r, double rspace)
 {
   double angledelta = typo._M_size;
   double anglet = angled;
   for (const string& s: ids)
     {
-      auto [ x, y ] = get_circumference_point_d(angled, r + rspace, origin);
+      auto p = get_circumference_point_d(angled, r + rspace, origin);
+      auto [ x, y ] =  p;
       place_text_at_angle(obj, typo, s, x, y, angled);
       anglet -= angledelta;
     }
@@ -425,9 +459,9 @@ splay_ids_after(svg_element& obj, const typography& typo, const strings& ids,
 
 
 void
-splay_ids_stagger(svg_element& obj, const typography& typo, const strings& ids,
-		  const double angled, const point_2t origin, double r,
-		  double rspace)
+splay_ids_stagger(svg_element& obj, const typography& typo,
+		  const strings& ids, const double angled,
+		  const point_2t origin, double r, double rspace)
 {
   if (ids.size() > 1)
     {
@@ -445,9 +479,9 @@ splay_ids_stagger(svg_element& obj, const typography& typo, const strings& ids,
 // Rotate and stack ids at origin point, extending radius for each
 // from point of origin.
 void
-stack_ids_at(svg_element& obj, const typography& typoo, const strings& ids,
-	     const double angled, const point_2t origin, double r,
-	     const double rincrement = 10)
+stack_ids_at(svg_element& obj, const typography& typoo,
+	     const strings& ids, const double angled,
+	     const point_2t origin, double r, const double rdelta = 10)
 {
   // Rotate 90 CW around origin, and spread out .
   typography typo(typoo);
@@ -458,14 +492,15 @@ stack_ids_at(svg_element& obj, const typography& typoo, const strings& ids,
     {
       auto [ x2, y2 ] = get_circumference_point_d(angled, r, origin);
       place_text_at_angle(obj, typo, s, x2, y2, angled + 90);
-      r += rincrement;
+      r += rdelta;
     }
 }
 
 
 void
-append_ids_at(svg_element& obj, const typography& typo, const strings& ids,
-	      const double angled, const point_2t origin, double r)
+append_ids_at(svg_element& obj, const typography& typo,
+	      const strings& ids, const double angled,
+	      const point_2t origin, double r)
 {
   // Get point, angle up for text.
   auto [ x, y ] = get_circumference_point_d(angled, r, origin);
@@ -489,7 +524,8 @@ radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
 		      size_type pvalue, size_type pmax, double r,
 		      double rspace [[maybe_unused]])
 {
-  // Find point on the circumference of the circle closest to value (pvalue).
+  // Find point on the circumference of the circle closest to value
+  // (pvalue).
   const double angled = get_angle(pvalue, pmax);
   double anglet = angled - kusama_label_angle_adjust();
   auto [ x, y ] = get_circumference_point_d(anglet, r, origin);
@@ -515,7 +551,8 @@ radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
 // arc/angle.
 svg_element
 radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
-			      const typography& typo, const id_value_umap& ivm,
+			      const typography& typo,
+			      const id_value_umap& ivm,
 			      const size_type value_max,
 			      const int radius, const int rspace)
 {
@@ -527,8 +564,8 @@ radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   styl._M_stroke_size = 3;
   insert_direction_arc_at(obj, origin, radius, styl);
 
-  // Convert from string id-keys to int value-keys, plus an ordered set of all
-  // the unique values.
+  // Convert from string id-keys to int value-keys, plus an ordered
+  // set of all the unique values.
   value_set uvalues;
   value_id_ummap uvaluemm = to_value_id_mmap(ivm, uvalues);
   for (const auto& v : uvalues)
@@ -580,11 +617,13 @@ kusama_collision_transforms(const point_2t origin,
       auto& [ p, n ] = pn;
       double rcur = radius * n; // ??? XXX
 
-      // Fixed angle, just push point along ray from origin until no conflicts.
+      // Fixed angle, just push point along ray from origin until no
+      // conflicts.
       const double angled = get_angle(v, value_max);
       double angler = (k::pi / 180.0) * angled;
 
-      // Points near p that are under threshold (and lower-indexed in vpointns).
+      // Points near p that are under threshold (and lower-indexed in
+      // vpointns).
       uint neighbors(0);
 
       // Find neighbors.
@@ -599,10 +638,11 @@ kusama_collision_transforms(const point_2t origin,
 	  else
 	    break;
 	}
-      std::clog << i << k::tab << "neighbors: " << neighbors << std::endl;
+      std::clog << i << k::tab << "neighbors: " << neighbors
+		<< std::endl;
 
-      // Search backward and fixup.... in practice results in overlap with
-      // lowest-index or highest-index neighbor.
+      // Search backward and fixup.... in practice results in overlap
+      // with lowest-index or highest-index neighbor.
       //
       // So... search forward and fixup. Not ideal; either this or
       // move to collision detection with multiple neighbor points.
@@ -633,21 +673,25 @@ kusama_collision_transforms(const point_2t origin,
 
 
 /// 1
-/// Draw these ids as a kusama circle on the circumference of origin circle.
+/// Draw these ids as a kusama circle on the circumference of origin
+/// circle.
 ///
 /// Simplest version, make satellite circle on circumfrence and splay
 /// or append id's around it
 void
 kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
-		      const style styl, const point_2t origin [[gnu::unused]],
-		      const point_2t p, const size_type n, const size_type v,
+		      const style styl,
+		      const point_2t origin [[gnu::unused]],
+		      const point_2t p, const size_type n,
+		      const size_type v,
 		      const strings& ids, const size_type value_max,
-		      const int radius, const int rspace)
+		      const int radius, const int rspace,
+		      const bool ringp = false)
 {
   // NB: Don't want this radius be larger than the original
   // radius, but some dimensions (sexuality) have multiple id's
   // with the max (male, cis). So, take the minimum here.
-  auto [ x, y] = p;
+  auto [ x, y ] = p;
   double rfactor = std::min(value_max, v * n);
   double rr = (rfactor / value_max) * radius;
   point_2d_to_circle(obj, x, y, styl, rr);
@@ -668,7 +712,7 @@ kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
 #if 0
   append_ids_at(obj, typo, ids, anglet, p, rspacex);
 #else
-  splay_ids_around(obj, typo, ids, anglet, p, rspacex, rspace);
+  splay_ids_around(obj, typo, ids, anglet, p, rr, rspace, ringp);
 #endif
 }
 
@@ -679,31 +723,29 @@ kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
 /// Simplest version, for gender male/female glyphs using unicode
 void
 kusama_id_by_uvalue_2(svg_element& obj, const typography& typo,
-		      const style styl [[gnu::unused]], const point_2t origin,
-		      const point_2t p, const size_type n, const size_type v,
-		      const strings& ids, const size_type value_max,
+		      const style styl, const point_2t origin,
+		      const point_2t p, const size_type n,
+		      const size_type v, const strings& ids,
+		      const size_type value_max,
 		      const int radius, const int rspace)
 {
   // Get cache, list of specialized id matches.
-  id_render_state_umap& cache = get_id_render_state_cache();
+  const id_render_state_umap& cache = get_id_render_state_cache();
 
   // Center of glyph, a point on origin circle circumference.
   auto [ x, y] = p;
   const double angled = get_angle(v, value_max);
   const double anglet = angled - kusama_label_angle_adjust();
 
-  // Possibly changed style object.
-  id_render_state dst = cache[""];
-  style stylused = dst.styl;
-
   // Loop through specialized list, and do these first.
+  style dstyl = styl;
   strings idsremaining;
   for (const string& id : ids)
     {
-      if (cache.count(id))
+      if (cache.count(id) == 1)
 	{
 	  // String is special, customized based on render_state.
-	  id_render_state idst = cache[id];
+	  const id_render_state idst = get_id_render_state(id);
 	  if (idst.is_visible(svg::k::select::glyph))
 	    {
 	      // Kusama circle radius.
@@ -723,7 +765,7 @@ kusama_id_by_uvalue_2(svg_element& obj, const typography& typo,
 		  // SVG to be inserted is
 		  // - square canvas width/height of 100 pixels
 		  // - glyph centered in this canvas
-		  // - glyph circle diameter is glyphscale value in pixels
+		  // - glyph circle diameter = glyphscale value in pixels
 		  // Implies:
 		  // rr * 2 is desired width of circle in glyph.
 		  const double scale(rr * 2 / glyphscale);
@@ -742,28 +784,37 @@ kusama_id_by_uvalue_2(svg_element& obj, const typography& typo,
 
 	      if (idst.is_visible(svg::k::select::vector))
 		{
-		  // Just use the color parts from this style.
+		  // Iff the only id, then use id-specialized color to
+		  // draw kusama circle, and skip ring/satellite.
+		  if (ids.size() == 1)
+		    dstyl = idst.styl;
 		  idsremaining.push_back(id);
-		  stylused = idst.styl;
 		}
 	    }
 	}
       else
-	idsremaining.push_back(id);
+	{
+	  idsremaining.push_back(id);
+	}
     }
 
-  // Do what's left (non-specialized ids) as per usual.
+  // Deal with label.
+  // Deal with remaining ids.
   if (idsremaining.empty())
     {
-      // Recalculate origin to offset text.
-      // Print value centered on glyph, accouting for hight of text.
+      // Just print out label.
       point_2t pt = get_circumference_point_d(anglet, radius, origin);
       auto [ xt, yt] = pt;
       place_text_at_angle(obj, typo, std::to_string(v), xt, yt, anglet);
     }
   else
-    kusama_id_by_uvalue_1(obj, typo, stylused, origin, p, n, v, idsremaining,
-			  value_max, radius, rspace);
+    {
+      // Do what's left (non-specialized ids) as per usual.
+      const bool ringp = ids.size() != 1;
+      kusama_id_by_uvalue_1(obj, typo, dstyl, origin, p, n, v,
+			    idsremaining, value_max, radius, rspace,
+			    ringp);
+    }
 }
 
 
@@ -785,7 +836,8 @@ svg_element
 kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			     const typography& typo, const id_value_umap& ivm,
 			     const size_type value_max, const int radius,
-			     const int rspace, const bool arrowp = false)
+			     const int rspace, const bool arrowp = false,
+			     const bool collisionp = false)
 {
   svg::style styl(typo._M_style);
 
@@ -798,15 +850,17 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   if (arrowp)
     insert_direction_arc_at(obj, origin, radius, stylinset);
 
-  // Convert from string id-keys to int value-keys, plus an ordered set of all
-  // the unique values.
+  // Convert from string id-keys to int value-keys, plus an ordered
+  // set of all the unique values.
   value_set uvalues;
   value_id_ummap uvaluemm = to_value_id_mmap(ivm, uvalues);
 
   // Map out preliminary data points.
   // For each unique value in vuvalues
   // - VIDS
-  // - construct a vector of strings that have that value, sorted short to long
+
+  // - construct a vector of strings that have that value, sorted
+  // - short to long
   //
   // - VPOINTNS
   // - constuct a vector of points on the circumference with weight
@@ -828,8 +882,8 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       sort_strings_by_size(ids);
       vids.push_back(ids);
 
-      // Find initial point on the circumference of the circle closest to
-      // current value, aka initial circumference point (ICP).
+      // Find initial point on the circumference of the circle closest
+      // to current value, aka initial circumference point (ICP).
       const double angled = get_angle(v, value_max);
       point_2t p = get_circumference_point_d(angled, radius, origin);
       vpointns.push_back(std::make_tuple(p, ids.size()));
@@ -850,13 +904,15 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 
 
   // Further normalization and collision-avoidance.
-#if 0
-  kusama_collision_transforms(origin, vuvalues, vpointns, value_max, radius);
-#endif
+  if (collisionp)
+    kusama_collision_transforms(origin, vuvalues, vpointns,
+				value_max, radius);
+
 
   // Draw resulting points, ids, values.
   // NB: vpointns valued from smallest to largest, so reverse so that
   // smaller is more visible.
+  const id_render_state& dst = get_id_render_state("");
   for (uint i = 0; i < vpointns.size(); ++i)
     {
       int j = vpointns.size() - 1 - i;
@@ -865,8 +921,9 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       auto& pn = vpointns[j];
       auto& [ p, n ] = pn;
 
-      // Draw this id's kusama circle on the circumference of origin circle.
-      kusama_id_by_uvalue_2(obj, typo, typo._M_style, origin, p, n, v, ids,
+      // Draw this id's kusama circle on the circumference of origin
+      // circle.
+      kusama_id_by_uvalue_2(obj, typo, dst.styl, origin, p, n, v, ids,
 			    value_max, radius, rspace);
     }
 
