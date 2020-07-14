@@ -599,6 +599,7 @@ kusama_collision_transforms(const point_2t origin,
 			    std::vector<size_type> vuvalues,
 			    std::vector<point_2tn>& vpointns,
 			    const size_type value_max, const int radius,
+			    const int rspace,
 			    const bool outwardp = true)
 {
   // Threshold is the range such that a value is considered adjacent
@@ -615,7 +616,7 @@ kusama_collision_transforms(const point_2t origin,
       auto v = vuvalues[i];
       auto& pn = vpointns[i];
       auto& [ p, n ] = pn;
-      double rcur = radius * n; // ??? XXX
+      double rcur = rspace * n;
 
       // Fixed angle, just push point along ray from origin until no
       // conflicts.
@@ -905,8 +906,8 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 
   // Further normalization and collision-avoidance.
   if (collisionp)
-    kusama_collision_transforms(origin, vuvalues, vpointns,
-				value_max, radius);
+    kusama_collision_transforms(origin, vuvalues, vpointns, value_max,
+				radius, rspace);
 
 
   // Draw resulting points, ids, values.
