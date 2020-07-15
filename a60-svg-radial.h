@@ -551,8 +551,7 @@ radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
 // arc/angle.
 svg_element
 radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
-			      const typography& typo,
-			      const id_value_umap& ivm,
+			      const typography& typo, const id_value_umap& ivm,
 			      const size_type value_max,
 			      const int radius, const int rspace)
 {
@@ -599,8 +598,7 @@ kusama_collision_transforms(const point_2t origin,
 			    std::vector<size_type> vuvalues,
 			    std::vector<point_2tn>& vpointns,
 			    const size_type value_max, const int radius,
-			    const int rspace,
-			    const bool outwardp = true)
+			    const int rspace, const bool outwardp = true)
 {
   // Threshold is the range such that a value is considered adjacent
   // for collisions. If v > previous value + threshold, then the
@@ -680,22 +678,35 @@ kusama_collision_transforms(const point_2t origin,
 /// Simplest version, make satellite circle on circumfrence and splay
 /// or append id's around it
 void
-kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
-		      const style styl,
-		      const point_2t origin [[gnu::unused]],
-		      const point_2t p, const size_type n,
-		      const size_type v,
-		      const strings& ids, const size_type value_max,
+kusama_id_by_uvalue_1(svg_element& obj, const strings& ids, const point_2t p,
+		      const size_type n, const size_type n_total,
+		      const size_type v, const size_type value_max,
 		      const int radius, const int rspace,
-		      const bool satellitep = false)
+		      const typography& typo, const style styl,
+		      const bool byvaluep, const bool satellitep)
 {
-  // NB: Don't want this radius be larger than the original
-  // radius, but some dimensions (sexuality) have multiple id's
-  // with the max (male, cis). So, take the minimum here.
+  // NB: Don't want the computed rprime radius be larger than the
+  // original radius. So, take the minimum here.
   auto [ x, y ] = p;
-  double rfactor = std::min(value_max, v * n);
-  double rr = (rfactor / value_max) * radius;
-  point_2d_to_circle(obj, x, y, styl, rr);
+
+  double rprime;
+  const double rmin = rspace;
+  if (byvaluep)
+    {
+      // Weigh by value/value_max and n/n_total.
+      double rfactor = std::min(value_max, v * n);
+      rprime = (rfactor / value_max) * radius;
+    }
+  else
+    {
+      // Weigh by n/n_total.
+      double nradius = (n / n_total) * radius;
+      if (nradius > rmin)
+	rprime = nradius;
+      else
+	rprime = rmin;
+    }
+  point_2d_to_circle(obj, x, y, styl, rprime);
 
   // Find point aligned with this value's origin point (same arc),
   // but on the circumference of the kusama circle, not original circle.
@@ -703,17 +714,17 @@ kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
   const double anglet = angled - kusama_label_angle_adjust();
 
   // Draw value and pointer to center of clustered ids.
-  auto rspacex = rr + rspace;
-  const auto& plabel = get_circumference_point_d(anglet, rspacex, p);
+  auto rprimex = rprime + rspace;
+  const auto& plabel = get_circumference_point_d(anglet, rprimex, p);
   auto [xlabel, ylabel] = plabel;
   string label = make_label_for_value("", v, 2);
   place_text_at_angle(obj, typo, label, xlabel, ylabel, anglet);
 
   // Draw ids.
 #if 0
-  append_ids_at(obj, typo, ids, anglet, p, rspacex);
+  append_ids_at(obj, typo, ids, anglet, p, rprimex);
 #else
-  splay_ids_around(obj, typo, ids, anglet, p, rr, rspace, satellitep);
+  splay_ids_around(obj, typo, ids, anglet, p, rprime, rspace, satellitep);
 #endif
 }
 
@@ -723,12 +734,13 @@ kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
 ///
 /// Simplest version, for gender male/female glyphs using unicode
 void
-kusama_id_by_uvalue_2(svg_element& obj, const typography& typo,
-		      const style styl, const point_2t origin,
-		      const point_2t p, const size_type n,
-		      const size_type v, const strings& ids,
-		      const size_type value_max,
-		      const int radius, const int rspace)
+kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
+		      const point_2t origin, const point_2t p,
+		      const size_type n, const size_type n_total,
+		      const size_type v, const size_type value_max,
+		      const int radius, const int rspace,
+		      const typography& typo, const style styl,
+		      const bool byvaluep)
 {
   // Get cache, list of specialized id matches.
   const id_render_state_umap& cache = get_id_render_state_cache();
@@ -812,9 +824,8 @@ kusama_id_by_uvalue_2(svg_element& obj, const typography& typo,
     {
       // Do what's left (non-specialized ids) as per usual.
       const bool satellitep = ids.size() != 1;
-      kusama_id_by_uvalue_1(obj, typo, dstyl, origin, p, n, v,
-			    idsremaining, value_max, radius, rspace,
-			    satellitep);
+      kusama_id_by_uvalue_1(obj, idsremaining, p, n, n_total, v, value_max,
+			    radius, rspace, typo, dstyl, byvaluep, satellitep);
     }
 }
 
@@ -837,29 +848,31 @@ svg_element
 kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			     const typography& typo, const id_value_umap& ivm,
 			     const size_type value_max, const int radius,
-			     const int rspace, const bool arrowp = false,
-			     const bool collisionp = false)
+			     const int rspace,
+			     const bool byvaluep = true,
+			     const bool collisionp = false,
+			     const bool arrowp = false)
 {
   svg::style styl(typo._M_style);
 
-  svg::style stylinset(styl);
-  stylinset._M_fill_opacity = 0;
-  stylinset._M_stroke_opacity = 1;
-  stylinset._M_stroke_size = 3;
-
   // Make circle perimeter with an arrow to orientate display of data.
   if (arrowp)
-    insert_direction_arc_at(obj, origin, radius, stylinset);
+    {
+      svg::style stylinset(styl);
+      stylinset._M_fill_opacity = 0;
+      stylinset._M_stroke_opacity = 1;
+      stylinset._M_stroke_size = 3;
+      insert_direction_arc_at(obj, origin, radius, stylinset);
+    }
 
   // Convert from string id-keys to int value-keys, plus an ordered
   // set of all the unique values.
   value_set uvalues;
   value_id_ummap uvaluemm = to_value_id_mmap(ivm, uvalues);
 
-  // Map out preliminary data points.
-  // For each unique value in vuvalues
+  // Map out preliminary data points. For each unique value in vuvalues
+  //
   // - VIDS
-
   // - construct a vector of strings that have that value, sorted
   // - short to long
   //
@@ -924,8 +937,9 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 
       // Draw this id's kusama circle on the circumference of origin
       // circle.
-      kusama_id_by_uvalue_2(obj, typo, dst.styl, origin, p, n, v, ids,
-			    value_max, radius, rspace);
+      kusama_id_by_uvalue_2(obj, ids, origin, p, n, vpointns.size(),
+			    v, value_max, radius, rspace,
+			    typo, dst.styl, byvaluep);
     }
 
   return obj;
