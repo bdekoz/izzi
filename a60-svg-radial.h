@@ -410,7 +410,7 @@ void
 splay_ids_around(svg_element& obj, const typography& typo,
 		 const strings& ids, const double angled,
 		 const point_2t origin, double r, double rspace,
-		 const bool ringp = false)
+		 const bool satellitep = false)
 {
   // Angle inbetween sequential id's.
   double angledelta = typo._M_size;
@@ -422,7 +422,7 @@ splay_ids_around(svg_element& obj, const typography& typo,
   double rprime = rlabel + (rspace * 2);
   for (const string& s: ids)
     {
-      if (ringp)
+      if (satellitep)
 	{
 	  // Make a ring on point on the kusama circle for the id.
 	  auto [ x, y ] = get_circumference_point_d(angled2, r, origin);
@@ -686,7 +686,7 @@ kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
 		      const size_type v,
 		      const strings& ids, const size_type value_max,
 		      const int radius, const int rspace,
-		      const bool ringp = false)
+		      const bool satellitep = false)
 {
   // NB: Don't want this radius be larger than the original
   // radius, but some dimensions (sexuality) have multiple id's
@@ -712,7 +712,7 @@ kusama_id_by_uvalue_1(svg_element& obj, const typography& typo,
 #if 0
   append_ids_at(obj, typo, ids, anglet, p, rspacex);
 #else
-  splay_ids_around(obj, typo, ids, anglet, p, rr, rspace, ringp);
+  splay_ids_around(obj, typo, ids, anglet, p, rr, rspace, satellitep);
 #endif
 }
 
@@ -810,10 +810,10 @@ kusama_id_by_uvalue_2(svg_element& obj, const typography& typo,
   else
     {
       // Do what's left (non-specialized ids) as per usual.
-      const bool ringp = ids.size() != 1;
+      const bool satellitep = ids.size() != 1;
       kusama_id_by_uvalue_1(obj, typo, dstyl, origin, p, n, v,
 			    idsremaining, value_max, radius, rspace,
-			    ringp);
+			    satellitep);
     }
 }
 
