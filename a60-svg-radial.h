@@ -44,10 +44,12 @@ sort_strings_by_size(strings& ids)
 using value_type = long long;
 using id_value_umap = std::unordered_map<string, value_type>;
 
+
 /// Hash multimap of unique value to (perhaps multiple) unique ids.
 /// Use this form for sorting by value.
-using value_id_ummap = std::unordered_multimap<value_type, string>;
 using value_set = std::set<value_type>;
+using value_id_ummap = std::unordered_multimap<value_type, string>;
+
 
 /// Remove all from map that match the input (matches) strings.
 /// Return found match entries.
@@ -111,6 +113,19 @@ get_id_render_state_cache()
 {
   static id_render_state_umap cache;
   return cache;
+}
+
+
+/// Add value to cache with base style of styl, colors klr, visibility vis.
+void
+add_to_id_render_state_cache(const string value, const style dstyl,
+			     const svg::k::select vis)
+{
+  id_render_state_umap& cache = get_id_render_state_cache();
+
+  id_render_state d_state(dstyl);
+  d_state.set(d_state.visible_mode, vis);
+  cache.insert(std::make_pair(value, d_state));
 }
 
 
