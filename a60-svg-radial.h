@@ -29,6 +29,21 @@
 
 namespace svg {
 
+// Value -> Name, as a string where value has labelspaces of fill
+// NB: Should be the number of significant digits in pmax plus separators.
+// So, 10 == 2, 100 == 3, 10k == 5 + 1
+size_type&
+get_label_spaces()
+{
+  static size_type lspaces;
+  return lspaces;
+}
+
+void
+set_label_spaces(size_type spaces)
+{ get_label_spaces() = spaces; }
+
+
 // Or use set with lt.
 void
 sort_strings_by_size(strings& ids)
@@ -338,6 +353,7 @@ make_label_for_value(string pname, size_type pvalue,
   oss.imbue(std::locale(""));
   oss << std::setfill(' ') << std::setw(valuewidth)
       << std::left << pvalue;
+
   string label = oss.str() + " -> " + pname;
   return label;
 }
@@ -369,7 +385,7 @@ radiate_id_by_value(svg_element& obj, const point_2t origin,
   const double angled = get_angle(pvalue, pmax) - adj;
   auto [ x, y ] = get_circumference_point_d(angled, r, origin);
 
-  string label = make_label_for_value(pname, pvalue, 2);
+  string label = make_label_for_value(pname, pvalue, get_label_spaces());
   if (rotatep)
     place_text_at_angle(obj, typo, label, x, y, angled);
   else
@@ -537,7 +553,7 @@ void
 radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
 		      const typography& typo, const strings& ids,
 		      size_type pvalue, size_type pmax, double r,
-		      double rspace [[maybe_unused]])
+		      double rspace)
 {
   // Find point on the circumference of the circle closest to value
   // (pvalue).
@@ -545,10 +561,8 @@ radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
   double anglet = angled - kusama_label_angle_adjust();
   auto [ x, y ] = get_circumference_point_d(anglet, r, origin);
 
-  // Consolidate label text to be "VALUE -> " with valuewidth spaces.
-  // NB: this should be the number of significant digits in pmax.
-  // So, 100 == 2, 10k == 5
-  string label = make_label_for_value("", pvalue, 2);
+  // Consolidate label text to be "VALUE -> " with labelspaces spaces.
+  string label = make_label_for_value("", pvalue, get_label_spaces());
   place_text_at_angle(obj, typo, label, x, y, anglet);
 
   // Next, print out the various id's on an arc with a bigger radius.
@@ -732,7 +746,7 @@ kusama_id_by_uvalue_1(svg_element& obj, const strings& ids, const point_2t p,
   auto rprimex = rprime + rspace;
   const auto& plabel = get_circumference_point_d(anglet, rprimex, p);
   auto [xlabel, ylabel] = plabel;
-  string label = make_label_for_value("", v, 2);
+  string label = make_label_for_value("", v, get_label_spaces());
   place_text_at_angle(obj, typo, label, xlabel, ylabel, anglet);
 
   // Draw ids.
