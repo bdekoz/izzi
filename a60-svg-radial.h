@@ -19,6 +19,7 @@
 #ifndef MiL_SVG_RENDER_RADIAL_H
 #define MiL_SVG_RENDER_RADIAL_H 1
 
+#include <set>
 #include <chrono>
 #include <iostream>
 #include <iomanip>
