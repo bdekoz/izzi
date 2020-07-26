@@ -268,6 +268,22 @@ place_text_at_angle(svg_element& obj, const typography& typo,
 }
 
 
+void
+place_ray_at_angle(svg_element& obj, const point_2t& origin,
+		   const point_2t& circump)
+{
+  auto [xo, yo] = origin;
+  auto [xc, yc] = circump;
+
+  line_element::data dr = { int(xo), int(xo), int(yo), int(yc) };
+  line_element ray;
+  ray.start_element();
+  ray.add_data(dr);
+  ray.finish_element();
+  obj.add_element(ray);
+}
+
+
 /// Insert arc + arrow glyph that traces path of start to finish
 /// trajectory.
 svg_element
