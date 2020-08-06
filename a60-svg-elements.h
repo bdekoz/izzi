@@ -1,7 +1,7 @@
 // svg elements -*- mode: C++ -*-
 
 // SVG
-// Copyright (C) 2014-2019 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -68,7 +68,7 @@ struct element_base
   {
     if (!s.empty())
       _M_sstream << k::space << "transform=" << k::quote << s << k::quote;
-    }
+  }
 };
 
 
@@ -399,6 +399,10 @@ struct line_element : virtual public element_base
   { _M_sstream << "<line "; }
 
   void
+  start_element(string name)
+  { _M_sstream << "<line id=" << k::quote << name << k::quote << k::space; }
+
+  void
   finish_element();
 };
 
@@ -443,6 +447,10 @@ struct path_element : virtual public element_base
   void
   start_element()
   { _M_sstream << "<path "; }
+
+  void
+  start_element(string name)
+  { _M_sstream << "<path id=" << k::quote << name << k::quote << k::space; }
 
   void
   finish_element();
