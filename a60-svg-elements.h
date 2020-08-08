@@ -1,6 +1,5 @@
 // svg elements -*- mode: C++ -*-
 
-// SVG
 // Copyright (C) 2014-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
@@ -91,6 +90,12 @@ struct text_element : virtual public element_base
     typography		_M_typo;
   };
 
+  // So text_path_element can substitute the text_path part without
+  // duplicating the text formatting and style parts....
+  virtual void
+  add_text(string txt)
+  { _M_sstream << txt; }
+
   /// Either serialize immediately (as below), or create data structure
   /// that adds data to data_vec and then finish_element serializes.
   void
@@ -115,7 +120,7 @@ struct text_element : virtual public element_base
     _M_sstream << '>';
 
     // Add text data.
-    _M_sstream << d._M_text;
+    add_text(d._M_text);
   }
 
   void
@@ -192,9 +197,27 @@ make_tspan_y_from_string_by_token(string s, uint xpos, const char token = ' ')
 }
 
 
-double
-pt_to_px(uint i)
-{ return 1.25 * i; }
+/**
+   Text on a Path SVG element.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath
+
+   Attributes:
+   href, path, method, side, spacing, startOffset, textLength, lengthAdjust
+*/
+struct text_path_element : virtual public text_element
+{
+  virtual void
+  add_text(string txt)
+  {
+    // Start text_path_element...
+
+    _M_sstream << txt;
+
+    // End text_path_element...
+  }
+};
 
 
 /**
