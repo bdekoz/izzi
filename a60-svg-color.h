@@ -35,7 +35,7 @@ namespace svg {
 /// Color enumerated as types.
 enum class colore
 {
- // 13 tints
+ // 13 tints / shades
  white,
  gray10,
  gray20,
@@ -50,7 +50,7 @@ enum class colore
  gray90,
  black,
 
- // 12 yellow
+ // 15 yellow
  kanzoiro,		// daylily light orange
  kohakuiro,		// amber
  kinsusutake,		// golden-gray bamoo
@@ -63,6 +63,9 @@ enum class colore
  navajowhite,
  ivory,
  gold,
+ duboisyellow1,
+ duboisyellow2,
+ duboisyellow3,
 
  // 7 orange
  orange,
@@ -73,7 +76,13 @@ enum class colore
  dutchorange,
  internationalorange,
 
- // 14 red
+ // 4 brown
+ duboisbrown1,
+ duboisbrown2,
+ duboisbrown3,
+ duboisbrown4,
+
+ // 17 red
  red,
  foreigncrimson,	// red
  ginshu,		// gray red
@@ -88,8 +97,11 @@ enum class colore
  tomato,
  coral,
  salmon,
+ duboisred1,
+ duboisred2,
+ duboisred3,
 
- // 16 green
+ // 20 green
  byakuroku,		// whitish green
  usumoegi,		// pale onion
  moegi,			// onion green
@@ -106,8 +118,12 @@ enum class colore
  limegreen,
  springgreen,
  aquamarine,
+ duboisgreen1,
+ duboisgreen2,
+ duboisgreen3,
+ duboisgreen4,
 
- // 27 blue
+ // 30 blue
  ultramarine,
  shinbashiiro,
  hanada,		// blue silk
@@ -135,6 +151,9 @@ enum class colore
  darkslateblue,
  slateblue,
  azure,
+ duboisblue1,
+ duboisblue2,
+ duboisblue3,
 
  // 32 purple
  wisteria,
@@ -175,9 +194,11 @@ enum class colore
  science,
  engineering,
 
+ // Must be last, so can be cast to int for size.
  none
 };
 
+constexpr uint color_size = static_cast<uint>(colore::none);
 
 /// Convert colore to string.
 const std::string
@@ -216,6 +237,39 @@ to_string(const colore e)
       enum_map[colore::asamaorange] = "rgb(236, 75, 37)";
       enum_map[colore::asamapink] = "rgb(200, 56, 81)";
 
+      // Yellows
+      enum_map[colore::kanzoiro] = "rgb(255, 137, 54)";
+      enum_map[colore::kohakuiro] = "rgb(202, 105, 36)";
+      enum_map[colore::kinsusutake] = "rgb(125, 78, 45)";
+      enum_map[colore::daylily] = "rgb(255, 137, 54)";
+      enum_map[colore::goldenyellow] = "rgb(255, 164, 0)";
+      enum_map[colore::hellayellow] = "rgb(255, 255, 0)";
+      enum_map[colore::antiquewhite] = "rgb(250, 235, 215)";
+      enum_map[colore::lemonchiffon] = "rgb(255, 250, 205)";
+      enum_map[colore::goldenrod] = "rgb(250, 250, 210)";
+      enum_map[colore::navajowhite] = "rgb(255, 222, 173)";
+
+      enum_map[colore::ivory] = "rgb(255, 255, 240)";
+      enum_map[colore::gold] = "rgb(255, 215, 0)";
+
+      enum_map[colore::duboisyellow1] = "rgb(206, 147, 27)";
+      enum_map[colore::duboisyellow2] = "rgb(201, 144, 37)";
+      enum_map[colore::duboisyellow3] = "rgb(197, 146, 37)";
+
+      // Orange
+      enum_map[colore::orange] = "rgb(255, 165, 0)";
+      enum_map[colore::orangered] = "rgb(255, 69, 0)";
+      enum_map[colore::redorange] = "rgb(220, 48, 35)";
+      enum_map[colore::darkorange] = "rgb(255, 140, 17)";
+      enum_map[colore::dutchorange] = "rgb(250, 155, 30)";
+      enum_map[colore::internationalorange] = "rgb(255, 79, 0)";
+
+      // Brown
+      enum_map[colore::duboisbrown1] = "rgb(77, 57, 46)";
+      enum_map[colore::duboisbrown2] = "rgb(62, 44, 34)";
+      enum_map[colore::duboisbrown3] = "rgb(81, 55, 42)";
+      enum_map[colore::duboisbrown4] = "rgb(134, 90, 61)";
+
       // Reds
       enum_map[colore::foreigncrimson] = "rgb(201, 31, 55)";
       enum_map[colore::ginshu] = "rgb(188, 45, 41)";
@@ -233,28 +287,9 @@ to_string(const colore e)
       enum_map[colore::coral] = "rgb(255, 127, 80)";
       enum_map[colore::salmon] = "rgb(250, 128, 114)";
 
-      // Orange
-      enum_map[colore::orange] = "rgb(255, 165, 0)";
-      enum_map[colore::orangered] = "rgb(255, 69, 0)";
-      enum_map[colore::redorange] = "rgb(220, 48, 35)";
-      enum_map[colore::darkorange] = "rgb(255, 140, 17)";
-      enum_map[colore::dutchorange] = "rgb(250, 155, 30)";
-      enum_map[colore::internationalorange] = "rgb(255, 79, 0)";
-
-      // Yellows
-      enum_map[colore::kanzoiro] = "rgb(255, 137, 54)";
-      enum_map[colore::kohakuiro] = "rgb(202, 105, 36)";
-      enum_map[colore::kinsusutake] = "rgb(125, 78, 45)";
-      enum_map[colore::daylily] = "rgb(255, 137, 54)";
-      enum_map[colore::goldenyellow] = "rgb(255, 164, 0)";
-      enum_map[colore::hellayellow] = "rgb(255, 255, 0)";
-      enum_map[colore::antiquewhite] = "rgb(250, 235, 215)";
-      enum_map[colore::lemonchiffon] = "rgb(255, 250, 205)";
-      enum_map[colore::goldenrod] = "rgb(250, 250, 210)";
-      enum_map[colore::navajowhite] = "rgb(255, 222, 173)";
-
-      enum_map[colore::ivory] = "rgb(255, 255, 240)";
-      enum_map[colore::gold] = "rgb(255, 215, 0)";
+      enum_map[colore::duboisred1] = "rgb(135, 29, 16)";
+      enum_map[colore::duboisred2] = "rgb(177,56, 47)";
+      enum_map[colore::duboisred3] = "rgb(143, 35, 23)";
 
       // Greens
       enum_map[colore::byakuroku] = "rgb(165, 186, 147)";
@@ -273,6 +308,11 @@ to_string(const colore e)
       enum_map[colore::limegreen] = "rgb(50, 205, 50)";
       enum_map[colore::springgreen] = "rgb(0, 255, 127)";
       enum_map[colore::aquamarine] = "rgb(127, 255, 212)";
+
+      enum_map[colore::duboisgreen1] = "rgb(79, 116, 72)";
+      enum_map[colore::duboisgreen2] = "rgb(49, 88, 57)";
+      enum_map[colore::duboisgreen3] = "rgb(24, 57, 30)";
+      enum_map[colore::duboisgreen4] = "rgb(60, 98, 57)";
 
       // Blues
       enum_map[colore::ultramarine] = "rgb(93, 140, 174)";
@@ -302,6 +342,10 @@ to_string(const colore e)
       enum_map[colore::darkslateblue] = "rgb(72, 61, 139)";
       enum_map[colore::slateblue] = "rgb(106, 90, 205)";
       enum_map[colore::azure] = "rgb(240, 255, 255)";
+
+      enum_map[colore::duboisblue1] = "rgb(37, 42, 64)";
+      enum_map[colore::duboisblue2] = "rgb(74, 87, 129)";
+      enum_map[colore::duboisblue3] = "rgb(49, 64, 103)";
 
       // Purples
       enum_map[colore::wisteria] = "rgb(135, 95, 154)";
@@ -444,7 +488,7 @@ average_two_colorq(const colorq& a, const colorq& b)
 using colores = std::vector<colore>;
 using colorqs = std::vector<colorq>;
 
-using color_array = std::array<colore, 122>;
+using color_array = std::array<colore, color_size>;
 
 
 /// Color spectrum.
@@ -454,29 +498,38 @@ color_array colors =
  colore::white,
  colore::gray10, colore::gray20, colore::gray25, colore::gray30,
  colore::gray40, colore::gray50, colore::gray60, colore::gray70,
- colore::gray75, colore::gray80, colore::gray90,
+ colore::gray75, colore::gray80, colore::gray90,  colore::black,
 
  // yellow
- colore::hellayellow, colore::goldenyellow,
- colore::navajowhite, colore::ivory, colore::gold,
- colore::antiquewhite, colore::lemonchiffon, colore::goldenrod,
- colore::kanzoiro, colore::kohakuiro, colore::kinsusutake, colore::daylily,
+ colore::hellayellow, colore::goldenyellow,colore::navajowhite,
+ colore::ivory, colore::gold, colore::antiquewhite,
+ colore::lemonchiffon, colore::goldenrod, colore::kanzoiro,
+ colore::kohakuiro, colore::kinsusutake, colore::daylily,
+ colore::duboisyellow1, colore::duboisyellow2, colore::duboisyellow3,
+
+ // orange
+ colore::orange, colore::darkorange, colore::orangered,
+ colore::redorange, colore::asamaorange, colore::dutchorange,
+ colore::internationalorange,
+
+ // brown
+ colore::duboisbrown1,  colore::duboisbrown2,  colore::duboisbrown3,
+ colore::duboisbrown4,
 
  // red
  colore::red,  colore::coral, colore::salmon, colore::akabeni,
  colore::akebonoiro, colore::ochre, colore::sohi, colore::benikaba,
  colore::benitobi, colore::ake, colore::crimson, colore::tomato,
  colore::foreigncrimson, colore::ginshu,
-
- // orange
- colore::orange, colore::darkorange, colore::orangered, colore::redorange,
- colore::asamaorange, colore::dutchorange, colore::internationalorange,
+ colore::duboisred1, colore::duboisred2, colore::duboisred3,
 
  // green
  colore::green, colore::limegreen, colore::springgreen, colore::byakuroku,
  colore::usumoegi, colore::aquamarine, colore::midori, colore::rokusho,
  colore::aotakeiro, colore::seiheki, colore::seijiiro, colore::yanagizome,
  colore::hiwamoegi,colore::chartreuse, colore::greenyellow, colore::moegi,
+ colore::duboisgreen1,  colore::duboisgreen2,  colore::duboisgreen3,
+ colore::duboisgreen4,
 
  // blue
  colore::ultramarine, colore::shinbashiiro, colore::hanada, colore::ruriiro,
@@ -486,6 +539,8 @@ color_array colors =
  colore::lightcyan, colore::powderblue, colore::steelblue, colore::dodgerblue,
  colore::royalblue, colore::mediumblue, colore::deepskyblue,
  colore::midnightblue, colore::darkslateblue, colore::slateblue, colore::azure,
+ colore::duboisblue1, colore::duboisblue2, colore::duboisblue3,
+
 
  // purple (magenta, violet, pink)
  colore::wisteria, colore::asamapink, colore::pink, colore::peony,
@@ -499,7 +554,7 @@ color_array colors =
  colore::orchid, colore::mediumorchid, colore::darkestmagenta,
  colore::mediumpurple, colore::purple,
 
- colore::black
+ colore::none
 };
 
 
@@ -548,12 +603,13 @@ color_start_at_specified(colore klr)
 // This is then used to seed a generator that computes more of similar hues.
 using colorband = std::tuple<colore, ushort>;
 constexpr colorband cband_bw = std::make_tuple(colore::white, 13);
-constexpr colorband cband_y = std::make_tuple(colore::hellayellow, 12);
-constexpr colorband cband_r = std::make_tuple(colore::red, 14);
-constexpr colorband cband_g = std::make_tuple(colore::green, 16);
-constexpr colorband cband_b = std::make_tuple(colore::ultramarine, 27);
+constexpr colorband cband_y = std::make_tuple(colore::hellayellow, 15);
+constexpr colorband cband_r = std::make_tuple(colore::red, 17);
+constexpr colorband cband_g = std::make_tuple(colore::green, 20);
+constexpr colorband cband_b = std::make_tuple(colore::ultramarine, 30);
 constexpr colorband cband_p = std::make_tuple(colore::wisteria, 32);
 constexpr colorband cband_o = std::make_tuple(colore::orange, 7);
+constexpr colorband cband_brown = std::make_tuple(colore::duboisbrown1, 4);
 
 
 /// Add white to tint in r ammount.
@@ -642,6 +698,7 @@ next_in_color_band(const colorband& cb)
   static colorqs gband_b = make_color_band(cband_b, bandn);
   static colorqs gband_p = make_color_band(cband_p, bandn);
   static colorqs gband_o = make_color_band(cband_o, bandn);
+  static colorqs gband_brown = make_color_band(cband_brown, bandn);
 
   // XXX No out of bounds error checking.
   colorq ret;
@@ -659,6 +716,10 @@ next_in_color_band(const colorband& cb)
     case colore::orange:
       ret = gband_o.back();
       gband_o.pop_back();
+      break;
+    case colore::duboisbrown1:
+      ret = gband_brown.back();
+      gband_brown.pop_back();
       break;
     case colore::red:
       ret = gband_r.back();
