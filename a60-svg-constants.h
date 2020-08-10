@@ -55,8 +55,8 @@ constexpr area<> v1080p_v = { 1080, 1920 };
 
 
 /// Style constants.
-const colorq whiteq(colore::white);
-const colorq blackq(colore::black);
+const colorq whiteq(color::white);
+const colorq blackq(color::black);
 const style w_style = { whiteq, 1.0, blackq, 0.0, 0 };
 const style b_style = { blackq, 1.0, whiteq, 0.0, 0 };
 

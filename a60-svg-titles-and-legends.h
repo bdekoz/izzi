@@ -65,7 +65,7 @@ augment_collection_titles_1(svg_element& obj, svg::typography typo,
 
   // Media title.
   svg::typography typog = typotxt;
-  typog._M_style._M_fill_color = svg::colore::gray50;
+  typog._M_style._M_fill_color = svg::color::gray50;
   sized_text(obj, typog, pt_to_px(24), titlestr,
 		  carto::frame_margin() + xoffs,
 		  height - carto::frame_margin());
@@ -89,7 +89,7 @@ augment_collection_titles_2(svg_element& obj, svg::typography typo,
 
   // Media title sans slice.
   svg::typography typog = typotxt;
-  typog._M_style._M_fill_color = svg::colore::gray50;
+  typog._M_style._M_fill_color = svg::color::gray50;
   string motitle = cll.media_object_name(false);
 
   int fmargin = carto::frame_margin();
@@ -141,7 +141,7 @@ augment_collection_titles_2(svg_element& obj, svg::typography typo,
 
 
 void
-augment_collection_color_bar(svg_element& obj, swarm_mode m, svg::colore klr)
+augment_collection_color_bar(svg_element& obj, swarm_mode m, svg::color klr)
 {
   bool peerp = m == swarm_mode::peer;
 
@@ -189,7 +189,7 @@ augment_collection_titles_3(svg_element& obj, svg::typography typo,
 
   // Media title.
   svg::typography typog = typotxt;
-  typog._M_style._M_fill_color = svg::colore::gray25;
+  typog._M_style._M_fill_color = svg::color::gray25;
   sized_text_r(obj, typog, pt_to_px(64), cll.media_object_name(),
 		     fmargin, fmargin, svg::transform(), 90);
 
@@ -228,7 +228,7 @@ augment_collection_titles_4(svg_element& obj, svg::typography typo,
   // +28 is top of viz title
   svg::typography typog = typotxt;
   typog._M_w = svg::typography::weight::xbold;
-  typog._M_style._M_stroke_color = svg::colore::gray40;
+  typog._M_style._M_stroke_color = svg::color::gray40;
   typog._M_style._M_stroke_size = 0.5;
   typog._M_style._M_stroke_opacity = 1.0;
   typog._M_style._M_fill_opacity = 0.0;
@@ -287,7 +287,7 @@ augment_collection_titles_6(svg_element& obj, const cached_collection& wcll)
   typo._M_p = svg::typography::property::normal;
   typo._M_a = svg::typography::anchor::end;
   typo._M_w = svg::typography::weight::xbold;
-  typo._M_style._M_fill_color = svg::colore::gray25;
+  typo._M_style._M_fill_color = svg::color::gray25;
 
   // Media title.
   sized_text_r(obj, typo, pt_to_px(30), wcll.media_object_name(),

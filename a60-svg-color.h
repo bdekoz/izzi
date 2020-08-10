@@ -27,13 +27,13 @@ namespace svg {
 /**
    HUE
 
-   colore = color enum (and name string conversion)
+   color = color enum (and name string conversion)
    colorq = color quantified, similar to Scalar in OpenCV.
-   colors = color spectrum as array of color enums
+   spectrum = color spectrum as array of color enums
 */
 
 /// Color enumerated as types.
-enum class colore
+enum class color
 {
  // 13 tints / shades
  white,
@@ -198,190 +198,190 @@ enum class colore
  none
 };
 
-constexpr uint color_size = static_cast<uint>(colore::none);
+constexpr uint color_size = static_cast<uint>(color::none);
 
-/// Convert colore to string.
+/// Convert color to string.
 const std::string
-to_string(const colore e)
+to_string(const color e)
 {
-  using enum_map_type = std::map<colore, std::string>;
+  using enum_map_type = std::map<color, std::string>;
 
   static enum_map_type enum_map;
   if (enum_map.empty())
     {
-      enum_map[colore::white] = "rgb(255, 255, 255)";
-      enum_map[colore::black] = "rgb(0, 0, 0)";
-      enum_map[colore::gray90] = "rgb(25, 25, 25)";
-      enum_map[colore::gray80] = "rgb(50, 50, 50)";
-      enum_map[colore::gray75] = "rgb(64, 64, 64)";
-      enum_map[colore::gray70] = "rgb(77, 77, 77)";
-      enum_map[colore::gray60] = "rgb(100, 100, 100)";
-      enum_map[colore::gray50] = "rgb(128, 128, 128)";
-      enum_map[colore::gray40] = "rgb(150, 150, 150)";
-      enum_map[colore::gray30] = "rgb(180, 180, 180)";
-      enum_map[colore::gray25] = "rgb(191, 191, 191)";
-      enum_map[colore::gray20] = "rgb(200, 200, 200)";
-      enum_map[colore::gray10] = "rgb(230, 230, 230)";
+      enum_map[color::white] = "rgb(255, 255, 255)";
+      enum_map[color::black] = "rgb(0, 0, 0)";
+      enum_map[color::gray90] = "rgb(25, 25, 25)";
+      enum_map[color::gray80] = "rgb(50, 50, 50)";
+      enum_map[color::gray75] = "rgb(64, 64, 64)";
+      enum_map[color::gray70] = "rgb(77, 77, 77)";
+      enum_map[color::gray60] = "rgb(100, 100, 100)";
+      enum_map[color::gray50] = "rgb(128, 128, 128)";
+      enum_map[color::gray40] = "rgb(150, 150, 150)";
+      enum_map[color::gray30] = "rgb(180, 180, 180)";
+      enum_map[color::gray25] = "rgb(191, 191, 191)";
+      enum_map[color::gray20] = "rgb(200, 200, 200)";
+      enum_map[color::gray10] = "rgb(230, 230, 230)";
 
-      enum_map[colore::command] = "rgb(255, 0, 171)";
-      enum_map[colore::science] = "rgb(150, 230, 191)";
-      enum_map[colore::engineering] = "rgb(161, 158, 178)";
+      enum_map[color::command] = "rgb(255, 0, 171)";
+      enum_map[color::science] = "rgb(150, 230, 191)";
+      enum_map[color::engineering] = "rgb(161, 158, 178)";
 
-      enum_map[colore::kissmepink] = "rgb(255, 59, 241)";
+      enum_map[color::kissmepink] = "rgb(255, 59, 241)";
 
-      enum_map[colore::red] = "rgb(255, 0, 0)";
-      enum_map[colore::green] = "rgb(0, 255, 0)";
-      enum_map[colore::blue] = "rgb(0, 0, 255)";
+      enum_map[color::red] = "rgb(255, 0, 0)";
+      enum_map[color::green] = "rgb(0, 255, 0)";
+      enum_map[color::blue] = "rgb(0, 0, 255)";
 
-      enum_map[colore::asamablue] = "rgb(1, 137, 255)";
-      enum_map[colore::asamaorange] = "rgb(236, 75, 37)";
-      enum_map[colore::asamapink] = "rgb(200, 56, 81)";
+      enum_map[color::asamablue] = "rgb(1, 137, 255)";
+      enum_map[color::asamaorange] = "rgb(236, 75, 37)";
+      enum_map[color::asamapink] = "rgb(200, 56, 81)";
 
       // Yellows
-      enum_map[colore::kanzoiro] = "rgb(255, 137, 54)";
-      enum_map[colore::kohakuiro] = "rgb(202, 105, 36)";
-      enum_map[colore::kinsusutake] = "rgb(125, 78, 45)";
-      enum_map[colore::daylily] = "rgb(255, 137, 54)";
-      enum_map[colore::goldenyellow] = "rgb(255, 164, 0)";
-      enum_map[colore::hellayellow] = "rgb(255, 255, 0)";
-      enum_map[colore::antiquewhite] = "rgb(250, 235, 215)";
-      enum_map[colore::lemonchiffon] = "rgb(255, 250, 205)";
-      enum_map[colore::goldenrod] = "rgb(250, 250, 210)";
-      enum_map[colore::navajowhite] = "rgb(255, 222, 173)";
+      enum_map[color::kanzoiro] = "rgb(255, 137, 54)";
+      enum_map[color::kohakuiro] = "rgb(202, 105, 36)";
+      enum_map[color::kinsusutake] = "rgb(125, 78, 45)";
+      enum_map[color::daylily] = "rgb(255, 137, 54)";
+      enum_map[color::goldenyellow] = "rgb(255, 164, 0)";
+      enum_map[color::hellayellow] = "rgb(255, 255, 0)";
+      enum_map[color::antiquewhite] = "rgb(250, 235, 215)";
+      enum_map[color::lemonchiffon] = "rgb(255, 250, 205)";
+      enum_map[color::goldenrod] = "rgb(250, 250, 210)";
+      enum_map[color::navajowhite] = "rgb(255, 222, 173)";
 
-      enum_map[colore::ivory] = "rgb(255, 255, 240)";
-      enum_map[colore::gold] = "rgb(255, 215, 0)";
+      enum_map[color::ivory] = "rgb(255, 255, 240)";
+      enum_map[color::gold] = "rgb(255, 215, 0)";
 
-      enum_map[colore::duboisyellow1] = "rgb(206, 147, 27)";
-      enum_map[colore::duboisyellow2] = "rgb(201, 144, 37)";
-      enum_map[colore::duboisyellow3] = "rgb(197, 146, 37)";
+      enum_map[color::duboisyellow1] = "rgb(206, 147, 27)";
+      enum_map[color::duboisyellow2] = "rgb(201, 144, 37)";
+      enum_map[color::duboisyellow3] = "rgb(197, 146, 37)";
 
       // Orange
-      enum_map[colore::orange] = "rgb(255, 165, 0)";
-      enum_map[colore::orangered] = "rgb(255, 69, 0)";
-      enum_map[colore::redorange] = "rgb(220, 48, 35)";
-      enum_map[colore::darkorange] = "rgb(255, 140, 17)";
-      enum_map[colore::dutchorange] = "rgb(250, 155, 30)";
-      enum_map[colore::internationalorange] = "rgb(255, 79, 0)";
+      enum_map[color::orange] = "rgb(255, 165, 0)";
+      enum_map[color::orangered] = "rgb(255, 69, 0)";
+      enum_map[color::redorange] = "rgb(220, 48, 35)";
+      enum_map[color::darkorange] = "rgb(255, 140, 17)";
+      enum_map[color::dutchorange] = "rgb(250, 155, 30)";
+      enum_map[color::internationalorange] = "rgb(255, 79, 0)";
 
       // Brown
-      enum_map[colore::duboisbrown1] = "rgb(77, 57, 46)";
-      enum_map[colore::duboisbrown2] = "rgb(62, 44, 34)";
-      enum_map[colore::duboisbrown3] = "rgb(81, 55, 42)";
-      enum_map[colore::duboisbrown4] = "rgb(134, 90, 61)";
+      enum_map[color::duboisbrown1] = "rgb(77, 57, 46)";
+      enum_map[color::duboisbrown2] = "rgb(62, 44, 34)";
+      enum_map[color::duboisbrown3] = "rgb(81, 55, 42)";
+      enum_map[color::duboisbrown4] = "rgb(134, 90, 61)";
 
       // Reds
-      enum_map[colore::foreigncrimson] = "rgb(201, 31, 55)";
-      enum_map[colore::ginshu] = "rgb(188, 45, 41)";
-      enum_map[colore::akabeni] = "rgb(195, 39,43)";
-      enum_map[colore::akebonoiro] = "rgb(250, 123, 98)";
+      enum_map[color::foreigncrimson] = "rgb(201, 31, 55)";
+      enum_map[color::ginshu] = "rgb(188, 45, 41)";
+      enum_map[color::akabeni] = "rgb(195, 39,43)";
+      enum_map[color::akebonoiro] = "rgb(250, 123, 98)";
 
-      enum_map[colore::ochre] = "rgb(255, 78, 32)";
-      enum_map[colore::sohi] = "rgb(227, 92, 56)";
-      enum_map[colore::benikaba] = "rgb(157, 43, 34)";
-      enum_map[colore::benitobi] = "rgb(145, 50, 40)";
-      enum_map[colore::ake] = "rgb(207, 58, 36)";
+      enum_map[color::ochre] = "rgb(255, 78, 32)";
+      enum_map[color::sohi] = "rgb(227, 92, 56)";
+      enum_map[color::benikaba] = "rgb(157, 43, 34)";
+      enum_map[color::benitobi] = "rgb(145, 50, 40)";
+      enum_map[color::ake] = "rgb(207, 58, 36)";
 
-      enum_map[colore::crimson] = "rgb(220, 20, 60)";
-      enum_map[colore::tomato] = "rgb(255, 99, 71)";
-      enum_map[colore::coral] = "rgb(255, 127, 80)";
-      enum_map[colore::salmon] = "rgb(250, 128, 114)";
+      enum_map[color::crimson] = "rgb(220, 20, 60)";
+      enum_map[color::tomato] = "rgb(255, 99, 71)";
+      enum_map[color::coral] = "rgb(255, 127, 80)";
+      enum_map[color::salmon] = "rgb(250, 128, 114)";
 
-      enum_map[colore::duboisred1] = "rgb(135, 29, 16)";
-      enum_map[colore::duboisred2] = "rgb(177,56, 47)";
-      enum_map[colore::duboisred3] = "rgb(143, 35, 23)";
+      enum_map[color::duboisred1] = "rgb(135, 29, 16)";
+      enum_map[color::duboisred2] = "rgb(177,56, 47)";
+      enum_map[color::duboisred3] = "rgb(143, 35, 23)";
 
       // Greens
-      enum_map[colore::byakuroku] = "rgb(165, 186, 147)";
-      enum_map[colore::usumoegi] = "rgb(141, 178, 85)";
-      enum_map[colore::moegi] = "rgb(91, 137, 48)";
-      enum_map[colore::hiwamoegi] = "rgb(122, 148, 46)";
-      enum_map[colore::midori] = "rgb(42, 96, 59)";
-      enum_map[colore::rokusho] = "rgb(64, 122, 82)";
-      enum_map[colore::aotakeiro] = "rgb(0, 100, 66)";
-      enum_map[colore::seiheki] = "rgb(58, 105, 96)";
-      enum_map[colore::seijiiro] = "rgb(129, 156, 139)";
-      enum_map[colore::yanagizome] = "rgb(140, 158, 94)";
+      enum_map[color::byakuroku] = "rgb(165, 186, 147)";
+      enum_map[color::usumoegi] = "rgb(141, 178, 85)";
+      enum_map[color::moegi] = "rgb(91, 137, 48)";
+      enum_map[color::hiwamoegi] = "rgb(122, 148, 46)";
+      enum_map[color::midori] = "rgb(42, 96, 59)";
+      enum_map[color::rokusho] = "rgb(64, 122, 82)";
+      enum_map[color::aotakeiro] = "rgb(0, 100, 66)";
+      enum_map[color::seiheki] = "rgb(58, 105, 96)";
+      enum_map[color::seijiiro] = "rgb(129, 156, 139)";
+      enum_map[color::yanagizome] = "rgb(140, 158, 94)";
 
-      enum_map[colore::chartreuse] = "rgb(127, 255, 0)";
-      enum_map[colore::greenyellow] = "rgb(173, 255, 47)";
-      enum_map[colore::limegreen] = "rgb(50, 205, 50)";
-      enum_map[colore::springgreen] = "rgb(0, 255, 127)";
-      enum_map[colore::aquamarine] = "rgb(127, 255, 212)";
+      enum_map[color::chartreuse] = "rgb(127, 255, 0)";
+      enum_map[color::greenyellow] = "rgb(173, 255, 47)";
+      enum_map[color::limegreen] = "rgb(50, 205, 50)";
+      enum_map[color::springgreen] = "rgb(0, 255, 127)";
+      enum_map[color::aquamarine] = "rgb(127, 255, 212)";
 
-      enum_map[colore::duboisgreen1] = "rgb(79, 116, 72)";
-      enum_map[colore::duboisgreen2] = "rgb(49, 88, 57)";
-      enum_map[colore::duboisgreen3] = "rgb(24, 57, 30)";
-      enum_map[colore::duboisgreen4] = "rgb(60, 98, 57)";
+      enum_map[color::duboisgreen1] = "rgb(79, 116, 72)";
+      enum_map[color::duboisgreen2] = "rgb(49, 88, 57)";
+      enum_map[color::duboisgreen3] = "rgb(24, 57, 30)";
+      enum_map[color::duboisgreen4] = "rgb(60, 98, 57)";
 
       // Blues
-      enum_map[colore::ultramarine] = "rgb(93, 140, 174)";
-      enum_map[colore::shinbashiiro] = "rgb(0, 108, 127)";
-      enum_map[colore::hanada] = "rgb(4, 79, 103)";
-      enum_map[colore::ruriiro] = "rgb(31, 71, 136)";
-      enum_map[colore::bellflower] = "rgb(25, 31, 69)";
-      enum_map[colore::navy] = "rgb(0, 49, 113)";
-      enum_map[colore::asagiiro] = "rgb(72, 146, 155)";
-      enum_map[colore::indigo] = "rgb(38, 67, 72)";
-      enum_map[colore::rurikon] = "rgb(27, 41, 75)";
-      enum_map[colore::cyan] = "rgb(0, 255, 255)";
+      enum_map[color::ultramarine] = "rgb(93, 140, 174)";
+      enum_map[color::shinbashiiro] = "rgb(0, 108, 127)";
+      enum_map[color::hanada] = "rgb(4, 79, 103)";
+      enum_map[color::ruriiro] = "rgb(31, 71, 136)";
+      enum_map[color::bellflower] = "rgb(25, 31, 69)";
+      enum_map[color::navy] = "rgb(0, 49, 113)";
+      enum_map[color::asagiiro] = "rgb(72, 146, 155)";
+      enum_map[color::indigo] = "rgb(38, 67, 72)";
+      enum_map[color::rurikon] = "rgb(27, 41, 75)";
+      enum_map[color::cyan] = "rgb(0, 255, 255)";
 
-      enum_map[colore::lightcyan] = "rgb(224, 255, 255)";
-      enum_map[colore::powderblue] = "rgb(176, 224, 230)";
-      enum_map[colore::steelblue] = "rgb(70, 130, 237)";
-      enum_map[colore::cornflowerblue] = "rgb(100, 149, 237)";
-      enum_map[colore::deepskyblue] = "rgb(0, 191, 255)";
-      enum_map[colore::dodgerblue] = "rgb(30, 144, 255)";
-      enum_map[colore::lightblue] = "rgb(173, 216, 230)";
-      enum_map[colore::skyblue] = "rgb(135, 206, 235)";
-      enum_map[colore::lightskyblue] = "rgb(173, 206, 250)";
-      enum_map[colore::midnightblue] = "rgb(25, 25, 112)";
+      enum_map[color::lightcyan] = "rgb(224, 255, 255)";
+      enum_map[color::powderblue] = "rgb(176, 224, 230)";
+      enum_map[color::steelblue] = "rgb(70, 130, 237)";
+      enum_map[color::cornflowerblue] = "rgb(100, 149, 237)";
+      enum_map[color::deepskyblue] = "rgb(0, 191, 255)";
+      enum_map[color::dodgerblue] = "rgb(30, 144, 255)";
+      enum_map[color::lightblue] = "rgb(173, 216, 230)";
+      enum_map[color::skyblue] = "rgb(135, 206, 235)";
+      enum_map[color::lightskyblue] = "rgb(173, 206, 250)";
+      enum_map[color::midnightblue] = "rgb(25, 25, 112)";
 
-      enum_map[colore::mediumblue] = "rgb(0, 0, 205)";
-      enum_map[colore::royalblue] = "rgb(65, 105, 225)";
-      enum_map[colore::darkslateblue] = "rgb(72, 61, 139)";
-      enum_map[colore::slateblue] = "rgb(106, 90, 205)";
-      enum_map[colore::azure] = "rgb(240, 255, 255)";
+      enum_map[color::mediumblue] = "rgb(0, 0, 205)";
+      enum_map[color::royalblue] = "rgb(65, 105, 225)";
+      enum_map[color::darkslateblue] = "rgb(72, 61, 139)";
+      enum_map[color::slateblue] = "rgb(106, 90, 205)";
+      enum_map[color::azure] = "rgb(240, 255, 255)";
 
-      enum_map[colore::duboisblue1] = "rgb(37, 42, 64)";
-      enum_map[colore::duboisblue2] = "rgb(74, 87, 129)";
-      enum_map[colore::duboisblue3] = "rgb(49, 64, 103)";
+      enum_map[color::duboisblue1] = "rgb(37, 42, 64)";
+      enum_map[color::duboisblue2] = "rgb(74, 87, 129)";
+      enum_map[color::duboisblue3] = "rgb(49, 64, 103)";
 
       // Purples
-      enum_map[colore::wisteria] = "rgb(135, 95, 154)";
-      enum_map[colore::murasaki] = "rgb(79, 40, 75)";
-      enum_map[colore::ayameiro] = "rgb(118, 53, 104)";
-      enum_map[colore::peony] = "rgb(164, 52, 93)";
-      enum_map[colore::futaai] = "rgb(97, 78, 110)";
-      enum_map[colore::benimidori] = "rgb(120, 119, 155)";
-      enum_map[colore::redwisteria] = "rgb(187, 119, 150)";
-      enum_map[colore::botan] = "rgb(164, 52, 93)";
-      enum_map[colore::kokimurasaki] = "rgb(58, 36, 59)";
-      enum_map[colore::usuiro] = "rgb(168, 124, 160)";
+      enum_map[color::wisteria] = "rgb(135, 95, 154)";
+      enum_map[color::murasaki] = "rgb(79, 40, 75)";
+      enum_map[color::ayameiro] = "rgb(118, 53, 104)";
+      enum_map[color::peony] = "rgb(164, 52, 93)";
+      enum_map[color::futaai] = "rgb(97, 78, 110)";
+      enum_map[color::benimidori] = "rgb(120, 119, 155)";
+      enum_map[color::redwisteria] = "rgb(187, 119, 150)";
+      enum_map[color::botan] = "rgb(164, 52, 93)";
+      enum_map[color::kokimurasaki] = "rgb(58, 36, 59)";
+      enum_map[color::usuiro] = "rgb(168, 124, 160)";
 
-      enum_map[colore::blueviolet] = "rgb(138, 43, 226)";
-      enum_map[colore::darkmagenta] = "rgb(139, 0, 139)";
-      enum_map[colore::darkviolet] = "rgb(148, 0, 211)";
-      enum_map[colore::thistle] = "rgb(216, 191, 216)";
-      enum_map[colore::plum] = "rgb(221, 160, 221)";
-      enum_map[colore::violet] = "rgb(238, 130, 238)";
-      enum_map[colore::magenta] = "rgb(255, 0, 255)";
-      enum_map[colore::deeppink] = "rgb(255, 20, 147)";
-      enum_map[colore::hotpink] = "rgb(255, 105, 180)";
-      enum_map[colore::pink] = "rgb(255, 192, 203)";
+      enum_map[color::blueviolet] = "rgb(138, 43, 226)";
+      enum_map[color::darkmagenta] = "rgb(139, 0, 139)";
+      enum_map[color::darkviolet] = "rgb(148, 0, 211)";
+      enum_map[color::thistle] = "rgb(216, 191, 216)";
+      enum_map[color::plum] = "rgb(221, 160, 221)";
+      enum_map[color::violet] = "rgb(238, 130, 238)";
+      enum_map[color::magenta] = "rgb(255, 0, 255)";
+      enum_map[color::deeppink] = "rgb(255, 20, 147)";
+      enum_map[color::hotpink] = "rgb(255, 105, 180)";
+      enum_map[color::pink] = "rgb(255, 192, 203)";
 
-      enum_map[colore::palevioletred] = "rgb(219, 112, 147)";
-      enum_map[colore::mediumvioletred] = "rgb(199, 21, 133)";
-      enum_map[colore::lavender] = "rgb(230, 230, 250)";
-      enum_map[colore::orchid] = "rgb(218, 112, 214)";
-      enum_map[colore::mediumorchid] = "rgb(186, 85, 211)";
-      enum_map[colore::darkestmagenta] = "rgb(180, 0, 180)";
-      enum_map[colore::mediumpurple] = "rgb(147, 112, 219)";
-      enum_map[colore::purple] = "rgb(128, 0, 128)";
-      enum_map[colore::dustyrose] = "rgb(191, 136, 187)";
-      enum_map[colore::atmosphericp] = "rgb(228, 210, 231)";
+      enum_map[color::palevioletred] = "rgb(219, 112, 147)";
+      enum_map[color::mediumvioletred] = "rgb(199, 21, 133)";
+      enum_map[color::lavender] = "rgb(230, 230, 250)";
+      enum_map[color::orchid] = "rgb(218, 112, 214)";
+      enum_map[color::mediumorchid] = "rgb(186, 85, 211)";
+      enum_map[color::darkestmagenta] = "rgb(180, 0, 180)";
+      enum_map[color::mediumpurple] = "rgb(147, 112, 219)";
+      enum_map[color::purple] = "rgb(128, 0, 128)";
+      enum_map[color::dustyrose] = "rgb(191, 136, 187)";
+      enum_map[color::atmosphericp] = "rgb(228, 210, 231)";
 
-      enum_map[colore::none] = "none";
+      enum_map[color::none] = "none";
     }
   return enum_map[e];
 }
@@ -443,7 +443,7 @@ struct colorq
 
   colorq(itype ra, itype ga, itype ba) : r(ra), g(ga), b(ba) { }
 
-  colorq(const colore e)
+  colorq(const color e)
   {
     colorq klr = from_string(svg::to_string(e));
     r = klr.r;
@@ -485,102 +485,102 @@ average_two_colorq(const colorq& a, const colorq& b)
 
 
 /// Color iteration and combinatorics.
-using colores = std::vector<colore>;
+using colors = std::vector<color>;
 using colorqs = std::vector<colorq>;
 
-using color_array = std::array<colore, color_size>;
+using color_array = std::array<color, color_size>;
 
 
 /// Color spectrum.
-color_array colors =
+color_array spectrum =
 {
  // black to gray to white in 10% and 25% increments
- colore::white,
- colore::gray10, colore::gray20, colore::gray25, colore::gray30,
- colore::gray40, colore::gray50, colore::gray60, colore::gray70,
- colore::gray75, colore::gray80, colore::gray90,  colore::black,
+ color::white,
+ color::gray10, color::gray20, color::gray25, color::gray30,
+ color::gray40, color::gray50, color::gray60, color::gray70,
+ color::gray75, color::gray80, color::gray90,  color::black,
 
  // yellow
- colore::hellayellow, colore::goldenyellow,colore::navajowhite,
- colore::ivory, colore::gold, colore::antiquewhite,
- colore::lemonchiffon, colore::goldenrod, colore::kanzoiro,
- colore::kohakuiro, colore::kinsusutake, colore::daylily,
- colore::duboisyellow1, colore::duboisyellow2, colore::duboisyellow3,
+ color::hellayellow, color::goldenyellow,color::navajowhite,
+ color::ivory, color::gold, color::antiquewhite,
+ color::lemonchiffon, color::goldenrod, color::kanzoiro,
+ color::kohakuiro, color::kinsusutake, color::daylily,
+ color::duboisyellow1, color::duboisyellow2, color::duboisyellow3,
 
  // orange
- colore::orange, colore::darkorange, colore::orangered,
- colore::redorange, colore::asamaorange, colore::dutchorange,
- colore::internationalorange,
+ color::orange, color::darkorange, color::orangered,
+ color::redorange, color::asamaorange, color::dutchorange,
+ color::internationalorange,
 
  // brown
- colore::duboisbrown1,  colore::duboisbrown2,  colore::duboisbrown3,
- colore::duboisbrown4,
+ color::duboisbrown1,  color::duboisbrown2,  color::duboisbrown3,
+ color::duboisbrown4,
 
  // red
- colore::red,  colore::coral, colore::salmon, colore::akabeni,
- colore::akebonoiro, colore::ochre, colore::sohi, colore::benikaba,
- colore::benitobi, colore::ake, colore::crimson, colore::tomato,
- colore::foreigncrimson, colore::ginshu,
- colore::duboisred1, colore::duboisred2, colore::duboisred3,
+ color::red,  color::coral, color::salmon, color::akabeni,
+ color::akebonoiro, color::ochre, color::sohi, color::benikaba,
+ color::benitobi, color::ake, color::crimson, color::tomato,
+ color::foreigncrimson, color::ginshu,
+ color::duboisred1, color::duboisred2, color::duboisred3,
 
  // green
- colore::green, colore::limegreen, colore::springgreen, colore::byakuroku,
- colore::usumoegi, colore::aquamarine, colore::midori, colore::rokusho,
- colore::aotakeiro, colore::seiheki, colore::seijiiro, colore::yanagizome,
- colore::hiwamoegi,colore::chartreuse, colore::greenyellow, colore::moegi,
- colore::duboisgreen1,  colore::duboisgreen2,  colore::duboisgreen3,
- colore::duboisgreen4,
+ color::green, color::limegreen, color::springgreen, color::byakuroku,
+ color::usumoegi, color::aquamarine, color::midori, color::rokusho,
+ color::aotakeiro, color::seiheki, color::seijiiro, color::yanagizome,
+ color::hiwamoegi,color::chartreuse, color::greenyellow, color::moegi,
+ color::duboisgreen1,  color::duboisgreen2,  color::duboisgreen3,
+ color::duboisgreen4,
 
  // blue
- colore::ultramarine, colore::shinbashiiro, colore::hanada, colore::ruriiro,
- colore::cornflowerblue, colore::lightblue, colore::skyblue,
- colore::lightskyblue, colore::bellflower, colore::navy, colore::asagiiro,
- colore::indigo, colore::rurikon, colore::blue, colore::asamablue, colore::cyan,
- colore::lightcyan, colore::powderblue, colore::steelblue, colore::dodgerblue,
- colore::royalblue, colore::mediumblue, colore::deepskyblue,
- colore::midnightblue, colore::darkslateblue, colore::slateblue, colore::azure,
- colore::duboisblue1, colore::duboisblue2, colore::duboisblue3,
+ color::ultramarine, color::shinbashiiro, color::hanada, color::ruriiro,
+ color::cornflowerblue, color::lightblue, color::skyblue,
+ color::lightskyblue, color::bellflower, color::navy, color::asagiiro,
+ color::indigo, color::rurikon, color::blue, color::asamablue, color::cyan,
+ color::lightcyan, color::powderblue, color::steelblue, color::dodgerblue,
+ color::royalblue, color::mediumblue, color::deepskyblue,
+ color::midnightblue, color::darkslateblue, color::slateblue, color::azure,
+ color::duboisblue1, color::duboisblue2, color::duboisblue3,
 
 
  // purple (magenta, violet, pink)
- colore::wisteria, colore::asamapink, colore::pink, colore::peony,
- colore::violet, colore::magenta, colore::deeppink, colore::hotpink,
- colore::dustyrose, colore::atmosphericp, colore::kissmepink,
- colore::futaai, colore::benimidori, colore::redwisteria, colore::botan,
- colore::kokimurasaki, colore::usuiro, colore::murasaki, colore::ayameiro,
- colore::blueviolet, colore::darkmagenta, colore::darkviolet,
- colore::thistle, colore::plum,
- colore::palevioletred, colore::mediumvioletred, colore::lavender,
- colore::orchid, colore::mediumorchid, colore::darkestmagenta,
- colore::mediumpurple, colore::purple,
+ color::wisteria, color::asamapink, color::pink, color::peony,
+ color::violet, color::magenta, color::deeppink, color::hotpink,
+ color::dustyrose, color::atmosphericp, color::kissmepink,
+ color::futaai, color::benimidori, color::redwisteria, color::botan,
+ color::kokimurasaki, color::usuiro, color::murasaki, color::ayameiro,
+ color::blueviolet, color::darkmagenta, color::darkviolet,
+ color::thistle, color::plum,
+ color::palevioletred, color::mediumvioletred, color::lavender,
+ color::orchid, color::mediumorchid, color::darkestmagenta,
+ color::mediumpurple, color::purple,
 
- colore::none
+ color::none
 };
 
 
 /// Random entry from array above.
-colore
+color
 random_color()
 {
-  const uint maxc = colors.size();
+  const uint maxc = spectrum.size();
   static std::mt19937_64 rg(std::random_device{}());
   auto disti = std::uniform_int_distribution<>(0, maxc - 1);
   uint index = disti(rg);
-  return colors[index];
+  return spectrum[index];
 }
 
 
 /// Loop through color array starting at position c.
-colore
-next_color(colore c)
+color
+next_color(color c)
 {
-  colore cnext = colors.front();
-  auto itr = std::find(colors.begin(), colors.end(), c);
-  if (itr != colors.end())
+  color cnext = spectrum.front();
+  auto itr = std::find(spectrum.begin(), spectrum.end(), c);
+  if (itr != spectrum.end())
     {
       ++itr;
-      if (itr == colors.end())
-	itr = colors.begin();
+      if (itr == spectrum.end())
+	itr = spectrum.begin();
       cnext = *itr;
     }
   return cnext;
@@ -589,9 +589,9 @@ next_color(colore c)
 
 /// Start at specified color bar entry point.
 colorq
-color_start_at_specified(colore klr)
+color_start_at_specified(color klr)
 {
-  static colore _S_klr = klr;
+  static color _S_klr = klr;
   colorq retk = _S_klr;
   _S_klr = next_color(_S_klr);
   return retk;
@@ -601,15 +601,15 @@ color_start_at_specified(colore klr)
 // Specific regions of spectrum as bands of color.
 // Each band has a starting hue and a number of known good samples.
 // This is then used to seed a generator that computes more of similar hues.
-using colorband = std::tuple<colore, ushort>;
-constexpr colorband cband_bw = std::make_tuple(colore::white, 13);
-constexpr colorband cband_y = std::make_tuple(colore::hellayellow, 15);
-constexpr colorband cband_r = std::make_tuple(colore::red, 17);
-constexpr colorband cband_g = std::make_tuple(colore::green, 20);
-constexpr colorband cband_b = std::make_tuple(colore::ultramarine, 30);
-constexpr colorband cband_p = std::make_tuple(colore::wisteria, 32);
-constexpr colorband cband_o = std::make_tuple(colore::orange, 7);
-constexpr colorband cband_brown = std::make_tuple(colore::duboisbrown1, 4);
+using colorband = std::tuple<color, ushort>;
+constexpr colorband cband_bw = std::make_tuple(color::white, 13);
+constexpr colorband cband_y = std::make_tuple(color::hellayellow, 15);
+constexpr colorband cband_r = std::make_tuple(color::red, 17);
+constexpr colorband cband_g = std::make_tuple(color::green, 20);
+constexpr colorband cband_b = std::make_tuple(color::ultramarine, 30);
+constexpr colorband cband_p = std::make_tuple(color::wisteria, 32);
+constexpr colorband cband_o = std::make_tuple(color::orange, 7);
+constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 4);
 
 
 /// Add white to tint in r ammount.
@@ -645,12 +645,12 @@ colorqs
 make_color_band(const colorband& cb, const ushort neededh)
 {
   // Find starting hue and number of samples in the color band.
-  colore c = std::get<0>(cb);
+  color c = std::get<0>(cb);
   ushort hn = std::get<1>(cb);
 
   // Find initial offset.
-  auto itr = std::find(colors.begin(), colors.end(), c);
-  if (itr == colors.end())
+  auto itr = std::find(spectrum.begin(), spectrum.end(), c);
+  if (itr == spectrum.end())
     {
       string m("collection::make_color_band: " + to_string(c));
       throw std::runtime_error(m);
@@ -672,8 +672,8 @@ make_color_band(const colorband& cb, const ushort neededh)
       // New color.
       ushort o1 = disti(rg);
       ushort o2 = disti(rg);
-      colore c1 = *(itr + o1);
-      colore c2 = *(itr + o2);
+      color c1 = *(itr + o1);
+      color c2 = *(itr + o2);
 
       // Combine.
       double c1r = distr(rg);
@@ -702,38 +702,38 @@ next_in_color_band(const colorband& cb)
 
   // XXX No out of bounds error checking.
   colorq ret;
-  const colore c = std::get<0>(cb);
+  const color c = std::get<0>(cb);
   switch (c)
     {
-    case colore::white:
+    case color::white:
       ret = gband_bw.back();
       gband_bw.pop_back();
       break;
-    case colore::hellayellow:
+    case color::hellayellow:
       ret = gband_y.back();
       gband_y.pop_back();
       break;
-    case colore::orange:
+    case color::orange:
       ret = gband_o.back();
       gband_o.pop_back();
       break;
-    case colore::duboisbrown1:
+    case color::duboisbrown1:
       ret = gband_brown.back();
       gband_brown.pop_back();
       break;
-    case colore::red:
+    case color::red:
       ret = gband_r.back();
       gband_r.pop_back();
       break;
-    case colore::green:
+    case color::green:
       ret = gband_g.back();
       gband_g.pop_back();
       break;
-    case colore::ultramarine:
+    case color::ultramarine:
       ret = gband_b.back();
       gband_b.pop_back();
       break;
-    case colore::wisteria:
+    case color::wisteria:
       ret = gband_p.back();
       gband_p.pop_back();
       break;

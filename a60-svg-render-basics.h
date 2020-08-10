@@ -138,12 +138,11 @@ struct render_state_base
 ///  Render settings for collections.
 struct render_state : public render_state_base
 {
-  using color = svg::colorq;
-  using	colors = std::unordered_map<string, color>;
+  using	colormap = std::unordered_map<string, colorq>;
 
-  colors	klrs;
+  colormap	klrs;
 
-  color
+  colorq
   get_color(const string& s) const
   {
     auto i = klrs.find(s);

@@ -603,7 +603,7 @@ radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 {
   // Make circle perimeter with an arrow to orientate display of data.
   svg::style styl(typo._M_style);
-  styl._M_fill_color = svg::colore::black;
+  styl._M_fill_color = svg::color::black;
   styl._M_fill_opacity = 0;
   styl._M_stroke_opacity = 1;
   styl._M_stroke_size = 3;

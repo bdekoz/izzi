@@ -77,7 +77,7 @@ to_string(point_2t p)
 } // namespace svg
 
 
-#include "a60-svg-color.h"			// colore, colorq, colorband
+#include "a60-svg-color.h"			// color, colorq, colorband
 #include "a60-svg-base.h"	  // area, style, filter, transform, typography
 #include "a60-svg-constants.h"
 #include "a60-svg-elements.h"

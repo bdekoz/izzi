@@ -83,7 +83,7 @@ struct glyph
   glyph()
   : name(""), sname(""), infohash(""), tid(0),
     resolution(resolution_mode::none), encoding(encoding_mode::none),
-    klr(svg::colore::black),
+    klr(svg::color::black),
     d1name(""), d2name(""), d3name(""), d1(0), d2(0), d3(0),
     weight(0), bytes(0), is_private(false), is_ssl(false), is_i2p(false)
   { }
@@ -233,7 +233,7 @@ sum_glyphs(const glyphs& glys, const string name = "all")
   // Add in summary info for combined torrent collection.
   glyph sumg = { };
   sumg.name = name;
-  sumg.klr = svg::colore::gray50;
+  sumg.klr = svg::color::gray50;
 
   if (!glys.empty())
     {
@@ -366,7 +366,7 @@ augment_weighed_glyph_v2(svg_element& obj, const glyph& g, ulong vmax,
       svg::typography typog = typo;
       typog._M_a = svg::typography::anchor::start;
       typog._M_align = svg::typography::align::left;
-      typog._M_style._M_fill_color = svg::colore::gray50;
+      typog._M_style._M_fill_color = svg::color::gray50;
       std::ostringstream outs;
       outs << perct << '%';
       sized_text_r(obj, typog, 28, outs.str(),
@@ -756,7 +756,7 @@ augment_sum_glyph(svg_element& obj, svg::typography typo, glyph& sumg,
 
   // Minor
   svg::typography typom = typo;
-  typom._M_style._M_fill_color = svg::colore::gray50;
+  typom._M_style._M_fill_color = svg::color::gray50;
 
   string peern;
   {
