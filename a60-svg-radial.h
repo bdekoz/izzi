@@ -271,15 +271,21 @@ place_text_at_angle(svg_element& obj, const typography& typo,
 
 void
 place_ray_at_angle(svg_element& obj, const point_2t& origin,
-		   const point_2t& circump)
+		   const point_2t& circump, const style& s,
+		   const string id = "")
 {
   auto [xo, yo] = origin;
   auto [xc, yc] = circump;
 
-  line_element::data dr = { int(xo), int(xo), int(yo), int(yc) };
+  line_element::data dr = { int(xo), int(xc), int(yo), int(yc) };
   line_element ray;
-  ray.start_element();
+
+  if (id.empty())
+    ray.start_element();
+  else
+    ray.start_element(id);
   ray.add_data(dr);
+  ray.add_style(s);
   ray.finish_element();
   obj.add_element(ray);
 }

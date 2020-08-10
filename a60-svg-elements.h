@@ -198,29 +198,6 @@ make_tspan_y_from_string_by_token(string s, uint xpos, const char token = ' ')
 
 
 /**
-   Text on a Path SVG element.
-
-   Specification reference:
-   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath
-
-   Attributes:
-   href, path, method, side, spacing, startOffset, textLength, lengthAdjust
-*/
-struct text_path_element : virtual public text_element
-{
-  virtual void
-  add_text(string txt)
-  {
-    // Start text_path_element...
-
-    _M_sstream << txt;
-
-    // End text_path_element...
-  }
-};
-
-
-/**
    Rectangle SVG element.
 
    Specification reference:
@@ -482,6 +459,36 @@ struct path_element : virtual public element_base
 void
 path_element::finish_element()
 { _M_sstream  << " />" << std::endl; }
+
+
+/**
+   Text on a Path SVG element.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath
+
+   Attributes:
+   href, path, method, side, spacing, startOffset, textLength, lengthAdjust
+*/
+struct text_path_element : virtual public text_element
+{
+  string path_name;
+
+  text_path_element(string name): path_name(name) { }
+
+  virtual void
+  add_text(string txt)
+  {
+    // Start text_path_element...
+    _M_sstream << "<textPath href="
+	       << k::quote << '#' << path_name << k::quote << '>' << k::space;
+
+    _M_sstream << txt << k::space;
+
+    // End text_path_element...
+    _M_sstream << "</textPath>" << k::space;
+  }
+};
 
 
 /**
