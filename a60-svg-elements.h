@@ -472,16 +472,26 @@ path_element::finish_element()
 */
 struct text_path_element : virtual public text_element
 {
-  string path_name;
+  string	path_name;
+  string	offset; // "30%"
+  string	side;   // "left" || "right" (use convex/concave side of path)
 
-  text_path_element(string name): path_name(name) { }
+  text_path_element(string name, string off = "", string which = "")
+  : path_name(name), offset(off), side(which) { }
 
   virtual void
   add_text(string txt)
   {
     // Start text_path_element...
     _M_sstream << "<textPath xlink:href="
-	       << k::quote << '#' << path_name << k::quote << '>';
+	       << k::quote << '#' << path_name << k::quote;
+    if (!offset.empty())
+      _M_sstream << k::space << "startOffset="
+		 << k::quote << offset << k::quote;
+    if (!side.empty())
+      _M_sstream << k::space << "side="
+		 << k::quote << side << k::quote;
+    _M_sstream << '>';
 
     _M_sstream << txt;
 
