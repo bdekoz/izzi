@@ -480,10 +480,10 @@ struct text_path_element : virtual public text_element
   add_text(string txt)
   {
     // Start text_path_element...
-    _M_sstream << "<textPath href="
-	       << k::quote << '#' << path_name << k::quote << '>' << k::space;
+    _M_sstream << "<textPath xlink:href="
+	       << k::quote << '#' << path_name << k::quote << '>';
 
-    _M_sstream << txt << k::space;
+    _M_sstream << txt;
 
     // End text_path_element...
     _M_sstream << "</textPath>" << k::space;
