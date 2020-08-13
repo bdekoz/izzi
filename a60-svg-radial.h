@@ -391,6 +391,7 @@ make_label_for_value(string pname, size_type pvalue,
 size_type
 kusama_label_angle_adjust()
 {
+  // About half the y height of the type size in question, ish.
   return 3;
 }
 
@@ -406,6 +407,7 @@ radiate_id_by_value(svg_element& obj, const point_2t origin,
 {
   auto adj = kusama_label_angle_adjust();
   const double angled = get_angle(pvalue, pmax) - adj;
+
   auto [ x, y ] = get_circumference_point_d(angled, r, origin);
 
   string label = make_label_for_value(pname, pvalue, get_label_spaces());
@@ -466,9 +468,18 @@ splay_ids_around(svg_element& obj, const typography& typo,
 		 const point_2t origin, double r, double rspace,
 		 const bool satellitep = false)
 {
-  // Angle inbetween sequential id's.
-  double angledelta = typo._M_size;
-  const double maxdeg = angledelta * (ids.size() - 1);
+  // Angle between sequential id's.
+  //
+  // If given r, point p on circumfrence r distance from origin, angle d
+  // rspace is
+  //   1. the distance between p and a label on the arc from origin
+  //   2. the distance between p and pprime on circumference with angle dprime
+  //
+  // then angle dprime = 2theta, where theta from sin(theta) = (rspace / 2) / r.
+  double angleprime = std::asin((rspace / 2) / r);
+  double angleprimed = angleprime * (180 / k::pi);
+
+  const double maxdeg = angleprimed * (ids.size() - 1);
   double angled2 = angled - (maxdeg / 2);
 
   // NB: value label is at r + rspace, so rprime has to be longer.
@@ -489,7 +500,7 @@ splay_ids_around(svg_element& obj, const typography& typo,
       auto p2 = get_circumference_point_d(angled2, rprime, origin);
       auto [ x2, y2 ] = p2;
       place_text_at_angle(obj, typo, s, x2, y2, angled2);
-      angled2 += angledelta;
+      angled2 += angleprimed;
     }
 }
 
