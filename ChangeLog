@@ -1,0 +1,46 @@
+2020-08-17  Benjamin De Kosnik  <bkoz@rizal>
+
+	Nest into sub diretories...
+	* src: New.
+	* examples: new.
+
+2020-08-10  Benjamin De Kosnik  <bkoz@rizal>
+
+	* a60-svg-elements.h (text_path): Standup basics.
+	* a60-svg-radial.h (place_ray_at_angle): Add support for id.
+
+2020-08-07  Benjamin De Kosnik  <bkoz@rizal>
+
+	Make license text consistent.
+	* a60-svg-base.h
+	* a60-svg-color.h
+	* a60-svg-constants.h
+	* a60-svg-elements-components.h
+	* a60-svg-render-basics.h
+
+	* a60-svg-elements.h (text_path_element): New.
+
+2020-07-15  Benjamin De Kosnik  <bkoz@rizal>
+
+	* a60-svg-radial.h (kusama_id_by_uvalue_1, _2): Add parameter byvaluep
+	to controll radius weighing by value.
+
+2020-07-XX  Benjamin De Kosnik  <bkoz@rizal>
+
+	* a60-svg-base.h (typography): Set units to pixels by default.
+
+	* a60-svg-radial.h (id_render_state): New mapping
+	from each marked id to render specifics.
+	(place_text_at_angle): Always align left, anchor start.
+	(kusama_label_angle_adjust): Encapsulates hokey logic
+	to move text slightly back on circumference.
+	(splay_ids_after, splay_ids_at, append_ids_at, stack_ids_at,
+	radiate_ids_by_uvalue): Use degree not radial versions.
+	(kusama_id_by_uvalue_2): Add support for inserted svg elements.
+	(kusama_ids_per_uvalue_on_arc): Reverse layout from largest to smallest.
+	Default style is 50 gray.
+
+	* a60-svg-render-basics.h (select::image, svg): Add.
+	(insert_svg_at_center): To...
+	(insert_svg_at): ...this, make it more useful. Add support
+	for rotations.
