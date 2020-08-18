@@ -1,3 +1,12 @@
+2020-08-18  Benjamin De Kosnik  <bkoz@rizal>
+
+	* examples/arc-labels.cc: Clean up, move useful arc bits to...
+	* src/a60-svg-elements.h (path_element): Add hidden member, adjust
+	member functions to use it.
+	* src/a60-svg-render-basics.h: Split into this and ...
+	* src/a60-svg-render-state.h: New, just this functionality.
+	* src/a60-svg.h: Adjust includes.
+
 2020-08-17  Benjamin De Kosnik  <bkoz@rizal>
 
 	Nest into sub diretories...

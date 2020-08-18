@@ -429,6 +429,11 @@ struct path_element : virtual public element_base
     size_type		_M_length;
   };
 
+  // Put in defs section, making it not drawn but still usefule for text_path.
+  bool			_M_visible;
+
+  path_element(const bool visible = true) : _M_visible(visible) { }
+
   /// Either serialize immediately (as below), or create data structure
   /// that adds data to data_vec and then finish_element serializes.
   void
@@ -446,11 +451,19 @@ struct path_element : virtual public element_base
 
   void
   start_element()
-  { _M_sstream << "<path "; }
+  {
+    if (!_M_visible)
+      _M_sstream << "<defs>";
+    _M_sstream << "<path ";
+  }
 
   void
   start_element(string name)
-  { _M_sstream << "<path id=" << k::quote << name << k::quote << k::space; }
+  {
+    if (!_M_visible)
+      _M_sstream << "<defs>";
+    _M_sstream << "<path id=" << k::quote << name << k::quote << k::space;
+  }
 
   void
   finish_element();
@@ -458,7 +471,12 @@ struct path_element : virtual public element_base
 
 void
 path_element::finish_element()
-{ _M_sstream  << " />" << std::endl; }
+{
+  _M_sstream  << " />";
+  if (!_M_visible)
+    _M_sstream << "</defs>";
+  _M_sstream << std::endl;
+}
 
 
 /**
@@ -476,7 +494,8 @@ struct text_path_element : virtual public text_element
   string	offset; // "30%"
   string	side;   // "left" || "right" (use convex/concave side of path)
 
-  text_path_element(string name, string off = "", string which = "")
+  text_path_element(const string name,
+		    const string off = "", const string which = "")
   : path_name(name), offset(off), side(which) { }
 
   virtual void

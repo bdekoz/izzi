@@ -40,6 +40,16 @@ using point_2t = std::tuple<space_type, space_type>;
 using point_2tn = std::tuple<point_2t, size_type>;
 
 
+string
+to_string(point_2t p)
+{
+  auto [ x, y ] = p;
+  std::ostringstream oss;
+  oss << x << ',' << y;
+  return oss.str();
+}
+
+
 space_type
 distance_cartesian(const point_2t& p1, const point_2t& p2)
 {
@@ -64,16 +74,6 @@ is_collision_detected(const point_2t& p1, const int r1,
   return ret;
 }
 
-
-string
-to_string(point_2t p)
-{
-  auto [ x, y ] = p;
-  std::ostringstream oss;
-  oss << x << ',' << y;
-  return oss.str();
-}
-
 } // namespace svg
 
 
@@ -82,6 +82,7 @@ to_string(point_2t p)
 #include "a60-svg-constants.h"
 #include "a60-svg-elements.h"
 #include "a60-svg-elements-components.h"
+#include "a60-svg-render-state.h"
 #include "a60-svg-render-basics.h"
 
 #endif
