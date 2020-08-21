@@ -1,3 +1,13 @@
+2020-08-21  Benjamin De Kosnik  <bkoz@rizal>
+
+	* examples/filter-gaussian-blur.cc: Add more examples.
+	* src/a60-svg-base.h (filter): Re-work, add support
+	for constructing gaussian_blur directly.
+
+	* src/a60-svg-color.h: Fix none not having a rbg color.
+	* src/a60-svg-elements.h: Adjust constants.
+	* src/a60-svg.h: Same.
+
 2020-08-20  Benjamin De Kosnik  <bkoz@rizal>
 
 	* examples/compile-example.sh: Add input argument.

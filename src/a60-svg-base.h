@@ -39,35 +39,6 @@ string_replace(std::string& target, const std::string& match,
 
 namespace svg {
 
-/**
-   SVG Constants
-*/
-namespace constants {
-
-  // Formatting constants.
-  constexpr char space(' ');
-  constexpr char quote('"');
-  constexpr char hypen('-');
-  constexpr char tab('\t');
-  constexpr char newline('\n');
-  constexpr char comma(',');
-
-  // Numeric constants.
-  // π = double(22)/double(7);
-  // π = 3.14159265358979323846
-  constexpr double pi(3.14159265358979323846);
-
-  uint&
-  get_dpi()
-  {
-    static uint dpi(96);
-    return dpi;
-  }
-}
-
-/// Inject constants with alias k.
-namespace k = constants;
-
 /// Measurement abstraction type, conversion function.
 enum class unit
   {
@@ -169,17 +140,33 @@ struct style
 */
 struct filter
 {
-  static string
-  str(const size_type n = 10)
-  {
-    const string filtername("gblur");
+  enum class type
+    {
+     feImage,
+     feOffset,	  // dx="0", dy="0"
+     feGaussianBlur,
+     feColorMatrix,
+     feComponentTransfer,
+     linearGradient,
+     radialGradient
+    };
 
-    std::ostringstream stream;
-    stream << k::space;
-    stream << "filter=" << k::quote;
-    stream << "url(#" << filtername << n << ")" << k::quote;
+  // https://drafts.fxtf.org/filter-effects/#elementdef-fegaussianblur
+  // in == SourceGraphic, SourceAlpha, FillPaint, StrokePaint
+  // dev == 1 or 1,1 (0 default if two then x, y direction)
+  static string
+  gaussian_blur(string in, string dev)
+  {
+    // <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+    string fgb("<feGaussianBlur in=");
+    std::ostringstream stream(fgb);
+    stream << k::quote << in << k::quote << k::space;
+    stream <<  "stdDeviation=" << k::quote << dev << k::quote << k::space;
+    stream <<  "/>";
     return stream.str();
   }
+
+
 
   static string
   str(const string s)

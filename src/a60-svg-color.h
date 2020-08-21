@@ -381,7 +381,7 @@ to_string(const color e)
       enum_map[color::dustyrose] = "rgb(191, 136, 187)";
       enum_map[color::atmosphericp] = "rgb(228, 210, 231)";
 
-      enum_map[color::none] = "none";
+      enum_map[color::none] = "rgb(0, 0, 1)";
     }
   return enum_map[e];
 }
@@ -410,9 +410,19 @@ struct colorq
   colorq
   static from_string(string s)
   {
-    // Kill rgb() enclosing.
-    s.pop_back();
-    s = s.substr(4);
+    // Kill rgb() enclosing, if be.
+    if (s.empty() || s.size() < 5 || s[0] != 'r')
+      {
+	string m("colorq::from_string input is not in rbg form: ");
+	m += s;
+	m += k::newline;
+	throw std::runtime_error(m);
+	}
+    else
+      {
+	s.pop_back();
+	s = s.substr(4);
+      }
 
     // String stream which eats whitespace and knows number separation.
     std::istringstream iss(s);

@@ -50,10 +50,6 @@ struct element_base
   str(const string& s) { return _M_sstream.str(s); }
 
   void
-  add_filter(const size_type n)
-  { _M_sstream << filter::str(n); }
-
-  void
   add_filter(const string s)
   { _M_sstream << filter::str(s); }
 

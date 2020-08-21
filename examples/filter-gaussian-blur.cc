@@ -20,9 +20,9 @@ test_gblur(std::string ofile)
   auto height = 25;
   auto width = 50;
 
-  // 1
+  // 1 rect
   rect_element r1;
-  rect_element::data drb1 = { x, y, width, height };
+  rect_element::data drb1 = { x + width /2, y, width, height };
   r1.start_element();
   r1.add_data(drb1);
   r1.add_filter("20y");
@@ -30,15 +30,36 @@ test_gblur(std::string ofile)
   r1.finish_element();
   obj.add_element(r1);
 
-  // 2
+  // 2 rect
   rect_element r2;
-  rect_element::data drb2 = { x, y + offset, width, height };
+  rect_element::data drb2 = { x + width / 2, y + offset, width, height };
   r2.start_element();
   r2.add_data(drb2);
   r2.add_filter("10y");
   r2.add_style(k::b_style);
   r2.finish_element();
   obj.add_element(r2);
+
+  // 3 circle
+  circle_element c1;
+  circle_element::data dc1 = { x + 2 * offset, y, width };
+  c1.start_element();
+  c1.add_data(dc1);
+  c1.add_style(k::b_style);
+  c1.finish_element();
+  obj.add_element(c1);
+
+  // 4 circle
+  circle_element c2;
+  circle_element::data dc2 = { x - 2 * offset, y, width };
+  c2.start_element();
+  c2.add_data(dc2);
+  c2.add_style(k::b_style);
+  c2.add_filter("10");
+  c2.finish_element();
+  obj.add_element(c2);
+
+
 }
 
 

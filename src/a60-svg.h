@@ -74,6 +74,37 @@ is_collision_detected(const point_2t& p1, const int r1,
   return ret;
 }
 
+
+
+/**
+   SVG Constants
+*/
+namespace constants {
+
+  // Formatting constants.
+  constexpr char space(' ');
+  constexpr char quote('"');
+  constexpr char hypen('-');
+  constexpr char tab('\t');
+  constexpr char newline('\n');
+  constexpr char comma(',');
+
+  // Numeric constants.
+  // π = double(22)/double(7);
+  // π = 3.14159265358979323846
+  constexpr double pi(3.14159265358979323846);
+
+  uint&
+  get_dpi()
+  {
+    static uint dpi(96);
+    return dpi;
+  }
+}
+
+/// Inject constants with alias k.
+namespace k = constants;
+
 } // namespace svg
 
 
