@@ -71,6 +71,88 @@ struct element_base
 };
 
 
+
+/**
+   Group SVG element.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
+
+   Attributes:
+   x, y, width, height, xlink:xref, preserveAspectRatio
+ */
+struct group_element : virtual public element_base
+{
+  /// Although one can nest SVG elements inside another SVG by using an
+  /// 'image_element', the display quality is lacking in inkscape. To
+  /// work around this, insert the contents of the nested SVG into a
+  /// group element instead.
+  void
+  add_raw(string s)
+  { _M_sstream << k::space << s << std::endl; }
+
+  void
+  start_element()
+  { _M_sstream << "<g>" << std::endl; }
+
+  /// For groups of elements that have the same name.
+  void
+  start_element(string name)
+  {
+    _M_sstream << "<g id=" << k::quote << name << k::quote
+	       << ">" << std::endl;
+  }
+
+  // For groups of elements that have the same style.
+  void
+  start_element(string name, const style& sty)
+  {
+    _M_sstream << "<g id=" << k::quote << name << k::quote << k::space;
+    add_style(sty);
+    _M_sstream << '>' << std::endl;
+  }
+
+  void
+  start_element(string name, const transform, const string ts)
+  {
+    _M_sstream << "<g id=" << k::quote << name << k::quote;
+    add_transform(ts);
+    _M_sstream << '>' << std::endl;
+  }
+
+  void
+  finish_element();
+};
+
+void
+group_element::finish_element()
+{ _M_sstream  << "</g>" << std::endl; }
+
+
+/**
+   Definitions SVG element.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
+
+   Attributes:
+   id
+ */
+struct defs_element : virtual public element_base
+{
+  void
+  start_element()
+  { _M_sstream << "<defs>" << std::endl; }
+
+  void
+  finish_element();
+};
+
+void
+defs_element::finish_element()
+{ _M_sstream  << "</defs>" << std::endl; }
+
+
 /**
    Text SVG element.
 
@@ -452,16 +534,18 @@ struct path_element : virtual public element_base
   void
   start_element()
   {
+    defs_element defs;
     if (!_M_visible)
-      _M_sstream << "<defs>";
+      defs.start_element();
     _M_sstream << "<path ";
   }
 
   void
   start_element(string name)
   {
+    defs_element defs;
     if (!_M_visible)
-      _M_sstream << "<defs>";
+      defs.start_element();
     _M_sstream << "<path id=" << k::quote << name << k::quote << k::space;
   }
 
@@ -472,9 +556,10 @@ struct path_element : virtual public element_base
 void
 path_element::finish_element()
 {
+  defs_element defs;
   _M_sstream  << " />";
   if (!_M_visible)
-    _M_sstream << "</defs>";
+    defs.finish_element();
   _M_sstream << std::endl;
 }
 
@@ -518,63 +603,6 @@ struct text_path_element : virtual public text_element
     _M_sstream << "</textPath>" << k::space;
   }
 };
-
-
-/**
-   Group SVG element.
-
-   Specification reference:
-   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
-
-   Attributes:
-   x, y, width, height, xlink:xref, preserveAspectRatio
- */
-struct group_element : virtual public element_base
-{
-  /// Although one can nest SVG elements inside another SVG by using an
-  /// 'image_element', the display quality is lacking in inkscape. To
-  /// work around this, insert the contents of the nested SVG into a
-  /// group element instead.
-  void
-  add_raw(string s)
-  { _M_sstream << k::space << s << std::endl; }
-
-  void
-  start_element()
-  { _M_sstream << "<g>" << std::endl; }
-
-  /// For groups of elements that have the same name.
-  void
-  start_element(string name)
-  {
-    _M_sstream << "<g id=" << k::quote << name << k::quote
-	       << ">" << std::endl;
-  }
-
-  // For groups of elements that have the same style.
-  void
-  start_element(string name, const style& sty)
-  {
-    _M_sstream << "<g id=" << k::quote << name << k::quote << k::space;
-    add_style(sty);
-    _M_sstream << '>' << std::endl;
-  }
-
-  void
-  start_element(string name, const transform, const string ts)
-  {
-    _M_sstream << "<g id=" << k::quote << name << k::quote;
-    add_transform(ts);
-    _M_sstream << '>' << std::endl;
-  }
-
-  void
-  finish_element();
-};
-
-void
-group_element::finish_element()
-{ _M_sstream  << "</g>" << std::endl; }
 
 
 /**

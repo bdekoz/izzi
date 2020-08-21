@@ -159,7 +159,14 @@ struct style
 };
 
 
-/// Datum consolidating filter preferences.
+/**
+   Datum consolidating filter preferences.
+
+   <filter id="gblur10" x="0" y="0">
+   <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+   <feOffset dx="0" dy="0" />
+   </filter>
+*/
 struct filter
 {
   static string

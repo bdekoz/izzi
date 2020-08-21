@@ -1,3 +1,11 @@
+2020-08-20  Benjamin De Kosnik  <bkoz@rizal>
+
+	* examples/compile-example.sh: Add input argument.
+	* examples/filter-gaussian-blur.cc: New.
+
+	* src/a60-svg-base.h: Move around definitions.
+	* src/a60-svg-elements.h (defs_element): New.
+
 2020-08-18  Benjamin De Kosnik  <bkoz@rizal>
 
 	* examples/arc-labels.cc: Clean up, move useful arc bits to...
