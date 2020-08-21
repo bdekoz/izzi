@@ -49,9 +49,15 @@ struct element_base
   void
   str(const string& s) { return _M_sstream.str(s); }
 
+  // Add raw string to group and filter elements.
+  //
+  /// Although one can nest SVG elements inside another SVG by using
+  /// an 'image_element', the display quality is lacking in
+  /// inkscape. To work around this, insert the contents of the nested
+  /// SVG into a group element instead.
   void
-  add_filter(const string s)
-  { _M_sstream << filter::str(s); }
+  add_raw(const string& raw)
+  { _M_sstream << k::space << raw << std::endl; }
 
   void
   add_style(const style& sty)
@@ -67,7 +73,6 @@ struct element_base
 };
 
 
-
 /**
    Group SVG element.
 
@@ -79,14 +84,6 @@ struct element_base
  */
 struct group_element : virtual public element_base
 {
-  /// Although one can nest SVG elements inside another SVG by using an
-  /// 'image_element', the display quality is lacking in inkscape. To
-  /// work around this, insert the contents of the nested SVG into a
-  /// group element instead.
-  void
-  add_raw(string s)
-  { _M_sstream << k::space << s << std::endl; }
-
   void
   start_element()
   { _M_sstream << "<g>" << std::endl; }
@@ -147,6 +144,78 @@ struct defs_element : virtual public element_base
 void
 defs_element::finish_element()
 { _M_sstream  << "</defs>" << std::endl; }
+
+
+/**
+   Datum consolidating filter preferences.
+
+   <filter id="gblur10" x="0" y="0">
+   <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+   <feOffset dx="0" dy="0" />
+   </filter>
+*/
+struct filter_element : virtual public element_base
+{
+  enum class type
+    {
+     feImage,
+     feOffset,	  // dx="0", dy="0"
+     feGaussianBlur,
+     feColorMatrix,
+     feComponentTransfer,
+     linearGradient,
+     radialGradient
+    };
+
+  void
+  start_element()
+  { _M_sstream << "<filter>" << std::endl; }
+
+  /// For groups of elements that have the same name.
+  void
+  start_element(string id)
+  {
+    _M_sstream << "<filter id=" << k::quote << id << k::quote << ">"
+	       << std::endl;
+  }
+
+  void
+  finish_element();
+
+  void
+  add_data(const string fltr)
+  { _M_sstream << fltr; }
+
+  static string
+  use(const string id)
+  {
+    std::ostringstream stream;
+    stream << k::space;
+    stream << "filter=" << k::quote;
+    stream << "url(#" << id << ")" << k::quote;
+    return stream.str();
+  }
+
+  // https://drafts.fxtf.org/filter-effects/#elementdef-fegaussianblur
+  // in == SourceGraphic, SourceAlpha, FillPaint, StrokePaint
+  // dev == 1 or 1,1 (0 default if two then x, y direction)
+  string
+  gaussian_blur(string in, string dev)
+  {
+    // <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+    std::ostringstream stream;
+    stream << "<feGaussianBlur in=";
+    stream << k::quote << in << k::quote << k::space;
+    stream <<  "stdDeviation=" << k::quote << dev << k::quote << k::space;
+    stream <<  "/>";
+    return stream.str();
+  }
+};
+
+void
+filter_element::finish_element()
+{ _M_sstream  << "</filter>" << std::endl; }
+
 
 
 /**

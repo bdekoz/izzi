@@ -1,5 +1,11 @@
 2020-08-21  Benjamin De Kosnik  <bkoz@rizal>
 
+	* src/a60-svg-base.h (filter): Redo, move to...
+	* src/a60-svg-elements.h (filter_element): ...here.
+	* examples/filter-gaussian-blur.cc: Adjust usage.
+
+2020-08-21  Benjamin De Kosnik  <bkoz@rizal>
+
 	* examples/filter-gaussian-blur.cc: Add more examples.
 	* src/a60-svg-base.h (filter): Re-work, add support
 	for constructing gaussian_blur directly.

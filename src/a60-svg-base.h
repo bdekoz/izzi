@@ -130,58 +130,6 @@ struct style
 };
 
 
-/**
-   Datum consolidating filter preferences.
-
-   <filter id="gblur10" x="0" y="0">
-   <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-   <feOffset dx="0" dy="0" />
-   </filter>
-*/
-struct filter
-{
-  enum class type
-    {
-     feImage,
-     feOffset,	  // dx="0", dy="0"
-     feGaussianBlur,
-     feColorMatrix,
-     feComponentTransfer,
-     linearGradient,
-     radialGradient
-    };
-
-  // https://drafts.fxtf.org/filter-effects/#elementdef-fegaussianblur
-  // in == SourceGraphic, SourceAlpha, FillPaint, StrokePaint
-  // dev == 1 or 1,1 (0 default if two then x, y direction)
-  static string
-  gaussian_blur(string in, string dev)
-  {
-    // <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
-    string fgb("<feGaussianBlur in=");
-    std::ostringstream stream(fgb);
-    stream << k::quote << in << k::quote << k::space;
-    stream <<  "stdDeviation=" << k::quote << dev << k::quote << k::space;
-    stream <<  "/>";
-    return stream.str();
-  }
-
-
-
-  static string
-  str(const string s)
-  {
-    const string filtername("gblur");
-
-    std::ostringstream stream;
-    stream << k::space;
-    stream << "filter=" << k::quote;
-    stream << "url(#" << filtername << s << ")" << k::quote;
-    return stream.str();
-  }
-};
-
-
 /// Datum consolidating transform preferences.
 struct transform
 {
