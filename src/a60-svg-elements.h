@@ -158,6 +158,7 @@ struct filter_element : virtual public element_base
 {
   enum class type
     {
+     feBlend,
      feImage,
      feOffset,	  // dx="0", dy="0"
      feGaussianBlur,
@@ -171,11 +172,26 @@ struct filter_element : virtual public element_base
   start_element()
   { _M_sstream << "<filter>" << std::endl; }
 
-  /// For groups of elements that have the same name.
   void
-  start_element(string id)
+  start_element(const string id)
   {
     _M_sstream << "<filter id=" << k::quote << id << k::quote << ">"
+	       << std::endl;
+  }
+
+  // Some filter effects get clipped when appied to an element's area,
+  // so this allows filters to have an element + filter area instead.
+  void
+  start_element(const string id, const area<> blur_area, const point_2t p)
+  {
+    auto [ width, height ] = blur_area;
+    auto [ x, y ] = p;
+    _M_sstream << "<filter id=" << k::quote << id << k::quote << k::space
+	       << "x=" << k::quote << x << k::quote << k::space
+	       << "y=" << k::quote << y << k::quote << k::space
+	       << "width=" << k::quote << width << k::quote << k::space
+	       << "height=" << k::quote << height << k::quote
+	       << ">"
 	       << std::endl;
   }
 
@@ -210,6 +226,10 @@ struct filter_element : virtual public element_base
     stream <<  "/>";
     return stream.str();
   }
+
+  string
+  gaussian_blur(string dev)
+  { return gaussian_blur("SourceGraphic", dev); }
 };
 
 void

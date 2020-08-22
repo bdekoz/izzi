@@ -1,5 +1,10 @@
 2020-08-21  Benjamin De Kosnik  <bkoz@rizal>
 
+	* examples/filter-gaussian-blur.cc: Examples of circles with offsets.
+	* src/a60-svg-elements.h (filter_elment): Here.
+
+2020-08-21  Benjamin De Kosnik  <bkoz@rizal>
+
 	* src/a60-svg-base.h (filter): Redo, move to...
 	* src/a60-svg-elements.h (filter_element): ...here.
 	* examples/filter-gaussian-blur.cc: Adjust usage.

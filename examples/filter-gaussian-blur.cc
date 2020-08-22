@@ -19,6 +19,7 @@ test_gblur(std::string ofile)
 
   auto height = 25;
   auto width = 50;
+  auto radius = std::max( height, width);
 
   // using builtin filters gblur10, gblur20, gblur10y, gblur20y
   filter_element fdefault;
@@ -54,15 +55,18 @@ test_gblur(std::string ofile)
 
   // 4 named filter + circle
   const string filter_name("gblur5zero");
+  const int blur_size = 20;
+  const area<> blur_area = { radius + 2 * blur_size, radius + 2 * blur_size };
+  const point_2t blur_origin = { -blur_size, -blur_size };
 
   filter_element f;
-  f.start_element(filter_name);
-  f.add_data(f.gaussian_blur("SourceGraphic", "20"));
+  f.start_element(filter_name, blur_area, blur_origin);
+  f.add_data(f.gaussian_blur(std::to_string(blur_size)));
   f.finish_element();
   obj.add_element(f);
 
   circle_element c2;
-  circle_element::data dc2 = { x - 2 * offset, y, width };
+  circle_element::data dc2 = { x - 2 * offset, y, radius };
   c2.start_element();
   c2.add_data(dc2);
   c2.add_style(k::b_style);
