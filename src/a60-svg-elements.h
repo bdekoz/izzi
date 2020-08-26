@@ -49,15 +49,26 @@ struct element_base
   void
   str(const string& s) { return _M_sstream.str(s); }
 
-  // Add raw string to group and filter elements.
-  //
-  /// Although one can nest SVG elements inside another SVG by using
-  /// an 'image_element', the display quality is lacking in
-  /// inkscape. To work around this, insert the contents of the nested
-  /// SVG into a group element instead.
+  // Add raw string to group, filter, blend/gradient elements.
   void
   add_raw(const string& raw)
-  { _M_sstream << k::space << raw << std::endl; }
+  { _M_sstream << k::space << raw << k::newline; }
+
+  void
+  add_fill(const string id)
+  {
+    _M_sstream << k::space;
+    _M_sstream << "fill=" << k::quote;
+    _M_sstream << "url(#" << id << ")" << k::quote;
+  }
+
+  void
+  add_filter(const string id)
+  {
+    _M_sstream << k::space;
+    _M_sstream << "filter=" << k::quote;
+    _M_sstream << "url(#" << id << ")" << k::quote;
+  }
 
   void
   add_style(const style& sty)
@@ -86,14 +97,19 @@ struct group_element : virtual public element_base
 {
   void
   start_element()
-  { _M_sstream << "<g>" << std::endl; }
+  { _M_sstream << "<g>" << k::newline; }
 
   /// For groups of elements that have the same name.
+  ///
+  /// Also, although one can nest SVG elements inside another SVG by
+  /// using an 'image_element', the display quality is lacking in
+  /// inkscape. To work around this, insert the contents of the nested
+  /// SVG into a named group element instead.
   void
   start_element(string name)
   {
     _M_sstream << "<g id=" << k::quote << name << k::quote
-	       << ">" << std::endl;
+	       << ">" << k::newline;
   }
 
   // For groups of elements that have the same style.
@@ -102,7 +118,7 @@ struct group_element : virtual public element_base
   {
     _M_sstream << "<g id=" << k::quote << name << k::quote << k::space;
     add_style(sty);
-    _M_sstream << '>' << std::endl;
+    _M_sstream << '>' << k::newline;
   }
 
   void
@@ -110,7 +126,7 @@ struct group_element : virtual public element_base
   {
     _M_sstream << "<g id=" << k::quote << name << k::quote;
     add_transform(ts);
-    _M_sstream << '>' << std::endl;
+    _M_sstream << '>' << k::newline;
   }
 
   void
@@ -119,11 +135,11 @@ struct group_element : virtual public element_base
 
 void
 group_element::finish_element()
-{ _M_sstream  << "</g>" << std::endl; }
+{ _M_sstream  << "</g>" << k::newline; }
 
 
 /**
-   Definitions SVG element.
+   Definitions SVG element. Storage space for elements used later.
 
    Specification reference:
    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
@@ -135,7 +151,7 @@ struct defs_element : virtual public element_base
 {
   void
   start_element()
-  { _M_sstream << "<defs>" << std::endl; }
+  { _M_sstream << "<defs>" << k::newline; }
 
   void
   finish_element();
@@ -143,11 +159,11 @@ struct defs_element : virtual public element_base
 
 void
 defs_element::finish_element()
-{ _M_sstream  << "</defs>" << std::endl; }
+{ _M_sstream  << "</defs>" << k::newline; }
 
 
 /**
-   Datum consolidating filter preferences.
+   Datum consolidating filter use and preferences.
 
    <filter id="gblur10" x="0" y="0">
    <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
@@ -163,20 +179,18 @@ struct filter_element : virtual public element_base
      feOffset,	  // dx="0", dy="0"
      feGaussianBlur,
      feColorMatrix,
-     feComponentTransfer,
-     linearGradient,
-     radialGradient
+     feComponentTransfer
     };
 
   void
   start_element()
-  { _M_sstream << "<filter>" << std::endl; }
+  { _M_sstream << "<filter>" << k::newline; }
 
   void
   start_element(const string id)
   {
     _M_sstream << "<filter id=" << k::quote << id << k::quote << ">"
-	       << std::endl;
+	       << k::newline;
   }
 
   // Some filter effects get clipped when appied to an element's area,
@@ -192,7 +206,7 @@ struct filter_element : virtual public element_base
 	       << "width=" << k::quote << width << k::quote << k::space
 	       << "height=" << k::quote << height << k::quote
 	       << ">"
-	       << std::endl;
+	       << k::newline;
   }
 
   void
@@ -202,16 +216,6 @@ struct filter_element : virtual public element_base
   add_data(const string fltr)
   { _M_sstream << fltr; }
 
-  static string
-  use(const string id)
-  {
-    std::ostringstream stream;
-    stream << k::space;
-    stream << "filter=" << k::quote;
-    stream << "url(#" << id << ")" << k::quote;
-    return stream.str();
-  }
-
   // https://drafts.fxtf.org/filter-effects/#elementdef-fegaussianblur
   // in == SourceGraphic, SourceAlpha, FillPaint, StrokePaint
   // dev == 1 or 1,1 (0 default if two then x, y direction)
@@ -219,7 +223,7 @@ struct filter_element : virtual public element_base
   gaussian_blur(string in, string dev)
   {
     // <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
-    std::ostringstream stream;
+    stream_type stream;
     stream << "<feGaussianBlur in=";
     stream << k::quote << in << k::quote << k::space;
     stream <<  "stdDeviation=" << k::quote << dev << k::quote << k::space;
@@ -234,8 +238,118 @@ struct filter_element : virtual public element_base
 
 void
 filter_element::finish_element()
-{ _M_sstream  << "</filter>" << std::endl; }
+{ _M_sstream  << "</filter>" << k::newline; }
 
+
+/**
+   Gradient SVG elements.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/radialGradient
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
+
+   Note these are always inside a defs block.
+
+   Attributes:
+   id
+ */
+struct gradient_element
+: virtual public element_base, virtual public defs_element
+{
+  enum class type
+    {
+      linearGradient,
+      meshgradient,
+      radialGradient,
+      stop
+    };
+
+  void
+  start_element()
+  { defs_element::start_element(); }
+
+  void
+  finish_element();
+
+  // off == 10%
+  void
+  stop(const string off, const color& klr)
+  {
+    _M_sstream << "<stop offset=" << k::quote << off << k::quote << k::space
+	       << "stop-color=" << k::quote << to_string(klr) << k::quote
+	       << " />";
+    _M_sstream << k::newline;
+  }
+};
+
+void
+gradient_element::finish_element()
+{ defs_element::finish_element(); }
+
+
+/// Circular gradients
+/// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/radialGradient
+struct radial_gradient : virtual public gradient_element
+{
+  void
+  start_element()
+  {
+    gradient_element::start_element();
+    _M_sstream << "<radialGradient id=" << k::quote << "default" << k::quote;
+    _M_sstream << ">" << k::newline;
+  }
+
+  // Radial gradient centered at (cx, cy) of radius.
+  // Default for radius, cx, cy is "50%"
+  void
+  start_element(const string id, const string radius = "",
+		const string cx = "", const string cy = "")
+  {
+    gradient_element::start_element();
+    _M_sstream << "<radialGradient id=" << k::quote << id << k::quote;
+    if (!radius.empty())
+      _M_sstream << k::space << "r=" << k::quote << radius << k::quote;
+    if (!cx.empty())
+      _M_sstream << k::space << "cx=" << k::quote << cx << k::quote;
+    if (!cy.empty())
+      _M_sstream << k::space << "cy=" << k::quote << cy << k::quote;
+    _M_sstream << ">" << k::newline;
+  }
+
+  // Radial gradient.
+  // End circle (aka 100% stop) at (cx, cy) with radius.
+  // Start circle (aka 0% stop) at (fx, fy) with radius fr.
+  void
+  start_element(const string id,
+		const string radius, const string cx, const string cy,
+		const string fr, const string fx = "", const string fy = "")
+  {
+    gradient_element::start_element();
+    _M_sstream << "<radialGradient id=" << k::quote << id << k::quote
+	       << k::space << "r=" << k::quote << radius << k::quote;
+    if (!cx.empty())
+      _M_sstream << k::space << "cx=" << k::quote << cx << k::quote;
+    if (!cy.empty())
+      _M_sstream << k::space << "cy=" << k::quote << cy << k::quote;
+    if (!fx.empty())
+      _M_sstream << k::space << "fx=" << k::quote << fx << k::quote;
+    if (!fy.empty())
+      _M_sstream << k::space << "fy=" << k::quote << fy << k::quote;
+    if (!fr.empty())
+      _M_sstream << k::space << "fr=" << k::quote << fr << k::quote;
+    _M_sstream << ">" << k::newline;
+  }
+
+  void
+  finish_element();
+};
+
+void
+radial_gradient::finish_element()
+{
+  _M_sstream << "</radialGradient>" << k::newline;
+  gradient_element::finish_element();
+}
 
 
 /**
@@ -340,7 +454,7 @@ struct text_element : virtual public element_base
 
 void
 text_element::finish_element()
-{ _M_sstream  << "</text>" << std::endl; }
+{ _M_sstream  << "</text>" << k::newline; }
 
 string
 make_tspan_y_from_string_by_token(string s, uint xpos, const char token = ' ')
@@ -413,7 +527,7 @@ struct rect_element : virtual public element_base
 
 void
 rect_element::finish_element()
-{ _M_sstream  << " />" << std::endl; }
+{ _M_sstream  << " />" << k::newline; }
 
 
 /**
@@ -470,7 +584,7 @@ struct image_element : virtual public element_base
 
 void
 image_element::finish_element()
-{ _M_sstream  << " />" << std::endl; }
+{ _M_sstream  << " />" << k::newline; }
 
 
 /**
@@ -519,7 +633,7 @@ struct circle_element : virtual public element_base
 
 void
 circle_element::finish_element()
-{ _M_sstream  << " />" << std::endl; }
+{ _M_sstream  << " />" << k::newline; }
 
 
 /**
@@ -575,7 +689,7 @@ struct line_element : virtual public element_base
 
 void
 line_element::finish_element()
-{ _M_sstream  << " />" << std::endl; }
+{ _M_sstream  << " />" << k::newline; }
 
 
 
@@ -588,7 +702,7 @@ line_element::finish_element()
    Attributes:
    d, pathLength
 */
-struct path_element : virtual public element_base
+struct path_element : virtual public defs_element
 {
   struct data
   {
@@ -619,18 +733,16 @@ struct path_element : virtual public element_base
   void
   start_element()
   {
-    defs_element defs;
     if (!_M_visible)
-      defs.start_element();
+      defs_element::start_element();
     _M_sstream << "<path ";
   }
 
   void
   start_element(string name)
   {
-    defs_element defs;
     if (!_M_visible)
-      defs.start_element();
+      defs_element::start_element();
     _M_sstream << "<path id=" << k::quote << name << k::quote << k::space;
   }
 
@@ -641,11 +753,10 @@ struct path_element : virtual public element_base
 void
 path_element::finish_element()
 {
-  defs_element defs;
   _M_sstream  << " />";
   if (!_M_visible)
-    defs.finish_element();
-  _M_sstream << std::endl;
+    defs_element::finish_element();
+  _M_sstream << k::newline;
 }
 
 
@@ -697,7 +808,7 @@ struct svg_element : virtual public element_base
 {
   using area = svg::area<>;
 
-  const string	_M_name;
+  const string		_M_name;
   const area		_M_area;
   const unit		_M_unit;
   const typography&	_M_typo;

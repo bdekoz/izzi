@@ -29,7 +29,7 @@ test_gblur(std::string ofile)
   rect_element::data drb1 = { x - width /2, y, width, height };
   r1.start_element();
   r1.add_data(drb1);
-  r1.add_raw(fdefault.use("gblur20y"));
+  r1.add_filter("gblur20y");
   r1.add_style(k::b_style);
   r1.finish_element();
   obj.add_element(r1);
@@ -39,7 +39,7 @@ test_gblur(std::string ofile)
   rect_element::data drb2 = { x - width / 2, y + offset, width, height };
   r2.start_element();
   r2.add_data(drb2);
-  r2.add_raw(fdefault.use("gblur10y"));
+  r2.add_filter("gblur10y");
   r2.add_style(k::b_style);
   r2.finish_element();
   obj.add_element(r2);
@@ -70,7 +70,7 @@ test_gblur(std::string ofile)
   c2.start_element();
   c2.add_data(dc2);
   c2.add_style(k::b_style);
-  c2.add_raw(f.use(filter_name));
+  c2.add_filter(filter_name);
   c2.finish_element();
   obj.add_element(c2);
 }

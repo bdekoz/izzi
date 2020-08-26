@@ -1,3 +1,16 @@
+2020-08-25  Benjamin De Kosnik  <bkoz@rizal>
+
+	* examples/compile-example.sh: Remove.
+	* scripts: New, populate.
+
+	* src/a60-svg-elements.h (element_base::add_fill): New.
+	(element_base::add_filter): New.
+	(gradient_element): New.
+	(radial_gradient): New.
+
+	* examples/radial-gradient.cc: New.
+	* examples/filter-gaussian-blur.cc: Update to use add_filter.
+
 2020-08-21  Benjamin De Kosnik  <bkoz@rizal>
 
 	* examples/filter-gaussian-blur.cc: Examples of circles with offsets.
