@@ -115,10 +115,7 @@ sized_text_r(svg_element& obj, svg::typography typo, const int sz, const string 
   text_element::data dt = { tx, ty, text, typo };
   text_element t;
   t.start_element();
-  if (deg > 0)
-    t.add_data(dt, svg::transform::rotate(deg, tx, ty));
-  else
-    t.add_data(dt);
+  t.add_data(dt, svg::transform::rotate(deg, tx, ty));
   t.finish_element();
   obj.add_element(t);
 }
@@ -133,7 +130,10 @@ radial_text_r(svg_element& obj, const typography& typo,
   typot._M_a = svg::typography::anchor::start;
   typot._M_align = svg::typography::align::left;
 
-  sized_text_r(obj, typot, typot._M_size, label, tx, ty, 360 - deg);
+  if (deg > 0)
+    sized_text_r(obj, typot, typot._M_size, label, tx, ty, 360 - deg);
+  else
+    sized_text(obj, typot, typot._M_size, label, tx, ty);
 }
 
 
