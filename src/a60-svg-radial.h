@@ -182,20 +182,6 @@ normalize_value_on_range(const size_type value, const size_type min,
 }
 
 
-double
-align_angle_to_glyph(double angled)
-{
- // Change rotation to CW instead of CCW (or anti-clockwise).
-  angled = 360 - angled;
-
-  // Rotate 90 CCW, so that the first element will be at the top
-  // vertical axis, instead of the right middle axis.
-  angled += 90;
-
-  return angled;
-}
-
-
 // Given rdenom scaling factor and SVG canvas, compute effective
 // radius value.
 inline double
@@ -221,73 +207,6 @@ get_angle(size_type pvalue, size_type pmax)
   // Normalize [0, pmax] to range [mindeg, maxdeg] and put pvalue in it.
   double d = normalize_value_on_range(pvalue, 0, pmax, mindeg, maxdeg);
   return align_angle_to_glyph(d);
-}
-
-
-/// Angle in radians.
-point_2t
-get_circumference_point(const double angler, const double r,
-			const point_2t origin)
-{
-  auto [ cx, cy ] = origin;
-  double x(cx + (r * std::cos(angler)));
-  double y(cy - (r * std::sin(angler)));
-  return std::make_tuple(x, y);
-}
-
-
-/// Angle in degrees.
-point_2t
-get_circumference_point_d(const double ad, const double r,
-			  const point_2t origin)
-{
-  double angler = (k::pi / 180.0) * ad;
-  return get_circumference_point(angler, r, origin);
-}
-
-
-void
-place_text_at_angle(svg_element& obj, const typography& typo,
-		    string label, int tx, int ty, const double deg = 0.0)
-{
-  typography typot(typo);
-  typot._M_a = svg::typography::anchor::start;
-  typot._M_align = svg::typography::align::left;
-
-  text_element::data dt = { tx, ty, label, typot };
-  text_element t;
-  t.start_element();
-
-  // IFF degrees, then rotate text.
-  if (deg > 0)
-    t.add_data(dt, svg::transform::rotate(360 - deg, tx, ty));
-  else
-    t.add_data(dt);
-
-  t.finish_element();
-  obj.add_element(t);
-}
-
-
-void
-place_ray_at_angle(svg_element& obj, const point_2t& origin,
-		   const point_2t& circump, const style& s,
-		   const string id = "")
-{
-  auto [xo, yo] = origin;
-  auto [xc, yc] = circump;
-
-  line_element::data dr = { int(xo), int(xc), int(yo), int(yc) };
-  line_element ray;
-
-  if (id.empty())
-    ray.start_element();
-  else
-    ray.start_element(id);
-  ray.add_data(dr);
-  ray.add_style(s);
-  ray.finish_element();
-  obj.add_element(ray);
 }
 
 
@@ -412,9 +331,9 @@ radiate_id_by_value(svg_element& obj, const point_2t origin,
 
   string label = make_label_for_value(pname, pvalue, get_label_spaces());
   if (rotatep)
-    place_text_at_angle(obj, typo, label, x, y, angled);
+    radial_text_r(obj, typo, label, x, y, angled);
   else
-    place_text_at_angle(obj, typo, label, x, y, 0);
+    radial_text_r(obj, typo, label, x, y, 0);
 }
 
 
@@ -499,7 +418,7 @@ splay_ids_around(svg_element& obj, const typography& typo,
 
       auto p2 = get_circumference_point_d(angled2, rprime, origin);
       auto [ x2, y2 ] = p2;
-      place_text_at_angle(obj, typo, s, x2, y2, angled2);
+      radial_text_r(obj, typo, s, x2, y2, angled2);
       angled2 += angleprimed;
     }
 }
@@ -517,7 +436,7 @@ splay_ids_after(svg_element& obj, const typography& typo,
     {
       auto p = get_circumference_point_d(angled, r + rspace, origin);
       auto [ x, y ] =  p;
-      place_text_at_angle(obj, typo, s, x, y, angled);
+      radial_text_r(obj, typo, s, x, y, angled);
       anglet -= angledelta;
     }
 }
@@ -556,7 +475,7 @@ stack_ids_at(svg_element& obj, const typography& typoo,
   for (const string& s: ids)
     {
       auto [ x2, y2 ] = get_circumference_point_d(angled, r, origin);
-      place_text_at_angle(obj, typo, s, x2, y2, angled + 90);
+      radial_text_r(obj, typo, s, x2, y2, angled + 90);
       r += rdelta;
     }
 }
@@ -578,7 +497,7 @@ append_ids_at(svg_element& obj, const typography& typo,
 	scat += ", ";
       scat += s;
     }
-  place_text_at_angle(obj, typo, scat, x, y, angled);
+  radial_text_r(obj, typo, scat, x, y, angled);
 }
 
 
@@ -597,7 +516,7 @@ radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
 
   // Consolidate label text to be "VALUE -> " with labelspaces spaces.
   string label = make_label_for_value("", pvalue, get_label_spaces());
-  place_text_at_angle(obj, typo, label, x, y, anglet);
+  radial_text_r(obj, typo, label, x, y, anglet);
 
   // Next, print out the various id's on an arc with a bigger radius.
   //splay_ids_around(obj, typo, ids, angled, origin, r + rspace, rspace);
@@ -781,7 +700,7 @@ kusama_id_by_uvalue_1(svg_element& obj, const strings& ids, const point_2t p,
   const auto& plabel = get_circumference_point_d(anglet, rprimex, p);
   auto [xlabel, ylabel] = plabel;
   string label = make_label_for_value("", v, get_label_spaces());
-  place_text_at_angle(obj, typo, label, xlabel, ylabel, anglet);
+  radial_text_r(obj, typo, label, xlabel, ylabel, anglet);
 
   // Draw ids.
 #if 0
@@ -854,7 +773,7 @@ kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
 		{
 		  typography typog(typo);
 		  typog._M_size = rr * 2 * glyphscale;
-		  place_text_at_angle(obj, typog, glyphtext, x, y,
+		  radial_text_r(obj, typog, glyphtext, x, y,
 				      angled + glyphrotate);
 		}
 
@@ -881,7 +800,7 @@ kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
       // Just print out label.
       point_2t pt = get_circumference_point_d(anglet, radius, origin);
       auto [ xt, yt] = pt;
-      place_text_at_angle(obj, typo, std::to_string(v), xt, yt, anglet);
+      radial_text_r(obj, typo, std::to_string(v), xt, yt, anglet);
     }
   else
     {

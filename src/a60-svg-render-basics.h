@@ -91,13 +91,13 @@ make_2_channel_insert(svg_element& obj, string insert1, string insert2)
 }
 
 
-/// Tile at size
+/// Text at size
 void
-sized_text(svg_element& obj, svg::typography typo, int sz, string title,
-	   int tx, int ty)
+sized_text(svg_element& obj, svg::typography typo, const int sz, const string text,
+	   const int tx, const int ty)
 {
   typo._M_size = sz;
-  text_element::data dt = { tx, ty, title, typo };
+  text_element::data dt = { tx, ty, text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt);
@@ -106,18 +106,34 @@ sized_text(svg_element& obj, svg::typography typo, int sz, string title,
 }
 
 
-/// Same, with a transformation=rotation added.
+/// Text at size, with a transformation=rotation added.
 void
-sized_text_r(svg_element& obj, svg::typography typo, int sz, string title,
-	     int tx, int ty, svg::transform, int deg)
+sized_text_r(svg_element& obj, svg::typography typo, const int sz, const string text,
+	     const int tx, const int ty, const double deg)
 {
   typo._M_size = sz;
-  text_element::data dt = { tx, ty, title, typo };
+  text_element::data dt = { tx, ty, text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt, svg::transform::rotate(deg, tx, ty));
   t.finish_element();
   obj.add_element(t);
+}
+
+
+/// Text at size, arranged around an origin of a circle with radius r.
+void
+radial_text_r(svg_element& obj, const typography& typo,
+	      string label, int tx, int ty, const double deg = 0.0)
+{
+  typography typot(typo);
+  typot._M_a = svg::typography::anchor::start;
+  typot._M_align = svg::typography::align::left;
+
+  if (deg > 0)
+    sized_text_r(obj, typot, typot._M_size, label, tx, ty, 360 - deg);
+  else
+    sized_text(obj, typot, typot._M_size, label, tx, ty);
 }
 
 
@@ -194,6 +210,64 @@ point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
 }
 
 
+double
+align_angle_to_glyph(double angled)
+{
+ // Change rotation to CW instead of CCW (or anti-clockwise).
+  angled = 360 - angled;
+
+  // Rotate 90 CCW, so that the first element will be at the top
+  // vertical axis, instead of the right middle axis.
+  angled += 90;
+
+  return angled;
+}
+
+
+/// Angle in radians.
+point_2t
+get_circumference_point(const double angler, const double r,
+			const point_2t origin)
+{
+  auto [ cx, cy ] = origin;
+  double x(cx + (r * std::cos(angler)));
+  double y(cy - (r * std::sin(angler)));
+  return std::make_tuple(x, y);
+}
+
+
+/// Angle in degrees.
+point_2t
+get_circumference_point_d(const double ad, const double r,
+			  const point_2t origin)
+{
+  double angler = (k::pi / 180.0) * ad;
+  return get_circumference_point(angler, r, origin);
+}
+
+
+void
+place_ray_at_angle(svg_element& obj, const point_2t& origin,
+		   const point_2t& circump, const style& s,
+		   const string id = "")
+{
+  auto [xo, yo] = origin;
+  auto [xc, yc] = circump;
+
+  line_element::data dr = { int(xo), int(xc), int(yo), int(yc) };
+  line_element ray;
+
+  if (id.empty())
+    ray.start_element();
+  else
+    ray.start_element(id);
+  ray.add_data(dr);
+  ray.add_style(s);
+  ray.finish_element();
+  obj.add_element(ray);
+}
+
+
 /// Make path segment between two points on a circumfrence of radius r.
 /// Points like: get_circumference_point_d(align_angle_to_glyph(0), r, origin)
 string
@@ -208,6 +282,33 @@ make_path_circular_arc(const point_2t& start, const point_2t& end, const int r)
   oss << 0 << k::space << 0 << k::space << 1 << k::space;
   oss << to_string(end) << k::space;
   return oss.str();
+}
+
+
+/// Make closed path segment between two points and the center of a circle of radius r.
+/// Points like: get_circumference_point_d(align_angle_to_glyph(0), r, origin)
+string
+make_path_demi_circle(const point_2t& start, const point_2t& end, const int r)
+{
+  // Define arc.
+  // A rx ry x-axis-rotation large-arc-flag sweep-flag x y
+  std::ostringstream oss;
+  oss << "M" << k::space << to_string(start) << k::space;
+  oss << "A" << k::space;
+  oss << std::to_string(r) << k::space << std::to_string(r) << k::space;
+  oss << 0 << k::space << 0 << k::space << 0 << k::space;
+  oss << to_string(end) << k::space;
+  return oss.str();
+}
+
+
+string
+make_path_demi_circle(const double startd, const double endd,
+		      const point_2t& origin, const int r)
+{
+  const point_2t start = get_circumference_point_d(align_angle_to_glyph(startd), r, origin);
+  const point_2t end = get_circumference_point_d(align_angle_to_glyph(endd), r, origin);
+  return make_path_demi_circle(start, end, r);
 }
 
 

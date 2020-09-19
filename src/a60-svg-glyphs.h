@@ -359,8 +359,7 @@ augment_weighed_glyph_v2(svg_element& obj, const glyph& g, ulong vmax,
       typon._M_a = svg::typography::anchor::end;
       typon._M_align = svg::typography::align::right;
       sized_text_r(obj, typon, 14, g.name,
-			 midx - radius + carto::fspacer, midy - carto::fspacer,
-			 svg::transform(), 90);
+		   midx - radius + carto::fspacer, midy - carto::fspacer, 90);
 
       // Percentage
       svg::typography typog = typo;
@@ -370,8 +369,7 @@ augment_weighed_glyph_v2(svg_element& obj, const glyph& g, ulong vmax,
       std::ostringstream outs;
       outs << perct << '%';
       sized_text_r(obj, typog, 28, outs.str(),
-			 midx - radius + carto::fspacer, midy + carto::fspacer,
-			 svg::transform(), 90);
+		   midx - radius + carto::fspacer, midy + carto::fspacer, 90);
     }
   else
     {
@@ -534,8 +532,7 @@ augment_torrent_glyph_v2(svg_element& obj, svg::typography& typo,
   point_2d_to_rect(obj, tx, ty, styl, 14, 14);
 
 
-  sized_text_r(obj, typotxtr, pt_to_px(typesz), g.name, tx, ty - 10,
-		     svg::transform(), 90);
+  sized_text_r(obj, typotxtr, pt_to_px(typesz), g.name, tx, ty - 10, 90);
 
   // Use tspan to make horizontal divisions.
   ty += 12;
@@ -635,8 +632,7 @@ augment_torrent_glyph_v4v(svg_element& obj, svg::typography& typo,
   std::ostringstream osst;
   osst << "t" << std::setfill('0') << std::setw(3) << g.tid;
 
-  sized_text_r(obj, typotxtr, pt_to_px(14), osst.str(), tx + 6, ty,
-		     svg::transform(), 90);
+  sized_text_r(obj, typotxtr, pt_to_px(14), osst.str(), tx + 6, ty, 90);
 
   // Rectangle of color.
   ty += 10;
@@ -645,8 +641,7 @@ augment_torrent_glyph_v4v(svg_element& obj, svg::typography& typo,
   // Torrent name.
   ty += 34;
   tx += 13;
-  sized_text_r(obj, typotxt, pt_to_px(12), g.name, tx, ty,
-		     svg::transform(), 90);
+  sized_text_r(obj, typotxt, pt_to_px(12), g.name, tx, ty, 90);
 
   // Torrent infohash and access private/public. (Append '-' if private.)
   tx -= 13;
@@ -657,8 +652,7 @@ augment_torrent_glyph_v4v(svg_element& obj, svg::typography& typo,
       ih.push_back('-');
     }
 
-  sized_text_r(obj, typobtih, pt_to_px(10), ih, tx, ty,
-		     svg::transform(), 90);
+  sized_text_r(obj, typobtih, pt_to_px(10), ih, tx, ty, 90);
 
   // Numbers, if any.
   augment_torrent_glyph_numbers(obj, typobtih, g, tx, ty, m);

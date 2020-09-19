@@ -111,8 +111,7 @@ augment_collection_titles_2(svg_element& obj, svg::typography typo,
       // Small title is media object.
       typog._M_a = svg::typography::anchor::end;
       typog._M_align = svg::typography::align::right;
-      sized_text_r(obj, typog, pt_to_px(14), motitle,
-			 fmargin, height - (2 * fmargin), svg::transform(), 90);
+      sized_text_r(obj, typog, pt_to_px(14), motitle, fmargin, height - (2 * fmargin), 90);
 
     }
 
@@ -190,8 +189,7 @@ augment_collection_titles_3(svg_element& obj, svg::typography typo,
   // Media title.
   svg::typography typog = typotxt;
   typog._M_style._M_fill_color = svg::color::gray25;
-  sized_text_r(obj, typog, pt_to_px(64), cll.media_object_name(),
-		     fmargin, fmargin, svg::transform(), 90);
+  sized_text_r(obj, typog, pt_to_px(64), cll.media_object_name(), fmargin, fmargin, 90);
 
   // Summary numbers.
   augment_sum_glyphs_2(obj, typo, glys, m, width - fmargin,
@@ -232,14 +230,12 @@ augment_collection_titles_4(svg_element& obj, svg::typography typo,
   typog._M_style._M_stroke_size = 0.5;
   typog._M_style._M_stroke_opacity = 1.0;
   typog._M_style._M_fill_opacity = 0.0;
-  sized_text_r(obj, typog, pt_to_px(54), cll.media_object_name(),
-		     fmargin + 36, height/2, svg::transform(), 90);
+  sized_text_r(obj, typog, pt_to_px(54), cll.media_object_name(), fmargin + 36, height/2, 90);
 
   // Visualization title.
   svg::typography typov = typotxt;
   typov._M_w = svg::typography::weight::xbold;
-  sized_text_r(obj, typov, pt_to_px(30), title, fmargin, height/2,
-		     svg::transform(), 90);
+  sized_text_r(obj, typov, pt_to_px(30), title, fmargin, height/2, 90);
 }
 
 
@@ -266,8 +262,7 @@ augment_collection_titles_5(svg_element& obj, svg::typography typo,
   typoo._M_align = svg::typography::align::right;
 
   sized_text_r(obj, typoo, pt_to_px(16), titlestr,
-		     fmargin + xoffs, height - fmargin - carto::fspacer,
-		     svg::transform(), 90);
+	       fmargin + xoffs, height - fmargin - carto::fspacer, 90);
 }
 
 
@@ -291,12 +286,11 @@ augment_collection_titles_6(svg_element& obj, const cached_collection& wcll)
 
   // Media title.
   sized_text_r(obj, typo, pt_to_px(30), wcll.media_object_name(),
-		     fmargin, height - fmargin, svg::transform(), 90);
+	       fmargin, height - fmargin, 90);
 
   // Datestamp.
   sized_text_r(obj, typo, pt_to_px(30), wcll.datestamp,
-		     width - fmargin - pt_to_px(30)/2,
-		     height - fmargin, svg::transform(), 90);
+	       width - fmargin - pt_to_px(30)/2, height - fmargin, 90);
 }
 
 
@@ -421,26 +415,22 @@ augment_weighed_demititle(svg_element& obj, cached_collection& wcll,
   // typotxt._M_style._M_stroke_size = 2.0;
 
   // Title.
-  sized_text_r(obj, typo, pt_to_px(12), d, fmargin, height - height/4,
-	       svg::transform(), 90);
+  sized_text_r(obj, typo, pt_to_px(12), d, fmargin, height - height/4, 90);
 
   // Name, Slice Name, Episode Name
   typotxt._M_w = svg::typography::weight::medium;
-  sized_text_r(obj, typotxt, pt_to_px(10), wcll.media_object_name(),
-	       fmargin, height/2, svg::transform(), 90);
+  sized_text_r(obj, typotxt, pt_to_px(10), wcll.media_object_name(), fmargin, height/2, 90);
 
   // TC size
   glyphs g2 = cached_glyphs(wcll);
   string tcsize = collection_size_and_partition(wcll, g2);
-  sized_text_r(obj, typotxt, pt_to_px(9), tcsize,
-	       fmargin, height/4, svg::transform(), 90);
+  sized_text_r(obj, typotxt, pt_to_px(9), tcsize, fmargin, height/4, 90);
 
   // Date
   svg::typography typod = typo;
   typod._M_a = svg::typography::anchor::start;
   typod._M_align = svg::typography::align::left;
-  sized_text_r(obj, typod, pt_to_px(9), wcll.datestamp,
-	       fmargin, fmargin, svg::transform(), 90);
+  sized_text_r(obj, typod, pt_to_px(9), wcll.datestamp, fmargin, fmargin, 90);
 
   augment_corner_logo(obj, wcll);
 }
@@ -477,19 +467,16 @@ augment_weighed_demititle_corner(svg_element& obj, cached_collection& wcll,
   // Title.
   const auto yoff = height - fmargin - y - 12;
   typo._M_w = svg::typography::weight::medium;
-  sized_text_r(obj, typo, pt_to_px(8), d,
-	       xcenter + 12, yoff, svg::transform(), -90);
+  sized_text_r(obj, typo, pt_to_px(8), d, xcenter + 12, yoff, -90);
 
   // Name, Slice Name, Episode Name
   typotxt._M_w = svg::typography::weight::bold;
-  sized_text_r(obj, typotxt, pt_to_px(10), wcll.media_object_name(),
-	       xcenter, yoff, svg::transform(), -90);
+  sized_text_r(obj, typotxt, pt_to_px(10), wcll.media_object_name(), xcenter, yoff, -90);
 
   // Date
   svg::typography typod = typo;
   typod._M_w = svg::typography::weight::light;
-  sized_text_r(obj, typod, pt_to_px(8), wcll.datestamp,
-	       xcenter - 12, yoff, svg::transform(), -90);
+  sized_text_r(obj, typod, pt_to_px(8), wcll.datestamp, xcenter - 12, yoff, -90);
 }
 
 } // namespace a60
