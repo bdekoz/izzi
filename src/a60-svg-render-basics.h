@@ -271,7 +271,8 @@ place_ray_at_angle(svg_element& obj, const point_2t& origin,
 /// Make path segment between two points on a circumfrence of radius r.
 /// Points like: get_circumference_point_d(align_angle_to_glyph(0), r, origin)
 string
-make_path_circular_arc(const point_2t& start, const point_2t& end, const int r)
+make_path_arc_circumference(const point_2t& start, const point_2t& end,
+			    const int r)
 {
   // Define arc.
   // A rx ry x-axis-rotation large-arc-flag sweep-flag x y
@@ -288,30 +289,74 @@ make_path_circular_arc(const point_2t& start, const point_2t& end, const int r)
 /// Make closed path between two points and the center of a circle of radius r.
 /// Points like: get_circumference_point_d(align_angle_to_glyph(0), r, origin)
 string
-make_path_demi_circle(const point_2t& start, const point_2t& end, const int r)
+make_path_arc(const point_2t& origin, const point_2t& start,
+	      const point_2t& end, const int r)
 {
-  // Define arc.
+  // Define path as starting at origin, line to circumference point start,
+  // arc to circumfrence point end, line back to origin.
   // A rx ry x-axis-rotation large-arc-flag sweep-flag x y
   std::ostringstream oss;
-  oss << "M" << k::space << to_string(start) << k::space;
+  oss << "M" << k::space << to_string(origin) << k::space;
+  oss << "L" << k::space << to_string(start) << k::space;
   oss << "A" << k::space;
   oss << std::to_string(r) << k::space << std::to_string(r) << k::space;
   oss << 0 << k::space << 0 << k::space << 0 << k::space;
   oss << to_string(end) << k::space;
+  oss << "L" << k::space << to_string(origin) << k::space;
   return oss.str();
 }
 
 
 string
-make_path_demi_circle(const double startd, const double endd,
-		      const point_2t& origin, const int r)
+make_path_center_mark(const point_2t& origin, const int len, const int width)
+{
+  // Define path as starting at origin, move half width up and to left then
+  // move around as if making a plus sign.
+  const auto [ xo, yo ] = origin;
+
+  // Move to top left of origin, start here.
+  const double whalf(width / 2);
+  const int lenw = len - whalf;
+  const auto x = xo - whalf;
+  const auto y = yo - whalf;
+
+  std::ostringstream oss;
+  oss << "M" << k::space << x << k::comma << y << k::space;
+
+  // left
+  oss << "H" << k::space << x - lenw << k::space;
+  oss << "V" << k::space << y + width << k::space;
+  oss << "H" << k::space << x << k::space;
+
+  // bottom
+  oss << "V" << k::space << y + lenw + width << k::space;
+  oss << "H" << k::space << x + width << k::space;
+  oss << "V" << k::space << y + width << k::space; // bottom part
+
+  // right
+  oss << "H" << k::space << x + lenw + width << k::space;
+  oss << "V" << k::space << y << k::space;
+  oss << "H" << k::space << x + width << k::space;
+
+  // top
+  oss << "V" << k::space << y - lenw << k::space;
+  oss << "H" << k::space << x << k::space;
+  oss << "V" << k::space << y << k::space;
+
+  return oss.str();
+}
+
+
+string
+make_path_arc(const point_2t& origin, const double startd, const double endd,
+	      const int r)
 {
   auto alignstartd = align_angle_to_glyph(startd);
   const point_2t start = get_circumference_point_d(alignstartd, r, origin);
 
   auto alignendd = align_angle_to_glyph(endd);
   const point_2t end = get_circumference_point_d(alignendd, r, origin);
-  return make_path_demi_circle(start, end, r);
+  return make_path_arc(origin, start, end, r);
 }
 
 

@@ -1,9 +1,14 @@
+2020-09-20  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-render-basics.h: Fixes.
+	* examples/path-demi-circle-center-mark.cc: New.
+
 2020-09-18  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-render-basics.h: Fixes.
 	* src/a60-svg-sequences.h: Only matte/composited  sequences.
 	* examples/sequences.cc: New.
-	
+
 	* scripts/compile-source.sh: Add warning flags.
 
 2020-09-18  Benjamin De Kosnik  <bkoz@rizal>
