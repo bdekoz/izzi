@@ -93,8 +93,8 @@ make_2_channel_insert(svg_element& obj, string insert1, string insert2)
 
 /// Text at size
 void
-sized_text(svg_element& obj, svg::typography typo, const int sz, const string text,
-	   const int tx, const int ty)
+sized_text(svg_element& obj, svg::typography typo, const int sz,
+	   const string text, const int tx, const int ty)
 {
   typo._M_size = sz;
   text_element::data dt = { tx, ty, text, typo };
@@ -108,8 +108,8 @@ sized_text(svg_element& obj, svg::typography typo, const int sz, const string te
 
 /// Text at size, with a transformation=rotation added.
 void
-sized_text_r(svg_element& obj, svg::typography typo, const int sz, const string text,
-	     const int tx, const int ty, const double deg)
+sized_text_r(svg_element& obj, svg::typography typo, const int sz,
+	     const string text, const int tx, const int ty, const double deg)
 {
   typo._M_size = sz;
   text_element::data dt = { tx, ty, text, typo };
@@ -124,16 +124,16 @@ sized_text_r(svg_element& obj, svg::typography typo, const int sz, const string 
 /// Text at size, arranged around an origin of a circle with radius r.
 void
 radial_text_r(svg_element& obj, const typography& typo,
-	      string label, int tx, int ty, const double deg = 0.0)
+	      string text, int tx, int ty, const double deg = 0.0)
 {
   typography typot(typo);
   typot._M_a = svg::typography::anchor::start;
   typot._M_align = svg::typography::align::left;
 
   if (deg > 0)
-    sized_text_r(obj, typot, typot._M_size, label, tx, ty, 360 - deg);
+    sized_text_r(obj, typot, typot._M_size, text, tx, ty, 360 - deg);
   else
-    sized_text(obj, typot, typot._M_size, label, tx, ty);
+    sized_text(obj, typot, typot._M_size, text, tx, ty);
 }
 
 
@@ -285,7 +285,7 @@ make_path_circular_arc(const point_2t& start, const point_2t& end, const int r)
 }
 
 
-/// Make closed path segment between two points and the center of a circle of radius r.
+/// Make closed path between two points and the center of a circle of radius r.
 /// Points like: get_circumference_point_d(align_angle_to_glyph(0), r, origin)
 string
 make_path_demi_circle(const point_2t& start, const point_2t& end, const int r)
@@ -306,8 +306,11 @@ string
 make_path_demi_circle(const double startd, const double endd,
 		      const point_2t& origin, const int r)
 {
-  const point_2t start = get_circumference_point_d(align_angle_to_glyph(startd), r, origin);
-  const point_2t end = get_circumference_point_d(align_angle_to_glyph(endd), r, origin);
+  auto alignstartd = align_angle_to_glyph(startd);
+  const point_2t start = get_circumference_point_d(alignstartd, r, origin);
+
+  auto alignendd = align_angle_to_glyph(endd);
+  const point_2t end = get_circumference_point_d(alignendd, r, origin);
   return make_path_demi_circle(start, end, r);
 }
 

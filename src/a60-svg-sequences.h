@@ -1,12 +1,20 @@
-/// -*- mode: C++ -*-
-/// Copyright (C) 2014-2017 Benjamin De Kosnik <b.dekosnik@gmail.com>
-/// 2014-10-25
+// -*- mode: C++ -*-
 
+// Copyright (C) 2014-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
-#ifndef MiL_SVG_INSCRIBE_H
-#define MiL_SVG_INSCRIBE_H 1
+// This file is part of the alpha60-MiL SVG library.  This library is
+// free software; you can redistribute it and/or modify it under the
+// terms of the GNU General Public License as published by the Free
+// Software Foundation; either version 3, or (at your option) any
+// later version.
 
-#include "a60-svg.h"
+// This library is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// General Public License for more details.
+
+#ifndef a60_SVG_SEQUENCES_H
+#define a60_SVG_SEQUENCES_H 1
 
 #include <sstream> //stringstream
 #include <fstream>
@@ -16,29 +24,31 @@
 #include <random>
 #include <unistd.h>
 
+#include "a60-svg.h"
 
-using namespace svg;
 
+namespace svg {
 
-// fade rectangle fill from transparent to color, of duration sec, given fps
-// starts on white (klr), fades to klr color in sec
-// can use with image behind
-string_vector
-fade_to_color_vector(const Rect& r, const colore klr,
-		     size_t fps = 30, double sec = 1.0, double maxopac = 1.0)
+/**
+   Fade rectangle fill from transparent to color, of duration sec, given fps
+   starts on white (klr), fades to klr color in sec
+   can use with image behind
+*/
+strings
+fade_to_color_seq(const rect_element::data& dr, const color klr,
+		  size_t fps = 30, double sec = 1.0, double maxopac = 1.0)
 {
   // Calc number of frames needed.
   size_t framesn = fps * sec;
   double step = maxopac / framesn;
 
   // Start rectangle as transparent, fade to color.
-  string_vector ret;
+  strings ret;
   style sty = { klr, 0.0, klr, 0.0, 0 };
   for (size_t i = 0; i < framesn; ++i)
     {
       // Foreground rectangle.
       rect_element rsvg;
-      rect_element::data dr = { r.x, r.y, r.width, r.height };
 
       double opacity =  i * step;
       sty._M_fill_opacity = opacity;
@@ -54,46 +64,26 @@ fade_to_color_vector(const Rect& r, const colore klr,
 }
 
 
-string_vector
-fade_from_color_vector(const Rect& r, const colore klr,
-		       size_t fps = 30, double sec = 1.0, double minopac = 0)
+/// Start rectangle as transparent, fade to color.
+strings
+fade_from_color_seq(const rect_element::data& dr, const color klr,
+		    size_t fps = 30, double sec = 1.0, double minopac = 0)
 {
-  // Calc number of frames needed.
-  size_t framesn = fps * sec;
-  double step = (1.0 - minopac)/ framesn;
-
-  // Start rectangle as transparent, fade to color.
-  string_vector ret;
-  style sty = { klr, 0.0, klr, 0.0, 0 };
-  for (size_t i = 0; i < framesn; ++i)
-    {
-      // Foreground rectangle.
-      rect_element rsvg;
-      rect_element::data dr = { r.x, r.y, r.width, r.height };
-
-      double opacity =  i * step;
-      sty._M_fill_opacity = 1.0 - opacity;
-
-      rsvg.start_element();
-      rsvg.add_data(dr);
-      rsvg.add_style(sty);
-      rsvg.finish_element();
-      ret.push_back(rsvg.str());
-    }
-
+  strings ret = fade_to_color_seq(dr, klr, fps, sec, minopac);
+  std::reverse(ret.begin(), ret.end());
   return ret;
 }
 
 
-// blink sequence of duration sec, given fps
-// starts on background (backgf)
-// at duration twhen
-// blinks specific frame (blinkf) times (nblinks) for seconds (blinksec)
-// can use with image behind
-string_vector
-blink_to_color_vector(const Rect& r, const colore klr,
-		      size_t fps, double sec,
-		      double twhen, size_t nblinks, double blinksec)
+/// blink sequence of duration sec, given fps
+/// starts on background (backgf)
+/// at duration twhen
+/// blinks specific frame (blinkf) times (nblinks) for seconds (blinksec)
+/// can use with image behind
+strings
+blink_to_color_seq(const rect_element::data& dr, const color klr,
+		   size_t fps, double sec,
+		   double twhen, size_t nblinks, double blinksec)
 {
   // Calc number of frames needed.
   size_t framesn = fps * sec;
@@ -104,10 +94,9 @@ blink_to_color_vector(const Rect& r, const colore klr,
   if (startn + blinkn > framesn)
     throw std::logic_error("blink:: desired frames exceed total duration");
 
-  string_vector ret;
+  strings ret;
   double opaque(1.0);
   double transparent(0.0);
-  rect_element::data dr = { r.x, r.y, r.width, r.height };
   style sty = { klr, 0.0, klr, 0.0, 0 };
 
   // Generate intro.
@@ -161,17 +150,17 @@ blink_to_color_vector(const Rect& r, const colore klr,
 }
 
 
-// wink sequence of duration sec, given fps
-// starts on background (backgf)
-// at duration twhen
-// winks specific rectangle (r) this much (maxclose) for seconds (winksec)
-// can use with image behind
-string_vector
-wink_to_color_vector(const Rect& r, const colore klr,
-		     size_t fps, double sec,
-		     double twhen, double maxclose, double winksec)
+/// wink sequence of duration sec, given fps
+/// starts on background (backgf)
+/// at duration twhen
+/// winks specific rectangle (r) this much (maxclose) for seconds (winksec)
+/// can use with image behind
+strings
+wink_to_color_seq(const rect_element::data& dr, const color klr,
+		  size_t fps, double sec,
+		  double twhen, double maxclose, double winksec)
 {
-  const int rows = r.height;
+  const int rows = dr._M_height;
 
   // Calc number of frames needed.
   size_t framesn = fps * sec;
@@ -183,12 +172,10 @@ wink_to_color_vector(const Rect& r, const colore klr,
   if (startn + winkframesn >= framesn)
     throw std::logic_error("wink:: desired frames exceed total duration");
 
-  string_vector ret;
+  strings ret;
   double opaque(1.0);
   double transparent(0.0);
   style sty = { klr, 0.0, klr, 0.0, 0 };
-
-  rect_element::data dr = { r.x, r.y, r.width, r.height };
 
   // Generate intro.
   for (size_t i = 0; i < startn; ++i)
@@ -203,10 +190,15 @@ wink_to_color_vector(const Rect& r, const colore klr,
     }
 
   // Make two "eyelid" rectangles, one upper and the other lower.
-  double ymid = r.height / 2;
+  double ymid = dr._M_height / 2;
   double ymax = ymid * maxclose;
-  rect_element::data dhi = { r.x, r.y, r.width, 0 }; // grow down
-  rect_element::data dlo = { r.x, r.y + rows, r.width, 0 }; // grow up
+
+  // grow down
+  rect_element::data dhi = { dr._M_x_origin, dr._M_y_origin, dr._M_width, 0 };
+
+  // grow up
+  rect_element::data dlo = { dr._M_x_origin, dr._M_y_origin + rows,
+			     dr._M_width, 0 };
 
   // Wink.
   // Step is ammount to move from eyes open to closed and back again.
@@ -228,7 +220,7 @@ wink_to_color_vector(const Rect& r, const colore klr,
 
       rect_element r2;
       r2.start_element();
-      dlo._M_y_origin = r.y + rows - offsetn;
+      dlo._M_y_origin = dr._M_y_origin + rows - offsetn;
       dlo._M_height = offsetn;
       r2.add_data(dlo);
       r2.add_style(sty);
@@ -253,7 +245,7 @@ wink_to_color_vector(const Rect& r, const colore klr,
 
       rect_element r2;
       r2.start_element();
-      dlo._M_y_origin = r.y + rows - offsetn;
+      dlo._M_y_origin = dr._M_y_origin + rows - offsetn;
       dlo._M_height = offsetn;
       r2.add_data(dlo);
       r2.add_style(sty);
@@ -278,13 +270,12 @@ wink_to_color_vector(const Rect& r, const colore klr,
 }
 
 
-// Simulated vertical roll, with fades.
-// r == frame size
-string_vector
-vertical_sync_roll_vector(const Rect& rin, const colore klr,
-			  size_t fps = 30, double step = 10,
-			  int blursz = 200, int solidsz = 133,
-			  double opac = 0.6)
+/// Simulated vertical roll, with fades.
+/// r == frame size
+strings
+vertical_sync_roll_seq(const rect_element::data& drin, const color klr,
+		       size_t /*fps = 30*/, double step = 10,
+		       int blursz = 200, int solidsz = 133, double opac = 0.6)
 {
   // Composition of two rectangular elements:
   // (background) 60 pixel wide rectangular blur 10 pixels, 60% opacity
@@ -296,32 +287,32 @@ vertical_sync_roll_vector(const Rect& rin, const colore klr,
   const double vsolidsz = solidsz / 2;
 
   // One full sweep is half-bottom to offscreen top.
-  double x = (rin.height + (2 * blursz) + (3 * blurr)) / step;
+  double x = (drin._M_height + (2 * blursz) + (3 * blurr)) / step;
   size_t framesn = static_cast<size_t>(x);
 
   style sty = { klr, 1.0, klr, 0.0, 0 };
 
-  // Rectangles start at bottom off-screen and sweep up.
+  // rect_elementangles start at bottom off-screen and sweep up.
   // SVG rect area is rect 00 top left
   // SVG rect is drawn down and left from starting position.
 
   // Blur rectangles. The SVG gaussian blur gives a hard edge on the
   // top corner. So, to have an even fade, double it and center under
   // the solid rectangle.
-  Rect rblurb(rin);
-  rblurb.y = rin.y + rin.height;
-  rblurb.height = blursz;
+  rect_element::data drblurb(drin);
+  drblurb._M_y_origin = drin._M_y_origin + drin._M_height;
+  drblurb._M_height = blursz;
 
-  Rect rblurt(rin);
-  rblurt.y = rin.y + rin.height - blursz;
-  rblurt.height = blursz;
+  rect_element::data drblurt(drin);
+  drblurt._M_y_origin = drin._M_y_origin + drin._M_height - blursz;
+  drblurt._M_height = blursz;
 
   // Solid rectangle.
-  Rect rs(rin);
-  rs.y = rin.y + rin.height - vsolidsz;
-  rs.height = solidsz;
+  rect_element::data drs(drin);
+  drs._M_y_origin = drin._M_y_origin + drin._M_height - vsolidsz;
+  drs._M_height = solidsz;
 
-  string_vector ret;
+  strings ret;
   for (size_t i = 0; i < framesn; ++i)
     {
       double stepn = i * step;
@@ -330,22 +321,20 @@ vertical_sync_roll_vector(const Rect& rin, const colore klr,
       sty._M_fill_opacity = opac;
 
       rect_element rsvg1;
-      size_type yblurb = static_cast<int>(rblurb.y - stepn);
-      rect_element::data drb1 = { rblurb.x, yblurb, rblurb.width, rblurb.height };
+      size_type yblurb = static_cast<int>(drblurb._M_y_origin - stepn);
       rsvg1.start_element();
-      rsvg1.add_data(drb1);
+      rsvg1.add_data(drblurb);
       rsvg1.add_filter("20y");
       rsvg1.add_style(sty);
       rsvg1.finish_element();
 
       rect_element rsvg3;
-      size_type yblurt = static_cast<int>(rblurt.y - stepn);
-      rect_element::data drb2 = { rblurt.x, yblurt, rblurt.width, rblurt.height };
+      // size_type yblurt = static_cast<int>(drblurt._M_y_origin - stepn);
       rsvg3.start_element();
-      rsvg3.add_data(drb2);
+      rsvg3.add_data(drblurt);
       rsvg3.add_filter("20y");
 
-      ostringstream ostrt;
+      std::ostringstream ostrt;
       ostrt << "rotate(180, 960, " << yblurb - vblursz << ")";
       rsvg3.add_transform(ostrt.str());
       rsvg3.add_style(sty);
@@ -356,10 +345,9 @@ vertical_sync_roll_vector(const Rect& rin, const colore klr,
       // Foreground rectangle.
       sty._M_fill_opacity = opac + 0.20;
       rect_element rsvgfg;
-      size_type y = static_cast<int>(rs.y - stepn);
-      rect_element::data dr = { rs.x, y, rs.width, rs.height };
+      // size_type y = static_cast<int>(drs._M_y_origin - stepn);
       rsvgfg.start_element();
-      rsvgfg.add_data(dr);
+      rsvgfg.add_data(drs);
       rsvgfg.add_style(sty);
       rsvgfg.finish_element();
 
@@ -370,12 +358,12 @@ vertical_sync_roll_vector(const Rect& rin, const colore klr,
 }
 
 
-// Randomly create grid of [maxwidth] x [maxheight] grid, and fill with dots.
+/// Randomly create grid of [maxwidth] x [maxheight] grid, and fill with dots.
 string
-dot_grid_vector(const Rect& rin, const colore klr,
-		const int radius = 80,
-		const int maxwidth = 8, const int maxheight = 4,
-		const int xstart = 40, const int ystart = 100)
+dot_grid_seq(const rect_element::data& drin, const color klr,
+	     const int radius = 80,
+	     const int maxwidth = 8, const int maxheight = 4,
+	     const int xstart = 40, const int ystart = 100)
 {
   // 1920x1080 landscape baselines.
   // 8 wide, 4 high
@@ -391,7 +379,7 @@ dot_grid_vector(const Rect& rin, const colore klr,
   // Start at bottom off-screen and go up.
   // These should all be arguments if this were to be parameterized.
   size_type negspace = 2 * radius * 1.5;
-  size_type yinit = rin.height - radius - ystart;
+  size_type yinit = drin._M_height - radius - ystart;
 
   // style sty = { klr, 1.0, klr, 0.0, 0 };
   style sty = { klr, .9, klr, 0.0, 0 };
@@ -421,7 +409,7 @@ dot_grid_vector(const Rect& rin, const colore klr,
 }
 
 
-/*
+/**
   Simulated optical sound dots, or film processing punches,
   an experimental film stylistic.
 
@@ -451,37 +439,33 @@ dot_grid_vector(const Rect& rin, const colore klr,
 
   r == frame size
 */
-string_vector
-optical_sound_dots_vector(const Rect& rin, const colore klr,
-			  size_t fps = 30, double sec = 1.0,
-			  const int radius = 80,
-			  const int maxw = 8, const int maxh = 4,
-			  const int xstart = 40, const int ystart = 100)
+strings
+optical_sound_dots_seq(const rect_element::data& drin, const color klr,
+		       size_t fps = 30, double sec = 1.0,
+		       const int radius = 80,
+		       const int maxw = 8, const int maxh = 4,
+		       const int xstart = 40, const int ystart = 100)
 {
-  string_vector ret;
+  strings ret;
   size_t framesn = fps * sec;   // Calc number of frames needed.
   size_t step_size = 4 + 17 + 4;
   for (size_t i = 1; i + step_size < framesn; i += step_size)
     {
-      string dotpattern1 = dot_grid_vector(rin, klr, radius, maxw, maxh,
-					   xstart, ystart);
+      string dotpattern1 = dot_grid_seq(drin, klr, radius, maxw, maxh,
+					xstart, ystart);
       ret.push_back(dotpattern1);
-      ret.push_back(dotpattern1);
-      string dotpattern2 = dot_grid_vector(rin, klr, radius, maxw, maxh,
-					   xstart, ystart);
-      ret.push_back(dotpattern2);
+      string dotpattern2 = dot_grid_seq(drin, klr, radius, maxw, maxh,
+					xstart, ystart);
       ret.push_back(dotpattern2);
 
       string empty;
       ret.insert(ret.end(), 17, empty);
 
-      string dotpattern3 = dot_grid_vector(rin, klr, radius, maxw, maxh,
-					   xstart, ystart);
+      string dotpattern3 = dot_grid_seq(drin, klr, radius, maxw, maxh,
+					xstart, ystart);
       ret.push_back(dotpattern3);
-      ret.push_back(dotpattern3);
-      string dotpattern4 = dot_grid_vector(rin, klr, radius, maxw, maxh,
-					   xstart, ystart);
-      ret.push_back(dotpattern4);
+      string dotpattern4 = dot_grid_seq(drin, klr, radius, maxw, maxh,
+					xstart, ystart);
       ret.push_back(dotpattern4);
     }
 
@@ -489,1062 +473,43 @@ optical_sound_dots_vector(const Rect& rin, const colore klr,
 }
 
 
-string
-matte_rectangles_vector(const Rect& r1, const Rect& r2,
-			const colore klr, double opac = 1.0)
+/// 1 channel
+/// start with image, background color is klr
+/// each "frame" == string in returned strings has an image and a background
+strings
+swipe_left_seq(const rect_element::data& drin, const string imgf,
+	       const color klr = color::white, size_t fps = 30, double sec = 9)
 {
-  string ret;
-  style sty = { klr, opac, klr, 0.0, 0 };
-
-  // Foreground rectangle.
-  rect_element rsvg1;
-  rect_element::data dr1 = { r1.x, r1.y, r1.width, r1.height };
-  rsvg1.start_element();
-  rsvg1.add_data(dr1);
-  rsvg1.add_style(sty);
-  rsvg1.finish_element();
-
-  rect_element rsvg2;
-  rect_element::data dr2 = { r2.x, r2.y, r2.width, r2.height };
-  rsvg2.start_element();
-  rsvg2.add_data(dr2);
-  rsvg2.add_style(sty);
-  rsvg2.finish_element();
-
-  return rsvg1.str() + rsvg2.str();
-}
-
-
-
-// 2 channel
-// Only vector, color band roll
-void
-object_style_swipe_all_left_2_channel()
-{
-  using namespace boost::filesystem;
-
-  string prefix("/home/bkoz/src/MiL.asama-loops-2/images/landscape/");
-  string dir("images.composited.1080p.l/");
-  colore kolor = colore::asamapink;
-  string cprefix(prefix + dir + "pink/");
-  string_vector input_files = populate_known_good(cprefix);
-
-  // Output/Augment.
-  const size_t nwidth(5);
-  size_t fps = 30;
-
   // Watch for horizontal tearing, tricky.
-  //  double sec = 5; // swipesec implies 384 pix/sec landscape
-  //  double sec = 8; // swipesec implies 240 pix/sec landscape
-  //  double sec = 9; // swipesec implies ~640 pix/sec landscape ie 21 pix/frame
-  double sec = 16; // swipesec implies ~360 pix/sec landscape ie 12 pix/frame
-  size_t framesn = fps * sec;
+  // double sec = 5; // swipesec implies 384 pix/sec landscape
+  // double sec = 8; // swipesec implies 240 pix/sec landscape
+  // double sec = 9; // swipesec implies ~640 pix/sec landscape ie 21 pix/frame
+  const style styl = { klr, 1.0, klr, 0.0, 0 };
+  const size_t framesn = fps * sec;
+  const auto width = drin._M_width;
+  const auto offset(width / framesn);
 
-  const string base("gen-odtct");
-  ostringstream ostr;
-  ostr << get_output_directory() << base;
-  string outprefix(ostr.str());
-
-  // Assume 2 channel
-# if 0
-  // Portrait
-  int cols = 1080;
-  int rows = 1920;
-#else
-  // Landscape
-  int cols = 1920;
-  int rows = 1080;
-#endif
-  Rect r = { 0, 0, 2 * cols, rows };
-
-  int totalhsz = 3 * cols;
-  double stepsz = totalhsz / framesn;
-  size_t n = 0; // total count
-
-  for (size_t j = 0; j < input_files.size(); ++j)
+  strings ret;
+  for (size_t i = 0; i < framesn; ++i)
     {
-      string infile(input_files[j]);
-      boost::filesystem::path pinput(infile);
-      string mangle(pinput.stem().string());
-
-      ostr.str("");
-      ostr << svg::k::space << mangle;
-      string outsuffixmn(ostr.str());
-
-      // Swipe each image.
-      for (size_t jj = 0; jj < framesn; ++jj)
-	{
-	  ostr.str("");
-	  ostr << svg::k::space << setw(nwidth) << setfill('0') << n;
-	  string outbasei(outprefix + ostr.str() + outsuffixmn);
-	  ++n;
-
-	  // SVG object.
-	  svg_element obj = make_svg_2_channel(cols, rows, outbasei);
-
-	  rect_element backg;
-	  rect_element::data rbackg = { r.x, r.y, r.width, r.height };
-	  style rsty = { kolor, 1.0, colore::white, 0.0, 0 };
-	  backg.start_element();
-	  backg.add_data(rbackg);
-	  backg.add_style(rsty);
-	  backg.finish_element();
-	  obj.add_element(backg);
-
-	  // Image is rightmost, and higest so as to ride over color.
-	  image_element i;
-	  int xoff = 2 * cols - ( jj  * stepsz);
-	  image_element::data di = { infile, xoff, 0, cols, rows };
-	  i.start_element();
-	  i.add_data(di);
-	  i.finish_element();
-	  obj.add_element(i);
-	}
-    }
-}
-
-
-// 2 channel
-// Only vector, color band roll
-void
-object_style_blink_2_channel()
-{
-  using namespace boost::filesystem;
-
-  string dir("images.composited.1080p.l/");
-  string prefix("/home/bkoz/src/MiL.asama-loops-2/images/landscape/" + dir);
-  string colorf("blue");
-  string positivef = prefix + "asama-oo-ee-oo-" + colorf + "-0-flush.png";
-  string testf = prefix + "asama-oo-ee-oo-" + colorf + "-0-flush-flip.png";
-  boost::filesystem::path ppos(positivef);
-  boost::filesystem::path ptest(testf);
-
-  // Output/Augment.
-  const size_t nwidth(5);
-  size_t fps = 30;
-
-  const string base("gen-odtct");
-  ostringstream ostr;
-  ostr << get_output_directory() << base;
-  string outprefix(ostr.str());
-
-  string mangle("asama-oo-ee-oo-" + colorf + "-f");
-  ostr.str("");
-  ostr << svg::k::space << mangle;
-  string outsuffixmn(ostr.str());
-
-  // Assume 2 channel
-# if 0
-  // Portrait
-  int cols = 1080;
-  int rows = 1920;
-#else
-  // Landscape
-  int cols = 1920;
-  int rows = 1080;
-#endif
-  Rect r = { 0, 0, 2 * cols, rows };
-  string_vector bv = blink_to_color_vector(r, colore::asamaorange, fps,
-					   10, 7.0, 2, 0.5);
-
-  for (size_t j = 0; j < bv.size(); ++j)
-    {
-      ostr.str("");
-      ostr << svg::k::space << setw(nwidth) << setfill('0') << j;
-      string outbasei(outprefix + ostr.str() + outsuffixmn);
-
-      // SVG object.
-      svg_element obj = make_svg_2_channel(cols, rows, outbasei);
-
-      // Test image is rightmost, and lowest so that left swipes push it under.
-      image_element i;
-      image_element::data di = { testf, cols, 0, cols, rows };
-      i.start_element();
-      i.add_data(di);
-      i.finish_element();
-      obj.add_element(i);
-
-      // Positive key image is leftmost, and on top.
-      image_element ik;
-      image_element::data dik = { positivef, 0, 0, cols, rows };
-      ik.start_element();
-      ik.add_data(dik);
-      ik.finish_element();
-      obj.add_element(ik);
-
-      // Roll fade.
-      rect_element blinkf;
-      blinkf.str(bv[j]);
-      obj.add_element(blinkf);
-    }
-}
-
-
-// Only vector, one color band rolls up
-void
-object_style_vertical_band_1_channel()
-{
-  using namespace boost::filesystem;
-
-  // Output/Augment.
-  string dir("images.composited-v2.1080p.l/");
-
-  // Input
-  string prefix("/home/bkoz/src/MiL.asama-loops-3/image/" + dir);
-  string_vector input_files = populate_known_good(prefix);
-  cout << "input size: " << input_files.size() << endl;
-
-  const string base("gen-odtct");
-  ostringstream ostr;
-  ostr << get_output_directory() << base;
-  string outprefix(ostr.str());
-
-  // Setup.
-  size_t step = 5; // pix/frame step size
-
-  const size_t nwidth(5);
-  size_t fps = 30;
-
-  // Assume 2 channel
-# if 0
-  // Portrait
-  int cols = 1080;
-  int rows = 1920;
-#else
-  // Landscape
-  int cols = 1920;
-  int rows = 1080;
-#endif
-  int blurr = 20;
-  int blursz = 160;
-  int solidsz = 80;
-  double opac = 0.8;
-
-  Rect r1 = { 0, 0 + blursz + blurr, cols, rows };
-  string_vector vroll11 = vertical_sync_roll_vector(r1, colore::white,
-						    fps, step,
-						    blursz, solidsz, opac);
-
-#if 0
-  Rect r2 = { 0, 0 + blursz/2 + blurr, cols, rows };
-  string_vector vroll21 = vertical_sync_roll_vector(r2, colore::asamaorange,
-						    fps, step / 2,
-						    blursz * 2, solidsz * 2,
-						    opac / 2);
-#endif
-
-  for (size_t i = 0; i < input_files.size(); ++i)
-    {
-      string resfile(input_files[i]);
-      boost::filesystem::path p1(resfile);
-
-      string mangle(p1.stem().string());
-      ostr.str("");
-      ostr << mangle;
-      string outsuffixmn(ostr.str());
-
-      cout << i << svg::k::space << resfile << endl; // XXX
-      cout << "size 1: " << vroll11.size() << endl;
-      //cout << "size 2: " << vroll21.size() << endl;
-
-      for (size_t j = 0; j < vroll11.size(); ++j)
-	{
-	  ostr.str("");
-	  ostr << svg::k::space <<setw(nwidth) << setfill('0') << j;
-	  string outbasei(outprefix + outsuffixmn + ostr.str());
-
-	  // SVG object.
-	  area<> a = { cols, rows };
-	  svg_element obj(outbasei, a);
-
-	  // Image.
-	  image_element i;
-	  image_element::data di = { resfile, 0, 0, cols, rows };
-	  i.start_element();
-	  i.add_data(di);
-	  i.finish_element();
-	  obj.add_element(i);
-
-	  // Roll fade 1.
-	  rect_element rollf11;
-	  rollf11.str(vroll11[j]);
-	  obj.add_element(rollf11);
-	}
-
-#if 0
-      for (size_t j = 0; j < vroll21.size(); ++j)
-	{
-	  ostr.str("");
-	  ostr << svg::k::space << "c"
-	       << svg::k::space <<setw(nwidth) << setfill('0') << j;
-	  string outbasei(outprefix + ostr.str() + outsuffixmn);
-
-	  // SVG object.
-	  area<> a = { unit::pixel, cols, rows };
-	  svg_element obj(outbasei, a);
-
-	  // Image.
-	  image_element i;
-	  image_element::data di = { resfile, 0, 0, cols, rows };
-	  i.start_element();
-	  i.add_data(di);
-	  i.finish_element();
-	  obj.add_element(i);
-
-	  // Roll fade 2.
-	  rect_element rollf21;
-	  rollf21.str(vroll21[j]);
-	  obj.add_element(rollf21);
-	}
-#endif
-    }
-}
-
-
-// Only vector, one color band rolls up
-//  string dir("images.composited-v2.1080p.l/");
-//  string prefix("/home/bkoz/src/MiL.asama-loops-3/image/" + dir);
-
-struct render_state
-{
-  int blurr;
-  int blursz;
-  int solidsz;
-  double opac;
-};
-
-// step == pix/frame step size)
-void
-object_style_vertical_roji_band_1_channel(const string inputdir,
-					  const size_t fps,
-					  const double sec,
-					  const double step,
-					  ::render_state rs)
-{
-  using namespace boost::filesystem;
-
-  // Output/Augment.
-  string_vector input_files = populate_known_good(inputdir);
-  cout << "roji base images input size: " << input_files.size() << endl;
-
-  const string base("generated-roji-");
-  ostringstream ostr;
-  ostr << get_output_directory() << base;
-  string outprefix(ostr.str());
-
-  // Assume 2 channel
-# if 0
-  // Portrait
-  int cols = 1080;
-  int rows = 1920;
-#else
-  // Landscape
-  int cols = 1920;
-  int rows = 1080;
-#endif
-
-
-  // Dots
-  static std::mt19937_64 rg(std::random_device{}());
-  auto distb = std::uniform_int_distribution<>(0, 1);
-
-  Rect rd = { 0, 0, cols, rows };
-  string_vector vdot1 = optical_sound_dots_vector(rd, colore::white,
-						  fps, sec, 50, 50, 20);
-  string_vector vdot2 = optical_sound_dots_vector(rd, colore::black,
-						  fps, sec / 2, 20, 33, 33);
-  string_vector vdot3 = optical_sound_dots_vector(rd, colore::hellayellow,
-						  fps, sec, 100, 80, 80);
-
-  // Rolls
-  cout << "roji roll (fps, sec, step): "
-       << fps << " " << sec << " " << step << endl;
-  Rect r1 = { 0, 0 + rs.blursz + rs.blurr, cols, rows };
-
-  double rdist = (1080 + 200) / (fps * sec); // One swipe.
-  string_vector vroll1 = vertical_sync_roll_vector(r1, colore::white,
-						   fps, rdist, rs.blursz,
-						   rs.solidsz, rs.opac);
-  string_vector vroll1r(vroll1);
-  std::reverse(vroll1r.begin(), vroll1r.end());
-
-
-  string_vector vroll2e = vertical_sync_roll_vector(r1, colore::blue,
-						   fps, rdist * 2,
-						   rs.blursz * 1.5,
-						   rs.solidsz * 1.25, rs.opac / 2);
-
-  string_vector vroll3 = vertical_sync_roll_vector(r1, colore::black,
-						   fps,
-						   rdist / 2, rs.blursz * 2,
-						   rs.solidsz, 0.4);
-
-  // Half the time, double the distance.
-  string_vector vroll2(vroll2e);
-  copy(vroll2e.begin(), vroll2e.end(), back_inserter(vroll2));
-  string_vector vroll2r(vroll2);
-  std::reverse(vroll2r.begin(), vroll2r.end());
-  cout << "roji roll 1: " << vroll1.size() << endl;
-  cout << "roji roll 2: " << vroll2.size() << endl;
-  cout << "roji roll 3: " << vroll3.size() << endl;
-
-  const auto quarter1 = vroll1.size() / 4;
-  const auto quarter4 = 3 * quarter1;
-  for (string_vector::size_type i = 0; i < input_files.size(); ++i)
-    {
-      string resfile(input_files[i]);
-      boost::filesystem::path p1(resfile);
-
-      cout << i << svg::k::space << resfile << endl;
-
-      ostringstream ostr;
-      ostr << setw(5) << setfill('0') << i;
-      string outbasei(outprefix + ostr.str());
-
-      // SVG object.
-      area<> a = { cols, rows };
-      svg_element obj(outbasei, a);
-
-      // Image.
-      image_element img;
-      image_element::data di = { resfile, 0, 0, cols, rows };
-      img.start_element();
-      img.add_data(di);
-      img.finish_element();
-      obj.add_element(img);
-
-      // Rolls
-      if (i < vroll3.size())
-	{
-	  // Roll fade 1.
-	  rect_element rollf1;
-	  rollf1.str(vroll3[i]);
-	  obj.add_element(rollf1);
-
-	  rect_element rollf1r;
-	  rollf1r.str(vroll1r[i]);
-	  obj.add_element(rollf1r);
-	}
-
-      if (i < vroll1.size())
-	{
-	  // Roll fade 1.
-	  rect_element rollf1;
-	  rollf1.str(vroll1[i]);
-	  obj.add_element(rollf1);
-
-	  rect_element rollf1r;
-	  rollf1r.str(vroll1r[i]);
-	  obj.add_element(rollf1r);
-	}
-
-#if 1
-      ulong k = 0;
-      if (i < vroll2.size() && i >= k + 75)
-	{
-	  // Roll fade 2.
-	  rect_element rollf2;
-	  rollf2.str(vroll2[k]);
-	  obj.add_element(rollf2);
-
-	  // Roll fade 2.
-	  rect_element rollf2r;
-	  rollf2r.str(vroll2r[k]);
-	  obj.add_element(rollf2r);
-
-	  ++k;
-	}
-#endif
-
-      if (i < vroll2.size())
-	{
-	  // Roll fade 2.
-	  rect_element rollf2;
-	  rollf2.str(vroll2[i]);
-	  obj.add_element(rollf2);
-
-	  rect_element rollf2r;
-	  rollf2r.str(vroll2r[i]);
-	  obj.add_element(rollf2r);
-	}
-
-
-      // DOT
-      // Steady every 1 sec
-      const size_type steadysec = 4;
-      const bool skip_till_p(i == 0 || !(i % (steadysec * fps)));
-      if (i > quarter1 && i < quarter4)
-	{
-	  // Dot grid 1.
-
-	  // For longer-duration dots.
-	  string dot1s;
-	  string dot2s;
-	  string dot3s;
-	  if (distb(rg) && i < vdot1.size())
-	    {
-	      string dot1p = vdot1[i];
-	      if (skip_till_p)
-		dot1s = dot1p;
-	      circle_element dots1;
-	      dots1.str(dot1s);
-	      obj.add_element(dots1);
-	    }
-
-	  if (distb(rg) && i < vdot2.size())
-	    {
-	      string dot2p = vdot2[i];
-	      if (skip_till_p)
-		dot2s = dot2p;
-	      circle_element dots2;
-	      dots2.str(dot2s);
-	      obj.add_element(dots2);
-	    }
-	  if (distb(rg) && i < vdot3.size())
-	    {
-	      string dot3p = vdot3[i];
-	      if (skip_till_p)
-		dot3s = dot3p;
-	      circle_element dots3;
-	      dots3.str(dot3s);
-	      obj.add_element(dots3);
-	    }
-	}
-
-    }
-}
-
-
-// 2 channel
-// Only vector, one color band rolls up
-void
-object_style_vertical_band_2_channel()
-{
-  using namespace boost::filesystem;
-
-  string colorp("pink");
-  string dir("images.composited.1080p.l.orig/");
-  string prefix("/home/bkoz/src/MiL.asama-loops-2/images/landscape/" + dir);
-  string positivef = prefix + "asama-oo-ee-oo-" + colorp + "-0-flush.png";
-  string testf = prefix + "asama-oo-ee-oo-" + colorp + "-0-flush-flip.png";
-  boost::filesystem::path ppos(positivef);
-  boost::filesystem::path ptest(testf);
-
-  // Output/Augment.
-  const size_t nwidth(5);
-  size_t fps = 30;
-
-  const string base("gen-odtct");
-  ostringstream ostr;
-  ostr << get_output_directory() << base;
-  string outprefix(ostr.str());
-
-  string mangle("asama-oo-ee-oo-" + colorp + "-f");
-  ostr.str("");
-  ostr << svg::k::space << mangle;
-  string outsuffixmn(ostr.str());
-
-  // Assume 2 channel
-# if 0
-  // Portrait
-  int cols = 1080;
-  int rows = 1920;
-#else
-  // Landscape
-  int cols = 1920;
-  int rows = 1080;
-#endif
-  Rect r = { 0, 0, 2 * cols, rows };
-  string_vector v = vertical_sync_roll_vector(r, colore::asamaorange, fps, 6);
-
-  for (size_t j = 0; j < v.size(); ++j)
-    {
-      ostr.str("");
-      ostr << svg::k::space << setw(nwidth) << setfill('0') << j;
-      string outbasei(outprefix + ostr.str() + outsuffixmn);
-
-      // SVG object.
-      svg_element obj = make_svg_2_channel(cols, rows, outbasei);
-
-      // Test image is rightmost, and lowest so that left swipes push it under.
-      image_element i;
-      image_element::data di = { testf, cols, 0, cols, rows };
-      i.start_element();
-      i.add_data(di);
-      i.finish_element();
-      obj.add_element(i);
-
-      // Positive key image is leftmost, and on top.
-      image_element ik;
-      image_element::data dik = { positivef, 0, 0, cols, rows };
-      ik.start_element();
-      ik.add_data(dik);
-      ik.finish_element();
-      obj.add_element(ik);
-
-      // Roll fade.
-      rect_element rollf;
-      rollf.str(v[j]);
-      obj.add_element(rollf);
-    }
-}
-
-
-void
-object_style_random_dot_grid_1_channel()
-{
-  using namespace boost::filesystem;
-
-  string colorp("pink");
-  string dir("images.composited-v2.1080p.l.all/");
-  string prefix("/home/bkoz/src/MiL.asama-loops-3/image/" + dir);
-  // string testf = prefix + "asama-oeo-v5-" + colorp + "-v-z.png";
-  //  string testf = prefix + "asama-oeo-v5-" + colorp + "-buddah-z.png";
-  //string testf = prefix + "asama-oeo-v5-" + colorp + "-mushroom-z.png";
-    string testf = prefix + "asama-oeo-v5-" + colorp + "-xmegamerge-z.png";
-  // string testf = prefix + "asama-oeo-v5-" + colorp + "-corner-z.png";
-  boost::filesystem::path ptest(testf);
-
-  // Output/Augment.
-  const size_t nwidth(5);
-  size_t fps = 30;
-  double sec = 60;
-
-  const string base("gen-odtct");
-  ostringstream ostr;
-  ostr << get_output_directory() << base;
-  string outprefix(ostr.str());
-
-  string mangle("asama-oo-ee-oo-" + colorp + "-f");
-  ostr.str("");
-  ostr << svg::k::space << mangle;
-  string outsuffixmn(ostr.str());
-
-  // Assume 1 channel
-# if 0
-  // Portrait
-  int cols = 1080;
-  int rows = 1920;
-#else
-  // Landscape
-  int cols = 1920;
-  int rows = 1080;
-#endif
-  Rect r = { 0, 0, cols, rows };
-  string_vector v = optical_sound_dots_vector(r, colore::asamaorange, fps, sec);
-
-  for (size_t j = 0; j < v.size(); ++j)
-    {
-      ostr.str("");
-      ostr << svg::k::space << setw(nwidth) << setfill('0') << j;
-      string outbasei(outprefix + ostr.str() + outsuffixmn);
-
-      // SVG object.
-      area<> a = { cols, rows };
-      svg_element obj(outbasei, a);
-
-      // Positive image is lowest.
-      image_element i;
-      image_element::data di = { testf, 0, 0, cols, rows };
-      i.start_element();
-      i.add_data(di);
-      i.finish_element();
-      obj.add_element(i);
-
-      // Dot grid.
-      circle_element dots;
-      dots.str(v[j]);
-      obj.add_element(dots);
-    }
-}
-
-
-void
-object_style_fade_to_wink_fade_from_1_channel(const string inputdir,
-					      const size_t fps,
-					      const double sec,
-					      ::render_state rs)
-{
-  using namespace boost::filesystem;
-  using size_type = string_vector::size_type;
-
- // Output/Augment.
-  string_vector input_files = populate_known_good(inputdir);
-  cout << "roji base images input size: " << input_files.size() << endl;
-
-  const string base("generated-roji");
-  ostringstream ostr;
-  ostr << get_output_directory() << base;
-  string outprefix(ostr.str());
-
-  // Assume 2 channel
-# if 0
-  // Portrait
-  int cols = 1080;
-  int rows = 1920;
-#else
-  // Landscape
-  int cols = 1920;
-  int rows = 1080;
-#endif
-
-  size_type count = 0;
-
-  // 2.5 sec fade in, fade out vector mattes.
-  double fadesec = 2.5;
-  Rect r = { 0, 0, cols, rows };
-  string_vector fto = fade_to_color_vector(r, colore::white, fps, fadesec);
-  string_vector ffrom(fto);
-  std::reverse(ffrom.begin(), ffrom.end());
-
-  // Build up a 25 sec repitore of blinks, copy to sum blinks.
-  string_vector winkv;
-  string_vector winkv1 = wink_to_color_vector(r, colore::white, fps,
-					      5, 2, 100.0, 1);
-  string_vector winkv2 = wink_to_color_vector(r, colore::blue, fps,
-					      5, 3, 66.0, 0.5);
-  string_vector winkv2r(winkv2);
-  std::reverse(winkv2r.begin(), winkv2r.end());
-
-  string_vector winkv3 = wink_to_color_vector(r, colore::white, fps,
-					      5, 1, 95.0, 2);
-  std::copy(winkv1.begin(), winkv1.end(), std::back_inserter(winkv));
-  std::copy(winkv2.begin(), winkv2.end(), std::back_inserter(winkv));
-  std::copy(winkv2r.begin(), winkv2r.end(), std::back_inserter(winkv));
-  std::copy(winkv3.begin(), winkv3.end(), std::back_inserter(winkv));
-  std::copy(winkv3.begin(), winkv3.end(), std::back_inserter(winkv));
-  cout << "roji wink size: " << winkv.size() << endl;
-
-  // Fade in
-  string startimg(input_files.front());
-  for (size_type i = 0; i < ffrom.size(); ++i)
-    {
-      ostr.str("");
-      ostr << svg::k::space << setw(5) << setfill('0') << count++;
-      string outbasei(outprefix + ostr.str());
-
-      // SVG object.
-      area<> a = { cols, rows };
-      svg_element obj(outbasei, a);
-
-      // Image
-      image_element img;
-      image_element::data di = { startimg, 0, 0, cols, rows };
-      img.start_element();
-      img.add_data(di);
-      img.finish_element();
-      obj.add_element(img);
-
-      // Vector Layer
       rect_element r;
-      r.str(ffrom[i]);
-      obj.add_element(r);
-    }
+      r.start_element();
+      r.add_data(drin);
+      r.add_style(styl);
+      r.finish_element();
 
-  // Wink
-  for (size_type i = 0; i < input_files.size(); ++i)
-    {
-      ostr.str("");
-      ostr << svg::k::space << setw(5) << setfill('0') << count++;
-      string outbasei(outprefix + ostr.str());
-
-      // SVG object.
-      area<> a = { cols, rows };
-      svg_element obj(outbasei, a);
-
-      // Positive image is lowest.
+      int x = 0 - (i * offset);
       image_element img;
-      image_element::data di = { input_files[i], 0, 0, cols, rows };
+      image_element::data di = { imgf, x, 0, width, drin._M_height };
       img.start_element();
       img.add_data(di);
       img.finish_element();
-      obj.add_element(img);
 
-      // Vector Layer (wink)
-      if (i < winkv.size())
-	{
-	  rect_element r;
-	  r.str(winkv[i]);
-	  obj.add_element(r);
-	}
+      ret.push_back(r.str() + img.str());
     }
-
-  // Fade out
-  string endimg(input_files.back());
-  for (size_type i = 0; i < fto.size(); ++i)
-    {
-      ostr.str("");
-      ostr << svg::k::space << setw(5) << setfill('0') << count++;
-      string outbasei(outprefix + ostr.str());
-
-      // SVG object.
-      area<> a = { cols, rows };
-      svg_element obj(outbasei, a);
-
-      // Image
-      image_element img;
-      image_element::data di = { endimg, 0, 0, cols, rows };
-      img.start_element();
-      img.add_data(di);
-      img.finish_element();
-      obj.add_element(img);
-
-      // Vector Layer
-      rect_element r;
-      r.str(fto[i]);
-      obj.add_element(r);
-    }
+  return ret;
 }
 
+} // namespace svg
 
-// 1 channel
-// Only vector, sync band vert rolls, ie old television recording stylistic.
-//
-// Simulated vertical roll between two or more frames, sync, pure
-// color with fades.  r == frame size
-// Assume single-channel, ie svg base coordinates are frame-size.
-//
-// Sketch.
-//
-// input image 1, image 2
-// input color of vector rectangle/fade that will "roll"
-// input speed of roll? duration of roll? trajectory?
-//
-// start frame 1, no effects for editing continunity
-// roll up color
-// roll up second color
-// roll up frame 2
-// roll up third color
-// roll up frame 3
-// roll up forth color
-void
-object_style_vertical_sync_roll_1_channel()
-{
-  using namespace boost::filesystem;
-  using size_type = string_vector::size_type;
-
-  string colorp("pink");
-  string dir("images.composited-v2.1080p.l/");
-  string prefix("/home/bkoz/src/MiL.asama-loops-3/image/" + dir);
-  string_vector input_files = populate_known_good(prefix);
-
-  cout << "input size: " << input_files.size() << endl;
-
-  // Watch for vertical tearing, tricky but not has hard as horizontal.
-  // Some basics:
-  // 1080 pixels means
-  // 06 pix/frame x 30 frames/sec == 180 pixels/sec -> 13.5 sec to scroll
-  // 08 pix/frame x 30 frames/sec == 240 pixels/sec -> 4.5 sec to scroll
-  // 10 pix/frame x 30 frames/sec == 300 pixels/sec -> 3.6 sec to scroll
-  // 16 pix/frame x 30 frames/sec == 480 pixels/sec -> 2.25 sec to scroll
-  // 18 pix/frame x 30 frames/sec == 540 pixels/sec -> 2.0 sec to scroll
-  // 20 pix/frame x 30 frames/sec == 600 pixels/sec -> 1.8 sec to scroll
-  auto step = 6; // pix/frame step size
-
-  // Output/Augment.
-  const size_t nwidth(5);
-  size_t fps = 30;
-  double sec = 800; // 8 step
-  //  double sec = 300; // 10 step
-  size_t framesn = fps * sec;
-
-  const string base("gen-odtct");
-  ostringstream ostr;
-  ostr << get_output_directory() << base;
-  string outprefix(ostr.str());
-
-  string mangle("asama-oo-ee-oo-" + colorp + "-f");
-  ostr.str("");
-  ostr << svg::k::space << mangle;
-  string outsuffixmn(ostr.str());
-
-  // Assume 1 channel
-# if 0
-  // Portrait
-  int cols = 1080;
-  int rows = 1920;
-#else
-  // Landscape
-  int cols = 1920;
-  int rows = 1080;
 #endif
-
-  // For the dots, a couple of solutions.
-  //
-  // 1
-  // full frame, 1920x1080 landscape baselines.
-  // 8 wide, 4 high
-  // 160 pixel diameter, start at x 40, y 100, move 240.
-
-
-  // 2
-  // can break the frame into a grid of four.
-  // 0000 x 0480 x 0960 x 1440 x 1920
-  // To get the edges of a 1920 pixel wide frame, use
-  //   left  = 0000 - 0480
-  //   right = 1440 - 1920
-  //
-  // -> 80 pixel radius, 240 space, xi = 0,
-
-  Rect rd = { 0, 0, cols, rows };
-#if 0
-  // 1 Full
-  string_vector vdot1 = optical_sound_dots_vector(rd, colore::white, fps, sec,
-						  40, 16, 8);
-  string_vector vdot2 = optical_sound_dots_vector(rd, colore::black,
-						  fps, sec, 20, 32, 16);
-#else
-  // 2 Grid Variant
-  static std::mt19937_64 rg(std::random_device{}());
-  auto distb = std::uniform_int_distribution<>(0, 1);
-  string_vector vdot1 = optical_sound_dots_vector(rd, colore::black,
-						  fps, sec, 20, 8, 16, 0);
-  string_vector vdot2 = optical_sound_dots_vector(rd, colore::white,
-						  fps, sec, 80, 2, 4, 0);
-  string_vector vdot3 = optical_sound_dots_vector(rd, colore::black,
-						  fps, sec, 20, 8, 16, 1440);
-  string_vector vdot4 = optical_sound_dots_vector(rd, colore::white,
-						  fps, sec, 40, 4, 8, 1440);
-#endif
-  int blursz = 160;
-  int solidsz = 80;
-  double opac = 0.7;
-
-  Rect r1 = { 0, 0, cols, rows };
-  Rect r2 = { 0, 0 - rows, cols, rows };
-  Rect r3 = { 0, 0 + rows, cols, rows };
-  string_vector vroll11 = vertical_sync_roll_vector(r1, colore::white,
-						    fps, step,
-						    blursz, solidsz, opac);
-  string_vector vroll12 = vertical_sync_roll_vector(r2, colore::white,
-						    fps, step,
-						    blursz, solidsz, opac);
-  string_vector vroll13 = vertical_sync_roll_vector(r3, colore::white,
-						    fps, step,
-						    blursz, solidsz, opac);
-
-  string_vector vroll21 = vertical_sync_roll_vector(r1, colore::asamaorange,
-						    fps, step,
-						    blursz / 2, solidsz /2,
-						    opac);
-  string_vector vroll22 = vertical_sync_roll_vector(r2, colore::asamaorange,
-						    fps, step,
-						    blursz / 2, solidsz / 2,
-						    opac);
-  string_vector vroll23 = vertical_sync_roll_vector(r3, colore::asamaorange,
-						    fps, step,
-						    blursz / 2, solidsz / 2,
-						    opac);
-
-  // Here, i is the index to raster frames.
-  // This may run over specified time, but not overly so.
-  size_t currentf = 1; // Should not be more than maxframes.
-  for (size_type i = 0; i + 1 < input_files.size() && currentf < framesn; ++i)
-    {
-      string resfile(input_files[i]);
-      boost::filesystem::path p1(resfile);
-
-      string syncfile(input_files[i + 1]);
-      boost::filesystem::path p2(syncfile);
-
-      for (size_type j = 0; size_type(j * step) <= size_type(rows); j++)
-	{
-	  ostr.str("");
-	  ostr << svg::k::space << setw(nwidth) << setfill('0') << currentf;
-	  string outbasei(outprefix + ostr.str() + outsuffixmn);
-
-	  // SVG object.
-	  area<> a = { cols, rows };
-	  svg_element obj(outbasei, a);
-
-	  int offset = j * step;
-
-	  // Resident image is lowest.
-	  image_element i;
-	  image_element::data di = { resfile, 0, 0 - offset, cols, rows };
-	  i.start_element();
-	  i.add_data(di);
-	  i.finish_element();
-	  obj.add_element(i);
-
-	  // Sync image is next.
-	  image_element i2;
-	  image_element::data di2 = { syncfile, 0, 0 + rows - offset, cols, rows };
-	  i2.start_element();
-	  i2.add_data(di2);
-	  i2.finish_element();
-	  obj.add_element(i2);
-
-	  // Slow down dot grid
-	  if (j * step < rows / 2.5)
-	    {
-	      // Dot grid 1.
-	      if (distb(rg))
-		{
-		  circle_element dots1;
-		  dots1.str(vdot1[currentf]);
-		  obj.add_element(dots1);
-		}
-	      if (distb(rg))
-		{
-
-		  circle_element dots2;
-		  dots2.str(vdot1[currentf]);
-		  obj.add_element(dots2);
-		}
-
-	      // Dot grid 2.
-	      if (distb(rg))
-		{
-		  circle_element dots1;
-		  dots1.str(vdot3[currentf]);
-		  obj.add_element(dots1);
-		}
-	      if (distb(rg))
-		{
-		  circle_element dots2;
-		  dots2.str(vdot4[currentf]);
-		  obj.add_element(dots2);
-		}
-	    }
-
-	  // Roll fade 1.
-	  if (j < vroll11.size())
-	    {
-	      rect_element rollf11;
-	      rollf11.str(vroll11[j]);
-	      obj.add_element(rollf11);
-
-	      rect_element rollf12;
-	      rollf12.str(vroll12[j]);
-	      obj.add_element(rollf12);
-
-	      rect_element rollf13;
-	      rollf13.str(vroll13[j]);
-	      obj.add_element(rollf13);
-	    }
-
-	  // Roll fade echo 1
-	  if (j < vroll21.size())
-	    {
-	      rect_element rollf21;
-	      rollf21.str(vroll21[j]);
-	      obj.add_element(rollf21);
-
-	      rect_element rollf22;
-	      rollf22.str(vroll22[j]);
-	      obj.add_element(rollf22);
-
-	      rect_element rollf23;
-	      rollf23.str(vroll23[j]);
-	      obj.add_element(rollf23);
-	    }
-
-	  ++currentf;
-	  cout << currentf << " of " << framesn << " by " << j << endl;
-	}
-    }
-}
-
-
-#endif // MiL_SVG_INSCRIBE_H

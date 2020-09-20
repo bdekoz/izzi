@@ -1,5 +1,13 @@
 2020-09-18  Benjamin De Kosnik  <bkoz@rizal>
 
+	* src/a60-svg-render-basics.h: Fixes.
+	* src/a60-svg-sequences.h: Only matte/composited  sequences.
+	* examples/sequences.cc: New.
+	
+	* scripts/compile-source.sh: Add warning flags.
+
+2020-09-18  Benjamin De Kosnik  <bkoz@rizal>
+
 	* src/a60-svg-sequences.h: Vector animation routines from MiL.
 
 2020-09-17  Benjamin De Kosnik  <bkoz@rizal>
