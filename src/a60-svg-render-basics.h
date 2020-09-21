@@ -268,7 +268,7 @@ place_ray_at_angle(svg_element& obj, const point_2t& origin,
 }
 
 
-/// Make path segment between two points on a circumfrence of radius r.
+/// Make path segment between two points on a circumference of radius r.
 /// Points like: get_circumference_point_d(align_angle_to_glyph(0), r, origin)
 string
 make_path_arc_circumference(const point_2t& start, const point_2t& end,

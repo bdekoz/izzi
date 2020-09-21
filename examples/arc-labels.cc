@@ -11,10 +11,6 @@ test_arc(std::string ofile)
   style s = { color::white, 0.0, color::black, 1.0, 3 };
 
   point_2t cp = obj.center_point();
-  auto [ xd, yd ] = cp;
-  const size_type x(xd);
-  const size_type y(yd);
-
   const int r = 60;
 
   point_2t p0 = get_circumference_point_d(align_angle_to_glyph(0), r, cp);
@@ -22,10 +18,10 @@ test_arc(std::string ofile)
   point_2t p2 = get_circumference_point_d(align_angle_to_glyph(180), r, cp);
   point_2t p3 = get_circumference_point_d(align_angle_to_glyph(270), r, cp);
 
-  string ne = make_path_circular_arc(p0, p1, r);
-  string se = make_path_circular_arc(p1, p2, r);
-  string sw = make_path_circular_arc(p2, p3, r);
-  string nw = make_path_circular_arc(p3, p0, r);
+  string ne = make_path_arc_circumference(p0, p1, r);
+  string se = make_path_arc_circumference(p1, p2, r);
+  string sw = make_path_arc_circumference(p2, p3, r);
+  string nw = make_path_arc_circumference(p3, p0, r);
 
   // Make arc path
   const bool is_visible = true;

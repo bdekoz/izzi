@@ -10,7 +10,6 @@ test_gblur(std::string ofile)
 
   area<> a = k::letter_096_v;
   svg_element obj(ofile, a);
-  style s = { color::white, 0.0, color::black, 1.0, 3 };
 
   point_2t cp = obj.center_point();
   auto [ xd, yd ] = cp;
