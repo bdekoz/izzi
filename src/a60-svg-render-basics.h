@@ -137,6 +137,25 @@ radial_text_r(svg_element& obj, const typography& typo,
 }
 
 
+/// Pont to rectangle.
+void
+point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
+		 int width = 4, int height = 4)
+{
+  rect_element r;
+  using size_type = svg::size_type;
+  size_type xi = static_cast<size_type>(std::round(x));
+  size_type yi = static_cast<size_type>(std::round(y));
+  rect_element::data dr = { xi, yi, width, height };
+
+  r.start_element();
+  r.add_data(dr);
+  r.add_style(s);
+  r.finish_element();
+  obj.add_element(r);
+}
+
+
 /// Draws a circle around a point (x,y), of style (s), of radius (r).
 void
 point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
@@ -153,6 +172,74 @@ point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
   c.add_style(s);
   c.finish_element();
   obj.add_element(c);
+}
+
+
+/// Draws a ring centered at origin of radius r, with outer and inner
+/// radial gradient of fuzzpercentage * radius in each direction.
+void
+point_2d_to_ring_halo(svg_element& obj, const point_2t origin,
+		      const size_type radius, const double fuzzpercentage,
+		      const svg::color klr)
+{
+  auto [ xd, yd ] = origin;
+  const size_type x(xd);
+  const size_type y(yd);
+
+  const size_type variance = std::round(radius * fuzzpercentage);
+
+  // outer ring == upper bound, radius + variance.
+  const size_type oring = radius + variance;
+
+  // inner ring == lower bound, radius - variance.
+  const size_type iring = radius - variance;
+
+  // mangled args for name.
+  std::ostringstream oss;
+  oss << "x" << std::to_string(x) << k::hyphen
+      << "y" << std::to_string(y) << k::hyphen
+      << "r" << std::to_string(radius) << k::hyphen
+      << "fuzz" << std::to_string(variance);
+  const string mangle(oss.str());
+
+  // outer
+  // strategy: make a bigger circle cprime, then do a radial gradient to it
+  // starting gradient from color at radius to 100% white/tranparent at cprime.
+  const string rgrado_name(string("radialout") + k::hyphen + mangle);
+  radial_gradient rgrado;
+  rgrado.start_element(rgrado_name);
+  rgrado.stop(rgrado.offset_percentage(radius, oring), color::white, 0);
+  rgrado.stop(rgrado.offset_percentage(radius, oring), klr);
+  rgrado.stop("100%", color::white, 0);
+  rgrado.finish_element();
+  obj.add_element(rgrado);
+
+  circle_element co;
+  circle_element::data dco = { x, y, oring };
+  co.start_element();
+  co.add_data(dco);
+  co.add_fill(rgrado_name);
+  co.finish_element();
+  obj.add_element(co);
+
+  // inner
+  // strategy: make a smaller circle cprime, then do a radial gradient from it
+  // starting gradient from white/transparent at cprime to color at r.
+  const string rgradi_name(string("radialin") + k::hyphen + mangle);
+  radial_gradient rgradi;
+  rgradi.start_element(rgradi_name);
+  rgradi.stop(rgradi.offset_percentage(iring, radius), color::white, 0);
+  rgradi.stop("100%", klr);
+  rgradi.finish_element();
+  obj.add_element(rgradi);
+
+  circle_element ci;
+  circle_element::data dci = { x, y, radius };
+  ci.start_element();
+  ci.add_data(dci);
+  ci.add_fill(rgradi_name);
+  ci.finish_element();
+  obj.add_element(ci);
 }
 
 
@@ -188,25 +275,6 @@ point_2d_to_ray(svg_element& obj, double x, double y, svg::style s,
       ray.finish_element();
       obj.add_element(ray);
     }
-}
-
-
-/// Pont to rectangle.
-void
-point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
-		 int width = 4, int height = 4)
-{
-  rect_element r;
-  using size_type = svg::size_type;
-  size_type xi = static_cast<size_type>(std::round(x));
-  size_type yi = static_cast<size_type>(std::round(y));
-  rect_element::data dr = { xi, yi, width, height };
-
-  r.start_element();
-  r.add_data(dr);
-  r.add_style(s);
-  r.finish_element();
-  obj.add_element(r);
 }
 
 

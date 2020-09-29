@@ -55,15 +55,14 @@ make_ring_ranges(svg_element& obj, const point_2t origin,
 // https://www.w3.org/TR/SVG11/pservers.html
 // http://www.svgbasics.com/radial_gradients.html
 void
-test_radial_gradient(std::string ofile)
+test_radial_gradient(svg_element& obj)
 {
-  area<> a = k::letter_096_v;
-  svg_element obj(ofile, a);
-
   point_2t cp = obj.center_point();
   auto [ xd, yd ] = cp;
   const size_type x(xd);
   const size_type y(yd);
+
+  const size_type layoutdeltav = 200;
 
   const auto radius = 60;
   const double fuzzpercentage = 0.33;
@@ -88,40 +87,40 @@ test_radial_gradient(std::string ofile)
        << "(-" << iring << k::comma << iringpercent << ')' << k::newline;
 
 
-  // 1 circumference of circle with gradient both inside and outside
-
-  // outer
+  // outer (top)
   // strategy: make a bigger circle cprime, then do a radial gradient to it
   // starting gradient from color at radius to 100% white/tranparent at cprime.
   const string rgrad3o_name("radialout");
   radial_gradient rgrad3o;
   rgrad3o.start_element(rgrad3o_name);
+  rgrad3o.stop(rgrad3o.offset_percentage(radius, oring), color::white, 0);
   rgrad3o.stop(rgrad3o.offset_percentage(radius, oring), color::crimson);
   rgrad3o.stop("100%", color::white, 0);
   rgrad3o.finish_element();
   obj.add_element(rgrad3o);
 
   circle_element c4o;
-  circle_element::data dc4o = { x, y, oring };
+  circle_element::data dc4o = { x, y - layoutdeltav, oring };
   c4o.start_element();
   c4o.add_data(dc4o);
   c4o.add_fill(rgrad3o_name);
   c4o.finish_element();
   obj.add_element(c4o);
 
-  // inner
+
+  // inner (bottom)
   // strategy: make a smaller circle cprime, then do a radial gradient from it
   // starting gradient from white/transparent at cprime to color at r.
   const string rgrad3i_name("radialin");
   radial_gradient rgrad3i;
   rgrad3i.start_element(rgrad3i_name);
-  rgrad3i.stop(rgrad3i.offset_percentage(iring, radius), color::white);
+  rgrad3i.stop(rgrad3i.offset_percentage(iring, radius), color::white, 0);
   rgrad3i.stop("100%", color::crimson);
   rgrad3i.finish_element();
   obj.add_element(rgrad3i);
 
   circle_element c4i;
-  circle_element::data dc4i = { x, y, radius };
+  circle_element::data dc4i = { x, y + layoutdeltav, radius };
   c4i.start_element();
   c4i.add_data(dc4i);
   c4i.add_fill(rgrad3i_name);
@@ -129,13 +128,23 @@ test_radial_gradient(std::string ofile)
   obj.add_element(c4i);
 
 
-  // circle registration marks.
+  // Bottom layer, circle registration marks.
   make_ring_ranges(obj, cp, iring, radius, oring);
+  make_ring_ranges(obj, make_tuple(x, y - layoutdeltav), iring, radius, oring);
+  make_ring_ranges(obj, make_tuple(x, y + layoutdeltav), iring, radius, oring);
 }
 
 
 int main()
 {
-  test_radial_gradient("test-radial-gradient-ring-halo-2");
+  area<> a = k::letter_096_v;
+  svg_element obj("test-radial-gradient-ring-halo-2", a);
+
+  // Add background so that checking transparency is easier with naked eye.
+  const uint rectw = 100;
+  point_2d_to_rect(obj, a._M_width / 2 - rectw / 2, 0, k::b_style,
+		   100, a._M_height);
+
+  test_radial_gradient(obj);
   return 0;
 }

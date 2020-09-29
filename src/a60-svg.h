@@ -84,7 +84,7 @@ namespace constants {
   // Formatting constants.
   constexpr char space(' ');
   constexpr char quote('"');
-  constexpr char hypen('-');
+  constexpr char hyphen('-');
   constexpr char tab('\t');
   constexpr char newline('\n');
   constexpr char comma(',');
