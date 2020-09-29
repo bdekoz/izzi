@@ -37,10 +37,9 @@ test_radial_gradient(std::string ofile)
 
   // Some basic diagnostics.
   clog << "radius: " << radius << k::newline;
-  clog << "variance: " << variance << k::space
-       << "(+" << oringpercent << ')' << k::newline
-       << "(-" << iringpercent << ')' << k::newline;
-
+  clog << "variance: " << variance <<  k::newline
+       << "(+" << oring << k::comma << oringpercent << ')' << k::newline
+       << "(-" << iring << k::comma << iringpercent << ')' << k::newline;
 
   // Set default circle style is black ring.
   style cstyle = k::w_style;

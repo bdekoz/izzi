@@ -302,17 +302,17 @@ struct radial_gradient : virtual public gradient_element
   // Radial gradient centered at (cx, cy) of radius.
   // Default for radius, cx, cy is "50%"
   void
-  start_element(const string id, const string radius = "",
-		const string cx = "", const string cy = "")
+  start_element(const string id, const size_type radius = 0,
+		const size_type cx = 0, const size_type cy = 0)
   {
     gradient_element::start_element();
     _M_sstream << "<radialGradient id=" << k::quote << id << k::quote;
-    if (!radius.empty())
+    if (radius > 0)
+      {
       _M_sstream << k::space << "r=" << k::quote << radius << k::quote;
-    if (!cx.empty())
       _M_sstream << k::space << "cx=" << k::quote << cx << k::quote;
-    if (!cy.empty())
       _M_sstream << k::space << "cy=" << k::quote << cy << k::quote;
+      }
     _M_sstream << ">" << k::newline;
   }
 
@@ -320,23 +320,21 @@ struct radial_gradient : virtual public gradient_element
   // End circle (aka 100% stop) at (cx, cy) with radius.
   // Start circle (aka 0% stop) at (fx, fy) with radius fr.
   void
-  start_element(const string id,
-		const string radius, const string cx, const string cy,
-		const string fr, const string fx = "", const string fy = "")
+  start_element(const string id, const size_type radius,
+		const size_type cx, const size_type cy, const size_type fr,
+		const size_type fx, const size_type fy)
   {
     gradient_element::start_element();
     _M_sstream << "<radialGradient id=" << k::quote << id << k::quote
 	       << k::space << "r=" << k::quote << radius << k::quote;
-    if (!cx.empty())
-      _M_sstream << k::space << "cx=" << k::quote << cx << k::quote;
-    if (!cy.empty())
-      _M_sstream << k::space << "cy=" << k::quote << cy << k::quote;
-    if (!fx.empty())
-      _M_sstream << k::space << "fx=" << k::quote << fx << k::quote;
-    if (!fy.empty())
-      _M_sstream << k::space << "fy=" << k::quote << fy << k::quote;
-    if (!fr.empty())
-      _M_sstream << k::space << "fr=" << k::quote << fr << k::quote;
+    _M_sstream << k::space << "cx=" << k::quote << cx << k::quote;
+    _M_sstream << k::space << "cy=" << k::quote << cy << k::quote;
+    if (fr > 0)
+      {
+	_M_sstream << k::space << "fx=" << k::quote << fx << k::quote;
+	_M_sstream << k::space << "fy=" << k::quote << fy << k::quote;
+	_M_sstream << k::space << "fr=" << k::quote << fr << k::quote;
+      }
     _M_sstream << ">" << k::newline;
   }
 
