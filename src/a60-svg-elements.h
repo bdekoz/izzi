@@ -273,11 +273,13 @@ struct gradient_element
 
   // off == 10%
   void
-  stop(const string off, const color& klr)
+  stop(const string off, const color& klr, const double opacity = 1.0)
   {
     _M_sstream << "<stop offset=" << k::quote << off << k::quote << k::space
-	       << "stop-color=" << k::quote << to_string(klr) << k::quote
-	       << " />";
+	       << "stop-color=" << k::quote << to_string(klr) << k::quote << k::space;
+    if (opacity < 1.0)
+      _M_sstream << "stop-opacity=" << k::quote << opacity << k::quote;
+    _M_sstream << " />";
     _M_sstream << k::newline;
   }
 };

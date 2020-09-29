@@ -143,7 +143,7 @@ test_radial_gradient(std::string ofile)
   // 5 circle with gradient outside, up
   const string rgrad4_name("radialout_up");
   radial_gradient rgrad4;
-  rgrad4.start_element(rgrad4_name, oringpercent, "50%", "50%");
+  rgrad4.start_element(rgrad4_name, oring, x, y - 2 * offset);
   rgrad4.stop("0%", color::crimson);
   rgrad4.stop("100%", color::white);
   rgrad4.finish_element();
