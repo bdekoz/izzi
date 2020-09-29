@@ -276,11 +276,23 @@ struct gradient_element
   stop(const string off, const color& klr, const double opacity = 1.0)
   {
     _M_sstream << "<stop offset=" << k::quote << off << k::quote << k::space
-	       << "stop-color=" << k::quote << to_string(klr) << k::quote << k::space;
+	       << "stop-color=" << k::quote << to_string(klr) << k::quote;
     if (opacity < 1.0)
-      _M_sstream << "stop-opacity=" << k::quote << opacity << k::quote;
+      {
+	_M_sstream << k::space
+		   << "stop-opacity=" << k::quote << opacity << k::quote;
+      }
     _M_sstream << " />";
     _M_sstream << k::newline;
+  }
+
+  // Express two integers as a suitable offset string percentage.
+  const string
+  offset_percentage(const size_type numer, const size_type denom)
+  {
+    const double ratio = static_cast<double>(numer)/static_cast<double>(denom);
+    const size_type perc(round(ratio * 100));
+    return std::to_string(perc) + "%";
   }
 };
 

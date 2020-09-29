@@ -136,6 +136,6 @@ test_radial_gradient(std::string ofile)
 
 int main()
 {
-  test_radial_gradient("test-radial-gradient-ring-halo-1");
+  test_radial_gradient("test-radial-gradient-ring-halo-2");
   return 0;
 }

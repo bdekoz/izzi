@@ -29,17 +29,17 @@ test_radial_gradient(std::string ofile)
 
   // outer ring == upper bound, radius + variance.
   const double oring = 100 * (double(radius) / double(radius + variance));
-  const string oringpercent = to_string(oring) + "%";
+  //  const string oringpercent = to_string(oring) + "%";
 
   // inner ring == lower bound, radius - variance.
   const double iring = 100 * (double(radius - variance) / double(radius));
-  const string iringpercent = to_string(iring) + "%";
+  //const string iringpercent = to_string(iring) + "%";
 
   // Some basic diagnostics.
   clog << "radius: " << radius << k::newline;
   clog << "variance: " << variance <<  k::newline
-       << "(+" << oring << k::comma << oringpercent << ')' << k::newline
-       << "(-" << iring << k::comma << iringpercent << ')' << k::newline;
+       << "(+" << oring << ')' << k::newline
+       << "(-" << iring << ')' << k::newline;
 
   // Set default circle style is black ring.
   style cstyle = k::w_style;
@@ -100,7 +100,7 @@ test_radial_gradient(std::string ofile)
   const string rgrad3o_name("radialout_down_out");
   radial_gradient rgrad3o;
   rgrad3o.start_element(rgrad3o_name);
-  rgrad3o.stop(oringpercent, color::crimson);
+  rgrad3o.stop(rgrad3o.offset_percentage(radius, oring), color::crimson);
   rgrad3o.stop("100%", color::white);
   rgrad3o.finish_element();
   obj.add_element(rgrad3o);
@@ -117,7 +117,7 @@ test_radial_gradient(std::string ofile)
   const string rgrad3i_name("radialout_down_in");
   radial_gradient rgrad3i;
   rgrad3i.start_element(rgrad3i_name);
-  rgrad3i.stop(iringpercent, color::white);
+  rgrad3i.stop(rgrad3i.offset_percentage(iring, radius), color::white);
   rgrad3i.stop("100%", color::crimson);
   rgrad3i.finish_element();
   obj.add_element(rgrad3i);
@@ -143,8 +143,8 @@ test_radial_gradient(std::string ofile)
   // 5 circle with gradient outside, up
   const string rgrad4_name("radialout_up");
   radial_gradient rgrad4;
-  rgrad4.start_element(rgrad4_name, oring);
-  rgrad4.stop("0%", color::crimson);
+  rgrad4.start_element(rgrad4_name);
+  rgrad4.stop(rgrad4.offset_percentage(radius, oring), color::crimson);
   rgrad4.stop("100%", color::white);
   rgrad4.finish_element();
   obj.add_element(rgrad4);
