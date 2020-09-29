@@ -177,10 +177,11 @@ point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
 
 /// Draws a ring centered at origin of radius r, with outer and inner
 /// radial gradient of fuzzpercentage * radius in each direction.
+/// Background is transparent.
 void
 point_2d_to_ring_halo(svg_element& obj, const point_2t origin,
 		      const size_type radius, const double fuzzpercentage,
-		      const svg::color klr)
+		      const svg::color klr, const double opacity = 1)
 {
   auto [ xd, yd ] = origin;
   const size_type x(xd);
@@ -208,8 +209,8 @@ point_2d_to_ring_halo(svg_element& obj, const point_2t origin,
   const string rgrado_name(string("radialout") + k::hyphen + mangle);
   radial_gradient rgrado;
   rgrado.start_element(rgrado_name);
-  rgrado.stop(rgrado.offset_percentage(radius, oring), color::white, 0);
-  rgrado.stop(rgrado.offset_percentage(radius, oring), klr);
+  rgrado.stop(rgrado.offset_percentage(radius, oring), color::none, 0);
+  rgrado.stop(rgrado.offset_percentage(radius, oring), klr, opacity);
   rgrado.stop("100%", color::white, 0);
   rgrado.finish_element();
   obj.add_element(rgrado);
@@ -228,8 +229,8 @@ point_2d_to_ring_halo(svg_element& obj, const point_2t origin,
   const string rgradi_name(string("radialin") + k::hyphen + mangle);
   radial_gradient rgradi;
   rgradi.start_element(rgradi_name);
-  rgradi.stop(rgradi.offset_percentage(iring, radius), color::white, 0);
-  rgradi.stop("100%", klr);
+  rgradi.stop(rgradi.offset_percentage(iring, radius), color::none, 0);
+  rgradi.stop("100%", klr, opacity);
   rgradi.finish_element();
   obj.add_element(rgradi);
 
