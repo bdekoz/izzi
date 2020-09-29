@@ -233,8 +233,9 @@ point_2d_to_ring_halo(svg_element& obj, const point_2t origin,
   rgradi.finish_element();
   obj.add_element(rgradi);
 
+  // Float/Int conversion and rounding, add one to radius to close gap.
   circle_element ci;
-  circle_element::data dci = { x, y, radius };
+  circle_element::data dci = { x, y, radius + 1 };
   ci.start_element();
   ci.add_data(dci);
   ci.add_fill(rgradi_name);
