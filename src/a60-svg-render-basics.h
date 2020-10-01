@@ -376,7 +376,21 @@ make_path_arc(const point_2t& origin, const point_2t& start,
   return oss.str();
 }
 
+/// Same but with degree range arguments instead of points.
+string
+make_path_arc(const point_2t& origin, const double startd, const double endd,
+	      const int r)
+{
+  auto alignstartd = align_angle_to_glyph(startd);
+  const point_2t start = get_circumference_point_d(alignstartd, r, origin);
 
+  auto alignendd = align_angle_to_glyph(endd);
+  const point_2t end = get_circumference_point_d(alignendd, r, origin);
+  return make_path_arc(origin, start, end, r);
+}
+
+
+/// Plus or x tilt mark.
 string
 make_path_center_mark(const point_2t& origin, const int len, const int width)
 {
@@ -414,19 +428,6 @@ make_path_center_mark(const point_2t& origin, const int len, const int width)
   oss << "V" << k::space << y << k::space;
 
   return oss.str();
-}
-
-
-string
-make_path_arc(const point_2t& origin, const double startd, const double endd,
-	      const int r)
-{
-  auto alignstartd = align_angle_to_glyph(startd);
-  const point_2t start = get_circumference_point_d(alignstartd, r, origin);
-
-  auto alignendd = align_angle_to_glyph(endd);
-  const point_2t end = get_circumference_point_d(alignendd, r, origin);
-  return make_path_arc(origin, start, end, r);
 }
 
 
