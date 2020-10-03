@@ -32,17 +32,19 @@ namespace constants {
      none		= 1u << 0, ///> nothing
      cartography	= 1u << 1, ///> cartographic elements
      vector		= 1u << 2, ///> svg path, circle, rectangle, etc.
-     cloud		= 1u << 3, ///> color fill version of vector
-     echo		= 1u << 4, ///> b & w outline version of vector
-     text		= 1u << 5, ///> title, metadata, header
-     legend		= 1u << 6, ///> torrent collection glyph
-     exitnode		= 1u << 7, ///> tor exit node infrastructure
-     telecom		= 1u << 8, ///> telecom infrastructure
-     glyph		= 1u << 9, ///> glyph
-     image		= 1u << 10, ///> image
-     svg		= 1u << 11, ///> svg element, perhaps nested
-     all		= 1u << 12, ///> all elements and layers
-     _S_end		= 1u << 16 ///> future use 10-16
+     cloud		= 1u << 3, ///> opacity color fill version of vector
+     blur		= 1u << 4, ///> blur or gradient version of vector
+     echo		= 1u << 5, ///> b & w outline version of vector
+     text		= 1u << 6, ///> title, metadata, header
+     legend		= 1u << 7, ///> torrent collection glyph
+     exitnode		= 1u << 8, ///> tor exit node infrastructure
+     telecom		= 1u << 9, ///> telecom infrastructure
+     glyph		= 1u << 10, ///> glyph
+     image		= 1u << 11, ///> image
+     svg		= 1u << 12, ///> svg element, perhaps nested
+     alt		= 1u << 13, ///> alternate use specified
+     all		= 1u << 15, ///> all elements and layers
+     _S_end		= 1u << 16  ///> future use 10-16
     };
 
   inline constexpr select
