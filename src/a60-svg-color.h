@@ -463,6 +463,13 @@ struct colorq
 };
 
 
+/// Convert colorq to string.
+const std::string
+to_string(const colorq klr)
+{ return colorq::to_string(klr); }
+
+
+
 /**
   Combine color a with color b in percentages ad and ab, respectively.
 

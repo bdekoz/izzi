@@ -139,7 +139,7 @@ add_to_id_render_state_cache(const string value, const style dstyl,
 {
   id_render_state_umap& cache = get_id_render_state_cache();
 
-  id_render_state d_state(dstyl);
+  id_render_state d_state(dstyl, value);
   d_state.set(d_state.visible_mode, vis);
   cache.insert(std::make_pair(value, d_state));
 }
