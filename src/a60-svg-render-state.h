@@ -122,6 +122,8 @@ struct render_state_base
     weigh(false), color_generated(true), alt(false)
   { }
 
+  render_state_base(const render_state_base&) = default;
+
   bool
   is_visible(const k::select v) const
   { return static_cast<bool>(visible_mode & v); }

@@ -145,7 +145,7 @@ add_to_id_render_state_cache(const string value, const style dstyl,
 }
 
 
-id_render_state
+const id_render_state
 get_id_render_state(string id)
 {
   const id_render_state_umap& cache = get_id_render_state_cache();
