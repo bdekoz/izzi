@@ -137,7 +137,7 @@ radial_text_r(svg_element& obj, const typography& typo,
 }
 
 
-/// Pont to rectangle.
+/// Point to rectangle.
 void
 point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
 		 int width = 4, int height = 4)
@@ -150,6 +150,26 @@ point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
 
   r.start_element();
   r.add_data(dr);
+  r.add_style(s);
+  r.finish_element();
+  obj.add_element(r);
+}
+
+
+/// Point to rectangle blur
+void
+point_2d_to_rect_blur(svg_element& obj, double x, double y, svg::style s,
+		      string filterstr, int width = 4, int height = 4)
+{
+  rect_element r;
+  using size_type = svg::size_type;
+  size_type xi = static_cast<size_type>(std::round(x));
+  size_type yi = static_cast<size_type>(std::round(y));
+  rect_element::data dr = { xi, yi, width, height };
+
+  r.start_element();
+  r.add_data(dr);
+  r.add_filter(filterstr);
   r.add_style(s);
   r.finish_element();
   obj.add_element(r);
