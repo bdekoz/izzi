@@ -169,8 +169,8 @@ point_2d_to_rect_blur(svg_element& obj, double x, double y, svg::style s,
 
   r.start_element();
   r.add_data(dr);
-  r.add_filter(filterstr);
   r.add_style(s);
+  r.add_filter(filterstr);
   r.finish_element();
   obj.add_element(r);
 }
