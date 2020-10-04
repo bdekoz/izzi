@@ -577,11 +577,11 @@ color_array spectrum =
 
 /// Random entry from array above.
 color
-random_color()
+random_color(uint startoffset = 0)
 {
   const uint maxc = spectrum.size();
   static std::mt19937_64 rg(std::random_device{}());
-  auto disti = std::uniform_int_distribution<>(0, maxc - 1);
+  auto disti = std::uniform_int_distribution<>(startoffset, maxc - 1);
   uint index = disti(rg);
   return spectrum[index];
 }
