@@ -122,6 +122,7 @@ struct id_render_state: public render_state_base
 };
 
 using id_render_state_umap = std::unordered_map<string, id_render_state>;
+using id_render_states = std::vector<id_render_state>;
 
 
 id_render_state_umap&
