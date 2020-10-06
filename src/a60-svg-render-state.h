@@ -27,7 +27,7 @@ namespace constants {
      Make discrete element or layer (visible, outline, etc) if true.
      Used as a (visibility, outline, etc.) bitmask
   */
-  enum class select : unsigned
+  enum class select : uint
     {
      none		= 1u << 0, ///> nothing
      cartography	= 1u << 1, ///> cartographic elements
@@ -43,6 +43,7 @@ namespace constants {
      image		= 1u << 11, ///> image
      svg		= 1u << 12, ///> svg element, perhaps nested
      alt		= 1u << 13, ///> alternate use specified
+     background		= 1u << 14, ///> background elements
      all		= 1u << 15, ///> all elements and layers
      _S_end		= 1u << 16  ///> future use 10-16
     };
@@ -57,15 +58,24 @@ namespace constants {
 
   inline constexpr select
   operator|(select __a, select __b)
-  { return select(static_cast<int>(__a) | static_cast<int>(__b)); }
+  {
+    using __utype = typename std::underlying_type<select>::type;
+    return select(static_cast<__utype>(__a) | static_cast<__utype>(__b));
+  }
 
   inline constexpr select
   operator^(select __a, select __b)
-  { return select(static_cast<int>(__a) ^ static_cast<int>(__b)); }
+  {
+    using __utype = typename std::underlying_type<select>::type;
+    return select(static_cast<__utype>(__a) ^ static_cast<__utype>(__b));
+  }
 
   inline constexpr select
   operator~(select __a)
-  { return select(~static_cast<int>(__a)); }
+  {
+    using __utype = typename std::underlying_type<select>::type;
+    return select(~static_cast<__utype>(__a));
+  }
 
   inline const select&
   operator|=(select& __a, select __b)
@@ -126,7 +136,11 @@ struct render_state_base
 
   bool
   is_visible(const k::select v) const
-  { return static_cast<bool>(visible_mode & v); }
+  {
+    using __utype = typename std::underlying_type<k::select>::type;
+    __utype isv(static_cast<__utype>(visible_mode & v));
+    return isv > 0;
+  }
 
   void
   set(k::select& a, const k::select& b)

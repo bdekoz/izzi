@@ -9,7 +9,8 @@ if [ ! -n "$CCFILE" ]; then
 fi
 
 WARNF="-Werror -Wfatal-errors -Wall -Wextra -Wunused -Wno-deprecated-declarations"
-COMPILEF="-std=gnu++17 -O2 -g -march=native"
+#COMPILEF="-std=gnu++17 -O2 -g -march=native"
+COMPILEF="-std=gnu++17 -O2 -g -march=native -D_GLIBCXX_DEBUG"
 
 EXEFILE=`echo $CCFILE | sed 's/.cc/.exe/g'`
 
