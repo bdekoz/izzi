@@ -198,10 +198,10 @@ enum class color
  none
 };
 
-constexpr uint color_size = static_cast<uint>(color::none);
+constexpr uint color_max_size = static_cast<uint>(color::none);
 
 /// Convert color to string.
-const std::string
+const std::string&
 to_string(const color e)
 {
   using enum_map_type = std::map<color, std::string>;
@@ -382,6 +382,18 @@ to_string(const color e)
       enum_map[color::atmosphericp] = "rgb(228, 210, 231)";
 
       enum_map[color::none] = "rgb(0, 0, 1)";
+
+      // Error check to make sure all the colors have names/values.
+      if (enum_map.size() != color_max_size + 1)
+	{
+	  string m("to_string(color)::color map size fail ");
+	  m += k::newline;
+	  m += std::to_string(enum_map.size());
+	  m += " not equal to named colors of size ";
+	  m += k::newline;
+	  m += std::to_string(color_max_size);
+	  throw std::runtime_error(m);
+	}
     }
   return enum_map[e];
 }
@@ -398,8 +410,9 @@ struct colorq
   itype	b;
 
   // Return "rgb(64, 64, 64)";
-  string
-  static to_string(colorq s)
+
+  static string
+  to_string(colorq s)
   {
     std::ostringstream oss;
     oss << "rgb(" << s.r << ',' << s.g << ',' << s.b << ")";
@@ -407,8 +420,8 @@ struct colorq
   }
 
   // From "rgb(64, 64, 64)";
-  colorq
-  static from_string(string s)
+  static colorq
+  from_string(string s)
   {
     // Kill rgb() enclosing, if be.
     if (s.empty() || s.size() < 5 || s[0] != 'r')
@@ -505,7 +518,7 @@ average_two_colorq(const colorq& a, const colorq& b)
 using colors = std::vector<color>;
 using colorqs = std::vector<colorq>;
 
-using color_array = std::array<color, color_size>;
+using color_array = std::array<color, color_max_size>;
 
 
 /// Color spectrum.
