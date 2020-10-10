@@ -144,11 +144,15 @@ struct render_state_base
 
   void
   set(k::select& a, const k::select& b)
-  { a |= b; }
+  { a = b; }
 
   void
   clear(k::select& a, const k::select& b)
   { a &= ~b; }
+
+  void
+  flip(k::select& a, const k::select& b)
+  { a |= b; }
 };
 
 
