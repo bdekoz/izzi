@@ -58,12 +58,11 @@ sort_strings_by_size(strings& ids)
 /// Hash map of unique id to (not necessarily) unique value.
 /// Use this for sorting by id.
 using value_type = long long;
-using id_value_umap = std::unordered_map<string, value_type>;
-
+using value_set = std::set<value_type>;
 
 /// Hash multimap of unique value to (perhaps multiple) unique ids.
 /// Use this form for sorting by value.
-using value_set = std::set<value_type>;
+using id_value_umap = std::unordered_map<string, value_type>;
 using value_id_ummap = std::unordered_multimap<value_type, string>;
 
 
