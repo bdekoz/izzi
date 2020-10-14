@@ -196,31 +196,29 @@ point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
 
 
 /// Draws a ring centered at origin of radius r, with outer and inner
-/// radial gradient of fuzzpercentage * radius in each direction.
+/// radial gradient of rspace in each direction.
 /// Background is transparent.
 void
 point_2d_to_ring_halo(svg_element& obj, const point_2t origin,
-		      const size_type radius, const double fuzzpercentage,
+		      const size_type radius, const double rspace,
 		      const svg::color klr, const double opacity = 1)
 {
   auto [ xd, yd ] = origin;
   const size_type x(xd);
   const size_type y(yd);
 
-  const size_type variance = std::round(radius * fuzzpercentage);
-
   // outer ring == upper bound, radius + variance.
-  const size_type oring = radius + variance;
+  const double oring = radius + rspace;
 
   // inner ring == lower bound, radius - variance.
-  const size_type iring = radius - variance;
+  const double iring = radius - rspace;
 
   // mangled args for name.
   std::ostringstream oss;
   oss << "x" << std::to_string(x) << k::hyphen
       << "y" << std::to_string(y) << k::hyphen
       << "r" << std::to_string(radius) << k::hyphen
-      << "fuzz" << std::to_string(variance);
+      << "rspace" << std::to_string(rspace);
   const string mangle(oss.str());
 
   // outer
@@ -236,7 +234,7 @@ point_2d_to_ring_halo(svg_element& obj, const point_2t origin,
   obj.add_element(rgrado);
 
   circle_element co;
-  circle_element::data dco = { x, y, oring };
+  circle_element::data dco = { x, y, static_cast<size_type>(oring) };
   co.start_element();
   co.add_data(dco);
   co.add_fill(rgrado_name);
