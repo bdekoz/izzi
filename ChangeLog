@@ -1,3 +1,10 @@
+2020-10-25  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial.h (normalize_value_on_range): Move to..
+	* src/a60-svg-render-basics.h: ..here.
+	(points_to_line): New.
+	(point_to_rect_centered): New.
+
 2020-09-20  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-render-basics.h: Fixes.

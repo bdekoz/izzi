@@ -170,19 +170,6 @@ get_id_render_state(string id)
 }
 
 
-double
-normalize_value_on_range(const size_type value, const size_type min,
-			 const size_type max,
-			 const size_type nfloor, const size_type nceil)
-{
-  double rmultp(nceil - nfloor);
-  double valnum(value - min);
-  double valdenom(max - min);
-  double weightn = (rmultp * (valnum / valdenom)) + nfloor;
-  return weightn;
-}
-
-
 // Given rdenom scaling factor and SVG canvas, compute effective
 // radius value.
 inline double

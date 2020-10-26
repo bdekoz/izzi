@@ -40,6 +40,21 @@ scale_proportional_to_weight(int radius, int weight)
 }
 
 
+/// Scale value from min to max on range (nfloor, nceil).
+double
+normalize_value_on_range(const size_type value, const size_type min,
+			 const size_type max,
+			 const size_type nfloor, const size_type nceil)
+{
+  double rmultp(nceil - nfloor);
+  double valnum(value - min);
+  double valdenom(max - min);
+  double weightn = (rmultp * (valnum / valdenom)) + nfloor;
+  return weightn;
+}
+
+
+
 /// Take input size and make a one channel (single-image) SVG form.
 svg_element
 make_svg_1_channel(const int deltax, const int deltay, const string& outbase)
@@ -137,6 +152,22 @@ radial_text_r(svg_element& obj, const typography& typo,
 }
 
 
+void
+points_to_line(svg_element& obj, const svg::style s,
+		  const point_2t origin, const point_2t end)
+{
+  auto [ xo, yo ] = origin;
+  auto [ xe, ye ] = end;
+  line_element l;
+  line_element::data dr = { int(xo), int(xe), int(yo), int(ye) };
+  l.start_element();
+  l.add_data(dr);
+  l.add_style(s);
+  l.finish_element();
+  obj.add_element(l);
+}
+
+
 /// Point to rectangle.
 void
 point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
@@ -153,6 +184,17 @@ point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
   r.add_style(s);
   r.finish_element();
   obj.add_element(r);
+}
+
+
+void
+point_to_rect_centered(svg_element& obj, const point_2t origin, svg::style s,
+		       int width = 4, int height = 4)
+{
+  auto [ x, y ] = origin;
+  x -= (width / 2);
+  y -= (height / 2);
+  point_2d_to_rect(obj, x, y, s, width, height);
 }
 
 
