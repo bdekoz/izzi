@@ -375,10 +375,16 @@ splay_ids_around(svg_element& obj, const typography& typo,
 		 const point_2t origin, double r, double rspace,
 		 const bool satellitep = false)
 {
+  // If rspace is set for labels, and isn't adjusted for this radius, make sure it is set low.
+  if (rspace > r * 2)
+    rspace = r * 2;
+
+  // XXX rspace should be disambiguated.
+
   // Angle between sequential id's.
   //
   // If given r, point p on circumfrence r distance from origin, angle d
-  // rspace is
+  // rspace is (one or more of XXX)
   //   1. the distance between p and a label on the arc from origin
   //   2. the distance between p and pprime on circumference with angle dprime
   //
