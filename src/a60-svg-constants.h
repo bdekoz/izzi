@@ -43,22 +43,19 @@ constexpr area<> a4_096_v = { 794, 1123 };
 constexpr area<> a5_096_v = { 559, 794 };
 constexpr area<> a6_096_v = { 397, 559 };
 
-constexpr area<> instagram_090_v = { 1080, 1350 };
-constexpr area<> instagram_096_h = { 1440, 1152 };
-constexpr area<> instagram_096_v = { 1152, 1440 };
+constexpr area<> p22x17_096_h = { 2112, 1632 };
+constexpr area<> p17x22_096_v = { 1632, 2112 };
 
-constexpr area<> v1080p_090_h = { 2048, 1152 };
-constexpr area<> v1080p_090_v = { 1152, 2048 };
+constexpr area<> instagram_090_v = { 1080, 1350 };
+constexpr area<> instagram_096_v = { 1152, 1440 };
 
 constexpr area<> v1080p_h = { 1920, 1080 };
 constexpr area<> v1080p_v = { 1080, 1920 };
 
 
 /// Style constants.
-const colorq whiteq(color::white);
-const colorq blackq(color::black);
-const style w_style = { whiteq, 1.0, blackq, 0.0, 0 };
-const style b_style = { blackq, 1.0, whiteq, 0.0, 0 };
+const style w_style = { color::white, 1.0, color::black, 0.0, 0 };
+const style b_style = { color::black, 1.0, color::white, 0.0, 0 };
 
 
 /// Useful typography constants.
