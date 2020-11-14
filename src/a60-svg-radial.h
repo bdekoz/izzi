@@ -915,7 +915,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       // circle.
       kusama_id_by_uvalue_2(obj, ids, origin, p, n, vpointns.size(),
 			    v, value_max, radius, rspace,
-			    typo, dst.styl, byvaluep);
+			    typo, styl, byvaluep);
     }
 
   return obj;
