@@ -15,7 +15,7 @@ test_path_demi_circle(svg::svg_element& obj)
   // Top.
   const point_2t topo = { x, y - (2 * r) };
   path_element pdct(true);
-  string dcpatht = make_path_arc(topo, 90, 270, r);
+  string dcpatht = make_path_arc_closed(topo, 90, 270, r);
   path_element::data pdcdatat = { dcpatht, 0 };
   pdct.start_element("demi circle top");
   pdct.add_data(pdcdatat);
@@ -26,7 +26,7 @@ test_path_demi_circle(svg::svg_element& obj)
   // Bottom.
   const point_2t bottomo = { x, y + (2 * r) };
   path_element pdcb(true);
-  string dcpathb = make_path_arc(bottomo, 270, 90, r);
+  string dcpathb = make_path_arc_closed(bottomo, 270, 90, r);
   path_element::data pdcdatab = { dcpathb, 0 };
   pdcb.start_element("demi circle bottom");
   pdcb.add_data(pdcdatab);

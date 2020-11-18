@@ -419,9 +419,9 @@ make_path_arc_circumference(const point_2t& start, const point_2t& end,
 /// Make closed path between two points and the center of a circle of radius r.
 /// Points like: get_circumference_point_d(align_angle_to_north(0), r, origin)
 string
-make_path_arc(const point_2t& origin, const point_2t& start,
-	      const point_2t& end, const int r,
-	      const int arcflag = 0, const int sweepflag = 0)
+make_path_arc_closed(const point_2t& origin, const point_2t& start,
+		     const point_2t& end, const int r,
+		     const int arcflag = 0, const int sweepflag = 0)
 {
   // Define path as starting at origin, line to circumference point start,
   // arc to circumfrence point end, line back to origin.
@@ -441,15 +441,15 @@ make_path_arc(const point_2t& origin, const point_2t& start,
 
 /// Same but with degree range arguments instead of points.
 string
-make_path_arc(const point_2t& origin, const double startd, const double endd,
-	      const int r, const int arcflag = 0, const int sweepflag = 0)
+make_path_arc_closed(const point_2t& origin, const double startd, const double endd,
+		     const int r, const int arcflag = 0, const int sweepflag = 0)
 {
   auto alignstartd = align_angle_to_north(startd);
   const point_2t start = get_circumference_point_d(alignstartd, r, origin);
 
   auto alignendd = align_angle_to_north(endd);
   const point_2t end = get_circumference_point_d(alignendd, r, origin);
-  return make_path_arc(origin, start, end, r, arcflag, sweepflag);
+  return make_path_arc_closed(origin, start, end, r, arcflag, sweepflag);
 }
 
 

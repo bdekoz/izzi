@@ -44,9 +44,9 @@ test_arc(std::string ofile)
   const int rlarge = r * 2;
   style s2 = { color::green, 0.0, color::green, 1.0, 1.5 };
   path_element parc2(is_visible);
-  const string arc2 = make_path_arc(cp, get_circumference_point_d(dn, rlarge, cp),
-				    get_circumference_point_d(dw, rlarge, cp),
-				    rlarge, 1, 1);
+  const string arc2 = make_path_arc_closed(cp, get_circumference_point_d(dn, rlarge, cp),
+					   get_circumference_point_d(dw, rlarge, cp),
+					   rlarge, 1, 1);
   path_element::data da2 = { arc2, 0 };
   parc2.start_element(arc_name + "2");
   parc2.add_data(da2);
