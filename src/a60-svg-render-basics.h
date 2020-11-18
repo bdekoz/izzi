@@ -340,20 +340,6 @@ point_2d_to_ray(svg_element& obj, double x, double y, svg::style s,
 }
 
 
-double
-align_angle_to_glyph(double angled)
-{
- // Change rotation to CW instead of CCW (or anti-clockwise).
-  angled = 360 - angled;
-
-  // Rotate 90 CCW, so that the first element will be at the top
-  // vertical axis, instead of the right middle axis.
-  angled += 90;
-
-  return angled;
-}
-
-
 /// Angle in radians.
 point_2t
 get_circumference_point(const double angler, const double r,
@@ -398,11 +384,25 @@ place_ray_at_angle(svg_element& obj, const point_2t& origin,
 }
 
 
+double
+align_angle_to_north(double angled)
+{
+ // Change rotation to CW instead of CCW (or anti-clockwise).
+  angled = 360 - angled;
+
+  // Rotate 90 CCW, so that the first element will be at the top
+  // vertical axis, instead of the right middle axis.
+  angled += 90;
+
+  return angled;
+}
+
+
 /// Make path segment between two points on a circumference of radius r.
-/// Points like: get_circumference_point_d(align_angle_to_glyph(0), r, origin)
+/// Points like: get_circumference_point_d(align_angle_to_north(0), r, origin)
 string
 make_path_arc_circumference(const point_2t& start, const point_2t& end,
-			    const int r)
+			    const int r, const int arcflag = 0, const int sweepflag = 1)
 {
   // Define arc.
   // A rx ry x-axis-rotation large-arc-flag sweep-flag x y
@@ -410,27 +410,30 @@ make_path_arc_circumference(const point_2t& start, const point_2t& end,
   oss << "M" << k::space << to_string(start) << k::space;
   oss << "A" << k::space;
   oss << std::to_string(r) << k::space << std::to_string(r) << k::space;
-  oss << 0 << k::space << 0 << k::space << 1 << k::space;
+  oss << 0 << k::space << arcflag << k::space << sweepflag << k::space;
   oss << to_string(end) << k::space;
   return oss.str();
 }
 
 
 /// Make closed path between two points and the center of a circle of radius r.
-/// Points like: get_circumference_point_d(align_angle_to_glyph(0), r, origin)
+/// Points like: get_circumference_point_d(align_angle_to_north(0), r, origin)
 string
 make_path_arc(const point_2t& origin, const point_2t& start,
-	      const point_2t& end, const int r)
+	      const point_2t& end, const int r,
+	      const int arcflag = 0, const int sweepflag = 0)
 {
   // Define path as starting at origin, line to circumference point start,
   // arc to circumfrence point end, line back to origin.
   // A rx ry x-axis-rotation large-arc-flag sweep-flag x y
+  // where (large) arc flag is true if arc angle delta is > 180
+  // where sweep flag is true if outer (movement clockwise) and false if inner (CCW).
   std::ostringstream oss;
   oss << "M" << k::space << to_string(origin) << k::space;
   oss << "L" << k::space << to_string(start) << k::space;
   oss << "A" << k::space;
   oss << std::to_string(r) << k::space << std::to_string(r) << k::space;
-  oss << 0 << k::space << 0 << k::space << 0 << k::space;
+  oss << 0 << k::space << arcflag << k::space << sweepflag << k::space;
   oss << to_string(end) << k::space;
   oss << "L" << k::space << to_string(origin) << k::space;
   return oss.str();
@@ -439,14 +442,14 @@ make_path_arc(const point_2t& origin, const point_2t& start,
 /// Same but with degree range arguments instead of points.
 string
 make_path_arc(const point_2t& origin, const double startd, const double endd,
-	      const int r)
+	      const int r, const int arcflag = 0, const int sweepflag = 0)
 {
-  auto alignstartd = align_angle_to_glyph(startd);
+  auto alignstartd = align_angle_to_north(startd);
   const point_2t start = get_circumference_point_d(alignstartd, r, origin);
 
-  auto alignendd = align_angle_to_glyph(endd);
+  auto alignendd = align_angle_to_north(endd);
   const point_2t end = get_circumference_point_d(alignendd, r, origin);
-  return make_path_arc(origin, start, end, r);
+  return make_path_arc(origin, start, end, r, arcflag, sweepflag);
 }
 
 
