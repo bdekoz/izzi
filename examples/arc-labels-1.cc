@@ -13,10 +13,10 @@ test_arc(std::string ofile)
   point_2t cp = obj.center_point();
   const int r = 60;
 
-  point_2t p0 = get_circumference_point_d(align_angle_to_glyph(0), r, cp);
-  point_2t p1 = get_circumference_point_d(align_angle_to_glyph(90), r, cp);
-  point_2t p2 = get_circumference_point_d(align_angle_to_glyph(180), r, cp);
-  point_2t p3 = get_circumference_point_d(align_angle_to_glyph(270), r, cp);
+  point_2t p0 = get_circumference_point_d(align_angle_to_north(0), r, cp);
+  point_2t p1 = get_circumference_point_d(align_angle_to_north(90), r, cp);
+  point_2t p2 = get_circumference_point_d(align_angle_to_north(180), r, cp);
+  point_2t p3 = get_circumference_point_d(align_angle_to_north(270), r, cp);
 
   string ne = make_path_arc_circumference(p0, p1, r);
   string se = make_path_arc_circumference(p1, p2, r);
@@ -53,6 +53,6 @@ test_arc(std::string ofile)
 
 int main()
 {
-  test_arc("test-arc-1");
+  test_arc("test-arc-label-1");
   return 0;
 }

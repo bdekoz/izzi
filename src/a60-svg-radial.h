@@ -194,7 +194,7 @@ get_angle(size_type pvalue, size_type pmax)
 {
   // Normalize [0, pmax] to range [mindeg, maxdeg] and put pvalue in it.
   double d = normalize_value_on_range(pvalue, 0, pmax, mindeg, maxdeg);
-  return align_angle_to_glyph(d);
+  return align_angle_to_north(d);
 }
 
 
@@ -206,9 +206,9 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
 			const uint spacer = 10)
 {
   const double r = rr - spacer;
-  point_2t p0 = get_circumference_point_d(align_angle_to_glyph(mindeg),
+  point_2t p0 = get_circumference_point_d(align_angle_to_north(mindeg),
 					  r, origin);
-  point_2t p4 = get_circumference_point_d(align_angle_to_glyph(maxdeg),
+  point_2t p4 = get_circumference_point_d(align_angle_to_north(maxdeg),
 					  r, origin);
 
   // Define arc.
@@ -216,7 +216,7 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
   ossa << "M" << k::space << to_string(p0) << k::space;
   ossa << "A" << k::space;
   ossa << std::to_string(r) << k::comma << std::to_string(r) << k::space;
-  ossa << align_angle_to_glyph(1) << k::space;
+  ossa << align_angle_to_north(1) << k::space;
   ossa << "1, 1" << k::space;
   ossa << to_string(p4) << k::space;
 
@@ -224,7 +224,7 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
   s._M_stroke_color = s._M_fill_color;
 
   auto rspacer = spacer - 2;
-  auto anglemax = align_angle_to_glyph(maxdeg);
+  auto anglemax = align_angle_to_north(maxdeg);
   point_2t p5 = get_circumference_point_d(anglemax, r + rspacer, origin);
   point_2t p7 = get_circumference_point_d(anglemax, r - rspacer, origin);
 
@@ -232,7 +232,7 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
   // arc.
   auto theta = 2 * rspacer / r;
   auto thetad = theta * 180 / k::pi;
-  auto alignd = align_angle_to_glyph(maxdeg + thetad);
+  auto alignd = align_angle_to_north(maxdeg + thetad);
   point_2t p6 = get_circumference_point_d(alignd, r, origin);
 
   // Define marker.
