@@ -165,10 +165,12 @@ defs_element::finish_element()
 /**
    Datum consolidating filter use and preferences.
 
+   \verbatim
    <filter id="gblur10" x="0" y="0">
    <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
    <feOffset dx="0" dy="0" />
    </filter>
+   \endverbatim
 */
 struct filter_element : virtual public element_base
 {
