@@ -30,31 +30,6 @@
 
 namespace svg {
 
-// Value -> Name, as a string where value has labelspaces of fill
-// NB: Should be the number of significant digits in pmax plus separators.
-// So, 10 == 2, 100 == 3, 10k == 5 + 1
-size_type&
-get_label_spaces()
-{
-  static size_type lspaces;
-  return lspaces;
-}
-
-void
-set_label_spaces(size_type spaces)
-{ get_label_spaces() = spaces; }
-
-
-// Or use set with lt.
-void
-sort_strings_by_size(strings& ids)
-{
-  auto lsizeless = [](const string& s1, const string& s2)
-		   { return s1.size() < s2.size(); };
-  sort(ids.begin(), ids.end(), lsizeless);
-}
-
-
 /// Hash map of unique id to (not necessarily) unique value.
 /// Use this for sorting by id.
 using value_type = long long;
@@ -64,6 +39,33 @@ using value_set = std::set<value_type>;
 /// Use this form for sorting by value.
 using id_value_umap = std::unordered_map<string, value_type>;
 using value_id_ummap = std::unordered_multimap<value_type, string>;
+
+
+/// Get the label space.
+/// Value -> Name, as a string where value has labelspaces of fill
+/// NB: Should be the number of significant digits in pmax plus separators.
+/// So, 10 == 2, 100 == 3, 10k == 5 + 1
+size_type&
+get_label_spaces()
+{
+  static size_type lspaces;
+  return lspaces;
+}
+
+/// Set the number of label spaces.
+void
+set_label_spaces(size_type spaces)
+{ get_label_spaces() = spaces; }
+
+
+/// Or use set with lt.
+void
+sort_strings_by_size(strings& ids)
+{
+  auto lsizeless = [](const string& s1, const string& s2)
+		   { return s1.size() < s2.size(); };
+  sort(ids.begin(), ids.end(), lsizeless);
+}
 
 
 /// Remove all from map that match the input (matches) strings.
@@ -199,6 +201,7 @@ get_radial_range()
 }
 
 
+/// Transform a value on a range to an angle on the radial range.
 inline double
 get_angle(size_type pvalue, size_type pmax)
 {
@@ -287,6 +290,7 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
 }
 
 
+/// Radial label.
 string
 make_label_for_value(string pname, size_type pvalue,
 		     const uint valuewidth = 9)
@@ -306,18 +310,18 @@ make_label_for_value(string pname, size_type pvalue,
 // Radiate clockwise from 0 to 35x degrees about origin, placing each
 // id at a point on the circumference. Duplicate points overlap.
 
-// Circumference adjustment such that lable is hight-centered in
-// kusama circle.
+/// Circumference adjustment such that lable is hight-centered in
+/// kusama circle.
 size_type
 kusama_label_angle_adjust()
 {
-  // About half the y height of the type size in question, ish.
+  // XXX About half the y height of the type size in question, ish.
   return 3;
 }
 
-/*
-  Draw text on the circumference of a circle of radius r centered at (cx, cy)
-  corresponding to the angle above.
+/**
+   Draw text on the circumference of a circle of radius r centered at (cx, cy)
+   corresponding to the angle above.
 */
 void
 radiate_id_by_value(svg_element& obj, const point_2t origin,
@@ -380,15 +384,16 @@ radiate_ids_per_value_on_arc(svg_element& obj, const point_2t origin,
 // id at a point on the circumference. Duplicate ids splay, stack,
 // or append/concatencate at, after, or around that point.
 
-// Spread ids on either side of an origin point, along circumference
-// path.
+/// Spread ids on either side of an origin point, along circumference
+/// path.
 void
 splay_ids_around(svg_element& obj, const typography& typo,
 		 const strings& ids, const double angled,
 		 const point_2t origin, double r, double rspace,
 		 const bool satellitep = false)
 {
-  // If rspace is set for labels, and isn't adjusted for this radius, make sure it is set low.
+  // If rspace is set for labels, and isn't adjusted for this radius,
+  // make sure it is set low.
   if (rspace > r * 2)
     rspace = r * 2;
 
@@ -401,7 +406,8 @@ splay_ids_around(svg_element& obj, const typography& typo,
   //   1. the distance between p and a label on the arc from origin
   //   2. the distance between p and pprime on circumference with angle dprime
   //
-  // then angle dprime = 2theta, where theta from sin(theta) = (rspace / 2) / r.
+  // then
+  // angle dprime = 2theta, where theta from sin(theta) = (rspace / 2) / r.
   double angleprime = std::asin((rspace / 2) / r);
   double angleprimed = angleprime * (180 / k::pi);
 
@@ -431,7 +437,7 @@ splay_ids_around(svg_element& obj, const typography& typo,
 }
 
 
-// Spread ids past the origin point, along circumference path.
+/// Spread ids past the origin point, along circumference path.
 void
 splay_ids_after(svg_element& obj, const typography& typo,
 		const strings& ids, const double angled,
@@ -449,6 +455,7 @@ splay_ids_after(svg_element& obj, const typography& typo,
 }
 
 
+/// Spread ids after in stepping pattern outward.
 void
 splay_ids_stagger(svg_element& obj, const typography& typo,
 		  const strings& ids, const double angled,
@@ -467,8 +474,8 @@ splay_ids_stagger(svg_element& obj, const typography& typo,
 }
 
 
-// Rotate and stack ids at origin point, extending radius for each
-// from point of origin.
+/// Rotate and stack ids at origin point, extending radius for each
+/// from point of origin.
 void
 stack_ids_at(svg_element& obj, const typography& typoo,
 	     const strings& ids, const double angled,
@@ -488,6 +495,7 @@ stack_ids_at(svg_element& obj, const typography& typoo,
 }
 
 
+/// Concatenate ids onto one line.
 void
 append_ids_at(svg_element& obj, const typography& typo,
 	      const strings& ids, const double angled,
@@ -508,7 +516,7 @@ append_ids_at(svg_element& obj, const typography& typo,
 }
 
 
-// Map ids with one value to a point cluster radiating out from a center.
+/// Map ids with one value to a point cluster radiating out from a center.
 void
 radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
 		      const typography& typo, const strings& ids,
@@ -535,9 +543,9 @@ radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
 }
 
 
-// Radiate as above, but group similar values such that they are
-// splayed, and not written on top of each other on the same
-// arc/angle.
+/// Radiate as above, but group similar values such that they are
+/// splayed, and not written on top of each other on the same
+/// arc/angle.
 svg_element
 radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			      const typography& typo, const id_value_umap& ivm,
@@ -577,11 +585,11 @@ radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 
 
 // RADIAL 3
-// Radiate clockwise from 0 to 35x degrees about origin, placing each
-// id at a point cluster on the circumference. A point cluster is a
-// circle whos radius is proportionate to the number of duplicate ids
-// at that point.  Duplicate ids splay, stack, or
-// append/concatencate at, after, or around that point cluster.
+/// Radiate clockwise from 0 to 35x degrees about origin, placing each
+/// id at a point cluster on the circumference. A point cluster is a
+/// circle whos radius is proportionate to the number of duplicate ids
+/// at that point.  Duplicate ids splay, stack, or
+/// append/concatencate at, after, or around that point cluster.
 void
 kusama_collision_transforms(const point_2t origin,
 			    std::vector<size_type> vuvalues,
@@ -838,7 +846,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			     const typography& typo, const id_value_umap& ivm,
 			     const size_type value_max, const int radius,
 			     const int rspace,
-			     const bool byvaluep = true,
+			     const bool weighbyvaluep = true,
 			     const bool collisionp = false,
 			     const bool arrowp = false)
 {
@@ -965,7 +973,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       // circle.
       kusama_id_by_uvalue_2(obj, ids, origin, p, n, vpointns.size(),
 			    v, value_max, radius, rspace,
-			    typo, styl, byvaluep);
+			    typo, styl, weighbyvaluep);
     }
 
   return obj;
