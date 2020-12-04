@@ -170,8 +170,8 @@ get_id_render_state(string id)
 }
 
 
-// Given rdenom scaling factor and SVG canvas, compute effective
-// radius value.
+/// Given rdenom scaling factor and SVG canvas, compute effective
+/// radius value.
 inline double
 get_radius(const svg_element& obj, const uint rdenom)
 {
@@ -180,19 +180,30 @@ get_radius(const svg_element& obj, const uint rdenom)
 }
 
 
-// Max number of non-overlapping degrees in circle, such that the
-// beginning and the end have a discernable gap. Total degrees in a
-// circle are 360, but then the beginning and the end of the radial
-// display are in the same place. So, shave a bit off both for the
-// optics.
-constexpr double mindeg = 10;
-constexpr double maxdeg = 350;
+/**
+   Max number of non-overlapping degrees in radial form,
+   as a tuple of (min, max).
+
+   Total degrees in a circle are 360, but then the beginning and the
+   end of the radial display are in the same place, which may
+   confusing. So, shave a bit off both ends for the optics, so that
+   there is a gap between the beginning and end of the generated
+   radial viz. The default is such that the beginning and the end have
+   a discernable gap.
+*/
+point_2t&
+get_radial_range()
+{
+  static point_2t rrange = { 10, 350 };
+  return rrange;
+}
 
 
 inline double
 get_angle(size_type pvalue, size_type pmax)
 {
   // Normalize [0, pmax] to range [mindeg, maxdeg] and put pvalue in it.
+  const auto [ mindeg, maxdeg ] = get_radial_range();
   double d = normalize_value_on_range(pvalue, 0, pmax, mindeg, maxdeg);
   return align_angle_to_north(d);
 }
@@ -206,6 +217,8 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
 			const uint spacer = 10)
 {
   const double r = rr - spacer;
+  const auto [ mindeg, maxdeg ] = get_radial_range();
+
   point_2t p0 = get_circumference_point_d(align_angle_to_north(mindeg),
 					  r, origin);
   point_2t p4 = get_circumference_point_d(align_angle_to_north(maxdeg),
@@ -834,11 +847,48 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   // Make circle perimeter with an arrow to orientate display of data.
   if (arrowp)
     {
+      // Direction glyph.
       svg::style stylinset(styl);
       stylinset._M_fill_opacity = 0;
       stylinset._M_stroke_opacity = 1;
       stylinset._M_stroke_size = 3;
       insert_direction_arc_at(obj, origin, radius, stylinset);
+
+      // Title on arc.
+
+      // Make arc text path
+      const auto [ mindeg, maxdeg ] = get_radial_range();
+      auto mina = align_angle_to_north(mindeg);
+      auto maxa = align_angle_to_north(maxdeg);
+
+      point_2t pmin = get_circumference_point_d(mina, radius, origin);
+      point_2t pmax = get_circumference_point_d(maxa, radius, origin);
+
+      string titlearc = make_path_arc_circumference(pmax, pmin, radius);
+
+      string arc_name("arc-text");
+      path_element parc(false);
+      path_element::data da = { titlearc, 0 };
+      parc.start_element(arc_name);
+      parc.add_data(da);
+      parc.add_style(k::b_style);
+      parc.finish_element();
+      obj.add_element(parc);
+
+      // Make label text and style it.
+      string imetrictype("web vitals 2020");
+      typography typo = k::apercu_typo;
+      typo._M_size = 10;
+      typo._M_a = typography::anchor::start;
+      typo._M_align = typography::align::left;
+
+      // Put it together.
+      text_element::data dt = { 0, 0, imetrictype, typo };
+      text_path_element tp(arc_name, "30%");
+      tp.start_element();
+      tp.add_data(dt);
+      tp.finish_element();
+      obj.add_element(tp);
     }
 
   // Convert from string id-keys to int value-keys, plus an ordered
