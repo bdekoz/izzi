@@ -840,7 +840,7 @@ struct svg_element : virtual public element_base
 
   ~svg_element() { finish(); }
 
-  const auto
+  const point_2t
   center_point()
   { return std::make_tuple(_M_area._M_width / 2, _M_area._M_height / 2); }
 
