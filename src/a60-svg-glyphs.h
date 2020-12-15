@@ -153,7 +153,7 @@ make_glyphs_basic(const collection& cll)
       // Find the rest from torrent meta data.
       string fqfilef(io::end_path(tdir) + filef + ".torrent");
       lt::error_code ec;
-      p.ti = std::make_shared<lt::torrent_info>(fqfilef, std::ref(ec), 0);
+      p.ti = std::make_shared<lt::torrent_info>(fqfilef, std::ref(ec));
       if (ec)
 	{
 	  std::string s("make_glyphs_basic:: error or invalid torrent file");
