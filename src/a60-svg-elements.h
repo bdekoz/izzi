@@ -790,8 +790,8 @@ struct text_path_element : virtual public text_element
   string	side;   // "left" || "right" (use convex/concave side of path)
 
   text_path_element(const string name,
-		    const string off = "", const string which = "")
-  : path_name(name), offset(off), side(which) { }
+		    const string off = "", const string whichside = "")
+  : path_name(name), offset(off), side(whichside) { }
 
   virtual void
   add_text(string txt)

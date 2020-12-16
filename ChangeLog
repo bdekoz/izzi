@@ -1,3 +1,11 @@
+2020-12-16  Benjamin De Kosnik  <bkoz@rizal>
+
+	* examples/arc-labels-2.cc: Add more examples.
+	* src/a60-svg-elements.h: Change parameter name.
+
+	* src/a60-svg-linear.h: Add so that some of the "playing" linear
+	viz from alpha60-metadata can land here.
+
 2020-10-25  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial.h (normalize_value_on_range): Move to..
