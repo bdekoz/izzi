@@ -268,7 +268,7 @@ augment_collection_titles_5(svg_element& obj, svg::typography typo,
 
 // Ovoid, topn style
 void
-augment_collection_titles_6(svg_element& obj, const cached_collection& wcll)
+augment_collection_titles_6(svg_element& obj, const collection_cache& wcll)
 {
   string smode = to_string(wcll.sort_mode);
   bool peerp = wcll.sort_mode == swarm_mode::peer;
@@ -329,7 +329,7 @@ corner_logo_size()
 }
 
 void
-augment_corner_logo(svg_element& obj, cached_collection& wcll,
+augment_corner_logo(svg_element& obj, collection_cache& wcll,
 		    const int xoff = carto::frame_margin())
 {
   // Alpha60 / We Scrape U Logo
@@ -355,7 +355,7 @@ augment_corner_logo(svg_element& obj, cached_collection& wcll,
 
 /// Make weighed title.
 void
-augment_weighed_title(svg_element& obj, cached_collection& wcll, bool lp,
+augment_weighed_title(svg_element& obj, collection_cache& wcll, bool lp,
 		      const string prefix = "")
 {
   // Swarm type.
@@ -395,7 +395,7 @@ augment_weighed_title(svg_element& obj, cached_collection& wcll, bool lp,
 
 /// Demi- and Sub-titles: maps details, logos, sample details.
 void
-augment_weighed_demititle(svg_element& obj, cached_collection& wcll,
+augment_weighed_demititle(svg_element& obj, collection_cache& wcll,
 			  const string d)
 {
   const auto height = obj._M_area._M_height;
@@ -437,7 +437,7 @@ augment_weighed_demititle(svg_element& obj, cached_collection& wcll,
 
 /// Demi- and Sub-titles: maps details, logos, sample details.
 void
-augment_weighed_demititle_corner(svg_element& obj, cached_collection& wcll,
+augment_weighed_demititle_corner(svg_element& obj, collection_cache& wcll,
 				 const string d, const int xoff)
 {
   const auto height = obj._M_area._M_height;
