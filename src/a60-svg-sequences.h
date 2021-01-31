@@ -150,11 +150,10 @@ blink_to_color_seq(const rect_element::data& dr, const color klr,
 }
 
 
-/// wink sequence of duration sec, given fps
-/// starts on background (backgf)
+/// wink sequence of duration sec, given fps to color klr
+/// starts on background transparent, so can use with an image behind.
 /// at duration twhen
 /// winks specific rectangle (r) this much (maxclose) for seconds (winksec)
-/// can use with image behind
 strings
 wink_to_color_seq(const rect_element::data& dr, const color klr,
 		  size_t fps, double sec,

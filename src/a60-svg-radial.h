@@ -172,6 +172,25 @@ get_id_render_state(string id)
 }
 
 
+/// Roll through render states squentially, index starts with zero.
+const id_render_state&
+traverse_states(const id_render_states& idstates, uint& index)
+{
+  if (!idstates.empty())
+    {
+      if (index >= idstates.size())
+	index = 0;
+      const id_render_state& ret = idstates[index++];
+      return ret;
+    }
+  else
+    {
+      static const id_render_state ret;
+      return ret;
+    }
+}
+
+
 /// Given rdenom scaling factor and SVG canvas, compute effective
 /// radius value.
 inline double
