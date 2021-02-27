@@ -3,7 +3,7 @@
 // alpha60
 // bittorrent x scrape x data + analytics
 
-// Copyright (c) 2018-2020, Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (c) 2018-2021, Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60 library.  This library is free
 // software; you can redistribute it and/or modify it under the terms
@@ -19,14 +19,9 @@
 #ifndef MiL_SVG_RENDER_RADIAL_H
 #define MiL_SVG_RENDER_RADIAL_H 1
 
-#include <set>
-#include <chrono>
-#include <iostream>
-#include <iomanip>
-#include <algorithm>
 
-#include "a60-svg.h"
-
+#include "a60-svg-radial-base.h"
+#include "a60-svg-radial-direction-arc.h"
 
 namespace svg {
 
@@ -35,37 +30,11 @@ namespace svg {
 using value_type = long long;
 using value_set = std::set<value_type>;
 
+
 /// Hash multimap of unique value to (perhaps multiple) unique ids.
 /// Use this form for sorting by value.
 using id_value_umap = std::unordered_map<string, value_type>;
 using value_id_ummap = std::unordered_multimap<value_type, string>;
-
-
-/// Get the label space.
-/// Value -> Name, as a string where value has labelspaces of fill
-/// NB: Should be the number of significant digits in pmax plus separators.
-/// So, 10 == 2, 100 == 3, 10k == 5 + 1
-size_type&
-get_label_spaces()
-{
-  static size_type lspaces;
-  return lspaces;
-}
-
-/// Set the number of label spaces.
-void
-set_label_spaces(size_type spaces)
-{ get_label_spaces() = spaces; }
-
-
-/// Or use set with lt.
-void
-sort_strings_by_size(strings& ids)
-{
-  auto lsizeless = [](const string& s1, const string& s2)
-		   { return s1.size() < s2.size(); };
-  sort(ids.begin(), ids.end(), lsizeless);
-}
 
 
 /// Remove all from map that match the input (matches) strings.
@@ -103,225 +72,6 @@ to_value_id_mmap(const id_value_umap& ivm, value_set& uniquev)
       uniquev.insert(i);
     }
   return vimm;
-}
-
-
-/// Datum to take id string and tie it to visual representation.
-struct id_render_state: public render_state_base
-{
-  style		styl;
-  string	name;
-  double	rotate; // Degrees to rotate to origin (CW), if any.
-  double	scale; // Scale factor, if any.
-
-  explicit
-  id_render_state(const style s = k::b_style, const string f = "",
-		  const double d = 0.0, const double sc = 1.0)
-  : styl(s), name(f), rotate(d), scale(sc) { }
-
-  id_render_state(const id_render_state&) = default;
-  id_render_state& operator=(const id_render_state&) = default;
-};
-
-using id_render_state_umap = std::unordered_map<string, id_render_state>;
-using id_render_states = std::vector<id_render_state>;
-
-
-id_render_state_umap&
-get_id_render_state_cache()
-{
-  static id_render_state_umap cache;
-  return cache;
-}
-
-
-/// Add value to cache with base style of styl, colors klr, visibility vis.
-void
-add_to_id_render_state_cache(const string value, const style styl,
-			     const svg::k::select vis)
-{
-  id_render_state_umap& cache = get_id_render_state_cache();
-
-  id_render_state state(styl, value);
-  state.set(state.visible_mode, vis);
-  cache.insert(std::make_pair(value, state));
-}
-
-
-const id_render_state
-get_id_render_state(string id)
-{
-  const id_render_state_umap& cache = get_id_render_state_cache();
-
-  id_render_state ret;
-  if (cache.count(id) == 1)
-    {
-      auto iter = cache.find(id);
-      ret = iter->second;
-    }
-  else
-    {
-      // If default string is set in the cache, use it.
-      if (cache.count("") == 1)
-	{
-	  auto iter = cache.find("");
-	  ret = iter->second;
-	}
-    }
-  return ret;
-}
-
-
-/// Roll through render states squentially, index starts with zero.
-const id_render_state&
-traverse_states(const id_render_states& idstates, uint& index)
-{
-  if (!idstates.empty())
-    {
-      if (index >= idstates.size())
-	index = 0;
-      const id_render_state& ret = idstates[index++];
-      return ret;
-    }
-  else
-    {
-      static const id_render_state ret;
-      return ret;
-    }
-}
-
-
-/// Given rdenom scaling factor and SVG canvas, compute effective
-/// radius value.
-inline double
-get_radius(const svg_element& obj, const uint rdenom)
-{
-  auto leastside = std::min(obj._M_area._M_height, obj._M_area._M_width);
-  return leastside / rdenom;
-}
-
-
-/**
-   Max number of non-overlapping degrees in radial form,
-   as a tuple of (min, max).
-
-   Total degrees in a circle are 360, but then the beginning and the
-   end of the radial display are in the same place, which may
-   confusing. So, shave a bit off both ends for the optics, so that
-   there is a gap between the beginning and end of the generated
-   radial viz. The default is such that the beginning and the end have
-   a discernable gap.
-*/
-point_2t&
-get_radial_range()
-{
-  static point_2t rrange = { 10, 350 };
-  return rrange;
-}
-
-
-/// Transform a value on a range to an angle on the radial range.
-inline double
-get_angle(size_type pvalue, size_type pmax)
-{
-  // Normalize [0, pmax] to range [mindeg, maxdeg] and put pvalue in it.
-  const auto [ mindeg, maxdeg ] = get_radial_range();
-  double d = normalize_value_on_range(pvalue, 0, pmax, mindeg, maxdeg);
-  return align_angle_to_north(d);
-}
-
-
-/// Insert arc + arrow glyph that traces path of start to finish
-/// trajectory.
-svg_element
-insert_direction_arc_at(svg_element& obj, const point_2t origin,
-			const double rr, svg::style s,
-			const uint spacer = 10)
-{
-  const double r = rr - spacer;
-  const auto [ mindeg, maxdeg ] = get_radial_range();
-
-  point_2t p0 = get_circumference_point_d(align_angle_to_north(mindeg),
-					  r, origin);
-  point_2t p4 = get_circumference_point_d(align_angle_to_north(maxdeg),
-					  r, origin);
-
-  // Define arc.
-  std::ostringstream ossa;
-  ossa << "M" << k::space << to_string(p0) << k::space;
-  ossa << "A" << k::space;
-  ossa << std::to_string(r) << k::comma << std::to_string(r) << k::space;
-  ossa << align_angle_to_north(1) << k::space;
-  ossa << "1, 1" << k::space;
-  ossa << to_string(p4) << k::space;
-
-  // Adjust style so the stroke color matches the fill color.
-  s._M_stroke_color = s._M_fill_color;
-
-  auto rspacer = spacer - 2;
-  auto anglemax = align_angle_to_north(maxdeg);
-  point_2t p5 = get_circumference_point_d(anglemax, r + rspacer, origin);
-  point_2t p7 = get_circumference_point_d(anglemax, r - rspacer, origin);
-
-  // Circumference arc length desired is radius times the angle of the
-  // arc.
-  auto theta = 2 * rspacer / r;
-  auto thetad = theta * 180 / k::pi;
-  auto alignd = align_angle_to_north(maxdeg + thetad);
-  point_2t p6 = get_circumference_point_d(alignd, r, origin);
-
-  // Define marker.
-  std::ostringstream ossm;
-  ossm << "M" << k::space << to_string(p4) << k::space;
-  ossm << "L" << k::space;
-  ossm << to_string(p5) << k::space;
-  ossm << to_string(p6) << k::space;
-  ossm << to_string(p7) << k::space;
-  ossm << to_string(p4) << k::space;
-
-  // Adjust style so that fill will be shown, and stroke hidden.
-  s._M_fill_opacity = 1;
-  s._M_stroke_opacity = 0;
-
-  // End marker path.
-  path_element pmarker;
-  path_element::data dm = { ossm.str(), 0 };
-  pmarker.start_element();
-  pmarker.add_data(dm);
-  pmarker.add_style(s);
-  pmarker.finish_element();
-  obj.add_element(pmarker);
-
-  // Reset style.
-  s._M_fill_opacity = 0;
-  s._M_stroke_opacity = 1;
-
-  // Arc path.
-  path_element parc;
-  path_element::data da = { ossa.str(), 0 };
-  parc.start_element();
-  parc.add_data(da);
-  parc.add_style(s);
-  parc.finish_element();
-  obj.add_element(parc);
-
-  return obj;
-}
-
-
-/// Radial label.
-string
-make_label_for_value(string pname, size_type pvalue,
-		     const uint valuewidth = 9)
-{
-  // Consolidate label text to be "VALUE -> NAME"
-  std::ostringstream oss;
-  oss.imbue(std::locale(""));
-  oss << std::setfill(' ') << std::setw(valuewidth)
-      << std::left << pvalue;
-
-  string label = oss.str() + " -> " + pname;
-  return label;
 }
 
 
@@ -786,7 +536,7 @@ kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
 
 	      // Switch based on id_render_state settings.
 	      const string glyphtext = idst.name;
-	      const double glyphscale = idst.scale;
+	      const double glyphscale = idst.multiple;
 	      const double glyphrotate = idst.rotate;
 
 	      if (idst.is_visible(svg::k::select::svg))

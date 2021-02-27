@@ -1,3 +1,12 @@
+2021-02-27  Benjamin De Kosnik  <bkoz@rizal>
+
+	Separate radial from kusama radial.
+	* src/a60-svg-radial-base.h: Move base parts here.
+	* src/a60-svg-radial-direction-arc.h: Just radial arc glyph.
+
+	* src/a60-svg-radial.h: Move id_render_state to...
+	* src/a60-svg-render-state.h: Here. Clean and adjust for above.
+
 2021-01-31  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial.h (traverse_states): Move here.

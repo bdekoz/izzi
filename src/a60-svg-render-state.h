@@ -1,6 +1,6 @@
 // svg render basics -*- mode: C++ -*-
 
-// Copyright (C) 2014-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -16,7 +16,6 @@
 #ifndef MiL_SVG_RENDER_STATE_H
 #define MiL_SVG_RENDER_STATE_H 1
 
-//#include <unordered_map>
 
 namespace svg {
 
@@ -45,7 +44,7 @@ namespace constants {
      alt		= 1u << 13, ///> alternate use specified
      background		= 1u << 14, ///> background elements
      all		= 1u << 15, ///> all elements and layers
-     _S_end		= 1u << 16  ///> future use 10-16
+     _S_end		= 1u << 16  ///> last
     };
 
   inline constexpr select
@@ -156,7 +155,6 @@ struct render_state_base
 };
 
 
-
 ///  Render settings for collections.
 struct render_state : public render_state_base
 {
@@ -183,6 +181,97 @@ get_render_state()
 {
   static render_state state;
   return state;
+}
+
+
+/// Named render state.
+/// Datum to take id string and tie it to visual representation.
+struct id_render_state: public render_state_base
+{
+  style		styl;
+  string	name;
+  double	rotate; // Degrees to rotate to origin (CW), if any.
+  double	multiple; // Scale factor, if any.
+
+  static const style dstyl;
+
+  explicit
+  id_render_state(const style s = dstyl, const string f = "",
+		  const double d = 0.0, const double sc = 1.0)
+  : styl(s), name(f), rotate(d), multiple(sc) { }
+
+  id_render_state(const id_render_state&) = default;
+  id_render_state& operator=(const id_render_state&) = default;
+};
+
+const style id_render_state::dstyl = {color::black, 0, color::black, 0.5, 2};
+
+using id_render_state_umap = std::unordered_map<string, id_render_state>;
+using id_render_states = std::vector<id_render_state>;
+
+
+id_render_state_umap&
+get_id_render_state_cache()
+{
+  static id_render_state_umap cache;
+  return cache;
+}
+
+
+/// Add value to cache with base style of styl, colors klr, visibility vis.
+void
+add_to_id_render_state_cache(const string value, const style styl,
+			     const svg::k::select vis)
+{
+  id_render_state_umap& cache = get_id_render_state_cache();
+
+  id_render_state state(styl, value);
+  state.set(state.visible_mode, vis);
+  cache.insert(std::make_pair(value, state));
+}
+
+
+/// Given identifier/name/id, get corresponding id_render_state from cache.
+const id_render_state
+get_id_render_state(string id)
+{
+  const id_render_state_umap& cache = get_id_render_state_cache();
+
+  id_render_state ret;
+  if (cache.count(id) == 1)
+    {
+      auto iter = cache.find(id);
+      ret = iter->second;
+    }
+  else
+    {
+      // If default string is set in the cache, use it.
+      if (cache.count("") == 1)
+	{
+	  auto iter = cache.find("");
+	  ret = iter->second;
+	}
+    }
+  return ret;
+}
+
+
+/// Roll through render states squentially, index starts with zero.
+const id_render_state&
+traverse_states(const id_render_states& idstates, uint& index)
+{
+  if (!idstates.empty())
+    {
+      if (index >= idstates.size())
+	index = 0;
+      const id_render_state& ret = idstates[index++];
+      return ret;
+    }
+  else
+    {
+      static const id_render_state ret;
+      return ret;
+    }
 }
 
 } // namespace svg
