@@ -88,16 +88,6 @@ set_label_spaces(size_type spaces)
 { get_label_spaces() = spaces; }
 
 
-/// Or use set with lt.
-void
-sort_strings_by_size(strings& ids)
-{
-  auto lsizeless = [](const string& s1, const string& s2)
-		   { return s1.size() < s2.size(); };
-  sort(ids.begin(), ids.end(), lsizeless);
-}
-
-
 /// Make radial labels.
 string
 make_label_for_value(string pname, size_type pvalue,
@@ -125,6 +115,16 @@ adjust_label_angle_for_text_height()
 {
   // XXX About half the y height of the type size in question, ish.
   return 3;
+}
+
+
+/// Sort vectors of strings to largest length string first. (Or use set<>).
+void
+sort_strings_by_size(strings& ids)
+{
+  auto lsizeless = [](const string& s1, const string& s2)
+		   { return s1.size() < s2.size(); };
+  sort(ids.begin(), ids.end(), lsizeless);
 }
 
 

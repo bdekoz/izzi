@@ -193,7 +193,7 @@ struct id_render_state: public render_state_base
   double	rotate; // Degrees to rotate to origin (CW), if any.
   double	multiple; // Scale factor, if any.
 
-  static const style dstyl;
+  static style 	dstyl;
 
   explicit
   id_render_state(const style s = dstyl, const string f = "",
@@ -204,7 +204,7 @@ struct id_render_state: public render_state_base
   id_render_state& operator=(const id_render_state&) = default;
 };
 
-const style id_render_state::dstyl = {color::black, 0, color::black, 0.5, 2};
+style id_render_state::dstyl = { color::black, 0, color::black, 0.5, 2 };
 
 using id_render_state_umap = std::unordered_map<string, id_render_state>;
 using id_render_states = std::vector<id_render_state>;
