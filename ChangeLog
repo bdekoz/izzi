@@ -1,3 +1,10 @@
+2021-03-02  Benjamin De Kosnik  <bkoz@rizal>
+
+	* docs/izzi-wind-square-v2.svg: New.
+
+	* docs/izzi.doxygen: Update project logo.
+	* docs/izzi.mcss: New.
+
 2021-02-27  Benjamin De Kosnik  <bkoz@rizal>
 
 	Separate radial from kusama radial.
