@@ -2,5 +2,3 @@
 GENERATE_HTML          = NO
 GENERATE_XML           = YES
 XML_PROGRAMLISTING     = NO
-#PROJECT_LOGO           = file://a60-logo-outline.svg
-SHOW_UNDOCUMENTED      = NO

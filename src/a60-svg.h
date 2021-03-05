@@ -1,6 +1,6 @@
 // svg API -*- mode: C++ -*-
 
-// Copyright (C) 2019-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2019-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -81,7 +81,7 @@ is_collision_detected(const point_2t& p1, const int r1,
 */
 namespace constants {
 
-  // Formatting constants.
+  /// Formatting constants.
   constexpr char space(' ');
   constexpr char quote('"');
   constexpr char hyphen('-');
@@ -89,9 +89,11 @@ namespace constants {
   constexpr char newline('\n');
   constexpr char comma(',');
 
-  // Numeric constants.
-  // π = double(22)/double(7);
-  // π = 3.14159265358979323846
+  /** 
+      Numeric constants.
+      π = double(22)/double(7);
+      π = 3.14159265358979323846
+  */
   constexpr double pi(3.14159265358979323846);
 
   uint&
