@@ -13,28 +13,14 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // General Public License for more details.
 
-#ifndef MiL_SVG_BASE_H
-#define MiL_SVG_BASE_H 1
+#ifndef MiL_SVG_BASE_TYPES_H
+#define MiL_SVG_BASE_TYPES_H 1
 
 
 #include <map>
 #include <ostream>
 #include <fstream>
 #include <cstdint>
-
-
-// Utility function, like regex_replace.
-inline void
-string_replace(std::string& target, const std::string& match,
-	       const std::string& replace)
-{
-  size_t pos = 0;
-  while((pos = target.find(match, pos)) != std::string::npos)
-    {
-      target.replace(pos, match.length(), replace);
-      pos += replace.length();
-    }
-}
 
 
 namespace svg {

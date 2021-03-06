@@ -1,3 +1,12 @@
+2021-03-05  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-base.h: Rename to..
+	* src/a60-svg-base-types.h: ..this.
+	* src/a60-svg-constants.h: Documentation markup or fixes.
+	* src/a60-svg.h: Same.
+
+	* docs/m.css-doxygen.py: Remove.
+
 2021-03-02  Benjamin De Kosnik  <bkoz@rizal>
 
 	* docs/izzi-wind-square-v2.svg: New.

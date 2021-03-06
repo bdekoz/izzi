@@ -19,9 +19,11 @@
 
 namespace svg::constants {
 
-/// Useful area constants.
-/// h == horizontal aka landscape
-/// v == vertical aka portrait
+/**
+   Area constants use [h, v] suffix as per
+   - h == horizontal aka landscape
+   - v == vertical aka portrait
+*/
 constexpr area<float> letter_mm_h = { 216, 279 };
 
 constexpr area<float> a2_mm_h = { 420, 594 };

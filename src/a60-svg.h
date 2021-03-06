@@ -31,6 +31,20 @@ namespace svg {
 using std::string;
 using strings = std::vector<string>;
 
+// Utility function, like regex_replace.
+inline void
+string_replace(std::string& target, const std::string& match,
+	       const std::string& replace)
+{
+  size_t pos = 0;
+  while((pos = target.find(match, pos)) != std::string::npos)
+    {
+      target.replace(pos, match.length(), replace);
+      pos += replace.length();
+    }
+}
+
+
 /// Base integer type: positive and negative, signed integral value.
 using size_type = int;
 
@@ -77,41 +91,41 @@ is_collision_detected(const point_2t& p1, const int r1,
 
 
 /**
-   SVG Constants
-*/
+ *  SVG Constants
+ */
 namespace constants {
 
-  /// Formatting constants.
-  constexpr char space(' ');
-  constexpr char quote('"');
-  constexpr char hyphen('-');
-  constexpr char tab('\t');
-  constexpr char newline('\n');
-  constexpr char comma(',');
+/// Formatting constants.
+constexpr char space(' ');
+constexpr char quote('"');
+constexpr char hyphen('-');
+constexpr char tab('\t');
+constexpr char newline('\n');
+constexpr char comma(',');
 
-  /** 
-      Numeric constants.
-      π = double(22)/double(7);
-      π = 3.14159265358979323846
-  */
-  constexpr double pi(3.14159265358979323846);
+/**
+    Numeric constants.
+    pi = double(22)/double(7);
+    pi = 3.14159265358979323846
+*/
+constexpr double pi(3.14159265358979323846);
 
-  uint&
-  get_dpi()
-  {
-    static uint dpi(96);
-    return dpi;
-  }
+uint&
+get_dpi()
+{
+  static uint dpi(96);
+  return dpi;
 }
+} // namespace constants
 
-/// Inject constants with alias k.
+/// Inject nested namepace constants into svg namespace with alias k.
 namespace k = constants;
 
 } // namespace svg
 
 
 #include "a60-svg-color.h"			// color, colorq, colorband
-#include "a60-svg-base.h"	  // area, style, filter, transform, typography
+#include "a60-svg-base-types.h"	  // area, style, filter, transform, typography
 #include "a60-svg-constants.h"
 #include "a60-svg-elements.h"
 #include "a60-svg-elements-components.h"
