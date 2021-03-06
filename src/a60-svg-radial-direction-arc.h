@@ -23,12 +23,10 @@
 namespace svg {
 
 
-/// Insert arc + arrow glyph that traces path of start to finish
-/// trajectory.
-svg_element
-insert_direction_arc_at(svg_element& obj, const point_2t origin,
-			const double rr, svg::style s,
-			const uint spacer = 10)
+/// Arc + arrow glyph that traces path of start to finish trajectory.
+void
+direction_arc_at(svg_element& obj, const point_2t origin,
+		 const double rr, svg::style s, const uint spacer = 10)
 {
   const double r = rr - spacer;
   const auto [ mindeg, maxdeg ] = get_radial_range();
@@ -96,8 +94,47 @@ insert_direction_arc_at(svg_element& obj, const point_2t origin,
   parc.add_style(s);
   parc.finish_element();
   obj.add_element(parc);
+}
 
-  return obj;
+
+/// Title on same arc.
+void
+direction_arc_title_at(svg_element& obj, const point_2t origin,
+		       const int radius, svg::style s,
+		       const string title)
+{
+  // Make arc text path
+  const auto [ mindeg, maxdeg ] = get_radial_range();
+  auto mina = align_angle_to_north(mindeg);
+  auto maxa = align_angle_to_north(maxdeg);
+
+  point_2t pmin = get_circumference_point_d(mina, radius, origin);
+  point_2t pmax = get_circumference_point_d(maxa, radius, origin);
+
+  string titlearc = make_path_arc_circumference(pmax, pmin, radius);
+
+  string arc_name("arc-text");
+  path_element parc(false);
+  path_element::data da = { titlearc, 0 };
+  parc.start_element(arc_name);
+  parc.add_data(da);
+  parc.add_style(s);
+  parc.finish_element();
+  obj.add_element(parc);
+
+  // Make label text and style it.
+  typography typo = k::apercu_typo;
+  typo._M_size = 10;
+  typo._M_a = typography::anchor::start;
+  typo._M_align = typography::align::left;
+
+  // Put it together.
+  text_element::data dt = { 0, 0, title, typo };
+  text_path_element tp(arc_name, "30%");
+  tp.start_element();
+  tp.add_data(dt);
+  tp.finish_element();
+  obj.add_element(tp);
 }
 
 } // namespace svg

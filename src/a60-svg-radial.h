@@ -177,7 +177,7 @@ radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   styl._M_fill_opacity = 0;
   styl._M_stroke_opacity = 1;
   styl._M_stroke_size = 3;
-  insert_direction_arc_at(obj, origin, radius, styl);
+  direction_arc_at(obj, origin, radius, styl);
 
   // Convert from string id-keys to int value-keys, plus an ordered
   // set of all the unique values.
@@ -466,57 +466,9 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			     const size_type value_max, const int radius,
 			     const int rspace,
 			     const bool weighbyvaluep = true,
-			     const bool collisionp = false,
-			     const bool arrowp = false)
+			     const bool collisionp = false)
 {
   svg::style styl(typo._M_style);
-
-  // Make circle perimeter with an arrow to orientate display of data.
-  if (arrowp)
-    {
-      // Direction glyph.
-      svg::style stylinset(styl);
-      stylinset._M_fill_opacity = 0;
-      stylinset._M_stroke_opacity = 1;
-      stylinset._M_stroke_size = 3;
-      insert_direction_arc_at(obj, origin, radius, stylinset);
-
-      // Title on arc.
-
-      // Make arc text path
-      const auto [ mindeg, maxdeg ] = get_radial_range();
-      auto mina = align_angle_to_north(mindeg);
-      auto maxa = align_angle_to_north(maxdeg);
-
-      point_2t pmin = get_circumference_point_d(mina, radius, origin);
-      point_2t pmax = get_circumference_point_d(maxa, radius, origin);
-
-      string titlearc = make_path_arc_circumference(pmax, pmin, radius);
-
-      string arc_name("arc-text");
-      path_element parc(false);
-      path_element::data da = { titlearc, 0 };
-      parc.start_element(arc_name);
-      parc.add_data(da);
-      parc.add_style(k::b_style);
-      parc.finish_element();
-      obj.add_element(parc);
-
-      // Make label text and style it.
-      string imetrictype("web vitals 2020");
-      typography typo = k::apercu_typo;
-      typo._M_size = 10;
-      typo._M_a = typography::anchor::start;
-      typo._M_align = typography::align::left;
-
-      // Put it together.
-      text_element::data dt = { 0, 0, imetrictype, typo };
-      text_path_element tp(arc_name, "30%");
-      tp.start_element();
-      tp.add_data(dt);
-      tp.finish_element();
-      obj.add_element(tp);
-    }
 
   // Convert from string id-keys to int value-keys, plus an ordered
   // set of all the unique values.
