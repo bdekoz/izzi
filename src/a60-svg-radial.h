@@ -85,7 +85,7 @@ radiate_id_by_value(svg_element& obj, const point_2t origin,
 		    size_type pvalue, size_type pmax, double r,
 		    bool rotatep)
 {
-  auto adj = adjust_label_angle_for_text_height();
+  auto adj = adjust_label_angle_for_text_height(typo);
   const double angled = get_angle(pvalue, pmax) - adj;
 
   auto [ x, y ] = get_circumference_point_d(angled, r, origin);
@@ -145,7 +145,7 @@ radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
   // Find point on the circumference of the circle closest to value
   // (pvalue).
   const double angled = get_angle(pvalue, pmax);
-  double anglet = angled - adjust_label_angle_for_text_height();
+  double anglet = angled - adjust_label_angle_for_text_height(typo);
   auto [ x, y ] = get_circumference_point_d(anglet, r, origin);
 
   // Consolidate label text to be "VALUE -> " with labelspaces spaces.
@@ -327,7 +327,7 @@ kusama_id_by_uvalue_1(svg_element& obj, const strings& ids, const point_2t p,
   // Find point aligned with this value's origin point (same arc),
   // but on the circumference of the kusama circle, not original circle.
   const double angled = get_angle(v, value_max);
-  const double anglet = angled - adjust_label_angle_for_text_height();
+  const double anglet = angled - adjust_label_angle_for_text_height(typo);
 
   // Draw value and pointer to center of clustered ids.
   auto rprimex = rprime + rspace;
@@ -364,7 +364,7 @@ kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
   // Center of glyph, a point on origin circle circumference.
   auto [ x, y] = p;
   const double angled = get_angle(v, value_max);
-  const double anglet = angled - adjust_label_angle_for_text_height();
+  const double anglet = angled - adjust_label_angle_for_text_height(typo);
 
   // Loop through specialized list, and do these first.
   style dstyl = styl;
@@ -593,6 +593,14 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       kusama_id_by_uvalue_2(obj, ids, origin, p, n, vpointns.size(),
 			    v, value_max, radius, rspace,
 			    typo, styl, weighbyvaluep);
+
+      // Iff overlay rays to check alignment.
+      if (true)
+	{
+	  const double angled = get_angle(n, value_max);
+	  point_2t p2 = get_circumference_point_d(angled, radius * 2, origin);
+	  points_to_line(obj, id_render_state::dstyl, origin, p2);
+	}
     }
 
   return obj;

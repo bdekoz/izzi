@@ -110,12 +110,9 @@ make_label_for_value(string pname, size_type pvalue,
 
 /// Circumference adjustment such that lable is hight-centered in
 /// kusama circle.
-size_type
-adjust_label_angle_for_text_height()
-{
-  // XXX About half the y height of the type size in question, ish.
-  return 3;
-}
+constexpr size_type
+adjust_label_angle_for_text_height(const typography& typo)
+{ return typo._M_size / 4; }
 
 
 /// Sort vectors of strings to largest length string first. (Or use set<>).
