@@ -197,8 +197,8 @@ struct id_render_state: public render_state_base
 
   explicit
   id_render_state(const style s = dstyl, const string f = "",
-		  const double d = 0.0, const double sc = 1.0)
-  : styl(s), name(f), rotate(d), multiple(sc) { }
+		  const double d = 0.0, const double scale = 1.0)
+  : styl(s), name(f), rotate(d), multiple(scale) { }
 
   id_render_state(const id_render_state&) = default;
   id_render_state& operator=(const id_render_state&) = default;
@@ -220,14 +220,14 @@ get_id_render_state_cache()
 
 /// Add value to cache with base style of styl, colors klr, visibility vis.
 void
-add_to_id_render_state_cache(const string value, const style styl,
+add_to_id_render_state_cache(const string id, const style styl,
 			     const svg::k::select vis)
 {
   id_render_state_umap& cache = get_id_render_state_cache();
 
-  id_render_state state(styl, value);
+  id_render_state state(styl, id);
   state.set(state.visible_mode, vis);
-  cache.insert(std::make_pair(value, state));
+  cache.insert(std::make_pair(id, state));
 }
 
 

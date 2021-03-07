@@ -1,3 +1,9 @@
+2021-03-06  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial.h: Adjust parameters, consolidate
+	or remove default style.
+	* src/a60-svg-render-state.h: Clarify names of arguments.
+
 2021-03-05  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-base.h: Rename to..

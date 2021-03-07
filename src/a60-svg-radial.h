@@ -98,7 +98,7 @@ radiate_id_by_value(svg_element& obj, const point_2t origin,
 }
 
 
-/*
+/**
   Create radial viz of names from input file arranged clockwise around
   the edge of a circle circumference. The text of the names can be
   rotated, or not.
@@ -110,7 +110,6 @@ radiate_id_by_value(svg_element& obj, const point_2t origin,
 
  rotatep == rotate name text to be on an arc from the origin of the
  circle.
-
 */
 svg_element
 radiate_ids_per_value_on_arc(svg_element& obj, const point_2t origin,
@@ -162,9 +161,11 @@ radiate_ids_by_uvalue(svg_element& obj, const point_2t origin,
 }
 
 
-/// Radiate as above, but group similar values such that they are
-/// splayed, and not written on top of each other on the same
-/// arc/angle.
+/**
+   Radiate as above, but group similar values such that they are
+   splayed, and not written on top of each other on the same
+   arc/angle.
+*/
 svg_element
 radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			      const typography& typo, const id_value_umap& ivm,
@@ -202,13 +203,13 @@ radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 }
 
 
-
-// RADIAL 3
-/// Radiate clockwise from 0 to 35x degrees about origin, placing each
-/// id at a point cluster on the circumference. A point cluster is a
-/// circle whos radius is proportionate to the number of duplicate ids
-/// at that point.  Duplicate ids splay, stack, or
-/// append/concatencate at, after, or around that point cluster.
+/**
+   Radiate clockwise from 0 to 35x degrees about origin, placing each
+   id at a point cluster on the circumference. A point cluster is a
+   circle whos radius is proportionate to the number of duplicate ids
+   at that point.  Duplicate ids splay, stack, or
+   append/concatencate at, after, or around that point cluster.
+*/
 void
 kusama_collision_transforms(const point_2t origin,
 			    std::vector<size_type> vuvalues,
@@ -287,18 +288,18 @@ kusama_collision_transforms(const point_2t origin,
 }
 
 
-/// 1
-/// Draw these ids as a kusama circle on the circumference of origin
-/// circle.
-///
-/// Simplest version, make satellite circle on circumfrence and splay
-/// or append id's around it
+/**
+   Draw these ids as a kusama circle on the circumference of origin
+   circle.
+
+   Simplest version, make satellite circle on circumfrence and splay
+   or append id's around it
+*/
 void
 kusama_id_by_uvalue_1(svg_element& obj, const strings& ids, const point_2t p,
 		      const size_type n, const size_type n_total,
 		      const size_type v, const size_type value_max,
-		      const int radius, const int rspace,
-		      const typography& typo, const style styl,
+		      const int radius, const int rspace, const typography& typo,
 		      const bool byvaluep, const bool satellitep)
 {
   // NB: Don't want the computed rprime radius be larger than the
@@ -322,6 +323,13 @@ kusama_id_by_uvalue_1(svg_element& obj, const strings& ids, const point_2t p,
       else
 	rprime = rmin;
     }
+
+  // Iff the only id, then use id-specialized color to draw kusama
+  // circle, and skip ring/satellite.
+  style styl = get_id_render_state("").styl;
+  if (ids.size() == 1)
+    styl = get_id_render_state(ids.front()).styl;
+
   point_2d_to_circle(obj, x, y, styl, rprime);
 
   // Find point aligned with this value's origin point (same arc),
@@ -345,18 +353,18 @@ kusama_id_by_uvalue_1(svg_element& obj, const strings& ids, const point_2t p,
 }
 
 
-/// 2
-/// Draw these ids as a glyph on the circumference of origin circle.
-///
-/// Simplest version, for gender male/female glyphs using unicode
+/**
+   Draw these ids as a glyph on the circumference of origin circle.
+
+   Simplest version.
+*/
 void
 kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
 		      const point_2t origin, const point_2t p,
 		      const size_type n, const size_type n_total,
 		      const size_type v, const size_type value_max,
 		      const int radius, const int rspace,
-		      const typography& typo, const style styl,
-		      const bool byvaluep)
+		      const typography& typo, const bool byvaluep)
 {
   // Get cache, list of specialized id matches.
   const id_render_state_umap& cache = get_id_render_state_cache();
@@ -366,8 +374,13 @@ kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
   const double angled = get_angle(v, value_max);
   const double anglet = angled - adjust_label_angle_for_text_height(typo);
 
+  // There should be no ids.empty.
+  // If ids.size == 1, then kusama sphere is on the circumference.
+  // Else ids.size > 1, the ids are clustered in an "orbit", some distance further
+  // out than the radius.
+  const bool satellitep = ids.size() != 1;
+
   // Loop through specialized list, and do these first.
-  style dstyl = styl;
   strings idsremaining;
   for (const string& id : ids)
     {
@@ -412,13 +425,7 @@ kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
 		}
 
 	      if (idst.is_visible(svg::k::select::vector))
-		{
-		  // Iff the only id, then use id-specialized color to
-		  // draw kusama circle, and skip ring/satellite.
-		  if (ids.size() == 1)
-		    dstyl = idst.styl;
-		  idsremaining.push_back(id);
-		}
+		idsremaining.push_back(id);
 	    }
 	}
       else
@@ -439,16 +446,15 @@ kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
   else
     {
       // Do what's left (non-specialized ids) as per usual.
-      const bool satellitep = ids.size() != 1;
       kusama_id_by_uvalue_1(obj, idsremaining, p, n, n_total, v, value_max,
-			    radius, rspace, typo, dstyl, byvaluep, satellitep);
+			    radius, rspace, typo, byvaluep, satellitep);
     }
 }
 
 
 /**
-   Radiate as above *_per_uvalue_on_arc function, but group similar
-   values such that they are globbed into a sattelite circle, ids
+   Radiate as *_per_uvalue_on_arc function, but group similar
+   values such that they are globbed into a satellite circle, ids
    splayed around the satellite, and not written on top of each other
    on the same arc/angle.
 
@@ -464,12 +470,9 @@ svg_element
 kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			     const typography& typo, const id_value_umap& ivm,
 			     const size_type value_max, const int radius,
-			     const int rspace,
-			     const bool weighbyvaluep = true,
+			     const int rspace, const bool weighbyvaluep = true,
 			     const bool collisionp = false)
 {
-  svg::style styl(typo._M_style);
-
   // Convert from string id-keys to int value-keys, plus an ordered
   // set of all the unique values.
   value_set uvalues;
@@ -531,7 +534,6 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   // Draw resulting points, ids, values.
   // NB: vpointns valued from smallest to largest, so reverse so that
   // smaller is more visible.
-  const id_render_state& dst = get_id_render_state("");
   for (uint i = 0; i < vpointns.size(); ++i)
     {
       int j = vpointns.size() - 1 - i;
@@ -543,15 +545,17 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       // Draw this id's kusama circle on the circumference of origin
       // circle.
       kusama_id_by_uvalue_2(obj, ids, origin, p, n, vpointns.size(),
-			    v, value_max, radius, rspace,
-			    typo, styl, weighbyvaluep);
+			    v, value_max, radius, rspace, typo, weighbyvaluep);
 
       // Iff overlay rays to check alignment.
       if (true)
 	{
-	  const double angled = get_angle(n, value_max);
-	  point_2t p2 = get_circumference_point_d(angled, radius * 2, origin);
-	  points_to_line(obj, id_render_state::dstyl, origin, p2);
+	  const style rstyl = { color::red, 1.0, color::red, 1.0, 2 };
+	  const double angled = get_angle(v, value_max);
+	  point_2t p2 = get_circumference_point_d(angled, radius * 3, origin);
+	  points_to_line(obj, rstyl, origin, p2);
+	  radial_text_r(obj, typo, std::to_string(v),
+			std::get<0>(p2), std::get<1>(p2), angled);
 	}
     }
 
