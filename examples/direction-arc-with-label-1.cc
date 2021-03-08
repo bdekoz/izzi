@@ -29,6 +29,6 @@ test_arc(std::string ofile)
 
 int main()
 {
-  test_arc("test-arc-direction-with-label-1");
+  test_arc("test-direction-arc-with-label-1");
   return 0;
 }

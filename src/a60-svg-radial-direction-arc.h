@@ -31,9 +31,9 @@ direction_arc_at(svg_element& obj, const point_2t origin,
   const double r = rr - spacer;
   const auto [ mindeg, maxdeg ] = get_radial_range();
 
-  point_2t p0 = get_circumference_point_d(align_angle_to_north(mindeg),
+  point_2t p0 = get_circumference_point_d(zero_angle_north_cw(mindeg),
 					  r, origin);
-  point_2t p4 = get_circumference_point_d(align_angle_to_north(maxdeg),
+  point_2t p4 = get_circumference_point_d(zero_angle_north_cw(maxdeg),
 					  r, origin);
 
   // Define arc.
@@ -41,7 +41,7 @@ direction_arc_at(svg_element& obj, const point_2t origin,
   ossa << "M" << k::space << to_string(p0) << k::space;
   ossa << "A" << k::space;
   ossa << std::to_string(r) << k::comma << std::to_string(r) << k::space;
-  ossa << align_angle_to_north(1) << k::space;
+  ossa << zero_angle_north_cw(1) << k::space;
   ossa << "1, 1" << k::space;
   ossa << to_string(p4) << k::space;
 
@@ -49,7 +49,7 @@ direction_arc_at(svg_element& obj, const point_2t origin,
   s._M_stroke_color = s._M_fill_color;
 
   auto rspacer = spacer - 2;
-  auto anglemax = align_angle_to_north(maxdeg);
+  auto anglemax = zero_angle_north_cw(maxdeg);
   point_2t p5 = get_circumference_point_d(anglemax, r + rspacer, origin);
   point_2t p7 = get_circumference_point_d(anglemax, r - rspacer, origin);
 
@@ -57,7 +57,7 @@ direction_arc_at(svg_element& obj, const point_2t origin,
   // arc.
   auto theta = 2 * rspacer / r;
   auto thetad = theta * 180 / k::pi;
-  auto alignd = align_angle_to_north(maxdeg + thetad);
+  auto alignd = zero_angle_north_cw(maxdeg + thetad);
   point_2t p6 = get_circumference_point_d(alignd, r, origin);
 
   // Define marker.
@@ -105,8 +105,8 @@ direction_arc_title_at(svg_element& obj, const point_2t origin,
 {
   // Make arc text path
   const auto [ mindeg, maxdeg ] = get_radial_range();
-  auto mina = align_angle_to_north(mindeg);
-  auto maxa = align_angle_to_north(maxdeg);
+  auto mina = zero_angle_north_cw(mindeg);
+  auto maxa = zero_angle_north_cw(maxdeg);
 
   point_2t pmin = get_circumference_point_d(mina, radius, origin);
   point_2t pmax = get_circumference_point_d(maxa, radius, origin);

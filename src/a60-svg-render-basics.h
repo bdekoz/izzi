@@ -136,22 +136,6 @@ sized_text_r(svg_element& obj, svg::typography typo, const int sz,
 }
 
 
-/// Text at size, arranged around an origin of a circle with radius r.
-void
-radial_text_r(svg_element& obj, const typography& typo,
-	      string text, int tx, int ty, const double deg = 0.0)
-{
-  typography typot(typo);
-  typot._M_a = svg::typography::anchor::start;
-  typot._M_align = svg::typography::align::left;
-
-  if (deg > 0)
-    sized_text_r(obj, typot, typot._M_size, text, tx, ty, 360 - deg);
-  else
-    sized_text(obj, typot, typot._M_size, text, tx, ty);
-}
-
-
 void
 points_to_line(svg_element& obj, const svg::style s,
 		  const point_2t origin, const point_2t end)
@@ -362,6 +346,33 @@ get_circumference_point_d(const double ad, const double r,
 }
 
 
+/// Zero degrees is top, going clockwise (cw).
+double
+zero_angle_north_cw(double angled)
+{
+ // Change rotation to CW instead of CCW (or anti-clockwise).
+  angled = 360 - angled;
+
+  // Rotate 90 CCW, so that the first element will be at the top
+  // vertical axis, instead of the right middle axis.
+  angled += 90;
+
+  return angled;
+}
+
+
+/// Zero degrees is top, going clockwise (cw).
+double
+zero_angle_north_ccw(double angled)
+{
+  // Rotate 90 CCW, so that the first element will be at the top
+  // vertical axis, instead of the right middle axis.
+  angled += 90;
+
+  return angled;
+}
+
+
 void
 place_ray_at_angle(svg_element& obj, const point_2t& origin,
 		   const point_2t& circump, const style& s,
@@ -384,25 +395,12 @@ place_ray_at_angle(svg_element& obj, const point_2t& origin,
 }
 
 
-double
-align_angle_to_north(double angled)
-{
- // Change rotation to CW instead of CCW (or anti-clockwise).
-  angled = 360 - angled;
-
-  // Rotate 90 CCW, so that the first element will be at the top
-  // vertical axis, instead of the right middle axis.
-  angled += 90;
-
-  return angled;
-}
-
-
 /// Make path segment between two points on a circumference of radius r.
-/// Points like: get_circumference_point_d(align_angle_to_north(0), r, origin)
+/// Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin)
 string
 make_path_arc_circumference(const point_2t& start, const point_2t& end,
-			    const int r, const int arcflag = 0, const int sweepflag = 1)
+			    const int r, const int arcflag = 0,
+			    const int sweepflag = 1)
 {
   // Define arc.
   // A rx ry x-axis-rotation large-arc-flag sweep-flag x y
@@ -417,7 +415,7 @@ make_path_arc_circumference(const point_2t& start, const point_2t& end,
 
 
 /// Make closed path between two points and the center of a circle of radius r.
-/// Points like: get_circumference_point_d(align_angle_to_north(0), r, origin)
+/// Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin)
 string
 make_path_arc_closed(const point_2t& origin, const point_2t& start,
 		     const point_2t& end, const int r,
@@ -427,7 +425,9 @@ make_path_arc_closed(const point_2t& origin, const point_2t& start,
   // arc to circumfrence point end, line back to origin.
   // A rx ry x-axis-rotation large-arc-flag sweep-flag x y
   // where (large) arc flag is true if arc angle delta is > 180
-  // where sweep flag is true if outer (movement clockwise) and false if inner (CCW).
+  // where sweep flag is
+  // true if outer (movement CW)
+  // false if inner (CCW).
   std::ostringstream oss;
   oss << "M" << k::space << to_string(origin) << k::space;
   oss << "L" << k::space << to_string(start) << k::space;
@@ -439,16 +439,16 @@ make_path_arc_closed(const point_2t& origin, const point_2t& start,
   return oss.str();
 }
 
-/// Same but with degree range arguments instead of points.
-string
-make_path_arc_closed(const point_2t& origin, const double startd, const double endd,
-		     const int r, const int arcflag = 0, const int sweepflag = 0)
-{
-  auto alignstartd = align_angle_to_north(startd);
-  const point_2t start = get_circumference_point_d(alignstartd, r, origin);
 
-  auto alignendd = align_angle_to_north(endd);
-  const point_2t end = get_circumference_point_d(alignendd, r, origin);
+/// Same but with degree range arguments instead of points.
+/// NB: Assumes appropriate zero_angle_north_cw/ccw adjustments on startd/endd.
+string
+make_path_arc_closed(const point_2t& origin, const double startd,
+		     const double endd, const int r,
+		     const int arcflag = 0, const int sweepflag = 0)
+{
+  const point_2t start = get_circumference_point_d(startd, r, origin);
+  const point_2t end = get_circumference_point_d(endd, r, origin);
   return make_path_arc_closed(origin, start, end, r, arcflag, sweepflag);
 }
 

@@ -1,3 +1,24 @@
+2021-03-07  Benjamin De Kosnik  <bkoz@rizal>
+
+	Radial text rewrite.
+	* src/a60-svg-radial-base.h (k::rrotation::cw, ccw): New enums.
+	(get_radius): ... to
+	(get_max_radius): ... this, what it actually does.
+	(adjust_angle_rotation): Switchable rotations given original angle
+	and enum.
+	(adjust_label_angle_for_text_height): Tune for 24/16 type sizes.
+	(radial_text_cw): Text radiated clockwise.
+	(radial_text_ccw): Text radiated counter-clockwise.
+	(radial_text_r): Rewrite for easier reading, flow l/r halfway instead
+	of wrapping around upside-down on angles greater than 180.
+	* src/a60-svg-radial-direction-arc.h: Adjust ids as per above.
+	* src/a60-svg-radial.h: Same.
+	* src/a60-svg-render-basics.h: Same.
+	(radial_test_r): Remove old implementation.
+	(zero_angle_north_cw): New.
+	(zero_angle_north_ccw): New.
+	(align_angle_to_north): Remove.
+
 2021-03-06  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial.h: Adjust parameters, consolidate

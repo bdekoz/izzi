@@ -13,10 +13,10 @@ test_arc(std::string ofile)
   point_2t cp = obj.center_point();
   const int r = 80;
 
-  double dn = align_angle_to_north(0);
-  double ds = align_angle_to_north(180);
-  double de = align_angle_to_north(90);
-  double dw = align_angle_to_north(270);
+  double dn = zero_angle_north_cw(0);
+  double ds = zero_angle_north_cw(180);
+  double de = zero_angle_north_cw(90);
+  double dw = zero_angle_north_cw(270);
 
   point_2t pn = get_circumference_point_d(dn, r, cp);
   point_2t ps = get_circumference_point_d(ds, r, cp);

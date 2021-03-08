@@ -22,10 +22,10 @@ test_arc(std::string ofile)
   point_2t cp = obj.center_point();
   const int r = 80;
 
-  point_2t p0 = get_circumference_point_d(align_angle_to_north(0), r, cp);
-  point_2t p1 = get_circumference_point_d(align_angle_to_north(90), r, cp);
-  point_2t p2 = get_circumference_point_d(align_angle_to_north(180), r, cp);
-  point_2t p3 = get_circumference_point_d(align_angle_to_north(270), r, cp);
+  point_2t p0 = get_circumference_point_d(zero_angle_north_cw(0), r, cp);
+  point_2t p1 = get_circumference_point_d(zero_angle_north_cw(90), r, cp);
+  point_2t p2 = get_circumference_point_d(zero_angle_north_cw(180), r, cp);
+  point_2t p3 = get_circumference_point_d(zero_angle_north_cw(270), r, cp);
 
   string ne = make_path_arc_circumference(p0, p1, r);
   string se = make_path_arc_circumference(p1, p2, r);
@@ -67,8 +67,8 @@ test_arc(std::string ofile)
 
 
   // Make arc 2 text path
-  point_2t p20 = get_circumference_point_d(align_angle_to_north(0), r * 2, cp);
-  point_2t p21 = get_circumference_point_d(align_angle_to_north(90), r * 2, cp);
+  point_2t p20 = get_circumference_point_d(zero_angle_north_cw(0), r * 2, cp);
+  point_2t p21 = get_circumference_point_d(zero_angle_north_cw(90), r * 2, cp);
 
   path_element parc2(is_visible);
   string nw2 = make_path_arc_circumference(p20, p21, r * 2, 0, 1);
@@ -89,8 +89,8 @@ test_arc(std::string ofile)
 
 
   // Make arc 3 text path
-  point_2t p22 = get_circumference_point_d(align_angle_to_north(180), r * 2, cp);
-  point_2t p23 = get_circumference_point_d(align_angle_to_north(270), r * 2, cp);
+  point_2t p22 = get_circumference_point_d(zero_angle_north_cw(180), r * 2, cp);
+  point_2t p23 = get_circumference_point_d(zero_angle_north_cw(270), r * 2, cp);
   path_element parc3(is_visible);
   string nw3 = make_path_arc_circumference(p22, p23, r * 2, 0, 1);
   path_element::data da3 = { nw3, 0 };
