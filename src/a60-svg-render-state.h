@@ -28,23 +28,23 @@ namespace constants {
   */
   enum class select : uint
     {
-     none		= 1u << 0, ///> nothing
-     cartography	= 1u << 1, ///> cartographic elements
-     vector		= 1u << 2, ///> svg path, circle, rectangle, etc.
-     cloud		= 1u << 3, ///> opacity color fill version of vector
-     blur		= 1u << 4, ///> blur or gradient version of vector
-     echo		= 1u << 5, ///> b & w outline version of vector
-     text		= 1u << 6, ///> title, metadata, header
-     legend		= 1u << 7, ///> torrent collection glyph
-     exitnode		= 1u << 8, ///> tor exit node infrastructure
-     telecom		= 1u << 9, ///> telecom infrastructure
-     glyph		= 1u << 10, ///> glyph
-     image		= 1u << 11, ///> image
-     svg		= 1u << 12, ///> svg element, perhaps nested
-     alt		= 1u << 13, ///> alternate use specified
-     background		= 1u << 14, ///> background elements
-     all		= 1u << 15, ///> all elements and layers
-     _S_end		= 1u << 16  ///> last
+     none		= 1u << 0, ///< nothing
+     cartography	= 1u << 1, ///< cartographic elements
+     vector		= 1u << 2, ///< svg path, circle, rectangle, etc.
+     cloud		= 1u << 3, ///< opacity color fill version of vector
+     blur		= 1u << 4, ///< blur or gradient version of vector
+     echo		= 1u << 5, ///< b & w outline version of vector
+     text		= 1u << 6, ///< title, metadata, header
+     legend		= 1u << 7, ///< torrent collection glyph
+     exitnode		= 1u << 8, ///< tor exit node infrastructure
+     telecom		= 1u << 9, ///< telecom infrastructure
+     glyph		= 1u << 10, ///< glyph
+     image		= 1u << 11, ///< image
+     svg		= 1u << 12, ///< svg element, perhaps nested
+     alt		= 1u << 13, ///< alternate use specified
+     background		= 1u << 14, ///< background elements
+     all		= 1u << 15, ///< all elements and layers
+     _S_end		= 1u << 16  ///< last
     };
 
   inline constexpr select
