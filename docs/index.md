@@ -1,5 +1,6 @@
 
 # izzi documentation
 
-simplified is [html/mcss] (https://bdekoz.github.io/izzi/html/mcss/)
-detailed is [html/doxygen] (https://bdekoz.github.io/izzi/html/doxygen/)
+* simplified is [mcss] (https://bdekoz.github.io/izzi/html/mcss/)
+* detailed is [doxygen] (https://bdekoz.github.io/izzi/html/doxygen/)
+
