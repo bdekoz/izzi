@@ -290,10 +290,11 @@ kusama_collision_transforms(const point_2t origin,
    or append id's around it
 */
 void
-kusama_id_by_uvalue_1(svg_element& obj, const strings& ids, const point_2t p,
+kusama_ids_orbit_high(svg_element& obj, const strings& ids, const point_2t p,
 		      const size_type n, const size_type n_total,
 		      const size_type v, const size_type value_max,
-		      const int radius, const int rspace, const typography& typo,
+		      const int radius, const int rspace,
+		      const typography& typo,
 		      const bool byvaluep, const bool satellitep)
 {
   // NB: Don't want the computed rprime radius be larger than the
@@ -350,12 +351,12 @@ kusama_id_by_uvalue_1(svg_element& obj, const strings& ids, const point_2t p,
    Simplest version.
 */
 void
-kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
-		      const point_2t origin, const point_2t p,
-		      const size_type n, const size_type n_total,
-		      const size_type v, const size_type value_max,
-		      const int radius, const int rspace,
-		      const typography& typo, const bool byvaluep)
+kusama_ids_orbit_low(svg_element& obj, const strings& ids,
+		     const point_2t origin, const point_2t p,
+		     const size_type n, const size_type n_total,
+		     const size_type v, const size_type value_max,
+		     const int radius, const int rspace,
+		     const typography& typo, const bool byvaluep)
 {
   // Get cache, list of specialized id matches.
   const id_render_state_umap& cache = get_id_render_state_cache();
@@ -365,9 +366,8 @@ kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
   const double angled = adjust_angle_rotation(angledo, k::rrotation::cw);
 
   // There should be no ids.empty.
-  // If ids.size == 1, then kusama sphere is on the circumference.
-  // Else ids.size > 1, the ids are clustered in an "orbit", some distance further
-  // out than the radius.
+  // ids.size == 1, "low orbit", kusama sphere is on/near the circumference.
+  // ids.size > 1, ids are clustered in a "high orbit", some distance further
   const bool satellitep = ids.size() != 1;
 
   // Loop through specialized list, and do these first.
@@ -434,7 +434,7 @@ kusama_id_by_uvalue_2(svg_element& obj, const strings& ids,
   else
     {
       // Do what's left (non-specialized ids) as per usual.
-      kusama_id_by_uvalue_1(obj, idsremaining, p, n, n_total, v, value_max,
+      kusama_ids_orbit_high(obj, idsremaining, p, n, n_total, v, value_max,
 			    radius, rspace, typo, byvaluep, satellitep);
     }
 }
@@ -533,8 +533,8 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 
       // Draw this id's kusama circle on the circumference of origin
       // circle.
-      kusama_id_by_uvalue_2(obj, ids, origin, p, n, vpointns.size(),
-			    v, value_max, radius, rspace, typo, weighbyvaluep);
+      kusama_ids_orbit_low(obj, ids, origin, p, n, vpointns.size(),
+			   v, value_max, radius, rspace, typo, weighbyvaluep);
 
       // Iff overlay rays to check alignment.
       if (true)

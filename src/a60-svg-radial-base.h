@@ -105,6 +105,7 @@ get_label_spaces()
   return lspaces;
 }
 
+
 /// Set the number of label spaces.
 void
 set_label_spaces(size_type spaces)
@@ -133,7 +134,7 @@ make_label_for_value(string pname, size_type pvalue,
 /// Circumference adjustment such that lable is hight-centered in
 /// kusama circle.
 constexpr double
-adjust_label_angle_for_text_height(const typography& typo)
+adjust_angle_for_text_height(const typography& typo)
 {
   // size 24, adjust 3
   return typo._M_size / 8;
@@ -200,7 +201,7 @@ radial_text_r(svg_element& obj, const typography& typo, string text,
   if (deg <= 180)
     {
       auto dcw = zero_angle_north_cw(deg);
-      dcw -= adjust_label_angle_for_text_height(typo);
+      dcw -= adjust_angle_for_text_height(typo);
       auto [ x, y ] = get_circumference_point_d(dcw, r, origin);
       radial_text_cw(obj, typo, text, x, y, dcw);
     }
@@ -219,7 +220,7 @@ radial_text_r(svg_element& obj, const typography& typo, string text,
 
       auto dp = deg - 180;
       auto dccw = zero_angle_north_ccw(180 - dp);
-      dccw += adjust_label_angle_for_text_height(typo);
+      dccw += adjust_angle_for_text_height(typo);
       auto [ x, y ] = get_circumference_point_d(dccw, r, origin);
       radial_text_ccw(obj, typo, text, x, y, dccw);
     }
