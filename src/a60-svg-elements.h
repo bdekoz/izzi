@@ -1,6 +1,6 @@
 // svg elements -*- mode: C++ -*-
 
-// Copyright (C) 2014-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -20,8 +20,7 @@
 namespace svg {
 
 /**
-   @defgroup elements Elements
-  SVG Elements
+   @defgroup elements SVG Elements
   @{
 */
 
