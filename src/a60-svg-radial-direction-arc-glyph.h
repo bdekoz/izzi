@@ -16,8 +16,8 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // General Public License for more details.
 
-#ifndef MiL_SVG_RADIAL_DIRECTION_ARC_H
-#define MiL_SVG_RADIAL_DIRECTION_ARC_H 1
+#ifndef MiL_SVG_RADIAL_DIRECTION_ARC_GLYPH_H
+#define MiL_SVG_RADIAL_DIRECTION_ARC_GLYPH_H 1
 
 
 namespace svg {

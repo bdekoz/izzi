@@ -1,3 +1,16 @@
+2021-03-11  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial.h: Split into...
+	* src/a60-svg-radial-arc.h: ...this...
+	* src/a60-svg-radial-kusama.h: ... and this.
+
+	* src/a60-svg-radial-direction-arc.h: Rename to...
+	* src/a60-svg-radial-direction-arc-glyph.h: ...this.
+
+	* examples/radial-text-2.cc: Update api calls.
+	* examples/radial-text-3.cc: Same.
+	* examples/radial-text-4.cc: Same.
+
 2021-03-07  Benjamin De Kosnik  <bkoz@rizal>
 
 	Radial text rewrite.

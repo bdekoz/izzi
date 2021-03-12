@@ -19,7 +19,7 @@ test_arc(std::string ofile)
     {
       auto d = i * 30;
       auto dn = zero_angle_north_cw(d);
-      dn -= adjust_label_angle_for_text_height(typo);      
+      dn -= adjust_angle_for_text_height(typo);      
       auto [ x, y ] = get_circumference_point_d(dn, r, cp);
       radial_text_cw(obj, typo, std::to_string(d), x, y, dn);
     }

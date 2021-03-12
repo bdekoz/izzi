@@ -28,7 +28,7 @@ test_arc(std::string ofile)
       if (d <= 180)
 	{
 	  auto dcw = zero_angle_north_cw(d);
-	  dcw -= adjust_label_angle_for_text_height(typo);
+	  dcw -= adjust_angle_for_text_height(typo);
 	  auto [ x, y ] = get_circumference_point_d(dcw, r, cp);
 	  radial_text_cw(obj, typo, std::to_string(d), x, y, dcw);
 	}
@@ -47,7 +47,7 @@ test_arc(std::string ofile)
 
 	  auto dp = d - 180;
 	  auto dccw = zero_angle_north_ccw(180 - dp);
-	  dccw += adjust_label_angle_for_text_height(typo);
+	  dccw += adjust_angle_for_text_height(typo);
 	  auto [ x, y ] = get_circumference_point_d(dccw, r, cp);
 	  radial_text_ccw(obj, typo, std::to_string(d), x, y, dccw);
 	}
