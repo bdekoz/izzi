@@ -50,7 +50,7 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
 
     Radius is the length from the circle's origin to the point on the ray.
 */
-void
+int
 radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 		     const size_type v, const size_type value_max,
 		     const int radius, const int rspace, const string id,
@@ -106,7 +106,10 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
     {
       const int idr = radius + glyphr + rspace;
       radial_text_r(obj, typo, id, idr, origin, angled);
+      glyphr += id.size() * typo._M_size;
     }
+
+  return glyphr;
 }
 
 
