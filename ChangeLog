@@ -1,5 +1,11 @@
 2021-03-11  Benjamin De Kosnik  <bkoz@rizal>
 
+	Kusama v3 WIP.
+	* src/a60-svg-radial-kusama.h (radiate_line_and_value): New.
+	(radiate_glyph_and_id): Same.
+
+2021-03-11  Benjamin De Kosnik  <bkoz@rizal>
+
 	* src/a60-svg-radial.h: Split into...
 	* src/a60-svg-radial-arc.h: ...this...
 	* src/a60-svg-radial-kusama.h: ... and this.

@@ -23,6 +23,94 @@
 namespace svg {
 
 /**
+    Draw line and value part of kusama.
+    skip (origin to r) + rspace + line of radial length rline + rspace + value
+*/
+void
+radiate_line_and_value(svg_element& obj, const point_2t origin,
+		       const double angled, const size_type v,
+		       const int radius, const int rspace, const int linelen,
+		       const typography& typo,
+		       const style styl = { color::black, 1, color::black, 1, 2 })
+{
+  const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
+  const int rbase(radius + rspace);
+  point_2t pl1 = get_circumference_point_d(angleda, rbase, origin);
+  point_2t pl2 = get_circumference_point_d(angleda, rbase + linelen, origin);
+  points_to_line(obj, styl, pl1, pl2);
+
+  radial_text_r(obj, typo, std::to_string(v), rbase + linelen + rspace,
+		origin, angled);
+}
+
+
+/**
+    Draw glyph and id part of kusama.
+    skip (origin to computed r) + rspace + glyph + space + id
+
+    Radius is the length from the circle's origin to the point on the ray.
+*/
+void
+radiate_glyph_and_id(svg_element& obj, const point_2t origin,
+		     const size_type v, const size_type value_max,
+		     const int radius, const int rspace, const string id,
+		     const typography& typo)
+{
+  // Kusama circle radius.
+  // Assumed to scale per value/value_max ratio.
+  const double kr = double(v / value_max) * radius;
+  const double angled = get_angle(v, value_max);
+  const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
+
+  // Length of glyph along radiated ray, if any.
+  int glyphr = 0;
+
+  // Switch based on id_render_state settings.
+  const id_render_state idst = get_id_render_state(id);
+  if (idst.is_visible(svg::k::select::glyph))
+    {
+      const string glyphtext = idst.name;
+      const double glyphscale = idst.multiple;
+      const double glyphrotate = idst.rotate;
+
+      if (idst.is_visible(svg::k::select::svg))
+	{
+	  // SVG to be inserted is
+	  // - square canvas width/height of 100 pixels
+	  // - glyph centered in this canvas
+	  // - glyph circle diameter = glyphscale value in pixels
+	  // Implies:
+	  // kr * 2 is desired width of circle in glyph.
+	  const double scale(kr * 2 / glyphscale);
+	  const int scaledsize = 100 * scale;
+
+	  const int svgr = radius + rspace + scaledsize;
+	  point_2t p = get_circumference_point_d(angleda, svgr, origin);
+	  insert_svg_at(obj, glyphtext, p, 100, scaledsize,
+			angleda + glyphrotate);
+	  glyphr = rspace + scaledsize;
+	}
+
+      if (idst.is_visible(svg::k::select::vector))
+	{
+	  const int vr = radius + rspace + kr;
+	  point_2t p = get_circumference_point_d(angleda, vr, origin);
+	  auto [ x, y ] = p;
+	  point_2d_to_circle(obj, x, y, idst.styl, kr);
+	  glyphr = rspace + (kr * 2);
+	}
+    }
+
+  // Id name.
+  if (idst.is_visible(svg::k::select::text))
+    {
+      const int idr = radius + glyphr + rspace;
+      radial_text_r(obj, typo, id, idr, origin, angled);
+    }
+}
+
+
+/**
    Radiate clockwise from 0 to 35x degrees about origin, placing each
    id at a point cluster on the circumference. A point cluster is a
    circle whos radius is proportionate to the number of duplicate ids
@@ -176,6 +264,7 @@ kusama_ids_orbit_high(svg_element& obj, const strings& ids, const point_2t p,
 
    Simplest version.
 */
+// need p, and v/vmax
 void
 kusama_ids_orbit_low(svg_element& obj, const strings& ids,
 		     const point_2t origin, const point_2t p,
@@ -367,10 +456,8 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 	{
 	  const style rstyl = { color::red, 1.0, color::red, 1.0, 2 };
 	  const double angled = get_angle(v, value_max);
-	  point_2t p2 = get_circumference_point_d(angled, radius * 3, origin);
-	  points_to_line(obj, rstyl, origin, p2);
-	  radial_text_r(obj, typo, std::to_string(v), radius * 3, origin,
-			angled);
+	  radiate_line_and_value(obj, origin, angled, v, radius, rspace,
+				 radius * 3, typo, rstyl);
 	}
     }
 
