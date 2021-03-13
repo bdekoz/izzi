@@ -23,18 +23,18 @@
 namespace svg {
 
 /**
-    Draw line and value part of kusama.
-    skip (origin to r) + rspace + line of radial length rline + rspace + value
+    Draw line and value on ray from origin as part of kusama.
+    skip (origin to rstart) + rspace + line of length lineline + rspace + value
 */
 void
 radiate_line_and_value(svg_element& obj, const point_2t origin,
 		       const double angled, const size_type v,
-		       const int radius, const int rspace, const int linelen,
+		       const int rstart, const int rspace, const int linelen,
 		       const typography& typo,
 		       const style styl = { color::black, 1, color::black, 1, 2 })
 {
   const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
-  const int rbase(radius + rspace);
+  const int rbase(rstart + rspace);
   point_2t pl1 = get_circumference_point_d(angleda, rbase, origin);
   point_2t pl2 = get_circumference_point_d(angleda, rbase + linelen, origin);
   points_to_line(obj, styl, pl1, pl2);
@@ -45,16 +45,19 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
 
 
 /**
-    Draw glyph and id part of kusama.
-    skip (origin to computed r) + rspace + glyph + space + id
+    Draw glyph and id on ray from origin as part of kusama.
+    skip (origin to rstart) + rspace + glyph of radius + rspace + id
 
-    Radius is the length from the circle's origin to the point on the ray.
+    @origin is center of the primary/base circle for kusama renderings.
+    @radius is of the kusama satellite circle on the ray.
+    @rstart is the length from origin along the ray to begin rendering
+    @rspace is the distance between text/vector/glyph elements
 */
 int
 radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 		     const size_type v, const size_type value_max,
-		     const int radius, const int rspace, const string id,
-		     const typography& typo)
+		     const int radius, const int rstart, const int rspace,
+		     const string id, const typography& typo)
 {
   // Kusama circle radius.
   // Assumed to scale per value/value_max ratio.
@@ -62,7 +65,7 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
   const double angled = get_angle(v, value_max);
   const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
 
-  // Length of glyph along radiated ray, if any.
+  // Length used of glyphs along radiated ray from origin, if any.
   int glyphr = 0;
 
   // Switch based on id_render_state settings.
@@ -84,27 +87,27 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 	  const double scale(kr * 2 / glyphscale);
 	  const int scaledsize = 100 * scale;
 
-	  const int svgr = radius + rspace + scaledsize;
+	  const int svgr = rstart + rspace + (scaledsize / 2);
 	  point_2t p = get_circumference_point_d(angleda, svgr, origin);
 	  insert_svg_at(obj, glyphtext, p, 100, scaledsize,
 			angleda + glyphrotate);
-	  glyphr = rspace + scaledsize;
+	  glyphr = rstart + rspace + scaledsize;
 	}
 
       if (idst.is_visible(svg::k::select::vector))
 	{
-	  const int vr = radius + rspace + kr;
+	  const int vr = rstart + rspace + kr;
 	  point_2t p = get_circumference_point_d(angleda, vr, origin);
 	  auto [ x, y ] = p;
 	  point_2d_to_circle(obj, x, y, idst.styl, kr);
-	  glyphr = rspace + (kr * 2);
+	  glyphr = rstart + rspace + (2 * kr);
 	}
     }
 
   // Id name.
   if (idst.is_visible(svg::k::select::text))
     {
-      const int idr = radius + glyphr + rspace;
+      const int idr = glyphr + rspace;
       radial_text_r(obj, typo, id, idr, origin, angled);
       glyphr += id.size() * typo._M_size;
     }

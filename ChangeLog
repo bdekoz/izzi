@@ -1,5 +1,10 @@
 2021-03-11  Benjamin De Kosnik  <bkoz@rizal>
 
+	* src/a60-svg-radial-kusama.h (radiate_line_and_value): Adjust spacing.
+	(radiate_glyph_and_id): Add arguments, adjust spacing.
+
+2021-03-11  Benjamin De Kosnik  <bkoz@rizal>
+
 	Kusama v3 WIP.
 	* src/a60-svg-radial-kusama.h (radiate_line_and_value): New.
 	(radiate_glyph_and_id): Same.
