@@ -60,6 +60,6 @@ test_arc(std::string ofile)
 
 int main()
 {
-  test_arc("test-arc-1");
+  test_arc("arc-1");
   return 0;
 }

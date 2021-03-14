@@ -64,7 +64,7 @@ test_center_mark(svg::svg_element& obj)
 int main()
 {
   area<> a = k::letter_096_v;
-  svg_element obj("test-path-demi-circle", a);
+  svg_element obj("path-demi-circle-center-mark", a);
 
   test_path_demi_circle(obj);
   test_center_mark(obj);  

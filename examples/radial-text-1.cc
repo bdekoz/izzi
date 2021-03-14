@@ -26,6 +26,6 @@ test_arc(std::string ofile)
 
 int main()
 {
-  test_arc("test-radial-text-1");
+  test_arc("radial-text-1");
   return 0;
 }

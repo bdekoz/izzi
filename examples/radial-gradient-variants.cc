@@ -170,6 +170,6 @@ test_radial_gradient(std::string ofile)
 
 int main()
 {
-  test_radial_gradient("test-radial-gradient-1");
+  test_radial_gradient("radial-gradient-variants");
   return 0;
 }

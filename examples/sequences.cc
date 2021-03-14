@@ -13,6 +13,6 @@ test_seq(std::string ofile)
 
 int main()
 {
-  test_seq("test-seq-1");
+  test_seq("sequences");
   return 0;
 }

@@ -52,6 +52,6 @@ test_gblur(std::string ofile)
 
 int main()
 {
-  test_gblur("test-gblur-2");
+  test_gblur("filter-gaussian-blur-2");
   return 0;
 }

@@ -53,6 +53,6 @@ test_arc(std::string ofile)
 
 int main()
 {
-  test_arc("test-arc-label-1");
+  test_arc("arc-labels-1");
   return 0;
 }

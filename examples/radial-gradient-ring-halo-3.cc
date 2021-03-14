@@ -31,7 +31,7 @@ test_radial_gradient(svg_element& obj)
 int main()
 {
   area<> a = k::letter_096_v;
-  svg_element obj("test-radial-gradient-ring-halo-3", a);
+  svg_element obj("radial-gradient-ring-halo-3", a);
 
   // Add background so that checking transparency is easier with naked eye.
   point_2d_to_rect(obj, a._M_width / 2 - rectw / 2, 0, k::b_style,

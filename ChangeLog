@@ -1,3 +1,7 @@
+2021-03-14  Benjamin De Kosnik  <bkoz@rizal>
+
+	* examples/*: Add new, rename output files without "test-" prefix.
+
 2021-03-13  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-render-basics.h (styled_text): Text interface version 2.

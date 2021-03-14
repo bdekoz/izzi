@@ -19,7 +19,7 @@ test_arc(std::string ofile)
     {
       auto d = i * 30;
       auto dn = zero_angle_north_cw(d);
-      dn -= adjust_angle_for_text_height(typo);      
+      dn -= adjust_angle_for_text_height(r, typo);
       auto [ x, y ] = get_circumference_point_d(dn, r, cp);
       radial_text_cw(obj, typo, std::to_string(d), x, y, dn);
     }
@@ -42,6 +42,6 @@ test_arc(std::string ofile)
 
 int main()
 {
-  test_arc("test-radial-text-2");
+  test_arc("radial-text-2");
   return 0;
 }
