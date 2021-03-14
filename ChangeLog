@@ -1,3 +1,8 @@
+2021-03-13  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-render-basics.h (styled_text): Text interface version 2.
+	(styled_text_r): Same.
+
 2021-03-11  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-kusama.h (radiate_line_and_value): Adjust spacing.

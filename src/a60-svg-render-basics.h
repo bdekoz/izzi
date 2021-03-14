@@ -106,7 +106,37 @@ make_2_channel_insert(svg_element& obj, string insert1, string insert2)
 }
 
 
-/// Text at size
+/// Text at @origin, with a transformation=rotation of @deg about @origin add  .
+void
+styled_text(svg_element& obj, const string text, const point_2t origin,
+	    svg::typography typo)
+{
+  auto [ x, y ] = origin;
+  text_element::data dt = { x, y, text, typo };
+  text_element t;
+  t.start_element();
+  t.finish_element();
+  obj.add_element(t);
+}
+
+
+/// Text at @origin, with a transformation=rotation of @deg about @origin add  .
+void
+styled_text_r(svg_element& obj, const string text, const point_2t origin,
+	      svg::typography typo, const double deg, const point_2t rorigin)
+{
+  auto [ x, y ] = origin;
+  text_element::data dt = { x, y, text, typo };
+  text_element t;
+  t.start_element();
+  auto [ tx, ty ] = rorigin;
+  t.add_data(dt, svg::transform::rotate(deg, tx, ty));
+  t.finish_element();
+  obj.add_element(t);
+}
+
+
+/// Text at size.
 void
 sized_text(svg_element& obj, svg::typography typo, const int sz,
 	   const string text, const int tx, const int ty)
@@ -121,7 +151,7 @@ sized_text(svg_element& obj, svg::typography typo, const int sz,
 }
 
 
-/// Text at size, with a transformation=rotation added.
+/// Text at size, with a transformation=rotation.
 void
 sized_text_r(svg_element& obj, svg::typography typo, const int sz,
 	     const string text, const int tx, const int ty, const double deg)
