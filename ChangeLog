@@ -1,5 +1,16 @@
 2021-03-14  Benjamin De Kosnik  <bkoz@rizal>
 
+	* src/a60-svg-radial-base.h: Add enum markup.
+	(get_label_for_spaces): Move here.
+	(adjust_angle_for_orbit_low): Low-orbit, by
+	observation. Deprecated, use dominant-baseline instead.
+	(adjust_angle_at_orbit_for_distance): Compute using trig. Deprecated,
+	use dominant-baseline attribute instead.
+	(radial_text_cw): Add dominant-baseline central.
+	(radial_text_ccw): Add dominant-baseline central.
+
+2021-03-14  Benjamin De Kosnik  <bkoz@rizal>
+
 	* src/a60-svg-base-types.h: Update markup for enums.
 	(typography::baseline): New.
 	(typography::add_attribute): Add support for baseline, anchor here.

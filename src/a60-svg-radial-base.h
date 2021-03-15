@@ -30,11 +30,11 @@
 
 namespace svg::constants {
 
-/// Radial rotation types.
+/// Radial rotation direction.
 enum class rrotation
   {
-    cw,
-    ccw
+    cw,			///< Clockwise
+    ccw			///< Counter-clockwise
   };
 
 } // namespace svg::constants
@@ -106,6 +106,20 @@ get_label_spaces()
 }
 
 
+/// The number of significant digits in @maxval.
+uint
+get_label_spaces(size_type maxval)
+{
+  uint sigdigits(1);
+  while (maxval > 1)
+    {
+      maxval /= 10;
+      ++sigdigits;
+    }
+  return sigdigits;
+}
+
+
 /// Set the number of label spaces.
 void
 set_label_spaces(size_type spaces)
@@ -128,16 +142,36 @@ make_label_for_value(string pname, size_type pvalue,
 }
 
 
-// Radiate clockwise from 0 to 35x degrees about origin, placing each
-// id at a point on the circumference. Duplicate points overlap.
-
-/// Circumference adjustment such that lable is hight-centered in
-/// kusama circle.
+/// Circumference adjustment by observation such that label text is
+/// centered on arc from origin for kusama low-orbit glyphs.
 constexpr double
-adjust_angle_for_text_height(const typography& typo)
+adjust_angle_at_orbit_low(const typography& typo)
 {
+  // At kusama low orbit, ie radius + rspace.
   // size 24, adjust 3
   return typo._M_size / 8;
+}
+
+
+/**
+   Circumference adjustment such that text/object of height distance
+   is centered on arc from origin to kusama high-orbit glyphs.
+*/
+constexpr double
+adjust_angle_at_orbit_for_distance(double r, double distance)
+{
+  // Angle between sequential id's.
+  //
+  // Given r,
+  // point p on circumference r distance from origin with angle d
+  // point pprime on circumference r from origin with angle dprime
+  // distance is the cartesian distance between p and pprime
+  //
+  // then
+  // dprime = 2 * theta, where theta from sin(theta) = (rspace / 2) / r.
+  double angleprime = std::asin((distance / 2) / r);
+  double angleprimed = angleprime * (180 / k::pi);
+  return angleprimed;
 }
 
 
@@ -157,8 +191,9 @@ radial_text_cw(svg_element& obj, const typography& typo,
 	       string text, int tx, int ty, const double deg = 0.0)
 {
   typography typot(typo);
-  typot._M_a = svg::typography::anchor::start;
+  typot._M_anchor = svg::typography::anchor::start;
   typot._M_align = svg::typography::align::left;
+  typot._M_baseline = svg::typography::baseline::central;
 
   if (deg > 0)
     sized_text_r(obj, typot, typot._M_size, text, tx, ty, 360 - deg);
@@ -173,8 +208,9 @@ radial_text_ccw(svg_element& obj, const typography& typo,
 		string text, int tx, int ty, const double deg = 0.0)
 {
   typography typot(typo);
-  typot._M_a = svg::typography::anchor::end;
+  typot._M_anchor = svg::typography::anchor::end;
   typot._M_align = svg::typography::align::right;
+  typot._M_baseline = svg::typography::baseline::central;
 
   if (deg > 0)
     sized_text_r(obj, typot, typot._M_size, text, tx, ty, 360 - deg + 180);
@@ -198,10 +234,11 @@ void
 radial_text_r(svg_element& obj, const typography& typo, string text,
 	      const int r, const point_2t origin, const double deg = 0.0)
 {
+  const double angletextoffset = 0;
   if (deg <= 180)
     {
       auto dcw = zero_angle_north_cw(deg);
-      dcw -= adjust_angle_for_text_height(typo);
+      dcw -= angletextoffset;
       auto [ x, y ] = get_circumference_point_d(dcw, r, origin);
       radial_text_cw(obj, typo, text, x, y, dcw);
     }
@@ -220,7 +257,7 @@ radial_text_r(svg_element& obj, const typography& typo, string text,
 
       auto dp = deg - 180;
       auto dccw = zero_angle_north_ccw(180 - dp);
-      dccw += adjust_angle_for_text_height(typo);
+      dccw += angletextoffset;
       auto [ x, y ] = get_circumference_point_d(dccw, r, origin);
       radial_text_ccw(obj, typo, text, x, y, dccw);
     }
@@ -243,20 +280,7 @@ splay_ids_around(svg_element& obj, const typography& typo,
   if (rspace > r * 2)
     rspace = r * 2;
 
-  // XXX rspace should be disambiguated.
-
-  // Angle between sequential id's.
-  //
-  // If given r, point p on circumfrence r distance from origin, angle d
-  // rspace is (one or more of XXX)
-  //   1. the distance between p and a label on the arc from origin
-  //   2. the distance between p and pprime on circumference with angle dprime
-  //
-  // then
-  // angle dprime = 2theta, where theta from sin(theta) = (rspace / 2) / r.
-  double angleprime = std::asin((rspace / 2) / r);
-  double angleprimed = angleprime * (180 / k::pi);
-
+  const double angleprimed = adjust_angle_at_orbit_for_distance(r, rspace);
   const double maxdeg = angleprimed * (ids.size() - 1);
   double angled2 = angled - (maxdeg / 2);
 
@@ -325,7 +349,7 @@ stack_ids_at(svg_element& obj, const typography& typoo,
 {
   // Rotate 90 CW around origin, and spread out .
   typography typo(typoo);
-  //typo._M_a = svg::typography::anchor::middle;
+  //typo._M_anchor = svg::typography::anchor::middle;
   //typo._M_align = svg::typography::align::center;
 
   for (const string& s: ids)
