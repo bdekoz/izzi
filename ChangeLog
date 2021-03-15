@@ -9,6 +9,7 @@
 	(collision_detected): ...this.
 	(char_width_to_px): New, by observation.
 	(char_height_to_px): Same.
+	* src/a60-svg-base-types.h (pt_to_px): Move to be by other dpi stuff.
 
 2021-03-13  Benjamin De Kosnik  <bkoz@rizal>
 

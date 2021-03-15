@@ -1,6 +1,6 @@
 // svg base -*- mode: C++ -*-
 
-// Copyright (C) 2014-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -48,18 +48,6 @@ to_string(const unit e)
       enum_map[unit::pixel] = "px";
     }
   return enum_map[e];
-}
-
-
-double
-pt_to_px(uint i)
-{
-  // 1pt is equal to exactly 1/72th of an inch.
-  // On a 72dpi output device (display), this is 1 (aka 72 * 1/72).
-  // On a 90dpi output device (display), this is 1.25 (aka 90 * 1/72).
-  // On a 96dpi output device (display), this is 1.33 (aka 96 * 1/72).
-  const uint dpi = k::get_dpi();
-  return (i * (dpi / 72));
 }
 
 
