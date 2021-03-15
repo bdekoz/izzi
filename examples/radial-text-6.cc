@@ -46,21 +46,10 @@ test_arc(std::string ofile)
     }
 
 
-
   // Put in 0/180 and 90/270 guides.
   const int r4 = 200;
   const style rstyl = { color::red, 1.0, color::red, 1.0, 2 };
-
-  auto d0 = zero_angle_north_cw(0);
-  auto d6 = zero_angle_north_cw(180);
-  auto d3 = zero_angle_north_cw(90);
-  auto d9 = zero_angle_north_cw(270);
-  point_2t p0 = get_circumference_point_d(d0, r4, cp);
-  point_2t p6 = get_circumference_point_d(d6, r4, cp);
-  point_2t p3 = get_circumference_point_d(d3, r4, cp);
-  point_2t p9 = get_circumference_point_d(d9, r4, cp);
-  points_to_line(obj, rstyl, p0, p6);
-  points_to_line(obj, rstyl, p9, p3);
+  point_to_plus_lines(obj, rstyl, cp, r4);
 }
 
 

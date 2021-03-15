@@ -14,18 +14,20 @@ test_text(std::string ofile)
 
   point_2t cp = obj.center_point();
   auto [ x, y ] = cp;
+  point_2t top = { x, y - 200 };
+  point_2t bottom = { x, y + 200 };
 
-  // 1 top
-  {
-    typography typo(typobase);
-    point_2t origin = { x, y - 100 };
-    styled_text(obj, "top", origin, typo);
-    styled_text_r(obj, "top-90-cp", origin, typo, 90, cp);
-    styled_text_r(obj, "top-90-origin", origin, typo, 90, origin);
-  }
+  // Three text items.
+  typography typo(typobase);
+  styled_text(obj, "top", top, typo);
+  styled_text_r(obj, "cp 90", cp, typo, 90, cp);
+  styled_text_r(obj, "bottom -90", bottom, typo, -90, bottom);
 
+  // Red marks at placement points.
   const style rstyl = { color::red, 1.0, color::red, 1.0, 2 };
-  point_to_plus_lines(obj, rstyl, cp, 300);
+  point_to_plus_lines(obj, rstyl, cp, 10);
+  point_to_plus_lines(obj, rstyl, top, 10);
+  point_to_plus_lines(obj, rstyl, bottom, 10);
 }
 
 
