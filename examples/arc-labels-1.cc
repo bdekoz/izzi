@@ -38,7 +38,7 @@ test_arc(std::string ofile)
   string text("zoe noe");
   typography typo = k::apercu_typo;
   typo._M_size = 12;
-  typo._M_a = typography::anchor::start;
+  typo._M_anchor = typography::anchor::start;
   typo._M_align = typography::align::left;
 
   // Put it together.

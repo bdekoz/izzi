@@ -12,11 +12,11 @@ test_arc(std::string ofile)
 
   typography typoleft = k::apercu_typo;
   typoleft._M_size = 10;
-  typoleft._M_a = typography::anchor::start;
+  typoleft._M_anchor = typography::anchor::start;
   typoleft._M_align = typography::align::left;
 
   typography typoright(typoleft);
-  typoright._M_a = typography::anchor::end;
+  typoright._M_anchor = typography::anchor::end;
   typoright._M_align = typography::align::right;
 
   point_2t cp = obj.center_point();

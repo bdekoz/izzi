@@ -406,7 +406,7 @@ struct text_element : virtual public element_base
     // Add attributes.
     string_replace(strip, x, std::to_string(d._M_x_origin));
     string_replace(strip, y, std::to_string(d._M_y_origin));
-    string_replace(strip, anchor, d._M_typo.to_string(d._M_typo._M_a));
+    string_replace(strip, anchor, d._M_typo.to_string(d._M_typo._M_anchor));
     string_replace(strip, attr, d._M_typo.add_attribute());
     string_replace(strip, style, svg::style::str(d._M_typo._M_style));
     _M_sstream << strip;

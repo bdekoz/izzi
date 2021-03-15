@@ -22,21 +22,21 @@ test_text(std::string ofile)
   // 1 anchor start
   {
     typography typo(typobase);
-    typo._M_a = anchor::start;
+    typo._M_anchor = anchor::start;
     sized_text_r(obj, typo, 24, "asama", x, y + 50, 90);
   }
 
   // 2 anchor middle
   {
     typography typo(typobase);
-    typo._M_a = anchor::middle;
+    typo._M_anchor = anchor::middle;
     sized_text_r(obj, typo, 24, "asama", x, y, 90);
   }
 
   // 3 anchor end
   {
     typography typo(typobase);
-    typo._M_a = anchor::end;
+    typo._M_anchor = anchor::end;
     sized_text_r(obj, typo, 24, "asama", x, y - 50, 90);
   }
 

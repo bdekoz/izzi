@@ -125,7 +125,7 @@ direction_arc_title_at(svg_element& obj, const point_2t origin,
   // Make label text and style it.
   typography typo = k::apercu_typo;
   typo._M_size = 10;
-  typo._M_a = typography::anchor::start;
+  typo._M_anchor = typography::anchor::start;
   typo._M_align = typography::align::left;
 
   // Put it together.

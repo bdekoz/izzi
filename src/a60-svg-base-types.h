@@ -154,23 +154,38 @@ struct transform
 */
 struct typography
 {
-  // Text alignment.
-  enum class align { left, center, right, justify, justifyall,
-		     start, end, inherit, matchparent, initial, unset };
+  /// Text alignment.
+  enum class align
+    {
+      left,		///< Left-most part of text block
+      center,		///< Center part of text block
+      right,		///< Right part of text block
+      justify,
+      justifyall,
+      start,
+      end,
+      inherit,
+      matchparent,
+      initial,
+      unset
+    };
 
-  // How to align text to a given point.
-  // middle == center the middle of the text block at point.
-  // start  == start the text block at point.
-  // end    == end the text block at point.
-  enum class anchor { start, middle, end, inherit };
+  /// How to align text to a given point.
+  enum class anchor
+    {
+      start,		///< Start the text block at point.
+      middle,		///< Center the middle of the text block at point.
+      end,		///< End the text block at point.
+      inherit		///< Enclosing object or group
+    };
 
-  // Light is 300, Normal is 400, and Medium is 500 in CSS.
+  /// Light is 300, Normal is 400, and Medium is 500 in CSS.
   enum class weight { xlight, light, normal, medium, bold, xbold };
 
-  // Face variant.
+  /// Face variant.
   enum class property { normal, italic };
 
-  // Find installed fonts on linux with `fc-list`
+  // Find all installed fonts on linux with `fc-list`
   std::string		_M_face;	// System font name
   size_type		_M_size;	// Display size
   style			_M_style;
@@ -178,7 +193,7 @@ struct typography
   // Style attributes for text
   // font-weight, transform,
   // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/font-face
-  anchor		_M_a;
+  anchor		_M_anchor;
   align			_M_align;
   weight		_M_w;
   property		_M_p;
