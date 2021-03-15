@@ -25,7 +25,10 @@ test_text(std::string ofile)
   typography typo(typobase);
   styled_text(obj, "top", top, typo);
   styled_text_r(obj, "cp 90", cp, typo, 90, cp);
-  styled_text_r(obj, "bottom -90", bottom, typo, -90, bottom);
+
+  typography typob(typobase);
+  typob._M_baseline = typography::baseline::central;
+  styled_text_r(obj, "bottom -90", bottom, typob, -90, bottom);
 
   // Red marks at placement points.
   const style rstyl = { color::red, 1.0, color::red, 1.0, 2 };

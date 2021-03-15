@@ -397,16 +397,14 @@ struct text_element : virtual public element_base
   {
     const string x("__x");
     const string y("__y");
-    const string anchor("__anchor");
     const string attr("__attr");
     const string style("__style");
 
-    string strip = R"_delimiter_(x="__x" y="__y" text-anchor="__anchor"  __attr __style)_delimiter_";
+    string strip = R"_delimiter_(x="__x" y="__y" __attr __style)_delimiter_";
 
     // Add attributes.
     string_replace(strip, x, std::to_string(d._M_x_origin));
     string_replace(strip, y, std::to_string(d._M_y_origin));
-    string_replace(strip, anchor, d._M_typo.to_string(d._M_typo._M_anchor));
     string_replace(strip, attr, d._M_typo.add_attribute());
     string_replace(strip, style, svg::style::str(d._M_typo._M_style));
     _M_sstream << strip;

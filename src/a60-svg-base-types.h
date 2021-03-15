@@ -28,10 +28,10 @@ namespace svg {
 /// Measurement abstraction type, conversion function.
 enum class unit
   {
-   centimeter,		// cm
-   millimeter,		// mm
-   inch,		// in
-   pixel		// px, 1 pixel x 96 PPI = .264583 mm
+   centimeter,		///< Centimeter
+   millimeter,		///< Milliimeter
+   inch,		///< Inch
+   pixel		///< Pixel where 1 pixel x 96 PPI = .264583 mm
   };
 
 const string
@@ -150,7 +150,7 @@ struct transform
    characteristics.
 
    SVG Fonts
-   https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/SVG_fonts
+   https://developer.mozilla.org/docs/Web/SVG/Tutorial/SVG_fonts
 */
 struct typography
 {
@@ -179,11 +179,41 @@ struct typography
       inherit		///< Enclosing object or group
     };
 
-  /// Light is 300, Normal is 400, and Medium is 500 in CSS.
-  enum class weight { xlight, light, normal, medium, bold, xbold };
+  /// How to align text to the dominant-baseline.
+  /// https://developer.mozilla.org/docs/Web/SVG/Attribute/dominant-baseline
+  enum class baseline
+    {
+      none,		///< Ignore this attribute.
+      automatic,	///< Auto
+      ideographic,
+      alphabetic,
+      hanging,
+      mathematical,
+      central,		///< For rotated text
+      middle,
+      text_after_edge,
+      text_before_edge,
+      text_top
+    };
 
-  /// Face variant.
-  enum class property { normal, italic };
+  /// Weight as per CSS property.
+  enum class weight
+    {
+      xlight,
+      light,		///< CSS 300
+      normal,		///< CSS 400
+      medium,		///< CSS 500
+      bold,
+      xbold
+    };
+
+  /// Face style variant.
+  /// https://developer.mozilla.org/docs/Web/CSS/font-style
+  enum class property
+    {
+      normal,		///< Book
+      italic		///< Italic
+    };
 
   // Find all installed fonts on linux with `fc-list`
   std::string		_M_face;	// System font name
@@ -195,6 +225,7 @@ struct typography
   // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/font-face
   anchor		_M_anchor;
   align			_M_align;
+  baseline		_M_baseline;
   weight		_M_w;
   property		_M_p;
 
@@ -256,6 +287,29 @@ struct typography
   }
 
   const std::string
+  to_string(const baseline b) const
+  {
+    using enum_map_type = std::map<baseline, std::string>;
+
+    static enum_map_type enum_map;
+    if (enum_map.empty())
+      {
+	enum_map[baseline::none] = "";
+	enum_map[baseline::automatic] = "auto";
+	enum_map[baseline::ideographic] = "ideographic";
+	enum_map[baseline::alphabetic] = "alphabetic";
+	enum_map[baseline::hanging] = "hanging";
+	enum_map[baseline::mathematical] = "mathematical";
+	enum_map[baseline::central] = "central";
+	enum_map[baseline::middle] = "middle";
+	enum_map[baseline::text_after_edge] = "text-after-edge";
+	enum_map[baseline::text_before_edge] = "text-before-edge";
+	enum_map[baseline::text_top] = "text-top";
+      }
+    return enum_map[b];
+  }
+
+  const std::string
   to_string(const property p) const
   {
     using enum_map_type = std::map<property, std::string>;
@@ -272,15 +326,17 @@ struct typography
   const std::string
   add_attribute() const
   {
-    const std::string name("__name");
-    const std::string size("__size");
-    const std::string align("__align");
+    const string name("__name");
+    const string size("__size");
+    const string anchor("__anchor");
+    const string align("__align");
 
-    std::string strip1 =						\
-      R"(font-family="__name" font-size="__sizepx" text-align="__align" )";
+    std::string strip1 =					\
+      R"(font-family="__name" font-size="__sizepx" text-anchor="__anchor" text-align="__align" )";
 
     string_replace(strip1, name, _M_face);
     string_replace(strip1, size, std::to_string(_M_size));
+    string_replace(strip1, anchor, to_string(_M_anchor));
     string_replace(strip1, align, to_string(_M_align));
 
     const std::string weight("__weight");
@@ -292,7 +348,17 @@ struct typography
     string_replace(strip2, weight, to_string(_M_w));
     string_replace(strip2, property, to_string(_M_p));
 
-    return strip1 + strip2;
+    // Add dominant baseline only if necessary.
+    string stripb;
+    if (_M_baseline != baseline::none)
+      {
+	stripb += "dominant-baseline=";
+	stripb += k::quote;
+	stripb += to_string(_M_baseline);
+	stripb += k::quote;
+	stripb += k::space;
+      }
+    return strip1 + stripb + strip2;
   }
 };
 

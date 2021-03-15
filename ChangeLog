@@ -1,5 +1,17 @@
 2021-03-14  Benjamin De Kosnik  <bkoz@rizal>
 
+	* src/a60-svg-base-types.h: Update markup for enums.
+	(typography::baseline): New.
+	(typography::add_attribute): Add support for baseline, anchor here.
+	Add dominant-baseline attribute.
+	* src/a60-svg-constants.h: Adjust font constants for above.
+	* src/a60-svg-elements.h (text_element::add_data): Use
+	attributes consistently from add_attribute.
+
+	* examples/rotated-text-4.cc: Use dominant-baseline.
+
+2021-03-14  Benjamin De Kosnik  <bkoz@rizal>
+
 	* src/a60-svg-render-basics.h (styled_text): Add datum.
 
 2021-03-13  Benjamin De Kosnik  <bkoz@rizal>
