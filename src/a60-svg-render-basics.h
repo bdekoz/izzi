@@ -115,6 +115,7 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
   text_element::data dt = { size_type(x), size_type(y), text, typo };
   text_element t;
   t.start_element();
+  t.add_data(dt);
   t.finish_element();
   obj.add_element(t);
 }
@@ -126,11 +127,11 @@ styled_text_r(svg_element& obj, const string text, const point_2t origin,
 	      svg::typography typo, const double deg, const point_2t rorigin)
 {
   auto [ x, y ] = origin;
+  auto [ rx, ry ] = rorigin;
   text_element::data dt = { size_type(x), size_type(y), text, typo };
   text_element t;
   t.start_element();
-  auto [ tx, ty ] = rorigin;
-  t.add_data(dt, svg::transform::rotate(deg, tx, ty));
+  t.add_data(dt, svg::transform::rotate(deg, rx, ry));
   t.finish_element();
   obj.add_element(t);
 }
