@@ -25,11 +25,13 @@ namespace svg {
 /**
     Draw line and value on ray from origin as part of kusama.
     skip (origin to rstart) + rspace + line of length lineline + rspace + value
+
+    Returns the length along the arc of the generated glyph.
 */
-void
+int
 radiate_line_and_value(svg_element& obj, const point_2t origin,
 		       const double angled, const size_type v,
-		       const int rstart, const int rspace, const int linelen,
+		       const int rspace, const int rstart, const int linelen,
 		       const typography& typo,
 		       const style styl = { color::black, 1, color::black, 1, 2 })
 {
@@ -39,8 +41,10 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
   point_2t pl2 = get_circumference_point_d(angleda, rbase + linelen, origin);
   points_to_line(obj, styl, pl1, pl2);
 
-  radial_text_r(obj, typo, std::to_string(v), rbase + linelen + rspace,
-		origin, angled);
+  // Length used of glyphs along radiated ray from origin, if any.
+  int glyphr = rbase + linelen + rspace;
+  radial_text_r(obj, typo, std::to_string(v), glyphr, origin, angled);
+  return glyphr - rstart;
 }
 
 
@@ -52,16 +56,18 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
     @radius is of the kusama satellite circle on the ray.
     @rstart is the length from origin along the ray to begin rendering
     @rspace is the distance between text/vector/glyph elements
+
+    Returns the length along the arc of the generated glyph.
 */
 int
 radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 		     const size_type v, const size_type value_max,
-		     const int radius, const int rstart, const int rspace,
+		     const int radius, const int rspace, const int rstart,
 		     const string id, const typography& typo)
 {
   // Kusama circle radius.
   // Assumed to scale per value/value_max ratio.
-  const double kr = double(v / value_max) * radius;
+  const double kr((double(v) / value_max) * radius);
   const double angled = get_angle(v, value_max);
   const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
 
@@ -85,13 +91,13 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 	  // Implies:
 	  // kr * 2 is desired width of circle in glyph.
 	  const double scale(kr * 2 / glyphscale);
-	  const int scaledsize = 100 * scale;
-
-	  const int svgr = rstart + rspace + (scaledsize / 2);
+	  const double scaledsize = scale * 100;
+	  const double scaledglyph = scale * glyphscale;
+	  const double svgr = rstart + rspace + (scaledglyph / 2);
 	  point_2t p = get_circumference_point_d(angleda, svgr, origin);
 	  insert_svg_at(obj, glyphtext, p, 100, scaledsize,
 			angleda + glyphrotate);
-	  glyphr = rstart + rspace + scaledsize;
+	  glyphr = rspace + scaledsize;
 	}
 
       if (idst.is_visible(svg::k::select::vector))
@@ -100,16 +106,19 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 	  point_2t p = get_circumference_point_d(angleda, vr, origin);
 	  auto [ x, y ] = p;
 	  point_2d_to_circle(obj, x, y, idst.styl, kr);
-	  glyphr = rstart + rspace + (2 * kr);
+	  glyphr = rspace + (2 * kr);
 	}
     }
 
   // Id name.
   if (idst.is_visible(svg::k::select::text))
     {
-      const int idr = glyphr + rspace;
+      const int idr = rstart + glyphr + rspace;
       radial_text_r(obj, typo, id, idr, origin, angled);
-      glyphr += id.size() * typo._M_size;
+
+      // NB: This is only an estimate of the text block size.
+      // Should be getComputedTextLength
+      glyphr += id.size() * char_width_to_px(typo._M_size);
     }
 
   return glyphr;
@@ -188,7 +197,7 @@ kusama_collision_transforms(const point_2t origin,
 	  auto& [ prevp, prevn ] = prevpn;
 	  double rprev = radius * prevn; // ??? XXX
 
-	  while (is_collision_detected(p, rcur, prevp, rprev))
+	  while (detect_collision(p, rcur, prevp, rprev))
 	    {
 	      // Find new point further out from origin.
 	      if (outwardp)
@@ -279,12 +288,36 @@ kusama_ids_orbit_low(svg_element& obj, const strings& ids,
 		     const int radius, const int rspace,
 		     const typography& typo, const bool byvaluep)
 {
+  // Center of glyph, a point on origin circle circumference.
+  const double angled = get_angle(v, value_max);
+
+#if 1
+  int glyphr = 0;
+  if (ids.size() == 1)
+    {
+      // Low orbit.
+      auto linelen = rspace;
+      glyphr = radiate_line_and_value(obj, origin, angled, v,
+				      rspace, radius, linelen, typo);
+
+      // Add number of characters of value as string * size of each character.
+      glyphr += get_label_spaces(value_max) * char_width_to_px(typo._M_size);
+
+      glyphr += radiate_glyph_and_id(obj, origin, v, value_max, radius, rspace,
+				     radius + glyphr, ids.front(), typo);
+    }
+  else
+    {
+      // High orbit.
+      // Do what's left (non-specialized ids) as per usual.
+      kusama_ids_orbit_high(obj, ids, p, n, n_total, v, value_max,
+			    radius, rspace, typo, byvaluep, true);
+    }
+
+#else
   // Get cache, list of specialized id matches.
   const id_render_state_umap& cache = get_id_render_state_cache();
-
-  // Center of glyph, a point on origin circle circumference.
-  const double angledo = get_angle(v, value_max);
-  const double angled = adjust_angle_rotation(angledo, k::rrotation::cw);
+  const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
 
   // There should be no ids.empty.
   // ids.size == 1, "low orbit", kusama sphere is on/near the circumference.
@@ -358,6 +391,7 @@ kusama_ids_orbit_low(svg_element& obj, const strings& ids,
       kusama_ids_orbit_high(obj, idsremaining, p, n, n_total, v, value_max,
 			    radius, rspace, typo, byvaluep, satellitep);
     }
+#endif
 }
 
 
@@ -400,9 +434,6 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   std::vector<point_2tn> vpointns;
   for (const auto& v : vuvalues)
     {
-      auto count = uvaluemm.count(v);
-      std::clog << "value, count: " << v << ',' << count << std::endl;
-
       // Extract all the ids for a given value.
       auto irange = uvaluemm.equal_range(v);
       auto ibegin = irange.first;
@@ -444,6 +475,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   // Draw resulting points, ids, values.
   // NB: vpointns valued from smallest to largest, so reverse so that
   // smaller is more visible.
+  constexpr bool overlayrayp = false;
   for (uint i = 0; i < vpointns.size(); ++i)
     {
       int j = vpointns.size() - 1 - i;
@@ -457,13 +489,13 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       kusama_ids_orbit_low(obj, ids, origin, p, n, vpointns.size(),
 			   v, value_max, radius, rspace, typo, weighbyvaluep);
 
-      // Iff overlay rays to check alignment.
-      if (true)
+      // Iff overlay rays to check text and glyph alignment.
+      if (overlayrayp)
 	{
 	  const style rstyl = { color::red, 1.0, color::red, 1.0, 2 };
 	  const double angled = get_angle(v, value_max);
 	  radiate_line_and_value(obj, origin, angled, v, radius, rspace,
-				 radius * 3, typo, rstyl);
+				 radius * 4, typo, rstyl);
 	}
     }
 

@@ -221,7 +221,7 @@ get_id_render_state_cache()
 /// Add value to cache with base style of styl, colors klr, visibility vis.
 void
 add_to_id_render_state_cache(const string id, const style styl,
-			     const svg::k::select vis)
+			     const k::select vis)
 {
   id_render_state_umap& cache = get_id_render_state_cache();
 
@@ -233,7 +233,7 @@ add_to_id_render_state_cache(const string id, const style styl,
 
 /// Given identifier/name/id, get corresponding id_render_state from cache.
 const id_render_state
-get_id_render_state(string id)
+get_id_render_state(const string id)
 {
   const id_render_state_umap& cache = get_id_render_state_cache();
 

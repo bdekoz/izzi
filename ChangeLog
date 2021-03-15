@@ -1,3 +1,11 @@
+2021-03-15  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h (radiate_line_and_value): Return
+	length.
+	(radiate_glyph_and_id): Same.
+	(kusama_ids_orbit_low): WIP re-write using above.
+	* src/a60-svg-render-state.h: Adjust arguments.
+
 2021-03-14  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-base.h: Add enum markup.
