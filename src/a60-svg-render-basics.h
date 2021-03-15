@@ -166,9 +166,10 @@ sized_text_r(svg_element& obj, svg::typography typo, const int sz,
 }
 
 
+/// Line between two points.
 void
 points_to_line(svg_element& obj, const svg::style s,
-		  const point_2t origin, const point_2t end)
+	       const point_2t origin, const point_2t end)
 {
   auto [ xo, yo ] = origin;
   auto [ xe, ye ] = end;
@@ -201,6 +202,7 @@ point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
 }
 
 
+/// Center a rectangle at this point.
 void
 point_to_rect_centered(svg_element& obj, const point_2t origin, svg::style s,
 		       int width = 4, int height = 4)
@@ -483,7 +485,7 @@ make_path_arc_closed(const point_2t& origin, const double startd,
 }
 
 
-/// Plus or x tilt mark.
+/// Plus or x tilt mark as closed path.
 string
 make_path_center_mark(const point_2t& origin, const int len, const int width)
 {
@@ -521,6 +523,24 @@ make_path_center_mark(const point_2t& origin, const int len, const int width)
   oss << "V" << k::space << y << k::space;
 
   return oss.str();
+}
+
+
+/// Point to center mark as crossed lines.
+void
+point_to_plus_lines(svg_element& obj, const style& styl,
+		    const point_2t origin, const int radius)
+{
+  auto d0 = zero_angle_north_cw(0);
+  auto d6 = zero_angle_north_cw(180);
+  auto d3 = zero_angle_north_cw(90);
+  auto d9 = zero_angle_north_cw(270);
+  point_2t p0 = get_circumference_point_d(d0, radius, origin);
+  point_2t p6 = get_circumference_point_d(d6, radius, origin);
+  point_2t p3 = get_circumference_point_d(d3, radius, origin);
+  point_2t p9 = get_circumference_point_d(d9, radius, origin);
+  points_to_line(obj, styl, p0, p6);
+  points_to_line(obj, styl, p9, p3);
 }
 
 

@@ -1,4 +1,16 @@
-2021-03-14  Benjamin De Kosnik  <bkoz@rizal>
+2021-03-13  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-render-basics.h (point_to_plus_lines): New, lines
+	version of center mark, plus sign, cross.
+	* src/a60-svg-render-state.h: Spacing tweaks, use opacity on
+	default style.
+	* src/a60-svg.h: Add doxygen markup.
+	(is_collision_detected): To...
+	(collision_detected): ...this.
+	(char_width_to_px): New, by observation.
+	(char_height_to_px): Same.
+
+2021-03-13  Benjamin De Kosnik  <bkoz@rizal>
 
 	* examples/*: Add new, rename output files without "test-" prefix.
 

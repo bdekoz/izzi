@@ -50,10 +50,15 @@ using size_type = int;
 
 /// Base floating point type.
 using space_type = double;
+
+/// Point (x,y) in 2D space.
 using point_2t = std::tuple<space_type, space_type>;
+
+/// Point (x,y) in 2D space with weight n.
 using point_2tn = std::tuple<point_2t, size_type>;
 
 
+/// Convert point_2t to string.
 string
 to_string(point_2t p)
 {
@@ -64,6 +69,7 @@ to_string(point_2t p)
 }
 
 
+/// Find cartesian distance between two 2D points.
 space_type
 distance_cartesian(const point_2t& p1, const point_2t& p2)
 {
@@ -79,8 +85,8 @@ distance_cartesian(const point_2t& p1, const point_2t& p2)
 // Does point p1 of radius r1 instersect point p2 with radius r2?
 // https://developer.mozilla.org x 2D_collision_detection
 bool
-is_collision_detected(const point_2t& p1, const int r1,
-		      const point_2t& p2, const int r2)
+detect_collision(const point_2t& p1, const int r1, const point_2t& p2,
+		 const int r2)
 {
   bool ret(false);
   if (distance_cartesian(p1, p2) < r1 + r2)
@@ -89,19 +95,52 @@ is_collision_detected(const point_2t& p1, const int r1,
 }
 
 
+/// Resolution of output display device.
+double&
+get_dpi()
+{
+  static double dpi(96.0);
+  return dpi;
+}
+
+
+/// Conversion between point size to pixels given dpi density.
+double
+pt_to_px(const uint i = 1)
+{
+  // 1pt is equal to exactly 1/72th of an inch.
+  // On a 72dpi output device (display), this is 1 (aka 72 * 1/72).
+  // On a 90dpi output device (display), this is 1.25 (aka 90 * 1/72).
+  // On a 96dpi output device (display), this is 1.33 (aka 96 * 1/72).
+  return std::lround(i * (get_dpi() / 72));
+}
+
+
+/// Approximate pixel height of type of point size @sz.
+constexpr double
+char_width_to_px(const uint sz)
+{ return 0.58 * sz; }
+
+
+/// Approximate pixel height of type of point size @sz.
+constexpr double
+char_height_to_px(const uint sz)
+{ return 0.94 * sz; }
+
 
 /**
  *  SVG Constants
  */
 namespace constants {
 
-/// Formatting constants.
+/// Formatting character constants.
 constexpr char space(' ');
 constexpr char quote('"');
 constexpr char hyphen('-');
+constexpr char comma(',');
 constexpr char tab('\t');
 constexpr char newline('\n');
-constexpr char comma(',');
+
 
 /**
     Numeric constants.
@@ -110,12 +149,6 @@ constexpr char comma(',');
 */
 constexpr double pi(3.14159265358979323846);
 
-uint&
-get_dpi()
-{
-  static uint dpi(96);
-  return dpi;
-}
 } // namespace constants
 
 /// Inject nested namepace constants into svg namespace with alias k.

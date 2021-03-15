@@ -188,23 +188,23 @@ get_render_state()
 /// Datum to take id string and tie it to visual representation.
 struct id_render_state: public render_state_base
 {
-  style		styl;
+  style		styl; // Overrides render_state_base.opacity
   string	name;
-  double	rotate; // Degrees to rotate to origin (CW), if any.
+  double	rotate;   // Degrees to rotate to origin (CW), if any.
   double	multiple; // Scale factor, if any.
 
-  static style 	dstyl;
+  static style	dstyl;
 
   explicit
   id_render_state(const style s = dstyl, const string f = "",
-		  const double d = 0.0, const double scale = 1.0)
-  : styl(s), name(f), rotate(d), multiple(scale) { }
+		  const double angle = 0.0, const double scale = 1.0)
+  : styl(s), name(f), rotate(angle), multiple(scale) { }
 
   id_render_state(const id_render_state&) = default;
   id_render_state& operator=(const id_render_state&) = default;
 };
 
-style id_render_state::dstyl = { color::black, 0, color::black, 0.5, 2 };
+style id_render_state::dstyl = { color::black, 0.5, color::black, 0.5, 2 };
 
 using id_render_state_umap = std::unordered_map<string, id_render_state>;
 using id_render_states = std::vector<id_render_state>;
