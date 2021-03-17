@@ -1,9 +1,0 @@
-<map id="svg::make_path_arc_closed" name="svg::make_path_arc_closed">
-<area shape="rect" id="node1" title="Same but with degree range arguments instead of points. NB: Assumes appropriate zero_angle_north_cw/c..." alt="" coords="5,88,136,124"/>
-<area shape="rect" id="node2" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="184,57,335,93"/>
-<area shape="rect" id="node5" href="$namespacesvg.html#ad89cb17964e212907fe9f26d4f203b88" title="Make closed path between two points and the center of a circle of radius r. Points like: get_circumfe..." alt="" coords="194,117,325,153"/>
-<area shape="rect" id="node3" href="$namespacesvg.html#a85a18af2008e9709e4d641ef4bda04e7" title="Angle in radians." alt="" coords="383,5,533,41"/>
-<area shape="rect" id="node4" href="$namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd" title=" " alt="" coords="397,66,519,90"/>
-<area shape="rect" id="node6" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting constants." alt="" coords="386,119,530,143"/>
-<area shape="rect" id="node7" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="410,167,506,191"/>
-</map>

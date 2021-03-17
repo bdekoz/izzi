@@ -1,5 +1,9 @@
 2021-03-16  Benjamin De Kosnik  <bkoz@rizal>
 
+	* docs/html: Update.
+
+2021-03-16  Benjamin De Kosnik  <bkoz@rizal>
+
 	Kusama v3.
 	* src/a60-svg-radial-kusama.h (kusama_ids_orbit_low): Rewrite.
 	(kusama_ids_orbit_high): Same.
