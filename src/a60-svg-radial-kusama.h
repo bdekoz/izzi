@@ -259,8 +259,15 @@ kusama_ids_orbit_high(svg_element& obj, const strings& ids, const point_2t origi
 
   // Variation based on splay_ids_around center point,
   // where center is point on arc from origin...
+  double kr(0);
+  if (wbyvaluep)
+    kr = ((double(v) / value_max) * radius);
+  else
+    kr = 4; // XXX configurable via argument? wbyvaluep?
+
   glyphr += rspace;
-  const double anglea = adjust_angle_at_orbit_for_distance(radius + glyphr, rspace);
+  const double ar = radius + glyphr;
+  const double anglea = adjust_angle_at_orbit_for_distance(ar, kr * 2);
   const double maxdeg = anglea * (ids.size() - 1);
   double angled2 = angled - (maxdeg / 2);
 
@@ -271,17 +278,13 @@ kusama_ids_orbit_high(svg_element& obj, const strings& ids, const point_2t origi
       const id_render_state idst = get_id_render_state(id);
       if (idst.is_visible(svg::k::select::glyph))
 	{
-	  double kr(0);
-	  if (wbyvaluep)
-	    kr = ((double(v) / value_max) * radius);
-	  else
-	    kr = 4; // XXX configurable via argument? wbyvaluep?
-	  glyphr2 = radiate_glyph(obj, origin, angled2, idst, kr, rspace, glyphr);
+	  glyphr2 = radiate_glyph(obj, origin, angled2, idst, kr, rspace,
+				  radius + glyphr);
 	}
 
       if (idst.is_visible(svg::k::select::text) && !id.empty())
 	{
-	  const int idr = glyphr + glyphr2 + rspace;
+	  const int idr = radius + glyphr + glyphr2 + rspace;
 	  radial_text_r(obj, typo, id, idr, origin, angled2);
 
 	  // NB: This is only an estimate of the text block size.
