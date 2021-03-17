@@ -1,3 +1,10 @@
+2021-03-16  Benjamin De Kosnik  <bkoz@rizal>
+
+	Kusama v3.
+	* src/a60-svg-radial-kusama.h (kusama_ids_orbit_low): Rewrite.
+	(kusama_ids_orbit_high): Same.
+	(radiate_glyph): Break out here.
+
 2021-03-15  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-kusama.h (radiate_line_and_value): Return
