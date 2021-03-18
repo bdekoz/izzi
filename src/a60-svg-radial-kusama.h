@@ -265,9 +265,14 @@ kusama_ids_orbit_high(svg_element& obj, const strings& ids, const point_2t origi
   else
     kr = 4; // XXX configurable via argument? wbyvaluep?
 
-  glyphr += rspace;
+  // glyphr += rspace;
+
+  // Distance betwen id spheres on high-orbit kusama.
+  // NB for low values, make sure distance is at least text height away.
+  const double distance = std::max(kr * 3, char_height_to_px(typo._M_size));
+
   const double ar = radius + glyphr;
-  const double anglea = adjust_angle_at_orbit_for_distance(ar, kr * 2);
+  const double anglea = adjust_angle_at_orbit_for_distance(ar, distance);
   const double maxdeg = anglea * (ids.size() - 1);
   double angled2 = angled - (maxdeg / 2);
 
