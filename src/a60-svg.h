@@ -30,6 +30,8 @@ namespace svg {
 /// Base string type.
 using std::string;
 using strings = std::vector<string>;
+using vstrings = strings;
+using vvstrings = std::vector<strings>;
 
 // Utility function, like regex_replace.
 inline void

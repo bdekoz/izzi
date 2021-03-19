@@ -1,3 +1,13 @@
+2021-03-18  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h (kusama_collision_transforms): Rewrite wip.
+	(kusama_ids_orbit_high): Add rspace parameter.
+	(kusama_ids_orbit_low): Add rspace parameter.
+	(kusama_ids_at_uvalue): Break out draw routines into this.
+	(kusama_ids_per_uvalue_on_arc): Remove previous vpointsn machinery,
+	hoist into kusama_collision_transforms and comment out.
+	* src/a60-svg.h: Add the usual string vector dimensions typedefs.
+
 2021-03-16  Benjamin De Kosnik  <bkoz@rizal>
 
 	* docs/html: Update.
