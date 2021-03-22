@@ -33,7 +33,7 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
 		       const double angled, const size_type v,
 		       const int rspace, const int rstart, const int linelen,
 		       const typography& typo,
-		       const style styl = { color::black, 1, color::black, 1, 2 })
+		       const style styl = {color::black, 1, color::black, .5, 1})
 {
   const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
   const int rbase(rstart + rspace);
@@ -56,7 +56,9 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
 	      const id_render_state idst,
 	      const int kr, const int rspace, const int rstart)
 {
-  // Kusama circle radius.
+  // Kusama circle radius, enforce miniumum size of 5.
+  const int kra = std::max(kr, 5);
+
   // Assumed to scale per value/value_max ratio.
   const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
 
@@ -73,7 +75,7 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
       // - glyph circle diameter = glyphscale value in pixels
       // Implies:
       // kr * 2 is desired width of circle in glyph.
-      const double scale(kr * 2 / glyphscale);
+      const double scale(kra * 2 / glyphscale);
       const double scaledsize = scale * 100;
       const double scaledglyph = scale * glyphscale;
       const double svgr = rstart + rspace + (scaledglyph / 2);
@@ -85,11 +87,11 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
 
   if (idst.is_visible(svg::k::select::vector))
     {
-      const int vr = rstart + rspace + kr;
+      const int vr = rstart + rspace + kra;
       point_2t p = get_circumference_point_d(angleda, vr, origin);
       auto [ x, y ] = p;
-      point_2d_to_circle(obj, x, y, idst.styl, kr);
-      glyphr += rspace + (2 * kr);
+      point_2d_to_circle(obj, x, y, idst.styl, kra);
+      glyphr += rspace + (2 * kra);
     }
 
   return glyphr;
@@ -150,16 +152,15 @@ int
 kusama_ids_orbit_high(svg_element& obj, const strings& ids, const point_2t origin,
 		      const size_type v, const size_type value_max,
 		      const int radius, const int rspace, const int rstart,
+		      const int linelen,
 		      const typography& typo,
 		      const bool wbyvaluep, const bool satellitep)
 {
   // Center of glyph, a point on origin circle circumference.
   const double angled = get_angle(v, value_max);
 
-  int glyphr(0);
-  auto linelen = rspace;
-  glyphr = radiate_line_and_value(obj, origin, angled, v,
-				  rspace, rstart, linelen, typo);
+  int glyphr = radiate_line_and_value(obj, origin, angled, v,
+				      rspace, rstart, linelen, typo);
 
   // Add number of characters of value as string * size of each character.
   glyphr += get_label_spaces(value_max) * char_width_to_px(typo._M_size);
@@ -232,6 +233,7 @@ void
 kusama_ids_orbit_low(svg_element& obj, const strings& ids, const point_2t origin,
 		     const size_type v, const size_type value_max,
 		     const int radius, const int rspace, const int rstart,
+		     const int linelen,
 		     const typography& typo, const bool wbyvaluep)
 {
   // Center of glyph, a point on origin circle circumference.
@@ -241,7 +243,6 @@ kusama_ids_orbit_low(svg_element& obj, const strings& ids, const point_2t origin
   if (ids.size() == 1)
     {
       // Low orbit.
-      auto linelen = rspace;
       glyphr = radiate_line_and_value(obj, origin, angled, v,
 				      rspace, rstart, linelen, typo);
 
@@ -256,27 +257,27 @@ kusama_ids_orbit_low(svg_element& obj, const strings& ids, const point_2t origin
       // High orbit.
       // Do what's left (non-specialized ids) as per usual.
       kusama_ids_orbit_high(obj, ids, origin, v, value_max,
-			    radius, rspace, rstart, typo, wbyvaluep, true);
+			    radius, rspace, rstart, linelen, typo, wbyvaluep,
+			    true);
     }
 }
 
 
-/// Layer one value's ids.
+/// Layer one value's glyphs and ids.
 void
 kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, strings& ids,
 		     const size_type v, const size_type value_max,
 		     const int radius, const int rspace, const int rstart,
+		     const int linelen,
 		     const typography& typo, const bool weighbyvaluep)
 {
-  // Draw resulting points, ids, values.
-  constexpr bool overlayrayp = false;
-
   // Draw this id's kusama circle on the circumference of origin
   // circle.
   kusama_ids_orbit_low(obj, ids, origin, v, value_max, radius, rspace, rstart,
-		       typo, weighbyvaluep);
+		       linelen, typo, weighbyvaluep);
 
   // Iff overlay rays to check text and glyph alignment.
+  constexpr bool overlayrayp = false;
   if (overlayrayp)
     {
       const style rstyl = { color::red, 1.0, color::red, 1.0, 2 };
@@ -298,23 +299,15 @@ kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, strings& ids,
    A point cluster is a circle whos radius is proportionate to the
    number of duplicate ids at that point.  Duplicate ids splay, stack,
    or append/concatencate at, after, or around that point cluster.
+
+   NB: invariant that @vuvalues > 1
 */
 void
 kusama_collision_transforms(svg_element& obj, const point_2t origin,
-			    std::vector<size_type> vuvalues, vvstrings vids,
+			    std::vector<size_type>& vuvalues, vvstrings& vids,
 			    const int radius, const int rspace, const int rstart,
 			    const typography& typo, const bool weighbyvaluep)
 {
-#if 0
-  std::vector<point_2tn> vpointns;
-  // Find initial point on the circumference of the circle closest
-  // to current value, aka initial circumference point (ICP).
-  const double angledo = get_angle(v, value_max);
-  const double angled = adjust_angle_rotation(angledo, k::rrotation::cw);
-  point_2t p = get_circumference_point_d(angled, radius, origin);
-  vpointns.push_back(std::make_tuple(p, ids.size()));
-#endif
-
   // Threshold is the range such that a value is considered adjacent
   // for collisions. If v > previous value + threshold, then the
   // points are not considered neighbors.
@@ -327,17 +320,20 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
 
   // Process far values/ids.
   // Draw furthest points, ids, values if distance(v, vnext) >= threshold.
+  const int linelen = radius * 4.5;
+
   bool skip = false;
   for (uint i = 0; i < vuvalues.size(); ++i)
     {
       strings& ids = vids[i];
       size_type v = vuvalues[i];
-      size_type vnext = i + 1 < vuvalues.size() ? vuvalues[i + 1] : vuvalues[i];
+      const bool lastp = i + 1 == vuvalues.size();
 
-      if (v + threshold >= vnext && !skip)
+      if (!lastp && !skip && (v + threshold >= vuvalues[i + 1]))
 	{
 	  kusama_ids_at_uvalue(obj, origin, ids, v, value_max,
-			       radius, rspace, rstart, typo, weighbyvaluep);
+			       radius, rspace, rstart, linelen, typo,
+			       weighbyvaluep);
 	  skip = true;
 	}
       else
@@ -349,75 +345,8 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
     }
 
   // Return remaining in arguments.
-  vuvalues = vuvaluesnear;
   vids = vidsnear;
-
-#if 0
-  // Massage data to fit without overlaps, given:
-  // 1 unique set of values
-  // 2 for each unique value, the ids that match
-  // 3 for each unique value, the proposed point and size of the circle
-  for (uint i = 0; i < vuvalues.size(); ++i)
-    {
-      auto v = vuvalues[i];
-      auto& pn = vpointns[i];
-      auto& [ p, n ] = pn;
-      double rcur = rspace * n;
-
-      // Fixed angle, just push point along ray from origin until no
-      // conflicts.
-      const double angledo = get_angle(v, value_max);
-      const double angled = adjust_angle_rotation(angledo, k::rrotation::cw);
-      double angler = (k::pi / 180.0) * angled;
-
-      // Points near p that are under threshold (and lower-indexed in
-      // vpointns).
-      uint neighbors(0);
-
-      // Find neighbors.
-      uint j(i);
-      while (i > 0 && j > 0)
-	{
-	  j -= 1;
-
-	  // Only if within threshold, know values are ordered.
-	  if (vuvalues[i] - vuvalues[j] < threshold)
-	    ++neighbors;
-	  else
-	    break;
-	}
-      std::clog << i << k::tab << "neighbors: " << neighbors
-		<< std::endl;
-
-      // Search backward and fixup.... in practice results in overlap
-      // with lowest-index or highest-index neighbor.
-      //
-      // So... search forward and fixup. Not ideal; either this or
-      // move to collision detection with multiple neighbor points.
-      //
-      // If collisions, extend radius outward from origin and try
-      // again until the collision is removed and the previous
-      // neighbor circles don't overlap.
-      double rext = radius + rcur; // ??? XXX
-      for (uint k = neighbors; k > 0; --k)
-	{
-	  // Get neighbor point, starting with lowest-index neighbor.
-	  auto& prevpn = vpointns[i - k];
-	  auto& [ prevp, prevn ] = prevpn;
-	  double rprev = radius * prevn; // ??? XXX
-
-	  while (detect_collision(p, rcur, prevp, rprev))
-	    {
-	      // Find new point further out from origin.
-	      if (outwardp)
-		rext += (2.5 * rcur);
-	      else
-		rext -= (2.5 * rcur);
-	      p = get_circumference_point(angler, rext, origin);
-	    }
-	}
-    }
-#endif
+  vuvalues = vuvaluesnear;
 }
 
 
@@ -482,12 +411,9 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
     }
 
   // First pass, collision-avoidance.
-  if (collisionp)
-    {
-      const int rstart = radius * 3;
-      kusama_collision_transforms(obj, origin, vuvalues, vids,
-				  radius, rspace, rstart, typo, weighbyvaluep);
-    }
+  if (collisionp && vuvalues.size() > 1)
+    kusama_collision_transforms(obj, origin, vuvalues, vids,
+				radius, rspace, radius, typo, weighbyvaluep);
 
   // Draw remaining points, ids, values.
   for (uint i = 0; i < vuvalues.size(); ++i)
@@ -499,7 +425,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       auto v = vuvalues[j];
 
       kusama_ids_at_uvalue(obj, origin, ids, v, value_max,
-			   radius, rspace, radius, typo, weighbyvaluep);
+			   radius, rspace, radius, rspace, typo, weighbyvaluep);
     }
 
   return obj;

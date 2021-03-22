@@ -1,6 +1,12 @@
+2021-03-21  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h (kusama_collision_transforms):
+	Mostly working, still some nits with collision avoidance.
+
 2021-03-18  Benjamin De Kosnik  <bkoz@rizal>
 
-	* src/a60-svg-radial-kusama.h (kusama_collision_transforms): Rewrite wip.
+	* src/a60-svg-radial-kusama.h (kusama_collision_transforms):
+	Rewrite wip.
 	(kusama_ids_orbit_high): Add rspace parameter.
 	(kusama_ids_orbit_low): Add rspace parameter.
 	(kusama_ids_at_uvalue): Break out draw routines into this.
