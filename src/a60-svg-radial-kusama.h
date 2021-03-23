@@ -149,7 +149,7 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
    or append id's around it.
 */
 int
-kusama_ids_orbit_high(svg_element& obj, const strings& ids, const point_2t origin,
+kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& ids,
 		      const size_type v, const size_type value_max,
 		      const int radius, const int rspace, const int rstart,
 		      const int linelen,
@@ -230,7 +230,7 @@ kusama_ids_orbit_high(svg_element& obj, const strings& ids, const point_2t origi
 */
 // need p, and v/vmax
 void
-kusama_ids_orbit_low(svg_element& obj, const strings& ids, const point_2t origin,
+kusama_ids_orbit_low(svg_element& obj, const point_2t origin, const strings& ids,
 		     const size_type v, const size_type value_max,
 		     const int radius, const int rspace, const int rstart,
 		     const int linelen,
@@ -256,7 +256,7 @@ kusama_ids_orbit_low(svg_element& obj, const strings& ids, const point_2t origin
     {
       // High orbit.
       // Do what's left (non-specialized ids) as per usual.
-      kusama_ids_orbit_high(obj, ids, origin, v, value_max,
+      kusama_ids_orbit_high(obj, origin, ids, v, value_max,
 			    radius, rspace, rstart, linelen, typo, wbyvaluep,
 			    true);
     }
@@ -273,7 +273,7 @@ kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, strings& ids,
 {
   // Draw this id's kusama circle on the circumference of origin
   // circle.
-  kusama_ids_orbit_low(obj, ids, origin, v, value_max, radius, rspace, rstart,
+  kusama_ids_orbit_low(obj, origin, ids, v, value_max, radius, rspace, rstart,
 		       linelen, typo, weighbyvaluep);
 
   // Iff overlay rays to check text and glyph alignment.
