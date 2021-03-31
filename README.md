@@ -1,6 +1,6 @@
 # izzi
 
-These are C++ sources designed to produce images that use a subset of the
+These are C++ sources designed to produce images from a subset of the
 SVG standard, using a header-only library. It is generally useful for
 graphing, cartography, generative design, and data-intensive
 computational expression.
