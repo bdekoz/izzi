@@ -23,7 +23,7 @@
 namespace svg {
 
 /// By observation, type size 12.
-constexpr int kusama_min_ring_size = 7;
+constexpr int kusama_min_ring_size = 5;
 
 /**
     Draw line and value on ray from origin as part of kusama.
@@ -59,7 +59,7 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
 	      const id_render_state idst,
 	      const int kr, const int rspace, const int rstart)
 {
-  // Kusama circle radius, enforce miniumum size of 5.
+  // Kusama circle radius, enforce miniumum size.
   const int kra = std::max(kr, kusama_min_ring_size);
 
   // Assumed to scale per value/value_max ratio.
@@ -188,7 +188,7 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
 
   // Distance betwen id spheres on high-orbit kusama.
   // NB for low values, make sure distance is at least text height away.
-  const double distance = std::max(kr * 3, char_height_to_px(typo._M_size) * 1.5);
+  const double distance = std::max(kr * 3.5, char_height_to_px(typo._M_size) * 2);
 
   const double ar = rstart + glyphr;
   const double anglea = adjust_angle_at_orbit_for_distance(ar, distance);
