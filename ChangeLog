@@ -1,3 +1,10 @@
+2021-04-18  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h (kusama_collision_transforms):
+	Move threshold to an argument, set higher for larger aggregate
+	analyses. Set minimum size to 7. Set ray opacity to a quarter.
+	* examples/*.cc: Fix for removed functions.
+
 2021-03-22  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-kusama.h (kusama_min_ring_size): Constexpr.

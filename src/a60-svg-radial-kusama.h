@@ -23,7 +23,7 @@
 namespace svg {
 
 /// By observation, type size 12.
-constexpr int kusama_min_ring_size = 5;
+constexpr int kusama_min_ring_size = 7;
 
 /**
     Draw line and value on ray from origin as part of kusama.
@@ -36,7 +36,7 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
 		       const double angled, const size_type v,
 		       const int rspace, const int rstart, const int linelen,
 		       const typography& typo,
-		       const style styl = {color::black, 1, color::black, .5, 1})
+		       const style styl = {color::black, 1, color::black, .25, 1})
 {
   const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
   const int rbase(rstart + rspace);
@@ -304,35 +304,39 @@ kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, const strings& ids
    or append/concatencate at, after, or around that point cluster.
 
    NB: invariant that @vuvalues > 1
+
+  Threshold is the range such that a value is considered adjacent for
+  collisions. If v > previous value + threshold, then the points are
+  not considered neighbors.
 */
 void
 kusama_collision_transforms(svg_element& obj, const point_2t origin,
 			    std::vector<size_type>& vuvalues, vvstrings& vids,
 			    const size_type value_max,
 			    const int radius, const int rspace, const int rstart,
-			    const typography& typo, const bool weighbyvaluep)
+			    const typography& typo, const bool weighbyvaluep,
+			    const size_type threshold = 1)
 {
-  // Threshold is the range such that a value is considered adjacent
-  // for collisions. If v > previous value + threshold, then the
-  // points are not considered neighbors.
-  const size_type threshold(1);
-
-  // Stash of values/ids for near pass, but later.
+  // Stash of values/ids for near pass, but after transforms are done.
   vvstrings vidsnear;
   std::vector<size_type> vuvaluesnear;
 
-  // Process far values/ids.
-  // Draw furthest points, ids, values if distance(v, vnext) >= threshold.
   const int linelen = radius * 4.5;
 
+  // Process far values/ids in order.
+  // Draw furthest points, ids, values if no high extension previously and:
+  // 1. distance(v, vnext) >= threshold.
+  // 2. distance(v, vprevious) >= threshold.
   bool skip = false;
   for (uint i = 0; i < vuvalues.size(); ++i)
     {
       const strings& ids = vids[i];
       const size_type v = vuvalues[i];
-      const bool lastp = i + 1 == vuvalues.size();
-
-      if (!lastp && !skip && (v + threshold >= vuvalues[i + 1]))
+      const bool finalp = i + 1 == vuvalues.size();
+      const bool firstp = i == 0;
+      const bool lastyesp = !firstp && (v - threshold <= vuvalues[i - 1]);
+      const bool nextyesp = !finalp && (v + threshold >= vuvalues[i + 1]);
+      if (!skip && (nextyesp || lastyesp))
 	{
 	  kusama_ids_at_uvalue(obj, origin, ids, v, value_max,
 			       radius, rspace, rstart, linelen, typo,
@@ -414,9 +418,11 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
     }
 
   // First pass, collision-avoidance.
+  // For media objects, with 8 values max, collision avoidance is minimal.
+  // With aggregates with 356 values, 2 is best.
   if (collisionp && vuvalues.size() > 1)
     kusama_collision_transforms(obj, origin, vuvalues, vids, value_max,
-				radius, rspace, radius, typo, weighbyvaluep);
+				radius, rspace, radius, typo, weighbyvaluep, 2);
 
   // Draw remaining points, ids, values.
   for (uint i = 0; i < vuvalues.size(); ++i)
