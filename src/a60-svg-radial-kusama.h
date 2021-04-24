@@ -188,7 +188,7 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
 
   // Distance betwen id spheres on high-orbit kusama.
   // NB for low values, make sure distance is at least text height away.
-  const double distance = std::max(kr * 4, char_height_to_px(typo._M_size) * 3);
+  const double distance = std::max(kr * 3.3, char_height_to_px(typo._M_size) * 3);
 
   const double ar = rstart + glyphr;
   const double anglea = adjust_angle_at_orbit_for_distance(ar, distance);
@@ -321,7 +321,8 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
   vvstrings vidsnear;
   std::vector<size_type> vuvaluesnear;
 
-  const int linelen = radius * 4.5;
+  const int startlen = radius * 4.5;
+  const int linelen = rspace * 2;
 
   // Process far values/ids in order.
   // Draw furthest points, ids, values if no high extension previously and:
@@ -338,8 +339,8 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
       const bool nextyesp = !finalp && (v + threshold >= vuvalues[i + 1]);
       if (!skip && (nextyesp || lastyesp))
 	{
-	  kusama_ids_at_uvalue(obj, origin, ids, v, value_max,
-			       radius, rspace, rstart, linelen, typo,
+	  kusama_ids_at_uvalue(obj, origin, ids, v, value_max, radius, rspace,
+			       rstart + startlen - linelen, linelen, typo,
 			       weighbyvaluep);
 	  skip = true;
 	}
