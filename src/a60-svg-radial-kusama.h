@@ -420,8 +420,8 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 
   // First pass, collision-avoidance.
   // For media objects, with 8 values max, collision avoidance is minimal.
-  // With aggregates with 356 values, 2 is best.
-  if (collisionp && vuvalues.size() > 1)
+  // With aggregates with 356 values, threshold 2-4 is best.
+  if (collisionp && vuvalues.size() > 8)
     kusama_collision_transforms(obj, origin, vuvalues, vids, value_max,
 				radius, rspace, radius, typo, weighbyvaluep, 2);
 
