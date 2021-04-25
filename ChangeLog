@@ -1,6 +1,13 @@
 2021-04-18  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-kusama.h (kusama_collision_transforms):
+	Check skip to make sure it's from a previous value in the same quadrant.
+	If the first value, then check the last value to see if it's within
+	the boosting threshold.
+
+2021-04-18  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h (kusama_collision_transforms):
 	Move threshold to an argument, set higher for larger aggregate
 	analyses. Set minimum size to 7. Set ray opacity to a quarter.
 	* examples/*.cc: Fix for removed functions.

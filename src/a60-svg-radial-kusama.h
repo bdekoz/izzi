@@ -335,9 +335,28 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
       const size_type v = vuvalues[i];
       const bool finalp = i + 1 == vuvalues.size();
       const bool firstp = i == 0;
+
+      // Check for expired skip.
+      // If last was high and now skip, re-evalue to make sure that
+      // the last value was close enough to matter.
+      // Continue as skipped only if < value_max / 4 ago, else reset.
+      if (skip)
+	{
+	  const size_type vold = vuvalues[i - 1];
+	  if (std::abs(v - vold) > (value_max / 4))
+	    skip = false;
+	}
+
+      // Criteria for boosting into high orbit:
+      // not previously boosted
+      // not first, and last is within threshold
+      // not last, and next is within threshold
+      // first and last is close (within threshold with values wrapping)
       const bool lastyesp = !firstp && (v - threshold <= vuvalues[i - 1]);
       const bool nextyesp = !finalp && (v + threshold >= vuvalues[i + 1]);
-      if (!skip && (nextyesp || lastyesp))
+      const bool firstyesp = firstp && \
+		      (v + std::abs(value_max - vuvalues.back()) <= threshold);
+      if (!skip && (nextyesp || lastyesp || firstyesp))
 	{
 	  kusama_ids_at_uvalue(obj, origin, ids, v, value_max, radius, rspace,
 			       rstart + startlen - linelen, linelen, typo,
@@ -419,11 +438,16 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
     }
 
   // First pass, collision-avoidance.
-  // For media objects, with 8 values max, collision avoidance is minimal.
-  // With aggregates with 356 values, threshold 2-4 is best.
-  if (collisionp && vuvalues.size() > 8)
-    kusama_collision_transforms(obj, origin, vuvalues, vids, value_max,
-				radius, rspace, radius, typo, weighbyvaluep, 2);
+  // Make sure at least one dimension has values before proceeding.
+  // For media objects, with value_max < 8, collision avoidance is minimal.
+  // With aggregates with ivm.size() > 350, threshold 2-4 is best.
+  if (collisionp && vuvalues.size() > 1)
+    {
+      size_type threshold(value_max < 20 ? 1 : 2);
+      kusama_collision_transforms(obj, origin, vuvalues, vids, value_max,
+				  radius, rspace, radius, typo, weighbyvaluep,
+				  threshold);
+    }
 
   // Draw remaining points, ids, values.
   for (uint i = 0; i < vuvalues.size(); ++i)
