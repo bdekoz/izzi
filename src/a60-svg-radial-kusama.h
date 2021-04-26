@@ -443,7 +443,15 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   // With aggregates with ivm.size() > 350, threshold 2-4 is best.
   if (collisionp && vuvalues.size() > 1)
     {
-      size_type threshold(value_max < 20 ? 1 : 2);
+      // Approximate scaling given default typograhics.
+      size_type threshold(1);
+      if (value_max >= 20 && value_max < 190)
+	threshold = 2;
+      if (value_max >= 190 && value_max < 290)
+	threshold = 3;
+      if (value_max >= 290)
+	threshold = 4;
+
       kusama_collision_transforms(obj, origin, vuvalues, vids, value_max,
 				  radius, rspace, radius, typo, weighbyvaluep,
 				  threshold);
