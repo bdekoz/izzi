@@ -494,14 +494,15 @@ to_string(const colorq klr)
   ushort ub = (a.b + b.b) / 2;
 */
 colorq
-combine_two_colorq(const colorq& a, double ad, const colorq& b, double bd)
+combine_two_colorq(const colorq& a, const double ad,
+		   const colorq& b, const double bd)
 {
-  using itype = colorq::itype;
+  double denom = ad + bd;
+  double ur = ((a.r * ad) + (b.r * bd)) / denom;
+  double ug = ((a.g * ad) + (b.g * bd)) / denom;
+  double ub = ((a.b * ad) + (b.b * bd)) / denom;
 
-  auto denom = ad + bd;
-  auto ur = ((a.r * ad) + (b.r * bd)) / denom;
-  auto ug = ((a.g * ad) + (b.g * bd)) / denom;
-  auto ub = ((a.b * ad) + (b.b * bd)) / denom;
+  using itype = colorq::itype;
   itype cr = static_cast<itype>(ur);
   itype cg = static_cast<itype>(ug);
   itype cb = static_cast<itype>(ub);
@@ -642,7 +643,7 @@ constexpr colorband cband_o = std::make_tuple(color::orange, 7);
 constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 4);
 
 
-/// Add white to tint in r ammount.
+/// Add white to tint in density % (0 to 1)
 colorq
 tint_to(const colorq c, const double density)
 {
@@ -653,7 +654,7 @@ tint_to(const colorq c, const double density)
   return klr;
 }
 
-/// Add black to shade in r ammount.
+/// Add black to shade in density % (0 to 1)
 colorq
 shade_to(const colorq c, const double density)
 {
