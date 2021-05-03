@@ -321,7 +321,7 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
   vvstrings vidsnear;
   std::vector<size_type> vuvaluesnear;
 
-  const int startlen = radius * 4.5;
+  const int startlen = radius * 3.5; // 4.5 low-conflicts
   const int linelen = rspace * 2;
 
   // Process far values/ids in order.
