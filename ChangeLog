@@ -1,3 +1,10 @@
+2021-05-09  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-base-types.h: Use default template arg.
+	* src/a60-svg-elements.h (line_element::add_data): Add
+	support for dasharray.
+	* src/a60-svg-render-basics.h (points_to_line): Same.
+
 2021-04-18  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-kusama.h (kusama_collision_transforms):

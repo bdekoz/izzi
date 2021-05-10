@@ -79,7 +79,7 @@ struct area
 
 ///  Convenience function.
 const point_2t
-area_center_point(const area<auto>& a)
+area_center_point(const area<>& a)
 {  return std::make_tuple(a._M_width / 2, a._M_height / 2); }
 
 

@@ -170,14 +170,15 @@ sized_text_r(svg_element& obj, svg::typography typo, const int sz,
 /// Line between two points.
 void
 points_to_line(svg_element& obj, const svg::style s,
-	       const point_2t origin, const point_2t end)
+	       const point_2t origin, const point_2t end,
+	       const string dasharray = "")
 {
   auto [ xo, yo ] = origin;
   auto [ xe, ye ] = end;
   line_element l;
   line_element::data dr = { int(xo), int(xe), int(yo), int(ye) };
   l.start_element();
-  l.add_data(dr);
+  l.add_data(dr, dasharray);
   l.add_style(s);
   l.finish_element();
   obj.add_element(l);

@@ -669,20 +669,28 @@ struct line_element : virtual public element_base
   // Either serialize immediately (as below), or create data structure
   // that adds data to data_vec and then finish_element serializes.
   void
-  add_data(const data& d)
+  add_data(const data& d, const string dasharray = "")
   {
     const string x1("__x1");
     const string x2("__x2");
     const string y1("__y1");
     const string y2("__y2");
+    const string dash("__darray");
 
-    string strip = R"_delimiter_(x1="__x1" y1="__y1" x2="__x2" y2="__y2"
-)_delimiter_";
+    const bool dashp = !dasharray.empty();
+    string stripf = \
+    R"_delimiter_(x1="__x1" y1="__y1" x2="__x2" y2="__y2")_delimiter_";
+    string stript = \
+    R"_delimiter_(x1="__x1" y1="__y1" x2="__x2" y2="__y2" stroke-dasharray="__darray")_delimiter_";
 
+    string strip = dashp ? stript : stripf;
     string_replace(strip, x1, std::to_string(d._M_x_begin));
     string_replace(strip, x2, std::to_string(d._M_x_end));
     string_replace(strip, y1, std::to_string(d._M_y_begin));
     string_replace(strip, y2, std::to_string(d._M_y_end));
+
+    if (dashp)
+      string_replace(strip, dash, dasharray);
     _M_sstream << strip;
   }
 
