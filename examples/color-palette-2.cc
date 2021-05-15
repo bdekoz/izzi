@@ -64,6 +64,6 @@ test_color(std::string ofile)
 
 int main()
 {
-  test_color("color-palette-1");
+  test_color("color-palette-2");
   return 0;
 }
