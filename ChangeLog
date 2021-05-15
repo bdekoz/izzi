@@ -1,3 +1,9 @@
+2021-05-15  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-color.h: Update Du Bois palette.
+	* examples/color-palette-1.cc: New.
+	* examples/color-palette-2.cc: New.
+
 2021-05-09  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-base-types.h: Use default template arg.

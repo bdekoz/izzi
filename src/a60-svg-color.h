@@ -81,6 +81,7 @@ enum class color
  duboisbrown2,
  duboisbrown3,
  duboisbrown4,
+ duboisbrown5,
 
  // 17 red
  red,
@@ -154,6 +155,7 @@ enum class color
  duboisblue1,
  duboisblue2,
  duboisblue3,
+ duboisblue4,
 
  // 32 purple
  wisteria,
@@ -252,9 +254,9 @@ to_string(const color e)
       enum_map[color::ivory] = "rgb(255, 255, 240)";
       enum_map[color::gold] = "rgb(255, 215, 0)";
 
-      enum_map[color::duboisyellow1] = "rgb(206, 147, 27)";
-      enum_map[color::duboisyellow2] = "rgb(201, 144, 37)";
-      enum_map[color::duboisyellow3] = "rgb(197, 146, 37)";
+      enum_map[color::duboisyellow1] = "rgb(255, 255, 5)";
+      enum_map[color::duboisyellow2] = "rgb(255, 234, 18)";
+      enum_map[color::duboisyellow3] = "rgb(255, 215, 1)";
 
       // Orange
       enum_map[color::orange] = "rgb(255, 165, 0)";
@@ -265,10 +267,11 @@ to_string(const color e)
       enum_map[color::internationalorange] = "rgb(255, 79, 0)";
 
       // Brown
-      enum_map[color::duboisbrown1] = "rgb(77, 57, 46)";
-      enum_map[color::duboisbrown2] = "rgb(62, 44, 34)";
+      enum_map[color::duboisbrown1] = "rgb(128, 5, 5)";
+      enum_map[color::duboisbrown2] = "rgb(134, 90, 61)";
       enum_map[color::duboisbrown3] = "rgb(81, 55, 42)";
-      enum_map[color::duboisbrown4] = "rgb(134, 90, 61)";
+      enum_map[color::duboisbrown4] = "rgb(197, 146, 37)";
+      enum_map[color::duboisbrown5] ="rgb(255, 240, 200)";
 
       // Reds
       enum_map[color::foreigncrimson] = "rgb(201, 31, 55)";
@@ -287,7 +290,7 @@ to_string(const color e)
       enum_map[color::coral] = "rgb(255, 127, 80)";
       enum_map[color::salmon] = "rgb(250, 128, 114)";
 
-      enum_map[color::duboisred1] = "rgb(135, 29, 16)";
+      enum_map[color::duboisred1] = "rgb(255, 29, 16)";
       enum_map[color::duboisred2] = "rgb(177,56, 47)";
       enum_map[color::duboisred3] = "rgb(143, 35, 23)";
 
@@ -309,10 +312,10 @@ to_string(const color e)
       enum_map[color::springgreen] = "rgb(0, 255, 127)";
       enum_map[color::aquamarine] = "rgb(127, 255, 212)";
 
-      enum_map[color::duboisgreen1] = "rgb(79, 116, 72)";
-      enum_map[color::duboisgreen2] = "rgb(49, 88, 57)";
-      enum_map[color::duboisgreen3] = "rgb(24, 57, 30)";
-      enum_map[color::duboisgreen4] = "rgb(60, 98, 57)";
+      enum_map[color::duboisgreen1] = "rgb(5, 255, 5)";
+      enum_map[color::duboisgreen2] = "rgb(127, 225, 15)";
+      enum_map[color::duboisgreen3] = "rgb(60, 98, 57)";
+      enum_map[color::duboisgreen4] = "rgb(24, 57, 30)";
 
       // Blues
       enum_map[color::ultramarine] = "rgb(93, 140, 174)";
@@ -343,9 +346,10 @@ to_string(const color e)
       enum_map[color::slateblue] = "rgb(106, 90, 205)";
       enum_map[color::azure] = "rgb(240, 255, 255)";
 
-      enum_map[color::duboisblue1] = "rgb(37, 42, 64)";
-      enum_map[color::duboisblue2] = "rgb(74, 87, 129)";
-      enum_map[color::duboisblue3] = "rgb(49, 64, 103)";
+      enum_map[color::duboisblue1] = "rgb(37, 42, 255)";
+      enum_map[color::duboisblue2] = "rgb(100, 150, 245)";
+      enum_map[color::duboisblue3] = "rgb(74, 87, 129)";
+      enum_map[color::duboisblue4] = "rgb(49, 64, 103)";
 
       // Purples
       enum_map[color::wisteria] = "rgb(135, 95, 154)";
