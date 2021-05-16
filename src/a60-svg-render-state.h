@@ -207,7 +207,6 @@ struct id_render_state: public render_state_base
 style id_render_state::dstyl = { color::black, 0.5, color::black, 0.5, 2 };
 
 using id_render_state_umap = std::unordered_map<string, id_render_state>;
-using id_render_states = std::vector<id_render_state>;
 
 
 id_render_state_umap&
@@ -256,22 +255,25 @@ get_id_render_state(const string id)
 }
 
 
-/// Roll through render states squentially, index starts with zero.
-const id_render_state&
-traverse_states(const id_render_states& idstates, uint& index)
+/// Roll through render states given in values squentially,
+/// index starts with zero.
+const id_render_state
+traverse_states(const strings& values)
 {
-  if (!idstates.empty())
+  static uint indx(0);
+  string value;
+  if (indx < values.size())
     {
-      if (index >= idstates.size())
-	index = 0;
-      const id_render_state& ret = idstates[index++];
-      return ret;
+      value = values[indx];
+      ++indx;
     }
   else
     {
-      static const id_render_state ret;
-      return ret;
+      // Start over.
+      indx = 0;
+      value = values[indx];
     }
+  return get_id_render_state(value);
 }
 
 } // namespace svg
