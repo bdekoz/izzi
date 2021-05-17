@@ -292,7 +292,7 @@ to_string(const color e)
 
       enum_map[color::duboisred1] = "rgb(255, 29, 16)";
       enum_map[color::duboisred2] = "rgb(249,110, 11)";
-      enum_map[color::duboisred3] = "rgb(178, 35, 35)";
+      enum_map[color::duboisred3] = "rgb(215, 25, 50)";
 
       // Greens
       enum_map[color::byakuroku] = "rgb(165, 186, 147)";
