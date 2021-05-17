@@ -308,6 +308,9 @@ kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, const strings& ids
   Threshold is the range such that a value is considered adjacent for
   collisions. If v > previous value + threshold, then the points are
   not considered neighbors.
+
+  startlen is the point at which high-orbit is drawn after transform.
+  @startlenm is the multiple of radius that is startlen.
 */
 void
 kusama_collision_transforms(svg_element& obj, const point_2t origin,
@@ -315,13 +318,13 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
 			    const size_type value_max,
 			    const int radius, const int rspace, const int rstart,
 			    const typography& typo, const bool weighbyvaluep,
-			    const size_type threshold = 1)
+			    const size_type threshold = 1, const int startlenm = 5)
 {
   // Stash of values/ids for near pass, but after transforms are done.
   vvstrings vidsnear;
   std::vector<size_type> vuvaluesnear;
 
-  const int startlen = radius * 3.5; // 4.5 low-conflicts
+  const int startlen = radius * startlenm;
   const int linelen = rspace * 2;
 
   // Process far values/ids in order.
