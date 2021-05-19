@@ -1,6 +1,6 @@
 // -*- mode: C++ -*-
 
-// Copyright (C) 2014-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -48,8 +48,8 @@ constexpr area<> a6_096_v = { 397, 559 };
 constexpr area<> p22x17_096_h = { 2112, 1632 };
 constexpr area<> p17x22_096_v = { 1632, 2112 };
 
+constexpr area<> instagram_090_s = { 1080, 1080 };
 constexpr area<> instagram_090_v = { 1080, 1350 };
-constexpr area<> instagram_096_v = { 1152, 1440 };
 
 constexpr area<> v1080p_h = { 1920, 1080 };
 constexpr area<> v1080p_v = { 1080, 1920 };
