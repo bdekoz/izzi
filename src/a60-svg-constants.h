@@ -75,6 +75,8 @@ const char* aprcu = "Apercu";
 const char* ccode = "Calling Code";
 const char* zslab = "Zilla Slab";
 const char* mexcellent = "Mexcellent";
+const char* hyperl = "Atkinson Hyperlegible";
+
 const typography smono_typo = { smono, 12, b_style, a, al, b, w, p };
 const typography sserif_typo = { sserif, 12, b_style, a, al, b, w, p };
 const typography ssans_typo = { ssans, 12, b_style, a, al, b, w, p };
@@ -83,6 +85,7 @@ const typography apercu_typo = { aprcu, 4, b_style, a, al, b, w, p };
 const typography ccode_typo = { ccode, 12, b_style, a, al, b, w, p };
 const typography zslab_typo = { zslab, 12, b_style, a, al, b, w, p };
 const typography mxcllnt_typo = { mexcellent, 12, b_style, a, al, b, w, p };
+const typography hyperl_typo = { hyperl, 12, b_style, a, al, b, w, p };
 
 
 /**
