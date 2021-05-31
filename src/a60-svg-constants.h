@@ -49,6 +49,7 @@ constexpr area<> p22x17_096_h = { 2112, 1632 };
 constexpr area<> p17x22_096_v = { 1632, 2112 };
 
 constexpr area<> instagram_s = { 1080, 1080 };
+constexpr area<> instagram_4ks = { 2160, 2160 };
 constexpr area<> instagram_v = { 1080, 1350 };
 
 constexpr area<> v1080p_h = { 1920, 1080 };
