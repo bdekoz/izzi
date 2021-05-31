@@ -50,6 +50,10 @@ enum class color
  gray90,
  black,
 
+ wcag_lgray,
+ wcag_gray,
+ wcag_dgray,
+
  // 15 yellow
  kanzoiro,		// daylily light orange
  kohakuiro,		// amber
@@ -224,6 +228,10 @@ to_string(const color e)
       enum_map[color::gray25] = "rgb(191, 191, 191)";
       enum_map[color::gray20] = "rgb(200, 200, 200)";
       enum_map[color::gray10] = "rgb(230, 230, 230)";
+
+      enum_map[color::wcag_lgray] = "rgb(118, 118, 118)"; // min on white 4.5:1
+      enum_map[color::wcag_gray] = "rgb(148, 148, 148)"; // LG TXT on white 3:1
+      enum_map[color::wcag_dgray] = "rgb(46, 46, 46)"; // on white 13.6:1
 
       enum_map[color::command] = "rgb(255, 0, 171)";
       enum_map[color::science] = "rgb(150, 230, 191)";
@@ -535,6 +543,8 @@ color_array spectrum =
  color::gray40, color::gray50, color::gray60, color::gray70,
  color::gray75, color::gray80, color::gray90,  color::black,
 
+ color::wcag_lgray, color::wcag_gray, color::wcag_dgray,
+
  // yellow
  color::hellayellow, color::goldenyellow,color::navajowhite,
  color::ivory, color::gold, color::antiquewhite,
@@ -637,14 +647,14 @@ color_start_at_specified(color klr)
 // Each band has a starting hue and a number of known good samples.
 // This is then used to seed a generator that computes more of similar hues.
 using colorband = std::tuple<color, ushort>;
-constexpr colorband cband_bw = std::make_tuple(color::white, 13);
+constexpr colorband cband_bw = std::make_tuple(color::white, 16);
 constexpr colorband cband_y = std::make_tuple(color::hellayellow, 15);
 constexpr colorband cband_r = std::make_tuple(color::red, 17);
 constexpr colorband cband_g = std::make_tuple(color::green, 20);
 constexpr colorband cband_b = std::make_tuple(color::ultramarine, 30);
 constexpr colorband cband_p = std::make_tuple(color::wisteria, 32);
 constexpr colorband cband_o = std::make_tuple(color::orange, 7);
-constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 4);
+constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 5);
 
 
 /// Add white to tint in density % (0 to 1)
