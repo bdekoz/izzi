@@ -223,7 +223,7 @@ struct typography
 
   // Find all installed fonts on linux with `fc-list`
   std::string		_M_face;	// System font name
-  size_type		_M_size;	// Display size
+  space_type		_M_size;	// Display size
   style			_M_style;
 
   // Style attributes for text
