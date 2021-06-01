@@ -229,8 +229,8 @@ to_string(const color e)
       enum_map[color::gray20] = "rgb(200, 200, 200)";
       enum_map[color::gray10] = "rgb(230, 230, 230)";
 
-      enum_map[color::wcag_lgray] = "rgb(118, 118, 118)"; // min on white 4.5:1
-      enum_map[color::wcag_gray] = "rgb(148, 148, 148)"; // LG TXT on white 3:1
+      enum_map[color::wcag_lgray] = "rgb(148, 148, 148)"; // LG TXT on white 3:1
+      enum_map[color::wcag_gray] = "rgb(118, 118, 118)"; // min on white 4.5:1
       enum_map[color::wcag_dgray] = "rgb(46, 46, 46)"; // on white 13.6:1
 
       enum_map[color::command] = "rgb(255, 0, 171)";
