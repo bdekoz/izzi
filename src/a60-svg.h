@@ -114,7 +114,12 @@ pt_to_px(const uint i = 1)
   // On a 72dpi output device (display), this is 1 (aka 72 * 1/72).
   // On a 90dpi output device (display), this is 1.25 (aka 90 * 1/72).
   // On a 96dpi output device (display), this is 1.33 (aka 96 * 1/72).
-  return std::lround(i * (get_dpi() / 72));
+  // constexpr double dpimult = (get_dpi() / 72);
+
+  // Or 18 pt -> 13.5 px -> 1.33
+  // Or 30 pt -> 22.5 px -> 1.33
+  constexpr double dpimult = 1.33;
+  return std::lround(i * dpimult);
 }
 
 
