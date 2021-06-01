@@ -49,6 +49,7 @@ constexpr area<> p22x17_096_h = { 2112, 1632 };
 constexpr area<> p17x22_096_v = { 1632, 2112 };
 
 constexpr area<> instagram_s = { 1080, 1080 };
+constexpr area<> instagram_4ks = { 2160, 2160 };
 constexpr area<> instagram_v = { 1080, 1350 };
 
 constexpr area<> v1080p_h = { 1920, 1080 };
@@ -75,6 +76,8 @@ const char* aprcu = "Apercu";
 const char* ccode = "Calling Code";
 const char* zslab = "Zilla Slab";
 const char* mexcellent = "Mexcellent";
+const char* hyperl = "Atkinson Hyperlegible";
+
 const typography smono_typo = { smono, 12, b_style, a, al, b, w, p };
 const typography sserif_typo = { sserif, 12, b_style, a, al, b, w, p };
 const typography ssans_typo = { ssans, 12, b_style, a, al, b, w, p };
@@ -83,6 +86,7 @@ const typography apercu_typo = { aprcu, 4, b_style, a, al, b, w, p };
 const typography ccode_typo = { ccode, 12, b_style, a, al, b, w, p };
 const typography zslab_typo = { zslab, 12, b_style, a, al, b, w, p };
 const typography mxcllnt_typo = { mexcellent, 12, b_style, a, al, b, w, p };
+const typography hyperl_typo = { hyperl, 12, b_style, a, al, b, w, p };
 
 
 /**
