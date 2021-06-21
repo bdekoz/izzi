@@ -8,22 +8,14 @@ test_arc(std::string ofile)
 
   area<> a = k::letter_096_v;
   svg_element obj(ofile, a);
-  style s = { color::white, 0.0, color::black, 1.0, 2 };
-
-  typography typoleft = k::apercu_typo;
-  typoleft._M_size = 10;
-  typoleft._M_anchor = typography::anchor::start;
-  typoleft._M_align = typography::align::left;
-
-  typography typoright(typoleft);
-  typoright._M_anchor = typography::anchor::end;
-  typoright._M_align = typography::align::right;
+  style stext = { color::white, 0.0, color::black, 1.0, 2 };
+  style sarc = { color::black, 1.0, color::black, 0.0, 2 };
 
   point_2t cp = obj.center_point();
   const int r = 120;
 
-  direction_arc_at(obj, cp, r, k::b_style);
-  direction_arc_title_at(obj, cp, r, s, "web vitals 2020");
+  direction_arc_at(obj, cp, r, sarc);
+  direction_arc_title_at(obj, cp, r, stext, "web vitals 2020");
 }
 
 
