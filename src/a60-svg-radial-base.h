@@ -69,6 +69,19 @@ get_radial_range()
   return rrange;
 }
 
+/// Convenience for setting radial range.
+point_2t
+set_radial_range(const space_type rmin, const space_type rmax)
+{
+  point_2t& rrange = get_radial_range();
+  point_2t rold = rrange;
+  auto& min = std::get<0>(rrange);
+  auto& max = std::get<1>(rrange);
+  min = rmin;
+  max = rmax;
+  return rold;
+}
+
 
 /// Transform a value on a range to an angle on the radial range.
 inline double

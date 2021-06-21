@@ -1,3 +1,14 @@
+2021-06-20  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-base.h (set_radial_range): Add.
+	* src/a60-svg-radial-direction-arc-glyph.h (direction_arc_at): Use
+	make_path_arc_circumference.
+
+	* examples/direction-arc-1.cc: Add examples.
+	* examples/direction-arc-2.cc: Same.
+	* examples/direction-arc-3.cc: Same.
+	* examples/direction-arc-with-label-1.cc: Same.
+
 2021-05-15  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-color.h: Update Du Bois palette.

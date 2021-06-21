@@ -8,27 +8,19 @@ test_arc(std::string ofile)
 
   area<> a = k::letter_096_v;
   svg_element obj(ofile, a);
-  style stext = { color::white, 0.0, color::black, 1.0, 2 };
+
   style sarc = { color::black, 1.0, color::black, 0.0, 2 };
 
   point_2t cp = obj.center_point();
   const int r = 120;
 
-  // Set radial range.
-  point_2t& rrange = get_radial_range();
-  auto& min = std::get<0>(rrange);
-  auto& max = std::get<1>(rrange);  
-  
+  set_radial_range(90, 270);
   direction_arc_at(obj, cp, r, sarc);
-
-
-  
-  direction_arc_title_at(obj, cp, r + 20, stext, "web vitals 2020");
 }
 
 
 int main()
 {
-  test_arc("direction-arc-with-label-1");
+  test_arc("direction-arc-2");
   return 0;
 }

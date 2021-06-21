@@ -30,26 +30,21 @@ direction_arc_at(svg_element& obj, const point_2t origin,
 {
   const double r = rr - spacer;
   const auto [ mindeg, maxdeg ] = get_radial_range();
-
-  point_2t p0 = get_circumference_point_d(zero_angle_north_cw(mindeg),
-					  r, origin);
-  point_2t p4 = get_circumference_point_d(zero_angle_north_cw(maxdeg),
-					  r, origin);
+  auto anglemin = zero_angle_north_cw(mindeg);
+  auto anglemax = zero_angle_north_cw(maxdeg);
 
   // Define arc.
-  std::ostringstream ossa;
-  ossa << "M" << k::space << to_string(p0) << k::space;
-  ossa << "A" << k::space;
-  ossa << std::to_string(r) << k::comma << std::to_string(r) << k::space;
-  ossa << zero_angle_north_cw(1) << k::space;
-  ossa << "1, 1" << k::space;
-  ossa << to_string(p4) << k::space;
+  const bool largearcp = abs(anglemax - anglemin) > 180;
+  const bool cwp = true;
+  point_2t p0 = get_circumference_point_d(anglemin, r, origin);
+  point_2t p4 = get_circumference_point_d(anglemax, r, origin);
+  string sarc = make_path_arc_circumference(p0, p4, r, largearcp, cwp);
 
   // Adjust style so the stroke color matches the fill color.
   s._M_stroke_color = s._M_fill_color;
 
   auto rspacer = spacer - 2;
-  auto anglemax = zero_angle_north_cw(maxdeg);
+
   point_2t p5 = get_circumference_point_d(anglemax, r + rspacer, origin);
   point_2t p7 = get_circumference_point_d(anglemax, r - rspacer, origin);
 
@@ -88,7 +83,7 @@ direction_arc_at(svg_element& obj, const point_2t origin,
 
   // Arc path.
   path_element parc;
-  path_element::data da = { ossa.str(), 0 };
+  path_element::data da = { sarc, 0 };
   parc.start_element();
   parc.add_data(da);
   parc.add_style(s);
