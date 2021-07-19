@@ -14,15 +14,7 @@ test_arc(std::string ofile)
   point_2t cp = obj.center_point();
   const int r = 120;
 
-  // Set radial range.
-  point_2t& rrange = get_radial_range();
-  auto& min = std::get<0>(rrange);
-  auto& max = std::get<1>(rrange);  
-  
   direction_arc_at(obj, cp, r, sarc);
-
-
-  
   direction_arc_title_at(obj, cp, r + 20, stext, "web vitals 2020");
 }
 
