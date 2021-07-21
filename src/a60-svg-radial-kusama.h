@@ -157,7 +157,7 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
 		      const int radius, const int rspace, const int rstart,
 		      const int linelen,
 		      const typography& typo,
-		      const bool wbyvaluep, const bool satellitep)
+		      const bool wbyvaluep, const bool satellitep = false)
 {
   // Center of glyph, a point on origin circle circumference.
   const double angled = get_angle(v, value_max);
@@ -168,13 +168,11 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
   // Add number of characters of value as string * size of each character.
   glyphr += get_label_spaces(value_max) * char_width_to_px(typo._M_size);
 
+  // If satellitep, draw circle in the default style in low orbit to
+  // hang the rest of the glyphs off of, in high orbit...
   if (satellitep)
-    {
-      // If satellitep, draw circle in the default style in low orbit to
-      // hang the rest of the glyphs off of, in high orbit...
-      glyphr += radiate_glyph_and_id(obj, origin, v, value_max, radius, rspace,
-				     rstart + glyphr, "", typo);
-    }
+    glyphr += radiate_glyph_and_id(obj, origin, v, value_max, radius, rspace,
+				   rstart + glyphr, "", typo);
 
   // Variation based on splay_ids_around center point,
   // where center is point on arc from origin...
@@ -231,7 +229,6 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
 
    Simplest version.
 */
-// need p, and v/vmax
 void
 kusama_ids_orbit_low(svg_element& obj, const point_2t origin, const strings& ids,
 		     const size_type v, const size_type value_max,
@@ -261,7 +258,7 @@ kusama_ids_orbit_low(svg_element& obj, const point_2t origin, const strings& ids
       // Do what's left (non-specialized ids) as per usual.
       kusama_ids_orbit_high(obj, origin, ids, v, value_max,
 			    radius, rspace, rstart, linelen, typo, wbyvaluep,
-			    true);
+			    false);
     }
 }
 
