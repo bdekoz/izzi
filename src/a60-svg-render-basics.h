@@ -167,6 +167,37 @@ sized_text_r(svg_element& obj, svg::typography typo, const int sz,
 }
 
 
+/// Text of maxlen length, overflow goes on line below.
+uint
+text_line_n(svg_element& obj, const point_2t origin, const string text,
+	    svg::typography typo, const int sz, const uint maxlen)
+{
+  auto [ x, y ] = origin;
+
+  string textcut(text);
+  while (textcut.size() > maxlen)
+    {
+      // Find last space character in the specified maxium range, aka mark.
+      auto sppos = textcut.find_last_of(k::space, maxlen);
+      if (sppos == string::npos)
+	sppos = maxlen;
+      else
+	{
+	  // Cut after space (mark).
+	  sppos += 1;
+	}
+
+      string namesubs = textcut.substr(0, sppos);
+      sized_text(obj, typo, sz, namesubs, x, y);
+      textcut = textcut.substr(sppos);
+      y += sz;
+    }
+  sized_text(obj, typo, sz, textcut, x, y);
+  y += sz;
+  return y;
+}
+
+
 /// Line between two points.
 void
 points_to_line(svg_element& obj, const svg::style s,

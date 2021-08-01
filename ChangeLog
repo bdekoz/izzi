@@ -1,3 +1,8 @@
+2021-08-01  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-render-basics.h (text_line_n): Multiple rows of
+	text with line length of n.
+
 2021-06-20  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-base.h (set_radial_range): Add.
