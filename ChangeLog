@@ -1,3 +1,8 @@
+2021-08-07  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-color.h: Add dubois green 5, adjust 3.
+	Start each color band with an english word for that primary.
+
 2021-08-01  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-render-basics.h (text_line_n): Multiple rows of

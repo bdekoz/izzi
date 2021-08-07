@@ -127,6 +127,7 @@ enum class color
  duboisgreen2,
  duboisgreen3,
  duboisgreen4,
+ duboisgreen5,
 
  // 30 blue
  ultramarine,
@@ -322,8 +323,9 @@ to_string(const color e)
 
       enum_map[color::duboisgreen1] = "rgb(5, 255, 5)";
       enum_map[color::duboisgreen2] = "rgb(127, 225, 15)";
-      enum_map[color::duboisgreen3] = "rgb(60, 98, 57)";
-      enum_map[color::duboisgreen4] = "rgb(24, 57, 30)";
+      enum_map[color::duboisgreen3] = "rgb(16, 114, 9)";
+      enum_map[color::duboisgreen4] = "rgb(0, 148, 16)";
+      enum_map[color::duboisgreen5] = "rgb(24, 57, 30)";
 
       // Blues
       enum_map[color::ultramarine] = "rgb(93, 140, 174)";
@@ -573,14 +575,14 @@ color_array spectrum =
  color::usumoegi, color::aquamarine, color::midori, color::rokusho,
  color::aotakeiro, color::seiheki, color::seijiiro, color::yanagizome,
  color::hiwamoegi,color::chartreuse, color::greenyellow, color::moegi,
- color::duboisgreen1,  color::duboisgreen2,  color::duboisgreen3,
- color::duboisgreen4,
+ color::duboisgreen1, color::duboisgreen2, color::duboisgreen3,
+ color::duboisgreen4, color::duboisgreen5,
 
  // blue
- color::ultramarine, color::shinbashiiro, color::hanada, color::ruriiro,
- color::cornflowerblue, color::lightblue, color::skyblue,
+ color::blue, color::ultramarine, color::shinbashiiro, color::hanada,
+ color::ruriiro, color::cornflowerblue, color::lightblue, color::skyblue,
  color::lightskyblue, color::bellflower, color::navy, color::asagiiro,
- color::indigo, color::rurikon, color::blue, color::asamablue, color::cyan,
+ color::indigo, color::rurikon, color::asamablue, color::cyan,
  color::lightcyan, color::powderblue, color::steelblue, color::dodgerblue,
  color::royalblue, color::mediumblue, color::deepskyblue,
  color::midnightblue, color::darkslateblue, color::slateblue, color::azure,
@@ -588,7 +590,7 @@ color_array spectrum =
 
 
  // purple (magenta, violet, pink)
- color::wisteria, color::asamapink, color::pink, color::peony,
+ color::purple, color::wisteria, color::asamapink, color::pink, color::peony,
  color::violet, color::magenta, color::deeppink, color::hotpink,
  color::dustyrose, color::atmosphericp, color::kissmepink,
  color::futaai, color::benimidori, color::redwisteria, color::botan,
@@ -596,8 +598,7 @@ color_array spectrum =
  color::blueviolet, color::darkmagenta, color::darkviolet,
  color::thistle, color::plum,
  color::palevioletred, color::mediumvioletred, color::lavender,
- color::orchid, color::mediumorchid, color::darkestmagenta,
- color::mediumpurple, color::purple,
+ color::orchid, color::mediumorchid, color::darkestmagenta, color::mediumpurple,
 
  color::none
 };
@@ -650,9 +651,9 @@ using colorband = std::tuple<color, ushort>;
 constexpr colorband cband_bw = std::make_tuple(color::white, 16);
 constexpr colorband cband_y = std::make_tuple(color::hellayellow, 15);
 constexpr colorband cband_r = std::make_tuple(color::red, 17);
-constexpr colorband cband_g = std::make_tuple(color::green, 20);
-constexpr colorband cband_b = std::make_tuple(color::ultramarine, 30);
-constexpr colorband cband_p = std::make_tuple(color::wisteria, 32);
+constexpr colorband cband_g = std::make_tuple(color::green, 21);
+constexpr colorband cband_b = std::make_tuple(color::blue, 30);
+constexpr colorband cband_p = std::make_tuple(color::purple, 32);
 constexpr colorband cband_o = std::make_tuple(color::orange, 7);
 constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 5);
 
