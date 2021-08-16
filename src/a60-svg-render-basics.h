@@ -577,18 +577,14 @@ point_to_plus_lines(svg_element& obj, const style& styl,
 }
 
 
-/// Embed svg in group element.
-/// origin is where glyph placement is inside containing svg element.
-/// iflile is a plain SVG file with a 1:1 aspect ratio.
-/// isize is image width/height
-svg_element
-insert_svg_at(svg_element& obj, const string ifile,
-	      const point_2t origin, const double origsize, const double isize,
-	      const double angled = 0)
+/// Import svg file, convert it to svg_element for insertion.
+string
+svg_file_to_svg_insert(const string ifile)
 {
+  string isvg;
+
   // Read SVG to insert.
   std::ifstream ifs(ifile);
-  string isvg;
   if (ifs.good())
     {
       // Strip out any XML version line in the SVG file.
@@ -604,14 +600,56 @@ insert_svg_at(svg_element& obj, const string ifile,
     }
   else
     {
-      string m("insert_svg_at_center:: insert nested SVG failed ");
+      string m("svg_file_to_svg_insert:: insert nested SVG failed ");
       m += ifile;
       m += k::newline;
       throw std::runtime_error(m);
     }
+  return isvg;
+}
 
-  // Insert nested SVG element.
 
+/// Import svg file, convert it to svg_element for insertion.
+string
+svg_element_to_svg_insert(const string isvgpre)
+{
+  string isvg;
+
+  // Read SVG to insert.
+  std::istringstream ifs(isvgpre);
+  if (ifs.good())
+    {
+      // Strip out any XML version line in the SVG file.
+      // Search for and discard lines with "xml version", iff exists
+      string xmlheader;
+      getline(ifs, xmlheader);
+      if (xmlheader.find("xml version") == string::npos)
+	ifs.seekg(0, ifs.beg);
+
+      std::ostringstream oss;
+      oss << ifs.rdbuf();
+      isvg = oss.str();
+    }
+  else
+    {
+      string m("svg_element_to_svg_insert:: insert nested SVG failed ");
+      m += k::newline;
+      throw std::runtime_error(m);
+    }
+  return isvg;
+}
+
+
+/// Embed svg in group element.
+/// origin is where glyph placement is inside containing svg element.
+/// iflile is a plain SVG file with a 1:1 aspect ratio.
+/// isize is image width/height
+/// isvg is the string from one of the two functions above (*_to_svg_insert).
+svg_element
+insert_svg_at(svg_element& obj, const string isvg,
+	      const point_2t origin, const double origsize, const double isize,
+	      const double angled = 0)
+{
   // offset
   auto [ objx, objy ] = origin;
   const int x = objx - (isize / 2);
@@ -637,7 +675,7 @@ insert_svg_at(svg_element& obj, const string ifile,
   string ts(xformrotate + k::space + xformtranslate + k::space + xformscale);
 
   group_element gsvg;
-  gsvg.start_element("inset radial svg", transform(), ts);
+  gsvg.start_element("inset svg", transform(), ts);
   gsvg.add_raw(isvg);
   gsvg.finish_element();
   obj.add_element(gsvg);

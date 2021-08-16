@@ -1,3 +1,11 @@
+2021-08-15  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-render-basics.h (insert_svg_at): Argument to isvg,
+	pre-formatted svg element from one of...
+	(svg_file_to_svg_insert): ...this.
+	(svg_element_to_svg_insert): ...this.
+	* src/a60-svg-radial-kusama.h: Switch to new style svg insertion.
+
 2021-08-07  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-color.h: Add dubois green 5, adjust 3.

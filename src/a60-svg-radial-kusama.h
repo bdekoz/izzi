@@ -83,8 +83,9 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
       const double scaledglyph = scale * glyphscale;
       const double svgr = rstart + rspace + (scaledglyph / 2);
       point_2t p = get_circumference_point_d(angleda, svgr, origin);
-      insert_svg_at(obj, glyphtext, p, 100, scaledsize,
-		    angleda + glyphrotate);
+
+      string isvg = svg_file_to_svg_insert(glyphtext);
+      insert_svg_at(obj, isvg, p, 100, scaledsize, angleda + glyphrotate);
       glyphr += rspace + scaledsize;
     }
 
