@@ -1,5 +1,10 @@
 2021-08-15  Benjamin De Kosnik  <bkoz@rizal>
 
+	* src/a60-svg-render-basics.h (svg_element_to_svg_insert): Adjust
+	for svg element version.
+
+2021-08-15  Benjamin De Kosnik  <bkoz@rizal>
+
 	* src/a60-svg-render-basics.h (insert_svg_at): Argument to isvg,
 	pre-formatted svg element from one of...
 	(svg_file_to_svg_insert): ...this.

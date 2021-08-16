@@ -578,6 +578,7 @@ point_to_plus_lines(svg_element& obj, const style& styl,
 
 
 /// Import svg file, convert it to svg_element for insertion.
+/// ifile is a plain SVG file with a 1:1 aspect ratio.
 string
 svg_file_to_svg_insert(const string ifile)
 {
@@ -615,25 +616,22 @@ svg_element_to_svg_insert(const string isvgpre)
 {
   string isvg;
 
-  // Read SVG to insert.
-  std::istringstream ifs(isvgpre);
-  if (ifs.good())
+  // Read SVG to insert, remove anything previous to <svg"
+  auto svgepos = isvgpre.find("<svg version");
+  if (svgepos != string::npos)
     {
       // Strip out any XML version line in the SVG file.
       // Search for and discard lines with "xml version", iff exists
-      string xmlheader;
-      getline(ifs, xmlheader);
-      if (xmlheader.find("xml version") == string::npos)
-	ifs.seekg(0, ifs.beg);
-
-      std::ostringstream oss;
-      oss << ifs.rdbuf();
-      isvg = oss.str();
+      isvg = isvgpre.substr(svgepos);
     }
   else
     {
-      string m("svg_element_to_svg_insert:: insert nested SVG failed ");
+      string m("svg_element_to_svg_insert:: insert nested SVG failed of size: ");
+      m += std::to_string(isvgpre.size());
       m += k::newline;
+      m += "of body:";
+      m += k::newline;
+      m += isvgpre;
       throw std::runtime_error(m);
     }
   return isvg;
@@ -642,7 +640,6 @@ svg_element_to_svg_insert(const string isvgpre)
 
 /// Embed svg in group element.
 /// origin is where glyph placement is inside containing svg element.
-/// iflile is a plain SVG file with a 1:1 aspect ratio.
 /// isize is image width/height
 /// isvg is the string from one of the two functions above (*_to_svg_insert).
 svg_element
