@@ -642,6 +642,7 @@ svg_element_to_svg_insert(const string isvgpre)
 /// origin is where glyph placement is inside containing svg element.
 /// isize is image width/height
 /// isvg is the string from one of the two functions above (*_to_svg_insert).
+/// See: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
 svg_element
 insert_svg_at(svg_element& obj, const string isvg,
 	      const point_2t origin, const double origsize, const double isize,

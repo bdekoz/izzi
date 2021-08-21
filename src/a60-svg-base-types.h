@@ -21,6 +21,7 @@
 #include <ostream>
 #include <fstream>
 #include <cstdint>
+//#include <compare>
 
 
 namespace svg {
@@ -93,21 +94,24 @@ struct style
   double		_M_stroke_opacity;
   double		_M_stroke_size;
 
-  static string
-  str(const style& s)
-  {
-    const string space("; ");
-    std::ostringstream stream;
-    stream << k::space;
-    stream << "style=" << k::quote;
-    stream << "fill:" << colorq::to_string(s._M_fill_color) << space;
-    stream << "fill-opacity:" << s._M_fill_opacity << space;
-    stream << "stroke:" << colorq::to_string(s._M_stroke_color) << space;
-    stream << "stroke-opacity:" << s._M_stroke_opacity << space;
-    stream << "stroke-width:" << s._M_stroke_size << k::quote;
-    return stream.str();
-  }
+  // auto operator<=>(const style&) const = default;
 };
+
+
+const string
+to_string(const style& s)
+{
+  const string space("; ");
+  std::ostringstream stream;
+  stream << k::space;
+  stream << "style=" << k::quote;
+  stream << "fill:" << colorq::to_string(s._M_fill_color) << space;
+  stream << "fill-opacity:" << s._M_fill_opacity << space;
+  stream << "stroke:" << colorq::to_string(s._M_stroke_color) << space;
+  stream << "stroke-opacity:" << s._M_stroke_opacity << space;
+  stream << "stroke-width:" << s._M_stroke_size << k::quote;
+  return stream.str();
+}
 
 
 /// Datum consolidating transform preferences.

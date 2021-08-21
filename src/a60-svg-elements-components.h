@@ -38,7 +38,7 @@ svg_element::write()
     }
 }
 
-/// SVG element beginning boilerplate.
+/// SVG element beginning boilerplate for outermost (containing) svg_element.
 /// Variable: unit, x=0, y=0, width, height
 void
 svg_element::start_element()
@@ -69,6 +69,61 @@ viewBox="0 0 __width __height" enable-background="new 0 0 __width __height">
 
   _M_sstream << start;
   _M_sstream << strip << std::endl;
+}
+
+
+/// SVG element for nested svg_element.
+/// Use name, area, unit, typo for viewport frame
+/// @origin x,y position
+/// @desta height, width of destination. (If > that _M_area) then enlarge.
+void
+svg_element::start_element(const point_2t p, const area destarea,
+			   const style& styl)
+{
+  const string id("__id");
+  string start = R"_delimiter_(<svg id="__id" )_delimiter_";
+  string_replace(start, id, _M_name);
+
+  const string unit("__unit");
+  const string width("__width");
+  const string height("__height");
+  const string dwidth("__dwidth");
+  const string dheight("__dheight");
+  const string px("__x");
+  const string py("__y");
+  string strip = R"_delimiter_(viewBox="0 0 __width __height" x="__x__unit" y="__y__unit" width="__dwidth__unit" height="__dheight__unit" )_delimiter_";
+
+  string_replace(strip, unit, to_string(_M_unit));
+  string_replace(strip, width, std::to_string(_M_area._M_width));
+  string_replace(strip, height, std::to_string(_M_area._M_height));
+
+  const auto [ dw, dh ] = destarea;
+  const auto [ x, y ] = p;
+  string_replace(strip, dwidth, std::to_string(dw));
+  string_replace(strip, dheight, std::to_string(dh));
+  string_replace(strip, px, std::to_string(int(x)));
+  string_replace(strip, py, std::to_string(int(y)));
+
+  // Check to make sure stream starts empty.
+  if (!this->empty())
+    {
+      string m("svg_element::start_element error buffer is not empty: " );
+      m += k::newline;
+      m += this->str();
+      m += k::newline;
+      throw std::runtime_error(m);
+    }
+
+  _M_sstream << start;
+  _M_sstream << strip << std::endl;
+
+  // Only add style if it is not the default argument.
+  if (styl._M_fill_opacity == 0 && styl._M_stroke_opacity == 0)
+    {
+      add_style(styl);
+      _M_sstream << k::space;
+    }
+  _M_sstream << '>' << k::newline;
 }
 
 

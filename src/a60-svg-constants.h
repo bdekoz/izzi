@@ -57,8 +57,9 @@ constexpr area<> v1080p_v = { 1080, 1920 };
 
 
 /// Style constants.
-const style w_style = { color::white, 1.0, color::black, 0.0, 0 };
+const style no_style = { color::none, 0.0, color::none, 0.0, 0 };
 const style b_style = { color::black, 1.0, color::white, 0.0, 0 };
+const style w_style = { color::white, 1.0, color::black, 0.0, 0 };
 
 
 /// Useful typography constants.

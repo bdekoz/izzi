@@ -1,3 +1,18 @@
+2021-08-21  Benjamin De Kosnik  <bkoz@rizal>
+
+	First class support for nested svg objects.
+	* src/a60-svg-base-types.h (style): Move str member to non-class
+	function overload for to_string.
+	* src/a60-svg-color.h: Prepare for C++20 compare.
+	* src/a60-svg-constants.h (no_style): Add, liquid_style from Bruce Lee.
+	* src/a60-svg-elements-components.h (svg_element): Add start_element
+	overload, add member to track auto-lifetime for top-level svg element
+	objects.
+	* src/a60-svg-elements.h: As above.
+	* src/a60-svg-render-basics.h: Update comment.
+
+	* examples/svg-embed-1.cc: New.
+
 2021-08-15  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-render-basics.h (svg_element_to_svg_insert): Adjust

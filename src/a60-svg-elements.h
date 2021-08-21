@@ -71,7 +71,7 @@ struct element_base
 
   void
   add_style(const style& sty)
-  { _M_sstream << style::str(sty); }
+  { _M_sstream << to_string(sty); }
 
   /// Common transforms include rotate(180)
   void
@@ -406,7 +406,7 @@ struct text_element : virtual public element_base
     string_replace(strip, x, std::to_string(d._M_x_origin));
     string_replace(strip, y, std::to_string(d._M_y_origin));
     string_replace(strip, attr, d._M_typo.add_attribute());
-    string_replace(strip, style, svg::style::str(d._M_typo._M_style));
+    string_replace(strip, style, to_string(d._M_typo._M_style));
     _M_sstream << strip;
     add_transform(trans);
     _M_sstream << '>';
@@ -822,6 +822,9 @@ struct text_path_element : virtual public text_element
 
 /**
    A SVG object element.
+
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
+   https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_as_an_Image
 */
 struct svg_element : virtual public element_base
 {
@@ -831,19 +834,28 @@ struct svg_element : virtual public element_base
   const area		_M_area;
   const unit		_M_unit;
   const typography&	_M_typo;
-
-  svg_element(const string __title, const area& __cv = k::a4_096_v,
+  const bool		_M_lifetime;
+  svg_element(const string __title, const area& __cv,
+	      const bool lifetime = true,
 	      const unit u = svg::unit::pixel,
 	      const typography& __typo = k::smono_typo)
-    : _M_name(__title), _M_area(__cv), _M_unit(u), _M_typo(__typo)
-  { start(); }
+  : _M_name(__title), _M_area(__cv), _M_unit(u),
+    _M_typo(__typo), _M_lifetime(lifetime)
+  {
+    if (_M_lifetime)
+      start();
+  }
 
   svg_element(const svg_element& other)
   : _M_name(other._M_name), _M_area(other._M_area),
-    _M_unit(other._M_unit), _M_typo(other._M_typo)
+    _M_unit(other._M_unit), _M_typo(other._M_typo), _M_lifetime(other._M_lifetime)
   { }
 
-  ~svg_element() { finish(); }
+  ~svg_element()
+  {
+    if (_M_lifetime)
+      finish();
+  }
 
   const point_2t
   center_point()
@@ -851,6 +863,10 @@ struct svg_element : virtual public element_base
 
   void
   start_element();
+
+  void
+  start_element(const point_2t p, const area destarea,
+		const style& sty = k::no_style);
 
   void
   finish_element();

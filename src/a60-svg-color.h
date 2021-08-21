@@ -478,6 +478,8 @@ struct colorq
   colorq(const colorq&) = default;
   colorq& operator=(const colorq&) = default;
 
+  // auto operator<=>(const colorq&) const = default;
+
   colorq(itype ra, itype ga, itype ba) : r(ra), g(ga), b(ba) { }
 
   colorq(const color e)
