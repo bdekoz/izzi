@@ -788,7 +788,7 @@ next_in_color_band(const colorband& cb)
       break;
     default:
       string m("next_in_color_band:: error");
-      m += k::newline:
+      m += k::newline;
       m += "color is: ";
       m += to_string(c);
       throw std::runtime_error(m);
