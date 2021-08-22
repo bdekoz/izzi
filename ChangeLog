@@ -1,3 +1,8 @@
+2021-08-22  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h (kusama_ids_at_uvalue): Optionally
+	show count value.
+
 2021-08-21  Benjamin De Kosnik  <bkoz@rizal>
 
 	First class support for nested svg objects.

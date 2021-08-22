@@ -286,6 +286,15 @@ kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, const strings& ids
       radiate_line_and_value(obj, origin, angled, v, rspace, rstart,
 			     radius * 4, typo, rstyl);
     }
+
+  // Put in max value.
+  constexpr bool showmaxvp = true;
+  if (showmaxvp)
+    {
+      const double anglemax = get_angle(value_max, value_max);
+      radiate_line_and_value(obj, origin, anglemax, value_max, rspace, rstart,
+			     linelen, typo);
+    }
 }
 
 
@@ -316,7 +325,8 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
 			    const size_type value_max,
 			    const int radius, const int rspace, const int rstart,
 			    const typography& typo, const bool weighbyvaluep,
-			    const size_type threshold = 1, const int startlenm = 5)
+			    const size_type threshold = 1,
+			    const int startlenm = 5)
 {
   // Stash of values/ids for near pass, but after transforms are done.
   vvstrings vidsnear;
