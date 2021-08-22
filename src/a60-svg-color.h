@@ -733,12 +733,14 @@ make_color_band(const colorband& cb, const ushort neededh)
   return cband;
 }
 
+
+/// Flip through color band colors.
 colorq
 next_in_color_band(const colorband& cb)
 {
   // Generate bands.
-  // For now, just generate 100 each.
-  const ushort bandn = 100;
+  // For now, just generate 200 each.
+  const ushort bandn = 200;
   static colorqs gband_bw = make_color_band(cband_bw, bandn);
   static colorqs gband_y = make_color_band(cband_y, bandn);
   static colorqs gband_r = make_color_band(cband_r, bandn);
@@ -748,7 +750,6 @@ next_in_color_band(const colorband& cb)
   static colorqs gband_o = make_color_band(cband_o, bandn);
   static colorqs gband_brown = make_color_band(cband_brown, bandn);
 
-  // XXX No out of bounds error checking.
   colorq ret;
   const color c = std::get<0>(cb);
   switch (c)
@@ -777,16 +778,20 @@ next_in_color_band(const colorband& cb)
       ret = gband_g.back();
       gband_g.pop_back();
       break;
-    case color::ultramarine:
+    case color::blue:
       ret = gband_b.back();
       gband_b.pop_back();
       break;
-    case color::wisteria:
+    case color::purple:
       ret = gband_p.back();
       gband_p.pop_back();
       break;
     default:
-      throw std::runtime_error("collection::next_in_color_band");
+      string m("next_in_color_band:: error");
+      m += k::newline:
+      m += "color is: ";
+      m += to_string(c);
+      throw std::runtime_error(m);
       break;
     }
   return ret;
