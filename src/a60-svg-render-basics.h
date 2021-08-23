@@ -287,30 +287,32 @@ point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
 
 
 /// Draws a ring centered at origin of radius r, with outer and inner
-/// radial gradient of rspace in each direction.
+/// radial gradient of blurspace in each direction.
 /// klr == fade from
 /// fadeklr == fade to. Background is transparent if none.
 void
 point_2d_to_ring_halo(svg_element& obj, const point_2t origin,
-		      const size_type radius, const double rspace, const svg::color klr,
-		      const svg::color fadeklr = color::none, const double opacity = 1)
+		      const size_type radius, const double blurspace,
+		      const svg::color klr,
+		      const svg::color fadeklr = color::none,
+		      const double opacity = 1)
 {
   auto [ xd, yd ] = origin;
   const size_type x(xd);
   const size_type y(yd);
 
   // outer ring == upper bound, radius + variance.
-  const double oring = radius + rspace;
+  const double oring = radius + blurspace;
 
   // inner ring == lower bound, radius - variance.
-  const double iring = radius - rspace;
+  const double iring = radius - blurspace;
 
   // mangled args for name.
   std::ostringstream oss;
   oss << "x" << std::to_string(x) << k::hyphen
       << "y" << std::to_string(y) << k::hyphen
       << "r" << std::to_string(radius) << k::hyphen
-      << "rspace" << std::to_string(rspace);
+      << "blurspace" << std::to_string(blurspace);
   const string mangle(oss.str());
 
   // outer

@@ -1,5 +1,15 @@
 2021-08-22  Benjamin De Kosnik  <bkoz@rizal>
 
+	* src/a60-svg-elements-components.h (start_element): Fix logic
+	so that style is only applied if not the default no style.
+	* src/a60-svg-render-basics.h (point_2d_to_ring_halo): Smarter
+	parameter naming, rspace to blurspace.
+	* examples/radial-gradient-ring-halo-4.cc: Black background.
+	* examples/radial-gradient-ring-halo-5.cc: Gray background.
+	* examples/svg-embed-2.cc: Embed ring halo.
+
+2021-08-22  Benjamin De Kosnik  <bkoz@rizal>
+
 	* src/a60-svg-radial-kusama.h (kusama_ids_at_uvalue): Optionally
 	show count value.
 

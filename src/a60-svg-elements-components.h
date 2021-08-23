@@ -118,7 +118,10 @@ svg_element::start_element(const point_2t p, const area destarea,
   _M_sstream << strip << std::endl;
 
   // Only add style if it is not the default argument.
-  if (styl._M_fill_opacity == 0 && styl._M_stroke_opacity == 0)
+  const string nostr = to_string(color::none);
+  const string fillstr = to_string(styl._M_fill_color);
+  const bool colornonep = nostr == fillstr;
+  if (!colornonep && (styl._M_fill_opacity != 0 || styl._M_stroke_opacity != 0))
     {
       add_style(styl);
       _M_sstream << k::space;
