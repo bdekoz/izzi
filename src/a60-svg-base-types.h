@@ -95,6 +95,14 @@ struct style
   double		_M_stroke_size;
 
   // auto operator<=>(const style&) const = default;
+
+  /// Convenience function to set all colors at once.
+  void
+  set_colors(const svg::color& klr)
+  {
+    _M_fill_color = klr;
+    _M_stroke_color = klr;
+  }
 };
 
 
