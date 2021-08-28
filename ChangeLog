@@ -1,3 +1,14 @@
+2021-08-27  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-elements.h: Adjust group start element overload, add
+	style argument.
+	* src/a60-svg-radial-kusama.h: Adjust, name changes.
+	* src/a60-svg-render-basics.h (insert_svg_at): Add style parameter.
+	Apply if not k::no_style.
+
+	* examples/svg-insert-1.cc: New.
+	* examples/svg-insert-2.cc: New.
+
 2021-08-22  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-elements-components.h (start_element): Fix logic

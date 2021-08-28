@@ -111,7 +111,7 @@ struct group_element : virtual public element_base
 	       << ">" << k::newline;
   }
 
-  // For groups of elements that have the same style.
+  // For groups of elements with style as specified.
   void
   start_element(string name, const style& sty)
   {
@@ -120,11 +120,20 @@ struct group_element : virtual public element_base
     _M_sstream << '>' << k::newline;
   }
 
+  // For groups of elements with transforms and style if specified.
   void
-  start_element(string name, const transform, const string ts)
+  start_element(string name, const transform, const string ts,
+		const style& sty = k::no_style)
   {
     _M_sstream << "<g id=" << k::quote << name << k::quote;
     add_transform(ts);
+
+    // Only add style if it is not the default argument.
+    const string nostr = to_string(color::none);
+    const string fillstr = to_string(sty._M_fill_color);
+    const bool colornonep = nostr == fillstr;
+    if (!colornonep)
+      add_style(sty);
     _M_sstream << '>' << k::newline;
   }
 

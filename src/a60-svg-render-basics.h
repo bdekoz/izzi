@@ -583,7 +583,7 @@ point_to_plus_lines(svg_element& obj, const style& styl,
 /// Import svg file, convert it to svg_element for insertion.
 /// ifile is a plain SVG file with a 1:1 aspect ratio.
 string
-svg_file_to_svg_insert(const string ifile)
+file_to_svg_insert(const string ifile)
 {
   string isvg;
 
@@ -615,7 +615,7 @@ svg_file_to_svg_insert(const string ifile)
 
 /// Import svg file, convert it to svg_element for insertion.
 string
-svg_element_to_svg_insert(const string isvgpre)
+element_to_svg_insert(const string isvgpre)
 {
   string isvg;
 
@@ -642,14 +642,21 @@ svg_element_to_svg_insert(const string isvgpre)
 
 
 /// Embed svg in group element.
-/// origin is where glyph placement is inside containing svg element.
-/// isize is image width/height
-/// isvg is the string from one of the two functions above (*_to_svg_insert).
+/// @origin is where glyph placement is inside containing svg element.
+/// @origsize is original file width/height constant
+/// @isize is final  width/height
+/// @isvg is the string from one of the two functions above (*_to_svg_insert).
+/// @syl is overide style information: defaults to no_style.
+///
+/// NB This only works is the file has no styles set in svg, group, or
+/// individual element definitions (like circle, path, rectangle,
+/// etc.).
+///
 /// See: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
 svg_element
 insert_svg_at(svg_element& obj, const string isvg,
 	      const point_2t origin, const double origsize, const double isize,
-	      const double angled = 0)
+	      const double angled = 0, const style& styl = k::no_style)
 {
   // offset
   auto [ objx, objy ] = origin;
@@ -676,7 +683,7 @@ insert_svg_at(svg_element& obj, const string isvg,
   string ts(xformrotate + k::space + xformtranslate + k::space + xformscale);
 
   group_element gsvg;
-  gsvg.start_element("inset svg", transform(), ts);
+  gsvg.start_element("inset svg", transform(), ts, styl);
   gsvg.add_raw(isvg);
   gsvg.finish_element();
   obj.add_element(gsvg);
