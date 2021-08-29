@@ -35,6 +35,21 @@ constexpr area<float> a6_mm_h = { 105, 148 };
 constexpr area<> letter_096_v = { 816, 1056 };
 constexpr area<> letter_096_h = { 1056, 816 };
 
+/// Letter bleed (8.625 w x 11.25 h)
+constexpr area<> letterb_096_v = { 816, 1056 };
+constexpr area<> letterb_096_h = { 1056, 816 };
+
+/// Square 8bis (8.5 w x 8.5 h)
+constexpr area<> square8bis_096_v = { 816, 816 };
+
+/// Square 8bis bleed (8.625 w x 8.75 h) (219 x 222 mm)
+constexpr area<> square8bisb_096_v = { 828, 840 };
+constexpr area<> square8bisb_096_h = { 840, 826 };
+
+/// Square 17 bleed 2 x (8.625 w x 8.75 h) for above at 2x
+constexpr area<> square17b_096_v = { 1656, 1680 };
+constexpr area<> square17b_096_h = { 1680, 1656 };
+
 constexpr area<> a2_096_h = { 2245, 1587 };
 constexpr area<> a4_096_h = { 1123, 794 };
 constexpr area<> a5_096_h = { 794, 559 };
