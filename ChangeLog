@@ -1,3 +1,14 @@
+2021-09-03  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-base-types.h (svg::unit): Add meter, point, and
+	abbreviations.
+	(svg::typography::add_attribute): Add parameter for unit.
+	* src/a60-svg-elements.h (svg::text_element::add_data): Add unit
+	parameter, default to point for text_elements.
+
+	* src/a60-svg-radial-direction-arc-glyph.h (direction_arc_at): Adjust
+	style use, re-order code.
+
 2021-08-27  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-elements.h: Adjust group start element overload, add

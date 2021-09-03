@@ -402,7 +402,8 @@ struct text_element : virtual public element_base
   /// Either serialize immediately (as below), or create data structure
   /// that adds data to data_vec and then finish_element serializes.
   void
-  add_data(const data& d, string trans = "")
+  add_data(const data& d,
+	   const string trans = "", const unit utype = svg::unit::point)
   {
     const string x("__x");
     const string y("__y");
@@ -414,7 +415,7 @@ struct text_element : virtual public element_base
     // Add attributes.
     string_replace(strip, x, std::to_string(d._M_x_origin));
     string_replace(strip, y, std::to_string(d._M_y_origin));
-    string_replace(strip, attr, d._M_typo.add_attribute());
+    string_replace(strip, attr, d._M_typo.add_attribute(utype));
     string_replace(strip, style, to_string(d._M_typo._M_style));
     _M_sstream << strip;
     add_transform(trans);

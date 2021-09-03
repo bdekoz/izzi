@@ -26,8 +26,11 @@ namespace svg {
 /// Arc + arrow glyph that traces path of start to finish trajectory.
 void
 direction_arc_at(svg_element& obj, const point_2t origin,
-		 const double rr, svg::style s, const uint spacer = 10)
+		 const double rr, svg::style s, const double spacer = 10)
 {
+  // Adjust style so the stroke color matches the fill color.
+  s._M_stroke_color = s._M_fill_color;
+
   const double r = rr - spacer;
   const auto [ mindeg, maxdeg ] = get_radial_range();
   auto anglemin = zero_angle_north_cw(mindeg);
@@ -40,22 +43,31 @@ direction_arc_at(svg_element& obj, const point_2t origin,
   point_2t p4 = get_circumference_point_d(anglemax, r, origin);
   string sarc = make_path_arc_circumference(p0, p4, r, largearcp, cwp);
 
-  // Adjust style so the stroke color matches the fill color.
-  s._M_stroke_color = s._M_fill_color;
+  // Style for stroke/line.
+  s._M_fill_opacity = 0;
+  s._M_stroke_opacity = 1;
 
-  auto rspacer = spacer - 2;
+  // Draw arc path.
+  path_element parc;
+  path_element::data da = { sarc, 0 };
+  parc.start_element();
+  parc.add_data(da);
+  parc.add_style(s);
+  parc.finish_element();
+  obj.add_element(parc);
 
+  // Define marker/arrow end point.
+  double rspacer = std::max(1.0, spacer - 2);
   point_2t p5 = get_circumference_point_d(anglemax, r + rspacer, origin);
   point_2t p7 = get_circumference_point_d(anglemax, r - rspacer, origin);
 
-  // Circumference arc length desired is radius times the angle of the
-  // arc.
+  // Circumference arc length desired is radius times the angle of the arc.
   auto theta = 2 * rspacer / r;
   auto thetad = theta * 180 / k::pi;
   auto alignd = zero_angle_north_cw(maxdeg + thetad);
   point_2t p6 = get_circumference_point_d(alignd, r, origin);
 
-  // Define marker.
+  // Define end marker, triangle/arrow.
   std::ostringstream ossm;
   ossm << "M" << k::space << to_string(p4) << k::space;
   ossm << "L" << k::space;
@@ -64,7 +76,7 @@ direction_arc_at(svg_element& obj, const point_2t origin,
   ossm << to_string(p7) << k::space;
   ossm << to_string(p4) << k::space;
 
-  // Adjust style so that fill will be shown, and stroke hidden.
+  // Style so that fill will be shown, and stroke hidden.
   s._M_fill_opacity = 1;
   s._M_stroke_opacity = 0;
 
@@ -76,19 +88,6 @@ direction_arc_at(svg_element& obj, const point_2t origin,
   pmarker.add_style(s);
   pmarker.finish_element();
   obj.add_element(pmarker);
-
-  // Reset style.
-  s._M_fill_opacity = 0;
-  s._M_stroke_opacity = 1;
-
-  // Arc path.
-  path_element parc;
-  path_element::data da = { sarc, 0 };
-  parc.start_element();
-  parc.add_data(da);
-  parc.add_style(s);
-  parc.finish_element();
-  obj.add_element(parc);
 }
 
 

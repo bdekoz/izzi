@@ -26,13 +26,15 @@
 
 namespace svg {
 
-/// Measurement abstraction type, conversion function.
+/// Measurement abstraction for absolute (not relative) measurements.
 enum class unit
   {
-   centimeter,		///< Centimeter
-   millimeter,		///< Milliimeter
-   inch,		///< Inch
-   pixel		///< Pixel where 1 pixel x 96 PPI = .264583 mm
+    meter, m,		///< Meter
+    centimeter, cm,	///< Centimeter
+    millimeter, mm,	///< Milliimeter
+    inch, in,		///< Inch
+    pixel, px,		///< Pixel where 1 pixel x 96 PPI = .26 mm
+    point, pt		///< Point where 1 pixel x 1/72 dpi x 96 PPI = .26 mm
   };
 
 const string
@@ -43,10 +45,18 @@ to_string(const unit e)
   static enum_map_type enum_map;
   if (enum_map.empty())
     {
+      enum_map[unit::meter] = "m";
+      enum_map[unit::m] = "m";
       enum_map[unit::centimeter] = "cm";
+      enum_map[unit::cm] = "cm";
       enum_map[unit::millimeter] = "mm";
+      enum_map[unit::mm] = "mm";
       enum_map[unit::inch] = "in";
+      enum_map[unit::in] = "in";
       enum_map[unit::pixel] = "px";
+      enum_map[unit::px] = "px";
+      enum_map[unit::point] = "pt";
+      enum_map[unit::pt] = "pt";
     }
   return enum_map[e];
 }
@@ -342,20 +352,22 @@ struct typography
   }
 
   const std::string
-  add_attribute() const
+  add_attribute(const svg::unit utype = svg::unit::pixel) const
   {
     const string name("__name");
     const string size("__size");
     const string anchor("__anchor");
     const string align("__align");
+    const string len("__lentype");
 
     std::string strip1 =					\
-      R"(font-family="__name" font-size="__sizepx" text-anchor="__anchor" text-align="__align" )";
+      R"(font-family="__name" font-size="__size__lentype" text-anchor="__anchor" text-align="__align" )";
 
     string_replace(strip1, name, _M_face);
     string_replace(strip1, size, std::to_string(_M_size));
     string_replace(strip1, anchor, to_string(_M_anchor));
     string_replace(strip1, align, to_string(_M_align));
+    string_replace(strip1, len, svg::to_string(utype));
 
     const std::string weight("__weight");
     const std::string property("__prop");
