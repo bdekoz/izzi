@@ -193,7 +193,6 @@ text_line_n(svg_element& obj, const point_2t origin, const string text,
       y += sz;
     }
   sized_text(obj, typo, sz, textcut, x, y);
-  y += sz;
   return y;
 }
 
