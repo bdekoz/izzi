@@ -56,18 +56,16 @@ direction_arc_at(svg_element& obj, const point_2t origin,
   parc.finish_element();
   obj.add_element(parc);
 
-  // Define marker/arrow end point.
-  double rspacer = std::max(1.0, spacer - 2);
+  // Define marker/arrow/triangle base points.
+  double rspacer = std::max(5.0, spacer - 2);
   point_2t p5 = get_circumference_point_d(anglemax, r + rspacer, origin);
   point_2t p7 = get_circumference_point_d(anglemax, r - rspacer, origin);
 
-  // Circumference arc length desired is radius times the angle of the arc.
-  auto theta = 2 * rspacer / r;
-  auto thetad = theta * 180 / k::pi;
-  auto alignd = zero_angle_north_cw(maxdeg + thetad);
-  point_2t p6 = get_circumference_point_d(alignd, r, origin);
+  // ... and the tip of the triangle.
+  point_2t p6 = get_circumference_point_d(anglemax - 90, rspacer, p4);
 
-  // Define end marker, triangle/arrow.
+
+  // Define closed triangle/arrow path.
   std::ostringstream ossm;
   ossm << "M" << k::space << to_string(p4) << k::space;
   ossm << "L" << k::space;
