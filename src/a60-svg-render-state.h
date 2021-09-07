@@ -35,16 +35,25 @@ namespace constants {
      blur		= 1u << 4, ///< blur or gradient version of vector
      echo		= 1u << 5, ///< b & w outline version of vector
      text		= 1u << 6, ///< title, metadata, header
-     legend		= 1u << 7, ///< torrent collection glyph
+     legend		= 1u << 7, ///< text and symbol legends
      exitnode		= 1u << 8, ///< tor exit node infrastructure
      telecom		= 1u << 9, ///< telecom infrastructure
      glyph		= 1u << 10, ///< glyph
      image		= 1u << 11, ///< image
      svg		= 1u << 12, ///< svg element, perhaps nested
-     alt		= 1u << 13, ///< alternate use specified
+     alt		= 1u << 13, ///< alternate use specified in situ
      background		= 1u << 14, ///< background elements
-     all		= 1u << 15, ///< all elements and layers
-     _S_end		= 1u << 16  ///< last
+     raster		= 1u << 15, ///< raster (pixel) elements
+     top		= 1u << 16, ///< top
+     bottom		= 1u << 17, ///< bottom
+     inner		= 1u << 18, ///< inner
+     outer		= 1u << 19, ///< outer
+     next		= 1u << 20, ///< next
+     previous		= 1u << 21, ///< previous
+     even		= 1u << 22, ///< even
+     odd		= 1u << 23, ///< odd
+     all		= 1u << 24, ///< all elements and layers
+     _S_end		= 1u << 25  ///< last
     };
 
   inline constexpr select
