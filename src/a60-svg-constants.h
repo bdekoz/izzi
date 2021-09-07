@@ -24,7 +24,7 @@ namespace svg::constants {
    - h == horizontal aka landscape
    - v == vertical aka portrait
 */
-constexpr area<float> no_area = { 0, 0 };
+constexpr area<> no_area = { 0, 0 };
 
 /// Area Constants in millimeter units.
 constexpr area<float> letter_mm_h = { 216, 279 };
