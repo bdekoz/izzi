@@ -24,6 +24,9 @@ namespace svg::constants {
    - h == horizontal aka landscape
    - v == vertical aka portrait
 */
+constexpr area<float> no_area = { 0, 0 };
+
+/// Area Constants in millimeter units.
 constexpr area<float> letter_mm_h = { 216, 279 };
 
 constexpr area<float> a2_mm_h = { 420, 594 };
@@ -31,7 +34,18 @@ constexpr area<float> a4_mm_h = { 210, 297 };
 constexpr area<float> a5_mm_h = { 148, 210 };
 constexpr area<float> a6_mm_h = { 105, 148 };
 
-/// Pixel areas are using 96 PPI unless otherwise noted.
+/// Area Constants in pixel units.
+/// Pixel constants are using 96 PPI unless otherwise noted.
+constexpr area<> a2_096_h = { 2245, 1587 };
+constexpr area<> a4_096_h = { 1123, 794 };
+constexpr area<> a5_096_h = { 794, 559 };
+constexpr area<> a6_096_h = { 559, 397 };
+
+constexpr area<> a2_096_v = { 1587, 2245 };
+constexpr area<> a4_096_v = { 794, 1123 };
+constexpr area<> a5_096_v = { 559, 794 };
+constexpr area<> a6_096_v = { 397, 559 };
+
 constexpr area<> letter_096_v = { 816, 1056 };
 constexpr area<> letter_096_h = { 1056, 816 };
 
@@ -50,25 +64,19 @@ constexpr area<> square8bisb_096_h = { 840, 826 };
 constexpr area<> square17b_096_v = { 1656, 1680 };
 constexpr area<> square17b_096_h = { 1680, 1656 };
 
-constexpr area<> a2_096_h = { 2245, 1587 };
-constexpr area<> a4_096_h = { 1123, 794 };
-constexpr area<> a5_096_h = { 794, 559 };
-constexpr area<> a6_096_h = { 559, 397 };
-
-constexpr area<> a2_096_v = { 1587, 2245 };
-constexpr area<> a4_096_v = { 794, 1123 };
-constexpr area<> a5_096_v = { 559, 794 };
-constexpr area<> a6_096_v = { 397, 559 };
-
+/// Engineering C, aka 22 x 17 letter quattro
 constexpr area<> p22x17_096_h = { 2112, 1632 };
 constexpr area<> p17x22_096_v = { 1632, 2112 };
 
+constexpr area<> instagram_v = { 1080, 1350 };
 constexpr area<> instagram_s = { 1080, 1080 };
 constexpr area<> instagram_4ks = { 2160, 2160 };
-constexpr area<> instagram_v = { 1080, 1350 };
 
 constexpr area<> v1080p_h = { 1920, 1080 };
 constexpr area<> v1080p_v = { 1080, 1920 };
+
+constexpr area<> v4k_h = { 3840, 2160 };
+constexpr area<> v4k_v = { 2160, 4840 };
 
 
 /// Style constants.
