@@ -1,3 +1,16 @@
+2021-09-11  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-base-types.h (area_center_point): To...
+	(area::center_point): ...this.
+	(area::max_segment_size_n): New, was old get_max_radius from kusama...
+	* src/a60-svg-elements.h (svg_element): Adjust center_point call.
+	* src/a60-svg-radial-base.h (get_label_spaces): Overload to...
+	(significant_digits_in): ...this.
+	(adjust_angle_at_orbit_low): Remove deprecated, use text baseline.
+	* src/a60-svg-radial-kusama.h (get_min_ring_size): New, as for
+	label spaces above.
+	(set_min_ring_size): Same.
+
 2021-09-03  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-base-types.h (svg::unit): Add meter, point, and

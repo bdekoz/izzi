@@ -85,13 +85,24 @@ struct area
 
   size_type		_M_width;
   size_type		_M_height;
+
+  /// Given @rdenom scaling factor and SVG canvas area by @obj,
+  /// compute max effective segment size given number of segments @rdenom.
+  /// NB: if @rdenom is two then this is a max radius value centered
+  /// on the page/frame.
+  inline double
+  max_segment_size_n(const uint rdenom = 2) const
+  {
+    double leastside = std::min(_M_height, _M_width);
+    return leastside / rdenom;
+  }
+
+  ///  Convenience function for finding center.
+  inline point_2t
+  center_point() const
+  {  return std::make_tuple(_M_width / 2, _M_height / 2); }
 };
 
-
-///  Convenience function.
-const point_2t
-area_center_point(const area<>& a)
-{  return std::make_tuple(a._M_width / 2, a._M_height / 2); }
 
 
 /// Datum consolidating style preferences.

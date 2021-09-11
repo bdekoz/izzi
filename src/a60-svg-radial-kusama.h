@@ -22,8 +22,25 @@
 
 namespace svg {
 
-/// By observation, type size 12.
-constexpr int kusama_min_ring_size = 5;
+
+/// The smallest (sattelite) radius size allowed in a kusama orbit.
+int&
+get_min_ring_size()
+{
+  static int rsz(1);
+  return rsz;
+}
+
+/// By observation, type size 12 = 5;
+int
+set_min_ring_size(const int sz)
+{
+  int& rsz = get_min_ring_size();
+  int rszold(rsz);
+  rsz = sz;
+  return rszold;
+}
+
 
 /**
     Draw line and value on ray from origin as part of kusama.
@@ -60,7 +77,7 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
 	      const int kr, const int rspace, const int rstart)
 {
   // Kusama circle radius, enforce miniumum size.
-  const int kra = std::max(kr, kusama_min_ring_size);
+  const int kra = std::max(kr, get_min_ring_size());
 
   // Assumed to scale per value/value_max ratio.
   const double angleda = adjust_angle_rotation(angled, k::rrotation::cw);
@@ -168,7 +185,7 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
 				      rspace, rstart, linelen, typo);
 
   // Add number of characters of value as string * size of each character.
-  glyphr += get_label_spaces(value_max) * char_width_to_px(typo._M_size);
+  glyphr += significant_digits_in(value_max) * char_width_to_px(typo._M_size);
 
   // If satellitep, draw circle in the default style in low orbit to
   // hang the rest of the glyphs off of, in high orbit...
@@ -182,7 +199,7 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
   if (wbyvaluep)
     kr = ((double(v) / value_max) * radius);
   else
-    kr = kusama_min_ring_size; // XXX wbyvaluep to weigh int, if 0 by value?
+    kr = get_min_ring_size();
 
   // glyphr += rspace;
 
@@ -249,7 +266,7 @@ kusama_ids_orbit_low(svg_element& obj, const point_2t origin, const strings& ids
 				      rspace, rstart, linelen, typo);
 
       // Add number of characters of value as string * size of each character.
-      glyphr += get_label_spaces(value_max) * char_width_to_px(typo._M_size);
+      glyphr += significant_digits_in(value_max) * char_width_to_px(typo._M_size);
 
       glyphr += radiate_glyph_and_id(obj, origin, v, value_max, radius, rspace,
 				     rstart + glyphr, ids.front(), typo);

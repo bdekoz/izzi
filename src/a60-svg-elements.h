@@ -869,7 +869,7 @@ struct svg_element : virtual public element_base
 
   const point_2t
   center_point()
-  { return area_center_point(_M_area); }
+  { return _M_area.center_point(); }
 
   void
   start_element();

@@ -41,16 +41,6 @@ enum class rrotation
 
 namespace svg {
 
-/// Given rdenom scaling factor and SVG canvas, compute max effective
-/// radius value if centered on the page/frame.
-inline double
-get_max_radius(const svg_element& obj, const uint rdenom = 2)
-{
-  auto leastside = std::min(obj._M_area._M_height, obj._M_area._M_width);
-  return leastside / rdenom;
-}
-
-
 /**
    Max number of non-overlapping degrees in radial form,
    as a tuple of (min, max).
@@ -107,6 +97,42 @@ adjust_angle_rotation(const double dorig, const k::rrotation rot)
 }
 
 
+/**
+   Circumference adjustment such that text/object of height distance
+   is centered on arc from origin to kusama high-orbit glyphs.
+*/
+constexpr double
+adjust_angle_at_orbit_for_distance(double r, double distance)
+{
+  // Angle between sequential id's.
+  //
+  // Given r,
+  // point p on circumference r distance from origin with angle d
+  // point pprime on circumference r from origin with angle dprime
+  // distance is the cartesian distance between p and pprime
+  //
+  // then
+  // dprime = 2 * theta, where theta from sin(theta) = (rspace / 2) / r.
+  double angleprime = std::asin((distance / 2) / r);
+  double angleprimed = angleprime * (180 / k::pi);
+  return angleprimed;
+}
+
+
+/// The number of significant digits in @maxval.
+uint
+significant_digits_in(size_type maxval)
+{
+  uint sigdigits(1);
+  while (maxval > 1)
+    {
+      maxval /= 10;
+      ++sigdigits;
+    }
+  return sigdigits;
+}
+
+
 /// Get the label space.
 /// Value -> Name, as a string where value has labelspaces of fill
 /// NB: Should be the number of significant digits in pmax plus separators.
@@ -116,20 +142,6 @@ get_label_spaces()
 {
   static size_type lspaces;
   return lspaces;
-}
-
-
-/// The number of significant digits in @maxval.
-uint
-get_label_spaces(size_type maxval)
-{
-  uint sigdigits(1);
-  while (maxval > 1)
-    {
-      maxval /= 10;
-      ++sigdigits;
-    }
-  return sigdigits;
 }
 
 
@@ -152,39 +164,6 @@ make_label_for_value(string pname, size_type pvalue,
 
   string label = oss.str() + " -> " + pname;
   return label;
-}
-
-
-/// Circumference adjustment by observation such that label text is
-/// centered on arc from origin for kusama low-orbit glyphs.
-constexpr double
-adjust_angle_at_orbit_low(const typography& typo)
-{
-  // At kusama low orbit, ie radius + rspace.
-  // size 24, adjust 3
-  return typo._M_size / 8;
-}
-
-
-/**
-   Circumference adjustment such that text/object of height distance
-   is centered on arc from origin to kusama high-orbit glyphs.
-*/
-constexpr double
-adjust_angle_at_orbit_for_distance(double r, double distance)
-{
-  // Angle between sequential id's.
-  //
-  // Given r,
-  // point p on circumference r distance from origin with angle d
-  // point pprime on circumference r from origin with angle dprime
-  // distance is the cartesian distance between p and pprime
-  //
-  // then
-  // dprime = 2 * theta, where theta from sin(theta) = (rspace / 2) / r.
-  double angleprime = std::asin((distance / 2) / r);
-  double angleprimed = angleprime * (180 / k::pi);
-  return angleprimed;
 }
 
 
