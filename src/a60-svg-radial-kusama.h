@@ -63,7 +63,9 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
 
   // Length used of glyphs along radiated ray from origin, if any.
   int glyphr = rbase + linelen + rspace;
-  radial_text_r(obj, typo, std::to_string(v), glyphr, origin, angled);
+  typography typob(typo);
+  typob._M_w = typography::weight::bold;
+  radial_text_r(obj, typob, std::to_string(v), glyphr, origin, angled);
   return glyphr - rstart;
 }
 

@@ -197,20 +197,30 @@ text_line_n(svg_element& obj, const point_2t origin, const string text,
 }
 
 
-/// Text of maxlen length, overflow goes on line below.
+/// Text of maxlen length rotated, overflow goes on line below.
 uint
 text_line_n_r(svg_element& obj, const point_2t origin, const string text,
-	      svg::typography typo, const int sz, const uint maxlen)
+	      svg::typography typo, const uint sz, const uint maxlen,
+	      const uint lettingsz = 0)
 {
-  auto [ x, y ] = origin;
+  const auto [ x, y ] = origin;
+  const double line_max = std::ceil(double(text.size()) / maxlen);
+  const uint lines(line_max);
 
+  uint xmin(x);
   string textcut(text);
-  while (textcut.size() > maxlen)
+
+  uint linen(0);
+  while (linen < lines)
     {
+      // Find x offset, with first line being the max length above the
+      // origin, working down. The last line is at the origin.
+      auto xp = x - ((sz + lettingsz) * (lines - linen - 1));
+
       // Find last space character in the specified maxium range, aka mark.
       auto sppos = textcut.find_last_of(k::space, maxlen);
       if (sppos == string::npos)
-	sppos = maxlen;
+	sppos = std::min(textcut.size(), string::size_type(maxlen));
       else
 	{
 	  // Cut after space (mark).
@@ -218,12 +228,12 @@ text_line_n_r(svg_element& obj, const point_2t origin, const string text,
 	}
 
       string namesubs = textcut.substr(0, sppos);
-      sized_text_r(obj, typo, sz, namesubs, x, y, -90);
+      sized_text_r(obj, typo, sz, namesubs, xp, y, -90);
       textcut = textcut.substr(sppos);
-      x -= sz;
+      ++linen;
+      xmin = std::min(xmin, uint(xp));
     }
-  sized_text_r(obj, typo, sz, textcut, x, y, -90);
-  return x;
+  return xmin;
 }
 
 

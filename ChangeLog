@@ -1,3 +1,11 @@
+2021-09-12  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h (radiate_line_and_value):
+	Style the value as typography argument + bold.
+	* src/a60-svg-render-basics.h (text_line_n_r): Fix so that, even
+	while rotated, reads top to bottom. (Instead of previous bottom to
+	top).
+
 2021-09-11  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-base-types.h (area_center_point): To...
