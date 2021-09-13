@@ -217,19 +217,26 @@ text_line_n_r(svg_element& obj, const point_2t origin, const string text,
       // origin, working down. The last line is at the origin.
       auto xp = x - ((sz + lettingsz) * (lines - linen - 1));
 
-      // Find last space character in the specified maxium range, aka mark.
-      auto sppos = textcut.find_last_of(k::space, maxlen);
-      if (sppos == string::npos)
-	sppos = std::min(textcut.size(), string::size_type(maxlen));
+      size_t epos(0);
+      if (textcut.size() < maxlen)
+	epos = textcut.size();
       else
 	{
-	  // Cut after space (mark).
-	  sppos += 1;
+	  // Find last space character in the specified maxium range, aka mark.
+	  auto sppos = textcut.find_last_of(k::space, maxlen);
+	  if (sppos == string::npos)
+	    sppos = maxlen;
+	  else
+	    {
+	      // Cut after space (mark).
+	      sppos += 1;
+	    }
+	  epos = sppos;
 	}
 
-      string namesubs = textcut.substr(0, sppos);
+      string namesubs = textcut.substr(0, epos);
       sized_text_r(obj, typo, sz, namesubs, xp, y, -90);
-      textcut = textcut.substr(sppos);
+      textcut = textcut.substr(epos);
       ++linen;
       xmin = std::min(xmin, uint(xp));
     }
