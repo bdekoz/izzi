@@ -42,6 +42,25 @@ set_min_ring_size(const int sz)
 }
 
 
+/// The (multiple) used to compute distance between sattelites in high orbit.
+double&
+get_satellite_distance_k()
+{
+  static double k(3.3);
+  return k;
+}
+
+/// By observation, 12pt = 3.3, 7pt = 2
+double
+set_satellite_distance_k(const double kuse)
+{
+  double& k = get_satellite_distance_k();
+  double kold(k);
+  k = kuse;
+  return kold;
+}
+
+
 /**
     Draw line and value on ray from origin as part of kusama.
     skip (origin to rstart) + rspace + line of length lineline + rspace + value
@@ -171,6 +190,11 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 
    Simplest version, make satellite circle on circumfrence and splay
    or append id's around it.
+
+   @linelen	Length of line on a ray from origin to value.
+
+   @satdistance Multiple used to compute distance between two satellite values.
+		Ueful defaults: 3.3 for 12pt, 2 for 7pt.
 */
 int
 kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& ids,
@@ -207,10 +231,11 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
 
   // Distance betwen id spheres on high-orbit kusama.
   // NB for low values, make sure distance is at least text height away.
-  const double distance = std::max(kr * 3.3, char_height_to_px(typo._M_size) * 3);
+  const double k = get_satellite_distance_k();
+  const double distnce = k * std::max(kr, char_height_to_px(typo._M_size));
 
   const double ar = rstart + glyphr;
-  const double anglea = adjust_angle_at_orbit_for_distance(ar, distance);
+  const double anglea = adjust_angle_at_orbit_for_distance(ar, distnce);
   const double maxdeg = anglea * (ids.size() - 1);
   double angled2 = angled - (maxdeg / 2);
 
