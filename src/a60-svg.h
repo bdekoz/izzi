@@ -84,7 +84,7 @@ distance_cartesian(const point_2t& p1, const point_2t& p2)
 }
 
 
-// Does point p1 of radius r1 instersect point p2 with radius r2?
+// Does point p1 of radius r1 intersect point p2 with radius r2?
 // https://developer.mozilla.org x 2D_collision_detection
 bool
 detect_collision(const point_2t& p1, const int r1, const point_2t& p2,

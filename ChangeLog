@@ -1,3 +1,11 @@
+2021-09-15  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h (get_min_satellite_distance): ...to this.
+	It's about minimum distance between, see...
+	(kusama_ids_orbit_high): Use it, rewrite how to calc distance...
+
+	* src/a60-svg.h: Fix typo in comment.
+
 2021-09-12  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-kusama.h (radiate_line_and_value):

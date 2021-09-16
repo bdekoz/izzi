@@ -22,7 +22,6 @@
 
 namespace svg {
 
-
 /// The smallest (sattelite) radius size allowed in a kusama orbit.
 int&
 get_min_ring_size()
@@ -31,7 +30,7 @@ get_min_ring_size()
   return rsz;
 }
 
-/// By observation, type size 12 = 5;
+/// By observation, type size 12pt = 5, 6pt = 2
 int
 set_min_ring_size(const int sz)
 {
@@ -42,19 +41,19 @@ set_min_ring_size(const int sz)
 }
 
 
-/// The (multiple) used to compute distance between sattelites in high orbit.
+/// The minimum distance between satellites in high orbit.
 double&
-get_satellite_distance_k()
+get_min_satellite_distance()
 {
-  static double k(3.3);
+  static double k(4);
   return k;
 }
 
-/// By observation, 12pt = 3.3, 7pt = 2
+/// By observation, 7pt = 5 minimum
 double
-set_satellite_distance_k(const double kuse)
+set_min_satellite_distance(const double kuse)
 {
-  double& k = get_satellite_distance_k();
+  double& k = get_min_satellite_distance();
   double kold(k);
   k = kuse;
   return kold;
@@ -213,12 +212,19 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
   // Add number of characters of value as string * size of each character.
   glyphr += significant_digits_in(value_max) * char_width_to_px(typo._M_size);
 
-  // If satellitep, draw circle in the default style in low orbit to
+  // If satellitep, draw "leading" circle in the default style in low orbit to
   // hang the rest of the glyphs off of, in high orbit...
   if (satellitep)
-    glyphr += radiate_glyph_and_id(obj, origin, v, value_max, radius, rspace,
-				   rstart + glyphr, "", typo);
+    {
+      glyphr += radiate_glyph_and_id(obj, origin, v, value_max, radius, rspace,
+				     rstart + glyphr, "", typo);
+      // glyphr += rspace;
+    }
 
+  // Radius of satellite orbit.
+  const double ar = rstart + glyphr;
+
+  // Find the satellite radius(kr).
   // Variation based on splay_ids_around center point,
   // where center is point on arc from origin...
   double kr(0);
@@ -227,18 +233,26 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
   else
     kr = get_min_ring_size();
 
-  // glyphr += rspace;
-
-  // Distance betwen id spheres on high-orbit kusama.
+  // Find distance betwen two satellites spheres on high-orbit kusama.
+  // Want equivalent distances between satellites of different value,
+  // so this cannot be strictly a multiple of various radius from v0 to vmax.
   // NB for low values, make sure distance is at least text height away.
-  const double k = get_satellite_distance_k();
-  const double distnce = k * std::max(kr, char_height_to_px(typo._M_size));
+  const double k = get_min_satellite_distance();
+  double distnce = std::max((2 * kr) + k, char_height_to_px(typo._M_size));
+  double anglea = adjust_angle_at_orbit_for_distance(ar, distnce);
+  point_2t p1 = get_circumference_point(angled, kr, origin);
+  point_2t p2 = get_circumference_point(angled + anglea, kr, origin);
+  while (distance_cartesian(p1, p2) < distnce)
+    {
+      distnce += 1.0;
+      anglea = adjust_angle_at_orbit_for_distance(ar, distnce);
+      p1 = get_circumference_point(angled, ar, origin);
+      p2 = get_circumference_point(angled + anglea, ar, origin);
+    }
 
-  const double ar = rstart + glyphr;
-  const double anglea = adjust_angle_at_orbit_for_distance(ar, distnce);
+  // Given final distance and anglea, find start and end angles.
   const double maxdeg = anglea * (ids.size() - 1);
   double angled2 = angled - (maxdeg / 2);
-
   int maxglyphr2(0);
   for (const string& id : ids)
     {
