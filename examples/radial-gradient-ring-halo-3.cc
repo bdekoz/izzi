@@ -18,13 +18,13 @@ test_radial_gradient(svg_element& obj)
   auto [ xd, yd ] = cp;
   const size_type x(xd);
   const size_type y(yd);
-  point_2d_to_ring_halo(obj, make_tuple(x, y + rectw), 60, 0.66, color::blue);
-  point_2d_to_ring_halo(obj, make_tuple(x, y - rectw), 60, 0.66, color::blue);
+  point_to_ring_halo(obj, make_tuple(x, y + rectw), 60, 0.66, color::blue);
+  point_to_ring_halo(obj, make_tuple(x, y - rectw), 60, 0.66, color::blue);
 
-  point_2d_to_ring_halo(obj, make_tuple(x + rectw, y), 80, 0.8, color::gray50);
-  point_2d_to_ring_halo(obj, make_tuple(x - rectw, y), 80, 0.8, color::gray50);
+  point_to_ring_halo(obj, make_tuple(x + rectw, y), 80, 0.8, color::gray50);
+  point_to_ring_halo(obj, make_tuple(x - rectw, y), 80, 0.8, color::gray50);
 
-  point_2d_to_ring_halo(obj, cp, 30, 0.15, color::crimson);
+  point_to_ring_halo(obj, cp, 30, 0.15, color::crimson);
 }
 
 

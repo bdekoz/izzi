@@ -281,18 +281,6 @@ point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
 }
 
 
-/// Center a rectangle at this point.
-void
-point_to_rect_centered(svg_element& obj, const point_2t origin, svg::style s,
-		       int width = 4, int height = 4)
-{
-  auto [ x, y ] = origin;
-  x -= (width / 2);
-  y -= (height / 2);
-  point_2d_to_rect(obj, x, y, s, width, height);
-}
-
-
 /// Point to rectangle blur
 void
 point_2d_to_rect_blur(svg_element& obj, double x, double y, svg::style s,
@@ -310,6 +298,18 @@ point_2d_to_rect_blur(svg_element& obj, double x, double y, svg::style s,
   r.add_filter(filterstr);
   r.finish_element();
   obj.add_element(r);
+}
+
+
+/// Center a rectangle at this point.
+void
+point_to_rect_centered(svg_element& obj, const point_2t origin, svg::style s,
+		       int width = 4, int height = 4)
+{
+  auto [ x, y ] = origin;
+  x -= (width / 2);
+  y -= (height / 2);
+  point_2d_to_rect(obj, x, y, s, width, height);
 }
 
 
@@ -332,16 +332,36 @@ point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
 }
 
 
+/// Draws a circle around a point (x,y), of style (s), of radius (r).
+void
+point_to_circle(svg_element& obj, const point_2t origin, svg::style s,
+		   const int r = 4, const string transform = "")
+{
+  circle_element c;
+  using size_type = svg::size_type;
+  auto [ x, y ] = origin;
+  size_type xi = static_cast<size_type>(std::round(x));
+  size_type yi = static_cast<size_type>(std::round(y));
+  circle_element::data dc = { xi, yi, r };
+
+  c.start_element();
+  c.add_data(dc, transform);
+  c.add_style(s);
+  c.finish_element();
+  obj.add_element(c);
+}
+
+
 /// Draws a ring centered at origin of radius r, with outer and inner
 /// radial gradient of blurspace in each direction.
 /// klr == fade from
 /// fadeklr == fade to. Background is transparent if none.
 void
-point_2d_to_ring_halo(svg_element& obj, const point_2t origin,
-		      const size_type radius, const double blurspace,
-		      const svg::color klr,
-		      const svg::color fadeklr = color::none,
-		      const double opacity = 1)
+point_to_ring_halo(svg_element& obj, const point_2t origin,
+		   const size_type radius, const double blurspace,
+		   const svg::color klr,
+		   const svg::color fadeklr = color::none,
+		   const double opacity = 1)
 {
   auto [ xd, yd ] = origin;
   const size_type x(xd);
@@ -440,8 +460,8 @@ point_2d_to_ray(svg_element& obj, double x, double y, svg::style s,
 
 /// Angle in radians.
 point_2t
-get_circumference_point(const double angler, const double r,
-			const point_2t origin)
+get_circumference_point_r(const double angler, const double r,
+			  const point_2t origin)
 {
   auto [ cx, cy ] = origin;
   double x(cx + (r * std::cos(angler)));
@@ -456,7 +476,7 @@ get_circumference_point_d(const double ad, const double r,
 			  const point_2t origin)
 {
   double angler = (k::pi / 180.0) * ad;
-  return get_circumference_point(angler, r, origin);
+  return get_circumference_point_r(angler, r, origin);
 }
 
 

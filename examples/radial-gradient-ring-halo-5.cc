@@ -19,7 +19,7 @@ test_halo(svg_element& obj)
   point_2t cp = obj.center_point();
   const size_type radius = obj._M_area._M_width / 3;
   const double blurspace = radius * 0.5;
-  point_2d_to_ring_halo(obj, cp, radius, blurspace, color::white, bkgklr);
+  point_to_ring_halo(obj, cp, radius, blurspace, color::white, bkgklr);
 }
 
 

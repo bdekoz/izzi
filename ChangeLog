@@ -1,3 +1,13 @@
+2021-09-18  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-render-basics.h (point_to_circle): New.
+	(point_2d_to_ring_halo): To...
+	(point_to_ring_halo): ...this.
+	* examples/radial-gradient-ring-halo-3.cc: Adjust for above.
+	* examples/radial-gradient-ring-halo-4.cc
+	* examples/radial-gradient-ring-halo-5.cc
+	* examples/svg-embed-2.cc
+
 2021-09-15  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-kusama.h (get_min_satellite_distance): ...to this.
