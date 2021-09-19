@@ -19,8 +19,8 @@ test_arc(std::string ofile)
     {
       auto d = i * 30;
       auto dn = zero_angle_north_ccw(d);
-      auto [ x, y ] = get_circumference_point_d(dn, r, cp);
-      radial_text_ccw(obj, typo, std::to_string(d), x, y, dn);
+      auto p = get_circumference_point_d(dn, r, cp);
+      radial_text_ccw(obj, std::to_string(d), typo, p, dn);
     }
 
   // Put in 0/180 and 90/270 guides.

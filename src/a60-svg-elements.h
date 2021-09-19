@@ -477,6 +477,8 @@ void
 text_element::finish_element()
 { _M_sstream  << "</text>" << k::newline; }
 
+
+/// Make text span.
 string
 make_tspan_y_from_string_by_token(string s, uint xpos, const char token = ' ')
 {

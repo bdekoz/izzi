@@ -22,7 +22,7 @@ test_arc(std::string ofile)
   for (uint i = 0; i < 12; ++i)
     {
       auto d = i * 30;
-      radial_text_r(obj, typo, std::to_string(d), r1, cp, d);
+      radial_text_r(obj, std::to_string(d), typo, r1, cp, d);
     }
 
   // Middle radial
@@ -32,7 +32,7 @@ test_arc(std::string ofile)
   for (uint i = 0; i < 12; ++i)
     {
       auto d = i * 30;
-      radial_text_r(obj, typo, std::to_string(d), r2, cp, d);
+      radial_text_r(obj, std::to_string(d), typo, r2, cp, d);
     }
 
   // Outer radial
@@ -42,7 +42,7 @@ test_arc(std::string ofile)
   for (uint i = 0; i < 12; ++i)
     {
       auto d = i * 30;
-      radial_text_r(obj, typo, std::to_string(d), r3, cp, d);
+      radial_text_r(obj, std::to_string(d), typo, r3, cp, d);
     }
 
 

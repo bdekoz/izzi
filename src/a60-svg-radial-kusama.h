@@ -50,6 +50,7 @@ get_min_satellite_distance()
 }
 
 /// By observation, 7pt = 5 minimum
+/// NB: Make sure distance is at least text height away for lowest values.
 double
 set_min_satellite_distance(const double kuse)
 {
@@ -83,7 +84,7 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
   int glyphr = rbase + linelen + rspace;
   typography typob(typo);
   typob._M_w = typography::weight::bold;
-  radial_text_r(obj, typob, std::to_string(v), glyphr, origin, angled);
+  radial_text_r(obj, std::to_string(v), typob, glyphr, origin, angled);
   return glyphr - rstart;
 }
 
@@ -131,8 +132,7 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
     {
       const int vr = rstart + rspace + kra;
       point_2t p = get_circumference_point_d(angleda, vr, origin);
-      auto [ x, y ] = p;
-      point_2d_to_circle(obj, x, y, idst.styl, kra);
+      point_to_circle(obj, p, idst.styl, kra);
       glyphr += rspace + (2 * kra);
     }
 
@@ -173,7 +173,7 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
   if (idst.is_visible(svg::k::select::text) && !id.empty())
     {
       const int idr = rstart + glyphr + rspace;
-      radial_text_r(obj, typo, id, idr, origin, angled);
+      radial_text_r(obj, id, typo, idr, origin, angled);
 
       // NB: This is only an estimate of the text block size.
       // Should be getComputedTextLength
@@ -218,7 +218,7 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
     {
       glyphr += radiate_glyph_and_id(obj, origin, v, value_max, radius, rspace,
 				     rstart + glyphr, "", typo);
-      // glyphr += rspace;
+      glyphr += rspace;
     }
 
   // Radius of satellite orbit.
@@ -234,23 +234,15 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
     kr = get_min_ring_size();
 
   // Find distance betwen two satellites spheres on high-orbit kusama.
-  // Want equivalent distances between satellites of different value,
+  // Want equivalent distances between satellites of different radius (values),
   // so this cannot be strictly a multiple of various radius from v0 to vmax.
-  // NB for low values, make sure distance is at least text height away.
+  // NB: For lowest values, make sure distance is at least text height away.
   const double k = get_min_satellite_distance();
-  double distnce = std::max((2 * kr) + k, char_height_to_px(typo._M_size));
-  double anglea = adjust_angle_at_orbit_for_distance(ar, distnce);
-  point_2t p1 = get_circumference_point(angled, kr, origin);
-  point_2t p2 = get_circumference_point(angled + anglea, kr, origin);
-  while (distance_cartesian(p1, p2) < distnce)
-    {
-      distnce += 1.0;
-      anglea = adjust_angle_at_orbit_for_distance(ar, distnce);
-      p1 = get_circumference_point(angled, ar, origin);
-      p2 = get_circumference_point(angled + anglea, ar, origin);
-    }
+  const double distnce = k + (kr * 2);
+  const double sr = ar + rspace + kr;
+  const double anglea = adjust_angle_at_orbit_for_distance(sr, distnce);
 
-  // Given final distance and anglea, find start and end angles.
+  // Given distance and anglea, find start and end angles.
   const double maxdeg = anglea * (ids.size() - 1);
   double angled2 = angled - (maxdeg / 2);
   int maxglyphr2(0);
@@ -258,20 +250,28 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
     {
       int glyphr2(0);
       const id_render_state idst = get_id_render_state(id);
+
       if (idst.is_visible(svg::k::select::glyph))
-	{
-	  glyphr2 = radiate_glyph(obj, origin, angled2, idst, kr, rspace,
-				  rstart + glyphr);
-	}
+	glyphr2 = radiate_glyph(obj, origin, angled2, idst, kr, rspace, ar);
 
       if (idst.is_visible(svg::k::select::text) && !id.empty())
 	{
-	  const int idr = rstart + glyphr + glyphr2 + rspace;
-	  radial_text_r(obj, typo, id, idr, origin, angled2);
+	  const int idr = ar + glyphr2 + rspace;
+	  radial_text_r(obj, id, typo, idr, origin, angled2);
 
 	  // NB: This is only an estimate of the text block size.
 	  // Should be getComputedTextLength
 	  glyphr2 += id.size() * char_width_to_px(typo._M_size);
+	}
+
+      constexpr bool debugp = false;
+      if (debugp)
+	{
+	  const int r4 = 200;
+	  const style rstyl = { color::red, 1.0, color::red, 1.0, 0.5 };
+	  const double delta = adjust_angle_rotation(angled2, k::rrotation::cw);
+	  const point_2t pdbg = get_circumference_point_d(delta, r4, origin);
+	  points_to_line(obj, rstyl, origin, pdbg);
 	}
 
       // Advance and bookkeeping for the next round.
@@ -311,6 +311,16 @@ kusama_ids_orbit_low(svg_element& obj, const point_2t origin, const strings& ids
 
       glyphr += radiate_glyph_and_id(obj, origin, v, value_max, radius, rspace,
 				     rstart + glyphr, ids.front(), typo);
+
+      constexpr bool debugp = false;
+      if (debugp)
+	{
+	  const int r4 = 200;
+	  const style rstyl = { color::blue, 1.0, color::blue, 1.0, 0.5 };
+	  const double delta = adjust_angle_rotation(angled, k::rrotation::cw);
+	  const point_2t pdbg = get_circumference_point_d(delta, r4, origin);
+	  points_to_line(obj, rstyl, origin, pdbg);
+	}
     }
   else
     {

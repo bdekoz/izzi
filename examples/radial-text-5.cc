@@ -18,7 +18,7 @@ test_arc(std::string ofile)
   for (uint i = 0; i < 12; ++i)
     {
       auto d = i * 30;
-      radial_text_r(obj, typo, std::to_string(d), r, cp, d);
+      radial_text_r(obj, std::to_string(d), typo, r, cp, d);
     }
 
   // Put in 0/180 and 90/270 guides.

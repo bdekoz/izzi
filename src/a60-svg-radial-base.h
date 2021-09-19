@@ -98,11 +98,15 @@ adjust_angle_rotation(const double dorig, const k::rrotation rot)
 
 
 /**
-   Circumference adjustment such that text/object of height distance
-   is centered on arc from origin to kusama high-orbit glyphs.
+   Angle adjustment such that two points on the circumference path of
+   radius r from origin are a minimum of @distance apart.
+
+   NB: If it cannot be computed directly, returns a minimum adjustment
+   angle that defaults to 0.25 degrees.
 */
-constexpr double
-adjust_angle_at_orbit_for_distance(double r, double distance)
+inline double
+adjust_angle_at_orbit_for_distance(double r, double dist,
+				   const double minadjust = 0.25)
 {
   // Angle between sequential id's.
   //
@@ -112,10 +116,26 @@ adjust_angle_at_orbit_for_distance(double r, double distance)
   // distance is the cartesian distance between p and pprime
   //
   // then
-  // dprime = 2 * theta, where theta from sin(theta) = (rspace / 2) / r.
-  double angleprime = std::asin((distance / 2) / r);
-  double angleprimed = angleprime * (180 / k::pi);
-  return angleprimed;
+  // distance = 2 * theta, where theta from sin(theta) = (rspace / 2) / r.
+  double angle(minadjust);
+  const double arg((dist / 2) / r);
+  if (arg < 1.0)
+    {
+      double angler = std::asin(arg);
+      angle = angler * (180.0 / k::pi);
+    }
+
+  // Verify and iterate, if it could not be computed above.
+  const point_2t origin(0, 0);
+  const point_2t p1 = get_circumference_point_d(0, r, origin);
+  point_2t p2 = get_circumference_point_d(0 + angle, r, origin);
+  while (distance_cartesian(p1, p2) < dist)
+    {
+      angle += minadjust;
+      p2 = get_circumference_point_d(0 + angle, r, origin);
+    }
+
+  return angle;
 }
 
 
@@ -179,35 +199,53 @@ sort_strings_by_size(strings& ids)
 
 /// Text with typography, arranged cw around points (x,y) on a circle.
 void
-radial_text_cw(svg_element& obj, const typography& typo,
-	       string text, int tx, int ty, const double deg = 0.0)
+radial_text_cw(svg_element& obj, string text, const typography& typo,
+		const point_2t origin, const double deg)
 {
   typography typot(typo);
   typot._M_anchor = svg::typography::anchor::start;
   typot._M_align = svg::typography::align::left;
   typot._M_baseline = svg::typography::baseline::central;
-
-  if (deg > 0)
-    sized_text_r(obj, typot, typot._M_size, text, tx, ty, 360 - deg);
-  else
-    sized_text(obj, typot, typot._M_size, text, tx, ty);
+  styled_text_r(obj, text, origin, typot, 360 - deg);
 }
 
 
 /// Text with typography, arranged ccw around points (x,y) on a circle.
 void
-radial_text_ccw(svg_element& obj, const typography& typo,
-		string text, int tx, int ty, const double deg = 0.0)
+radial_text_ccw(svg_element& obj, string text, const typography& typo,
+		const point_2t origin, const double deg)
 {
   typography typot(typo);
   typot._M_anchor = svg::typography::anchor::end;
   typot._M_align = svg::typography::align::right;
   typot._M_baseline = svg::typography::baseline::central;
+  styled_text_r(obj, text, origin, typot, 360 - deg + 180);
+}
 
-  if (deg > 0)
-    sized_text_r(obj, typot, typot._M_size, text, tx, ty, 360 - deg + 180);
-  else
-    sized_text(obj, typot, typot._M_size, text, tx, ty);
+
+/// Text with typography, arranged cw around points (x,y) on a circle.
+void
+radial_text_cw(svg_element& obj, string text, const typography& typo,
+		const point_2t origin, const double deg, const point_2t rorigin)
+{
+  typography typot(typo);
+  typot._M_anchor = svg::typography::anchor::start;
+  typot._M_align = svg::typography::align::left;
+  typot._M_baseline = svg::typography::baseline::central;
+  styled_text_r(obj, text, origin, typot, 360 - deg, rorigin);
+}
+
+
+/// Text with typography, arranged ccw around points (x,y) on a circle.
+void
+radial_text_ccw(svg_element& obj, string text, const typography& typo,
+		const point_2t origin, const double deg, const point_2t rorigin)
+{
+  typography typot(typo);
+  typot._M_anchor = svg::typography::anchor::end;
+  typot._M_align = svg::typography::align::right;
+  typot._M_baseline = svg::typography::baseline::central;
+  styled_text_r(obj, text, origin, typot, 360 - deg + 180, rorigin);
 }
 
 
@@ -221,18 +259,23 @@ radial_text_ccw(svg_element& obj, const typography& typo,
    Text is aligh right CCW (181, 359)
 
    NB: Assume value is un-adjusted, aka from get_angle
+
+   roriginp is a switch to use a render origin, not the text position,
+   as the rotation origin.
 */
 void
-radial_text_r(svg_element& obj, const typography& typo, string text,
-	      const int r, const point_2t origin, const double deg = 0.0)
+radial_text_r(svg_element& obj, string text, const typography& typo,
+	      const int r, const point_2t origin, const double deg,
+	      const bool roriginp = false)
 {
-  const double angletextoffset = 0;
   if (deg <= 180)
     {
       auto dcw = zero_angle_north_cw(deg);
-      dcw -= angletextoffset;
-      auto [ x, y ] = get_circumference_point_d(dcw, r, origin);
-      radial_text_cw(obj, typo, text, x, y, dcw);
+      const point_2t p = get_circumference_point_d(dcw, r, origin);
+      if (!roriginp)
+	radial_text_cw(obj, text, typo, p, dcw);
+      else
+	radial_text_cw(obj, text, typo, p, dcw, origin);
     }
   else
     {
@@ -249,9 +292,11 @@ radial_text_r(svg_element& obj, const typography& typo, string text,
 
       auto dp = deg - 180;
       auto dccw = zero_angle_north_ccw(180 - dp);
-      dccw += angletextoffset;
-      auto [ x, y ] = get_circumference_point_d(dccw, r, origin);
-      radial_text_ccw(obj, typo, text, x, y, dccw);
+      const point_2t p = get_circumference_point_d(dccw, r, origin);
+      if (!roriginp)
+	radial_text_ccw(obj, text, typo, p, dccw);
+      else
+	radial_text_ccw(obj, text, typo, p, dccw, origin);
     }
 }
 
@@ -291,7 +336,7 @@ splay_ids_around(svg_element& obj, const typography& typo,
 	  point_2d_to_circle(obj, x, y, rstyl, rring);
 	}
 
-      radial_text_r(obj, typo, s, rprime, origin, angled2);
+      radial_text_r(obj, s, typo, rprime, origin, angled2);
       angled2 += angleprimed;
     }
 }
@@ -307,7 +352,7 @@ splay_ids_after(svg_element& obj, const typography& typo,
   double angled(angledo);
   for (const string& s: ids)
     {
-      radial_text_r(obj, typo, s, r + rspace, origin, angled);
+      radial_text_r(obj, s, typo, r + rspace, origin, angled);
       angled -= angledelta;
     }
 }
@@ -347,7 +392,7 @@ stack_ids_at(svg_element& obj, const typography& typoo,
   for (const string& s: ids)
     {
       // XXX used to be angled + 90
-      radial_text_r(obj, typo, s, r, origin, angled);
+      radial_text_r(obj, s, typo, r, origin, angled);
       r += rdelta;
     }
 }
@@ -367,8 +412,7 @@ append_ids_at(svg_element& obj, const typography& typo,
 	scat += ", ";
       scat += s;
     }
-
-  radial_text_r(obj, typo, scat, r, origin, angled);
+  radial_text_r(obj, scat, typo, r, origin, angled);
 }
 
 } // namespace svg

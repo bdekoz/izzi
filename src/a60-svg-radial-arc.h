@@ -85,9 +85,9 @@ radiate_id_at_value(svg_element& obj, const point_2t origin,
   const double angled = get_angle(pvalue, pmax);
   string label = make_label_for_value(pname, pvalue, get_label_spaces());
   if (rotatep)
-    radial_text_r(obj, typo, label, r, origin, angled);
+    radial_text_r(obj, label, typo, r, origin, angled);
   else
-    radial_text_r(obj, typo, label, r, origin, 0);
+    radial_text_r(obj, label, typo, r, origin, 0);
 }
 
 
@@ -139,7 +139,7 @@ radiate_ids_at_uvalue(svg_element& obj, const point_2t origin,
 
   // Consolidate label text to be "VALUE -> " with labelspaces spaces.
   string label = make_label_for_value("", pvalue, get_label_spaces());
-  radial_text_r(obj, typo, label, r, origin, angled);
+  radial_text_r(obj, label, typo, r, origin, angled);
 
   // Next, print out the various id's on an arc with a bigger radius.
   //splay_ids_around(obj, typo, ids, angled, origin, r + rspace, rspace);

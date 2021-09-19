@@ -18,8 +18,8 @@ test_arc(std::string ofile)
   for (uint i = 0; i < 12; ++i)
     {
       auto d = i * 30;
-      auto [ x, y ] = get_circumference_point_d(d, r, cp);
-      radial_text_cw(obj, typo, std::to_string(d), x, y, d);
+      auto p = get_circumference_point_d(d, r, cp);
+      radial_text_cw(obj, std::to_string(d), typo, p, d);
     }
 }
 

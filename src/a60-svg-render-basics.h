@@ -121,7 +121,24 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
 }
 
 
-/// Text at @origin, with style and a transformation=rotation of @deg about @rorigin.
+/// Text at @origin, with style and ...
+///  a transformation=rotation of @deg about @rorigin.
+void
+styled_text_r(svg_element& obj, const string text, const point_2t origin,
+	      svg::typography typo, const double deg)
+{
+  auto [ x, y ] = origin;
+  text_element::data dt = { size_type(x), size_type(y), text, typo };
+  text_element t;
+  t.start_element();
+  t.add_data(dt, svg::transform::rotate(deg, x, y));
+  t.finish_element();
+  obj.add_element(t);
+}
+
+
+/// Text at @origin, with style and ...
+///  a transformation=rotation of @deg about @rorigin.
 void
 styled_text_r(svg_element& obj, const string text, const point_2t origin,
 	      svg::typography typo, const double deg, const point_2t rorigin)
@@ -253,7 +270,8 @@ points_to_line(svg_element& obj, const svg::style s,
   auto [ xo, yo ] = origin;
   auto [ xe, ye ] = end;
   line_element l;
-  line_element::data dr = { int(xo), int(xe), int(yo), int(ye) };
+  line_element::data dr = { size_type(xo), size_type(xe),
+                            size_type(yo), size_type(ye) };
   l.start_element();
   l.add_data(dr, dasharray);
   l.add_style(s);

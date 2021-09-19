@@ -27,12 +27,12 @@ namespace svg::constants {
 constexpr area<> no_area = { 0, 0 };
 
 /// Area Constants in millimeter units.
-constexpr area<float> letter_mm_h = { 216, 279 };
+constexpr area<> letter_mm_h = { 216, 279 };
 
-constexpr area<float> a2_mm_h = { 420, 594 };
-constexpr area<float> a4_mm_h = { 210, 297 };
-constexpr area<float> a5_mm_h = { 148, 210 };
-constexpr area<float> a6_mm_h = { 105, 148 };
+constexpr area<> a2_mm_h = { 420, 594 };
+constexpr area<> a4_mm_h = { 210, 297 };
+constexpr area<> a5_mm_h = { 148, 210 };
+constexpr area<> a6_mm_h = { 105, 148 };
 
 /// Area Constants in pixel units.
 /// Pixel constants are using 96 PPI unless otherwise noted.

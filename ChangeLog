@@ -1,3 +1,26 @@
+2021-09-19  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-constants.h: Remove explicit area template argument.
+	* src/a60-svg-elements.h: Add doxygen comment.
+	* src/a60-svg-radial-arc.h: Update for radial_text_r changes.
+	* src/a60-svg-radial-base.h (adjust_angle_at_orbit_for_distance):
+	Rewrite for iteration if not on asin domain.
+	(radial_text_cw, radial_text_ccw): Use point_2t arguments,
+	styled_text_r. Add rorigin overloads.
+	(radial_text_r): Add roriginp parameter. Update other callers.
+	* src/a60-svg-radial-kusama.h: Update.
+	(kusama_ids_orbit_high): Add debug marks.
+	(kusama_ids_orbit_low): Add debug marks.
+	* src/a60-svg-render-basics.h (styled_text_r): Add overloads.
+
+	Fix up for above.
+	* examples/radial-text-1.cc
+	* examples/radial-text-2.cc
+	* examples/radial-text-3.cc
+	* examples/radial-text-4.cc
+	* examples/radial-text-5.cc
+	* examples/radial-text-6.cc
+
 2021-09-18  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-render-basics.h (point_to_circle): New.
