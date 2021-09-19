@@ -106,7 +106,7 @@ make_2_channel_insert(svg_element& obj, string insert1, string insert2)
 }
 
 
-/// Text at @origin, with a transformation=rotation of @deg about @origin add  .
+/// Text at @origin, with style.
 void
 styled_text(svg_element& obj, const string text, const point_2t origin,
 	    svg::typography typo)
@@ -121,7 +121,7 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
 }
 
 
-/// Text at @origin, with a transformation=rotation of @deg about @origin add  .
+/// Text at @origin, with style and a transformation=rotation of @deg about @rorigin.
 void
 styled_text_r(svg_element& obj, const string text, const point_2t origin,
 	      svg::typography typo, const double deg, const point_2t rorigin)
