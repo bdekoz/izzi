@@ -476,7 +476,8 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			     const typography& typo, const id_value_umap& ivm,
 			     const size_type value_max, const int radius,
 			     const int rspace, const bool weighbyvaluep = true,
-			     const bool collisionp = false)
+			     const bool collisionp = false,
+			     const bool sortstringsbysizep = false)
 {
   // Convert from string id-keys to int value-keys, plus an ordered
   // set of all the unique values.
@@ -502,7 +503,8 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
       strings ids;
       for (auto i = ibegin; i != iend; ++i)
 	ids.push_back(i->second);
-      sort_strings_by_size(ids);
+      if (sortstringsbysizep)
+	sort_strings_by_size(ids);
       vids.push_back(ids);
     }
 
