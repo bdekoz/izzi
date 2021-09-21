@@ -92,8 +92,8 @@ direction_arc_at(svg_element& obj, const point_2t origin,
 /// Title on same arc.
 void
 direction_arc_title_at(svg_element& obj, const point_2t origin,
-		       const int radius, svg::style s,
-		       const string title)
+		       const int radius, const typography typo,
+		       const string title, const uint pcnt = 30)
 {
   // Make arc text path
   const auto [ mindeg, maxdeg ] = get_radial_range();
@@ -110,19 +110,13 @@ direction_arc_title_at(svg_element& obj, const point_2t origin,
   path_element::data da = { titlearc, 0 };
   parc.start_element(arc_name);
   parc.add_data(da);
-  parc.add_style(s);
+  parc.add_style(typo._M_style);
   parc.finish_element();
   obj.add_element(parc);
 
-  // Make label text and style it.
-  typography typo = k::apercu_typo;
-  typo._M_size = 10;
-  typo._M_anchor = typography::anchor::start;
-  typo._M_align = typography::align::left;
-
   // Put it together.
   text_element::data dt = { 0, 0, title, typo };
-  text_path_element tp(arc_name, "30%");
+  text_path_element tp(arc_name, std::to_string(pcnt) + "%");
   tp.start_element();
   tp.add_data(dt);
   tp.finish_element();
