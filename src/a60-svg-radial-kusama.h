@@ -505,6 +505,8 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 	ids.push_back(i->second);
       if (sortstringsbysizep)
 	sort_strings_by_size(ids);
+      else
+	sort(ids.begin(), ids.end());
       vids.push_back(ids);
     }
 
