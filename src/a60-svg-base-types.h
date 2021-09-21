@@ -77,14 +77,14 @@ to_string(const unit e)
 
    SVG coordinate system is (0,0) is top leftmost.
 */
-template<typename T1 = svg::size_type>
+template<typename T1 = svg::space_type>
 struct area
 {
-  using size_type = T1;
+  using atype = T1;
   using unit = svg::unit;
 
-  size_type		_M_width;
-  size_type		_M_height;
+  atype			_M_width;
+  atype			_M_height;
 
   /// Given @rdenom scaling factor and SVG canvas area by @obj,
   /// compute max effective segment size given number of segments @rdenom.

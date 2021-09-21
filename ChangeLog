@@ -1,3 +1,12 @@
+2021-09-20  Benjamin De Kosnik  <bkoz@rizal>
+
+	Convert to floating point canvas.
+	* src/a60-svg-base-types.h (area): Define atype as underlying
+	area type.
+	* src/a60-svg-elements.h (element_base): And here.
+	* src/a60-svg-radial-kusama.h: Remove rounding and casting.
+	* src/a60-svg-render-basics.h: Same.
+
 2021-09-19  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-constants.h: Remove explicit area template argument.

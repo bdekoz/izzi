@@ -57,7 +57,8 @@ normalize_value_on_range(const size_type value, const size_type min,
 
 /// Take input size and make a one channel (single-image) SVG form.
 svg_element
-make_svg_1_channel(const int deltax, const int deltay, const string& outbase)
+make_svg_1_channel(const space_type deltax, const space_type deltay,
+		   const string& outbase)
 {
   using namespace svg;
   area<> a = { deltax, deltay };
@@ -79,7 +80,8 @@ make_1_channel_insert(svg_element& obj, string insert1)
 
 /// Take input size and make a two channel (single-image) SVG form.
 svg_element
-make_svg_2_channel(const int deltax, const int deltay, const string& outbase)
+make_svg_2_channel(const space_type deltax, const space_type deltay,
+		   const string& outbase)
 {
   using namespace svg;
   area<> a = { 2 * deltax, deltay };
@@ -111,8 +113,9 @@ void
 styled_text(svg_element& obj, const string text, const point_2t origin,
 	    svg::typography typo)
 {
+  using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
-  text_element::data dt = { size_type(x), size_type(y), text, typo };
+  text_element::data dt = { atype(x), atype(y), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt);
@@ -127,8 +130,9 @@ void
 styled_text_r(svg_element& obj, const string text, const point_2t origin,
 	      svg::typography typo, const double deg)
 {
+  using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
-  text_element::data dt = { size_type(x), size_type(y), text, typo };
+  text_element::data dt = { atype(x), atype(y), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt, svg::transform::rotate(deg, x, y));
@@ -143,9 +147,10 @@ void
 styled_text_r(svg_element& obj, const string text, const point_2t origin,
 	      svg::typography typo, const double deg, const point_2t rorigin)
 {
+  using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
   auto [ rx, ry ] = rorigin;
-  text_element::data dt = { size_type(x), size_type(y), text, typo };
+  text_element::data dt = { atype(x), atype(y), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt, svg::transform::rotate(deg, rx, ry));
@@ -159,8 +164,9 @@ void
 sized_text(svg_element& obj, svg::typography typo, const int sz,
 	   const string text, const int tx, const int ty)
 {
+  using atype = decltype(obj._M_area)::atype;
   typo._M_size = sz;
-  text_element::data dt = { tx, ty, text, typo };
+  text_element::data dt = { atype(tx), atype(ty), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt);
@@ -174,8 +180,9 @@ void
 sized_text_r(svg_element& obj, svg::typography typo, const int sz,
 	     const string text, const int tx, const int ty, const double deg)
 {
+  using atype = decltype(obj._M_area)::atype;
   typo._M_size = sz;
-  text_element::data dt = { tx, ty, text, typo };
+  text_element::data dt = { atype(tx), atype(ty), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt, svg::transform::rotate(deg, tx, ty));
@@ -267,11 +274,11 @@ points_to_line(svg_element& obj, const svg::style s,
 	       const point_2t origin, const point_2t end,
 	       const string dasharray = "")
 {
+  using atype = decltype(obj._M_area)::atype;
   auto [ xo, yo ] = origin;
   auto [ xe, ye ] = end;
   line_element l;
-  line_element::data dr = { size_type(xo), size_type(xe),
-                            size_type(yo), size_type(ye) };
+  line_element::data dr = { atype(xo), atype(xe), atype(yo), atype(ye) };
   l.start_element();
   l.add_data(dr, dasharray);
   l.add_style(s);
@@ -285,12 +292,9 @@ void
 point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
 		 int width = 4, int height = 4)
 {
+  using atype = decltype(obj._M_area)::atype;
   rect_element r;
-  using size_type = svg::size_type;
-  size_type xi = static_cast<size_type>(std::round(x));
-  size_type yi = static_cast<size_type>(std::round(y));
-  rect_element::data dr = { xi, yi, width, height };
-
+  rect_element::data dr = { atype(x), atype(y), width, height };
   r.start_element();
   r.add_data(dr);
   r.add_style(s);
@@ -304,11 +308,10 @@ void
 point_2d_to_rect_blur(svg_element& obj, double x, double y, svg::style s,
 		      string filterstr, int width = 4, int height = 4)
 {
+  using atype = decltype(obj._M_area)::atype;
+
   rect_element r;
-  using size_type = svg::size_type;
-  size_type xi = static_cast<size_type>(std::round(x));
-  size_type yi = static_cast<size_type>(std::round(y));
-  rect_element::data dr = { xi, yi, width, height };
+  rect_element::data dr = { atype(x), atype(y), width, height };
 
   r.start_element();
   r.add_data(dr);
@@ -334,14 +337,12 @@ point_to_rect_centered(svg_element& obj, const point_2t origin, svg::style s,
 /// Draws a circle around a point (x,y), of style (s), of radius (r).
 void
 point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
-		   const int r = 4, const string transform = "")
+		   const space_type r = 4, const string transform = "")
 {
+  using atype = decltype(obj._M_area)::atype;
   circle_element c;
-  using size_type = svg::size_type;
-  size_type xi = static_cast<size_type>(std::round(x));
-  size_type yi = static_cast<size_type>(std::round(y));
-  circle_element::data dc = { xi, yi, r };
-
+  using atype = decltype(obj._M_area)::atype;
+  circle_element::data dc = { atype(x), atype(y), r };
   c.start_element();
   c.add_data(dc, transform);
   c.add_style(s);
@@ -353,15 +354,12 @@ point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
 /// Draws a circle around a point (x,y), of style (s), of radius (r).
 void
 point_to_circle(svg_element& obj, const point_2t origin, svg::style s,
-		   const int r = 4, const string transform = "")
+		   const space_type r = 4, const string transform = "")
 {
+  using atype = decltype(obj._M_area)::atype;
   circle_element c;
-  using size_type = svg::size_type;
   auto [ x, y ] = origin;
-  size_type xi = static_cast<size_type>(std::round(x));
-  size_type yi = static_cast<size_type>(std::round(y));
-  circle_element::data dc = { xi, yi, r };
-
+  circle_element::data dc = { atype(x), atype(y), r };
   c.start_element();
   c.add_data(dc, transform);
   c.add_style(s);
@@ -376,14 +374,16 @@ point_to_circle(svg_element& obj, const point_2t origin, svg::style s,
 /// fadeklr == fade to. Background is transparent if none.
 void
 point_to_ring_halo(svg_element& obj, const point_2t origin,
-		   const size_type radius, const double blurspace,
+		   const space_type radius, const double blurspace,
 		   const svg::color klr,
 		   const svg::color fadeklr = color::none,
 		   const double opacity = 1)
 {
+  using atype = decltype(obj._M_area)::atype;
+
   auto [ xd, yd ] = origin;
-  const size_type x(xd);
-  const size_type y(yd);
+  const atype x(xd);
+  const atype y(yd);
 
   // outer ring == upper bound, radius + variance.
   const double oring = radius + blurspace;
@@ -412,7 +412,7 @@ point_to_ring_halo(svg_element& obj, const point_2t origin,
   obj.add_element(rgrado);
 
   circle_element co;
-  circle_element::data dco = { x, y, static_cast<size_type>(oring) };
+  circle_element::data dco = { x, y, atype(oring) };
   co.start_element();
   co.add_data(dco);
   co.add_fill(rgrado_name);
@@ -444,12 +444,9 @@ point_to_ring_halo(svg_element& obj, const point_2t origin,
 /// Lines radiating from center point (x,y).
 void
 point_2d_to_ray(svg_element& obj, double x, double y, svg::style s,
-		int r = 4, const uint nrays = 10)
+		space_type r = 4, const uint nrays = 10)
 {
-  using size_type = svg::size_type;
-
-  size_type xi = static_cast<size_type>(std::round(x));
-  size_type yi = static_cast<size_type>(std::round(y));
+  using atype = decltype(obj._M_area)::atype;
 
   // End points on the ray.
   // Pick a random ray, use an angle in the range [0, 2pi].
@@ -462,10 +459,10 @@ point_2d_to_ray(svg_element& obj, double x, double y, svg::style s,
       double theta = distr(rg);
       double rvary = disti(rg);
 
-      size_type xe = xi + (r + rvary) * std::cos(theta);
-      size_type ye = yi + (r + rvary) * std::sin(theta);
+      atype xe = x + (r + rvary) * std::cos(theta);
+      atype ye = y + (r + rvary) * std::sin(theta);
 
-      line_element::data dr = { xi, xe, yi, ye };
+      line_element::data dr = { atype(x), xe, atype(y), ye };
       line_element ray;
       ray.start_element();
       ray.add_data(dr);
@@ -530,10 +527,12 @@ place_ray_at_angle(svg_element& obj, const point_2t& origin,
 		   const point_2t& circump, const style& s,
 		   const string id = "")
 {
+  using atype = decltype(obj._M_area)::atype;
+
   auto [xo, yo] = origin;
   auto [xc, yc] = circump;
 
-  line_element::data dr = { int(xo), int(xc), int(yo), int(yc) };
+  line_element::data dr = { atype(xo), atype(xc), atype(yo), atype(yc) };
   line_element ray;
 
   if (id.empty())
@@ -551,7 +550,7 @@ place_ray_at_angle(svg_element& obj, const point_2t& origin,
 /// Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin)
 string
 make_path_arc_circumference(const point_2t& start, const point_2t& end,
-			    const int r, const int arcflag = 0,
+			    const space_type r, const int arcflag = 0,
 			    const int sweepflag = 1)
 {
   // Define arc.
@@ -570,7 +569,7 @@ make_path_arc_circumference(const point_2t& start, const point_2t& end,
 /// Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin)
 string
 make_path_arc_closed(const point_2t& origin, const point_2t& start,
-		     const point_2t& end, const int r,
+		     const point_2t& end, const space_type r,
 		     const int arcflag = 0, const int sweepflag = 0)
 {
   // Define path as starting at origin, line to circumference point start,
@@ -596,7 +595,7 @@ make_path_arc_closed(const point_2t& origin, const point_2t& start,
 /// NB: Assumes appropriate zero_angle_north_cw/ccw adjustments on startd/endd.
 string
 make_path_arc_closed(const point_2t& origin, const double startd,
-		     const double endd, const int r,
+		     const double endd, const space_type r,
 		     const int arcflag = 0, const int sweepflag = 0)
 {
   const point_2t start = get_circumference_point_d(startd, r, origin);

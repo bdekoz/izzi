@@ -29,6 +29,10 @@ struct element_base
 {
   using stream_type = std::ostringstream;
 
+  // Underlying units for 2D (x,y) mapping (same as area::atype).
+  using atype = space_type; // ... floating point cartesian points
+  //using atype = size_type; // ... integer cartesian points
+
   /// Virtual, only one buffer.
   stream_type		_M_sstream;
 
@@ -387,8 +391,8 @@ struct text_element : virtual public element_base
 {
   struct data
   {
-    size_type		_M_x_origin;
-    size_type		_M_y_origin;
+    atype		_M_x_origin;
+    atype		_M_y_origin;
     string		_M_text;
     typography		_M_typo;
   };
@@ -514,8 +518,8 @@ struct rect_element : virtual public element_base
 {
   struct data
   {
-    size_type		_M_x_origin;
-    size_type		_M_y_origin;
+    atype		_M_x_origin;
+    atype		_M_y_origin;
     size_type		_M_width;
     size_type		_M_height;
   };
@@ -568,10 +572,10 @@ struct image_element : virtual public element_base
   struct data
   {
     string		_M_xref;
-    size_type		_M_x_origin;
-    size_type		_M_y_origin;
-    size_type		_M_width;
-    size_type		_M_height;
+    atype		_M_x_origin;
+    atype		_M_y_origin;
+    atype		_M_width;
+    atype		_M_height;
   };
 
   /// Either serialize immediately (as below), or create data structure
@@ -623,9 +627,9 @@ struct circle_element : virtual public element_base
 {
   struct data
   {
-    size_type		_M_x_origin;
-    size_type		_M_y_origin;
-    size_type		_M_radius;
+    atype		_M_x_origin;
+    atype		_M_y_origin;
+    atype		_M_radius;
   };
 
   // Either serialize immediately (as below), or create data structure
@@ -672,10 +676,10 @@ struct line_element : virtual public element_base
 {
   struct data
   {
-    size_type		_M_x_begin;
-    size_type		_M_x_end;
-    size_type		_M_y_begin;
-    size_type		_M_y_end;
+    atype		_M_x_begin;
+    atype		_M_x_end;
+    atype		_M_y_begin;
+    atype		_M_y_end;
   };
 
   // Either serialize immediately (as below), or create data structure
@@ -738,7 +742,7 @@ struct path_element : virtual public defs_element
   struct data
   {
     string		_M_d;
-    size_type		_M_length;
+    atype		_M_length;
   };
 
   // Put in defs section, making it not drawn but still usefule for text_path.
@@ -840,7 +844,7 @@ struct text_path_element : virtual public text_element
 */
 struct svg_element : virtual public element_base
 {
-  using area = svg::area<>;
+  using area = svg::area<atype>;
 
   const string		_M_name;
   const area		_M_area;
