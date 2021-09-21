@@ -18,8 +18,8 @@ test_radial_gradient(std::string ofile)
 
   point_2t cp = obj.center_point();
   auto [ xd, yd ] = cp;
-  const size_type x(xd);
-  const size_type y(yd);
+  const area<>::atype x(xd);
+  const area<>::atype y(yd);
 
   const auto height = 25;
   const auto width = 50;

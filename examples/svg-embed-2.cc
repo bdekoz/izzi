@@ -18,7 +18,7 @@ test_halo_insert(svg_element& obj)
 
   const point_2t cp = obj.center_point();
 
-  auto len = 100;
+  area<>::atype len = 100;
   area<> destarea = { len, len };
   svg_element nobj("nested-halo", destarea, false);
   nobj.start_element(cp, destarea);

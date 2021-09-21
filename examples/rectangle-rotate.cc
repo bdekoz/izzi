@@ -8,6 +8,7 @@ test_rectangles(std::string ofile)
 {
   using namespace std;
   using namespace svg;
+  using atype = svg_element::atype;
 
   area<> a = k::letter_096_v;
   svg_element obj(ofile, a);
@@ -19,7 +20,7 @@ test_rectangles(std::string ofile)
   // Black
   const style bstyl = { color::black, 1.0, color::black, 0.0, 2 };
   rect_element r1;
-  rect_element::data dr1 = { size_type(x), size_type(y), len, len };
+  rect_element::data dr1 = { atype(x), atype(y), len, len };
   r1.start_element();
   r1.add_data(dr1);
   r1.add_style(bstyl);
@@ -29,7 +30,7 @@ test_rectangles(std::string ofile)
   // Red
   const style rstyl = { color::red, 1.0, color::red, 0.0, 2 };
   rect_element r2;
-  rect_element::data dr2 = { size_type(x), size_type(y), len, len };
+  rect_element::data dr2 = { atype(x), atype(y), len, len };
   r2.start_element();
   r2.add_data(dr2);
   r2.add_style(rstyl);
@@ -40,7 +41,7 @@ test_rectangles(std::string ofile)
   // Green
   const style gstyl = { color::green, 1.0, color::green, 0.0, 2 };
   rect_element r3;
-  rect_element::data dr3 = { size_type(x), size_type(y), len, len };
+  rect_element::data dr3 = { atype(x), atype(y), len, len };
   r3.start_element();
   r3.add_data(dr3);
   r3.add_style(gstyl);

@@ -264,7 +264,7 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
 	  glyphr2 += id.size() * char_width_to_px(typo._M_size);
 	}
 
-      constexpr bool debugp = true;
+      constexpr bool debugp = false;
       if (debugp)
 	{
 	  const int r4 = 200;
@@ -312,7 +312,7 @@ kusama_ids_orbit_low(svg_element& obj, const point_2t origin, const strings& ids
       glyphr += radiate_glyph_and_id(obj, origin, v, value_max, radius, rspace,
 				     rstart + glyphr, ids.front(), typo);
 
-      constexpr bool debugp = true;
+      constexpr bool debugp = false;
       if (debugp)
 	{
 	  const int r4 = 200;

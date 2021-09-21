@@ -3,15 +3,15 @@
 
 using namespace std;
 using namespace svg;
-
+using atype = svg_element::atype;
 
 void
 make_ring_ranges(svg_element& obj, const point_2t origin,
-		 const size_type ri, const size_type r, const size_type ro)
+		 const atype ri, const atype r, const atype ro)
 {
   auto [ dx, dy ] = origin;
-  const size_type x(dx);
-  const size_type y(dy);
+  const atype x(dx);
+  const atype y(dy);
 
   // Set default circle style is black ring.
   style cstyle = k::w_style;
@@ -61,9 +61,7 @@ test_radial_gradient(std::string ofile)
   svg_element obj(ofile, a);
 
   point_2t cp = obj.center_point();
-  auto [ xd, yd ] = cp;
-  const size_type x(xd);
-  const size_type y(yd);
+  auto [ x, y ] = cp;
 
   const auto radius = 60;
   const double fuzzpercentage = 0.33;

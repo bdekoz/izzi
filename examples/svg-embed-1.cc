@@ -5,6 +5,7 @@ test_embed(std::string ofile)
 {
   using namespace std;
   using namespace svg;
+  using atype = area<>::atype;
 
   area<> a = k::a4_096_v;
   svg_element obj(ofile, a);
@@ -15,9 +16,9 @@ test_embed(std::string ofile)
   const style bstyl = { color::blue, 1.0, color::green, 1.0, 2 };
 
   // circle 1
-  size_type x1 = 2 * radius;
+  atype x1 = 2 * radius;
   circle_element c1;
-  circle_element::data dc1 = { x1, size_type(y), radius};
+  circle_element::data dc1 = { x1, y, radius};
   c1.start_element();
   c1.add_data(dc1);
   c1.add_style(k::b_style);
@@ -25,9 +26,9 @@ test_embed(std::string ofile)
   obj.add_element(c1);
 
   // circle 2
-  size_type x2 = a._M_width - 2 * radius;
+  atype x2 = a._M_width - 2 * radius;
   circle_element c2;
-  circle_element::data dc2 = { x2, size_type(y), radius};
+  circle_element::data dc2 = { x2, y, radius};
   c2.start_element();
   c2.add_data(dc2);
   c2.add_style(k::b_style);
@@ -44,7 +45,7 @@ test_embed(std::string ofile)
 
   // circle 3
   circle_element c3;
-  circle_element::data dc3 = { size_type(nx), size_type(ny), radius};
+  circle_element::data dc3 = { nx, ny, radius};
   c3.start_element();
   c3.add_data(dc3);
   c3.finish_element();

@@ -360,9 +360,10 @@ vertical_sync_roll_seq(const rect_element::data& drin, const color klr,
 /// Randomly create grid of [maxwidth] x [maxheight] grid, and fill with dots.
 string
 dot_grid_seq(const rect_element::data& drin, const color klr,
-	     const int radius = 80,
+	     const rect_element::atype radius = 80,
 	     const int maxwidth = 8, const int maxheight = 4,
-	     const int xstart = 40, const int ystart = 100)
+	     const rect_element::atype xstart = 40,
+	     const rect_element::atype ystart = 100)
 {
   // 1920x1080 landscape baselines.
   // 8 wide, 4 high
@@ -392,8 +393,8 @@ dot_grid_seq(const rect_element::data& drin, const color klr,
 	    if (b)
 	      {
 		circle_element csvg;
-		size_type x = radius + xstart + (iwidth * negspace);
-		size_type y = yinit - (iheight * negspace);
+		circle_element::atype x = radius + xstart + (iwidth * negspace);
+		circle_element::atype y = yinit - (iheight * negspace);
 		circle_element::data dc = { x, y, radius };
 		csvg.start_element();
 		csvg.add_data(dc);
@@ -479,6 +480,8 @@ strings
 swipe_left_seq(const rect_element::data& drin, const string imgf,
 	       const color klr = color::white, size_t fps = 30, double sec = 9)
 {
+  using atype = rect_element::atype;
+  
   // Watch for horizontal tearing, tricky.
   // double sec = 5; // swipesec implies 384 pix/sec landscape
   // double sec = 8; // swipesec implies 240 pix/sec landscape
@@ -497,9 +500,10 @@ swipe_left_seq(const rect_element::data& drin, const string imgf,
       r.add_style(styl);
       r.finish_element();
 
-      int x = 0 - (i * offset);
+      image_element::atype x = 0 - (i * offset);
       image_element img;
-      image_element::data di = { imgf, x, 0, width, drin._M_height };
+      image_element::data di = { imgf, x, 0,
+	                         atype(width), atype(drin._M_height) };
       img.start_element();
       img.add_data(di);
       img.finish_element();

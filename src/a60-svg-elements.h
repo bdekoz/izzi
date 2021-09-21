@@ -520,8 +520,8 @@ struct rect_element : virtual public element_base
   {
     atype		_M_x_origin;
     atype		_M_y_origin;
-    size_type		_M_width;
-    size_type		_M_height;
+    atype		_M_width;
+    atype		_M_height;
   };
 
   /// Either serialize immediately (as below), or create data structure

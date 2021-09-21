@@ -5,16 +5,15 @@ test_gblur(std::string ofile)
 {
   using namespace std;
   using namespace svg;
-
+  using atype = svg_element::atype;
+  
   const auto offset = 100;
 
   area<> a = k::letter_096_v;
   svg_element obj(ofile, a);
 
   point_2t cp = obj.center_point();
-  auto [ xd, yd ] = cp;
-  const size_type x(xd);
-  const size_type y(yd);
+  auto [ x, y ] = cp;
 
   auto height = 25;
   auto width = 50;
@@ -25,7 +24,7 @@ test_gblur(std::string ofile)
 
   // 1 rect
   rect_element r1;
-  rect_element::data drb1 = { x - width /2, y, width, height };
+  rect_element::data drb1 = { atype(x - width /2), y, width, height };
   r1.start_element();
   r1.add_data(drb1);
   r1.add_filter("gblur20y");
@@ -35,7 +34,7 @@ test_gblur(std::string ofile)
 
   // 2 rect
   rect_element r2;
-  rect_element::data drb2 = { x - width / 2, y + offset, width, height };
+  rect_element::data drb2 = { atype(x - width / 2), y + offset, width, height };
   r2.start_element();
   r2.add_data(drb2);
   r2.add_filter("gblur10y");
@@ -45,7 +44,7 @@ test_gblur(std::string ofile)
 
   // 3 circle
   circle_element c1;
-  circle_element::data dc1 = { x + 2 * offset, y, width };
+  circle_element::data dc1 = { atype(x + 2 * offset), y, atype(width) };
   c1.start_element();
   c1.add_data(dc1);
   c1.add_style(k::b_style);
@@ -55,7 +54,8 @@ test_gblur(std::string ofile)
   // 4 named filter + circle
   const string filter_name("gblur5zero");
   const int blur_size = 20;
-  const area<> blur_area = { radius + 2 * blur_size, radius + 2 * blur_size };
+  const area<> blur_area = { atype(radius + 2 * blur_size),
+                             atype(radius + 2 * blur_size) };
   const point_2t blur_origin = { -blur_size, -blur_size };
 
   filter_element f;
@@ -65,7 +65,7 @@ test_gblur(std::string ofile)
   obj.add_element(f);
 
   circle_element c2;
-  circle_element::data dc2 = { x - 2 * offset, y, radius };
+  circle_element::data dc2 = { atype(x - 2 * offset), y, atype(radius) };
   c2.start_element();
   c2.add_data(dc2);
   c2.add_style(k::b_style);

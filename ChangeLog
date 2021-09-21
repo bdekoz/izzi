@@ -1,5 +1,15 @@
 2021-09-20  Benjamin De Kosnik  <bkoz@rizal>
 
+	More int->fp and type cleanup.
+
+2021-09-20  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h: Turn off debug grids.
+
+	* examples/*.cc: Fixup types.
+
+2021-09-20  Benjamin De Kosnik  <bkoz@rizal>
+
 	Convert to floating point canvas.
 	* src/a60-svg-base-types.h (area): Define atype as underlying
 	area type.

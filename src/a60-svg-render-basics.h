@@ -290,7 +290,7 @@ points_to_line(svg_element& obj, const svg::style s,
 /// Point to rectangle.
 void
 point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
-		 int width = 4, int height = 4)
+		 double width = 4, double height = 4)
 {
   using atype = decltype(obj._M_area)::atype;
   rect_element r;
@@ -306,7 +306,7 @@ point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
 /// Point to rectangle blur
 void
 point_2d_to_rect_blur(svg_element& obj, double x, double y, svg::style s,
-		      string filterstr, int width = 4, int height = 4)
+		      string filterstr, double width = 4, double height = 4)
 {
   using atype = decltype(obj._M_area)::atype;
 
@@ -325,7 +325,7 @@ point_2d_to_rect_blur(svg_element& obj, double x, double y, svg::style s,
 /// Center a rectangle at this point.
 void
 point_to_rect_centered(svg_element& obj, const point_2t origin, svg::style s,
-		       int width = 4, int height = 4)
+		       double width = 4, double height = 4)
 {
   auto [ x, y ] = origin;
   x -= (width / 2);

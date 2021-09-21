@@ -5,6 +5,7 @@ test_gblur(std::string ofile)
 {
   using namespace std;
   using namespace svg;
+  using atype = svg_element::atype;
 
   area<> a = k::letter_096_v;
   svg_element obj(ofile, a);
@@ -16,11 +17,11 @@ test_gblur(std::string ofile)
   auto width = 100;
 
   // Center of rectangle
-  const size_type x(xd - double(width / 2));
-  const size_type y(yd - double(height / 2));
-  
+  const atype x(xd - double(width / 2));
+  const atype y(yd - double(height / 2));
+
   const string filter_name("gblur5zero");
-  const int blur_size = 10;
+  const atype blur_size = 10;
   const area<> blur_area = { width + 2 * blur_size, height + 2 * blur_size };
   const point_2t blur_origin = { -blur_size, -blur_size };
 
