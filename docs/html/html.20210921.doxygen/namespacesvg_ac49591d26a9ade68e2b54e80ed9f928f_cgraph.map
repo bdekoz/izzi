@@ -1,0 +1,62 @@
+<map id="svg::kusama_ids_at_uvalue" name="svg::kusama_ids_at_uvalue">
+<area shape="rect" id="node1" title="Layer one value&#39;s glyphs and ids." alt="" coords="5,677,135,713"/>
+<area shape="rect" id="node2" href="$namespacesvg.html#a929b5c33bc0c139332dddd5d3b8ea3d0" title="Transform a value on a range to an angle on the radial range." alt="" coords="841,49,944,73"/>
+<area shape="rect" id="node5" href="$namespacesvg.html#a10139cd32b41795a65cbe1e48d79b50e" title=" " alt="" coords="183,683,349,707"/>
+<area shape="rect" id="node59" href="$namespacesvg.html#a8f257173f0f268a23c80994d83ca2ccd" title=" " alt="" coords="626,933,765,969"/>
+<area shape="rect" id="node3" href="$namespacesvg.html#a694806659ebf061e616b8a0b49a53f40" title=" " alt="" coords="1025,22,1165,46"/>
+<area shape="rect" id="node4" href="$namespacesvg.html#a673cb54838801fae8471436ce43298a9" title="Scale value from min to max on range (nfloor, nceil)." alt="" coords="1026,71,1165,107"/>
+<area shape="rect" id="node6" href="$namespacesvg.html#a6b1624bb42af7e9269fc6088e6a26fd7" title="Adjust angle above to CW/CCW orientation." alt="" coords="1012,465,1179,489"/>
+<area shape="rect" id="node9" href="$namespacesvg.html#aa2776d975cfdb951b8dd6a8fac3d826b" title="Approximate pixel height of type of point size @sz." alt="" coords="821,470,964,494"/>
+<area shape="rect" id="node10" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="1020,711,1171,747"/>
+<area shape="rect" id="node13" href="$namespacesvg.html#a4535cf2e43d1db4baea392bf5d871640" title=" " alt="" coords="397,445,569,469"/>
+<area shape="rect" id="node21" href="$namespacesvg.html#ade1cf7ebdd2b204618501e8d0cc28629" title="Line between two points." alt="" coords="633,885,757,909"/>
+<area shape="rect" id="node58" href="$namespacesvg.html#a38e242f6287256fd8aee7de5dc0d80d2" title=" " alt="" coords="634,205,757,241"/>
+<area shape="rect" id="node60" href="$namespacesvg.html#ac5981bbdc5838dfc0fa3a5fe2a50cc4b" title="The number of significant digits in @maxval." alt="" coords="617,55,773,79"/>
+<area shape="rect" id="node7" href="$namespacesvg.html#a010fea242a289d173d521b501140cd72" title="Zero degrees is top, going clockwise (cw)." alt="" coords="1227,517,1396,541"/>
+<area shape="rect" id="node8" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="1230,565,1393,589"/>
+<area shape="rect" id="node11" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="1236,711,1387,747"/>
+<area shape="rect" id="node12" href="$namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd" title=" " alt="" coords="1251,771,1372,795"/>
+<area shape="rect" id="node14" href="$namespacesvg.html#a3a981b6bbcf7466e6e90eacbe8cf126d" title=" " alt="" coords="825,809,960,845"/>
+<area shape="rect" id="node16" href="$namespacesvg.html#a806415593163e75c9587c2a987dd5112" title="Given identifier/name/id, get corresponding id_render_state from cache." alt="" coords="831,307,954,343"/>
+<area shape="rect" id="node18" href="$namespacesvg.html#afdae0299979c73375d29cef016706412" title="The smallest (sattelite) radius size allowed in a kusama orbit." alt="" coords="1023,355,1168,379"/>
+<area shape="rect" id="node19" href="$namespacesvg.html#ac6a8cbb1ef2b4fe59a6b0cf29d862ed2" title="The minimum distance between satellites in high orbit." alt="" coords="625,520,766,556"/>
+<area shape="rect" id="node20" href="$structsvg_1_1render__state__base.html#a7c3f23003c7324627764c9547568d42f" title=" " alt="" coords="1020,145,1171,181"/>
+<area shape="rect" id="node28" href="$namespacesvg.html#a0a0dce44cf8a75daa516cdf9fade5a85" title=" " alt="" coords="835,583,950,607"/>
+<area shape="rect" id="node44" href="$namespacesvg.html#a6cbc319a171a74fdf91e5d4eb55a6f36" title=" " alt="" coords="831,258,954,282"/>
+<area shape="rect" id="node15" href="$namespacesvg.html#ad731faf1d114f53f85c018df27e301e2" title="Find cartesian distance between two 2D points." alt="" coords="1019,822,1171,846"/>
+<area shape="rect" id="node17" href="$namespacesvg.html#a699e7d1232d86d72bf5612ab3677548f" title=" " alt="" coords="1034,404,1157,440"/>
+<area shape="rect" id="node22" href="$group__elements.html#a306eac4c5a7ea755ab6375a65489366f" title=" " alt="" coords="829,1041,956,1077"/>
+<area shape="rect" id="node23" href="$group__elements.html#adb6116b96467cc39cb178deb10c7a869" title=" " alt="" coords="1450,525,1597,561"/>
+<area shape="rect" id="node24" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="1244,921,1379,957"/>
+<area shape="rect" id="node26" href="$group__elements.html#ga4769af15793cb308d426abb5fd552df5" title=" " alt="" coords="829,921,956,957"/>
+<area shape="rect" id="node27" href="$group__elements.html#aa6b4ba04be5858b4943235801f034943" title=" " alt="" coords="829,981,956,1017"/>
+<area shape="rect" id="node25" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="1680,770,1776,794"/>
+<area shape="rect" id="node29" href="$namespacesvg.html#ae7eab6d9ce1f55bcbcc997cd24c5abcf" title="Text with typography, arranged ccw around points (x,y) on a circle." alt="" coords="1030,662,1161,686"/>
+<area shape="rect" id="node43" href="$namespacesvg.html#a27b1041d0851178e4835e1f623a46161" title="Text with typography, arranged cw around points (x,y) on a circle." alt="" coords="1033,614,1158,638"/>
+<area shape="rect" id="node30" href="$namespacesvg.html#a5791c1fc9121f01e5f666b7ce0367dfa" title="Text at @origin, with style and ... a transformation=rotation of @deg about @rorigin." alt="" coords="1253,614,1369,638"/>
+<area shape="rect" id="node31" href="$group__elements.html#aad29e1daf75bdcd69a39575a6807fa0f" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="1460,655,1587,691"/>
+<area shape="rect" id="node40" href="$group__elements.html#ga13c46848317034d16c62a7d2061ba3d6" title=" " alt="" coords="1460,715,1587,751"/>
+<area shape="rect" id="node41" href="$structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0" title=" " alt="" coords="1452,459,1595,483"/>
+<area shape="rect" id="node42" href="$group__elements.html#ae45bec611a6ec17ea46aab6d680ae042" title=" " alt="" coords="1460,595,1587,631"/>
+<area shape="rect" id="node32" href="$structsvg_1_1typography.html#adbc62f74f1fed3f7c77567250f084f83" title=" " alt="" coords="1658,577,1798,613"/>
+<area shape="rect" id="node35" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="1857,661,1984,685"/>
+<area shape="rect" id="node39" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title="Common transforms include rotate(180)" alt="" coords="1853,709,1988,745"/>
+<area shape="rect" id="node33" href="$namespacesvg_1_1constants.html#a3972655f1dfdc090ec2592d1fb37e87c" title=" " alt="" coords="2037,611,2179,635"/>
+<area shape="rect" id="node34" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="2036,513,2180,537"/>
+<area shape="rect" id="node36" href="$structsvg_1_1typography.html#a174c1ffb4e56214d71523ffe7e422561" title=" " alt="" coords="1855,451,1986,487"/>
+<area shape="rect" id="node37" href="$namespacesvg.html#a7363f3de9a003a4399e7ede9036299d4" title=" " alt="" coords="1873,562,1969,586"/>
+<area shape="rect" id="node38" href="$structsvg_1_1colorq.html#adb55a2a48193fafa55340505862278e4" title=" " alt="" coords="2039,562,2177,586"/>
+<area shape="rect" id="node45" href="$namespacesvg.html#a8049c9c931294d04d25967268d85d226" title="Import svg file, convert it to svg_element for insertion. ifile is a plain SVG file with a 1:1 aspect..." alt="" coords="1240,131,1383,155"/>
+<area shape="rect" id="node47" href="$namespacesvg.html#a0aae5e63973d0526fe0dbdda0b371ec8" title="Embed svg in group element. @origin is where glyph placement is inside containing svg element...." alt="" coords="1251,237,1371,261"/>
+<area shape="rect" id="node54" href="$namespacesvg.html#a5149792b7edaf60291e23dcb8bae6b48" title="Draws a circle around a point (x,y), of style (s), of radius (r)." alt="" coords="1032,307,1159,331"/>
+<area shape="rect" id="node46" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="1651,177,1805,201"/>
+<area shape="rect" id="node48" href="$group__elements.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="1456,231,1591,267"/>
+<area shape="rect" id="node49" href="$group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955" title=" " alt="" coords="1458,291,1589,327"/>
+<area shape="rect" id="node50" href="$structsvg_1_1transform.html#a9053c6d65a0bf6f82e4c85a71cc42079" title=" " alt="" coords="1454,351,1593,375"/>
+<area shape="rect" id="node51" href="$group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8" title=" " alt="" coords="1458,171,1589,207"/>
+<area shape="rect" id="node52" href="$structsvg_1_1transform.html#a0c20aee54dbd3136799b17e12d3cb718" title=" " alt="" coords="1444,122,1603,146"/>
+<area shape="rect" id="node53" href="$namespacesvg_1_1constants.html#a70757c054f02146f803e0e40071734a9" title=" " alt="" coords="1653,122,1803,146"/>
+<area shape="rect" id="node55" href="$group__elements.html#a519382631540ecedee961bfb53e9ae87" title=" " alt="" coords="1247,345,1375,381"/>
+<area shape="rect" id="node56" href="$group__elements.html#ga98a1538c46e39122d8199c12b3a57b5d" title=" " alt="" coords="1247,405,1375,441"/>
+<area shape="rect" id="node57" href="$group__elements.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="1247,285,1375,321"/>
+</map>

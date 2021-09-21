@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['scale_5fmode_895',['scale_mode',['../structsvg_1_1render__state__base.html#acaa3e0e982aa86d7d28ea5352662f647',1,'svg::render_state_base']]],
+  ['shsans_896',['shsans',['../namespacesvg_1_1constants.html#a860736522e40a2c065cfb352a89177ee',1,'svg::constants']]],
+  ['shsans_5ftypo_897',['shsans_typo',['../namespacesvg_1_1constants.html#a55983a126fa40d9f0beb850ee8954ab2',1,'svg::constants']]],
+  ['side_898',['side',['../group__elements.html#a4ac0be8a11091251c4d9ab94f29ea266',1,'svg::text_path_element']]],
+  ['smono_899',['smono',['../namespacesvg_1_1constants.html#a48e95d8cc6a7d9d70ec91974776aab80',1,'svg::constants']]],
+  ['smono_5ftypo_900',['smono_typo',['../namespacesvg_1_1constants.html#a4cefcd0b62ce9c97ae33cffb7f2f9ae4',1,'svg::constants']]],
+  ['spectrum_901',['spectrum',['../namespacesvg.html#a2d632ef050fca26f51443fa082b29987',1,'svg']]],
+  ['square17b_5f096_5fh_902',['square17b_096_h',['../namespacesvg_1_1constants.html#ae89d8d18913038f5f49ed6745980b3b4',1,'svg::constants']]],
+  ['square17b_5f096_5fv_903',['square17b_096_v',['../namespacesvg_1_1constants.html#a15cc5cf09b3551f2fb53f6dd9b5436cb',1,'svg::constants']]],
+  ['square8bis_5f096_5fv_904',['square8bis_096_v',['../namespacesvg_1_1constants.html#a1d066421e1fac79cf86e1203b6f36054',1,'svg::constants']]],
+  ['square8bisb_5f096_5fh_905',['square8bisb_096_h',['../namespacesvg_1_1constants.html#a9ebd5da6c76e39a918648c1f43e9f681',1,'svg::constants']]],
+  ['square8bisb_5f096_5fv_906',['square8bisb_096_v',['../namespacesvg_1_1constants.html#abbb9c2c153b474c13e15d069d86c84cc',1,'svg::constants']]],
+  ['ssans_907',['ssans',['../namespacesvg_1_1constants.html#a31e72c3df0b95e0fdfe46ea4ecc6228f',1,'svg::constants']]],
+  ['ssans_5ftypo_908',['ssans_typo',['../namespacesvg_1_1constants.html#a66e2c54aad31fe590e1fdc2c03e83e78',1,'svg::constants']]],
+  ['sserif_909',['sserif',['../namespacesvg_1_1constants.html#a84e6f54162fd84206f045bd2724d5297',1,'svg::constants']]],
+  ['sserif_5ftypo_910',['sserif_typo',['../namespacesvg_1_1constants.html#a4bf0d3a7b5eca48c9f6e1b65f8bba081',1,'svg::constants']]],
+  ['ssz_911',['ssz',['../namespacea60_1_1metadata.html#a3f61ba2d564dca7fe7fde2a0425cac12',1,'a60::metadata']]],
+  ['styl_912',['styl',['../structsvg_1_1id__render__state.html#aa3b885d59f9430a6fed7aa5ab40d63f6',1,'svg::id_render_state']]]
+];
