@@ -125,7 +125,7 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
       string isvg = file_to_svg_insert(glyphtext);
       insert_svg_at(obj, isvg, p, 100, scaledsize, angleda + glyphrotate,
 		    idst.styl);
-      glyphr += rspace + scaledsize;
+      glyphr += scaledsize;
     }
 
   if (idst.is_visible(svg::k::select::vector))
@@ -133,9 +133,10 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
       const int vr = rstart + rspace + kra;
       point_2t p = get_circumference_point_d(angleda, vr, origin);
       point_to_circle(obj, p, idst.styl, kra);
-      glyphr += rspace + (2 * kra);
+      glyphr += (2 * kra);
     }
 
+  glyphr += get_label_spaces();
   return glyphr;
 }
 
