@@ -63,6 +63,6 @@ test_text(std::string ofile)
 int main()
 {
   init_render_state();
-  test_text("radial-graph-kusama");
+  test_text("radial-graph-kusama-1");
   return 0;
 }
