@@ -1,22 +1,27 @@
 #include "a60-svg.h"
 #include "a60-svg-radial.h"
 
+
+using namespace std;
+using namespace svg;
+
+
+namespace {
+  // Default style is 2-pixel black color stroke, 50% opacity 1 pixel stroke.
+  const style dstyl = { color::white, 1.0, color::black, 0.5, 1 };
+  const style mstyl = { color::wcag_lgray, 1, color::wcag_lgray, 0, 0.66 };
+}
+
+
 void
 init_render_state()
 {
-  using namespace std;
-  using namespace svg;
-
-  using select = svg::k::select;
-
   // Set radial range for this viz.
   point_2t& rrange = get_radial_range();
   rrange = { 0, 359 };
 
-  // Default style is 2-pixel black color stroke, 50% opacity 1 pixel stroke.
-  const style dstyl = { color::white, 1.0, color::black, 0.5, 1 };
-
   // Default layer selections are  vector, glyph and text.
+  using select = svg::k::select;
   const select dviz = select::glyph | select::vector | select::text;
 
   // Set empty identifiers (aka "") to default layer selection and style.
@@ -34,30 +39,20 @@ test_text(std::string ofile)
   svg_element obj(ofile, a);
 
   typography typo = k::apercu_typo;
-  typo._M_size = 24;
+  typo._M_size = 6;
 
   point_2t cp = obj.center_point();
   auto [ x, y ] = cp;
 
   // Background color
-  //const style dstyl = { color::gray20, 1.0, color::black, 0, 2 };
-  //auto [ width, height ] = a;
-  //point_2d_to_rect(obj, 0, 0, dstyl, width, height);
+  constexpr bool backgroundp = false;
+  if (backgroundp)
+    {
+      auto [ width, height ] = a;
+      point_2d_to_rect(obj, 0, 0, dstyl, width, height);
+    }
 
-  // Default style is 2-pixel black color stroke, 50% opacity 1 pixel stroke.
-  const style dstyl = { color::wcag_lgray, 1, color::wcag_lgray, 0, 0.66 };
-
-  // Default layer selections are  vector, glyph and text.
-  using select = svg::k::select;
-  const select dviz = select::glyph | select::vector | select::text;
-  add_to_id_render_state_cache("", dstyl, dviz);
-
-
-  // Set radial range for this viz.
-  point_2t& rrange = get_radial_range();
-  rrange = { 0, 359 };
-
-  const int radius = 32; // 50 if engc
+  const int radius = 16; // 50 if engc
   auto rspace = radius / 5;
 
   svg::set_label_spaces(12); // For 6 point, space 6 min, all but pose 18
@@ -69,11 +64,9 @@ test_text(std::string ofile)
     {
       style stylarc = svg::k::b_style;
       stylarc.set_colors(color::wcag_lgray);
-      stylarc._M_stroke_opacity = 1.0;
-      stylarc._M_stroke_size = 3;
-      auto cradius = radius;
+      stylarc._M_stroke_size = 1;
       const auto rrangeold = set_radial_range(20, 340);
-      direction_arc_at(obj, cp, cradius, stylarc, cradius * 0.25);
+      direction_arc_at(obj, cp, radius, stylarc, radius * 0.1);
       set_radial_range(std::get<0>(rrangeold), std::get<1>(rrangeold));
     }
   else
@@ -88,14 +81,14 @@ test_text(std::string ofile)
   ivm.insert(make_pair("one b", 1));
   ivm.insert(make_pair("one c", 1));
 
-  ivm.insert(make_pair("three d", 3));
-  ivm.insert(make_pair("three e", 3));
+  ivm.insert(make_pair("three a", 3));
+  ivm.insert(make_pair("three b", 3));
 
-  ivm.insert(make_pair("six f", 6));
+  ivm.insert(make_pair("six a", 6));
 
   // Render.
-  kusama_ids_per_uvalue_on_arc(obj, cp, typo, ivm, 8, radius, rspace, true,
-			       false);
+  kusama_ids_per_uvalue_on_arc(obj, cp, typo, ivm, 8, radius, rspace,
+			       true, false);
 }
 
 
