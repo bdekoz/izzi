@@ -81,10 +81,10 @@ test_text(std::string ofile)
   ivm.insert(make_pair("one b", 1));
   ivm.insert(make_pair("one c", 1));
 
-  ivm.insert(make_pair("three a", 3));
-  ivm.insert(make_pair("three b", 3));
+  ivm.insert(make_pair("three d", 3));
+  ivm.insert(make_pair("three e", 3));
 
-  ivm.insert(make_pair("six a", 6));
+  ivm.insert(make_pair("six f", 6));
 
   // Render.
   kusama_ids_per_uvalue_on_arc(obj, cp, typo, ivm, 8, radius, rspace,
