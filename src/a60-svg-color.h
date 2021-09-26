@@ -181,6 +181,7 @@ enum class color
  plum,
  violet,
  magenta,
+ dfuschia,
  deeppink,
  hotpink,
  pink,
@@ -380,6 +381,7 @@ to_string(const color e)
       enum_map[color::plum] = "rgb(221, 160, 221)";
       enum_map[color::violet] = "rgb(238, 130, 238)";
       enum_map[color::magenta] = "rgb(255, 0, 255)";
+      enum_map[color::dfuschia] = "rgb(255, 35, 255)";
       enum_map[color::deeppink] = "rgb(255, 20, 147)";
       enum_map[color::hotpink] = "rgb(255, 105, 180)";
       enum_map[color::pink] = "rgb(255, 192, 203)";
@@ -593,7 +595,7 @@ color_array spectrum =
 
  // purple (magenta, violet, pink)
  color::purple, color::wisteria, color::asamapink, color::pink, color::peony,
- color::violet, color::magenta, color::deeppink, color::hotpink,
+ color::violet, color::magenta, color::dfuschia, color::deeppink, color::hotpink,
  color::dustyrose, color::atmosphericp, color::kissmepink,
  color::futaai, color::benimidori, color::redwisteria, color::botan,
  color::kokimurasaki, color::usuiro, color::murasaki, color::ayameiro,
@@ -655,7 +657,7 @@ constexpr colorband cband_y = std::make_tuple(color::hellayellow, 15);
 constexpr colorband cband_r = std::make_tuple(color::red, 17);
 constexpr colorband cband_g = std::make_tuple(color::green, 21);
 constexpr colorband cband_b = std::make_tuple(color::blue, 30);
-constexpr colorband cband_p = std::make_tuple(color::purple, 32);
+constexpr colorband cband_p = std::make_tuple(color::purple, 33);
 constexpr colorband cband_o = std::make_tuple(color::orange, 7);
 constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 5);
 
