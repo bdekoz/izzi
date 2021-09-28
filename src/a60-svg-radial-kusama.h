@@ -174,7 +174,19 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
   if (idst.is_visible(svg::k::select::text) && !id.empty())
     {
       const int idr = rstart + glyphr + rspace;
-      radial_text_r(obj, id, typo, idr, origin, angled);
+
+#if 1
+      // XXX playing.
+      // Override style if id string contains matching string.
+      typography typoz(typo);
+      const string playingabv(" -> ");
+      if (id.find(playingabv) != string::npos)
+	{
+	  const id_render_state idstp = get_id_render_state(playingabv);
+	  typoz._M_style = idstp.styl;
+	}
+      radial_text_r(obj, id, typoz, idr, origin, angled);
+#endif
 
       // NB: This is only an estimate of the text block size.
       // Should be getComputedTextLength

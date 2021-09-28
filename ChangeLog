@@ -1,3 +1,8 @@
+2021-09-27  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-radial-kusama.h (radiate_glyph_and_id): WIP
+	for id value contains match has different style.
+
 2021-09-20  Benjamin De Kosnik  <bkoz@rizal>
 
 	More int->fp and type cleanup.
