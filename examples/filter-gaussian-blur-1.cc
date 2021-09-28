@@ -15,9 +15,9 @@ test_gblur(std::string ofile)
   point_2t cp = obj.center_point();
   auto [ x, y ] = cp;
 
-  auto height = 25;
-  auto width = 50;
-  auto radius = std::max( height, width);
+  atype height = 25;
+  atype width = 50;
+  atype radius = std::max(height, width);
 
   // using builtin filters gblur10, gblur20, gblur10y, gblur20y
   filter_element fdefault;

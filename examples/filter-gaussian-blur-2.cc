@@ -13,8 +13,8 @@ test_gblur(std::string ofile)
   point_2t cp = obj.center_point();
   auto [ xd, yd ] = cp;
 
-  auto height = 100;
-  auto width = 100;
+  atype height = 100;
+  atype width = 100;
 
   // Center of rectangle
   const atype x(xd - double(width / 2));
