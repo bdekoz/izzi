@@ -154,21 +154,16 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
 */
 int
 radiate_glyph_and_id(svg_element& obj, const point_2t origin,
-		     const size_type v, const size_type value_max,
-		     const int radius, const int rspace, const int rstart,
-		     const string id, const typography& typo)
+		     const double angled, const double kr, const int rspace,
+		     const int rstart, const string id, const typography& typo)
 {
-  // Length used of glyphs along radiated ray from origin, if any.
-  int glyphr(0);
-  const double angled = get_angle(v, value_max);
   const id_render_state idst = get_id_render_state(id);
 
   // Switch based on id_render_state settings.
+  // Length used of glyphs along radiated ray from origin, if any.
+  int glyphr(0);
   if (idst.is_visible(svg::k::select::glyph))
-    {
-      const double kr((double(v) / value_max) * radius);
-      glyphr += radiate_glyph(obj, origin, angled, idst, kr, rspace, rstart);
-    }
+    glyphr += radiate_glyph(obj, origin, angled, idst, kr, rspace, rstart);
 
   // Id name.
   if (idst.is_visible(svg::k::select::text) && !id.empty())
@@ -194,6 +189,19 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
     }
 
   return glyphr;
+}
+
+
+/// Convenience function for above.
+int
+radiate_glyph_and_id(svg_element& obj, const point_2t origin,
+		     const size_type v, const size_type value_max,
+		     const int radius, const int rspace, const int rstart,
+		     const string id, const typography& typo)
+{
+  const double angled = get_angle(v, value_max);
+  const double kr((double(v) / value_max) * radius);
+  return radiate_glyph_and_id(obj, origin, angled, kr, rspace, rstart, id, typo);
 }
 
 
@@ -261,21 +269,8 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
   int maxglyphr2(0);
   for (const string& id : ids)
     {
-      int glyphr2(0);
-      const id_render_state idst = get_id_render_state(id);
-
-      if (idst.is_visible(svg::k::select::glyph))
-	glyphr2 = radiate_glyph(obj, origin, angled2, idst, kr, rspace, ar);
-
-      if (idst.is_visible(svg::k::select::text) && !id.empty())
-	{
-	  const int idr = ar + glyphr2 + rspace;
-	  radial_text_r(obj, id, typo, idr, origin, angled2);
-
-	  // NB: This is only an estimate of the text block size.
-	  // Should be getComputedTextLength
-	  glyphr2 += id.size() * char_width_to_px(typo._M_size);
-	}
+      int glyphr2 = radiate_glyph_and_id(obj, origin, angled2,
+					 kr, rspace, ar, id, typo);
 
       constexpr bool debugp = false;
       if (debugp)
