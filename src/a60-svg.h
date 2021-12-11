@@ -171,5 +171,7 @@ namespace k = constants;
 #include "a60-svg-elements-components.h"
 #include "a60-svg-render-state.h"
 #include "a60-svg-render-basics.h"
+#include "a60-svg-composite-and-layer-basics.h"
+#include "a60-svg-sequences.h"
 
 #endif

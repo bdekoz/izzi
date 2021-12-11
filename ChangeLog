@@ -1,3 +1,9 @@
+2021-12-11  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-render-basics.h: Split composite stuff into...
+	* src/a60-svg-composite-and-layer-basics.h: ...this.
+	* src/a60-svg.h: Add new header.
+
 2021-09-27  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-radial-kusama.h (radiate_glyph_and_id): WIP
