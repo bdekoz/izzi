@@ -295,7 +295,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 		{
 		  // Style from agepv.
 		  style pstylage = pstyll;
-		  auto klr = k::age_value_to_color_tint_shade(agepv);
+		  auto klr = age_value_to_color_tint_shade(agepv);
 		  pstylage._M_stroke_color = klr;
 
 		  // Dash style if agepv == "ambiguous".
