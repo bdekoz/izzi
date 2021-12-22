@@ -70,6 +70,22 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
 }
 
 
+/// Text at @origin, with style and transform
+void
+styled_text(svg_element& obj, const string text, const point_2t origin,
+	    svg::typography typo, const string xform)
+{
+  using atype = decltype(obj._M_area)::atype;
+  auto [ x, y ] = origin;
+  text_element::data dt = { atype(x), atype(y), text, typo };
+  text_element t;
+  t.start_element();
+  t.add_data(dt, xform);
+  t.finish_element();
+  obj.add_element(t);
+}
+
+
 /// Text at @origin, with style and ...
 ///  a transformation=rotation of @deg about @rorigin.
 void
@@ -283,14 +299,14 @@ point_to_rect_centered(svg_element& obj, const point_2t origin, svg::style s,
 /// Draws a circle around a point (x,y), of style (s), of radius (r).
 void
 point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
-		   const space_type r = 4, const string transform = "")
+		   const space_type r = 4, const string xform = "")
 {
   using atype = decltype(obj._M_area)::atype;
   circle_element c;
   using atype = decltype(obj._M_area)::atype;
   circle_element::data dc = { atype(x), atype(y), r };
   c.start_element();
-  c.add_data(dc, transform);
+  c.add_data(dc, xform);
   c.add_style(s);
   c.finish_element();
   obj.add_element(c);
@@ -300,14 +316,14 @@ point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
 /// Draws a circle around a point (x,y), of style (s), of radius (r).
 void
 point_to_circle(svg_element& obj, const point_2t origin, svg::style s,
-		   const space_type r = 4, const string transform = "")
+		   const space_type r = 4, const string xform = "")
 {
   using atype = decltype(obj._M_area)::atype;
   circle_element c;
   auto [ x, y ] = origin;
   circle_element::data dc = { atype(x), atype(y), r };
   c.start_element();
-  c.add_data(dc, transform);
+  c.add_data(dc, xform);
   c.add_style(s);
   c.finish_element();
   obj.add_element(c);
