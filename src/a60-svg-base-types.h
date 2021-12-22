@@ -143,9 +143,19 @@ to_string(const style& s)
 }
 
 
-/// Datum consolidating transform preferences.
+/// Datum consolidating transform possibilities.
+/// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
 struct transform
 {
+  static string
+  matrix(double a, double b, double c, double d, double e, double f)
+  {
+    std::ostringstream stream;
+    stream << "matrix(" << a << k::comma << b << k::comma << c << k::comma
+	   << d << k::comma << e << k::comma << f << k::comma << ")";
+    return stream.str();
+  }
+
   static string
   rotate(int deg)
   {
@@ -167,6 +177,22 @@ struct transform
   {
     std::ostringstream stream;
     stream << "scale(" << factor << ")";
+    return stream.str();
+  }
+
+  static string
+  skew_x(double factor)
+  {
+    std::ostringstream stream;
+    stream << "skewX(" << factor << ")";
+    return stream.str();
+  }
+
+  static string
+  skew_y(double factor)
+  {
+    std::ostringstream stream;
+    stream << "skewY(" << factor << ")";
     return stream.str();
   }
 
