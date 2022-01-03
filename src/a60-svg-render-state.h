@@ -104,12 +104,20 @@ namespace constants {
      small		== defense distributed == 70k-300k
      medium		== westworld == 2-4M
      large		== stranger things == 10M+
+
+     [1-5]xsmall        == reduction from least to greatest
+     1x                 == baseline
+     [1-5]xlarge        == enlargement from least to greatest
   */
   enum class scale
     {
-     xxsmall, xsmall, small,
-     medium,
-     large, xlarge, xxlarge
+     r5s, r4s, r3s, r2s, r1s,
+     xxsmall, xsmall,
+     small,
+     medium, baseline,
+     large,
+     xlarge, xxlarge,
+     e1s, e2s , e3s,  e4s, e5s,
     };
 
 } // namespace constants

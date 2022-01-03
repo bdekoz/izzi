@@ -80,13 +80,6 @@ enum class color
  dutchorange,
  internationalorange,
 
- // 4 brown
- duboisbrown1,
- duboisbrown2,
- duboisbrown3,
- duboisbrown4,
- duboisbrown5,
-
  // 17 red
  red,
  foreigncrimson,	// red
@@ -105,6 +98,13 @@ enum class color
  duboisred1,
  duboisred2,
  duboisred3,
+
+ // 4 brown
+ duboisbrown1,
+ duboisbrown2,
+ duboisbrown3,
+ duboisbrown4,
+ duboisbrown5,
 
  // 20 green
  byakuroku,		// whitish green
