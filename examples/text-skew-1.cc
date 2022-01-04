@@ -12,6 +12,7 @@ point_to_line_centered(svg::svg_element& obj, const svg::style styl,
 }
 
 
+// http://tutorials.jenkov.com/svg/svg-transformation.html
 void
 test_text(std::string ofile)
 {
