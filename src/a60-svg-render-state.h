@@ -120,6 +120,37 @@ namespace constants {
      e1s, e2s , e3s,  e4s, e5s,
     };
 
+
+  // Convenience function for mapping values to strings.
+  string
+  to_string(const scale e)
+  {
+    using enum_map_type = std::map<scale, std::string>;
+
+    static enum_map_type enum_map;
+    if (enum_map.empty())
+      {
+	enum_map[scale::r5s] = "reduce-5s";
+	enum_map[scale::r4s] = "reduce-4s";
+	enum_map[scale::r3s] = "reduce-3s";
+	enum_map[scale::r2s] = "reduce-2s";
+	enum_map[scale::r1s] = "reduce-1s";
+	enum_map[scale::e5s] = "enlarge-5s";
+	enum_map[scale::e4s] = "enlarge-4s";
+	enum_map[scale::e3s] = "enlarge-3s";
+	enum_map[scale::e2s] = "enlarge-2s";
+	enum_map[scale::e1s] = "enlarge-1s";
+	enum_map[scale::medium] = "medium";
+	enum_map[scale::baseline] = "baseline";
+	enum_map[scale::small] = "small";
+	enum_map[scale::xsmall] = "xsmall";
+	enum_map[scale::xxsmall] = "xxsmall";
+	enum_map[scale::large] = "large";
+	enum_map[scale::xlarge] = "xlarge";
+	enum_map[scale::xxlarge] = "xxlarge";
+      }
+    return enum_map[e];
+  }
 } // namespace constants
 
 
