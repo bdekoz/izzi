@@ -73,36 +73,43 @@ make_2_channel_insert(svg_element& obj, string insert1, string insert2)
 
 
 /// Paint the edges of a physical page.
+/// Assumes page is square.
+////
+/// @rlen is height of painted rectangle from edge.
+/// NB: 0.125 is a common bleed == 12 pixels.
+/// First attempt was, common bleed plus 2 pixel "on page" -> 14. Not enough.
 void
-paint_edges_with_char_index(svg_element& obj, const area<> a,
-			    const char firstc)
+paint_edges_with_char_index(svg_element& obj, const area<> a, const char firstc,
+			    const svg::color klr = color::duboisgreen2,
+			    const double rlen = 24.0)
 {
   // Paint edges.
   const std::locale loc("");
   const bool alphap = std::isalpha(firstc, loc);
 
-  // Position the first character from a to z to x values 0 to 25
-  uint cidx(0);
+  // Position the first character from (a to z + digit } to x values 0 to 26.
+  // Find this index, with numbers and symbols at the end.
+  const uint maxc = 27;
+  uint cidx(maxc - 1);
   if (alphap)
-    cidx = (static_cast<uint>(firstc) % 65) - 32 + 1;
-  auto deltax = (a._M_width / 27) * cidx;
-  auto deltay = (a._M_height / 27) * cidx;
+    cidx = (static_cast<uint>(firstc) % 65) - 32;
+
+  const double deltac = double(std::min(a._M_width, a._M_height)) / maxc;
+  double deltax(deltac * cidx);
+  double deltay(deltac * cidx);
 
   style estyl = svg::k::b_style;
-  estyl.set_colors(color::duboisgreen2);
-
-  // NB: 0.125 is a common bleed == 12 pixels. Plus 2 pixel "on page" -> 14.
-  constexpr uint len = 14;
+  estyl.set_colors(klr);
 
   // Top edge, right to left starting outer to inner
-  point_2d_to_rect(obj, a._M_width - deltax - len - 10, 0, estyl, 10, len);
+  point_2d_to_rect(obj, a._M_width - deltax - rlen - deltac, 0, estyl, deltac, rlen);
 
   // Bottom edge, left to right starting innner to outer.
-  point_2d_to_rect(obj, deltax + len, a._M_height - len, estyl, 10, len);
+  point_2d_to_rect(obj, deltax + rlen, a._M_height - rlen, estyl, deltac, rlen);
 
   // Right side edge, up from bottom to top.
-  point_2d_to_rect(obj, a._M_width - len, a._M_height - deltay - len - 10,
-		   estyl, len, 10);
+  point_2d_to_rect(obj, a._M_width - rlen, a._M_height - deltay - rlen - deltac,
+		   estyl, rlen, deltac);
 }
 
 

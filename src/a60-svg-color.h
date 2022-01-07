@@ -565,16 +565,16 @@ color_array spectrum =
  color::redorange, color::asamaorange, color::dutchorange,
  color::internationalorange,
 
- // brown
- color::duboisbrown1,  color::duboisbrown2,  color::duboisbrown3,
- color::duboisbrown4,
-
  // red
  color::red,  color::coral, color::salmon, color::akabeni,
  color::akebonoiro, color::ochre, color::sohi, color::benikaba,
  color::benitobi, color::ake, color::crimson, color::tomato,
  color::foreigncrimson, color::ginshu,
  color::duboisred1, color::duboisred2, color::duboisred3,
+
+ // brown
+ color::duboisbrown1, color::duboisbrown2, color::duboisbrown3,
+ color::duboisbrown4, color::duboisbrown5,
 
  // green
  color::green, color::limegreen, color::springgreen, color::byakuroku,
@@ -594,7 +594,6 @@ color_array spectrum =
  color::midnightblue, color::darkslateblue, color::slateblue,
  color::azure, color::crayolacerulean,
  color::duboisblue1, color::duboisblue2, color::duboisblue3,
-
 
  // purple (magenta, violet, pink)
  color::purple, color::wisteria, color::asamapink, color::pink, color::peony,
