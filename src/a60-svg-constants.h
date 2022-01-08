@@ -1,6 +1,6 @@
 // -*- mode: C++ -*-
 
-// Copyright (C) 2014-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2022 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -53,8 +53,11 @@ constexpr area<> letter_096_h = { 1056, 816 };
 constexpr area<> letterb_096_v = { 816, 1056 };
 constexpr area<> letterb_096_h = { 1056, 816 };
 
+/// Square 8 (8 w x 8 h)
+constexpr area<> square8_096 = { 768, 768 };
+
 /// Square 8bis (8.5 w x 8.5 h)
-constexpr area<> square8bis_096_v = { 816, 816 };
+constexpr area<> square8bis_096 = { 816, 816 };
 
 /// Square 8bis bleed (8.625 w x 8.75 h) (219 x 222 mm)
 constexpr area<> square8bisb_096_v = { 828, 840 };

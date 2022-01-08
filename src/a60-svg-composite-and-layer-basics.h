@@ -102,10 +102,12 @@ paint_edges_with_char_index(svg_element& obj, const area<> a, const char firstc,
   estyl.set_colors(klr);
 
   // Top edge, right to left starting outer to inner
-  point_2d_to_rect(obj, a._M_width - deltax - rlen - deltac, 0, estyl, deltac, rlen);
+  point_2d_to_rect(obj, a._M_width - deltax - rlen - deltac, 0,
+		   estyl, deltac, rlen);
 
   // Bottom edge, left to right starting innner to outer.
-  point_2d_to_rect(obj, deltax + rlen, a._M_height - rlen, estyl, deltac, rlen);
+  point_2d_to_rect(obj, deltax + rlen, a._M_height - rlen,
+		   estyl, deltac, rlen);
 
   // Right side edge, up from bottom to top.
   point_2d_to_rect(obj, a._M_width - rlen, a._M_height - deltay - rlen - deltac,
@@ -229,24 +231,30 @@ insert_svg_at(svg_element& obj, const string isvg,
 /// For printed objects with a center gutter, some intra-page
 /// adjustments are necessary.
 /// @slxt is odd/even (left/right)
-/// @bleedin is bleed size for one edge in inches.
+/// @bleedin is bleed size for one edge in inches. (1/8)
+/// @bleedxoffset is distance from spine pushed outward.
 void
 composite_bleed_areas(svg_element& obj,
-		      const svg::k::select slxt, const double bleedin)
+		      const svg::k::select slxt, const double bleedin,
+		      const double bleedxoffset = 0)
 {
   const double bleedpx = get_dpi() * bleedin;
+  const double bleedpxo = get_dpi() * (bleedin + (bleedxoffset / 2));
+
   if (slxt == svg::k::select::odd)
     {
+      // LHS
       // Individual glyph shapes grid.
       // Left, center vertical and move to right edge horizontal.
-      const point_2t p = { bleedpx, bleedpx };
+      const point_2t p = { bleedpx, bleedpxo };
       obj.start_element(p, obj._M_area);
     }
   if (slxt == svg::k::select::even)
     {
+      // RHS
       // Radial metadata dimensions grid.
       // Right, center vertical and move to left edge horizontal
-      const point_2t p = { 0, bleedpx };
+      const point_2t p = { bleedxoffset * get_dpi(), bleedpxo };
       obj.start_element(p, obj._M_area);
     }
 }
