@@ -1,0 +1,30 @@
+<map id="svg::radiate_glyph" name="svg::radiate_glyph">
+<area shape="rect" id="node1" title=" " alt="" coords="5,720,128,744"/>
+<area shape="rect" id="node2" href="$namespacesvg.html#a6b1624bb42af7e9269fc6088e6a26fd7" title="Adjust angle above to CW/CCW orientation." alt="" coords="176,53,343,77"/>
+<area shape="rect" id="node5" href="$namespacesvg.html#a8049c9c931294d04d25967268d85d226" title="Import svg file, convert it to svg_element for insertion. ifile is a plain SVG file with a 1:1 aspect..." alt="" coords="188,692,331,716"/>
+<area shape="rect" id="node7" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="185,741,334,777"/>
+<area shape="rect" id="node10" href="$namespacesvg.html#aabba9120f22d6011e46be1d065c2b19b" title="Get the label space. Value &#45;&gt; Name, as a string where value has labelspaces of fill NB: Should be the..." alt="" coords="188,801,331,825"/>
+<area shape="rect" id="node11" href="$namespacesvg.html#afdae0299979c73375d29cef016706412" title="The smallest (sattelite) radius size allowed in a kusama orbit." alt="" coords="187,849,332,873"/>
+<area shape="rect" id="node12" href="$namespacesvg.html#a0aae5e63973d0526fe0dbdda0b371ec8" title="Embed svg in group element. @origin is where glyph placement is inside containing svg element...." alt="" coords="199,556,319,580"/>
+<area shape="rect" id="node22" href="$structsvg_1_1render__state__base.html#a7c3f23003c7324627764c9547568d42f" title=" " alt="" coords="185,898,334,934"/>
+<area shape="rect" id="node23" href="$namespacesvg.html#a68c014cdc144d2d0125a8ce849e8804d" title="Draws a circle around a point (x,y), of style (s), of radius (r)." alt="" coords="196,259,323,283"/>
+<area shape="rect" id="node3" href="$namespacesvg.html#a010fea242a289d173d521b501140cd72" title="Zero degrees is top, going clockwise (cw)." alt="" coords="391,5,559,29"/>
+<area shape="rect" id="node4" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="393,53,556,77"/>
+<area shape="rect" id="node6" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="607,616,761,640"/>
+<area shape="rect" id="node8" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="400,830,549,866"/>
+<area shape="rect" id="node9" href="$namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd" title=" " alt="" coords="414,891,535,915"/>
+<area shape="rect" id="node13" href="$structsvg_1_1svg__element.html#adb6116b96467cc39cb178deb10c7a869" title=" " alt="" coords="401,342,548,378"/>
+<area shape="rect" id="node14" href="$structsvg_1_1element__base.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="407,550,542,586"/>
+<area shape="rect" id="node15" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="612,528,756,552"/>
+<area shape="rect" id="node16" href="$group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955" title=" " alt="" coords="409,670,540,706"/>
+<area shape="rect" id="node17" href="$structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0" title=" " alt="" coords="403,731,546,755"/>
+<area shape="rect" id="node18" href="$structsvg_1_1transform.html#a9053c6d65a0bf6f82e4c85a71cc42079" title=" " alt="" coords="405,451,544,475"/>
+<area shape="rect" id="node19" href="$structsvg_1_1group__element.html#a5c8c4f93df6e84523f788aa7f98bcab8" title=" " alt="" coords="409,610,540,646"/>
+<area shape="rect" id="node20" href="$structsvg_1_1transform.html#a0c20aee54dbd3136799b17e12d3cb718" title=" " alt="" coords="395,403,554,427"/>
+<area shape="rect" id="node21" href="$namespacesvg_1_1constants.html#a70757c054f02146f803e0e40071734a9" title=" " alt="" coords="609,403,759,427"/>
+<area shape="rect" id="node24" href="$structsvg_1_1circle__element.html#a519382631540ecedee961bfb53e9ae87" title=" " alt="" coords="411,282,539,318"/>
+<area shape="rect" id="node25" href="$structsvg_1_1element__base.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="407,162,542,198"/>
+<area shape="rect" id="node27" href="$group__elements.html#ga98a1538c46e39122d8199c12b3a57b5d" title=" " alt="" coords="411,102,539,138"/>
+<area shape="rect" id="node28" href="$structsvg_1_1circle__element.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="411,222,539,258"/>
+<area shape="rect" id="node26" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="636,168,732,192"/>
+</map>
