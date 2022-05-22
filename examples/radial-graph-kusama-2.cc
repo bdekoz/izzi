@@ -35,7 +35,7 @@ test_text(std::string ofile)
   using namespace std;
   using namespace svg;
 
-  area<> a = svg::k::square8bis_096_v;
+  area<> a = svg::k::square8bis_096;
   svg_element obj(ofile, a);
 
   typography typo = k::apercu_typo;

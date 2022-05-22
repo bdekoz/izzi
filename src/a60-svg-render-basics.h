@@ -1,6 +1,6 @@
 // svg render basics -*- mode: C++ -*-
 
-// Copyright (C) 2014-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2022 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -505,6 +505,61 @@ place_ray_at_angle(svg_element& obj, const point_2t& origin,
   ray.add_style(s);
   ray.finish_element();
   obj.add_element(ray);
+}
+
+
+/// Make single path segment.
+string
+make_path_data_from_points(const vrange& lpoints)
+{
+  std::ostringstream ossa;
+  for (uint i = 0; i < lpoints.size(); ++i)
+    {
+      auto [x, y ] = lpoints[i];
+      // SVG path_element.
+      // start at "M x y" and
+      // each subsequent line segment is of form "L x y"
+      if (i == 0)
+	ossa << "M" << k::space;
+      else
+	ossa << "L" << k::space;
+      ossa << x << svg::k::space << y << k::space;
+    }
+  return ossa.str();
+}
+
+
+/// Draw path given serialized path data.
+/// Assumes pinstripe, ie top and bottom line layers.
+/// top style defaults: fill opac(0), stroke opac(1), stroke sz 1
+/// bottom style defaults: fill opac(0), stroke opac(1), stroke sz 1.25
+string
+draw_path_data(const string& pathda,
+	       const style& topstyl, const style& bottomstyl)
+{
+  std::ostringstream oss;
+
+  // Draw path with this endpoint.
+  path_element::data da = { pathda, 0 };
+
+  // Draw colored line and outline. Draw outline first, so
+  // it will be on the lower layer in the SVG file.
+
+  path_element pebase;
+  pebase.start_element();
+  pebase.add_data(da);
+  pebase.add_style(bottomstyl);
+  pebase.finish_element();
+  oss << pebase.str() << k::space;
+
+  path_element pe;
+  pe.start_element();
+  pe.add_data(da);
+  pe.add_style(topstyl);
+  pe.finish_element();
+  oss << pe.str() << k::space;
+
+  return oss.str();
 }
 
 

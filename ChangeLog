@@ -1,3 +1,16 @@
+2022-05-21  Benjamin De Kosnik  <bkoz@rizal>
+
+	Fix compilation errors.
+	* examples/color-palette-4.cc
+	* examples/color-palette-5.cc
+	* examples/radial-graph-kusama-2.cc
+	* examples/radial-graph-kusama-3.cc
+
+	* src/a60-svg-render-basics.h (draw_path_data): Draw path with
+	outline.
+	(make_path_data_from_points): Make path data.
+	* src/a60-svg.h (vrange, vvranges): New types.
+
 2021-12-11  Benjamin De Kosnik  <bkoz@rizal>
 
 	* src/a60-svg-grid-matrix-systems.h: New, move from alpha60/mmrl.

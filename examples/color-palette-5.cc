@@ -6,7 +6,7 @@ test_color_spectrum(std::string ofile)
   using namespace std;
   using namespace svg;
 
-  area<> a = svg::k::square8bis_096_v;
+  area<> a = svg::k::square8bisb_096_v;
   svg_element obj(ofile, a);
 
   typography typo = k::apercu_typo;
