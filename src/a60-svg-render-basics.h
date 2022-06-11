@@ -544,13 +544,15 @@ draw_path_data(const string& pathda,
 
   // Draw colored line and outline. Draw outline first, so
   // it will be on the lower layer in the SVG file.
-
-  path_element pebase;
-  pebase.start_element();
-  pebase.add_data(da);
-  pebase.add_style(bottomstyl);
-  pebase.finish_element();
-  oss << pebase.str() << k::space;
+  if (to_string(bottomstyl._M_stroke_color) != to_string(svg::color::none))
+    {
+      path_element pebase;
+      pebase.start_element();
+      pebase.add_data(da);
+      pebase.add_style(bottomstyl);
+      pebase.finish_element();
+      oss << pebase.str() << k::space;
+    }
 
   path_element pe;
   pe.start_element();
