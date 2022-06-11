@@ -1,3 +1,10 @@
+2022-06-10  Benjamin De Kosnik  <bkoz@rizal>
+
+	* a60-svg-radial-base.h: Fix typo.
+	* a60-svg-radial-kusama.h: Same.
+
+	* a60-svg-render-basics.h (point_to_triangle): New.
+
 2022-05-21  Benjamin De Kosnik  <bkoz@rizal>
 
 	Fix compilation errors.

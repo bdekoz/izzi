@@ -435,6 +435,30 @@ point_2d_to_ray(svg_element& obj, double x, double y, svg::style s,
 }
 
 
+void
+place_ray_at_angle(svg_element& obj, const point_2t& origin,
+		   const point_2t& circump, const style& s,
+		   const string id = "")
+{
+  using atype = decltype(obj._M_area)::atype;
+
+  auto [xo, yo] = origin;
+  auto [xc, yc] = circump;
+
+  line_element::data dr = { atype(xo), atype(xc), atype(yo), atype(yc) };
+  line_element ray;
+
+  if (id.empty())
+    ray.start_element();
+  else
+    ray.start_element(id);
+  ray.add_data(dr);
+  ray.add_style(s);
+  ray.finish_element();
+  obj.add_element(ray);
+}
+
+
 /// Angle in radians.
 point_2t
 get_circumference_point_r(const double angler, const double r,
@@ -481,30 +505,6 @@ zero_angle_north_ccw(double angled)
   angled += 90;
 
   return angled;
-}
-
-
-void
-place_ray_at_angle(svg_element& obj, const point_2t& origin,
-		   const point_2t& circump, const style& s,
-		   const string id = "")
-{
-  using atype = decltype(obj._M_area)::atype;
-
-  auto [xo, yo] = origin;
-  auto [xc, yc] = circump;
-
-  line_element::data dr = { atype(xo), atype(xc), atype(yo), atype(yc) };
-  line_element ray;
-
-  if (id.empty())
-    ray.start_element();
-  else
-    ray.start_element(id);
-  ray.add_data(dr);
-  ray.add_style(s);
-  ray.finish_element();
-  obj.add_element(ray);
 }
 
 
@@ -563,6 +563,31 @@ draw_path_data(const string& pathda,
 }
 
 
+/// Center a triangle at this point.
+void
+point_to_triangle(svg_element& obj, const point_2t origin, svg::style s,
+		  const double r = 4, const double angle = 120)
+{
+  // Find points: orig, orig + (120 x 1), orig + (120 x 2).
+  double zo = zero_angle_north_cw(angle);
+  point_2t p1 =  get_circumference_point_d(zo, r, origin);
+  point_2t p2 =  get_circumference_point_d(zo + (angle * 1), r, origin);
+  point_2t p3 =  get_circumference_point_d(zo + (angle * 2), r,  origin);
+  vrange pointz = { p1, p2, p3, p1 };
+  string pathda = make_path_data_from_points(pointz);
+
+  // Make closed path.
+  path_element tri(true);
+  path_element::data pthdata = { pathda, 0 };
+  string argname = std::to_string(r) + k::hyphen + std::to_string(angle);
+  tri.start_element("triangle-" + argname);
+  tri.add_data(pthdata);
+  tri.add_style(s);
+  tri.finish_element();
+  obj.add_element(tri);
+}
+
+
 /// Make path segment between two points on a circumference of radius r.
 /// Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin)
 string
@@ -590,7 +615,7 @@ make_path_arc_closed(const point_2t& origin, const point_2t& start,
 		     const int arcflag = 0, const int sweepflag = 0)
 {
   // Define path as starting at origin, line to circumference point start,
-  // arc to circumfrence point end, line back to origin.
+  // arc to circumfernce point end, line back to origin.
   // A rx ry x-axis-rotation large-arc-flag sweep-flag x y
   // where (large) arc flag is true if arc angle delta is > 180
   // where sweep flag is

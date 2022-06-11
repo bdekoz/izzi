@@ -252,7 +252,7 @@ radial_text_ccw(svg_element& obj, string text, const typography& typo,
 /**
    Easier to read radial text that switches orientation at 180
    degrees, instead of going upside-down as it follows the circle
-   around the circumfrence, aka mirrored or symmetric radial text.
+   around the circumference, aka mirrored or symmetric radial text.
 
    Text with typography, arranged around an origin of a circle with radius r.
    Text is align left CW (1,180)

@@ -208,7 +208,7 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 /**
    Draw these ids around a kusama low orbit circle on arcs from the origin circle.
 
-   Simplest version, make satellite circle on circumfrence and splay
+   Simplest version, make satellite circle on circumference and splay
    or append id's around it.
 
    @linelen	Length of line on a ray from origin to value.
