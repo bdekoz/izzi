@@ -564,9 +564,9 @@ draw_path_data(const string& pathda,
 
 
 /// Center a triangle at this point.
-void
-point_to_triangle(svg_element& obj, const point_2t origin, svg::style s,
-		  const double r = 4, const double angle = 120)
+path_element
+make_path_triangle(const point_2t origin, svg::style s,
+		   const double r = 4, const double angle = 120)
 {
   // Find points: orig, orig + (120 x 1), orig + (120 x 2).
   double zo = zero_angle_north_cw(angle);
@@ -584,6 +584,16 @@ point_to_triangle(svg_element& obj, const point_2t origin, svg::style s,
   tri.add_data(pthdata);
   tri.add_style(s);
   tri.finish_element();
+  return tri;
+}
+
+
+/// Center a triangle at this point.
+void
+point_to_triangle(svg_element& obj, const point_2t origin, svg::style s,
+		  const double r = 4, const double angle = 120)
+{
+  path_element tri = make_path_triangle(origin, s, r, angle);
   obj.add_element(tri);
 }
 
