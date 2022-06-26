@@ -230,21 +230,30 @@ text_line_n_r(svg_element& obj, const point_2t origin, const string text,
 }
 
 
+/// Line primitive.
+line_element
+make_line(const point_2t origin, const point_2t end, svg::style s,
+	  const string dasharray = "")
+{
+  auto [ xo, yo ] = origin;
+  auto [ xe, ye ] = end;
+  line_element l;
+  line_element::data dr = { xo, xe, yo, ye };
+  l.start_element();
+  l.add_data(dr, dasharray);
+  l.add_style(s);
+  l.finish_element();
+  return l;
+}
+
+
 /// Line between two points.
 void
 points_to_line(svg_element& obj, const svg::style s,
 	       const point_2t origin, const point_2t end,
 	       const string dasharray = "")
 {
-  using atype = decltype(obj._M_area)::atype;
-  auto [ xo, yo ] = origin;
-  auto [ xe, ye ] = end;
-  line_element l;
-  line_element::data dr = { atype(xo), atype(xe), atype(yo), atype(ye) };
-  l.start_element();
-  l.add_data(dr, dasharray);
-  l.add_style(s);
-  l.finish_element();
+  line_element l = make_line(origin, end, s, dasharray);
   obj.add_element(l);
 }
 
@@ -658,7 +667,7 @@ make_path_arc_closed(const point_2t& origin, const double startd,
 }
 
 
-/// Plus or x tilt mark as closed path.
+/// Plus or x tilt mark as closed path that can be filled.
 string
 make_path_center_mark(const point_2t& origin, const int len, const int width)
 {
@@ -699,21 +708,39 @@ make_path_center_mark(const point_2t& origin, const int len, const int width)
 }
 
 
-/// Point to center mark as crossed lines.
-void
-point_to_plus_lines(svg_element& obj, const style& styl,
-		    const point_2t origin, const int radius)
+/// Crossed lines, no fill. X marks the ....
+string
+make_crossed_lines(const point_2t origin, svg::style s, const double radius,
+		   const double tiltd = 0.0)
 {
-  auto d0 = zero_angle_north_cw(0);
-  auto d6 = zero_angle_north_cw(180);
-  auto d3 = zero_angle_north_cw(90);
-  auto d9 = zero_angle_north_cw(270);
+  auto d0 = zero_angle_north_cw(0 + tiltd);
+  auto d6 = zero_angle_north_cw(180 + tiltd);
+  auto d3 = zero_angle_north_cw(90 + tiltd);
+  auto d9 = zero_angle_north_cw(270 + tiltd);
   point_2t p0 = get_circumference_point_d(d0, radius, origin);
   point_2t p6 = get_circumference_point_d(d6, radius, origin);
   point_2t p3 = get_circumference_point_d(d3, radius, origin);
   point_2t p9 = get_circumference_point_d(d9, radius, origin);
-  points_to_line(obj, styl, p0, p6);
-  points_to_line(obj, styl, p9, p3);
+
+  line_element l1 = make_line(p0, p6, s);
+  line_element l2 = make_line(p3, p9, s);
+
+  std::ostringstream oss;
+  oss << l1.str();
+  oss << l2.str();
+  return oss.str();
+}
+
+
+/// Point to center mark as crossed lines.
+/// Default is a plus sign at origin, but @tiltd can rotate.
+void
+point_to_crossed_lines(svg_element& obj, const style& styl,
+		       const point_2t origin, const int radius,
+		       const double tiltd = 0.0)
+{
+  string pl = make_crossed_lines(origin, styl, radius, tiltd);
+  obj.add_raw(pl);
 }
 
 } // namespace svg
