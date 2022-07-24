@@ -203,6 +203,30 @@ struct render_state_base
 };
 
 
+/// To string mangling.
+string
+to_string(const render_state_base& rs)
+{
+  using k::select;
+  string name;
+  const ulong vi = static_cast<ulong>(rs.visible_mode);
+  if (vi > 0)
+    {
+      name += "visible-";
+      name += to_string(vi);
+    }
+
+  if (rs.opacity > 0)
+    {
+      name += "opacity-";
+      const double o(rs.opacity * 100);
+      const uint oi = static_cast<uint>(o);
+      name += to_string(oi);
+    }
+  return name;
+}
+
+
 ///  Render settings for collections.
 struct render_state : public render_state_base
 {
