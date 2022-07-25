@@ -200,31 +200,49 @@ struct render_state_base
   void
   flip(k::select& a, const k::select& b)
   { a |= b; }
+
+  string
+  mangle() const
+  {
+    using k::select;
+    string mangled;
+
+    bool foundp = false;
+
+    const uint vi = static_cast<uint>(visible_mode);
+    if (vi > 0)
+      {
+	mangled += "visible-mode-";
+	mangled += std::to_string(vi);
+	foundp = true;
+      }
+
+    const uint oi = static_cast<uint>(outline_mode);
+    if (oi > 0)
+      {
+	if (foundp)
+	  mangled += k::hyphen;
+	else
+	  foundp = true;
+	mangled += "outline-mode-";
+	mangled += std::to_string(oi);
+      }
+
+    if (opacity > 0)
+      {
+	if (foundp)
+	  mangled += k::hyphen;
+	else
+	foundp = true;
+	mangled += "opacity-";
+	const double o(opacity * 100);
+	const uint oi = static_cast<uint>(o);
+	mangled += std::to_string(oi);
+      }
+
+    return mangled;
+  }
 };
-
-
-/// To string mangling.
-string
-to_string(const render_state_base& rs)
-{
-  using k::select;
-  string name;
-  const ulong vi = static_cast<ulong>(rs.visible_mode);
-  if (vi > 0)
-    {
-      name += "visible-";
-      name += to_string(vi);
-    }
-
-  if (rs.opacity > 0)
-    {
-      name += "opacity-";
-      const double o(rs.opacity * 100);
-      const uint oi = static_cast<uint>(o);
-      name += to_string(oi);
-    }
-  return name;
-}
 
 
 ///  Render settings for collections.
