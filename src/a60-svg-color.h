@@ -29,188 +29,190 @@ namespace svg {
 
    color = color enum (and name string conversion)
    colorq = color quantified, similar to Scalar in OpenCV.
-   spectrum = color spectrum as array of color enums
+   spectrum = color spectrum as finite array of color enum values
 */
 
 /// Color enumerated as types.
 enum class color
 {
- // 13 tints / shades
- white,
- gray10,
- gray20,
- gray25,		// gainsboro
- gray30,
- gray40,
- gray50,
- gray60,
- gray75,		// slategray
- gray70,
- gray80,
- gray90,
- black,
+  none,
 
- wcag_lgray,
- wcag_gray,
- wcag_dgray,
+  // 13 tints / shades
+  white,
+  gray10,
+  gray20,
+  gray25,		// gainsboro
+  gray30,
+  gray40,
+  gray50,
+  gray60,
+  gray75,		// slategray
+  gray70,
+  gray80,
+  gray90,
+  black,
 
- // 15 yellow
- kanzoiro,		// daylily light orange
- kohakuiro,		// amber
- kinsusutake,		// golden-gray bamoo
- daylily,
- goldenyellow,
- hellayellow,
- antiquewhite,
- lemonchiffon,
- goldenrod,
- navajowhite,
- ivory,
- gold,
- duboisyellow1,
- duboisyellow2,
- duboisyellow3,
+  wcag_lgray,
+  wcag_gray,
+  wcag_dgray,
 
- // 7 orange
- orange,
- darkorange,
- asamaorange,
- redorange,
- orangered,
- dutchorange,
- internationalorange,
+  // 15 yellow
+  kanzoiro,		// daylily light orange
+  kohakuiro,		// amber
+  kinsusutake,		// golden-gray bamoo
+  daylily,
+  goldenyellow,
+  hellayellow,
+  antiquewhite,
+  lemonchiffon,
+  goldenrod,
+  navajowhite,
+  ivory,
+  gold,
+  duboisyellow1,
+  duboisyellow2,
+  duboisyellow3,
 
- // 17 red
- red,
- foreigncrimson,	// red
- ginshu,		// gray red
- akabeni,		// pure crimson
- akebonoiro,		// dawn color
- ochre,
- sohi,
- benikaba,		// red birch
- benitobi,		// red kite bird
- ake,			// scarlet/blood
- crimson,
- tomato,
- coral,
- salmon,
- duboisred1,
- duboisred2,
- duboisred3,
+  // 7 orange
+  orange,
+  darkorange,
+  asamaorange,
+  redorange,
+  orangered,
+  dutchorange,
+  internationalorange,
 
- // 4 brown
- duboisbrown1,
- duboisbrown2,
- duboisbrown3,
- duboisbrown4,
- duboisbrown5,
+  // 17 red
+  red,
+  foreigncrimson,	// red
+  ginshu,		// gray red
+  akabeni,		// pure crimson
+  akebonoiro,		// dawn color
+  ochre,
+  sohi,
+  benikaba,		// red birch
+  benitobi,		// red kite bird
+  ake,			// scarlet/blood
+  crimson,
+  tomato,
+  coral,
+  salmon,
+  duboisred1,
+  duboisred2,
+  duboisred3,
 
- // 20 green
- byakuroku,		// whitish green
- usumoegi,		// pale onion
- moegi,			// onion green
- hiwamoegi,		// siskin sprout
- midori,
- rokusho,
- aotakeiro,		// green bamboo
- seiheki,		// blue green
- seijiiro,		// celadon
- yanagizome,		// willow dye
- green,
- chartreuse,
- greenyellow,
- limegreen,
- springgreen,
- aquamarine,
- duboisgreen1,
- duboisgreen2,
- duboisgreen3,
- duboisgreen4,
- duboisgreen5,
+  // 4 brown
+  duboisbrown1,
+  duboisbrown2,
+  duboisbrown3,
+  duboisbrown4,
+  duboisbrown5,
 
- // 35 blue
- blue,
- ultramarine,
- shinbashiiro,
- hanada,		// blue silk
- ruriiro,		// lapis
- bellflower,
- navy,
- asagiiro,		// light blue
- indigo,
- rurikon,		// dark blue lapis
- asamablue,
- cyan,
- lightcyan,
- powderblue,
- steelblue,
- cornflowerblue,
- deepskyblue,
- dodgerblue,
- lightblue,
- skyblue,
- lightskyblue,
- midnightblue,
- mediumblue,
- royalblue,
- darkslateblue,
- slateblue,
- azure,
- crayolacerulean,
- duboisblue1,
- duboisblue2,
- duboisblue3,
- duboisblue4,
- blueprintlight,
- blueprint,
- blueprintdark,
+  // 20 green
+  byakuroku,		// whitish green
+  usumoegi,		// pale onion
+  moegi,			// onion green
+  hiwamoegi,		// siskin sprout
+  midori,
+  rokusho,
+  aotakeiro,		// green bamboo
+  seiheki,		// blue green
+  seijiiro,		// celadon
+  yanagizome,		// willow dye
+  green,
+  chartreuse,
+  greenyellow,
+  limegreen,
+  springgreen,
+  aquamarine,
+  duboisgreen1,
+  duboisgreen2,
+  duboisgreen3,
+  duboisgreen4,
+  duboisgreen5,
 
- // 32 purple
- wisteria,
- murasaki,		// purple
- ayameiro,
- peony,
- futaai,		// dark indigo
- benimidori,		// stained red/violet
- redwisteria,		// dusty rose
- botan,			// tree peony
- kokimurasaki,		// deep purple
- usuiro,		// thin
- asamapink,
- blueviolet,
- darkmagenta,
- darkviolet,
- thistle,
- plum,
- violet,
- magenta,
- dfuschia,
- deeppink,
- hotpink,
- pink,
- kissmepink,
- palevioletred,
- mediumvioletred,
- lavender,
- orchid,
- mediumorchid,
- darkestmagenta,
- mediumpurple,
- purple,
- dustyrose,
- atmosphericp,
+  // 35 blue
+  blue,
+  ultramarine,
+  shinbashiiro,
+  hanada,		// blue silk
+  ruriiro,		// lapis
+  bellflower,
+  navy,
+  asagiiro,		// light blue
+  indigo,
+  rurikon,		// dark blue lapis
+  asamablue,
+  cyan,
+  lightcyan,
+  powderblue,
+  steelblue,
+  cornflowerblue,
+  deepskyblue,
+  dodgerblue,
+  lightblue,
+  skyblue,
+  lightskyblue,
+  midnightblue,
+  mediumblue,
+  royalblue,
+  darkslateblue,
+  slateblue,
+  azure,
+  crayolacerulean,
+  duboisblue1,
+  duboisblue2,
+  duboisblue3,
+  duboisblue4,
+  blueprintlight,
+  blueprint,
+  blueprintdark,
 
- // STOS
- command,
- science,
- engineering,
+  // 32 purple
+  wisteria,
+  murasaki,		// purple
+  ayameiro,
+  peony,
+  futaai,		// dark indigo
+  benimidori,		// stained red/violet
+  redwisteria,		// dusty rose
+  botan,			// tree peony
+  kokimurasaki,		// deep purple
+  usuiro,		// thin
+  asamapink,
+  blueviolet,
+  darkmagenta,
+  darkviolet,
+  thistle,
+  plum,
+  violet,
+  magenta,
+  dfuschia,
+  deeppink,
+  hotpink,
+  pink,
+  kissmepink,
+  palevioletred,
+  mediumvioletred,
+  lavender,
+  orchid,
+  mediumorchid,
+  darkestmagenta,
+  mediumpurple,
+  purple,
+  dustyrose,
+  atmosphericp,
 
- // Must be last, so can be cast to int for size.
- none
+  // STOS
+  command,
+  science,
+  engineering,
+
+  // Must be last, so can be cast to int for size.
+  last
 };
 
-constexpr uint color_max_size = static_cast<uint>(color::none);
+constexpr uint color_max_size = static_cast<uint>(color::last);
 
 /// Convert color to string.
 const std::string&
@@ -406,7 +408,8 @@ to_string(const color e)
       enum_map[color::dustyrose] = "rgb(191, 136, 187)";
       enum_map[color::atmosphericp] = "rgb(228, 210, 231)";
 
-      enum_map[color::none] = "rgb(0, 0, 1)";
+      enum_map[color::none] = "rgb(1, 0, 0)";
+      enum_map[color::last] = "rgb(0, 0, 1)";
 
       // Error check to make sure all the colors have names/values.
       if (enum_map.size() != color_max_size + 1)
@@ -601,7 +604,7 @@ color_array spectrum =
  color::midnightblue, color::darkslateblue, color::slateblue,
  color::azure, color::crayolacerulean,
  color::duboisblue1, color::duboisblue2, color::duboisblue3,
- color::blueprintlight, color::blueprint, color::blueprintdark, 
+ color::blueprintlight, color::blueprint, color::blueprintdark,
 
  // purple (magenta, violet, pink)
  color::purple, color::wisteria, color::asamapink, color::pink, color::peony,

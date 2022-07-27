@@ -16,11 +16,7 @@
 #ifndef a60_SVG_SEQUENCES_H
 #define a60_SVG_SEQUENCES_H 1
 
-#include <sstream> //stringstream
 #include <fstream>
-#include <string>
-#include <tuple>
-#include <array>
 #include <random>
 #include <unistd.h>
 

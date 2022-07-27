@@ -19,23 +19,23 @@
 
 namespace svg {
 
-int
-scale_proportional_to_area(int radius, int weight)
+double
+scale_proportional_to_area(double radius, double weight)
 {
   // Scale proportional to area of generated circle.
   // π = 3.14159265358979323846
   const double pi(22/7);
   double a1 = radius * radius * pi;
   double ap = a1 * weight;
-  int rpa = std::sqrt(ap/pi);
+  double rpa = std::sqrt(ap/pi);
   return rpa;
 }
 
 
-int
-scale_proportional_to_weight(int radius, int weight)
+double
+scale_proportional_to_weight(double radius, double weight)
 {
-  int rpr = radius * weight;
+  double rpr = radius * weight;
   return rpr;
 }
 
