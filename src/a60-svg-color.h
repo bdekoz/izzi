@@ -635,10 +635,10 @@ random_color(uint startoffset = 0)
 
 /// Loop through color array starting at position c.
 color
-next_color(color c)
+next_color(color klr)
 {
   color cnext = spectrum.front();
-  auto itr = std::find(spectrum.begin(), spectrum.end(), c);
+  auto itr = std::find(spectrum.begin(), spectrum.end(), klr);
   if (itr != spectrum.end())
     {
       ++itr;
@@ -750,12 +750,11 @@ make_color_band(const colorband& cb, const ushort neededh)
 
 
 /// Flip through color band colors.
+/// @bandn is the number of colors in the colorband.
 colorq
-next_in_color_band(const colorband& cb)
+next_in_color_band(const colorband& cb, const ushort bandn = 400)
 {
   // Generate bands.
-  // For now, just generate 200 each.
-  const ushort bandn = 200;
   static colorqs gband_bw = make_color_band(cband_bw, bandn);
   static colorqs gband_y = make_color_band(cband_y, bandn);
   static colorqs gband_r = make_color_band(cband_r, bandn);
