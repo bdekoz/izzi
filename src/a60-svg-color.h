@@ -39,6 +39,7 @@ enum class color
 
   // 13 tints / shades
   white,
+  black,
   gray10,
   gray20,
   gray25,		// gainsboro
@@ -50,7 +51,6 @@ enum class color
   gray70,
   gray80,
   gray90,
-  black,
 
   wcag_lgray,
   wcag_gray,
@@ -557,9 +557,10 @@ color_array spectrum =
 {
  // black to gray to white in 10% and 25% increments
  color::white,
+ color::black,
  color::gray10, color::gray20, color::gray25, color::gray30,
  color::gray40, color::gray50, color::gray60, color::gray70,
- color::gray75, color::gray80, color::gray90,  color::black,
+ color::gray75, color::gray80, color::gray90,
 
  color::wcag_lgray, color::wcag_gray, color::wcag_dgray,
 
@@ -666,7 +667,8 @@ color_start_at_specified(color klr)
 // Each band has a starting hue and a number of known good samples.
 // This is then used to seed a generator that computes more of similar hues.
 using colorband = std::tuple<color, ushort>;
-constexpr colorband cband_bw = std::make_tuple(color::white, 16);
+constexpr colorband cband_bw = std::make_tuple(color::white, 2);
+constexpr colorband cband_gray = std::make_tuple(color::gray10, 14);
 constexpr colorband cband_y = std::make_tuple(color::hellayellow, 10);
 constexpr colorband cband_r = std::make_tuple(color::red, 17);
 constexpr colorband cband_g = std::make_tuple(color::green, 21);
