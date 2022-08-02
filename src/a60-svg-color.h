@@ -1,6 +1,6 @@
 // svg color -*- mode: C++ -*-
 
-// Copyright (C) 2014-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2022 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -564,33 +564,34 @@ color_array spectrum =
  color::wcag_lgray, color::wcag_gray, color::wcag_dgray,
 
  // yellow
- color::hellayellow, color::goldenyellow,color::navajowhite,
+ color::hellayellow, color::navajowhite,
  color::ivory, color::gold, color::antiquewhite,
- color::lemonchiffon, color::goldenrod, color::kanzoiro,
- color::kohakuiro, color::kinsusutake, color::daylily,
+ color::lemonchiffon, color::goldenrod,
  color::duboisyellow1, color::duboisyellow2, color::duboisyellow3,
 
  // orange
- color::orange, color::darkorange, color::orangered,
- color::redorange, color::asamaorange, color::dutchorange,
- color::internationalorange,
+ color::orange, color::darkorange, color::asamaorange, color::dutchorange,
+ color::internationalorange, color::goldenyellow, color::kanzoiro,
+ color::daylily,  color::orangered, color::duboisred2,
 
  // red
  color::red,  color::coral, color::salmon, color::akabeni,
  color::akebonoiro, color::ochre, color::sohi, color::benikaba,
  color::benitobi, color::ake, color::crimson, color::tomato,
  color::foreigncrimson, color::ginshu,
- color::duboisred1, color::duboisred2, color::duboisred3,
+ color::duboisred1, color::duboisred3,
+ color::redorange,
 
  // brown
+ color::duboisbrown5, color::duboisbrown4,
  color::duboisbrown1, color::duboisbrown2, color::duboisbrown3,
- color::duboisbrown4, color::duboisbrown5,
+ color::kohakuiro, color::kinsusutake,
 
  // green
  color::green, color::limegreen, color::springgreen, color::byakuroku,
  color::usumoegi, color::aquamarine, color::midori, color::rokusho,
  color::aotakeiro, color::seiheki, color::seijiiro, color::yanagizome,
- color::hiwamoegi,color::chartreuse, color::greenyellow, color::moegi,
+ color::hiwamoegi, color::chartreuse, color::greenyellow, color::moegi,
  color::duboisgreen1, color::duboisgreen2, color::duboisgreen3,
  color::duboisgreen4, color::duboisgreen5,
 
@@ -666,13 +667,13 @@ color_start_at_specified(color klr)
 // This is then used to seed a generator that computes more of similar hues.
 using colorband = std::tuple<color, ushort>;
 constexpr colorband cband_bw = std::make_tuple(color::white, 16);
-constexpr colorband cband_y = std::make_tuple(color::hellayellow, 15);
+constexpr colorband cband_y = std::make_tuple(color::hellayellow, 10);
 constexpr colorband cband_r = std::make_tuple(color::red, 17);
 constexpr colorband cband_g = std::make_tuple(color::green, 21);
-constexpr colorband cband_b = std::make_tuple(color::blue, 35);
+constexpr colorband cband_b = std::make_tuple(color::blue, 34);
 constexpr colorband cband_p = std::make_tuple(color::purple, 33);
-constexpr colorband cband_o = std::make_tuple(color::orange, 7);
-constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 5);
+constexpr colorband cband_o = std::make_tuple(color::orange, 10);
+constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 7);
 
 
 /// Add white to tint in density % (0 to 1)
