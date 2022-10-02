@@ -668,7 +668,7 @@ color_start_at_specified(color klr)
 // This is then used to seed a generator that computes more of similar hues.
 using colorband = std::tuple<color, ushort>;
 constexpr colorband cband_bw = std::make_tuple(color::white, 2);
-constexpr colorband cband_gray = std::make_tuple(color::gray10, 14);
+constexpr colorband cband_gray = std::make_tuple(color::white, 16);
 constexpr colorband cband_y = std::make_tuple(color::hellayellow, 10);
 constexpr colorband cband_r = std::make_tuple(color::red, 17);
 constexpr colorband cband_g = std::make_tuple(color::green, 21);
