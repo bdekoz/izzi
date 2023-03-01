@@ -1,3 +1,12 @@
+2023-02-28  Benjamin De Kosnik  <bkoz@rizal>
+
+	Begin quantified HSV color type (color_qf), change old RGB colorq
+	to color_qi.
+	* src/a60-svg-base-types.h: Use color_qi.
+	* src/a60-svg-color.h (colorq to color_qi): Rename.
+	(color_qf): Floating point for HSV.
+	* src/a60-svg-render-state.h: Update.
+
 2022-08-01  Benjamin De Kosnik  <bkoz@rizal>
 
 	* scripts/compile-source.sh: Use gnu 20.

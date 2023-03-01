@@ -1,6 +1,6 @@
 // svg render basics -*- mode: C++ -*-
 
-// Copyright (C) 2014-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2021, 2023 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -248,11 +248,11 @@ struct render_state_base
 ///  Render settings for collections.
 struct render_state : public render_state_base
 {
-  using	colormap = std::unordered_map<string, colorq>;
+  using	colormap = std::unordered_map<string, color_qi>;
 
   colormap	klrs;
 
-  colorq
+  color_qi
   get_color(const string& s) const
   {
     auto i = klrs.find(s);

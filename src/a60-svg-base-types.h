@@ -1,6 +1,6 @@
 // svg base -*- mode: C++ -*-
 
-// Copyright (C) 2014-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2021, 2023 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -108,10 +108,10 @@ struct area
 /// Datum consolidating style preferences.
 struct style
 {
-  colorq		_M_fill_color;
+  color_qi		_M_fill_color;
   double		_M_fill_opacity;
 
-  colorq		_M_stroke_color;
+  color_qi		_M_stroke_color;
   double		_M_stroke_opacity;
   double		_M_stroke_size;
 
@@ -134,9 +134,9 @@ to_string(const style& s)
   std::ostringstream stream;
   stream << k::space;
   stream << "style=" << k::quote;
-  stream << "fill:" << colorq::to_string(s._M_fill_color) << space;
+  stream << "fill:" << color_qi::to_string(s._M_fill_color) << space;
   stream << "fill-opacity:" << s._M_fill_opacity << space;
-  stream << "stroke:" << colorq::to_string(s._M_stroke_color) << space;
+  stream << "stroke:" << color_qi::to_string(s._M_stroke_color) << space;
   stream << "stroke-opacity:" << s._M_stroke_opacity << space;
   stream << "stroke-width:" << s._M_stroke_size << k::quote;
   return stream.str();

@@ -1,6 +1,6 @@
 // svg color -*- mode: C++ -*-
 
-// Copyright (C) 2014-2022 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2023 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -28,7 +28,8 @@ namespace svg {
    HUE
 
    color = color enum (and name string conversion)
-   colorq = color quantified, similar to Scalar in OpenCV.
+   color_qi = color quantified as RGB integral values 0-255 (similar to Scalar in OpenCV).
+   color_qf = color quantified as Hue Saturation Value (HSV) decimal values 0-1
    spectrum = color spectrum as finite array of color enum values
 */
 
@@ -212,6 +213,7 @@ enum class color
   last
 };
 
+/// Total number of enumerated colors.
 constexpr uint color_max_size = static_cast<uint>(color::last);
 
 /// Convert color to string.
@@ -427,9 +429,9 @@ to_string(const color e)
 }
 
 
-/// Color quantified as components in aggregate type with RGB values.
+/// Color quantified as integral RGB components in the range [0,255].
 /// aka like Scalar in OpenCV.
-struct colorq
+struct color_qi
 {
   using itype = unsigned short;
 
@@ -440,7 +442,7 @@ struct colorq
   // Return "rgb(64, 64, 64)";
 
   static string
-  to_string(colorq s)
+  to_string(color_qi s)
   {
     std::ostringstream oss;
     oss << "rgb(" << s.r << ',' << s.g << ',' << s.b << ")";
@@ -448,13 +450,13 @@ struct colorq
   }
 
   // From "rgb(64, 64, 64)";
-  static colorq
+  static color_qi
   from_string(string s)
   {
     // Kill rgb() enclosing, if be.
     if (s.empty() || s.size() < 5 || s[0] != 'r')
       {
-	string m("colorq::from_string input is not in rbg form: ");
+	string m("color_qi::from_string input is not in rbg form: ");
 	m += s;
 	m += k::newline;
 	throw std::runtime_error(m);
@@ -485,20 +487,20 @@ struct colorq
     iss >> bs;
     itype b = static_cast<itype>(bs);
 
-    return colorq(r, g, b);
+    return color_qi(r, g, b);
   }
 
-  colorq() = default;
-  colorq(const colorq&) = default;
-  colorq& operator=(const colorq&) = default;
+  color_qi() = default;
+  color_qi(const color_qi&) = default;
+  color_qi& operator=(const color_qi&) = default;
 
-  // auto operator<=>(const colorq&) const = default;
+  // auto operator<=>(const color_qi&) const = default;
 
-  colorq(itype ra, itype ga, itype ba) : r(ra), g(ga), b(ba) { }
+  color_qi(itype ra, itype ga, itype ba) : r(ra), g(ga), b(ba) { }
 
-  colorq(const color e)
+  color_qi(const color e)
   {
-    colorq klr = from_string(svg::to_string(e));
+    color_qi klr = from_string(svg::to_string(e));
     r = klr.r;
     b = klr.b;
     g = klr.g;
@@ -506,11 +508,64 @@ struct colorq
 };
 
 
-/// Convert colorq to string.
+/// Convert color_qi to string.
 const std::string
-to_string(const colorq klr)
-{ return colorq::to_string(klr); }
+to_string(const color_qi klr)
+{ return color_qi::to_string(klr); }
 
+
+/**
+   Color quantified as floating point HSV components in the range [0,1].
+
+   https://web.archive.org/web/20150303174723/
+   http://en.literateprograms.org/RGB_to_HSV_color_space_conversion_(C)
+*/
+struct color_qf
+{
+  using ftype = float;
+
+  ftype	h; /// Hue
+  ftype	s; /// Saturation
+  ftype	v; /// Value
+
+  static string
+  to_string(color_qf s)
+  {
+    std::ostringstream oss;
+    oss << "hsv(" << s.h << ',' << s.s << ',' << s.v << ")";
+    return oss.str();
+  }
+
+  // From "rgb(64, 64, 64)";
+  static color_qf
+  from_string(string)
+  {
+    ftype i(0);
+    return color_qf(i, i, i);
+  }
+
+  color_qf() = default;
+  color_qf(const color_qf&) = default;
+  color_qf& operator=(const color_qf&) = default;
+
+  // auto operator<=>(const color_qf&) const = default;
+
+  color_qf(ftype vh, ftype vs, ftype vv) : h(vh), s(vs), v(vv) { }
+
+  color_qf(const color e)
+  {
+    color_qf klr = from_string(svg::to_string(e));
+    h = klr.h;
+    s = klr.s;
+    v = klr.v;
+  }
+};
+
+
+/// Convert color_qf to string.
+const std::string
+to_string(const color_qf klr)
+{ return color_qf::to_string(klr); }
 
 
 /**
@@ -523,31 +578,31 @@ to_string(const colorq klr)
   ushort ug = (a.g + b.g) / 2;
   ushort ub = (a.b + b.b) / 2;
 */
-colorq
-combine_two_colorq(const colorq& a, const double ad,
-		   const colorq& b, const double bd)
+color_qi
+combine_two_color_qi(const color_qi& a, const double ad,
+		   const color_qi& b, const double bd)
 {
   double denom = ad + bd;
   double ur = ((a.r * ad) + (b.r * bd)) / denom;
   double ug = ((a.g * ad) + (b.g * bd)) / denom;
   double ub = ((a.b * ad) + (b.b * bd)) / denom;
 
-  using itype = colorq::itype;
+  using itype = color_qi::itype;
   itype cr = static_cast<itype>(ur);
   itype cg = static_cast<itype>(ug);
   itype cb = static_cast<itype>(ub);
-  return colorq { cr, cg, cb };
+  return color_qi { cr, cg, cb };
 }
 
 /// Average two colors, return the result.
-colorq
-average_two_colorq(const colorq& a, const colorq& b)
-{ return combine_two_colorq(a, 1.0, b, 1.0); }
+color_qi
+average_two_color_qi(const color_qi& a, const color_qi& b)
+{ return combine_two_color_qi(a, 1.0, b, 1.0); }
 
 
 /// Color iteration and combinatorics.
 using colors = std::vector<color>;
-using colorqs = std::vector<colorq>;
+using color_qis = std::vector<color_qi>;
 
 using color_array = std::array<color, color_max_size>;
 
@@ -653,11 +708,11 @@ next_color(color klr)
 
 
 /// Start at specified color bar entry point.
-colorq
+color_qi
 color_start_at_specified(color klr)
 {
   static color _S_klr = klr;
-  colorq retk = _S_klr;
+  color_qi retk = _S_klr;
   _S_klr = next_color(_S_klr);
   return retk;
 }
@@ -679,10 +734,10 @@ constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 7);
 
 
 /// Add white to tint in density % (0 to 1)
-colorq
-tint_to(const colorq c, const double density)
+color_qi
+tint_to(const color_qi c, const double density)
 {
-  colorq klr;
+  color_qi klr;
   klr.r = c.r + (255 - c.r) * density;
   klr.g = c.g + (255 - c.g) * density;
   klr.b = c.b + (255 - c.b) * density;
@@ -690,10 +745,10 @@ tint_to(const colorq c, const double density)
 }
 
 /// Add black to shade in density % (0 to 1)
-colorq
-shade_to(const colorq c, const double density)
+color_qi
+shade_to(const color_qi c, const double density)
 {
-  colorq klr;
+  color_qi klr;
   klr.r = c.r * (1.0 - density);
   klr.g = c.r * (1.0 - density);
   klr.b = c.b * (1.0 - density);
@@ -705,9 +760,9 @@ shade_to(const colorq c, const double density)
 
   Algorithm is average two known good, where two picked randomly.
 
-  Return type is a vector of generated colorq types.
+  Return type is a vector of generated color_qi types.
 */
-colorqs
+color_qis
 make_color_band(const colorband& cb, const ushort neededh)
 {
   // Find starting hue and number of samples in the color band.
@@ -732,7 +787,7 @@ make_color_band(const colorband& cb, const ushort neededh)
   auto distr = std::uniform_real_distribution<>(0, 1);
 
   // Generate new from averaging random samples, cache in return vector.
-  colorqs cband;
+  color_qis cband;
   for (ushort i = 0; i < neededh; ++i)
     {
       // New color.
@@ -744,7 +799,7 @@ make_color_band(const colorband& cb, const ushort neededh)
       // Combine.
       double c1r = distr(rg);
       double c2r = 2.0 - c1r;
-      colorq cgen = combine_two_colorq(c1, c1r, c2, c2r);
+      color_qi cgen = combine_two_color_qi(c1, c1r, c2, c2r);
       cband.push_back(cgen);
     }
 
@@ -754,20 +809,20 @@ make_color_band(const colorband& cb, const ushort neededh)
 
 /// Flip through color band colors.
 /// @bandn is the number of colors in the colorband.
-colorq
+color_qi
 next_in_color_band(const colorband& cb, const ushort bandn = 400)
 {
   // Generate bands.
-  static colorqs gband_bw = make_color_band(cband_bw, bandn);
-  static colorqs gband_y = make_color_band(cband_y, bandn);
-  static colorqs gband_r = make_color_band(cband_r, bandn);
-  static colorqs gband_g = make_color_band(cband_g, bandn);
-  static colorqs gband_b = make_color_band(cband_b, bandn);
-  static colorqs gband_p = make_color_band(cband_p, bandn);
-  static colorqs gband_o = make_color_band(cband_o, bandn);
-  static colorqs gband_brown = make_color_band(cband_brown, bandn);
+  static color_qis gband_bw = make_color_band(cband_bw, bandn);
+  static color_qis gband_y = make_color_band(cband_y, bandn);
+  static color_qis gband_r = make_color_band(cband_r, bandn);
+  static color_qis gband_g = make_color_band(cband_g, bandn);
+  static color_qis gband_b = make_color_band(cband_b, bandn);
+  static color_qis gband_p = make_color_band(cband_p, bandn);
+  static color_qis gband_o = make_color_band(cband_o, bandn);
+  static color_qis gband_brown = make_color_band(cband_brown, bandn);
 
-  colorq ret;
+  color_qi ret;
   const color c = std::get<0>(cb);
   switch (c)
     {
