@@ -1,3 +1,8 @@
+2023-03-04  Benjamin De Kosnik  <bkoz@rizal>
+
+	* src/a60-svg-render-basics.h (normalize_value_on_range): Move to...
+	* src/a60-svg.h: ...here.
+
 2023-02-28  Benjamin De Kosnik  <bkoz@rizal>
 
 	Begin quantified HSV color type (color_qf), change old RGB colorq

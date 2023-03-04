@@ -40,20 +40,6 @@ scale_proportional_to_weight(double radius, double weight)
 }
 
 
-/// Scale value from min to max on range (nfloor, nceil).
-double
-normalize_value_on_range(const size_type value, const size_type min,
-			 const size_type max,
-			 const size_type nfloor, const size_type nceil)
-{
-  double rmultp(nceil - nfloor);
-  double valnum(value - min);
-  double valdenom(max - min);
-  double weightn = (rmultp * (valnum / valdenom)) + nfloor;
-  return weightn;
-}
-
-
 /// Text at @origin, with style.
 void
 styled_text(svg_element& obj, const string text, const point_2t origin,

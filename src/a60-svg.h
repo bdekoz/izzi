@@ -78,6 +78,20 @@ using vrange = std::vector<point_2t>;
 using vvranges = std::vector<vrange>;
 
 
+/// Scale value from min to max on range (nfloor, nceil).
+double
+normalize_value_on_range(const size_type value, const size_type min,
+			 const size_type max,
+			 const size_type nfloor, const size_type nceil)
+{
+  double rmultp(nceil - nfloor);
+  double valnum(value - min);
+  double valdenom(max - min);
+  double weightn = (rmultp * (valnum / valdenom)) + nfloor;
+  return weightn;
+}
+
+
 /// Find cartesian distance between two 2D points.
 space_type
 distance_cartesian(const point_2t& p1, const point_2t& p2)
