@@ -28,8 +28,12 @@ namespace svg {
    HUE
 
    color = color enum (and name string conversion)
-   color_qi = color quantified as RGB integral values 0-255 (similar to Scalar in OpenCV).
+
+   color_qi = color quantified as RGB integral values 0-255
+	      (similar to Scalar in OpenCV).
+
    color_qf = color quantified as Hue Saturation Value (HSV) decimal values 0-1
+
    spectrum = color spectrum as finite array of color enum values
 */
 
@@ -524,25 +528,9 @@ struct color_qf
 {
   using ftype = float;
 
-  ftype	h; /// Hue
-  ftype	s; /// Saturation
-  ftype	v; /// Value
-
-  static string
-  to_string(color_qf s)
-  {
-    std::ostringstream oss;
-    oss << "hsv(" << s.h << ',' << s.s << ',' << s.v << ")";
-    return oss.str();
-  }
-
-  // From "rgb(64, 64, 64)";
-  static color_qf
-  from_string(string)
-  {
-    ftype i(0);
-    return color_qf(i, i, i);
-  }
+  ftype	h; /// Hue degree between 0.0 and 360.0
+  ftype	s; /// Saturation between 0.0 (gray) and 1.0
+  ftype	v; /// Value between 0.0 (black) and 1.0
 
   color_qf() = default;
   color_qf(const color_qf&) = default;
@@ -552,12 +540,72 @@ struct color_qf
 
   color_qf(ftype vh, ftype vs, ftype vv) : h(vh), s(vs), v(vv) { }
 
-  color_qf(const color e)
+  // Conversion constructor, convert from RGB to HSV.
+  color_qf(const color_qi& cqi)
   {
-    color_qf klr = from_string(svg::to_string(e));
-    h = klr.h;
-    s = klr.s;
-    v = klr.v;
+    // Start by converting rgb to decimal range.
+    // color_qi assumes [0,255], color_qf converts to range [0,1]
+    auto [r, g, b] = cqi;
+    double rf = normalize_value_on_range(r, 0, 255, 0, 1);
+    double gf = normalize_value_on_range(g, 0, 255, 0, 1);
+    double bf = normalize_value_on_range(b, 0, 255, 0, 1);
+    std::initializer_list<double> l1 = { rf, gf, bf };
+    double rgb_max = std::max(l1);
+
+    // Value first.
+    v = rgb_max;
+    if (v != 0)
+      {
+	double nrf(rf / v);
+	double ngf(gf / v);
+	double nbf(bf / v);
+	std::initializer_list<double> l2 = { nrf, ngf, nbf };
+	double nrgb_min = std::min(l2);
+	double nrgb_max = std::max(l2);
+
+	// Saturation second.
+	s = nrgb_max - nrgb_min;
+	if (s != 0)
+	  {
+	    // Hue third.
+	    double srf((nrf - nrgb_min) / s);
+	    double sgf((ngf - nrgb_min) / s);
+	    double sbf((nbf - nrgb_min) / s);
+	    std::initializer_list<double> l3 = { srf, sgf, sbf };
+	    double srgb_max = std::max(l3);
+
+	    if (srgb_max == srf)
+	      {
+		h = 0.0 + 60.0 * (sgf - sbf);
+		if (h < 0.0)
+		  h += 360.0;
+	      }
+	    else if (srgb_max == sgf)
+	      {
+		h = 120.0 + (60.0 * (sbf - srf));
+	      }
+	    else
+	      {
+		// srgb_max == sbf
+		h = 240.0 + (60.0 * (srf - sgf));
+	      }
+	  }
+	else
+	  h = 0;
+      }
+    else
+      {
+	h = 0;
+	s = 0;
+      }
+  }
+
+  static string
+  to_string(color_qf s)
+  {
+    std::ostringstream oss;
+    oss << "hsv(" << s.h << ',' << s.s << ',' << s.v << ")";
+    return oss.str();
   }
 };
 
@@ -566,6 +614,21 @@ struct color_qf
 const std::string
 to_string(const color_qf klr)
 { return color_qf::to_string(klr); }
+
+
+/// Less than compare for color_qf
+bool
+color_qf_lt_hue(const color_qf& k1, const color_qf& k2)
+{
+  const bool eqh = k1.h == k2.h;
+  const bool lth = k1.h < k2.h;
+  const bool ltv = k1.v < k2.v;
+
+  if (eqh)
+    return ltv;
+  else
+    return lth;
+};
 
 
 /**

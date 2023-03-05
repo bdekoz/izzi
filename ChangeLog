@@ -1,5 +1,10 @@
 2023-03-04  Benjamin De Kosnik  <bkoz@rizal>
 
+	* src/a60-svg-color.h: New HSV conversion ctor.
+	* examples/color-rgb-to-hsv-1.cc
+
+2023-03-04  Benjamin De Kosnik  <bkoz@rizal>
+
 	* src/a60-svg-render-basics.h (normalize_value_on_range): Move to...
 	* src/a60-svg.h: ...here.
 
