@@ -20,6 +20,7 @@
 #include <map>
 #include <algorithm>
 #include <random>
+#include <iomanip>
 
 
 namespace svg {
@@ -600,10 +601,17 @@ struct color_qf
       }
   }
 
+  color_qf(const color e)
+  {
+    color_qi klr(e);
+    *this = color_qf(klr);
+  }
+
   static string
   to_string(color_qf s)
   {
     std::ostringstream oss;
+    oss << std::fixed << std::setprecision(2);
     oss << "hsv(" << s.h << ',' << s.s << ',' << s.v << ")";
     return oss.str();
   }
@@ -622,10 +630,10 @@ color_qf_lt_hue(const color_qf& k1, const color_qf& k2)
 {
   const bool eqh = k1.h == k2.h;
   const bool lth = k1.h < k2.h;
-  const bool ltv = k1.v < k2.v;
+  const bool lts = k1.s < k2.s;
 
   if (eqh)
-    return ltv;
+    return lts;
   else
     return lth;
 };
