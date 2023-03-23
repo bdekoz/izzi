@@ -1,0 +1,10 @@
+<map id="svg::draw_path_data" name="svg::draw_path_data">
+<area shape="rect" id="node1" title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers...." alt="" coords="5,179,132,202"/>
+<area shape="rect" id="node2" href="$group__elements.html#a807f3c30f2ace338ad10aaf230b47665" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="186,5,309,40"/>
+<area shape="rect" id="node3" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="186,64,309,99"/>
+<area shape="rect" id="node4" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="363,98,453,121"/>
+<area shape="rect" id="node5" href="$group__elements.html#gaac30ae99fb1a2542688fa1ffb43cd8e1" title=" " alt="" coords="186,173,309,208"/>
+<area shape="rect" id="node6" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="183,233,312,255"/>
+<area shape="rect" id="node7" href="$group__elements.html#a6dbca7cef2cbc0c10aa44c44ae20b36e" title=" " alt="" coords="186,280,309,315"/>
+<area shape="rect" id="node8" href="$group__elements.html#a99ff90a016db190ee8bb5ee8c045e329" title=" " alt="" coords="180,339,315,362"/>
+</map>
