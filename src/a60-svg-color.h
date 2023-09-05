@@ -615,6 +615,46 @@ struct color_qf
     oss << "hsv(" << s.h << ',' << s.s << ',' << s.v << ")";
     return oss.str();
   }
+
+  /// Back to RGB
+  /// https://www.rapidtables.com/convert/color/hsv-to-rgb.html
+  const color_qi
+  to_color_qi()
+  {
+    const ftype c = v * s;
+    const ftype x = c * (1.0 - std::fabs(std::fmod(h / 60.0, 2) - 1.0));
+    const ftype m = v - c;
+
+    float r, g, b;
+    if (h >= 0 && h < 60)
+      {
+	r = c, g = c, b = 0;
+      }
+    else if (h >= 60 && h < 120)
+      {
+	r = x, g = c, b = 0;
+      }
+    else if (h >= 120 && h < 180)
+      {
+	r = 0, g = c, b = x;
+      }
+    else if (h >= 180 && h < 240)
+      {
+	r = 0, g = x, b = c;
+      }
+    else if (h >= 240 && h < 300)
+      {
+	r = x, g = 0, b = c;
+      }
+    else
+      {
+	r = c, g = 0, b = x;
+      }
+
+    auto lpixel = [m] (float ff) { return color_qi::itype((ff + m) * 255); };
+
+    return color_qi(lpixel(r), lpixel(g), lpixel(b));
+  }
 };
 
 
@@ -624,9 +664,10 @@ to_string(const color_qf klr)
 { return color_qf::to_string(klr); }
 
 
+
 /// Less than compare for color_qf
 bool
-color_qf_lt_hue(const color_qf& k1, const color_qf& k2)
+color_qf_lt_hue_v1(const color_qf& k1, const color_qf& k2)
 {
   const bool eqh = k1.h == k2.h;
   const bool lth = k1.h < k2.h;
@@ -638,6 +679,38 @@ color_qf_lt_hue(const color_qf& k1, const color_qf& k2)
     return lth;
 };
 
+bool
+color_qf_lt_hue_v2(const color_qf& k1, const color_qf& k2)
+{
+  const bool eqh = k1.h == k2.h;
+  const bool lth = k1.h < k2.h;
+
+  if (eqh)
+    {
+      const color_qf::ftype k1hyp = std::sqrt((k1.s * k1.s) + (k1.v * k1.v));
+      const color_qf::ftype k2hyp = std::sqrt((k2.s * k2.s) + (k2.v * k2.v));
+      const bool ltothers = k1hyp < k2hyp;
+      return ltothers;
+    }
+  else
+    return lth;
+};
+
+/// Forwarding function.
+inline bool
+color_qf_lt_hue(const color_qf& k1, const color_qf& k2)
+{ return color_qf_lt_hue_v2(k1, k2); };
+
+
+/*
+color_qf
+mutate_color_qf(const color_qf& k,
+		const float vh = 0, const float vs = 0, const float vv = 0)
+{
+
+  return k;
+}
+*/
 
 /**
   Combine color a with color b in percentages ad and ab, respectively.
@@ -650,7 +723,7 @@ color_qf_lt_hue(const color_qf& k1, const color_qf& k2)
   ushort ub = (a.b + b.b) / 2;
 */
 color_qi
-combine_two_color_qi(const color_qi& a, const double ad,
+combine_color_qi(const color_qi& a, const double ad,
 		   const color_qi& b, const double bd)
 {
   double denom = ad + bd;
@@ -667,8 +740,8 @@ combine_two_color_qi(const color_qi& a, const double ad,
 
 /// Average two colors, return the result.
 color_qi
-average_two_color_qi(const color_qi& a, const color_qi& b)
-{ return combine_two_color_qi(a, 1.0, b, 1.0); }
+average_color_qi(const color_qi& a, const color_qi& b)
+{ return combine_color_qi(a, 1.0, b, 1.0); }
 
 
 /// Color iteration and combinatorics.
@@ -804,28 +877,6 @@ constexpr colorband cband_o = std::make_tuple(color::orange, 10);
 constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 7);
 
 
-/// Add white to tint in density % (0 to 1)
-color_qi
-tint_to(const color_qi c, const double density)
-{
-  color_qi klr;
-  klr.r = c.r + (255 - c.r) * density;
-  klr.g = c.g + (255 - c.g) * density;
-  klr.b = c.b + (255 - c.b) * density;
-  return klr;
-}
-
-/// Add black to shade in density % (0 to 1)
-color_qi
-shade_to(const color_qi c, const double density)
-{
-  color_qi klr;
-  klr.r = c.r * (1.0 - density);
-  klr.g = c.r * (1.0 - density);
-  klr.b = c.b * (1.0 - density);
-  return klr;
-}
-
 /**
   Generate a color band from starting hue and seeds.
 
@@ -834,7 +885,7 @@ shade_to(const color_qi c, const double density)
   Return type is a vector of generated color_qi types.
 */
 color_qis
-make_color_band(const colorband& cb, const ushort neededh)
+make_color_band_v1(const colorband& cb, const ushort neededh)
 {
   // Find starting hue and number of samples in the color band.
   color c = std::get<0>(cb);
@@ -844,7 +895,7 @@ make_color_band(const colorband& cb, const ushort neededh)
   auto itr = std::find(spectrum.begin(), spectrum.end(), c);
   if (itr == spectrum.end())
     {
-      string m("collection::make_color_band: " + to_string(c));
+      string m("collection::make_color_band_v1: at the end of " + to_string(c));
       throw std::runtime_error(m);
     }
 
@@ -870,12 +921,65 @@ make_color_band(const colorband& cb, const ushort neededh)
       // Combine.
       double c1r = distr(rg);
       double c2r = 2.0 - c1r;
-      color_qi cgen = combine_two_color_qi(c1, c1r, c2, c2r);
+      color_qi cgen = combine_color_qi(c1, c1r, c2, c2r);
       cband.push_back(cgen);
     }
 
   return cband;
 }
+
+
+// Algorightm is HSV generation.
+#if 0
+color_qis
+make_color_band_v2(const colorband& cb, const ushort neededh)
+{
+  // Find starting hue and number of samples in the color band.
+  color h = std::get<0>(cb);
+  const ushort hn = std::get<1>(cb) - 1;
+
+  color_qis cband;
+  color_qis cbando;
+  for (ushort i = 0; i < neededh; ++i)
+    {
+      // Start by pushing all original hues into colorband if space.
+      if (i < hn)
+	{
+	  cband.push_back(h);
+	  h = next_color(h);
+	}
+      else
+	{
+	  // All discrete hues in the original colorband; aka palette.
+	  if (i == hn)
+	    cbando = cband;
+
+	  double repeatf = std::trunc(double(neededh - i) / double(hn));
+	  const ushort repeatn = static_cast<ushort>(repeatf) + 1;
+
+	  // Given the size of the color band, this is the
+	  const double stepsz(1.0 / hn);
+
+
+	  for (ushort ii = 0; ii < cbando.size(); ++ii)
+	    {
+	      color_qi krgb = cbando[ii];
+	      color_qf khsv(krgb);
+	    }
+
+	  // Done.
+	}
+    }
+
+  return cband;
+}
+#endif
+
+
+/// Forwarding function.
+color_qis
+make_color_band(const colorband& cb, const ushort neededh)
+{ return make_color_band_v1(cb, neededh); }
 
 
 /// Flip through color band colors.

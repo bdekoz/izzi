@@ -2,7 +2,7 @@
 #include <iostream>
 
 void
-test_color(std::string ofile)
+test_color(std::string)
 {
   using namespace std;
   using namespace svg;
@@ -50,7 +50,6 @@ test_color(std::string ofile)
   std::cout << to_string(yf4) << std::endl;
   if (!checkh4 || !checks4 || !checkv4)
     throw std::logic_error("yf4 rgb/hsv fail");
-  
 }
 
 
