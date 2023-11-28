@@ -1,0 +1,13 @@
+<map id="svg::vertical_sync_roll_seq" name="svg::vertical_sync_roll_seq">
+<area shape="rect" id="node1" title="Simulated vertical roll, with fades. r == frame size." alt="" coords="5,181,113,216"/>
+<area shape="rect" id="node2" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="170,5,287,40"/>
+<area shape="rect" id="node3" href="$group__elements.html#a1b22cfab9437b40c8b877ffe5472ff02" title=" " alt="" coords="167,123,290,157"/>
+<area shape="rect" id="node6" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="167,181,290,216"/>
+<area shape="rect" id="node8" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title="Common transforms include rotate(180)" alt="" coords="167,64,290,99"/>
+<area shape="rect" id="node9" href="$group__elements.html#gad01750ac554c6bd6871a930c90e17a04" title=" " alt="" coords="170,240,287,275"/>
+<area shape="rect" id="node10" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="170,299,287,333"/>
+<area shape="rect" id="node11" href="$group__elements.html#a99ff90a016db190ee8bb5ee8c045e329" title=" " alt="" coords="161,358,296,381"/>
+<area shape="rect" id="node4" href="$namespacesvg_1_1constants.html#a3972655f1dfdc090ec2592d1fb37e87c" title=" " alt="" coords="344,126,475,149"/>
+<area shape="rect" id="node5" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="345,74,474,97"/>
+<area shape="rect" id="node7" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="364,187,455,210"/>
+</map>
