@@ -630,7 +630,7 @@ color_qf_lt_hue(const color_qf& k1, const color_qf& k2)
 {
   const bool eqh = k1.h == k2.h;
   const bool lth = k1.h < k2.h;
-  const bool lts = k1.s < k2.s;
+  const bool lts = k1.v < k2.v;
 
   if (eqh)
     return lts;

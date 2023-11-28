@@ -266,6 +266,7 @@ struct render_state : public render_state_base
 };
 
 
+/// Global state.
 render_state&
 get_render_state()
 {
