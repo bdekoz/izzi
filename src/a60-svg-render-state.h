@@ -1,6 +1,6 @@
 // svg render basics -*- mode: C++ -*-
 
-// Copyright (C) 2014-2021, 2023 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2024 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -162,6 +162,7 @@ struct render_state_base
   k::scale	scale_mode;
 
   double	opacity;
+  int		text_scale_max;
 
   // Values with similar geo coordinates counted in as one meta coordinate.
   bool		weigh;
@@ -175,7 +176,7 @@ struct render_state_base
   render_state_base(const double o = 0.10,
 		    const k::scale rscale = k::scale::medium)
   : visible_mode(k::select::none), outline_mode(k::select::none),
-    scale_mode(rscale), opacity(o),
+    scale_mode(rscale), opacity(o), text_scale_max(0),
     weigh(false), color_generated(true), alt(false)
   { }
 
