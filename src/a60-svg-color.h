@@ -221,7 +221,7 @@ enum class color
 /// Total number of enumerated colors.
 constexpr uint color_max_size = static_cast<uint>(color::last);
 
-/// Convert color to string.
+/// Convert color to RGB color value string.
 const std::string&
 to_string(const color e)
 {
@@ -744,15 +744,17 @@ average_color_qi(const color_qi& a, const color_qi& b)
 { return combine_color_qi(a, 1.0, b, 1.0); }
 
 
-/// Color iteration and combinatorics.
+/// Types for Color iteration and combinatorics.
 using colors = std::vector<color>;
 using color_qis = std::vector<color_qi>;
+using color_qfs = std::vector<color_qf>;
 
-using color_array = std::array<color, color_max_size>;
+/// Palette, finite set of colors used. Must end with color::none.
+using palette = std::array<color, color_max_size>;
 
 
-/// Color spectrum.
-color_array spectrum =
+/// Default colors for izzi.
+palette izzi_palette =
 {
  // black to gray to white in 10% and 25% increments
  color::white,
@@ -822,6 +824,57 @@ color_array spectrum =
 };
 
 
+/// Japan colors (67)
+palette jp_palette =
+{
+ // yellow
+ color::hellayellow, color::gold,
+
+ // orange
+ color::orange, color::internationalorange,
+
+ // red
+ color::red,  color::akabeni, color::benitobi,
+
+ // brown
+ color::duboisbrown1, color::kohakuiro, color::kinsusutake,
+
+ // green
+ color::aotakeiro, color::duboisgreen4, color::rokusho,
+ color::yanagizome, color::hiwamoegi, color::duboisgreen2, color::chartreuse,
+ color::green, color::springgreen, color::aquamarine,
+
+
+ // blue
+ color::blue, color::ultramarine, color::shinbashiiro, color::hanada,
+ color::cornflowerblue, color::lightblue, color::skyblue,
+ color::asagiiro, color::rurikon, color::asamablue, color::cyan,
+ color::lightcyan, color::powderblue, color::steelblue, color::dodgerblue,
+ color::royalblue, color::mediumblue, color::deepskyblue,
+ color::azure, color::crayolacerulean,
+ color::duboisblue1, color::duboisblue2,
+ color::blueprintlight, color::blueprint,
+
+ // purple (magenta, violet, pink)
+ color::purple, color::wisteria, color::asamapink, color::pink, color::peony,
+ color::violet, color::magenta, color::dfuschia, color::deeppink,
+ color::hotpink, color::dustyrose, color::atmosphericp, color::kissmepink,
+ color::futaai, color::redwisteria, color::botan,
+ color::kokimurasaki, color::usuiro, color::murasaki, color::ayameiro,
+ color::blueviolet, color::darkmagenta, color::darkviolet,
+ color::thistle, color::plum,
+ color::palevioletred, color::mediumvioletred, color::orchid,
+ color::mediumorchid, color::darkestmagenta, color::mediumpurple,
+
+ color::none
+};
+
+
+/// Spectrum, aka default palette.
+palette spectrum = izzi_palette;
+//palette spectrum = jp_palette;
+
+
 /// Random entry from array above.
 color
 random_color(uint startoffset = 0)
@@ -832,7 +885,6 @@ random_color(uint startoffset = 0)
   uint index = disti(rg);
   return spectrum[index];
 }
-
 
 /// Loop through color array starting at position c.
 color
@@ -849,7 +901,6 @@ next_color(color klr)
     }
   return cnext;
 }
-
 
 /// Start at specified color bar entry point.
 color_qi
