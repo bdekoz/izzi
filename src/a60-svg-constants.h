@@ -79,7 +79,7 @@ constexpr area<> v1080p_h = { 1920, 1080 };
 constexpr area<> v1080p_v = { 1080, 1920 };
 
 constexpr area<> v4k_h = { 3840, 2160 };
-constexpr area<> v4k_v = { 2160, 4840 };
+constexpr area<> v4k_v = { 2160, 3840 };
 
 
 /// Style constants.
