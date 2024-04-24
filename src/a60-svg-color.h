@@ -745,13 +745,18 @@ average_color_qi(const color_qi& a, const color_qi& b)
 
 
 /// Types for Color iteration and combinatorics.
-using colors = std::vector<color>;
 using color_qis = std::vector<color_qi>;
 using color_qfs = std::vector<color_qf>;
 
 /// Palette, finite set of colors used. Must end with color::none.
-using palette = std::array<color, color_max_size>;
+template<typename T, std::size_t N>
+using palette = std::array<T, N>;
 
+template<std::size_t N>
+using palette_qi = palette<color_qi, N>;
+
+template<std::size_t N>
+using palette_qf = palette<color_qf, N>; 
 
 /// Default colors for izzi.
 palette izzi_palette =
