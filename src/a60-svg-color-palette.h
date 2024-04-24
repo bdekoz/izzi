@@ -19,21 +19,31 @@
 #ifndef MiL_SVG_COLOR_PALETTE_H
 #define MiL_SVG_COLOR_PALETTE_H 1
 
-#include "a60-svg-color.h"
+#include "a60-svg.h"
 
 
 namespace svg {
 
   /**
-     Hand-picked values for a 67-68 BTIHA, aka cyberwar.
+     CIECAM02-UCS color space, perceptually different colors, equally spaced out
 
+     Hand-picked values for a 67-68 BTIHA, aka cyberwar.
      Start with color constraints, generate 264 options, hand-pick to n=68.
      http://jnnnnn.github.io/category-colors-constrained.html
    */
-  palette_qi pqi_68 = {
-    
-    {251, 225, 217}, {254, 231, 192}, {253, 196, 189}, {212, 130, 149}
-  }
+  palette_qi<4> pqi_68 = {
+
+    // SE, red to orange/yellow
+    color_qi(251, 225, 217), color_qi(254, 231, 192), color_qi(253, 196, 189),
+    color_qi(212, 130, 149), color_qi( , , ), color_qi( , , ),
+    color_qi( , , ), color_qi( , , ), color_qi( , , ),
+    color_qi( , , ), color_qi( , , ), color_qi( , , ),
+    color_qi( , , ), color_qi( , , ), color_qi( , , ),
+    color_qi( , , ), color_qi( , , ), color_qi( , , ),
+    color_qi( , , ), color_qi( , , ), color_qi( , , ),
+    color_qi( , , ), color_qi( , , ), color_qi( , , ),
+
+  };
 
 } // namespace svg
 
