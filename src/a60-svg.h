@@ -16,6 +16,7 @@
 #ifndef MiL_SVG_H
 #define MiL_SVG_H 1
 
+#include <cstddef>
 #include <cmath>
 #include <array>
 #include <tuple>
@@ -29,7 +30,7 @@
  */
 namespace svg {
 
-/// Base string type.
+/// Base string types.
 using std::string;
 using strings = std::vector<string>;
 using vstrings = strings;
@@ -185,8 +186,10 @@ namespace k = constants;
 } // namespace svg
 
 
-#include "a60-svg-color.h"			// color, colorq, colorband
-#include "a60-svg-base-types.h"	  // area, style, filter, transform, typography
+#include "a60-svg-color.h"			// color, color_qi, color_qf
+#include "a60-svg-color-palette.h"
+#include "a60-svg-color-colorband.h"
+#include "a60-svg-base-types.h"	     // area, style, filter, transform, typography
 #include "a60-svg-constants.h"
 #include "a60-svg-elements.h"
 #include "a60-svg-elements-components.h"

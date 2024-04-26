@@ -2,7 +2,7 @@
 
 
 void
-draw_spectrum(svg::svg_element& obj, const svg::colors spktrm,
+draw_spectrum(svg::svg_element& obj, const svg::color_qis& spktrm,
 	      const svg::point_2t po)
 {
   using namespace std;
@@ -48,7 +48,8 @@ test_color(std::string ofile)
   svg_element obj(ofile, k::letter_096_v);
 
   // Color specturm slice.
-  colors klrs(spectrum.begin(), spectrum.end());
+  auto& spectrum = active_spectrum();
+  color_qis klrs(spectrum.begin(), spectrum.end());
 
   // 1 draw as-is.
   point_2t p1 = make_tuple(0,0);

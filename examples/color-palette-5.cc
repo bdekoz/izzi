@@ -25,7 +25,8 @@ test_color_spectrum(std::string ofile)
 
   x -= (rwidth + rspace);
   auto xoffset = 0;
-  for (const auto& klr : svg::spectrum)
+  auto& spectrum = active_spectrum();
+  for (const auto& klr : spectrum)
     {
       // Color block
       const style s = { klr, 1.0, klr, 1.0, 2 };

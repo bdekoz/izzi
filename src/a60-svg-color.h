@@ -16,7 +16,6 @@
 #ifndef MiL_SVG_COLOR_H
 #define MiL_SVG_COLOR_H 1
 
-#include <string>
 #include <map>
 #include <algorithm>
 #include <random>
@@ -512,6 +511,15 @@ struct color_qi
   }
 };
 
+inline bool
+operator==(const color_qi& c1, const color_qi& c2)
+{
+  const bool t1 = c1.r == c2.r;
+  const bool t2 = c1.g == c2.g;
+  const bool t3 = c1.b == c2.b;
+  return t1 && t2 && t3;
+}
+
 
 /// Convert color_qi to string.
 const std::string
@@ -658,6 +666,15 @@ struct color_qf
 };
 
 
+inline bool
+operator==(const color_qf& c1, const color_qf& c2)
+{
+  const bool t1 = c1.h == c2.h;
+  const bool t2 = c1.s == c2.s;
+  const bool t3 = c1.v == c2.v;
+  return t1 && t2 && t3;
+}
+
 /// Convert color_qf to string.
 const std::string
 to_string(const color_qf klr)
@@ -747,358 +764,6 @@ average_color_qi(const color_qi& a, const color_qi& b)
 /// Types for Color iteration and combinatorics.
 using color_qis = std::vector<color_qi>;
 using color_qfs = std::vector<color_qf>;
-
-/// Palette, finite set of colors used. Must end with color::none.
-template<typename T, std::size_t N>
-using palette = std::array<T, N>;
-
-template<std::size_t N>
-using palette_qi = palette<color_qi, N>;
-
-template<std::size_t N>
-using palette_qf = palette<color_qf, N>; 
-
-/// Default colors for izzi.
-palette izzi_palette =
-{
- // black to gray to white in 10% and 25% increments
- color::white,
- color::black,
- color::gray10, color::gray20, color::gray25, color::gray30,
- color::gray40, color::gray50, color::gray60, color::gray70,
- color::gray75, color::gray80, color::gray90,
-
- color::wcag_lgray, color::wcag_gray, color::wcag_dgray,
-
- // yellow
- color::hellayellow, color::navajowhite,
- color::ivory, color::gold, color::antiquewhite,
- color::lemonchiffon, color::goldenrod,
- color::duboisyellow1, color::duboisyellow2, color::duboisyellow3,
-
- // orange
- color::orange, color::darkorange, color::asamaorange, color::dutchorange,
- color::internationalorange, color::goldenyellow, color::kanzoiro,
- color::daylily,  color::orangered, color::duboisred2,
-
- // red
- color::red,  color::coral, color::salmon, color::akabeni,
- color::akebonoiro, color::ochre, color::sohi, color::benikaba,
- color::benitobi, color::ake, color::crimson, color::tomato,
- color::foreigncrimson, color::ginshu,
- color::duboisred1, color::duboisred3,
- color::redorange,
-
- // brown
- color::duboisbrown5, color::duboisbrown4,
- color::duboisbrown1, color::duboisbrown2, color::duboisbrown3,
- color::kohakuiro, color::kinsusutake,
-
- // green
- color::green, color::limegreen, color::springgreen, color::byakuroku,
- color::usumoegi, color::aquamarine, color::midori, color::rokusho,
- color::aotakeiro, color::seiheki, color::seijiiro, color::yanagizome,
- color::hiwamoegi, color::chartreuse, color::greenyellow, color::moegi,
- color::duboisgreen1, color::duboisgreen2, color::duboisgreen3,
- color::duboisgreen4, color::duboisgreen5,
-
- // blue
- color::blue, color::ultramarine, color::shinbashiiro, color::hanada,
- color::ruriiro, color::cornflowerblue, color::lightblue, color::skyblue,
- color::lightskyblue, color::bellflower, color::navy, color::asagiiro,
- color::indigo, color::rurikon, color::asamablue, color::cyan,
- color::lightcyan, color::powderblue, color::steelblue, color::dodgerblue,
- color::royalblue, color::mediumblue, color::deepskyblue,
- color::midnightblue, color::darkslateblue, color::slateblue,
- color::azure, color::crayolacerulean,
- color::duboisblue1, color::duboisblue2, color::duboisblue3,
- color::blueprintlight, color::blueprint, color::blueprintdark,
-
- // purple (magenta, violet, pink)
- color::purple, color::wisteria, color::asamapink, color::pink, color::peony,
- color::violet, color::magenta, color::dfuschia, color::deeppink, color::hotpink,
- color::dustyrose, color::atmosphericp, color::kissmepink,
- color::futaai, color::benimidori, color::redwisteria, color::botan,
- color::kokimurasaki, color::usuiro, color::murasaki, color::ayameiro,
- color::blueviolet, color::darkmagenta, color::darkviolet,
- color::thistle, color::plum,
- color::palevioletred, color::mediumvioletred, color::lavender,
- color::orchid, color::mediumorchid, color::darkestmagenta, color::mediumpurple,
-
- color::none
-};
-
-
-/// Japan colors (67)
-palette jp_palette =
-{
- // yellow
- color::hellayellow, color::gold,
-
- // orange
- color::orange, color::internationalorange,
-
- // red
- color::red,  color::akabeni, color::benitobi,
-
- // brown
- color::duboisbrown1, color::kohakuiro, color::kinsusutake,
-
- // green
- color::aotakeiro, color::duboisgreen4, color::rokusho,
- color::yanagizome, color::hiwamoegi, color::duboisgreen2, color::chartreuse,
- color::green, color::springgreen, color::aquamarine,
-
-
- // blue
- color::blue, color::ultramarine, color::shinbashiiro, color::hanada,
- color::cornflowerblue, color::lightblue, color::skyblue,
- color::asagiiro, color::rurikon, color::asamablue, color::cyan,
- color::lightcyan, color::powderblue, color::steelblue, color::dodgerblue,
- color::royalblue, color::mediumblue, color::deepskyblue,
- color::azure, color::crayolacerulean,
- color::duboisblue1, color::duboisblue2,
- color::blueprintlight, color::blueprint,
-
- // purple (magenta, violet, pink)
- color::purple, color::wisteria, color::asamapink, color::pink, color::peony,
- color::violet, color::magenta, color::dfuschia, color::deeppink,
- color::hotpink, color::dustyrose, color::atmosphericp, color::kissmepink,
- color::futaai, color::redwisteria, color::botan,
- color::kokimurasaki, color::usuiro, color::murasaki, color::ayameiro,
- color::blueviolet, color::darkmagenta, color::darkviolet,
- color::thistle, color::plum,
- color::palevioletred, color::mediumvioletred, color::orchid,
- color::mediumorchid, color::darkestmagenta, color::mediumpurple,
-
- color::none
-};
-
-
-/// Spectrum, aka default palette.
-palette spectrum = izzi_palette;
-//palette spectrum = jp_palette;
-
-
-/// Random entry from array above.
-color
-random_color(uint startoffset = 0)
-{
-  const uint maxc = spectrum.size();
-  static std::mt19937_64 rg(std::random_device{}());
-  auto disti = std::uniform_int_distribution<>(startoffset, maxc - 1);
-  uint index = disti(rg);
-  return spectrum[index];
-}
-
-/// Loop through color array starting at position c.
-color
-next_color(color klr)
-{
-  color cnext = spectrum.front();
-  auto itr = std::find(spectrum.begin(), spectrum.end(), klr);
-  if (itr != spectrum.end())
-    {
-      ++itr;
-      if (itr == spectrum.end())
-	itr = spectrum.begin();
-      cnext = *itr;
-    }
-  return cnext;
-}
-
-/// Start at specified color bar entry point.
-color_qi
-color_start_at_specified(color klr)
-{
-  static color _S_klr = klr;
-  color_qi retk = _S_klr;
-  _S_klr = next_color(_S_klr);
-  return retk;
-}
-
-
-// Specific regions of spectrum as bands of color.
-// Each band has a starting hue and a number of known good samples.
-// This is then used to seed a generator that computes more of similar hues.
-using colorband = std::tuple<color, ushort>;
-constexpr colorband cband_bw = std::make_tuple(color::white, 2);
-constexpr colorband cband_gray = std::make_tuple(color::white, 16);
-constexpr colorband cband_y = std::make_tuple(color::hellayellow, 10);
-constexpr colorband cband_r = std::make_tuple(color::red, 17);
-constexpr colorband cband_g = std::make_tuple(color::green, 21);
-constexpr colorband cband_b = std::make_tuple(color::blue, 34);
-constexpr colorband cband_p = std::make_tuple(color::purple, 33);
-constexpr colorband cband_o = std::make_tuple(color::orange, 10);
-constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 7);
-
-
-/**
-  Generate a color band from starting hue and seeds.
-
-  Algorithm is average two known good, where two picked randomly.
-
-  Return type is a vector of generated color_qi types.
-*/
-color_qis
-make_color_band_v1(const colorband& cb, const ushort neededh)
-{
-  // Find starting hue and number of samples in the color band.
-  color c = std::get<0>(cb);
-  ushort hn = std::get<1>(cb);
-
-  // Find initial offset.
-  auto itr = std::find(spectrum.begin(), spectrum.end(), c);
-  if (itr == spectrum.end())
-    {
-      string m("collection::make_color_band_v1: at the end of " + to_string(c));
-      throw std::runtime_error(m);
-    }
-
-  // Randomness.
-  static std::mt19937_64 rg(std::random_device{}());
-
-  // Setup random picker of sample hues in band.
-  auto disti = std::uniform_int_distribution<>(0, hn - 1);
-
-  // Set up random percentage for combining two colors.
-  auto distr = std::uniform_real_distribution<>(0, 1);
-
-  // Generate new from averaging random samples, cache in return vector.
-  color_qis cband;
-  for (ushort i = 0; i < neededh; ++i)
-    {
-      // New color.
-      ushort o1 = disti(rg);
-      ushort o2 = disti(rg);
-      color c1 = *(itr + o1);
-      color c2 = *(itr + o2);
-
-      // Combine.
-      double c1r = distr(rg);
-      double c2r = 2.0 - c1r;
-      color_qi cgen = combine_color_qi(c1, c1r, c2, c2r);
-      cband.push_back(cgen);
-    }
-
-  return cband;
-}
-
-
-// Algorightm is HSV generation.
-#if 0
-color_qis
-make_color_band_v2(const colorband& cb, const ushort neededh)
-{
-  // Find starting hue and number of samples in the color band.
-  color h = std::get<0>(cb);
-  const ushort hn = std::get<1>(cb) - 1;
-
-  color_qis cband;
-  color_qis cbando;
-  for (ushort i = 0; i < neededh; ++i)
-    {
-      // Start by pushing all original hues into colorband if space.
-      if (i < hn)
-	{
-	  cband.push_back(h);
-	  h = next_color(h);
-	}
-      else
-	{
-	  // All discrete hues in the original colorband; aka palette.
-	  if (i == hn)
-	    cbando = cband;
-
-	  double repeatf = std::trunc(double(neededh - i) / double(hn));
-	  const ushort repeatn = static_cast<ushort>(repeatf) + 1;
-
-	  // Given the size of the color band, this is the
-	  const double stepsz(1.0 / hn);
-
-
-	  for (ushort ii = 0; ii < cbando.size(); ++ii)
-	    {
-	      color_qi krgb = cbando[ii];
-	      color_qf khsv(krgb);
-	    }
-
-	  // Done.
-	}
-    }
-
-  return cband;
-}
-#endif
-
-
-/// Forwarding function.
-color_qis
-make_color_band(const colorband& cb, const ushort neededh)
-{ return make_color_band_v1(cb, neededh); }
-
-
-/// Flip through color band colors.
-/// @bandn is the number of colors in the colorband.
-color_qi
-next_in_color_band(const colorband& cb, const ushort bandn = 400)
-{
-  // Generate bands.
-  static color_qis gband_bw = make_color_band(cband_bw, bandn);
-  static color_qis gband_y = make_color_band(cband_y, bandn);
-  static color_qis gband_r = make_color_band(cband_r, bandn);
-  static color_qis gband_g = make_color_band(cband_g, bandn);
-  static color_qis gband_b = make_color_band(cband_b, bandn);
-  static color_qis gband_p = make_color_band(cband_p, bandn);
-  static color_qis gband_o = make_color_band(cband_o, bandn);
-  static color_qis gband_brown = make_color_band(cband_brown, bandn);
-
-  color_qi ret;
-  const color c = std::get<0>(cb);
-  switch (c)
-    {
-    case color::white:
-      ret = gband_bw.back();
-      gband_bw.pop_back();
-      break;
-    case color::hellayellow:
-      ret = gband_y.back();
-      gband_y.pop_back();
-      break;
-    case color::orange:
-      ret = gband_o.back();
-      gband_o.pop_back();
-      break;
-    case color::duboisbrown1:
-      ret = gband_brown.back();
-      gband_brown.pop_back();
-      break;
-    case color::red:
-      ret = gband_r.back();
-      gband_r.pop_back();
-      break;
-    case color::green:
-      ret = gband_g.back();
-      gband_g.pop_back();
-      break;
-    case color::blue:
-      ret = gband_b.back();
-      gband_b.pop_back();
-      break;
-    case color::purple:
-      ret = gband_p.back();
-      gband_p.pop_back();
-      break;
-    default:
-      string m("next_in_color_band:: error");
-      m += k::newline;
-      m += "color is: ";
-      m += to_string(c);
-      throw std::runtime_error(m);
-      break;
-    }
-  return ret;
-}
 
 } // namespace svg
 

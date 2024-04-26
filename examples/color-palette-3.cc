@@ -35,7 +35,7 @@ test_color(std::string ofile)
   auto rspace = 10;
   auto xoffset = 0;
 
-  color klr = color::green;
+  color_qi klr = color::green;
   for (uint i = 0; i < green_n; ++i)
     {
       // Color block

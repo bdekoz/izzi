@@ -2,7 +2,7 @@
 
 
 void
-draw_spectrum(svg::svg_element& obj, const svg::colors spktrm,
+draw_spectrum(svg::svg_element& obj, const svg::color_qis& spktrm,
 	      const svg::point_2t po)
 {
   using namespace std;
@@ -49,8 +49,8 @@ test_color(std::string ofile)
 
   // Color specturm slice.
   auto [ klr, klrsize ] = cband_g;
-  colors klrs_g;
-  color klrg = klr;
+  color_qis klrs_g;
+  color_qi klrg = klr;
   for (uint i = 0; i < klrsize; ++i)
     {
       klrs_g.push_back(klrg);

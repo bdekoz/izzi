@@ -1,4 +1,4 @@
-#include "a60-svg-color-palette.h"
+#include "a60-svg.h"
 
 void
 test_color(std::string ofile)
@@ -17,7 +17,7 @@ test_color(std::string ofile)
   typo._M_align = typography::align::left;
   typo._M_anchor = typography::anchor::start;
 
-  auto spectrum = pqi_72;
+  auto spectrum = ciecam02_palette;
 
   // Draw out colors.
   auto rwidth = 20;
