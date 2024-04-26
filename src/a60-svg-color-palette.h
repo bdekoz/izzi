@@ -204,9 +204,9 @@ palette_qi<73> ciecam02_palette =
 auto&
 active_spectrum()
 {
-  //static auto spectrum = izzi_palette;
+  static auto spectrum = izzi_palette;
   //static auto  spectrum = jp_palette;
-  static auto spectrum = ciecam02_palette;
+  //static auto spectrum = ciecam02_palette;
   return spectrum;
 }
 
