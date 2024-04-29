@@ -1,6 +1,6 @@
 // svg base -*- mode: C++ -*-
 
-// Copyright (C) 2014-2021, 2023 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2024 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -101,8 +101,47 @@ struct area
   inline point_2t
   center_point() const
   {  return std::make_tuple(_M_width / 2, _M_height / 2); }
-};
 
+  /// Landscape, aka largest side is horizontal.
+  area
+  to_landscape() const
+  {
+    atype lg = 0, sm = 0;
+    if (_M_width >= _M_height)
+      {
+	lg = _M_width;
+	sm = _M_height;
+      }
+    else
+      {
+	lg = _M_height;
+	sm = _M_width;
+      }
+    atype twidth = lg;
+    atype theight = sm;
+    return area(twidth, theight);
+  }
+
+  /// Portrait, aka largest side is vertical.
+  area
+  to_portrait() const
+  {
+    atype lg = 0, sm = 0;
+    if (_M_width >= _M_height)
+      {
+	lg = _M_width;
+	sm = _M_height;
+      }
+    else
+      {
+	lg = _M_height;
+	sm = _M_width;
+      }
+    atype twidth = sm;
+    atype theight = lg;
+    return area(twidth, theight);
+  }
+};
 
 
 /// Datum consolidating style preferences.
