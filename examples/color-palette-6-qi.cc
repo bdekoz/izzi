@@ -1,7 +1,7 @@
 #include "a60-svg.h"
 
 void
-test_color(std::string ofile)
+test_color(std::string ofile, auto spectrum)
 {
   using namespace std;
   using namespace svg;
@@ -16,8 +16,6 @@ test_color(std::string ofile)
   typo._M_size = 24;
   typo._M_align = typography::align::left;
   typo._M_anchor = typography::anchor::start;
-
-  auto spectrum = ciecam02_palette;
 
   // Draw out colors.
   auto rwidth = 20;
@@ -50,6 +48,12 @@ test_color(std::string ofile)
 
 int main()
 {
-  test_color("color-palette-6-qi");
+  auto spectrum = svg::ciecam02_palette;
+  test_color("color-palette-6.1-qi", spectrum);
+
+  auto spectrums(spectrum);
+  std::sort(spectrums.begin(), spectrums.end(), svg::color_qf_lt_hue;
+  std::reverse(spectrums.begin(), spectrums.end());
+  test_color("color-palette-6.2-qi", spectrums);
   return 0;
 }

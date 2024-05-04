@@ -204,9 +204,17 @@ palette_qi<73> ciecam02_palette =
 auto&
 active_spectrum()
 {
-  static auto spectrum = izzi_palette;
+  //static auto spectrum = izzi_palette;
   //static auto  spectrum = jp_palette;
-  //static auto spectrum = ciecam02_palette;
+  static auto spectrum = ciecam02_palette;
+
+  static bool initp(false);
+  if (!initp)
+    {
+      std::sort(spectrum.begin(), spectrum.end(), svg::color_qf_lt_hue);
+      std::reverse(spectrum.begin(), spectrum.end());
+      initp = true;
+    }
   return spectrum;
 }
 
@@ -239,7 +247,7 @@ next_color(const color_qi klr)
     }
   return cnext;
 }
-  
+
 /// Start at specified color bar entry point.
 color_qi
 start_at_color(const color_qi klr)
@@ -249,7 +257,7 @@ start_at_color(const color_qi klr)
   _S_klr = next_color(_S_klr);
   return retk;
 }
-  
+
 } // namespace svg
 
 #endif
