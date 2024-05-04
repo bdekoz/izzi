@@ -1,0 +1,21 @@
+<map id="svg::fade_from_color_seq" name="svg::fade_from_color_seq">
+<area shape="rect" id="Node000001" title="Start rectangle as transparent, fade to color." alt="" coords="5,147,154,173"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a26faa41489632906b1efa157074084f6" title=" " alt="" coords="202,147,336,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,157,187,157,187,163,154,163"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="393,5,509,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,144,325,103,382,58,389,54,392,58,386,62,328,107,285,148"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="391,72,512,115"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="307,144,376,118,378,123,309,149"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#gad01750ac554c6bd6871a930c90e17a04" title=" " alt="" coords="393,139,509,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="337,157,378,157,378,163,337,163"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="393,205,509,248"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="309,171,380,198,378,203,307,176"/>
+<area shape="rect" id="Node000010" href="$group__elements.html#a99ff90a016db190ee8bb5ee8c045e329" title=" " alt="" coords="384,272,518,299"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="284,172,327,213,385,258,395,263,392,268,383,262,324,217,281,176"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="578,13,694,40"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="510,24,563,24,563,29,510,29"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="591,80,681,107"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="512,91,577,91,577,96,512,96"/>
+<area shape="rect" id="Node000008" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="566,147,706,173"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="510,157,552,157,552,163,510,163"/>
+</map>

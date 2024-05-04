@@ -1,0 +1,7 @@
+<map id="svg::render_state_base" name="svg::render_state_base">
+<area shape="rect" id="Node000001" title="Settings for rendering collection&#45;derived objects." alt="" coords="68,5,205,32"/>
+<area shape="rect" id="Node000002" href="$structsvg_1_1id__render__state.html" title="Named render state. Datum to take id string and tie it to visual representation." alt="" coords="5,80,129,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,45,81,81,77,78,112,41"/>
+<area shape="rect" id="Node000003" href="$structsvg_1_1render__state.html" title="Render settings for collections." alt="" coords="153,80,261,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,41,197,78,193,81,157,45"/>
+</map>
