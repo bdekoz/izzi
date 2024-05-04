@@ -105,7 +105,7 @@ palette_qi<color_max_size> izzi_palette =
 };
 
 
-/// Japan colors (67)
+/// Japan colors (76)
 palette_qi<76> jp_palette =
 {
  // yellow
@@ -204,9 +204,9 @@ palette_qi<73> ciecam02_palette =
 auto&
 active_spectrum()
 {
-  //static auto spectrum = izzi_palette;
+  static auto spectrum = izzi_palette;
   //static auto  spectrum = jp_palette;
-  static auto spectrum = ciecam02_palette;
+  //static auto spectrum = ciecam02_palette;
 
   static bool initp(false);
   if (!initp)
