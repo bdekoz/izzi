@@ -52,7 +52,7 @@ int main()
   test_color("color-palette-6.1-qi", spectrum);
 
   auto spectrums(spectrum);
-  std::sort(spectrums.begin(), spectrums.end(), svg::color_qf_lt_hue;
+  std::sort(spectrums.begin(), spectrums.end(), svg::color_qf_lt_hue);
   std::reverse(spectrums.begin(), spectrums.end());
   test_color("color-palette-6.2-qi", spectrums);
   return 0;
