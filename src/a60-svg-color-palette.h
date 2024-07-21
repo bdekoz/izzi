@@ -231,6 +231,17 @@ random_color(const uint startoffset = 0)
   return spectrum[index];
 }
 
+template<typename _Spectrm>
+color_qi
+random_color(const _Spectrm& spectrm, const uint startoffset = 0)
+{
+  const uint maxc = spectrm.size();
+  static std::mt19937_64 rg(std::random_device{}());
+  auto disti = std::uniform_int_distribution<>(startoffset, maxc - 1);
+  uint index = disti(rg);
+  return spectrm[index];
+}
+
 /// Loop through color array starting at position c.
 color_qi
 next_color(const color_qi klr)
