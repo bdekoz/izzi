@@ -595,6 +595,43 @@ point_to_triangle(svg_element& obj, const point_2t origin, svg::style s,
 }
 
 
+/// Center an octogon at this point.
+path_element
+make_path_octogon(const point_2t origin, svg::style s, const double r = 4)
+{
+  // Find points: orig, orig + (120 x 1), orig + (120 x 2).
+  const double angle(360.0/8);
+  double zo = zero_angle_north_cw(angle);
+
+  vrange pointz;
+  for (uint i = 0; i < 8; ++i)
+    {
+      point_2t p = get_circumference_point_d(zo + (angle * i), r, origin);
+      pointz.push_back(p);
+    }
+  string pathda = make_path_data_from_points(pointz);
+
+  // Make closed path.
+  path_element oct(true);
+  path_element::data pthdata = { pathda, 0 };
+  oct.start_element("octogon-" + std::to_string(r));
+  oct.add_data(pthdata);
+  oct.add_style(s);
+  oct.finish_element();
+  return oct;
+}
+
+
+/// Center an octogon at this point.
+void
+point_to_octogon(svg_element& obj, const point_2t origin, svg::style s,
+		  const double r = 4)
+{
+  path_element oct = make_path_triangle(origin, s, r);
+  obj.add_element(oct);
+}
+
+
 /// Make path segment between two points on a circumference of radius r.
 /// Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin)
 string
