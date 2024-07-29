@@ -627,7 +627,7 @@ void
 point_to_octogon(svg_element& obj, const point_2t origin, svg::style s,
 		  const double r = 4)
 {
-  path_element oct = make_path_triangle(origin, s, r);
+  path_element oct = make_path_octogon(origin, s, r);
   obj.add_element(oct);
 }
 
