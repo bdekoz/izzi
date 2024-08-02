@@ -603,12 +603,16 @@ make_path_octogon(const point_2t origin, svg::style s, const double r = 4)
   const double angle(360.0/8);
   double zo = zero_angle_north_cw(angle);
 
+  // Eight points on a circle, connnected.
   vrange pointz;
   for (uint i = 0; i < 8; ++i)
     {
       point_2t p = get_circumference_point_d(zo + (angle * i), r, origin);
       pointz.push_back(p);
     }
+
+  // Final point to close path.
+  pointz.push_back(pointz.front());
   string pathda = make_path_data_from_points(pointz);
 
   // Make closed path.
