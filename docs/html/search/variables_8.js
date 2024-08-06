@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jp_5fpalette_0',['jp_palette',['../namespacesvg.html#a28d54f76361fa2b917143e24e590788d',1,'svg']]]
+  ['jp_5fpalette_0',['jp_palette',['../namespacesvg.html#a5a88bdf2bd76aa79f28a2de2c4e4201f',1,'svg']]]
 ];
