@@ -1,0 +1,26 @@
+<map id="svg::splay_ids_stagger" name="svg::splay_ids_stagger">
+<area shape="rect" id="Node000001" title="Spread ids after in stepping pattern outward." alt="" coords="5,148,140,175"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a8f48a6909f52b54cf4a3bfce5e27b59c" title="Spread ids past the origin point, along circumference path." alt="" coords="188,148,307,175"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,159,172,159,172,164,140,164"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a0a0dce44cf8a75daa516cdf9fade5a85" title=" " alt="" coords="355,148,462,175"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,159,339,159,339,164,307,164"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="519,31,657,73"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="424,146,461,115,509,83,517,78,520,83,512,88,465,120,427,150"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#ae7eab6d9ce1f55bcbcc997cd24c5abcf" title="Text with typography, arranged ccw around points (x,y) on a circle." alt="" coords="527,97,649,124"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="458,145,523,126,524,131,459,150"/>
+<area shape="rect" id="Node000010" href="$namespacesvg.html#a27b1041d0851178e4835e1f623a46161" title="Text with typography, arranged cw around points (x,y) on a circle." alt="" coords="530,148,646,175"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="463,159,515,159,515,164,463,164"/>
+<area shape="rect" id="Node000011" href="$namespacesvg.html#a010fea242a289d173d521b501140cd72" title="Zero degrees is top, going clockwise (cw)." alt="" coords="510,199,666,225"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="459,173,524,191,523,197,458,178"/>
+<area shape="rect" id="Node000012" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="513,249,663,276"/>
+<area shape="poly" id="edge12_Node000003_Node000012" title=" " alt="" coords="426,173,464,204,512,235,524,241,522,246,509,240,460,208,423,177"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="714,5,852,48"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="657,40,698,35,699,40,658,46"/>
+<area shape="rect" id="Node000006" href="$namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd" title=" " alt="" coords="728,72,838,99"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="658,61,714,71,713,76,657,66"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a5791c1fc9121f01e5f666b7ce0367dfa" title="Text at @origin, with style and ... a transformation=rotation of @deg about @rorigin." alt="" coords="729,123,837,149"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="649,116,714,124,713,130,649,121"/>
+<area shape="rect" id="Node000009" href="$structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0" title=" " alt="" coords="900,123,1030,149"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="838,133,885,133,885,139,838,139"/>
+<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="646,151,713,142,714,148,647,156"/>
+</map>

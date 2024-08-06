@@ -1,0 +1,17 @@
+<map id="svg::make_path_triangle" name="svg::make_path_triangle">
+<area shape="rect" id="Node000001" title="Center a triangle at this point." alt="" coords="5,131,152,157"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="206,35,344,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,128,199,87,210,82,212,87,201,92,111,132"/>
+<area shape="rect" id="Node000005" href="$namespacesvg_1_1constants.html#ae42b583ceed2552c466993683f819ef2" title=" " alt="" coords="206,101,344,128"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="152,130,190,125,191,130,152,136"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91" title="Make single path segment." alt="" coords="210,152,340,195"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="152,152,195,159,194,164,152,158"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="200,219,350,245"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="105,155,201,204,216,210,214,215,199,209,102,160"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="398,5,536,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,43,382,37,383,42,345,48"/>
+<area shape="rect" id="Node000004" href="$namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd" title=" " alt="" coords="413,72,522,99"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="345,64,398,72,397,77,344,69"/>
+<area shape="rect" id="Node000007" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="403,160,531,187"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="340,171,388,171,388,176,340,176"/>
+</map>

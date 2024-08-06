@@ -1,0 +1,19 @@
+<map id="svg::swipe_left_seq" name="svg::swipe_left_seq">
+<area shape="rect" id="Node000001" title="1 channel start with image, background color is klr each &quot;frame&quot; == string in returned strings has an..." alt="" coords="5,147,124,173"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="181,5,297,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,144,116,103,170,58,176,54,179,58,173,62,120,107,80,148"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="178,72,300,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="101,144,166,118,168,123,103,149"/>
+<area shape="rect" id="Node000006" href="$group__elements.html#gad01750ac554c6bd6871a930c90e17a04" title=" " alt="" coords="181,139,297,181"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="124,157,165,157,165,163,124,163"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="181,205,297,248"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="103,171,168,197,166,202,101,176"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#a99ff90a016db190ee8bb5ee8c045e329" title=" " alt="" coords="172,272,306,299"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="79,172,118,214,145,237,173,258,182,263,179,267,170,262,141,241,115,217,75,176"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="366,13,482,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="297,24,350,24,350,29,297,29"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="379,80,468,107"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="300,91,364,91,364,96,300,96"/>
+<area shape="rect" id="Node000007" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="354,147,493,173"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="297,157,339,157,339,163,297,163"/>
+</map>

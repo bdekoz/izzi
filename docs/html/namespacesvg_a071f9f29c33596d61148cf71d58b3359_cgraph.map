@@ -1,0 +1,15 @@
+<map id="svg::point_to_crossed_lines" name="svg::point_to_crossed_lines">
+<area shape="rect" id="Node000001" title="Point to center mark as crossed lines. Default is a plus sign at origin, but @tiltd can rotate." alt="" coords="5,93,135,136"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ad1d925b7cf91db8bfa19b009812549fc" title="Crossed lines, no fill. X marks the ...." alt="" coords="183,101,327,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,112,167,112,167,117,135,117"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="381,35,519,77"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,98,365,79,367,84,303,103"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a520130e7464e62521cf59e048a48cee7" title="Line primitive." alt="" coords="402,101,498,128"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="327,112,387,112,387,117,327,117"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="375,152,525,179"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="310,126,382,145,381,150,309,131"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="573,5,712,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="520,43,557,37,558,42,520,48"/>
+<area shape="rect" id="Node000005" href="$namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd" title=" " alt="" coords="588,72,697,99"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="520,64,573,72,573,77,520,69"/>
+</map>

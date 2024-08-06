@@ -1,0 +1,36 @@
+<map id="svg::radiate_ids_per_value_on_arc" name="svg::radiate_ids_per_value_on_arc">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,137,128,180"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a34da8d32b24e2bf12ac6094c47ea31a9" title=" " alt="" coords="176,137,286,180"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,156,160,156,160,161,128,161"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a929b5c33bc0c139332dddd5d3b8ea3d0" title="Transform a value on a range to an angle on the radial range." alt="" coords="352,64,447,91"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="270,134,333,102,348,95,351,99,335,106,272,139"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a370d930bd06a84735a4eecdd677154e6" title="Get the label space. Value &#45;&gt; Name, as a string where value has labelspaces of fill NB: Should be the..." alt="" coords="334,116,464,143"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="286,146,318,141,319,146,287,152"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#aa89ab2d58bfaf850b84e976828851b9b" title="Make radial labels." alt="" coords="339,167,460,209"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="287,166,324,172,323,177,286,171"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a0a0dce44cf8a75daa516cdf9fade5a85" title=" " alt="" coords="346,237,453,264"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="267,178,335,219,353,228,351,233,333,224,264,183"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a37b1e7c40b54ff3cdd4e2929cb6b7ba2" title=" " alt="" coords="525,5,655,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="444,61,529,34,531,40,446,66"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#a673cb54838801fae8471436ce43298a9" title="Scale value from min to max on range (nfloor, nceil)." alt="" coords="527,56,653,99"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="447,75,512,75,512,80,447,80"/>
+<area shape="rect" id="Node000009" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="521,123,659,165"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="435,234,463,219,486,197,511,175,518,171,520,175,514,179,490,201,466,224,437,239"/>
+<area shape="rect" id="Node000012" href="$namespacesvg.html#ae7eab6d9ce1f55bcbcc997cd24c5abcf" title="Text with typography, arranged ccw around points (x,y) on a circle." alt="" coords="529,189,651,216"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="453,235,519,218,520,223,454,240"/>
+<area shape="rect" id="Node000015" href="$namespacesvg.html#a27b1041d0851178e4835e1f623a46161" title="Text with typography, arranged cw around points (x,y) on a circle." alt="" coords="532,240,648,267"/>
+<area shape="poly" id="edge14_Node000008_Node000015" title=" " alt="" coords="453,249,516,250,516,255,453,254"/>
+<area shape="rect" id="Node000016" href="$namespacesvg.html#a010fea242a289d173d521b501140cd72" title="Zero degrees is top, going clockwise (cw)." alt="" coords="512,291,668,317"/>
+<area shape="poly" id="edge16_Node000008_Node000016" title=" " alt="" coords="450,262,526,283,524,288,449,267"/>
+<area shape="rect" id="Node000017" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="515,341,665,368"/>
+<area shape="poly" id="edge17_Node000008_Node000017" title=" " alt="" coords="419,262,460,294,514,327,527,333,525,338,511,332,457,299,415,267"/>
+<area shape="rect" id="Node000010" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="716,97,854,140"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="659,132,700,127,701,132,660,138"/>
+<area shape="rect" id="Node000011" href="$namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd" title=" " alt="" coords="730,164,840,191"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="660,153,716,163,715,168,659,158"/>
+<area shape="rect" id="Node000013" href="$namespacesvg.html#a5791c1fc9121f01e5f666b7ce0367dfa" title="Text at @origin, with style and ... a transformation=rotation of @deg about @rorigin." alt="" coords="731,215,839,241"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="651,208,716,216,715,222,651,213"/>
+<area shape="rect" id="Node000014" href="$structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0" title=" " alt="" coords="902,215,1032,241"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="840,225,887,225,887,231,840,231"/>
+<area shape="poly" id="edge15_Node000015_Node000013" title=" " alt="" coords="648,243,715,234,716,240,649,248"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="svg::point_to_octogon" name="svg::point_to_octogon">
+<area shape="rect" id="Node000001" title="Center an octogon at this point." alt="" coords="5,131,138,157"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a9010cfefc78502dcc4f7d5532ee717f5" title="Center an octogon at this point." alt="" coords="186,131,333,157"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,141,170,141,170,147,138,147"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="387,56,525,99"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,128,376,102,377,107,302,133"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91" title="Make single path segment." alt="" coords="392,123,521,165"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="334,141,376,141,376,147,334,147"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="381,189,531,216"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="307,155,395,182,394,187,306,160"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="579,5,718,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="525,56,563,46,565,51,527,62"/>
+<area shape="rect" id="Node000005" href="$namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd" title=" " alt="" coords="594,72,703,99"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="526,78,579,80,578,85,526,83"/>
+<area shape="rect" id="Node000007" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="584,131,713,157"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="521,141,569,141,569,147,521,147"/>
+</map>

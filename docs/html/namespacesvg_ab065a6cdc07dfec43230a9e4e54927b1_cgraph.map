@@ -1,0 +1,9 @@
+<map id="svg::text_line_n_r" name="svg::text_line_n_r">
+<area shape="rect" id="Node000001" title="Text of maxlen length rotated, overflow goes on line below." alt="" coords="5,31,115,57"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a4399801aa964203bcab6e6ab2e7b4200" title="Text at size, with a transformation=rotation." alt="" coords="175,5,279,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,33,159,26,160,32,115,38"/>
+<area shape="rect" id="Node000004" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="163,56,291,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="115,50,148,55,147,60,115,55"/>
+<area shape="rect" id="Node000003" href="$structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0" title=" " alt="" coords="339,5,469,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="280,16,323,16,323,21,280,21"/>
+</map>

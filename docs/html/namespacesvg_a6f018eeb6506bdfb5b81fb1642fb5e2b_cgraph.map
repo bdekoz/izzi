@@ -1,0 +1,19 @@
+<map id="svg::point_to_triangle" name="svg::point_to_triangle">
+<area shape="rect" id="Node000001" title="Center a triangle at this point." alt="" coords="5,131,137,157"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a08b2a593c701c76c9b07584ee56b9505" title="Center a triangle at this point." alt="" coords="185,131,331,157"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,141,169,141,169,147,137,147"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="385,35,523,77"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="289,128,378,87,389,82,391,87,380,92,291,132"/>
+<area shape="rect" id="Node000006" href="$namespacesvg_1_1constants.html#ae42b583ceed2552c466993683f819ef2" title=" " alt="" coords="385,101,523,128"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="331,130,369,125,370,130,332,136"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91" title="Make single path segment." alt="" coords="390,152,519,195"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="332,152,374,159,374,164,331,158"/>
+<area shape="rect" id="Node000009" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="379,219,529,245"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="284,155,380,204,396,210,394,215,378,209,282,160"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="577,5,716,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="524,43,561,37,562,42,524,48"/>
+<area shape="rect" id="Node000005" href="$namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd" title=" " alt="" coords="592,72,701,99"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="524,64,577,72,577,77,524,69"/>
+<area shape="rect" id="Node000008" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="582,160,711,187"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="519,171,567,171,567,176,519,176"/>
+</map>
