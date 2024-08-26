@@ -596,8 +596,11 @@ point_to_triangle(svg_element& obj, const point_2t origin, svg::style s,
 
 
 /// Center an octogon at this point.
+/// radius 4 is pixels to draw out from center point.
+/// pointsn is number of points to draw (8 for octogon)
 path_element
-make_path_octogon(const point_2t origin, svg::style s, const double r = 4)
+make_path_octogon(const point_2t origin, svg::style s, const double r = 4,
+		  const uint pointsn = 8)
 {
   // Find points: orig, orig + (120 x 1), orig + (120 x 2).
   const double angle(360.0/8);
@@ -605,7 +608,7 @@ make_path_octogon(const point_2t origin, svg::style s, const double r = 4)
 
   // Eight points on a circle, connnected.
   vrange pointz;
-  for (uint i = 0; i < 8; ++i)
+  for (uint i = 0; i < pointsn; ++i)
     {
       point_2t p = get_circumference_point_d(zo + (angle * i), r, origin);
       pointz.push_back(p);
