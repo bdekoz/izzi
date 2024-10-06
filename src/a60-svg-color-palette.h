@@ -109,9 +109,46 @@ palette_qi<color_max_size> izzi_palette =
 /// https://en.wikipedia.org/wiki/Traditional_colors_of_Japan
 palette_qi<118> jp_palette =
 {
-  color_qi(240,143,144), color_qi(219,90,107), color_qi(252,201,185), color_qi(242,102,108), color_qi(245,143,132), color_qi(185,87,84), color_qi(157,41,51), color_qi(247,102,90), color_qi(151,100,90), color_qi(195,39,43), color_qi(103,36,34), color_qi(94,40,36), color_qi(250,123,98), color_qi(220,48,35), color_qi(147,67,55), color_qi(145,50,40), color_qi(53,30,28), color_qi(211,78,54), color_qi(161,61,45), color_qi(117,46,35), color_qi(255,121,82), color_qi(230,131,100), color_qi(227,92,56), color_qi(179,92,68), color_qi(155,83,63), color_qi(96,40,30), color_qi(76,34,27), color_qi(255,53,0), color_qi(159,116,98), color_qi(89,43,31), color_qi(245,127,79), color_qi(159,82,51), color_qi(152,85,56), color_qi(255,162,107), color_qi(255,137,54), color_qi(251,129,54), color_qi(46,33,27), color_qi(202,105,36), color_qi(213,120,53), color_qi(169,98,50), color_qi(140,89,57), color_qi(89,58,39), color_qi(190,127,81), color_qi(183,112,45), color_qi(219,132,73), color_qi(247,187,125), color_qi(255,166,49), color_qi(203,126,31), color_qi(120,94,73), color_qi(250,169,69), color_qi(187,129,65), color_qi(255,185,78), color_qi(230,155,58), color_qi(176,146,122), color_qi(127,107,93), color_qi(102,83,67), color_qi(161,121,23), color_qi(92,72,39), color_qi(226,177,60), color_qi(211,177,125), color_qi(149,123,56), color_qi(100,85,48), color_qi(189,169,40), color_qi(156,138,77), color_qi(71,63,45), color_qi(82,75,42), color_qi(133,124,85), color_qi(122,148,46), color_qi(188,181,140), color_qi(140,158,94), color_qi(82,89,59), color_qi(140,156,118), color_qi(129,123,105), color_qi(55,66,49), color_qi(165,186,147), color_qi(64,122,82), color_qi(61,64,53), color_qi(101,98,85), color_qi(45,68,54), color_qi(90,100,87), color_qi(129,156,139), color_qi(58,64,59), color_qi(53,78,75), color_qi(117,125,117), color_qi(43,55,54), color_qi(106,127,122), color_qi(72,146,155), color_qi(69,88,89), color_qi(38,67,72), color_qi(29,105,124), color_qi(77,100,108), color_qi(52,77,86), color_qi(77,143,172), color_qi(93,140,174), color_qi(24,27,38), color_qi(0,49,113), color_qi(120,119,155), color_qi(118,105,128), color_qi(137,114,158), color_qi(135,95,154), color_qi(151,110,154), color_qi(43,32,40), color_qi(168,124,160), color_qi(91,50,86), color_qi(35,25,30), color_qi(187,119,150), color_qi(117,93,91), color_qi(109,43,80), color_qi(164,52,93), color_qi(67,36,42), color_qi(126,38,57), color_qi(68,49,46), color_qi(255,221,202), color_qi(151,134,124), color_qi(75,60,57), color_qi(53,41,37), color_qi(23,20,18),
-
- color::none
+  color_qi(240,143,144), color_qi(219,90,107), color_qi(252,201,185),
+  color_qi(242,102,108), color_qi(245,143,132), color_qi(185,87,84),
+  color_qi(157,41,51), color_qi(247,102,90), color_qi(151,100,90),
+  color_qi(195,39,43), color_qi(103,36,34), color_qi(94,40,36),
+  color_qi(250,123,98), color_qi(220,48,35), color_qi(147,67,55),
+  color_qi(145,50,40), color_qi(53,30,28), color_qi(211,78,54),
+  color_qi(161,61,45), color_qi(117,46,35), color_qi(255,121,82),
+  color_qi(230,131,100), color_qi(227,92,56), color_qi(179,92,68),
+  color_qi(155,83,63), color_qi(96,40,30), color_qi(76,34,27),
+  color_qi(255,53,0), color_qi(159,116,98), color_qi(89,43,31),
+  color_qi(245,127,79), color_qi(159,82,51), color_qi(152,85,56),
+  color_qi(255,162,107), color_qi(255,137,54), color_qi(251,129,54),
+  color_qi(46,33,27), color_qi(202,105,36), color_qi(213,120,53),
+  color_qi(169,98,50), color_qi(140,89,57), color_qi(89,58,39),
+  color_qi(190,127,81), color_qi(183,112,45), color_qi(219,132,73),
+  color_qi(247,187,125), color_qi(255,166,49), color_qi(203,126,31),
+  color_qi(120,94,73), color_qi(250,169,69), color_qi(187,129,65),
+  color_qi(255,185,78), color_qi(230,155,58), color_qi(176,146,122),
+  color_qi(127,107,93), color_qi(102,83,67), color_qi(161,121,23),
+  color_qi(92,72,39), color_qi(226,177,60), color_qi(211,177,125),
+  color_qi(149,123,56), color_qi(100,85,48), color_qi(189,169,40),
+  color_qi(156,138,77), color_qi(71,63,45), color_qi(82,75,42),
+  color_qi(133,124,85), color_qi(122,148,46), color_qi(188,181,140),
+  color_qi(140,158,94), color_qi(82,89,59), color_qi(140,156,118),
+  color_qi(129,123,105), color_qi(55,66,49), color_qi(165,186,147),
+  color_qi(64,122,82), color_qi(61,64,53), color_qi(101,98,85),
+  color_qi(45,68,54), color_qi(90,100,87), color_qi(129,156,139),
+  color_qi(58,64,59), color_qi(53,78,75), color_qi(117,125,117),
+  color_qi(43,55,54), color_qi(106,127,122), color_qi(72,146,155),
+  color_qi(69,88,89), color_qi(38,67,72), color_qi(29,105,124),
+  color_qi(77,100,108), color_qi(52,77,86), color_qi(77,143,172),
+  color_qi(93,140,174), color_qi(24,27,38), color_qi(0,49,113),
+  color_qi(120,119,155), color_qi(118,105,128), color_qi(137,114,158),
+  color_qi(135,95,154), color_qi(151,110,154), color_qi(43,32,40),
+  color_qi(168,124,160), color_qi(91,50,86), color_qi(35,25,30),
+  color_qi(187,119,150), color_qi(117,93,91), color_qi(109,43,80),
+  color_qi(164,52,93), color_qi(67,36,42), color_qi(126,38,57),
+  color_qi(68,49,46), color_qi(255,221,202), color_qi(151,134,124),
+  color_qi(75,60,57), color_qi(53,41,37), color_qi(23,20,18),
+  color::none
 };
 
 
