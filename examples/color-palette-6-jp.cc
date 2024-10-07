@@ -48,12 +48,12 @@ test_color(std::string ofile, auto spectrum)
 
 int main()
 {
-  auto spectrum = svg::ciecam02_palette;
-  test_color("color-palette-6.1-qi", spectrum);
+  auto spectrum = svg::jp_palette;
+  test_color("color-palette-6.jp", spectrum);
 
   auto spectrums(spectrum);
   std::sort(spectrums.begin(), spectrums.end(), svg::color_qf_lt_hue);
   std::reverse(spectrums.begin(), spectrums.end());
-  test_color("color-palette-6.2-qi", spectrums);
+  test_color("color-palette-6.2-japan", spectrums);
   return 0;
 }
