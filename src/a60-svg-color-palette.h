@@ -35,7 +35,7 @@ template<std::size_t N>
 using palette_qf = palette<color_qf, N>;
 
 /// Default colors for izzi.
-palette_qi<color_max_size> izzi_palette =
+palette_qi<color_max_size - 4> izzi_palette =
 {
  // black to gray to white in 10% and 25% increments
  color::white,
@@ -104,6 +104,66 @@ palette_qi<color_max_size> izzi_palette =
  color::none
 };
 
+/// Only color no black and white or gray
+palette_qi<color_max_size - 20> izzi_hue_palette =
+{
+ // yellow
+ color::hellayellow, color::navajowhite,
+ color::ivory, color::gold, color::antiquewhite,
+ color::lemonchiffon, color::goldenrod,
+ color::duboisyellow1, color::duboisyellow2, color::duboisyellow3,
+
+ // orange
+ color::orange, color::darkorange, color::asamaorange, color::dutchorange,
+ color::internationalorange, color::goldenyellow, color::kanzoiro,
+ color::daylily,  color::orangered, color::duboisred2,
+
+ // red
+ color::red,  color::coral, color::salmon, color::akabeni,
+ color::akebonoiro, color::ochre, color::sohi, color::benikaba,
+ color::benitobi, color::ake, color::crimson, color::tomato,
+ color::foreigncrimson, color::ginshu,
+ color::duboisred1, color::duboisred3,
+ color::redorange,
+
+ // brown
+ color::duboisbrown5, color::duboisbrown4,
+ color::duboisbrown1, color::duboisbrown2, color::duboisbrown3,
+ color::kohakuiro, color::kinsusutake,
+
+ // green
+ color::green, color::limegreen, color::springgreen, color::byakuroku,
+ color::usumoegi, color::aquamarine, color::midori, color::rokusho,
+ color::aotakeiro, color::seiheki, color::seijiiro, color::yanagizome,
+ color::hiwamoegi, color::chartreuse, color::greenyellow, color::moegi,
+ color::duboisgreen1, color::duboisgreen2, color::duboisgreen3,
+ color::duboisgreen4, color::duboisgreen5,
+
+ // blue
+ color::blue, color::ultramarine, color::shinbashiiro, color::hanada,
+ color::ruriiro, color::cornflowerblue, color::lightblue, color::skyblue,
+ color::lightskyblue, color::bellflower, color::navy, color::asagiiro,
+ color::indigo, color::rurikon, color::asamablue, color::cyan,
+ color::lightcyan, color::powderblue, color::steelblue, color::dodgerblue,
+ color::royalblue, color::mediumblue, color::deepskyblue,
+ color::midnightblue, color::darkslateblue, color::slateblue,
+ color::azure, color::crayolacerulean,
+ color::duboisblue1, color::duboisblue2, color::duboisblue3,
+ color::blueprintlight, color::blueprint, color::blueprintdark,
+
+ // purple (magenta, violet, pink)
+ color::purple, color::wisteria, color::asamapink, color::pink, color::peony,
+ color::violet, color::magenta, color::dfuschia, color::deeppink, color::hotpink,
+ color::dustyrose, color::atmosphericp, color::kissmepink,
+ color::futaai, color::benimidori, color::redwisteria, color::botan,
+ color::kokimurasaki, color::usuiro, color::murasaki, color::ayameiro,
+ color::blueviolet, color::darkmagenta, color::darkviolet,
+ color::thistle, color::plum,
+ color::palevioletred, color::mediumvioletred, color::lavender,
+ color::orchid, color::mediumorchid, color::darkestmagenta, color::mediumpurple,
+
+ color::none
+};
 
 /// Japan colors (118)
 /// https://en.wikipedia.org/wiki/Traditional_colors_of_Japan
@@ -205,7 +265,8 @@ palette_qi<73> ciecam02_palette =
 auto&
 active_spectrum()
 {
-  static auto spectrum = izzi_palette;
+  //static auto spectrum = izzi_palette;
+  static auto spectrum = izzi_hue_palette;
   //static auto  spectrum = jp_palette;
   //static auto spectrum = ciecam02_palette;
 
