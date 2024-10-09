@@ -50,18 +50,20 @@ constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 7);
   Return type is a vector of generated color_qi types.
 */
 color_qis
-make_color_band_v1(const colorband& cb, const ushort neededh)
+make_color_band_v1(const colorband& cb, const ushort neededh,
+		   auto& spectrum)
 {
   // Find starting hue and number of samples in the color band.
   color c = std::get<0>(cb);
   ushort hn = std::get<1>(cb);
 
   // Find initial offset.
-  auto& spectrum = active_spectrum();
   auto itr = std::find(spectrum.begin(), spectrum.end(), c);
   if (itr == spectrum.end())
     {
-      string m("collection::make_color_band_v1: at the end of " + to_string(c));
+      string m("collection::make_color_band_v1: color " + to_string(c));
+      m += " not found in spectrum of size ";
+      m += std::to_string(spectrum.size());
       throw std::runtime_error(m);
     }
 
@@ -136,7 +138,7 @@ make_color_band_v2(const colorband& cb, const ushort neededh)
 /// Forwarding function.
 color_qis
 make_color_band(const colorband& cb, const ushort neededh)
-{ return make_color_band_v1(cb, neededh); }
+{ return make_color_band_v1(cb, neededh, active_spectrum()); }
 
 
 /// Flip through color band colors.
@@ -145,7 +147,8 @@ color_qi
 next_in_color_band(const colorband& cb, const ushort bandn = 400)
 {
   // Generate bands.
-  static color_qis gband_bw = make_color_band(cband_bw, bandn);
+  static color_qis gband_bw = make_color_band_v1(cband_bw, bandn,
+						 svg::izzi_palette);
   static color_qis gband_y = make_color_band(cband_y, bandn);
   static color_qis gband_r = make_color_band(cband_r, bandn);
   static color_qis gband_g = make_color_band(cband_g, bandn);
