@@ -49,6 +49,6 @@ test_color(std::string ofile, auto spectrum)
 int main()
 {
   test_color("color-palette-6.3-colorbrewer2-3", svg::colorbrewer2s3s_palette);
-  test_color("color-palette-6.3-colorbrewer2-7", svg::colorbrewer2s7s_palette);
+  test_color("color-palette-6.3-colorbrewer2-9", svg::colorbrewer2s9s_palette);
   return 0;
 }

@@ -218,23 +218,59 @@ palette_qi<118> jp_palette =
 /// Single hue 3-class sequential, low to high
 palette_qi<19> colorbrewer2s3s_palette =
 {
-  /// 3 class single hue orange
-  color_qi(254,230,206), color_qi(253,174,107), color_qi(230,85,13),
-
-  /// 3 class single hue reds
+  /// red
   color_qi(254,224,210), color_qi(252,146,114), color_qi(222,45,38),
 
-  /// 3 class single hue purple
-  color_qi(239,237,245), color_qi(188,189,220), color_qi(117,107,177),
+  /// orange
+  color_qi(254,230,206), color_qi(253,174,107), color_qi(230,85,13),
 
-  /// 3 class single hue blue
-  color_qi(222,235,247), color_qi(158,202,225), color_qi(49,130,189),
-
-  /// 3 class single hue green
+  /// green
   color_qi(229,245,224), color_qi(161,217,155), color_qi(49,163,84),
 
-  /// 3 class single hue gray
+  /// blue
+  color_qi(222,235,247), color_qi(158,202,225), color_qi(49,130,189),
+
+  /// purple
+  color_qi(239,237,245), color_qi(188,189,220), color_qi(117,107,177),
+
+  /// gray
   color_qi(240,240,240), color_qi(189,189,189), color_qi(99,99,99),
+  color::none
+};
+
+/// Single hue 9-class sequential, low to high
+palette_qi<55> colorbrewer2s9s_palette =
+{
+  /// reds
+  color_qi(255,245,240), color_qi(254,224,210), color_qi(252,187,161),
+  color_qi(252,146,114), color_qi(251,106,74), color_qi(239,59,44),
+  color_qi(203,24,29), color_qi(165,15,21), color_qi(103,0,13),
+
+  /// orange
+  color_qi(255,245,235), color_qi(254,230,206), color_qi(253,208,162),
+  color_qi(253,174,107), color_qi(253,141,60), color_qi(241,105,19),
+  color_qi(217,72,1), color_qi(166,54,3), color_qi(127,39,4),
+
+  /// green
+  color_qi(247,252,245), color_qi(229,245,224), color_qi(199,233,192),
+  color_qi(161,217,155), color_qi(116,217,155), color_qi(65,171,93),
+  color_qi(35,139,69), color_qi(0,109,44), color_qi(0,68,27),
+
+  /// blue
+  color_qi(247,251,255), color_qi(222,235,247), color_qi(198,219,239),
+  color_qi(158,202,225), color_qi(107,174,214), color_qi(66,146,198),
+  color_qi(33,113,181), color_qi(8,81,156), color_qi(8,48,107),
+
+  /// purple
+  color_qi(252,251,253), color_qi(239,237,245), color_qi(218,218,235),
+  color_qi(188,189,220), color_qi(158,154,200), color_qi(128,125,186),
+  color_qi(106,81,163), color_qi(84,39,143), color_qi(63,0,125),
+
+  /// gray
+  color_qi(255,255,255), color_qi(240,240,240), color_qi(217,217,217),
+  color_qi(189,189,189), color_qi(150,150,150), color_qi(115,115,115),
+  color_qi(82,82,82), color_qi(37,37,37), color_qi(0,0,0),
+
   color::none
 };
 
