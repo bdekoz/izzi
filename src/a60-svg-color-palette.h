@@ -212,6 +212,69 @@ palette_qi<118> jp_palette =
 };
 
 
+/// ColorBrewer 2.0
+/// https://colorbrewer2.org
+
+/// Single hue 3-class sequential, low to high
+palette_qi<19> colorbrewer2s3s_palette =
+{
+  /// 3 class single hue orange
+  color_qi(254,230,206), color_qi(253,174,107), color_qi(230,85,13),
+
+  /// 3 class single hue reds
+  color_qi(254,224,210), color_qi(252,146,114), color_qi(222,45,38),
+
+  /// 3 class single hue purple
+  color_qi(239,237,245), color_qi(188,189,220), color_qi(117,107,177),
+
+  /// 3 class single hue blue
+  color_qi(222,235,247), color_qi(158,202,225), color_qi(49,130,189),
+
+  /// 3 class single hue green
+  color_qi(229,245,224), color_qi(161,217,155), color_qi(49,163,84),
+
+  /// 3 class single hue gray
+  color_qi(240,240,240), color_qi(189,189,189), color_qi(99,99,99),
+  color::none
+};
+
+/// Single hue 7-class sequential, low to high
+palette_qi<43> colorbrewer2s7s_palette =
+{
+  /// orange
+  color_qi(254,237,222), color_qi(253,208,162), color_qi(253,174,107),
+  color_qi(253,141,60), color_qi(241,105,19), color_qi(217,72,1),
+  color_qi(140,45,4),
+
+  /// reds
+  color_qi(254,229,217), color_qi(252,187,161), color_qi(252,146,114),
+  color_qi(251,106,74), color_qi(239,59,44), color_qi(203,24,29),
+  color_qi(153,0,13),
+
+  /// purple
+  color_qi(242,240,247), color_qi(218,218,235), color_qi(188,189,220),
+  color_qi(158,154,200), color_qi(128,125,186), color_qi(106,81,163),
+  color_qi(74,20,134),
+
+  /// blue
+  color_qi(239,243,255), color_qi(198,219,239), color_qi(158,202,225),
+  color_qi(107,174,214), color_qi(66,146,198), color_qi(33,113,181),
+  color_qi(8,69,148),
+
+  /// green
+  color_qi(237,248,233), color_qi(199,233,192), color_qi(161,217,155),
+  color_qi(116,196,118), color_qi(65,171,93), color_qi(35,139,69),
+  color_qi(0,90,50),
+
+  /// gray
+  color_qi(247,247,247), color_qi(217,217,217), color_qi(189,189,189),
+  color_qi(150,150,150), color_qi(115,115,115), color_qi(82,82,82),
+  color_qi(37,37,37),
+
+  color::none
+};
+
+
 /**
    CIECAM02-UCS color space, perceptually different colors, equally spaced out.
 
