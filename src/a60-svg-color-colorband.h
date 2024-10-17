@@ -39,7 +39,7 @@ constexpr colorband cband_g = std::make_tuple(color::green, 21);
 constexpr colorband cband_b = std::make_tuple(color::blue, 34);
 constexpr colorband cband_p = std::make_tuple(color::purple, 33);
 constexpr colorband cband_o = std::make_tuple(color::orange, 10);
-constexpr colorband cband_brown = std::make_tuple(color::duboisbrown1, 7);
+constexpr colorband cband_brown = std::make_tuple(color::duboisbrown5, 7);
 
 
 /**
@@ -83,7 +83,7 @@ make_color_band_v1(const colorband& cb, const ushort neededh,
       // New color.
       ushort o1 = disti(rg);
       ushort o2 = disti(rg);
-      color_qi c1 = *(itr + o1);
+      color_qi c1 = *(itr + o1); // XXx out of range? asan
       color_qi c2 = *(itr + o2);
 
       // Combine.
