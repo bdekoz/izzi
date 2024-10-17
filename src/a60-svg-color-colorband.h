@@ -66,6 +66,7 @@ make_color_band_v1(const colorband& cb, const ushort neededh,
       m += std::to_string(spectrum.size());
       throw std::runtime_error(m);
     }
+  const ulong offset = std::distance(spectrum.begin(), itr);
 
   // Randomness.
   static std::mt19937_64 rg(std::random_device{}());
@@ -83,8 +84,8 @@ make_color_band_v1(const colorband& cb, const ushort neededh,
       // New color.
       ushort o1 = disti(rg);
       ushort o2 = disti(rg);
-      color_qi c1 = *(itr + o1); // XXx out of range? asan
-      color_qi c2 = *(itr + o2);
+      color_qi c1 = spectrum[offset + o1];
+      color_qi c2 = spectrum[offset + o2];
 
       // Combine.
       double c1r = distr(rg);
