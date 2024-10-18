@@ -35,7 +35,7 @@ template<std::size_t N>
 using palette_qf = palette<color_qf, N>;
 
 /// Default colors for izzi.
-palette_qi<color_max_size - 4> izzi_palette =
+static const palette_qi<color_max_size - 4> izzi_palette =
 {
  // black to gray to white in 10% and 25% increments
  color::white,
@@ -105,7 +105,7 @@ palette_qi<color_max_size - 4> izzi_palette =
 };
 
 /// Only color no black and white or gray
-palette_qi<color_max_size - 20> izzi_hue_palette =
+static const palette_qi<color_max_size - 20> izzi_hue_palette =
 {
  // yellow
  color::hellayellow, color::navajowhite,
@@ -167,7 +167,7 @@ palette_qi<color_max_size - 20> izzi_hue_palette =
 
 /// Japan colors (118)
 /// https://en.wikipedia.org/wiki/Traditional_colors_of_Japan
-palette_qi<118> jp_palette =
+static const palette_qi<118> jp_palette =
 {
   color_qi(240,143,144), color_qi(219,90,107), color_qi(252,201,185),
   color_qi(242,102,108), color_qi(245,143,132), color_qi(185,87,84),
@@ -216,7 +216,7 @@ palette_qi<118> jp_palette =
 /// https://colorbrewer2.org
 
 /// Single hue 3-class sequential, low to high
-palette_qi<19> colorbrewer2s3s_palette =
+static const palette_qi<19> colorbrewer2s3s_palette =
 {
   /// red
   color_qi(254,224,210), color_qi(252,146,114), color_qi(222,45,38),
@@ -239,7 +239,7 @@ palette_qi<19> colorbrewer2s3s_palette =
 };
 
 /// Single hue 9-class sequential, low to high
-palette_qi<55> colorbrewer2s9s_palette =
+static const palette_qi<55> colorbrewer2s9s_palette =
 {
   /// reds
   color_qi(255,245,240), color_qi(254,224,210), color_qi(252,187,161),
@@ -275,7 +275,7 @@ palette_qi<55> colorbrewer2s9s_palette =
 };
 
 /// Single hue 7-class sequential, low to high
-palette_qi<43> colorbrewer2s7s_palette =
+static const palette_qi<43> colorbrewer2s7s_palette =
 {
   /// orange
   color_qi(254,237,222), color_qi(253,208,162), color_qi(253,174,107),
@@ -318,7 +318,7 @@ palette_qi<43> colorbrewer2s7s_palette =
    Start with color constraints, generate 264 options, hand-pick to n=68.
    http://jnnnnn.github.io/category-colors-constrained.html
 */
-palette_qi<73> ciecam02_palette =
+static const palette_qi<73> ciecam02_palette =
 {
   // SE, red to orange/yellow (18)
   color_qi(251,225,217), color_qi(254,231,192), color_qi(253,196,189),
