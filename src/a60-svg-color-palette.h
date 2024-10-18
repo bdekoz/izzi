@@ -361,16 +361,21 @@ static const palette_qi<73> ciecam02_palette =
 
 
 /// Set and Get working spectrum, aka default palette.
+/// NB: If colorbands are being used, palette has to be izzi or
+/// izzi_hue, and cannot be sorted (as color bands use colors arranged
+/// in a fixed order with offsets in hue.
 auto&
-active_spectrum()
+active_spectrum(const bool sortbyhuep = false)
 {
   //static auto spectrum = izzi_palette;
   static auto spectrum = izzi_hue_palette;
   //static auto  spectrum = jp_palette;
   //static auto spectrum = ciecam02_palette;
+  //static auto spectrum = colorbrewer2s3s_palette;
+  //static auto spectrum = colorbrewer2s9s_palette;
 
   static bool initp(false);
-  if (!initp)
+  if (sortbyhuep && !initp)
     {
       std::sort(spectrum.begin(), spectrum.end(), svg::color_qf_lt_hue);
       std::reverse(spectrum.begin(), spectrum.end());
