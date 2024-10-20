@@ -33,13 +33,13 @@ using colorband = std::tuple<color, ushort>;
 /// Izzi palette-specific offsets for colorbands.
 constexpr colorband cband_bw = std::make_tuple(color::white, 2);
 constexpr colorband cband_gray = std::make_tuple(color::white, 16);
-constexpr colorband cband_y = std::make_tuple(color::hellayellow, 10);
+constexpr colorband cband_brown = std::make_tuple(color::duboisbrown5, 7);
 constexpr colorband cband_r = std::make_tuple(color::red, 17);
+constexpr colorband cband_o = std::make_tuple(color::orange, 10);
+constexpr colorband cband_y = std::make_tuple(color::hellayellow, 10);
 constexpr colorband cband_g = std::make_tuple(color::green, 21);
 constexpr colorband cband_b = std::make_tuple(color::blue, 34);
 constexpr colorband cband_p = std::make_tuple(color::purple, 33);
-constexpr colorband cband_o = std::make_tuple(color::orange, 10);
-constexpr colorband cband_brown = std::make_tuple(color::duboisbrown5, 7);
 
 
 /**
