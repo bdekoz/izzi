@@ -1,6 +1,6 @@
 <map id="svg::next_color" name="svg::next_color">
 <area shape="rect" id="Node000001" title="Loop through color array starting at position c." alt="" coords="5,5,102,32"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#afbb69e6e3429f0e574994b3a761d2a30" title="Set and Get working spectrum, aka default palette." alt="" coords="150,5,276,32"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Set and Get working spectrum, aka default palette. NB: If colorbands are being used,..." alt="" coords="150,5,276,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,16,134,16,134,21,102,21"/>
 <area shape="rect" id="Node000003" href="$namespacesvg.html#a6ef86da421061b502a4cec162970c4e9" title="Forwarding function." alt="" coords="324,5,445,32"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="276,16,309,16,309,21,276,21"/>

@@ -22,5 +22,6 @@ var searchData=
   ['itype_19',['itype',['../structsvg_1_1color__qi.html#aca2e01ff1f6b9c1a01f6e1fde89b4f97',1,'svg::color_qi']]],
   ['ivory_20',['ivory',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ac55c68625ca1da0e1d4a922fc8cb373e',1,'svg']]],
   ['izzi_21',['izzi',['../index.html',1,'']]],
-  ['izzi_5fpalette_22',['izzi_palette',['../namespacesvg.html#a0e72912c8720466e3f95de3228301931',1,'svg']]]
+  ['izzi_5fhue_5fpalette_22',['izzi_hue_palette',['../namespacesvg.html#ade9b17ed678790ae8f018b798160b377',1,'svg']]],
+  ['izzi_5fpalette_23',['izzi_palette',['../namespacesvg.html#aaea796845322874cb98039b1301c39d6',1,'svg']]]
 ];

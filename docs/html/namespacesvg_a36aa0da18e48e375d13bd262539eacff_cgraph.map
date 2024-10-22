@@ -1,5 +1,5 @@
 <map id="svg::make_path_octogon" name="svg::make_path_octogon">
-<area shape="rect" id="Node000001" title="Center an octogon at this point." alt="" coords="5,131,153,157"/>
+<area shape="rect" id="Node000001" title="Center an octogon at this point. radius 4 is pixels to draw out from center point...." alt="" coords="5,131,153,157"/>
 <area shape="rect" id="Node000002" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="207,56,345,99"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,128,195,102,197,107,122,133"/>
 <area shape="rect" id="Node000005" href="$namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91" title="Make single path segment." alt="" coords="211,123,341,165"/>

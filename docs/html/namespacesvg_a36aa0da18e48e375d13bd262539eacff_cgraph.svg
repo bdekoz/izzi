@@ -6,12 +6,22 @@
 <!-- Title: svg::make_path_octogon Pages: 1 -->
 <svg width="407pt" height="166pt"
  viewBox="0.00 0.00 407.00 166.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<svg id="main" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" onload="init(evt)">
+<style type="text/css"><![CDATA[
+.node, .edge {opacity: 0.7;}
+.node.selected, .edge.selected {opacity: 1;}
+.edge:hover path { stroke: red; }
+.edge:hover polygon { stroke: red; fill: red; }
+]]></style>
+<script type="application/ecmascript" xlink:href="svg.min.js"/>
+<svg id="graph" class="graph">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 162)">
 <title>svg::make_path_octogon</title>
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Center an octogon at this point.">
+<g id="a_Node000001"><a xlink:title="Center an octogon at this point. radius 4 is pixels to draw out from center point....">
 <polygon fill="#999999" stroke="#666666" points="110.5,-64 0,-64 0,-44 110.5,-44 110.5,-64"/>
 <text text-anchor="middle" x="55.25" y="-52.4" font-family="SourceSans" font-size="8.00">svg::make_path_octogon</text>
 </a>
@@ -129,4 +139,19 @@
 </g>
 </g>
 </g>
+</svg>
+</svg>
+
+<style type='text/css'>
+<![CDATA[
+[data-mouse-over-selected='false'] { opacity: 0.7; }
+[data-mouse-over-selected='true']  { opacity: 1.0; }
+]]>
+</style>
+<script type="application/ecmascript"><![CDATA[
+document.addEventListener('DOMContentLoaded', (event) => {
+  highlightEdges();
+  highlightAdjacentNodes();
+});
+]]></script>
 </svg>

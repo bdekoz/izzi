@@ -30,7 +30,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacesvg.html#afbb69e6e3429f0e574994b3a761d2a30" target="_top" xlink:title="Set and Get working spectrum, aka default palette.">
+<g id="a_Node000002"><a xlink:href="namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" target="_top" xlink:title="Set and Get working spectrum, aka default palette. NB: If colorbands are being used,...">
 <polygon fill="white" stroke="#666666" points="203,-20 108.25,-20 108.25,0 203,0 203,-20"/>
 <text text-anchor="middle" x="155.62" y="-8.4" font-family="SourceSans" font-size="8.00">svg::active_spectrum</text>
 </a>

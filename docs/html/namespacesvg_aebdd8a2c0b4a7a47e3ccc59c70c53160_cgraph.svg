@@ -66,7 +66,7 @@ var sectionId = 'dynsection-42';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacesvg.html#a9010cfefc78502dcc4f7d5532ee717f5" target="_top" xlink:title="Center an octogon at this point.">
+<g id="a_Node000002"><a xlink:href="namespacesvg.html#a36aa0da18e48e375d13bd262539eacff" target="_top" xlink:title="Center an octogon at this point. radius 4 is pixels to draw out from center point....">
 <polygon fill="white" stroke="#666666" points="245.75,-64 135.25,-64 135.25,-44 245.75,-44 245.75,-64"/>
 <text text-anchor="middle" x="190.5" y="-52.4" font-family="SourceSans" font-size="8.00">svg::make_path_octogon</text>
 </a>

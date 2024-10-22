@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 657;
+var viewWidth = 530;
 var viewHeight = 104;
 var sectionId = 'dynsection-24';
 </script>
@@ -58,17 +58,17 @@ var sectionId = 'dynsection-24';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="Forwarding function.">
-<polygon fill="#999999" stroke="#666666" points="100,-58 0,-58 0,-38 100,-38 100,-58"/>
-<text text-anchor="middle" x="50" y="-46.4" font-family="SourceSans" font-size="8.00">svg::make_color_band</text>
+<polygon fill="#999999" stroke="#666666" points="100,-77 0,-77 0,-57 100,-57 100,-77"/>
+<text text-anchor="middle" x="50" y="-65.4" font-family="SourceSans" font-size="8.00">svg::make_color_band</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacesvg.html#ac3cec274899f85d3b3c828bb2e75e3b8" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="248,-58 136,-58 136,-38 248,-38 248,-58"/>
-<text text-anchor="middle" x="192" y="-46.4" font-family="SourceSans" font-size="8.00">svg::make_color_band_v1</text>
+<g id="a_Node000002"><a xlink:href="namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" target="_top" xlink:title="Set and Get working spectrum, aka default palette. NB: If colorbands are being used,...">
+<polygon fill="white" stroke="#666666" points="239.38,-96 144.62,-96 144.62,-76 239.38,-76 239.38,-96"/>
+<text text-anchor="middle" x="192" y="-84.4" font-family="SourceSans" font-size="8.00">svg::active_spectrum</text>
 </a>
 </g>
 </g>
@@ -76,17 +76,35 @@ var sectionId = 'dynsection-24';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M100.36,-48C108.17,-48 116.36,-48 124.49,-48"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="124.37,-51.5 134.37,-48 124.37,-44.5 124.37,-51.5"/>
+<path fill="none" stroke="#63b8ff" d="M100.36,-73.7C110.99,-75.14 122.32,-76.68 133.25,-78.16"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="132.55,-81.6 142.93,-79.48 133.49,-74.66 132.55,-81.6"/>
+</a>
+</g>
+</g>
+<!-- Node5 -->
+<g id="Node000005" class="node">
+<title>Node5</title>
+<g id="a_Node000005"><a xlink:href="namespacesvg.html#a80195ef46b7ed340c7a3f2a4b5eb6874" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="248,-58 136,-58 136,-38 248,-38 248,-58"/>
+<text text-anchor="middle" x="192" y="-46.4" font-family="SourceSans" font-size="8.00">svg::make_color_band_v1</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node5 -->
+<g id="edge4_Node000001_Node000005" class="edge">
+<title>Node1&#45;&gt;Node5</title>
+<g id="a_edge4_Node000001_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M100.36,-60.3C108.17,-59.24 116.36,-58.13 124.49,-57.03"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="124.95,-60.5 134.39,-55.68 124.01,-53.56 124.95,-60.5"/>
 </a>
 </g>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="namespacesvg.html#afbb69e6e3429f0e574994b3a761d2a30" target="_top" xlink:title="Set and Get working spectrum, aka default palette.">
-<polygon fill="white" stroke="#666666" points="381,-96 286.25,-96 286.25,-76 381,-76 381,-96"/>
-<text text-anchor="middle" x="333.62" y="-84.4" font-family="SourceSans" font-size="8.00">svg::active_spectrum</text>
+<g id="a_Node000003"><a xlink:href="namespacesvg.html#a6ef86da421061b502a4cec162970c4e9" target="_top" xlink:title="Forwarding function.">
+<polygon fill="white" stroke="#666666" points="379.12,-96 288.12,-96 288.12,-76 379.12,-76 379.12,-96"/>
+<text text-anchor="middle" x="333.62" y="-84.4" font-family="SourceSans" font-size="8.00">svg::color_qf_lt_hue</text>
 </a>
 </g>
 </g>
@@ -94,8 +112,26 @@ var sectionId = 'dynsection-24';
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M231.52,-58.48C247.55,-62.85 266.34,-67.96 283.35,-72.59"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="282.2,-75.9 292.77,-75.15 284.04,-69.15 282.2,-75.9"/>
+<path fill="none" stroke="#63b8ff" d="M239.49,-86C251.28,-86 264.06,-86 276.27,-86"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="276.24,-89.5 286.24,-86 276.24,-82.5 276.24,-89.5"/>
+</a>
+</g>
+</g>
+<!-- Node4 -->
+<g id="Node000004" class="node">
+<title>Node4</title>
+<g id="a_Node000004"><a xlink:href="namespacesvg.html#a804d33f9f3d2f0debdcfc4317f5b8487" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="522.25,-96 419.25,-96 419.25,-76 522.25,-76 522.25,-96"/>
+<text text-anchor="middle" x="470.75" y="-84.4" font-family="SourceSans" font-size="8.00">svg::color_qf_lt_hue_v2</text>
+</a>
+</g>
+</g>
+<!-- Node3&#45;&gt;Node4 -->
+<g id="edge3_Node000003_Node000004" class="edge">
+<title>Node3&#45;&gt;Node4</title>
+<g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M379.62,-86C388.57,-86 398.12,-86 407.53,-86"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="407.37,-89.5 417.37,-86 407.37,-82.5 407.37,-89.5"/>
 </a>
 </g>
 </g>
@@ -108,10 +144,10 @@ var sectionId = 'dynsection-24';
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node6 -->
-<g id="edge5_Node000002_Node000006" class="edge">
-<title>Node2&#45;&gt;Node6</title>
-<g id="a_edge5_Node000002_Node000006"><a xlink:title=" ">
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge5_Node000005_Node000006" class="edge">
+<title>Node5&#45;&gt;Node6</title>
+<g id="a_edge5_Node000005_Node000006"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M248.18,-48C256.16,-48 264.41,-48 272.48,-48"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="272.21,-51.5 282.21,-48 272.21,-44.5 272.21,-51.5"/>
 </a>
@@ -126,48 +162,12 @@ var sectionId = 'dynsection-24';
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node7 -->
-<g id="edge6_Node000002_Node000007" class="edge">
-<title>Node2&#45;&gt;Node7</title>
-<g id="a_edge6_Node000002_Node000007"><a xlink:title=" ">
+<!-- Node5&#45;&gt;Node7 -->
+<g id="edge6_Node000005_Node000007" class="edge">
+<title>Node5&#45;&gt;Node7</title>
+<g id="a_edge6_Node000005_Node000007"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M231.52,-37.52C249.3,-32.68 270.5,-26.91 288.88,-21.91"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="289.71,-25.31 298.44,-19.3 287.88,-18.55 289.71,-25.31"/>
-</a>
-</g>
-</g>
-<!-- Node4 -->
-<g id="Node000004" class="node">
-<title>Node4</title>
-<g id="a_Node000004"><a xlink:href="namespacesvg.html#a6ef86da421061b502a4cec162970c4e9" target="_top" xlink:title="Forwarding function.">
-<polygon fill="white" stroke="#666666" points="510.25,-96 419.25,-96 419.25,-76 510.25,-76 510.25,-96"/>
-<text text-anchor="middle" x="464.75" y="-84.4" font-family="SourceSans" font-size="8.00">svg::color_qf_lt_hue</text>
-</a>
-</g>
-</g>
-<!-- Node3&#45;&gt;Node4 -->
-<g id="edge3_Node000003_Node000004" class="edge">
-<title>Node3&#45;&gt;Node4</title>
-<g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M381.24,-86C389.78,-86 398.77,-86 407.56,-86"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="407.41,-89.5 417.41,-86 407.41,-82.5 407.41,-89.5"/>
-</a>
-</g>
-</g>
-<!-- Node5 -->
-<g id="Node000005" class="node">
-<title>Node5</title>
-<g id="a_Node000005"><a xlink:href="namespacesvg.html#a804d33f9f3d2f0debdcfc4317f5b8487" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="649.25,-96 546.25,-96 546.25,-76 649.25,-76 649.25,-96"/>
-<text text-anchor="middle" x="597.75" y="-84.4" font-family="SourceSans" font-size="8.00">svg::color_qf_lt_hue_v2</text>
-</a>
-</g>
-</g>
-<!-- Node4&#45;&gt;Node5 -->
-<g id="edge4_Node000004_Node000005" class="edge">
-<title>Node4&#45;&gt;Node5</title>
-<g id="a_edge4_Node000004_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M510.47,-86C518.22,-86 526.42,-86 534.54,-86"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="534.42,-89.5 544.42,-86 534.42,-82.5 534.42,-89.5"/>
 </a>
 </g>
 </g>
