@@ -1,6 +1,6 @@
 // svg grid and matrix placement -*- mode: C++ -*-
 
-// Copyright (c) 2021, Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (c) 2021,2024 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the izzi library.  This library is free
 // software; you can redistribute it and/or modify it under the terms
@@ -195,6 +195,24 @@ to_point_in_1x8_matrix(const area<> a, const uint i, const double margin)
 
   const uint xoff = margin + xdelta + (i * xdelta);
   const uint yoff = height / 2;
+
+  return make_tuple(xoff, yoff);
+}
+
+
+/// For positioning a linear list of glyphs along a horizontal line.
+/// NB: i is from find_id_index with tag, so is an offset starting at zero.
+point_2t
+to_point_in_1xn_matrix(const area<> a, const uint n, const uint i, const double margin,
+		       const uint yoff)
+{
+  using std::make_tuple;
+
+  const auto [width, height] = a;
+  const auto widthadj = width - (2 * margin);
+  const ulong xdelta = widthadj / (n + 1);
+
+  const uint xoff = margin + (i * xdelta);
 
   return make_tuple(xoff, yoff);
 }
