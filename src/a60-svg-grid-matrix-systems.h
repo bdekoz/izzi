@@ -210,7 +210,7 @@ to_point_in_1xn_matrix(const area<> a, const uint n, const uint i, const double 
 
   const auto [width, height] = a;
   const auto widthadj = width - (2 * margin);
-  const ulong xdelta = widthadj / (n + 1);
+  const ulong xdelta = widthadj / n;
 
   const uint xoff = margin + (i * xdelta);
 
