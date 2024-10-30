@@ -333,6 +333,11 @@ struct typography
   weight		_M_w;
   property		_M_p;
 
+  // Compile time expression.
+  typography
+  use_style(const style s) const
+  { return { _M_face, _M_size, s, _M_anchor, _M_align, _M_baseline, _M_w, _M_p }; }
+
   const std::string
   to_string(const align a) const
   {
