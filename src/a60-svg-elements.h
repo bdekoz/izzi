@@ -1,6 +1,6 @@
 // svg elements -*- mode: C++ -*-
 
-// Copyright (C) 2014-2021 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2024 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -254,6 +254,41 @@ void
 filter_element::finish_element()
 { _M_sstream  << "</filter>" << k::newline; }
 
+
+/**
+   So-called Foreign Objects.
+
+   Using to get HTML video elements.
+
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject
+   https://stackoverflow.com/questions/40324916/video-tag-embedded-in-svg
+
+Translate moves the origin from the top left to the specified coordinates. If you embed an object at 0,0 it will be placed at the new origin. In this case you must embed it at -translation coordinates.
+
+Even so, I had to increase the width and height. Why? I don't know. It doesn't seem to be a scale by 2. If someone knows I am curious to know.
+
+<svg version="1.1" class="center-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600"  style="border: 1px solid black;">
+    <g>
+	<g transform="translate(151,104) scale(1,1)">
+	    <rect x="0" y="0" width="300" height="200"></rect>
+	    <foreignObject x="-151" y="-104" width="500" height="400">
+		<video xmlns="http://www.w3.org/1999/xhtml" width="300" height="200" controls="" style="position: fixed; left: 151px; top: 104px;">
+		    <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
+		</video>
+	    </foreignObject>
+	</g>
+    </g>
+</svg>
+*/
+struct foreign_element : virtual public element_base
+{
+
+};
+
+struct video_element : virtual public foreign_element
+{
+
+};
 
 /**
    Gradient SVG elements.
