@@ -414,6 +414,35 @@ radial_gradient::finish_element()
 
 
 /**
+   Title SVG element. This is accessible/alt text.
+   This element must be the first element in the svg objectc.
+
+   A title element with no string indicates a decorative element to AT screenreaders.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title
+*/
+struct title_element : virtual public element_base
+{
+  void
+  start_element()
+  { _M_sstream << "<title>" << k::newline; }
+
+  void
+  start_element(const string t)
+  { _M_sstream << "<title>" << t << k::newline; }
+
+  void
+  finish_element();
+};
+
+void
+title_element::finish_element()
+{ _M_sstream  << "</title>" << k::newline; }
+
+
+
+/**
    Text SVG element.
 
    Specification reference:
