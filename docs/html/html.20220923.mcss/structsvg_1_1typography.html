@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>svg::typography struct | izzi SVG SUBSET C++ API</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="izzi-wind-square-v2.svg" alt="" />izzi <span class="m-thin">SVG SUBSET C++ API</span></a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="namespacesvg.html">svg</a>::<wbr/></span>typography <span class="m-thin">struct</span>
+        </h1>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Character rendering, type, fonts, styles.</p><p>Expect to keep changing the output, so use this abstraction to set styling defaults, so that one can just assign types instead of doing a bunch of search-and-replace operations when changing type characteristics.</p><p>SVG Fonts <a href="https://developer.mozilla.org/docs/Web/SVG/Tutorial/SVG_fonts">https://developer.mozilla.org/docs/Web/SVG/Tutorial/SVG_<wbr />fonts</a></p>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum class <a href="#a93bca2e6c4e32784def555d27487f886" class="m-doc">align</a> { </span><span class="m-doc-wrap"><a href="#a93bca2e6c4e32784def555d27487f886a811882fecd5c7618d7099ebbd39ea254" class="m-doc">left</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886aadb115059e28d960fa8badfac5516667" class="m-doc">center</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886a7c4f29407893c334a6cb7a87bf045c0d" class="m-doc">right</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886a9e7ace81eb5d8c8e66d15edcaf439d42" class="m-doc">justify</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886a3f2b21ddc845ed5532058dfe97c79e54" class="m-doc">justifyall</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886aea2b2676c28c0db26d39331a336c6b92" class="m-doc">start</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886a7f021a1415b86f2d013b2618fb31ae53" class="m-doc">end</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886a6995c373523132a1006975baf4079aa0" class="m-doc">inherit</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886a861a9af05db8d7ebc2f8ee02d50e1615" class="m-doc">matchparent</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886acc51b81974287ab79cef9e94fe778cc9" class="m-doc">initial</a>,
+              <a href="#a93bca2e6c4e32784def555d27487f886ae2181b5014a67159cc230c8fe0d6c5b6" class="m-doc">unset</a> }</span>
+            </dt>
+            <dd>Text alignment.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum class <a href="#ab466ab5a124304d826cea9c46a46d3b0" class="m-doc">anchor</a> { </span><span class="m-doc-wrap"><a href="#ab466ab5a124304d826cea9c46a46d3b0aea2b2676c28c0db26d39331a336c6b92" class="m-doc">start</a>,
+              <a href="#ab466ab5a124304d826cea9c46a46d3b0a4a548addbfb239bbd12f5afe11a4b6dc" class="m-doc">middle</a>,
+              <a href="#ab466ab5a124304d826cea9c46a46d3b0a7f021a1415b86f2d013b2618fb31ae53" class="m-doc">end</a>,
+              <a href="#ab466ab5a124304d826cea9c46a46d3b0a6995c373523132a1006975baf4079aa0" class="m-doc">inherit</a> }</span>
+            </dt>
+            <dd>How to align text to a given point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum class <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9" class="m-doc">baseline</a> { </span><span class="m-doc-wrap"><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a334c4a4c42fdb79d7ebc3e73b517e6f8" class="m-doc">none</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a2bd9c0ed00116be1258e0cc66617d7c8" class="m-doc">automatic</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a0de30bfd9180a596227b4e87e94f73a8" class="m-doc">ideographic</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a461abee24ef7f3ee34a7f5969957a872" class="m-doc">alphabetic</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a9e549320baf837f4c97466096acc4967" class="m-doc">hanging</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a32fec2813600cdd66304e600d81d2113" class="m-doc">mathematical</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9aa42a6c7fb85673fff8937f8543a589a2" class="m-doc">central</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a4a548addbfb239bbd12f5afe11a4b6dc" class="m-doc">middle</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a84c11f4a95c38190831ef2514d00b40e" class="m-doc">text_after_edge</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a1e994f94b522f0690e05358867f49a7e" class="m-doc">text_before_edge</a>,
+              <a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a1b53603dffe80f8b0294e66b5bf5e356" class="m-doc">text_top</a> }</span>
+            </dt>
+            <dd>How to align text to the dominant-baseline. <a href="https://developer.mozilla.org/docs/Web/SVG/Attribute/dominant-baseline">https:/<wbr />/<wbr />developer.mozilla.org/<wbr />docs/<wbr />Web/<wbr />SVG/<wbr />Attribute/<wbr />dominant-baseline</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum class <a href="#aba5bf3a1484966319aebc9443746e98c" class="m-doc">property</a> { </span><span class="m-doc-wrap"><a href="#aba5bf3a1484966319aebc9443746e98cafea087517c26fadd409bd4b9dc642555" class="m-doc">normal</a>,
+              <a href="#aba5bf3a1484966319aebc9443746e98ca030c5b6d1e5715105943ac111d9671bf" class="m-doc">italic</a> }</span>
+            </dt>
+            <dd>Face style variant. <a href="https://developer.mozilla.org/docs/Web/CSS/font-style">https:/<wbr />/<wbr />developer.mozilla.org/<wbr />docs/<wbr />Web/<wbr />CSS/<wbr />font-style</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum class <a href="#ac41cf6a133f5b21757130ce5ba72b3d7" class="m-doc">weight</a> { </span><span class="m-doc-wrap"><a href="#ac41cf6a133f5b21757130ce5ba72b3d7a10181fa173ca40ca9d14dce388a71bf0" class="m-doc">xlight</a>,
+              <a href="#ac41cf6a133f5b21757130ce5ba72b3d7a2ac43aa43bf473f9a9c09b4b608619d3" class="m-doc">light</a>,
+              <a href="#ac41cf6a133f5b21757130ce5ba72b3d7afea087517c26fadd409bd4b9dc642555" class="m-doc">normal</a>,
+              <a href="#ac41cf6a133f5b21757130ce5ba72b3d7a075a3e36a0a52dcbc568c05788e8a713" class="m-doc">medium</a>,
+              <a href="#ac41cf6a133f5b21757130ce5ba72b3d7a69dcab4a73aeec2113f69b61e6263da8" class="m-doc">bold</a>,
+              <a href="#ac41cf6a133f5b21757130ce5ba72b3d7a7cfa5bf74eaa89593bbd5b416e57331a" class="m-doc">xbold</a> }</span>
+            </dt>
+            <dd>Weight as per CSS property.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a93bca2e6c4e32784def555d27487f886"><div>
+            <h3>
+              enum class svg::<wbr />typography::<wbr /><a href="#a93bca2e6c4e32784def555d27487f886" class="m-doc-self">align</a>
+            </h3>
+            <p>Text alignment.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886a811882fecd5c7618d7099ebbd39ea254" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886a811882fecd5c7618d7099ebbd39ea254">left</a></td>
+                  <td>
+                  <p>Left-most part of text block.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886aadb115059e28d960fa8badfac5516667" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886aadb115059e28d960fa8badfac5516667">center</a></td>
+                  <td>
+                  <p>Center part of text block.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886a7c4f29407893c334a6cb7a87bf045c0d" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886a7c4f29407893c334a6cb7a87bf045c0d">right</a></td>
+                  <td>
+                  <p>Right part of text block.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886a9e7ace81eb5d8c8e66d15edcaf439d42" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886a9e7ace81eb5d8c8e66d15edcaf439d42">justify</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886a3f2b21ddc845ed5532058dfe97c79e54" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886a3f2b21ddc845ed5532058dfe97c79e54">justifyall</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886aea2b2676c28c0db26d39331a336c6b92" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886aea2b2676c28c0db26d39331a336c6b92">start</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886a7f021a1415b86f2d013b2618fb31ae53" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886a7f021a1415b86f2d013b2618fb31ae53">end</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886a6995c373523132a1006975baf4079aa0" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886a6995c373523132a1006975baf4079aa0">inherit</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886a861a9af05db8d7ebc2f8ee02d50e1615" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886a861a9af05db8d7ebc2f8ee02d50e1615">matchparent</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886acc51b81974287ab79cef9e94fe778cc9" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886acc51b81974287ab79cef9e94fe778cc9">initial</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a93bca2e6c4e32784def555d27487f886ae2181b5014a67159cc230c8fe0d6c5b6" class="m-doc-self" id="a93bca2e6c4e32784def555d27487f886ae2181b5014a67159cc230c8fe0d6c5b6">unset</a></td>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ab466ab5a124304d826cea9c46a46d3b0"><div>
+            <h3>
+              enum class svg::<wbr />typography::<wbr /><a href="#ab466ab5a124304d826cea9c46a46d3b0" class="m-doc-self">anchor</a>
+            </h3>
+            <p>How to align text to a given point.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#ab466ab5a124304d826cea9c46a46d3b0aea2b2676c28c0db26d39331a336c6b92" class="m-doc-self" id="ab466ab5a124304d826cea9c46a46d3b0aea2b2676c28c0db26d39331a336c6b92">start</a></td>
+                  <td>
+                  <p>Start the text block at point.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ab466ab5a124304d826cea9c46a46d3b0a4a548addbfb239bbd12f5afe11a4b6dc" class="m-doc-self" id="ab466ab5a124304d826cea9c46a46d3b0a4a548addbfb239bbd12f5afe11a4b6dc">middle</a></td>
+                  <td>
+                  <p>Center the middle of the text block at point.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ab466ab5a124304d826cea9c46a46d3b0a7f021a1415b86f2d013b2618fb31ae53" class="m-doc-self" id="ab466ab5a124304d826cea9c46a46d3b0a7f021a1415b86f2d013b2618fb31ae53">end</a></td>
+                  <td>
+                  <p>End the text block at point.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ab466ab5a124304d826cea9c46a46d3b0a6995c373523132a1006975baf4079aa0" class="m-doc-self" id="ab466ab5a124304d826cea9c46a46d3b0a6995c373523132a1006975baf4079aa0">inherit</a></td>
+                  <td>
+                  <p>Enclosing object or group.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a13d320c2ae85f1d4f3ea33806e60a7b9"><div>
+            <h3>
+              enum class svg::<wbr />typography::<wbr /><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9" class="m-doc-self">baseline</a>
+            </h3>
+            <p>How to align text to the dominant-baseline. <a href="https://developer.mozilla.org/docs/Web/SVG/Attribute/dominant-baseline">https:/<wbr />/<wbr />developer.mozilla.org/<wbr />docs/<wbr />Web/<wbr />SVG/<wbr />Attribute/<wbr />dominant-baseline</a>.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a334c4a4c42fdb79d7ebc3e73b517e6f8" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a334c4a4c42fdb79d7ebc3e73b517e6f8">none</a></td>
+                  <td>
+                  <p>Ignore this attribute.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a2bd9c0ed00116be1258e0cc66617d7c8" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a2bd9c0ed00116be1258e0cc66617d7c8">automatic</a></td>
+                  <td>
+                  <p>Auto.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a0de30bfd9180a596227b4e87e94f73a8" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a0de30bfd9180a596227b4e87e94f73a8">ideographic</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a461abee24ef7f3ee34a7f5969957a872" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a461abee24ef7f3ee34a7f5969957a872">alphabetic</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a9e549320baf837f4c97466096acc4967" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a9e549320baf837f4c97466096acc4967">hanging</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a32fec2813600cdd66304e600d81d2113" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a32fec2813600cdd66304e600d81d2113">mathematical</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9aa42a6c7fb85673fff8937f8543a589a2" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9aa42a6c7fb85673fff8937f8543a589a2">central</a></td>
+                  <td>
+                  <p>For rotated text.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a4a548addbfb239bbd12f5afe11a4b6dc" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a4a548addbfb239bbd12f5afe11a4b6dc">middle</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a84c11f4a95c38190831ef2514d00b40e" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a84c11f4a95c38190831ef2514d00b40e">text_after_edge</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a1e994f94b522f0690e05358867f49a7e" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a1e994f94b522f0690e05358867f49a7e">text_before_edge</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a13d320c2ae85f1d4f3ea33806e60a7b9a1b53603dffe80f8b0294e66b5bf5e356" class="m-doc-self" id="a13d320c2ae85f1d4f3ea33806e60a7b9a1b53603dffe80f8b0294e66b5bf5e356">text_top</a></td>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aba5bf3a1484966319aebc9443746e98c"><div>
+            <h3>
+              enum class svg::<wbr />typography::<wbr /><a href="#aba5bf3a1484966319aebc9443746e98c" class="m-doc-self">property</a>
+            </h3>
+            <p>Face style variant. <a href="https://developer.mozilla.org/docs/Web/CSS/font-style">https:/<wbr />/<wbr />developer.mozilla.org/<wbr />docs/<wbr />Web/<wbr />CSS/<wbr />font-style</a>.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#aba5bf3a1484966319aebc9443746e98cafea087517c26fadd409bd4b9dc642555" class="m-doc-self" id="aba5bf3a1484966319aebc9443746e98cafea087517c26fadd409bd4b9dc642555">normal</a></td>
+                  <td>
+                  <p>Book.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aba5bf3a1484966319aebc9443746e98ca030c5b6d1e5715105943ac111d9671bf" class="m-doc-self" id="aba5bf3a1484966319aebc9443746e98ca030c5b6d1e5715105943ac111d9671bf">italic</a></td>
+                  <td>
+                  <p>Italic.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac41cf6a133f5b21757130ce5ba72b3d7"><div>
+            <h3>
+              enum class svg::<wbr />typography::<wbr /><a href="#ac41cf6a133f5b21757130ce5ba72b3d7" class="m-doc-self">weight</a>
+            </h3>
+            <p>Weight as per CSS property.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#ac41cf6a133f5b21757130ce5ba72b3d7a10181fa173ca40ca9d14dce388a71bf0" class="m-doc-self" id="ac41cf6a133f5b21757130ce5ba72b3d7a10181fa173ca40ca9d14dce388a71bf0">xlight</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ac41cf6a133f5b21757130ce5ba72b3d7a2ac43aa43bf473f9a9c09b4b608619d3" class="m-doc-self" id="ac41cf6a133f5b21757130ce5ba72b3d7a2ac43aa43bf473f9a9c09b4b608619d3">light</a></td>
+                  <td>
+                  <p>CSS 300.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ac41cf6a133f5b21757130ce5ba72b3d7afea087517c26fadd409bd4b9dc642555" class="m-doc-self" id="ac41cf6a133f5b21757130ce5ba72b3d7afea087517c26fadd409bd4b9dc642555">normal</a></td>
+                  <td>
+                  <p>CSS 400.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ac41cf6a133f5b21757130ce5ba72b3d7a075a3e36a0a52dcbc568c05788e8a713" class="m-doc-self" id="ac41cf6a133f5b21757130ce5ba72b3d7a075a3e36a0a52dcbc568c05788e8a713">medium</a></td>
+                  <td>
+                  <p>CSS 500.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ac41cf6a133f5b21757130ce5ba72b3d7a69dcab4a73aeec2113f69b61e6263da8" class="m-doc-self" id="ac41cf6a133f5b21757130ce5ba72b3d7a69dcab4a73aeec2113f69b61e6263da8">bold</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ac41cf6a133f5b21757130ce5ba72b3d7a7cfa5bf74eaa89593bbd5b416e57331a" class="m-doc-self" id="ac41cf6a133f5b21757130ce5ba72b3d7a7cfa5bf74eaa89593bbd5b416e57331a">xbold</a></td>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>izzi SVG SUBSET C++ API. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.2 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

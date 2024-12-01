@@ -1,5 +1,21 @@
 <map id="svg::fade_from_color_seq" name="svg::fade_from_color_seq">
-<area shape="rect" id="Node000001" title="Start rectangle as transparent, fade to color." alt="" coords="5,5,154,32"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a26faa41489632906b1efa157074084f6" title=" " alt="" coords="202,5,336,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,16,186,16,186,21,154,21"/>
+<area shape="rect" id="Node000001" title="Start rectangle as transparent, fade to color." alt="" coords="5,134,165,158"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a26faa41489632906b1efa157074084f6" title=" " alt="" coords="213,134,359,158"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,144,197,144,197,149,165,149"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="418,5,544,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="299,132,345,94,406,52,415,47,418,52,408,57,348,98,302,136"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="414,67,547,103"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="325,131,405,106,407,111,327,136"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#gad01750ac554c6bd6871a930c90e17a04" title=" " alt="" coords="418,128,544,165"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="359,144,402,144,402,149,359,149"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="418,189,544,226"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="327,156,407,182,405,187,325,161"/>
+<area shape="rect" id="Node000010" href="$group__elements.html#a99ff90a016db190ee8bb5ee8c045e329" title=" " alt="" coords="407,250,554,274"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="302,157,347,195,408,236,421,242,419,247,406,241,344,199,298,161"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="617,12,741,36"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="544,21,602,21,602,26,544,26"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="631,73,727,97"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="548,82,616,82,616,88,548,88"/>
+<area shape="rect" id="Node000008" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="602,134,756,158"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="544,144,586,144,586,149,544,149"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="svg::composite_bleed_areas" name="svg::composite_bleed_areas">
-<area shape="rect" id="Node000001" title="Composite frame on bleed. For printed objects with a center gutter, some intra&#45;page adjustments are n..." alt="" coords="5,5,136,48"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#ab80d668629ba7db3cf50dc732f0d82b2" title="Resolution of output display device." alt="" coords="184,13,267,40"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,24,168,24,168,29,136,29"/>
+<area shape="rect" id="Node000001" title="Composite frame on bleed. For printed objects with a center gutter, some intra&#45;page adjustments are n..." alt="" coords="5,27,147,64"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ab80d668629ba7db3cf50dc732f0d82b2" title="Resolution of output display device." alt="" coords="226,5,314,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,32,210,23,211,28,147,38"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a83eb3152f92ca357473c2ef8f23ced98" title=" " alt="" coords="195,54,345,90"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="147,52,179,57,179,62,147,58"/>
 </map>

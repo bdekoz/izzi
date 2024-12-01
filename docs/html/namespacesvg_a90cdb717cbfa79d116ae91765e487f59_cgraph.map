@@ -1,0 +1,19 @@
+<map id="svg::blink_to_color_seq" name="svg::blink_to_color_seq">
+<area shape="rect" id="Node000001" title="blink sequence of duration sec, given fps starts on background (backgf) at duration twhen blinks spec..." alt="" coords="5,134,153,158"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="211,5,338,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,132,138,94,199,52,209,47,211,52,202,57,141,98,96,136"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="208,67,341,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="119,131,198,106,200,111,120,136"/>
+<area shape="rect" id="Node000006" href="$group__elements.html#gad01750ac554c6bd6871a930c90e17a04" title=" " alt="" coords="211,128,338,165"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="153,144,196,144,196,149,153,149"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="211,189,338,226"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="120,156,200,182,198,187,119,161"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#a99ff90a016db190ee8bb5ee8c045e329" title=" " alt="" coords="201,250,348,274"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="95,157,140,195,202,236,215,242,212,247,199,241,137,199,92,161"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="410,12,535,36"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="338,21,395,21,395,26,338,26"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="425,73,520,97"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="341,82,409,82,409,88,341,88"/>
+<area shape="rect" id="Node000007" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="396,134,549,158"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="338,144,380,144,380,149,338,149"/>
+</map>

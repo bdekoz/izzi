@@ -1,5 +1,27 @@
 <map id="svg::optical_sound_dots_seq" name="svg::optical_sound_dots_seq">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,121,48"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a01a6d733d565faa3b230634430da4f3f" title="Randomly create grid of [maxwidth] x [maxheight] grid, and fill with dots." alt="" coords="169,13,279,40"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,24,153,24,153,29,121,29"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,194,130,230"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a01a6d733d565faa3b230634430da4f3f" title="Randomly create grid of [maxwidth] x [maxheight] grid, and fill with dots." alt="" coords="178,200,295,224"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,209,162,209,162,214,130,214"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a519382631540ecedee961bfb53e9ae87" title=" " alt="" coords="353,71,480,108"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,198,287,160,342,118,350,113,353,117,344,122,290,164,251,202"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="350,132,483,169"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="273,197,345,172,347,177,274,202"/>
+<area shape="rect" id="Node000010" href="$group__elements.html#ga98a1538c46e39122d8199c12b3a57b5d" title=" " alt="" coords="353,194,480,230"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="295,209,337,209,337,214,295,214"/>
+<area shape="rect" id="Node000012" href="$group__elements.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="353,255,480,292"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="274,222,347,247,345,252,273,227"/>
+<area shape="rect" id="Node000013" href="$group__elements.html#a99ff90a016db190ee8bb5ee8c045e329" title=" " alt="" coords="343,316,490,340"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="251,222,290,261,344,302,356,307,353,312,342,306,286,265,247,226"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title="Common transforms include rotate(180)" alt="" coords="548,23,682,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="480,71,533,58,534,63,482,76"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="553,84,677,108"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="481,89,538,91,538,96,481,94"/>
+<area shape="rect" id="Node000005" href="$namespacesvg_1_1constants.html#a3972655f1dfdc090ec2592d1fb37e87c" title=" " alt="" coords="740,5,882,29"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="682,30,724,25,725,30,682,36"/>
+<area shape="rect" id="Node000006" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="740,53,883,77"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="682,47,724,52,724,57,682,52"/>
+<area shape="rect" id="Node000009" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="567,139,663,162"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="484,148,552,148,552,153,484,153"/>
+<area shape="rect" id="Node000011" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="538,200,692,224"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="481,209,523,209,523,214,481,214"/>
 </map>

@@ -1,0 +1,20 @@
+<map id="svg::next_in_color_band" name="svg::next_in_color_band">
+<area shape="rect" id="Node000001" title="Flip through color band colors. @bandn is the number of colors in the colorband." alt="" coords="5,107,149,133"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a79320da4cd41236a7eb7dd609b282888" title="Forwarding function." alt="" coords="200,56,333,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,103,199,84,200,90,131,109"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="603,107,692,133"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="149,117,588,117,588,123,149,123"/>
+<area shape="rect" id="Node000009" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="197,157,336,184"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="131,131,200,150,199,156,129,137"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ac3cec274899f85d3b3c828bb2e75e3b8" title=" " alt="" coords="384,56,533,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="333,67,369,67,369,72,333,72"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#afbb69e6e3429f0e574994b3a761d2a30" title="Set and Get working spectrum, aka default palette." alt="" coords="584,5,711,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="511,53,580,34,582,39,512,58"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#abcad3fe27275ca32d7db21d8475f66ae" title=" " alt="" coords="581,56,714,83"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="534,67,566,67,566,72,534,72"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="512,81,589,102,588,107,511,86"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#a6ef86da421061b502a4cec162970c4e9" title="Forwarding function." alt="" coords="762,5,883,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="711,16,747,16,747,21,711,21"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a804d33f9f3d2f0debdcfc4317f5b8487" title=" " alt="" coords="931,5,1068,32"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="883,16,916,16,916,21,883,21"/>
+</map>

@@ -11,12 +11,13 @@ var searchData=
   ['vector_8',['vector',['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56ceaa6ba8844da718b4a65f60dbfd0d92d6ef',1,'svg::constants']]],
   ['veronica_9',['veronica',['../namespacesvg.html#a5fd971345fcede00e46bd1bd8846f12dafaa82036538b8f367fcf7bfd4c63b789',1,'svg']]],
   ['vertical_5fsync_5froll_5fseq_10',['vertical_sync_roll_seq',['../namespacesvg.html#a86609091f372674e0e117d33551cdac8',1,'svg']]],
-  ['violet_11',['violet',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad1d813a48d99f0e102f7d0a1b9068001',1,'svg']]],
-  ['visible_5fmode_12',['visible_mode',['../structsvg_1_1render__state__base.html#a12cf21bf8d824ca8750732653ec7c2d1',1,'svg::render_state_base']]],
-  ['vlspace_13',['vlspace',['../namespacea60_1_1metadata.html#a2a619ed21560d442f5dfae5ea8101fce',1,'a60::metadata']]],
-  ['vrange_14',['vrange',['../namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d',1,'svg']]],
-  ['vspace_15',['vspace',['../namespacea60_1_1metadata.html#a888d9b1e7402e335f8e7544373855a92',1,'a60::metadata']]],
-  ['vstrings_16',['vstrings',['../namespacesvg.html#aabe2c7e16151253fd5bbbc2a3ddbd170',1,'svg']]],
-  ['vvranges_17',['vvranges',['../namespacesvg.html#a7c943f2610ce0566f8cc86ffd76c2739',1,'svg']]],
-  ['vvstrings_18',['vvstrings',['../namespacesvg.html#a674485c274059679fc6a9c65feb627b9',1,'svg']]]
+  ['video_5felement_11',['video_element',['../group__elements.html#structsvg_1_1video__element',1,'svg']]],
+  ['violet_12',['violet',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad1d813a48d99f0e102f7d0a1b9068001',1,'svg']]],
+  ['visible_5fmode_13',['visible_mode',['../structsvg_1_1render__state__base.html#a12cf21bf8d824ca8750732653ec7c2d1',1,'svg::render_state_base']]],
+  ['vlspace_14',['vlspace',['../namespacea60_1_1metadata.html#a2a619ed21560d442f5dfae5ea8101fce',1,'a60::metadata']]],
+  ['vrange_15',['vrange',['../namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d',1,'svg']]],
+  ['vspace_16',['vspace',['../namespacea60_1_1metadata.html#a888d9b1e7402e335f8e7544373855a92',1,'a60::metadata']]],
+  ['vstrings_17',['vstrings',['../namespacesvg.html#aabe2c7e16151253fd5bbbc2a3ddbd170',1,'svg']]],
+  ['vvranges_18',['vvranges',['../namespacesvg.html#a7c943f2610ce0566f8cc86ffd76c2739',1,'svg']]],
+  ['vvstrings_19',['vvstrings',['../namespacesvg.html#a674485c274059679fc6a9c65feb627b9',1,'svg']]]
 ];

@@ -1,10 +1,10 @@
 <map id="svg::radial_gradient" name="svg::radial_gradient">
-<area shape="rect" id="Node000001" title="Circular gradients https://developer.mozilla.org/en&#45;US/docs/Web/SVG/Element/radialGradient." alt="" coords="12,229,134,256"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#structsvg_1_1gradient__element" title=" " alt="" coords="5,155,141,181"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,197,76,229,70,229,70,197"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#structsvg_1_1element__base" title="Abstract base class for all SVG Elements." alt="" coords="15,5,131,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="64,47,54,80,54,100,57,120,69,154,64,155,52,122,48,101,49,80,59,46"/>
-<area shape="rect" id="Node000004" href="$group__elements.html#structsvg_1_1defs__element" title=" " alt="" coords="64,80,178,107"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="92,44,115,78,111,81,88,47"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="106,121,83,156,79,153,102,118"/>
+<area shape="rect" id="Node000001" title="Circular gradients https://developer.mozilla.org/en&#45;US/docs/Web/SVG/Element/radialGradient." alt="" coords="12,220,143,244"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#structsvg_1_1gradient__element" title=" " alt="" coords="5,149,150,172"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,188,80,220,75,220,75,188"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#structsvg_1_1element__base" title="Abstract base class for all SVG Elements." alt="" coords="15,5,140,29"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="67,44,56,77,55,97,59,116,73,147,68,149,54,117,50,97,51,77,62,42"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#structsvg_1_1defs__element" title=" " alt="" coords="66,77,188,101"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="96,40,121,75,117,78,92,43"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="113,115,87,150,83,147,108,112"/>
 </map>
