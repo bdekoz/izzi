@@ -133,10 +133,8 @@ struct group_element : virtual public element_base
     add_transform(ts);
 
     // Only add style if it is not the default argument.
-    const string nostr = to_string(color::none);
-    const string fillstr = to_string(sty._M_fill_color);
-    const bool colornonep = nostr == fillstr;
-    if (!colornonep)
+    const bool stylep = sty._M_fill_color != color::none;
+    if (stylep)
       add_style(sty);
     _M_sstream << '>' << k::newline;
   }
@@ -957,16 +955,18 @@ struct video_element : virtual public foreign_element
   void
   start_element(const area<> a, const string src, const rect_element::data rd)
   {
-    _M_sstream << R"(<video xmlns="http://www.w3.org/1999/xhtml" )" << k::newline;
+    _M_sstream << R"(<video xmlns="http://www.w3.org/1999/xhtml" )";
 
     string strip = R"(width="WWW" height="HHH" controls="" style="position: fixed; left: XXXpx; top: YYYpx;">)";
     string_replace(strip, "WWW", std::to_string(a._M_width));
     string_replace(strip, "HHH", std::to_string(a._M_height));
     string_replace(strip, "XXX", std::to_string(rd._M_x_origin));
     string_replace(strip, "YYY", std::to_string(rd._M_y_origin));
-    _M_sstream << strip;
+    _M_sstream << strip << k::newline;
+
 
     _M_sstream << "<source src=" << k::quote << src << k::quote << k::space;
+    _M_sstream << "type=" << k::quote << "video/mp4" << k::quote;
     _M_sstream << " />" << k::newline;
   }
 
