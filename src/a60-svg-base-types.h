@@ -220,6 +220,14 @@ struct transform
   }
 
   static string
+  scale(double factor1, double factor2)
+  {
+    std::ostringstream stream;
+    stream << "scale(" << factor1 << k::comma << factor2 << ")";
+    return stream.str();
+  }
+
+  static string
   skew_x(double factor)
   {
     std::ostringstream stream;

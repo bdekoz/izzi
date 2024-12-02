@@ -256,41 +256,6 @@ filter_element::finish_element()
 
 
 /**
-   So-called Foreign Objects.
-
-   Using to get HTML video elements.
-
-   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject
-   https://stackoverflow.com/questions/40324916/video-tag-embedded-in-svg
-
-Translate moves the origin from the top left to the specified coordinates. If you embed an object at 0,0 it will be placed at the new origin. In this case you must embed it at -translation coordinates.
-
-Even so, I had to increase the width and height. Why? I don't know. It doesn't seem to be a scale by 2. If someone knows I am curious to know.
-
-<svg version="1.1" class="center-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600"  style="border: 1px solid black;">
-    <g>
-	<g transform="translate(151,104) scale(1,1)">
-	    <rect x="0" y="0" width="300" height="200"></rect>
-	    <foreignObject x="-151" y="-104" width="500" height="400">
-		<video xmlns="http://www.w3.org/1999/xhtml" width="300" height="200" controls="" style="position: fixed; left: 151px; top: 104px;">
-		    <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
-		</video>
-	    </foreignObject>
-	</g>
-    </g>
-</svg>
-*/
-struct foreign_element : virtual public element_base
-{
-
-};
-
-struct video_element : virtual public foreign_element
-{
-
-};
-
-/**
    Gradient SVG elements.
 
    Specification reference:
@@ -622,63 +587,6 @@ rect_element::finish_element()
 
 
 /**
-   Image SVG element. This can be another SVG file, or can be a raster
-   image format like PNG or JPEG.
-
-   Specification reference:
-   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/image
-
-   Attributes:
-   x, y, width, height, xlink:xref, preserveAspectRatio
- */
-struct image_element : virtual public element_base
-{
-  struct data
-  {
-    string		_M_xref;
-    atype		_M_x_origin;
-    atype		_M_y_origin;
-    atype		_M_width;
-    atype		_M_height;
-  };
-
-  /// Either serialize immediately (as below), or create data structure
-  /// that adds data to data_vec and then finish_element serializes.
-  void
-  add_data(const data& d)
-  {
-    const string x("__x");
-    const string y("__y");
-    const string w("__w");
-    const string h("__h");
-    const string ref("__ref");
-
-    string strip = R"_delimiter_(xlink:href="__ref" x="__x" y="__y" width="__w" height="__h"
-)_delimiter_";
-
-    string_replace(strip, ref, d._M_xref);
-    string_replace(strip, x, std::to_string(d._M_x_origin));
-    string_replace(strip, y, std::to_string(d._M_y_origin));
-    string_replace(strip, w, std::to_string(d._M_width));
-    string_replace(strip, h, std::to_string(d._M_height));
-    _M_sstream << strip;
-  }
-
-  void
-  start_element()
-  { _M_sstream << "<image "; }
-
-  void
-  finish_element();
-};
-
-
-void
-image_element::finish_element()
-{ _M_sstream  << " />" << k::newline; }
-
-
-/**
    Circle SVG element.
 
    Specification reference:
@@ -898,6 +806,177 @@ struct text_path_element : virtual public text_element
     _M_sstream << "</textPath>" << k::space;
   }
 };
+
+
+
+/**
+   Image SVG element. This can be another SVG file, or can be a raster
+   image format like PNG or JPEG.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/image
+
+   Attributes:
+   x, y, width, height, xlink:xref, preserveAspectRatio
+ */
+struct image_element : virtual public element_base
+{
+  struct data
+  {
+    string		_M_xref;
+    atype		_M_x_origin;
+    atype		_M_y_origin;
+    atype		_M_width;
+    atype		_M_height;
+  };
+
+  /// Either serialize immediately (as below), or create data structure
+  /// that adds data to data_vec and then finish_element serializes.
+  void
+  add_data(const data& d)
+  {
+    const string x("__x");
+    const string y("__y");
+    const string w("__w");
+    const string h("__h");
+    const string ref("__ref");
+
+    string strip = R"_delimiter_(xlink:href="__ref" x="__x" y="__y" width="__w" height="__h"
+)_delimiter_";
+
+    string_replace(strip, ref, d._M_xref);
+    string_replace(strip, x, std::to_string(d._M_x_origin));
+    string_replace(strip, y, std::to_string(d._M_y_origin));
+    string_replace(strip, w, std::to_string(d._M_width));
+    string_replace(strip, h, std::to_string(d._M_height));
+    _M_sstream << strip;
+  }
+
+  void
+  start_element()
+  { _M_sstream << "<image "; }
+
+  void
+  finish_element();
+};
+
+
+void
+image_element::finish_element()
+{ _M_sstream  << " />" << k::newline; }
+
+
+/**
+   So-called Foreign Objects.
+
+   Using to get HTML video elements.
+
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject
+   https://stackoverflow.com/questions/40324916/video-tag-embedded-in-svg
+
+Translate moves the origin from the top left to the specified coordinates. If you embed an object at 0,0 it will be placed at the new origin. In this case you must embed it at -translation coordinates.
+
+Even so, I had to increase the width and height. Why? I don't know. It doesn't seem to be a scale by 2. If someone knows I am curious to know.
+
+<svg version="1.1" class="center-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600"  style="border: 1px solid black;">
+    <g>
+	<g transform="translate(151,104) scale(1,1)">
+	    <rect x="0" y="0" width="300" height="200"></rect>
+	    <foreignObject x="-151" y="-104" width="500" height="400">
+		<video xmlns="http://www.w3.org/1999/xhtml" width="300" height="200" controls="" style="position: fixed; left: 151px; top: 104px;">
+		    <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
+		</video>
+	    </foreignObject>
+	</g>
+    </g>
+</svg>
+*/
+struct foreign_element : virtual public element_base
+{
+  void
+  start_element()
+  { _M_sstream << "<g>" << k::newline; }
+
+  // a is width and height of video as embedded in page
+  // r is the foreign object, with x/y offset and scaled size
+  void
+  start_element(const area<> a, const rect_element::data rd)
+  {
+    auto [ x, y, width, height ] = rd;
+
+    // Outer group.
+    group_element go;
+    go.start_element();
+    _M_sstream << go.str() << k::newline;
+
+    // Inner Group.
+    group_element gi;
+    const transform txfm;
+    string tx = transform::translate(x, y);
+    string tscl = transform::scale(1, 1);
+    gi.start_element(string("video-wrapper"), txfm, tx + k::space + tscl);
+    _M_sstream << gi.str() << k::newline;
+
+    // Rect
+    rect_element r1;
+    rect_element::data vdata = { 0, 0, a._M_width, a._M_height };
+    r1.start_element();
+    r1.add_data(vdata);
+    r1.finish_element();
+    _M_sstream << r1.str() << k::newline;
+
+    // Foreign Object
+    string strip = R"(<foreignObject x="XXX" y="YYY" width="WWW" height="HHH">)";
+    string_replace(strip, "WWW", std::to_string(width));
+    string_replace(strip, "HHH", std::to_string(height));
+    string_replace(strip, "XXX", std::to_string(x));
+    string_replace(strip, "YYY", std::to_string(y));
+    _M_sstream  << strip << k::newline;
+  }
+
+  void
+  finish_element();
+};
+
+void
+foreign_element::finish_element()
+{ _M_sstream  << " </foreignObject></g></g>" << k::newline; }
+
+
+/// Video object embedded in SVG container.
+/// Wrapped in foreign element.
+struct video_element : virtual public foreign_element
+{
+  // Empty.
+  void
+  start_element()
+  { _M_sstream << "<video>" << k::newline; }
+
+  // a is width and height of video as embedded in page
+  // r is the foreign object, with x/y offset and scaled size
+  void
+  start_element(const area<> a, const string src, const rect_element::data rd)
+  {
+    _M_sstream << R"(<video xmlns="http://www.w3.org/1999/xhtml" )" << k::newline;
+
+    string strip = R"(width="WWW" height="HHH" controls="" style="position: fixed; left: XXXpx; top: YYYpx;">)";
+    string_replace(strip, "WWW", std::to_string(a._M_width));
+    string_replace(strip, "HHH", std::to_string(a._M_height));
+    string_replace(strip, "XXX", std::to_string(rd._M_x_origin));
+    string_replace(strip, "YYY", std::to_string(rd._M_y_origin));
+    _M_sstream << strip;
+
+    _M_sstream << "<source src=" << k::quote << src << k::quote << k::space;
+    _M_sstream << " />" << k::newline;
+  }
+
+  void
+  finish_element();
+};
+
+void
+video_element::finish_element()
+{ _M_sstream  << "</video>" << k::newline; }
 
 
 /**
