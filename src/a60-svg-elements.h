@@ -133,7 +133,8 @@ struct group_element : virtual public element_base
     add_transform(ts);
 
     // Only add style if it is not the default argument.
-    const bool stylep = sty._M_fill_color != color::none;
+    const color_qi nklr(color::none);
+    const bool stylep = to_string(sty._M_fill_color) != to_string(nklr);
     if (stylep)
       add_style(sty);
     _M_sstream << '>' << k::newline;
