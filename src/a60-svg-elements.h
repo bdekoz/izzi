@@ -873,9 +873,14 @@ image_element::finish_element()
    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject
    https://stackoverflow.com/questions/40324916/video-tag-embedded-in-svg
 
-Translate moves the origin from the top left to the specified coordinates. If you embed an object at 0,0 it will be placed at the new origin. In this case you must embed it at -translation coordinates.
+Translate moves the origin from the top left to the specified
+coordinates. If you embed an object at 0,0 it will be placed at the
+new origin. In this case you must embed it at -translation
+coordinates.
 
-Even so, I had to increase the width and height. Why? I don't know. It doesn't seem to be a scale by 2. If someone knows I am curious to know.
+Even so, I had to increase the width and height. Why? I don't know. It
+doesn't seem to be a scale by 2. If someone knows I am curious to
+know.
 
 <svg version="1.1" class="center-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600"  style="border: 1px solid black;">
     <g>
@@ -896,12 +901,20 @@ struct foreign_element : virtual public element_base
   start_element()
   { _M_sstream << "<g>" << k::newline; }
 
-  // a is width and height of video as embedded in page
-  // r is the foreign object, with x/y offset and scaled size
+  // av == area of the foreign object and native video frame size
+  // arect == area of displayed video as embedded inside svg element /aka page
+  // scale_pair == x/y scaling factor
   void
-  start_element(const area<> a, const rect_element::data rd)
+  start_element(const area<> av, const area<> arect,
+		const point_2t scale_pair = std::make_tuple(1.0, 1.0))
   {
-    auto [ x, y, width, height ] = rd;
+    const auto [ scalex, scaley ] = scale_pair;
+
+    const auto [ width, height ] = arect;
+    auto xo = width/2;
+    auto yo = height/2;
+
+    const auto [ vwidth, vheight ] = av;
 
     // Outer group.
     group_element go;
@@ -911,25 +924,25 @@ struct foreign_element : virtual public element_base
     // Inner Group.
     group_element gi;
     const transform txfm;
-    string tx = transform::translate(x, y);
-    string tscl = transform::scale(1, 1);
+    string tx = transform::translate(xo, yo);
+    string tscl = transform::scale(scalex, scaley);
     gi.start_element(string("video-wrapper"), txfm, tx + k::space + tscl);
     _M_sstream << gi.str() << k::newline;
 
     // Rect
     rect_element r1;
-    rect_element::data vdata = { 0, 0, a._M_width, a._M_height };
+    rect_element::data vdata = { 0, 0, width, height };
     r1.start_element();
     r1.add_data(vdata);
     r1.finish_element();
     _M_sstream << r1.str() << k::newline;
 
     // Foreign Object
-    string strip = R"(<foreignObject x="XXX" y="YYY" width="WWW" height="HHH">)";
-    string_replace(strip, "WWW", std::to_string(width));
-    string_replace(strip, "HHH", std::to_string(height));
-    string_replace(strip, "XXX", std::to_string(x));
-    string_replace(strip, "YYY", std::to_string(y));
+    string strip = R"(<foreignObject x="-XXX" y="-YYY" width="WWW" height="HHH">)";
+    string_replace(strip, "WWW", std::to_string(vwidth));
+    string_replace(strip, "HHH", std::to_string(vheight));
+    string_replace(strip, "XXX", std::to_string(xo));
+    string_replace(strip, "YYY", std::to_string(yo));
     _M_sstream  << strip << k::newline;
   }
 
