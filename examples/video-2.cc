@@ -11,12 +11,17 @@ test_video(std::string ofile)
   point_2t cp = obj.center_point();
   auto [ cpx, cpy ] = cp;
 
+  const style rstyl = { color::red, 1.0, color::red, 0.0, 4 };
+  const style gstyl = { color::green, 1.0, color::red, 0.0, 4 };
 
   const string isrc="asama-0-oo-ee-oo-loop-5l.3.concat-all-ascii-white-1s.1080p-960x540.mp4";
   const string vsrc = "../docs/image/" + isrc;
   const area<> av(960, 540); // frame size of video file
   const area<> arect(480, 270); // size of video in svg
   auto [ rwidth, rheight ] = arect;
+
+  // rect
+  point_to_rect_centered(obj, cp, gstyl, rwidth + 20, rheight + 20);
 
   // video in center
   foreign_element fe;
@@ -32,12 +37,11 @@ test_video(std::string ofile)
   obj.add_element(fe);
 
   // red dot at center
-  const style rstyl = { color::red, 1.0, color::red, 0.0, 4 };
-  point_to_circle(obj, cp, rstyl, 4);
+  point_to_circle(obj, cp, k::b_style, 8);
   point_to_circle(obj, std::make_tuple(rwidth/2, cpy), rstyl, 4);
-  point_to_circle(obj, std::make_tuple(rwidth/2, rheight/2), rstyl, 4);
+  point_to_circle(obj, std::make_tuple(rwidth/2, rheight/2), rstyl, 2);
   point_to_circle(obj, std::make_tuple(cpx + rwidth/2, cpy), rstyl, 4);
-  point_to_circle(obj, std::make_tuple(cpx + rwidth/2, rheight/2), rstyl, 4);
+  point_to_circle(obj, std::make_tuple(cpx + rwidth/2, rheight/2), rstyl, 2);
 }
 
 

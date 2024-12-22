@@ -966,18 +966,21 @@ struct video_element : virtual public foreign_element
 
   // a is width and height of video as embedded in page
   // r is the foreign object, with x/y offset and scaled size
+  // attr is controls
   void
-  start_element(const area<> a, const string src, const rect_element::data rd)
+  start_element(const area<> a, const string src, const rect_element::data rd,
+		const string attr = R"(autoplay="true" loop="true" muted="true")")
   {
     _M_sstream << R"(<video xmlns="http://www.w3.org/1999/xhtml" )";
+    _M_sstream << attr << k::space;
 
-    string strip = R"(width="WWW" height="HHH" controls="" style="position: fixed; left: XXXpx; top: YYYpx;">)";
+    string strip = R"(width="WWW" height="HHH" style="position: fixed; left: XXXpx; top: YYYpx;"> )";
     string_replace(strip, "WWW", std::to_string(a._M_width));
     string_replace(strip, "HHH", std::to_string(a._M_height));
     string_replace(strip, "XXX", std::to_string(rd._M_x_origin));
     string_replace(strip, "YYY", std::to_string(rd._M_y_origin));
-    _M_sstream << strip << k::newline;
-
+    _M_sstream << strip;
+    _M_sstream << k::newline;
 
     _M_sstream << "<source src=" << k::quote << src << k::quote << k::space;
     _M_sstream << "type=" << k::quote << "video/mp4" << k::quote;
