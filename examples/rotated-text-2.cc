@@ -40,7 +40,7 @@ test_text(std::string ofile)
   }
 
   const style rstyl = { color::red, 1.0, color::red, 1.0, 2 };
-  point_to_crossed_lines(obj, rstyl, cp, 300);
+  point_to_crossed_lines(obj, cp, rstyl, 300);
 }
 
 

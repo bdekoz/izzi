@@ -765,8 +765,8 @@ make_crossed_lines(const point_2t origin, svg::style s, const double radius,
 /// Point to center mark as crossed lines.
 /// Default is a plus sign at origin, but @tiltd can rotate.
 void
-point_to_crossed_lines(svg_element& obj, const style& styl,
-		       const point_2t origin, const int radius,
+point_to_crossed_lines(svg_element& obj, const point_2t origin,
+		       const style& styl, const int radius,
 		       const double tiltd = 0.0)
 {
   string pl = make_crossed_lines(origin, styl, radius, tiltd);
