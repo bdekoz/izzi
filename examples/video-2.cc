@@ -11,7 +11,8 @@ test_video(std::string ofile)
   point_2t cp = obj.center_point();
   auto [ cpx, cpy ] = cp;
 
-  const style rstyl = { color::red, 1.0, color::red, 0.0, 4 };
+  const style pstyl = { color::asamapink, 0.0, color::asamapink, 1.0, 4 };
+  const style rstyl = { color::red, 1.0, color::red, 1.0, 4 };
   const style gstyl = { color::green, 1.0, color::red, 0.0, 4 };
   const style grystyl = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 2 };
 
@@ -24,12 +25,19 @@ test_video(std::string ofile)
   // outline rect
   point_to_rect_centered(obj, cp, grystyl, page._M_width, page._M_height);
 
-  // center rect
+  // centered rect in green
   point_to_rect_centered(obj, cp, gstyl, rwidth, rheight);
 
-  // center mark
-  point_to_crossed_lines(obj, cp, k::b_style, 2 * std::max(rwidth, rheight), 45.0);
-  
+  // red dot markers, black dot at center
+  point_to_circle(obj, cp, k::b_style, 8);
+  point_to_circle(obj, std::make_tuple(cpx - rwidth/2, cpy), rstyl, 4);
+  point_to_circle(obj, std::make_tuple(cpx + rwidth/2, cpy), rstyl, 4);
+  point_to_circle(obj, std::make_tuple(cpx, cpy - rheight/2), rstyl, 4);
+  point_to_circle(obj, std::make_tuple(cpx, cpy + rheight/2), rstyl, 4);
+
+  // center mark in pink overlay
+  point_to_crossed_lines(obj, cp, pstyl, 250, 45);
+
   // video in center
   foreign_element fe;
   fe.start_element(av, arect);
@@ -43,12 +51,9 @@ test_video(std::string ofile)
   fe.finish_element();
   obj.add_element(fe);
 
-  // red dot markers, black dot at center
-  point_to_circle(obj, cp, k::b_style, 8);
-  point_to_circle(obj, std::make_tuple(rwidth/2, cpy), rstyl, 4);
-  point_to_circle(obj, std::make_tuple(rwidth/2, rheight/2), rstyl, 2);
-  point_to_circle(obj, std::make_tuple(cpx + rwidth/2, cpy), rstyl, 4);
-  point_to_circle(obj, std::make_tuple(cpx + rwidth/2, rheight/2), rstyl, 2);
+  // video edge mark in pink overlay
+  point_to_crossed_lines(obj, make_tuple(rwidth/2, rheight/2), pstyl, 50);
+  point_to_crossed_lines(obj, make_tuple(rwidth, rheight), pstyl, 50);
 }
 
 
