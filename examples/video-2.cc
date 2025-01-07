@@ -1,5 +1,22 @@
  #include "a60-svg.h"
 
+using namespace svg;
+
+void
+augment_place(svg_element& obj, const point_2t pt, svg::style s, const space_type r)
+{
+  point_to_circle(obj, pt, s, r);
+  const auto [ px, py ] = pt;
+
+  std::ostringstream oss;
+  oss << "[" << px << "," << py << "]";
+
+  const style bstyl = { color::blue, 1.0, color::blue, 0.0, 4 };
+  typography typo(k::apercu_typo);
+  typo._M_style = bstyl;
+  styled_text(obj, oss.str(), pt, typo);
+}
+
 void
 test_video(std::string ofile)
 {
@@ -8,8 +25,7 @@ test_video(std::string ofile)
 
   const svg::area<> page = { 1920, 1080 };
   svg_element obj(ofile, page);
-  point_2t cp = obj.center_point();
-  auto [ cpx, cpy ] = cp;
+
 
   const style pstyl = { color::asamapink, 0.0, color::asamapink, 1.0, 4 };
   const style rstyl = { color::red, 1.0, color::red, 1.0, 4 };
@@ -18,9 +34,14 @@ test_video(std::string ofile)
 
   const string isrc="asama-0-oo-ee-oo-loop-5l.3.concat-all-ascii-white-1s.1080p-960x540.mp4";
   const string vsrc = "../docs/image/" + isrc;
+
   const area<> av(960, 540); // frame size of video file
   const area<> arect(480, 270); // size of video in svg
   auto [ rwidth, rheight ] = arect;
+  point_2t cp = obj.center_point();
+  auto [ cpx, cpy ] = cp;
+  point_2t vp = { cpx - rwidth/2, cpy - rheight/2 }; // top left of video
+  auto [ vpx, vpy ] = vp;
 
   // outline rect
   point_to_rect_centered(obj, cp, grystyl, page._M_width, page._M_height);
@@ -30,20 +51,16 @@ test_video(std::string ofile)
 
   // red dot markers, black dot at center
   point_to_circle(obj, cp, k::b_style, 8);
-  point_to_circle(obj, std::make_tuple(cpx - rwidth/2, cpy), rstyl, 4);
-  point_to_circle(obj, std::make_tuple(cpx + rwidth/2, cpy), rstyl, 4);
-  point_to_circle(obj, std::make_tuple(cpx, cpy - rheight/2), rstyl, 4);
-  point_to_circle(obj, std::make_tuple(cpx, cpy + rheight/2), rstyl, 4);
 
   // center mark in pink overlay
   point_to_crossed_lines(obj, cp, pstyl, 250, 45);
 
   // video in center
   foreign_element fe;
-  fe.start_element(av, arect);
+  fe.start_element(vp, av, arect);
 
   video_element ve;
-  rect_element::data rd = { rwidth/2, rheight/2, rwidth, rheight};
+  rect_element::data rd = { vpx, vpy, rwidth, rheight};
   ve.start_element(arect, vsrc, rd);
   ve.finish_element();
   fe.add_raw(ve.str());
@@ -54,6 +71,17 @@ test_video(std::string ofile)
   // video edge mark in pink overlay
   point_to_crossed_lines(obj, make_tuple(rwidth/2, rheight/2), pstyl, 50);
   point_to_crossed_lines(obj, make_tuple(rwidth, rheight), pstyl, 50);
+
+  // coordinates
+  augment_place(obj, std::make_tuple(vpx, cpy), rstyl, 4);
+  augment_place(obj, std::make_tuple(cpx + rwidth/2, cpy), rstyl, 4);
+  augment_place(obj, std::make_tuple(cpx, vpy), rstyl, 4);
+  augment_place(obj, std::make_tuple(cpx, cpy + rheight/2), rstyl, 4);
+
+  // video rect annotation
+  std::ostringstream oss;
+  oss << "[" << arect._M_width << "," << arect._M_height << "]";
+  styled_text(obj, oss.str(), make_tuple(cpx, 40), k::apercu_typo);
 }
 
 
