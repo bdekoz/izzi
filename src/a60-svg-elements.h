@@ -905,10 +905,11 @@ struct foreign_element : virtual public element_base
   // arect == area of displayed video as embedded inside svg element /aka page
   // scale_pair == x/y scaling factor
   void
-  start_element(const area<> av, const area<> arect,
-		const point_2t scale_pair = std::make_tuple(1.0, 1.0))
+  start_element(const point_2t origin, const area<> av, const area<> arect,
+		const point_2t scale = std::make_tuple(1.0, 1.0))
   {
-    const auto [ scalex, scaley ] = scale_pair;
+    const auto [ scalex, scaley ] = scale;
+    const auto [ ox, oy ] = origin;
 
     const auto [ width, height ] = arect;
     auto xo = width/2;
@@ -926,23 +927,15 @@ struct foreign_element : virtual public element_base
     const transform txfm;
     string tx = transform::translate(xo, yo);
     string tscl = transform::scale(scalex, scaley);
-    gi.start_element(string("video-wrapper"), txfm, tx + k::space + tscl);
+    gi.start_element(string("video-wrapper"), txfm, tscl);
     _M_sstream << gi.str() << k::newline;
 
-    // Rect
-    rect_element r1;
-    rect_element::data vdata = { 0, 0, width, height };
-    r1.start_element();
-    r1.add_data(vdata);
-    r1.finish_element();
-    _M_sstream << r1.str() << k::newline;
-
     // Foreign Object
-    string strip = R"(<foreignObject x="-XXX" y="-YYY" width="WWW" height="HHH">)";
+    string strip = R"(<foreignObject x="XXX" y="YYY" width="WWW" height="HHH">)";
     string_replace(strip, "WWW", std::to_string(vwidth));
     string_replace(strip, "HHH", std::to_string(vheight));
-    string_replace(strip, "XXX", std::to_string(xo));
-    string_replace(strip, "YYY", std::to_string(yo));
+    string_replace(strip, "XXX", std::to_string(ox));
+    string_replace(strip, "YYY", std::to_string(oy));
     _M_sstream  << strip << k::newline;
   }
 
@@ -968,17 +961,15 @@ struct video_element : virtual public foreign_element
   // r is the foreign object, with x/y offset and scaled size
   // attr is controls
   void
-  start_element(const area<> a, const string src, const rect_element::data rd,
+  start_element(const area<> a, const string src, const rect_element::data,
 		const string attr = R"(autoplay="true" loop="true" muted="true")")
   {
     _M_sstream << R"(<video xmlns="http://www.w3.org/1999/xhtml" )";
     _M_sstream << attr << k::space;
 
-    string strip = R"(width="WWW" height="HHH" style="position: fixed; left: XXXpx; top: YYYpx;"> )";
+    string strip = R"(width="WWW" height="HHH" > )";
     string_replace(strip, "WWW", std::to_string(a._M_width));
     string_replace(strip, "HHH", std::to_string(a._M_height));
-    string_replace(strip, "XXX", std::to_string(rd._M_x_origin));
-    string_replace(strip, "YYY", std::to_string(rd._M_y_origin));
     _M_sstream << strip;
     _M_sstream << k::newline;
 
