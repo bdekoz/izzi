@@ -359,6 +359,8 @@ static const palette_qi<73> ciecam02_palette =
   color::none
 };
 
+/// Oklab
+/// https://bottosson.github.io/posts/oklab/
 
 /// Set and Get working spectrum, aka default palette.
 /// NB: If colorbands are being used, palette has to be izzi or
