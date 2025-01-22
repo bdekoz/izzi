@@ -142,11 +142,15 @@ struct group_element : virtual public element_base
 
   void
   finish_element();
+
+  static string
+  finish_group()
+  { return "</g>"; }
 };
 
 void
 group_element::finish_element()
-{ _M_sstream  << "</g>" << k::newline; }
+  { _M_sstream  << finish_group() << k::newline; }
 
 
 /**
