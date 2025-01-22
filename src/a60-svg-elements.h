@@ -950,6 +950,7 @@ foreign_element::finish_element()
 
 /// Video object embedded in SVG container.
 /// Wrapped in foreign element.
+/// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
 struct video_element : virtual public foreign_element
 {
   // Empty.
@@ -957,9 +958,17 @@ struct video_element : virtual public foreign_element
   start_element()
   { _M_sstream << "<video>" << k::newline; }
 
-  // a is width and height of video as embedded in page
-  // r is the foreign object, with x/y offset and scaled size
-  // attr is controls
+  /// Video.
+  /// a is width and height of video as embedded in page
+  /// r is the foreign object, with x/y offset and scaled size
+  ///
+  /// attr is attribues for video_element
+  /// autoplay="true" or removed
+  /// loop="true/false"
+  /// muted="true/false"
+  /// controls, controlslist,
+  /// crossorigin, disablepictureinpicture, disableremoteplayback
+  ///
   void
   start_element(const area<> a, const string src, const rect_element::data,
 		const string attr = R"(autoplay="true" loop="true" muted="true")")
