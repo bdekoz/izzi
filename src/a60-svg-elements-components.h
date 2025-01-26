@@ -164,12 +164,6 @@ svg_element::finish_element()
   _M_sstream << "</svg>" << std::endl;
 }
 
-void
-svg_element::add_title()
-{
-  _M_sstream << "<title>" << _M_name << "</title>" << std::endl;
-}
-
 } // namespace svg
 
 #endif

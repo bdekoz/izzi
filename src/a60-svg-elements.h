@@ -47,7 +47,7 @@ struct element_base
   empty() { return _M_sstream.str().empty(); }
 
   string
-  str() { return _M_sstream.str(); }
+  str() const { return _M_sstream.str(); }
 
   void
   str(const string& s) { return _M_sstream.str(s); }
@@ -399,7 +399,10 @@ struct title_element : virtual public element_base
 
   void
   start_element(const string t)
-  { _M_sstream << "<title>" << t << k::newline; }
+  {
+    start_element();
+    _M_sstream << t << k::newline;
+  }
 
   void
   finish_element();
@@ -423,7 +426,7 @@ struct desc_element : virtual public element_base
 
   void
   start_element(const string dsc)
-  { _M_sstream << "<desc>" << dsc << k::newline; }
+  { _M_sstream << "<desc>" << k::newline << dsc << k::newline; }
 
   void
   finish_element();
@@ -1039,6 +1042,7 @@ struct svg_element : virtual public element_base
   const unit		_M_unit;
   const typography&	_M_typo;
   const bool		_M_lifetime;
+
   svg_element(const string __title, const area& __cv,
 	      const bool lifetime = true,
 	      const unit u = svg::unit::pixel,
@@ -1048,6 +1052,15 @@ struct svg_element : virtual public element_base
   {
     if (_M_lifetime)
       start();
+  }
+
+  svg_element(const string __title, const string desc, const area& __cv,
+	      const bool lifetime = true)
+  : _M_name(__title), _M_area(__cv), _M_unit(svg::unit::pixel),
+    _M_typo(svg::k::smono_typo), _M_lifetime(lifetime)
+  {
+    if (_M_lifetime)
+      start(desc);
   }
 
   svg_element(const svg_element& other)
@@ -1077,23 +1090,40 @@ struct svg_element : virtual public element_base
   finish_element();
 
   void
-  add_title();
+  add_title()
+  {
+    title_element te;
+    te.start_element(_M_name);
+    te.finish_element();
+    add_raw(te.str());
+  }
+
+  void
+  add_desc(const string desc)
+  {
+    desc_element de;
+    de.start_element(desc);
+    de.finish_element();
+    add_raw(de.str());
+  }
 
   void
   add_filters();
 
   void
-  add_element(element_base& e)
+  add_element(const element_base& e)
   { _M_sstream << e.str(); }
 
   void
   write();
 
   void
-  start()
+  start(const string& desc = "")
   {
     this->start_element();
     this->add_title();
+    if (!desc.empty())
+      this->add_desc(desc);
     this->add_filters();
   }
 
