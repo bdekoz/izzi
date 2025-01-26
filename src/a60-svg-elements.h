@@ -1,6 +1,6 @@
 // svg elements -*- mode: C++ -*-
 
-// Copyright (C) 2014-2024 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2025 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -385,7 +385,8 @@ radial_gradient::finish_element()
    Title SVG element. This is accessible/alt text.
    This element must be the first element in the svg objectc.
 
-   A title element with no string indicates a decorative element to AT screenreaders.
+   A title element with no string indicates a decorative element to AT
+   screenreaders.
 
    Specification reference:
    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title
@@ -408,6 +409,29 @@ void
 title_element::finish_element()
 { _M_sstream  << "</title>" << k::newline; }
 
+
+/**
+   Description SVG element.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/desc
+*/
+struct desc_element : virtual public element_base
+{
+  void
+  start_element() { }
+
+  void
+  start_element(const string dsc)
+  { _M_sstream << "<desc>" << dsc << k::newline; }
+
+  void
+  finish_element();
+};
+
+void
+desc_element::finish_element()
+{ _M_sstream  << "</desc>" << k::newline; }
 
 
 /**
@@ -1028,7 +1052,8 @@ struct svg_element : virtual public element_base
 
   svg_element(const svg_element& other)
   : _M_name(other._M_name), _M_area(other._M_area),
-    _M_unit(other._M_unit), _M_typo(other._M_typo), _M_lifetime(other._M_lifetime)
+    _M_unit(other._M_unit), _M_typo(other._M_typo),
+    _M_lifetime(other._M_lifetime)
   { }
 
   ~svg_element()
