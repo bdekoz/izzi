@@ -1,6 +1,6 @@
 // svg render basics -*- mode: C++ -*-
 
-// Copyright (C) 2014-2022 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2025 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -105,6 +105,36 @@ styled_text_r(svg_element& obj, const string text, const point_2t origin,
   t.finish_element();
   obj.add_element(t);
 }
+
+
+/// Text at @origin, with style and link.
+void
+styled_text_link(svg_element& obj, const string text, const point_2t origin,
+		 svg::typography typo, const string uri)
+{
+  using atype = decltype(obj._M_area)::atype;
+  auto [ x, y ] = origin;
+  text_element::data dt = { atype(x), atype(y), text, typo };
+  text_element t;
+  t.start_element();
+  t.add_data(dt);
+  t.finish_element();
+
+  string astart = "<a href=";
+  astart += k::quote;
+  astart += uri;
+  astart += k::quote;
+  astart +=">";
+  astart += k::newline;
+  obj.add_raw(astart);
+
+  obj.add_element(t);
+
+  string afinish = "</a>";
+  afinish += k::newline;
+  obj.add_raw(afinish);
+}
+
 
 
 /// Text at size.
