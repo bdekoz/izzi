@@ -16,6 +16,7 @@
 #ifndef MiL_SVG_RENDER_BASICS_H
 #define MiL_SVG_RENDER_BASICS_H 1
 
+#include "a60-svg-codecvt.h"
 
 namespace svg {
 
@@ -120,9 +121,20 @@ styled_text_link(svg_element& obj, const string text, const point_2t origin,
   t.add_data(dt);
   t.finish_element();
 
+  // Convert uri to utf8 so that it can be inserted into svg_element
+  // Fucking '&', mostly.
+  // string uriconv = convert_to_utf8(uri);
+  string uriconv(uri);
+  size_t pos = 0;
+  while ((pos = uriconv.find('&', pos)) != std::string::npos)
+    {
+      uriconv.replace(pos, 1, "&amp;");
+      pos += 5;
+    }
+
   string astart = "<a href=";
   astart += k::quote;
-  astart += uri;
+  astart += uriconv;
   astart += k::quote;
   astart +=">";
   astart += k::newline;
