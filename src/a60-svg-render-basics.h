@@ -16,7 +16,7 @@
 #ifndef MiL_SVG_RENDER_BASICS_H
 #define MiL_SVG_RENDER_BASICS_H 1
 
-#include "a60-svg-codecvt.h"
+//#include "a60-svg-codecvt.h"
 
 namespace svg {
 
