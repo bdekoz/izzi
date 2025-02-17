@@ -1,6 +1,6 @@
 <map id="svg::next_color" name="svg::next_color">
 <area shape="rect" id="Node000001" title="Loop through color array starting at position c." alt="" coords="5,5,109,29"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Set and Get working spectrum, aka default palette. NB: If colorbands are being used,..." alt="" coords="157,5,294,29"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Oklab https://bottosson.github.io/posts/oklab/." alt="" coords="157,5,294,29"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,14,141,14,141,20,109,20"/>
 <area shape="rect" id="Node000003" href="$namespacesvg.html#a6ef86da421061b502a4cec162970c4e9" title="Forwarding function." alt="" coords="342,5,471,29"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="294,14,327,14,327,20,294,20"/>

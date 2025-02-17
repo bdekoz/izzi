@@ -1,6 +1,6 @@
 <map id="svg::make_color_band" name="svg::make_color_band">
 <area shape="rect" id="Node000001" title="Forwarding function." alt="" coords="5,29,148,53"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Set and Get working spectrum, aka default palette. NB: If colorbands are being used,..." alt="" coords="207,5,344,29"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Oklab https://bottosson.github.io/posts/oklab/." alt="" coords="207,5,344,29"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,30,191,25,192,30,149,35"/>
 <area shape="rect" id="Node000005" href="$namespacesvg.html#a80195ef46b7ed340c7a3f2a4b5eb6874" title=" " alt="" coords="196,53,356,77"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="149,47,180,51,180,56,148,52"/>

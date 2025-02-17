@@ -1,5 +1,7 @@
 <map id="svg::group_element::finish_element" name="svg::group_element::finish_element">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,135,42"/>
-<area shape="rect" id="Node000002" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="183,12,336,36"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,21,167,21,167,26,135,26"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,33,135,70"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a71cf2eb89a562527f14c4ca4c027c2b9" title=" " alt="" coords="195,5,324,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,39,179,33,180,38,135,45"/>
+<area shape="rect" id="Node000003" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="183,66,336,90"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,58,168,63,167,68,135,63"/>
 </map>

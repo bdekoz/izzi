@@ -9,7 +9,7 @@ var searchData=
   ['point_5f2d_5fto_5frect_6',['point_2d_to_rect',['../namespacesvg.html#adeadf637c3003a03e811e42432f6e58b',1,'svg']]],
   ['point_5f2d_5fto_5frect_5fblur_7',['point_2d_to_rect_blur',['../namespacesvg.html#abe3432fcc0ee2ae9446591b063ce0b62',1,'svg']]],
   ['point_5fto_5fcircle_8',['point_to_circle',['../namespacesvg.html#a68c014cdc144d2d0125a8ce849e8804d',1,'svg']]],
-  ['point_5fto_5fcrossed_5flines_9',['point_to_crossed_lines',['../namespacesvg.html#a071f9f29c33596d61148cf71d58b3359',1,'svg']]],
+  ['point_5fto_5fcrossed_5flines_9',['point_to_crossed_lines',['../namespacesvg.html#a63791549798e3238ebb6b45846296918',1,'svg']]],
   ['point_5fto_5foctogon_10',['point_to_octogon',['../namespacesvg.html#aebdd8a2c0b4a7a47e3ccc59c70c53160',1,'svg']]],
   ['point_5fto_5frect_5fcentered_11',['point_to_rect_centered',['../namespacesvg.html#aa98769b32701790f833e8414d12b70ed',1,'svg']]],
   ['point_5fto_5fring_5fhalo_12',['point_to_ring_halo',['../namespacesvg.html#a05ce09ad64d647467f52dcbebeb0c6ac',1,'svg']]],

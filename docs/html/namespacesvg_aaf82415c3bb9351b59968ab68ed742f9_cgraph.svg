@@ -32,7 +32,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="group__elements.html#adb6116b96467cc39cb178deb10c7a869" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="249.5,-48.5 139.75,-48.5 139.75,-21 249.5,-21 249.5,-48.5"/>
 <text text-anchor="start" x="147.75" y="-36.9" font-family="SourceSans" font-size="8.00">svg::svg_element::add</text>
 <text text-anchor="middle" x="194.62" y="-27.15" font-family="SourceSans" font-size="8.00">_element</text>
@@ -51,7 +51,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="group__elements.html#a99ff90a016db190ee8bb5ee8c045e329" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="396,-22.62 285.5,-22.62 285.5,-4.88 396,-4.88 396,-22.62"/>
 <text text-anchor="middle" x="340.75" y="-11.03" font-family="SourceSans" font-size="8.00">svg::element_base::str</text>
 </a>

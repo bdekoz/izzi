@@ -115,6 +115,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:structsvg_1_1defs__element" id="r_structsvg_1_1defs__element"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__elements.html#structsvg_1_1defs__element">defs_element</a></td></tr>
 <tr class="separator:structsvg_1_1defs__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:structsvg_1_1desc__element" id="r_structsvg_1_1desc__element"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__elements.html#structsvg_1_1desc__element">desc_element</a></td></tr>
+<tr class="separator:structsvg_1_1desc__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:structsvg_1_1element__base" id="r_structsvg_1_1element__base"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a></td></tr>
 <tr class="memdesc:structsvg_1_1element__base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for all SVG Elements.  <a href="group__elements.html#structsvg_1_1element__base">More...</a><br /></td></tr>
 <tr class="separator:structsvg_1_1element__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,6 +165,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsvg_1_1typography.html">typography</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:structsvg_1_1video__element" id="r_structsvg_1_1video__element"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__elements.html#structsvg_1_1video__element">video_element</a></td></tr>
+<tr class="memdesc:structsvg_1_1video__element"><td class="mdescLeft">&#160;</td><td class="mdescRight">Video object embedded in SVG container. Wrapped in foreign element. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video</a>.  <a href="group__elements.html#structsvg_1_1video__element">More...</a><br /></td></tr>
 <tr class="separator:structsvg_1_1video__element"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -430,7 +433,7 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a86299e1b709e10d8ddbe9fe4e5231dc5" id="r_a86299e1b709e10d8ddbe9fe4e5231dc5"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86299e1b709e10d8ddbe9fe4e5231dc5">active_spectrum</a> (const bool sortbyhuep=false)</td></tr>
-<tr class="memdesc:a86299e1b709e10d8ddbe9fe4e5231dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and Get working spectrum, aka default palette. NB: If colorbands are being used, palette has to be izzi or izzi_hue, and cannot be sorted (as color bands use colors arranged in a fixed order with offsets in hue.  <br /></td></tr>
+<tr class="memdesc:a86299e1b709e10d8ddbe9fe4e5231dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oklab <a href="https://bottosson.github.io/posts/oklab/">https://bottosson.github.io/posts/oklab/</a>.  <br /></td></tr>
 <tr class="separator:a86299e1b709e10d8ddbe9fe4e5231dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0be121a55c1eb8aae581eadefad991ca" id="r_a0be121a55c1eb8aae581eadefad991ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0be121a55c1eb8aae581eadefad991ca">add_to_id_render_state_cache</a> (const string id, const <a class="el" href="structsvg_1_1style.html">style</a> styl, const <a class="el" href="namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56cea">k::select</a> vis)</td></tr>
 <tr class="memdesc:a0be121a55c1eb8aae581eadefad991ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add value to cache with base style of styl, colors klr, visibility vis.  <br /></td></tr>
@@ -630,9 +633,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a68c014cdc144d2d0125a8ce849e8804d" id="r_a68c014cdc144d2d0125a8ce849e8804d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68c014cdc144d2d0125a8ce849e8804d">point_to_circle</a> (<a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> &amp;obj, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <a class="el" href="structsvg_1_1style.html">svg::style</a> s, const <a class="el" href="#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a> r=4, const string xform=&quot;&quot;)</td></tr>
 <tr class="memdesc:a68c014cdc144d2d0125a8ce849e8804d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a circle around a point (x,y), of style (s), of radius (r).  <br /></td></tr>
 <tr class="separator:a68c014cdc144d2d0125a8ce849e8804d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a071f9f29c33596d61148cf71d58b3359" id="r_a071f9f29c33596d61148cf71d58b3359"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a071f9f29c33596d61148cf71d58b3359">point_to_crossed_lines</a> (<a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> &amp;obj, const <a class="el" href="structsvg_1_1style.html">style</a> &amp;styl, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const int radius, const double tiltd=0.0)</td></tr>
-<tr class="memdesc:a071f9f29c33596d61148cf71d58b3359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point to center mark as crossed lines. Default is a plus sign at origin, but @tiltd can rotate.  <br /></td></tr>
-<tr class="separator:a071f9f29c33596d61148cf71d58b3359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63791549798e3238ebb6b45846296918" id="r_a63791549798e3238ebb6b45846296918"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63791549798e3238ebb6b45846296918">point_to_crossed_lines</a> (<a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> &amp;obj, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1style.html">style</a> &amp;styl, const int radius, const double tiltd=0.0)</td></tr>
+<tr class="memdesc:a63791549798e3238ebb6b45846296918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point to center mark as crossed lines. Default is a plus sign at origin, but @tiltd can rotate.  <br /></td></tr>
+<tr class="separator:a63791549798e3238ebb6b45846296918"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebdd8a2c0b4a7a47e3ccc59c70c53160" id="r_aebdd8a2c0b4a7a47e3ccc59c70c53160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aebdd8a2c0b4a7a47e3ccc59c70c53160">point_to_octogon</a> (<a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> &amp;obj, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <a class="el" href="structsvg_1_1style.html">svg::style</a> s, const double r=4)</td></tr>
 <tr class="memdesc:aebdd8a2c0b4a7a47e3ccc59c70c53160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center an octogon at this point.  <br /></td></tr>
 <tr class="separator:aebdd8a2c0b4a7a47e3ccc59c70c53160"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -743,6 +746,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a77acc58f0c03a060766bd97d7f149d3a" id="r_a77acc58f0c03a060766bd97d7f149d3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77acc58f0c03a060766bd97d7f149d3a">styled_text</a> (<a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> &amp;obj, const string text, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <a class="el" href="structsvg_1_1typography.html">svg::typography</a> typo, const string xform)</td></tr>
 <tr class="memdesc:a77acc58f0c03a060766bd97d7f149d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at @origin, with style and transform.  <br /></td></tr>
 <tr class="separator:a77acc58f0c03a060766bd97d7f149d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cbef4add41be0e0f31682c73988d309" id="r_a6cbef4add41be0e0f31682c73988d309"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cbef4add41be0e0f31682c73988d309">styled_text_link</a> (<a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> &amp;obj, const string text, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <a class="el" href="structsvg_1_1typography.html">svg::typography</a> typo, const string uri)</td></tr>
+<tr class="memdesc:a6cbef4add41be0e0f31682c73988d309"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at @origin, with style and link.  <br /></td></tr>
+<tr class="separator:a6cbef4add41be0e0f31682c73988d309"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5791c1fc9121f01e5f666b7ce0367dfa" id="r_a5791c1fc9121f01e5f666b7ce0367dfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5791c1fc9121f01e5f666b7ce0367dfa">styled_text_r</a> (<a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> &amp;obj, const string text, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <a class="el" href="structsvg_1_1typography.html">svg::typography</a> typo, const double deg)</td></tr>
 <tr class="memdesc:a5791c1fc9121f01e5f666b7ce0367dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at @origin, with style and ... a transformation=rotation of @deg about @rorigin.  <br /></td></tr>
 <tr class="separator:a5791c1fc9121f01e5f666b7ce0367dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1485,9 +1491,10 @@ template&lt;std::size_t N&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Oklab <a href="https://bottosson.github.io/posts/oklab/">https://bottosson.github.io/posts/oklab/</a>. </p>
 <p>Set and Get working spectrum, aka default palette. NB: If colorbands are being used, palette has to be izzi or izzi_hue, and cannot be sorted (as color bands use colors arranged in a fixed order with offsets in hue. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00368">368</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00370">370</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -2262,7 +2269,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers. top style defaults: fill opac(0), stroke opac(1), stroke sz 1 bottom style defaults: fill opac(0), stroke opac(1), stroke sz 1.25. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00532">532</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00574">574</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-13" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
@@ -2488,7 +2495,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Angle in degrees. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00471">471</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00513">513</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-19" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-19-summary" class="dynsummary" style="display:block;">
@@ -2525,7 +2532,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Angle in radians. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00459">459</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00501">501</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 
 </div>
 </div>
@@ -3361,7 +3368,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Crossed lines, no fill. X marks the .... </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00743">743</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00785">785</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-32" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-32-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-32-summary" class="dynsummary" style="display:block;">
@@ -3433,7 +3440,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Line primitive. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00221">221</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00263">263</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-33" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-33-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-33-summary" class="dynsummary" style="display:block;">
@@ -3480,7 +3487,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Make path segment between two points on a circumference of radius r. Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin) </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00645">645</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00687">687</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-34" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-34-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-34-summary" class="dynsummary" style="display:block;">
@@ -3532,7 +3539,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Same but with degree range arguments instead of points. NB: Assumes appropriate zero_angle_north_cw/ccw adjustments on startd/endd. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00690">690</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00732">732</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-35" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-35-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-35-summary" class="dynsummary" style="display:block;">
@@ -3584,7 +3591,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Make closed path between two points and the center of a circle of radius r. Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin) </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00664">664</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00706">706</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-36" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-36-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-36-summary" class="dynsummary" style="display:block;">
@@ -3621,7 +3628,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Plus or x tilt mark as closed path that can be filled. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00702">702</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00744">744</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-37" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-37-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-37-summary" class="dynsummary" style="display:block;">
@@ -3649,7 +3656,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Make single path segment. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00508">508</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00550">550</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-38" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-38-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-38-summary" class="dynsummary" style="display:block;">
@@ -3691,7 +3698,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Center an octogon at this point. radius 4 is pixels to draw out from center point. pointsn is number of points to draw (8 for octogon) </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00602">602</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00644">644</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-39" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-39-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-39-summary" class="dynsummary" style="display:block;">
@@ -3733,7 +3740,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Center a triangle at this point. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00565">565</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00607">607</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-40" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-40-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-40-summary" class="dynsummary" style="display:block;">
@@ -3821,7 +3828,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Loop through color array starting at position c. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00413">413</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00415">415</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 <div id="dynsection-41" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-41-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-41-summary" class="dynsummary" style="display:block;">
@@ -4132,7 +4139,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00434">434</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00476">476</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-45" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-45-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-45-summary" class="dynsummary" style="display:block;">
@@ -4184,7 +4191,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Draws a circle around a point (x,y), of style (s), of radius (r). </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00296">296</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00338">338</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-46" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-46-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-46-summary" class="dynsummary" style="display:block;">
@@ -4236,7 +4243,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Lines radiating from center point (x,y). </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00403">403</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00445">445</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-47" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-47-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-47-summary" class="dynsummary" style="display:block;">
@@ -4288,7 +4295,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Point to rectangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00249">249</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00291">291</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-48" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-48-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-48-summary" class="dynsummary" style="display:block;">
@@ -4345,7 +4352,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Point to rectangle blur. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00265">265</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00307">307</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-49" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-49-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-49-summary" class="dynsummary" style="display:block;">
@@ -4392,7 +4399,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Draws a circle around a point (x,y), of style (s), of radius (r). </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00313">313</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00355">355</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-50" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-50-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-50-summary" class="dynsummary" style="display:block;">
@@ -4403,8 +4410,8 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 </div>
 </div>
-<a id="a071f9f29c33596d61148cf71d58b3359" name="a071f9f29c33596d61148cf71d58b3359"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a071f9f29c33596d61148cf71d58b3359">&#9670;&#160;</a></span>point_to_crossed_lines()</h2>
+<a id="a63791549798e3238ebb6b45846296918" name="a63791549798e3238ebb6b45846296918"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63791549798e3238ebb6b45846296918">&#9670;&#160;</a></span>point_to_crossed_lines()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4417,12 +4424,12 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structsvg_1_1style.html">style</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>styl</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a></td>          <td class="paramname"><span class="paramname"><em>origin</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a></td>          <td class="paramname"><span class="paramname"><em>origin</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structsvg_1_1style.html">style</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>styl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -4439,13 +4446,13 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Point to center mark as crossed lines. Default is a plus sign at origin, but @tiltd can rotate. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00768">768</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00810">810</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-51" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-51-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-51-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-51-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesvg_a071f9f29c33596d61148cf71d58b3359_cgraph.svg" width="100%" height="577"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesvg_a63791549798e3238ebb6b45846296918_cgraph.svg" width="100%" height="577"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -4481,7 +4488,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Center an octogon at this point. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00634">634</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00676">676</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-52" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-52-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-52-summary" class="dynsummary" style="display:block;">
@@ -4528,7 +4535,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Center a rectangle at this point. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00284">284</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00326">326</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-53" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-53-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-53-summary" class="dynsummary" style="display:block;">
@@ -4585,7 +4592,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Draws a ring centered at origin of radius r, with outer and inner radial gradient of blurspace in each direction. klr == fade from fadeklr == fade to. Background is transparent if none. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00333">333</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00375">375</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-54" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-54-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-54-summary" class="dynsummary" style="display:block;">
@@ -4632,7 +4639,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Center a triangle at this point. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00590">590</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00632">632</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-55" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-55-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-55-summary" class="dynsummary" style="display:block;">
@@ -4679,7 +4686,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Line between two points. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00238">238</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00280">280</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-56" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-56-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-56-summary" class="dynsummary" style="display:block;">
@@ -5473,7 +5480,7 @@ template&lt;typename _Spectrm &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00402">402</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00404">404</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 
 </div>
 </div>
@@ -5494,7 +5501,7 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Random entry from array above. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00390">390</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00392">392</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 <div id="dynsection-69" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-69-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-69-summary" class="dynsummary" style="display:block;">
@@ -5549,7 +5556,7 @@ template&lt;typename _Spectrm &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00023">23</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00024">24</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 
 </div>
 </div>
@@ -5572,7 +5579,7 @@ template&lt;typename _Spectrm &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00036">36</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00037">37</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 
 </div>
 </div>
@@ -5754,7 +5761,7 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Text at size. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00112">112</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00154">154</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-74" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-74-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-74-summary" class="dynsummary" style="display:block;">
@@ -5811,7 +5818,7 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Text at size, with a transformation=rotation. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00128">128</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00170">170</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-75" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-75-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-75-summary" class="dynsummary" style="display:block;">
@@ -6093,7 +6100,7 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Start at specified color bar entry point. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00430">430</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00432">432</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 <div id="dynsection-80" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-80-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-80-summary" class="dynsummary" style="display:block;">
@@ -6171,7 +6178,7 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Text at @origin, with style. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00045">45</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00046">46</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-81" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-81-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-81-summary" class="dynsummary" style="display:block;">
@@ -6218,13 +6225,60 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Text at @origin, with style and transform. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00061">61</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00062">62</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-82" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-82-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-82-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-82-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesvg_a77acc58f0c03a060766bd97d7f149d3a_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a6cbef4add41be0e0f31682c73988d309" name="a6cbef4add41be0e0f31682c73988d309"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cbef4add41be0e0f31682c73988d309">&#9670;&#160;</a></span>styled_text_link()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void svg::styled_text_link </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a></td>          <td class="paramname"><span class="paramname"><em>origin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsvg_1_1typography.html">svg::typography</a></td>          <td class="paramname"><span class="paramname"><em>typo</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>uri</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Text at @origin, with style and link. </p>
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00113">113</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<div id="dynsection-83" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-83-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-83-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-83-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesvg_a6cbef4add41be0e0f31682c73988d309_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -6265,12 +6319,12 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Text at @origin, with style and ... a transformation=rotation of @deg about @rorigin. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00078">78</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
-<div id="dynsection-83" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-83-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-83-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00079">79</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<div id="dynsection-84" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-84-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-84-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-83-content" class="dyncontent" style="display:none;">
+<div id="dynsection-84-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesvg_a5791c1fc9121f01e5f666b7ce0367dfa_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6317,12 +6371,12 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Text at @origin, with style and ... a transformation=rotation of @deg about @rorigin. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00095">95</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
-<div id="dynsection-84" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-84-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-84-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00096">96</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<div id="dynsection-85" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-85-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-85-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-84-content" class="dyncontent" style="display:none;">
+<div id="dynsection-85-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesvg_af26a70d52b4d91958eefbdf9c4c3c4b5_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6365,11 +6419,11 @@ template&lt;typename _Spectrm &gt; </div>
 <p>1 channel start with image, background color is klr each "frame" == string in returned strings has an image and a background </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-sequences_8h_source.html#l00476">476</a> of file <a class="el" href="a60-svg-sequences_8h_source.html">a60-svg-sequences.h</a>.</p>
-<div id="dynsection-85" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-85-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-85-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-86" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-86-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-86-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-85-content" class="dyncontent" style="display:none;">
+<div id="dynsection-86-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a049dfba72934c9f0dd7f6ac082f1f276_cgraph.svg" width="536" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6416,12 +6470,12 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Text of maxlen length, overflow goes on line below. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00144">144</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
-<div id="dynsection-86" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-86-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-86-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00186">186</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<div id="dynsection-87" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-87-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-87-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-86-content" class="dyncontent" style="display:none;">
+<div id="dynsection-87-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesvg_ab4ddaba91a18906d595fc034ac3c5aaf_cgraph.svg" width="100%" height="590"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6473,12 +6527,12 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Text of maxlen length rotated, overflow goes on line below. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00174">174</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
-<div id="dynsection-87" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-87-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-87-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00216">216</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<div id="dynsection-88" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-88-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-88-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-87-content" class="dyncontent" style="display:none;">
+<div id="dynsection-88-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacesvg_ab065a6cdc07dfec43230a9e4e54927b1_cgraph.svg" width="100%" height="588"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6587,11 +6641,11 @@ template&lt;typename _Spectrm &gt; </div>
 </ol>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html#l00148">148</a> of file <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html">a60-svg-grid-matrix-systems.h</a>.</p>
-<div id="dynsection-88" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-88-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-88-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-89" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-89-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-89-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-88-content" class="dyncontent" style="display:none;">
+<div id="dynsection-89-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a4b1d2c633dbd01fcd97b92e4579c8cb0_cgraph.svg" width="344" height="48"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6636,11 +6690,11 @@ template&lt;typename _Spectrm &gt; </div>
 <p>The centerweight matrix_variant has cells arranged as above. The other variant styles, distort the matrix as specified below. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html#l00060">60</a> of file <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html">a60-svg-grid-matrix-systems.h</a>.</p>
-<div id="dynsection-89" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-89-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-89-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-90" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-90-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-90-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-89-content" class="dyncontent" style="display:none;">
+<div id="dynsection-90-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a116e3e953a52a683b7e4cf010a43f65b_cgraph.svg" width="344" height="96"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6673,11 +6727,11 @@ template&lt;typename _Spectrm &gt; </div>
 <p>Default matrix position. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html#l00223">223</a> of file <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html">a60-svg-grid-matrix-systems.h</a>.</p>
-<div id="dynsection-90" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-90-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-90-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-91" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-91-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-91-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-90-content" class="dyncontent" style="display:none;">
+<div id="dynsection-91-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a775a01d459873fd0c8d2dabb88a889e5_cgraph.svg" width="539" height="96"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6701,11 +6755,11 @@ template&lt;typename _Spectrm &gt; </div>
 <p>Convert color to RGB color value string. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-color_8h_source.html#l00225">225</a> of file <a class="el" href="a60-svg-color_8h_source.html">a60-svg-color.h</a>.</p>
-<div id="dynsection-91" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-91-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-91-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-92" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-92-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-92-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-91-content" class="dyncontent" style="display:none;">
+<div id="dynsection-92-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_ab4a7ae0d27e641b60e82ae1e969ccb78_cgraph.svg" width="308" height="35"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6729,11 +6783,11 @@ template&lt;typename _Spectrm &gt; </div>
 <p>Convert <a class="el" href="structsvg_1_1color__qf.html">color_qf</a> to string. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-color_8h_source.html#l00680">680</a> of file <a class="el" href="a60-svg-color_8h_source.html">a60-svg-color.h</a>.</p>
-<div id="dynsection-92" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-92-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-92-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-93" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-93-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-93-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-92-content" class="dyncontent" style="display:none;">
+<div id="dynsection-93-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a6f841455457b4a71f3171d0396faccd9_cgraph.svg" width="300" height="35"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6757,11 +6811,11 @@ template&lt;typename _Spectrm &gt; </div>
 <p>Convert <a class="el" href="structsvg_1_1color__qi.html" title="Color quantified as integral RGB components in the range [0,255]. aka like Scalar in OpenCV.">color_qi</a> to string. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-color_8h_source.html#l00526">526</a> of file <a class="el" href="a60-svg-color_8h_source.html">a60-svg-color.h</a>.</p>
-<div id="dynsection-93" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-93-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-93-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-94" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-94-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-94-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-93-content" class="dyncontent" style="display:none;">
+<div id="dynsection-94-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a86934434fcec49794500c444823efb46_cgraph.svg" width="300" height="35"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6783,11 +6837,11 @@ template&lt;typename _Spectrm &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-base-types_8h_source.html#l00170">170</a> of file <a class="el" href="a60-svg-base-types_8h_source.html">a60-svg-base-types.h</a>.</p>
-<div id="dynsection-94" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-94-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-94-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-95" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-95-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-95-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-94-content" class="dyncontent" style="display:none;">
+<div id="dynsection-95-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a7363f3de9a003a4399e7ede9036299d4_cgraph.svg" width="300" height="131"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6876,11 +6930,11 @@ template&lt;typename _Spectrm &gt; </div>
 <p>Roll through render states given in values squentially, index starts with zero. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-render-state_8h_source.html#l00353">353</a> of file <a class="el" href="a60-svg-render-state_8h_source.html">a60-svg-render-state.h</a>.</p>
-<div id="dynsection-95" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-95-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-95-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-96" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-96-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-96-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-95-content" class="dyncontent" style="display:none;">
+<div id="dynsection-96-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a80a6c227286b13899d3b1d825cd36a8d_cgraph.svg" width="482" height="48"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6933,11 +6987,11 @@ template&lt;typename _Spectrm &gt; </div>
 <p>Simulated vertical roll, with fades. r == frame size. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-sequences_8h_source.html#l00271">271</a> of file <a class="el" href="a60-svg-sequences_8h_source.html">a60-svg-sequences.h</a>.</p>
-<div id="dynsection-96" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-96-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-96-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-97" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-97-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-97-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-96-content" class="dyncontent" style="display:none;">
+<div id="dynsection-97-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a86609091f372674e0e117d33551cdac8_cgraph.svg" width="526" height="403"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -6990,11 +7044,11 @@ template&lt;typename _Spectrm &gt; </div>
 <p>wink sequence of duration sec, given fps to color klr starts on background transparent, so can use with an image behind. at duration twhen winks specific rectangle (r) this much (maxclose) for seconds (winksec) </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-sequences_8h_source.html#l00154">154</a> of file <a class="el" href="a60-svg-sequences_8h_source.html">a60-svg-sequences.h</a>.</p>
-<div id="dynsection-97" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-97-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-97-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-98" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-98-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-98-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-97-content" class="dyncontent" style="display:none;">
+<div id="dynsection-98-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacesvg_a559f742ae1f654eae1dec9857da7a4cb_cgraph.svg" width="554" height="280"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -7017,7 +7071,7 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Zero degrees is top, going clockwise (cw). </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00496">496</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00538">538</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 
 </div>
 </div>
@@ -7038,7 +7092,7 @@ template&lt;typename _Spectrm &gt; </div>
 
 <p>Zero degrees is top, going clockwise (cw). </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00481">481</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00523">523</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 
 </div>
 </div>

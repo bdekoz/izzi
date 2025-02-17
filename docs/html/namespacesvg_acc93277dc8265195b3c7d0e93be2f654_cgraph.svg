@@ -85,7 +85,7 @@ var sectionId = 'dynsection-80';
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" target="_top" xlink:title="Set and Get working spectrum, aka default palette. NB: If colorbands are being used,...">
+<g id="a_Node000003"><a xlink:href="namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" target="_top" xlink:title="Oklab https://bottosson.github.io/posts/oklab/.">
 <polygon fill="white" stroke="#666666" points="343.5,-17.75 240.5,-17.75 240.5,0 343.5,0 343.5,-17.75"/>
 <text text-anchor="middle" x="292" y="-6.15" font-family="SourceSans" font-size="8.00">svg::active_spectrum</text>
 </a>

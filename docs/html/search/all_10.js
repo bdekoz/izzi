@@ -24,7 +24,7 @@ var searchData=
   ['point_5f2t_21',['point_2t',['../namespacesvg.html#af074bb68ac49143551503d72f2bff83e',1,'svg']]],
   ['point_5f2tn_22',['point_2tn',['../namespacesvg.html#ad6572ee040e97b7e2de8a1e13eb40215',1,'svg']]],
   ['point_5fto_5fcircle_23',['point_to_circle',['../namespacesvg.html#a68c014cdc144d2d0125a8ce849e8804d',1,'svg']]],
-  ['point_5fto_5fcrossed_5flines_24',['point_to_crossed_lines',['../namespacesvg.html#a071f9f29c33596d61148cf71d58b3359',1,'svg']]],
+  ['point_5fto_5fcrossed_5flines_24',['point_to_crossed_lines',['../namespacesvg.html#a63791549798e3238ebb6b45846296918',1,'svg']]],
   ['point_5fto_5foctogon_25',['point_to_octogon',['../namespacesvg.html#aebdd8a2c0b4a7a47e3ccc59c70c53160',1,'svg']]],
   ['point_5fto_5frect_5fcentered_26',['point_to_rect_centered',['../namespacesvg.html#aa98769b32701790f833e8414d12b70ed',1,'svg']]],
   ['point_5fto_5fring_5fhalo_27',['point_to_ring_halo',['../namespacesvg.html#a05ce09ad64d647467f52dcbebeb0c6ac',1,'svg']]],

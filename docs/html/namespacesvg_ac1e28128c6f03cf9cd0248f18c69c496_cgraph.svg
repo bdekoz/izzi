@@ -86,7 +86,7 @@ var sectionId = 'dynsection-10';
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="group__elements.html#adb6116b96467cc39cb178deb10c7a869" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="251.38,-405.62 141.62,-405.62 141.62,-378.12 251.38,-378.12 251.38,-405.62"/>
 <text text-anchor="start" x="149.62" y="-394.02" font-family="SourceSans" font-size="8.00">svg::svg_element::add</text>
 <text text-anchor="middle" x="196.5" y="-384.27" font-family="SourceSans" font-size="8.00">_element</text>
@@ -290,7 +290,7 @@ var sectionId = 'dynsection-10';
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="group__elements.html#a99ff90a016db190ee8bb5ee8c045e329" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="403.88,-400.75 293.38,-400.75 293.38,-383 403.88,-383 403.88,-400.75"/>
 <text text-anchor="middle" x="348.62" y="-389.15" font-family="SourceSans" font-size="8.00">svg::element_base::str</text>
 </a>
