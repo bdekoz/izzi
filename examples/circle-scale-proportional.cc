@@ -1,4 +1,4 @@
- #include "a60-svg.h"
+#include "a60-svg.h"
 
 void
 test_proportional(std::string ofile)
@@ -53,6 +53,6 @@ test_proportional(std::string ofile)
 
 int main()
 {
-  test_proportional("scale_proportional");
+  test_proportional("circle-scale-proportional");
   return 0;
 }
