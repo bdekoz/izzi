@@ -21,6 +21,9 @@ namespace svg {
 
 /**
    @defgroup elements SVG Elements
+   All svg components are derived from @element_base as per
+   [hierarchy](https://bdekoz.github.io/izzi/html/structsvg_1_1element__base__inherit__graph_org.svg)
+
   @{
 */
 
