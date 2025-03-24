@@ -47,10 +47,12 @@ var searchData=
   ['comma_44',['comma',['../namespacesvg_1_1constants.html#a70757c054f02146f803e0e40071734a9',1,'svg::constants']]],
   ['command_45',['command',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a1dccadfed7bcbb036c56a4afb97e906f',1,'svg']]],
   ['composite_5fbleed_5fareas_46',['composite_bleed_areas',['../namespacesvg.html#aff8f9cb1c36bb299e349056e14a05bf8',1,'svg']]],
-  ['coral_47',['coral',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad2ebed4eaf58509dcc358e1782c38fea',1,'svg']]],
-  ['cornflowerblue_48',['cornflowerblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ada4a06b7a74d94538ad7da873f073f4c',1,'svg']]],
-  ['crayolacerulean_49',['crayolacerulean',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a193b1032c4d119684d6579dda48e3012',1,'svg']]],
-  ['crimson_50',['crimson',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a5fa3ccc64c973db27e9fcade0810423e',1,'svg']]],
-  ['cw_51',['cw',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03a0707ba092e91260b305c326e6a353593',1,'svg::constants']]],
-  ['cyan_52',['cyan',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a6411532ba4971f378391776a9db629d3',1,'svg']]]
+  ['convert_5f8859_5fto_5futf8_47',['convert_8859_to_utf8',['../namespacesvg.html#aa6054c3bd84135c188814397379edaa2',1,'svg']]],
+  ['convert_5fto_5futf8_48',['convert_to_utf8',['../namespacesvg.html#a9c63493f51e361936d7cb0c33098b494',1,'svg']]],
+  ['coral_49',['coral',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad2ebed4eaf58509dcc358e1782c38fea',1,'svg']]],
+  ['cornflowerblue_50',['cornflowerblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ada4a06b7a74d94538ad7da873f073f4c',1,'svg']]],
+  ['crayolacerulean_51',['crayolacerulean',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a193b1032c4d119684d6579dda48e3012',1,'svg']]],
+  ['crimson_52',['crimson',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a5fa3ccc64c973db27e9fcade0810423e',1,'svg']]],
+  ['cw_53',['cw',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03a0707ba092e91260b305c326e6a353593',1,'svg::constants']]],
+  ['cyan_54',['cyan',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a6411532ba4971f378391776a9db629d3',1,'svg']]]
 ];

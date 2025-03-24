@@ -18,5 +18,5 @@ var searchData=
   ['limegreen_15',['limegreen',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a8a03233f60c05bc5c3161698a5f78a58',1,'svg']]],
   ['line_5felement_16',['line_element',['../group__elements.html#structsvg_1_1line__element',1,'svg']]],
   ['lineargradient_17',['linearGradient',['../group__elements.html#a7c19a4d45da1acb512fc1c69048253bfa1f95312db58aef3645ec3865b5bd04d0',1,'svg::gradient_element']]],
-  ['lsz_18',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata']]]
+  ['lsz_18',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata::lsz'],['../namespacesvg.html#a2eea4b708723491eb8eb89bf62a67011',1,'svg::lsz']]]
 ];

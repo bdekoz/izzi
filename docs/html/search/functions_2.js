@@ -12,5 +12,7 @@ var searchData=
   ['color_5fqi_9',['color_qi',['../structsvg_1_1color__qi.html#a75df9c35be86175ff4a66eaf896026eb',1,'svg::color_qi::color_qi()=default'],['../structsvg_1_1color__qi.html#a29d71bbf83de6300c739bb47f6ae226f',1,'svg::color_qi::color_qi(const color_qi &amp;)=default'],['../structsvg_1_1color__qi.html#aab40591d3a32d4a07849a686984ca1ee',1,'svg::color_qi::color_qi(itype ra, itype ga, itype ba)'],['../structsvg_1_1color__qi.html#af7db420c6cfb507c0e3766c26f9e477e',1,'svg::color_qi::color_qi(const color e)']]],
   ['combine_5fcolor_5fqi_10',['combine_color_qi',['../namespacesvg.html#abcad3fe27275ca32d7db21d8475f66ae',1,'svg']]],
   ['comma_11',['comma',['../namespacesvg_1_1constants.html#a70757c054f02146f803e0e40071734a9',1,'svg::constants']]],
-  ['composite_5fbleed_5fareas_12',['composite_bleed_areas',['../namespacesvg.html#aff8f9cb1c36bb299e349056e14a05bf8',1,'svg']]]
+  ['composite_5fbleed_5fareas_12',['composite_bleed_areas',['../namespacesvg.html#aff8f9cb1c36bb299e349056e14a05bf8',1,'svg']]],
+  ['convert_5f8859_5fto_5futf8_13',['convert_8859_to_utf8',['../namespacesvg.html#aa6054c3bd84135c188814397379edaa2',1,'svg']]],
+  ['convert_5fto_5futf8_14',['convert_to_utf8',['../namespacesvg.html#a9c63493f51e361936d7cb0c33098b494',1,'svg']]]
 ];

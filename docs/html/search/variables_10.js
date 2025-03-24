@@ -17,6 +17,6 @@ var searchData=
   ['ssans_5ftypo_14',['ssans_typo',['../namespacesvg_1_1constants.html#a66e2c54aad31fe590e1fdc2c03e83e78',1,'svg::constants']]],
   ['sserif_15',['sserif',['../namespacesvg_1_1constants.html#a84e6f54162fd84206f045bd2724d5297',1,'svg::constants']]],
   ['sserif_5ftypo_16',['sserif_typo',['../namespacesvg_1_1constants.html#a4bf0d3a7b5eca48c9f6e1b65f8bba081',1,'svg::constants']]],
-  ['ssz_17',['ssz',['../namespacea60_1_1metadata.html#a3f61ba2d564dca7fe7fde2a0425cac12',1,'a60::metadata']]],
+  ['ssz_17',['ssz',['../namespacea60_1_1metadata.html#a3f61ba2d564dca7fe7fde2a0425cac12',1,'a60::metadata::ssz'],['../namespacesvg.html#af236a60598b510e9a91706289ae20ed8',1,'svg::ssz']]],
   ['styl_18',['styl',['../structsvg_1_1id__render__state.html#aa3b885d59f9430a6fed7aa5ab40d63f6',1,'svg::id_render_state']]]
 ];

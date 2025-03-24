@@ -1,23 +1,23 @@
 <map id="svg::point_to_rect_centered" name="svg::point_to_rect_centered">
-<area shape="rect" id="Node000001" title="Center a rectangle at this point." alt="" coords="5,128,123,165"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#adeadf637c3003a03e811e42432f6e58b" title="Point to rectangle." alt="" coords="171,134,307,158"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,144,155,144,155,149,123,149"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="365,5,491,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="251,132,295,94,354,52,363,47,365,52,356,57,298,98,255,136"/>
-<area shape="rect" id="Node000005" href="$group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" title=" " alt="" coords="355,67,501,103"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="277,131,354,106,356,111,279,136"/>
-<area shape="rect" id="Node000007" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="362,128,495,165"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="308,144,346,144,346,149,308,149"/>
-<area shape="rect" id="Node000009" href="$group__elements.html#gad01750ac554c6bd6871a930c90e17a04" title=" " alt="" coords="365,189,491,226"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="279,156,356,182,354,187,277,161"/>
-<area shape="rect" id="Node000011" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="365,251,491,287"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="255,157,298,195,356,236,365,241,363,246,354,241,295,199,251,161"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="564,12,688,36"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="492,21,548,21,548,26,492,26"/>
-<area shape="rect" id="Node000006" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="552,73,700,97"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="502,82,537,82,537,88,502,88"/>
-<area shape="rect" id="Node000008" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="578,134,674,158"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="495,144,563,144,563,149,495,149"/>
-<area shape="rect" id="Node000010" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="549,196,703,220"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="492,205,534,205,534,210,492,210"/>
+<area shape="rect" id="Node000001" title="Center a rectangle at this point." alt="" coords="5,139,116,181"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#adeadf637c3003a03e811e42432f6e58b" title="Point to rectangle." alt="" coords="164,147,292,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,157,148,157,148,163,116,163"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="349,5,465,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="240,144,282,103,338,58,344,54,347,58,342,62,286,107,244,148"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" title=" " alt="" coords="340,72,474,115"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="265,144,333,118,334,123,267,149"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="346,139,468,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="292,157,331,157,331,163,292,163"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#gad01750ac554c6bd6871a930c90e17a04" title=" " alt="" coords="349,205,465,248"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="267,171,335,197,333,202,265,176"/>
+<area shape="rect" id="Node000011" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="349,272,465,315"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="244,172,286,213,342,258,347,262,344,266,338,262,282,217,240,176"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="534,13,650,40"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="466,24,519,24,519,29,466,29"/>
+<area shape="rect" id="Node000006" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="525,80,659,107"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="475,91,510,91,510,96,475,96"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="547,147,637,173"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="468,157,532,157,532,163,468,163"/>
+<area shape="rect" id="Node000010" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="522,213,662,240"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="466,224,507,224,507,229,466,229"/>
 </map>

@@ -1,15 +1,15 @@
 <map id="svg::make_color_band" name="svg::make_color_band">
-<area shape="rect" id="Node000001" title="Forwarding function." alt="" coords="5,29,148,53"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Oklab https://bottosson.github.io/posts/oklab/." alt="" coords="207,5,344,29"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,30,191,25,192,30,149,35"/>
-<area shape="rect" id="Node000005" href="$namespacesvg.html#a80195ef46b7ed340c7a3f2a4b5eb6874" title=" " alt="" coords="196,53,356,77"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="149,47,180,51,180,56,148,52"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#a6ef86da421061b502a4cec162970c4e9" title="Forwarding function." alt="" coords="410,5,540,29"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="345,14,395,14,395,20,345,20"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#a804d33f9f3d2f0debdcfc4317f5b8487" title=" " alt="" coords="594,5,742,29"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="540,14,579,14,579,20,540,20"/>
-<area shape="rect" id="Node000006" href="$namespacesvg.html#abcad3fe27275ca32d7db21d8475f66ae" title=" " alt="" coords="404,53,546,77"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="357,62,388,62,388,68,357,68"/>
-<area shape="rect" id="Node000007" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="428,101,523,125"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="329,75,413,96,411,101,328,80"/>
+<area shape="rect" id="Node000001" title="Forwarding function." alt="" coords="5,31,139,57"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Oklab https://bottosson.github.io/posts/oklab/." alt="" coords="198,5,324,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,32,183,26,183,32,140,38"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#a80195ef46b7ed340c7a3f2a4b5eb6874" title=" " alt="" coords="187,56,336,83"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="140,50,172,55,171,60,139,56"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a6ef86da421061b502a4cec162970c4e9" title="Forwarding function." alt="" coords="390,5,511,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="325,16,374,16,374,21,325,21"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a804d33f9f3d2f0debdcfc4317f5b8487" title=" " alt="" coords="564,5,702,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="511,16,549,16,549,21,511,21"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#abcad3fe27275ca32d7db21d8475f66ae" title=" " alt="" coords="384,56,516,83"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="336,67,369,67,369,72,336,72"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="406,107,495,133"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="315,81,391,102,390,107,313,86"/>
 </map>

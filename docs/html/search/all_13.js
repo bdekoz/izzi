@@ -50,7 +50,7 @@ var searchData=
   ['ssans_5ftypo_47',['ssans_typo',['../namespacesvg_1_1constants.html#a66e2c54aad31fe590e1fdc2c03e83e78',1,'svg::constants']]],
   ['sserif_48',['sserif',['../namespacesvg_1_1constants.html#a84e6f54162fd84206f045bd2724d5297',1,'svg::constants']]],
   ['sserif_5ftypo_49',['sserif_typo',['../namespacesvg_1_1constants.html#a4bf0d3a7b5eca48c9f6e1b65f8bba081',1,'svg::constants']]],
-  ['ssz_50',['ssz',['../namespacea60_1_1metadata.html#a3f61ba2d564dca7fe7fde2a0425cac12',1,'a60::metadata']]],
+  ['ssz_50',['ssz',['../namespacea60_1_1metadata.html#a3f61ba2d564dca7fe7fde2a0425cac12',1,'a60::metadata::ssz'],['../namespacesvg.html#af236a60598b510e9a91706289ae20ed8',1,'svg::ssz']]],
   ['stack_5fids_5fat_51',['stack_ids_at',['../namespacesvg.html#ae052cd57e2e5d8237d0a0287516da2ea',1,'svg']]],
   ['start_52',['start',['../group__elements.html#ad47933f8c0bfc36987493c7e3b3bbcbd',1,'svg::svg_element::start()'],['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886aea2b2676c28c0db26d39331a336c6b92',1,'svg::typography::start'],['../structsvg_1_1typography.html#ab466ab5a124304d826cea9c46a46d3b0aea2b2676c28c0db26d39331a336c6b92',1,'svg::typography::start']]],
   ['start_5fat_5fcolor_53',['start_at_color',['../namespacesvg.html#acc93277dc8265195b3c7d0e93be2f654',1,'svg']]],
