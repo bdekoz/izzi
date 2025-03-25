@@ -273,8 +273,7 @@ filter_element::finish_element()
    Attributes:
    id
  */
-struct gradient_element
-: virtual public element_base, virtual public defs_element
+struct gradient_element : virtual public defs_element
 {
   enum class type
     {
@@ -382,6 +381,48 @@ radial_gradient::finish_element()
   _M_sstream << "</radialGradient>" << k::newline;
   gradient_element::finish_element();
 }
+
+
+/// Linear gradients
+/// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
+struct linear_gradient : virtual public gradient_element
+{
+  void
+  start_element()
+  {
+    gradient_element::start_element();
+    _M_sstream << "<linearGradient id=" << k::quote << "default" << k::quote;
+    _M_sstream << ">" << k::newline;
+  }
+
+  void
+  finish_element();  
+};
+
+void
+linear_gradient::finish_element()
+{
+  _M_sstream << "</linearGradient>" << k::newline;
+  gradient_element::finish_element();
+}
+
+
+/**
+   Marker SVG elements defines a graphic used for drawing
+   arrow[heads, tails, mid] on a poly line or path.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/marker-mid
+
+   Note these are always inside a defs block.
+
+   Attributes:
+   id
+ */
+struct marker_element : virtual public defs_element
+{
+
+};
 
 
 /**
