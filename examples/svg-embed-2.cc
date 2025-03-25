@@ -13,8 +13,8 @@ void
 test_halo_insert(svg_element& obj)
 {
   // Add background.
-  point_2d_to_rect(obj, 0, 0, bkgstyl,
-		   obj._M_area._M_width, obj._M_area._M_height);
+  point_to_rect(obj, { 0, 0 }, bkgstyl,
+		obj._M_area._M_width, obj._M_area._M_height);
 
   const point_2t cp = obj.center_point();
 

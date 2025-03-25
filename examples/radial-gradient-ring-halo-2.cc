@@ -142,8 +142,8 @@ int main()
 
   // Add background so that checking transparency is easier with naked eye.
   const uint rectw = 100;
-  point_2d_to_rect(obj, a._M_width / 2 - rectw / 2, 0, k::b_style,
-		   100, a._M_height);
+  point_to_rect(obj, { a._M_width / 2 - rectw / 2, 0 }, k::b_style,
+		100, a._M_height);
 
   test_radial_gradient(obj);
   return 0;

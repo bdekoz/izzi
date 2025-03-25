@@ -299,67 +299,79 @@ points_to_line(svg_element& obj, const svg::style s,
 }
 
 
-/// Point to rectangle.
-void
-point_2d_to_rect(svg_element& obj, double x, double y, svg::style s,
-		 double width = 4, double height = 4)
+// Create rect_element at origin
+rect_element
+make_rect(const point_2t origin, const svg::style s, const area<> a,
+	  const string filterstr = "")
 {
-  using atype = decltype(obj._M_area)::atype;
+  auto [ width, height ] = a;
+  auto [ x, y ] = origin;
+
   rect_element r;
-  rect_element::data dr = { atype(x), atype(y), width, height };
+  rect_element::data dr = { x, y, width, height };
   r.start_element();
   r.add_data(dr);
   r.add_style(s);
+
+  // Add blur with filter here.
+  if (!filterstr.empty())
+    r.add_filter(filterstr);
   r.finish_element();
-  obj.add_element(r);
+  return r;
 }
 
 
-/// Point to rectangle blur
-void
-point_2d_to_rect_blur(svg_element& obj, double x, double y, svg::style s,
-		      string filterstr, double width = 4, double height = 4)
+// Create rect_element centered at origin
+rect_element
+make_rect_centered(const point_2t origin, const svg::style s, const area<> a,
+		   const string filterstr = "")
 {
-  using atype = decltype(obj._M_area)::atype;
+  auto [ width, height ] = a;
+  auto [ x, y ] = origin;
+  x -= (width / 2);
+  y -= (height / 2);
+  point_2t oprime { x, y };
 
-  rect_element r;
-  rect_element::data dr = { atype(x), atype(y), width, height };
+  rect_element r = make_rect(oprime, s, a, filterstr);
+  return r;
+}
 
-  r.start_element();
-  r.add_data(dr);
-  r.add_style(s);
-  r.add_filter(filterstr);
-  r.finish_element();
+
+/// Rectangle at this point.
+void
+point_to_rect(svg_element& obj, const point_2t origin, svg::style s,
+	      double width = 4, double height = 4,
+	      const string filterstr = "")
+{
+  rect_element r = make_rect(origin, s, { width, height}, filterstr);
   obj.add_element(r);
 }
 
 
 /// Center a rectangle at this point.
 void
-point_to_rect_centered(svg_element& obj, const point_2t origin, svg::style s,
-		       double width = 4, double height = 4)
+point_to_rect_centered(svg_element& obj, const point_2t origin,
+		       svg::style s,
+		       double width = 4, double height = 4,
+		       const string filterstr = "")
 {
-  auto [ x, y ] = origin;
-  x -= (width / 2);
-  y -= (height / 2);
-  point_2d_to_rect(obj, x, y, s, width, height);
+  rect_element r = make_rect_centered(origin, s, { width, height}, filterstr);
+  obj.add_element(r);
 }
 
 
-/// Draws a circle around a point (x,y), of style (s), of radius (r).
-void
-point_2d_to_circle(svg_element& obj, double x, double y, svg::style s,
-		   const space_type r = 4, const string xform = "")
+circle_element
+make_circle(const point_2t origin, svg::style s,
+	    const space_type r = 4, const string xform = "")
 {
-  using atype = decltype(obj._M_area)::atype;
   circle_element c;
-  using atype = decltype(obj._M_area)::atype;
-  circle_element::data dc = { atype(x), atype(y), r };
+  auto [ x, y ] = origin;
+  circle_element::data dc = { x, y, r };
   c.start_element();
   c.add_data(dc, xform);
   c.add_style(s);
   c.finish_element();
-  obj.add_element(c);
+  return c;
 }
 
 
@@ -368,14 +380,7 @@ void
 point_to_circle(svg_element& obj, const point_2t origin, svg::style s,
 		   const space_type r = 4, const string xform = "")
 {
-  using atype = decltype(obj._M_area)::atype;
-  circle_element c;
-  auto [ x, y ] = origin;
-  circle_element::data dc = { atype(x), atype(y), r };
-  c.start_element();
-  c.add_data(dc, xform);
-  c.add_style(s);
-  c.finish_element();
+  circle_element c = make_circle(origin, s, r, xform);
   obj.add_element(c);
 }
 

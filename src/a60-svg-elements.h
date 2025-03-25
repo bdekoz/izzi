@@ -427,8 +427,8 @@ struct marker_element : virtual public defs_element
   {
     defs_element::start_element();
 
-    auto { x, y ] = p;
-    auto { w, h ] = a;
+    auto [ x, y ] = p;
+    auto [ w, h ] = a;
     _M_sstream << "<marker id=" << k::quote << id << k::quote << k::space
 	       << "markerWidth=" << k::quote << w << k::quote << k::space
 	       << "markerHeight=" << k::quote << h << k::quote << k::space

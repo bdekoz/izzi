@@ -58,7 +58,7 @@ test_center_mark(svg::svg_element& obj)
   style cstyl = k::w_style;
   cstyl._M_stroke_size = 2;
   cstyl._M_stroke_opacity = 1.0;  
-  point_2d_to_circle(obj, x, y, cstyl, 4);
+  point_to_circle(obj, { x, y }, cstyl, 4);
 }
 
 int main()

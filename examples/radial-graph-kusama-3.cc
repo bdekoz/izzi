@@ -49,7 +49,7 @@ test_text(std::string ofile)
   if (backgroundp)
     {
       auto [ width, height ] = a;
-      point_2d_to_rect(obj, 0, 0, dstyl, width, height);
+      point_to_rect(obj, { 0, 0 }, dstyl, width, height);
     }
 
   const int radius = 16; // 50 if engc
@@ -72,7 +72,7 @@ test_text(std::string ofile)
   else
     {
       // Small center of radius circle
-      point_2d_to_circle(obj, x, y, k::b_style, radius);
+      point_to_circle(obj, { x, y }, k::b_style, radius);
     }
 
   // Put together data set.

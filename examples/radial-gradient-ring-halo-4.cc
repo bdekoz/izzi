@@ -8,8 +8,8 @@ void
 test_radial_gradient(svg_element& obj)
 {
   // Add background.
-  point_2d_to_rect(obj, 0, 0, k::b_style,
-		   obj._M_area._M_width, obj._M_area._M_height);
+  point_to_rect(obj, { 0, 0 }, k::b_style,
+		obj._M_area._M_width, obj._M_area._M_height);
 
   point_2t cp = obj.center_point();
   const size_type radius = obj._M_area._M_width / 3;
