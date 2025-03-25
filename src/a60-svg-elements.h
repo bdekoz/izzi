@@ -396,7 +396,7 @@ struct linear_gradient : virtual public gradient_element
   }
 
   void
-  finish_element();  
+  finish_element();
 };
 
 void
@@ -421,8 +421,32 @@ linear_gradient::finish_element()
  */
 struct marker_element : virtual public defs_element
 {
+  // markerWidth="8" markerHeight="8" refX="4" refY="4">
+  void
+  start_element(const string id, const area<> a, const point_2t p)
+  {
+    defs_element::start_element();
 
+    auto { x, y ] = p;
+    auto { w, h ] = a;
+    _M_sstream << "<marker id=" << k::quote << id << k::quote << k::space
+	       << "markerWidth=" << k::quote << w << k::quote << k::space
+	       << "markerHeight=" << k::quote << h << k::quote << k::space
+	       << "refX=" << k::quote << x << k::quote << k::space
+	       << "refY=" << k::quote << y << k::quote << k::space
+	       << k::newline;
+  }
+
+  void
+  finish_element();
 };
+
+void
+marker_element::finish_element()
+{
+  _M_sstream << "</marker>" << k::newline;
+  defs_element::finish_element();
+}
 
 
 /**
