@@ -275,6 +275,19 @@ make_line(const point_2t origin, const point_2t end, svg::style s,
 }
 
 
+/// Polyline primitive.
+polyline_element
+make_polyline(const vrange& points, svg::style s, const string dasharray = "")
+{
+  polyline_element pl(points);
+  pl.start_element();
+  pl.add_data(dasharray);
+  pl.add_style(s);
+  pl.finish_element();
+  return pl;
+}
+
+
 /// Line between two points.
 void
 points_to_line(svg_element& obj, const svg::style s,

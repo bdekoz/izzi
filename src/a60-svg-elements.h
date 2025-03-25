@@ -732,6 +732,64 @@ line_element::finish_element()
 { _M_sstream  << " />" << k::newline; }
 
 
+/**
+   Polyline SVG element.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/polyline
+
+   Attributes:
+   points, pathLength
+*/
+struct polyline_element : virtual public element_base
+{
+  // vector<point_2t> == vector<tuple<double,double>>
+  vrange polypoints;
+
+  polyline_element() { }
+
+  polyline_element(const vrange& points) : polypoints(points) { }
+
+  // Either serialize immediately (as below), or create data structure
+  // that adds data to data_vec and then finish_element serializes.
+  void
+  add_data(const string dasharray = "")
+  {
+    if (!polypoints.empty())
+      {
+	_M_sstream << "points=" << k::quote;
+	for (const point_2t& pt : polypoints)
+	  {
+	    auto [ x, y ] = pt;
+	    _M_sstream << x << k::comma << y << k::space;
+	  }
+	_M_sstream << k::quote << k::space;
+      }
+
+    if (!dasharray.empty())
+      {
+	_M_sstream << "stroke-dasharray=" << k::quote;
+	_M_sstream << dasharray << k::quote << k::space;
+      }
+  }
+
+  void
+  start_element()
+  { _M_sstream << "<polyline "; }
+
+  void
+  start_element(string name)
+  { _M_sstream << "<polyline id=" << k::quote << name << k::quote << k::space; }
+
+  void
+  finish_element();
+};
+
+void
+polyline_element::finish_element()
+{ _M_sstream  << " />" << k::newline; }
+
+
 
 /**
    Path SVG element.
