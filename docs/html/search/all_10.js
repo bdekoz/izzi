@@ -30,11 +30,13 @@ var searchData=
   ['point_5fto_5fring_5fhalo_27',['point_to_ring_halo',['../namespacesvg.html#a05ce09ad64d647467f52dcbebeb0c6ac',1,'svg']]],
   ['point_5fto_5ftriangle_28',['point_to_triangle',['../namespacesvg.html#a6f018eeb6506bdfb5b81fb1642fb5e2b',1,'svg']]],
   ['points_5fto_5fline_29',['points_to_line',['../namespacesvg.html#ade1cf7ebdd2b204618501e8d0cc28629',1,'svg']]],
-  ['powderblue_30',['powderblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ab1687e60d96154a3df2156a6e71d2bfa',1,'svg']]],
-  ['previous_31',['previous',['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56ceaa2327346e833efcd6b2e7b3f0a4df8ebb',1,'svg::constants']]],
-  ['property_32',['property',['../structsvg_1_1typography.html#aba5bf3a1484966319aebc9443746e98c',1,'svg::typography']]],
-  ['pt_33',['pt',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887afc9fdf084e290f26a270390dc49061a2',1,'svg']]],
-  ['pt_5fto_5fpx_34',['pt_to_px',['../namespacesvg.html#a4c9e0211cbec41717832c99673906e2d',1,'svg']]],
-  ['purple_35',['purple',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1abb7aedfa61007447dd6efaf9f37641e3',1,'svg']]],
-  ['px_36',['px',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a21de26caa6bcfc936378c4e45d235bd9',1,'svg']]]
+  ['polyline_5felement_30',['polyline_element',['../group__elements.html#structsvg_1_1polyline__element',1,'svg::polyline_element'],['../group__elements.html#a1b904a9214dce89842d72d3f3aa8ba42',1,'svg::polyline_element::polyline_element()'],['../group__elements.html#afb4492854c3c25ee742d69ea4425abd4',1,'svg::polyline_element::polyline_element(const vrange &amp;points)']]],
+  ['polypoints_31',['polypoints',['../group__elements.html#abbf4dfafa978f54d4227a104fe805023',1,'svg::polyline_element']]],
+  ['powderblue_32',['powderblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ab1687e60d96154a3df2156a6e71d2bfa',1,'svg']]],
+  ['previous_33',['previous',['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56ceaa2327346e833efcd6b2e7b3f0a4df8ebb',1,'svg::constants']]],
+  ['property_34',['property',['../structsvg_1_1typography.html#aba5bf3a1484966319aebc9443746e98c',1,'svg::typography']]],
+  ['pt_35',['pt',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887afc9fdf084e290f26a270390dc49061a2',1,'svg']]],
+  ['pt_5fto_5fpx_36',['pt_to_px',['../namespacesvg.html#a4c9e0211cbec41717832c99673906e2d',1,'svg']]],
+  ['purple_37',['purple',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1abb7aedfa61007447dd6efaf9f37641e3',1,'svg']]],
+  ['px_38',['px',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a21de26caa6bcfc936378c4e45d235bd9',1,'svg']]]
 ];

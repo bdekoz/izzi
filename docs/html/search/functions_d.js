@@ -15,5 +15,6 @@ var searchData=
   ['point_5fto_5fring_5fhalo_12',['point_to_ring_halo',['../namespacesvg.html#a05ce09ad64d647467f52dcbebeb0c6ac',1,'svg']]],
   ['point_5fto_5ftriangle_13',['point_to_triangle',['../namespacesvg.html#a6f018eeb6506bdfb5b81fb1642fb5e2b',1,'svg']]],
   ['points_5fto_5fline_14',['points_to_line',['../namespacesvg.html#ade1cf7ebdd2b204618501e8d0cc28629',1,'svg']]],
-  ['pt_5fto_5fpx_15',['pt_to_px',['../namespacesvg.html#a4c9e0211cbec41717832c99673906e2d',1,'svg']]]
+  ['polyline_5felement_15',['polyline_element',['../group__elements.html#a1b904a9214dce89842d72d3f3aa8ba42',1,'svg::polyline_element::polyline_element()'],['../group__elements.html#afb4492854c3c25ee742d69ea4425abd4',1,'svg::polyline_element::polyline_element(const vrange &amp;points)']]],
+  ['pt_5fto_5fpx_16',['pt_to_px',['../namespacesvg.html#a4c9e0211cbec41717832c99673906e2d',1,'svg']]]
 ];

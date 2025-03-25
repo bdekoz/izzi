@@ -14,10 +14,11 @@ var searchData=
   ['make_5fpath_5fdata_5ffrom_5fpoints_11',['make_path_data_from_points',['../namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91',1,'svg']]],
   ['make_5fpath_5foctogon_12',['make_path_octogon',['../namespacesvg.html#a36aa0da18e48e375d13bd262539eacff',1,'svg']]],
   ['make_5fpath_5ftriangle_13',['make_path_triangle',['../namespacesvg.html#a08b2a593c701c76c9b07584ee56b9505',1,'svg']]],
-  ['make_5fsvg_5f1_5fchannel_14',['make_svg_1_channel',['../namespacesvg.html#a114c1a72bfa2d91e76e2ccae6380e4fc',1,'svg']]],
-  ['make_5fsvg_5f2_5fchannel_15',['make_svg_2_channel',['../namespacesvg.html#a9322abe8f334a17d316c8471faeee95e',1,'svg']]],
-  ['make_5ftspan_5fy_5ffrom_5fstring_5fby_5ftoken_16',['make_tspan_y_from_string_by_token',['../group__elements.html#ga68582599a54e51a7d76a815930c759d5',1,'svg']]],
-  ['mangle_17',['mangle',['../structsvg_1_1render__state__base.html#afe85f1f6d54a7b1106989dfdf146e727',1,'svg::render_state_base']]],
-  ['matrix_18',['matrix',['../structsvg_1_1transform.html#a357456381323e5c6f936edad79f0827a',1,'svg::transform']]],
-  ['max_5fsegment_5fsize_5fn_19',['max_segment_size_n',['../structsvg_1_1area.html#aa4448741c57f4fc12afed34bc887d4c6',1,'svg::area']]]
+  ['make_5fpolyline_14',['make_polyline',['../namespacesvg.html#a0e6f4a8eb0c2bd8c459f4fb15b1c0370',1,'svg']]],
+  ['make_5fsvg_5f1_5fchannel_15',['make_svg_1_channel',['../namespacesvg.html#a114c1a72bfa2d91e76e2ccae6380e4fc',1,'svg']]],
+  ['make_5fsvg_5f2_5fchannel_16',['make_svg_2_channel',['../namespacesvg.html#a9322abe8f334a17d316c8471faeee95e',1,'svg']]],
+  ['make_5ftspan_5fy_5ffrom_5fstring_5fby_5ftoken_17',['make_tspan_y_from_string_by_token',['../group__elements.html#ga68582599a54e51a7d76a815930c759d5',1,'svg']]],
+  ['mangle_18',['mangle',['../structsvg_1_1render__state__base.html#afe85f1f6d54a7b1106989dfdf146e727',1,'svg::render_state_base']]],
+  ['matrix_19',['matrix',['../structsvg_1_1transform.html#a357456381323e5c6f936edad79f0827a',1,'svg::transform']]],
+  ['max_5fsegment_5fsize_5fn_20',['max_segment_size_n',['../structsvg_1_1area.html#aa4448741c57f4fc12afed34bc887d4c6',1,'svg::area']]]
 ];
