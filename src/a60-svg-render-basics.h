@@ -277,11 +277,12 @@ make_line(const point_2t origin, const point_2t end, svg::style s,
 
 /// Polyline primitive.
 polyline_element
-make_polyline(const vrange& points, svg::style s, const string dasharray = "")
+make_polyline(const vrange& points, svg::style s,
+	      const string dasharray = "", const string markerpoints = "")
 {
   polyline_element pl(points);
   pl.start_element();
-  pl.add_data(dasharray);
+  pl.add_data(dasharray, markerpoints);
   pl.add_style(s);
   pl.finish_element();
   return pl;

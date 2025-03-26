@@ -433,7 +433,7 @@ struct marker_element : virtual public defs_element
 	       << "markerWidth=" << k::quote << w << k::quote << k::space
 	       << "markerHeight=" << k::quote << h << k::quote << k::space
 	       << "refX=" << k::quote << x << k::quote << k::space
-	       << "refY=" << k::quote << y << k::quote << k::space
+	       << "refY=" << k::quote << y << k::quote << " >"
 	       << k::newline;
   }
 
@@ -818,7 +818,7 @@ struct polyline_element : virtual public element_base
   // Either serialize immediately (as below), or create data structure
   // that adds data to data_vec and then finish_element serializes.
   void
-  add_data(const string dasharray = "")
+  add_data(const string dasharray = "", const string markerpoints = "")
   {
     if (!polypoints.empty())
       {
@@ -835,6 +835,11 @@ struct polyline_element : virtual public element_base
       {
 	_M_sstream << "stroke-dasharray=" << k::quote;
 	_M_sstream << dasharray << k::quote << k::space;
+      }
+    if (!markerpoints.empty())
+      {
+	_M_sstream << "marker-mid=" << k::quote << "url(#";
+	_M_sstream << markerpoints << ")" << k::quote << k::space;
       }
   }
 
