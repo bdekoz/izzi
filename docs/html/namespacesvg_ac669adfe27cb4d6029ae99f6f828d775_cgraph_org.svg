@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="group__elements.html#ac2dd25601eb122d8b674caa780cad425" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="group__elements.html#a8d487066db8aa846562bce52aeb81042" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="222.5,-192 124,-192 124,-160 222.5,-160 222.5,-192"/>
 <text text-anchor="start" x="132" y="-180.4" font-family="SourceSans" font-size="8.00">svg::polyline_element</text>
 <text text-anchor="middle" x="173.25" y="-168.4" font-family="SourceSans" font-size="8.00">::add_data</text>
