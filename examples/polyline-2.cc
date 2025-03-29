@@ -12,7 +12,7 @@ const auto linelen = 150;
 
 void
 make_marker_circle(const std::string id,
-		   const svg::area<> ma, const svg::point_2t mcp)
+		   const svg::area<> ma, const svg::point_2t mcp, uint radius)
 {
   svg::marker_element mkr;
   mkr.start_element(id, ma, mcp);
@@ -20,7 +20,7 @@ make_marker_circle(const std::string id,
   using svg::color::red;
   const svg::style r_style = { red, 1.0, red, 0.0, 0.5 };
 
-  svg::circle_element c = make_circle(mcp, r_style, 8);
+  svg::circle_element c = make_circle(mcp, r_style, radius);
   mkr.add_raw(c.str());
   mkr.finish_element();
   obj.add_element(mkr);
@@ -29,8 +29,8 @@ make_marker_circle(const std::string id,
 void
 make_markers()
 {
-  make_marker_circle("c4", { 4, 4}, { 2, 2});
-  make_marker_circle("c8", { 8, 8}, { 4, 4});
+  make_marker_circle("c4", { 4, 4}, { 2, 2}, 2);
+  make_marker_circle("c8", { 8, 8}, { 4, 4}, 4);
 };
 
 void
