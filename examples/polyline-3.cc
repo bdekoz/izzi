@@ -1,4 +1,5 @@
 #include "a60-svg.h"
+#include "a60-svg-graphs-line.h"
 
 // static local
 namespace {
@@ -10,81 +11,7 @@ svg::point_2t cp = obj.center_point();
 const auto spacer = 50;
 const auto linelen = 150;
 
-using svg::color::red;
-using svg::color::wcag_lgray;
-using svg::color::wcag_gray;
-using svg::color::wcag_dgray;
-const svg::style style_r = { red, 1.0, red, 0.0, 0.5 };
-const svg::style style_wcaglg = { wcag_lgray, 1.0, wcag_lgray, 0.0, 0.5 };
-const svg::style style_wcagg = { wcag_gray, 1.0, wcag_gray, 0.0, 0.5 };
-const svg::style style_wcagdg = { wcag_dgray, 1.0, wcag_dgray, 0.0, 0.5 };
-
 }
-
-void
-make_marker_element(const std::string id,
-		    const svg::area<> ma, const svg::point_2t mcp,
-		    const std::string raw)
-{
-  svg::marker_element mkr;
-  mkr.start_element(id, ma, mcp);
-  mkr.add_raw(raw.c_str());
-  mkr.finish_element();
-  obj.add_element(mkr);
-}
-
-void
-make_marker_circle(const std::string id,
-		   const svg::area<> ma, const svg::point_2t mcp,
-		   const uint radius, const svg::style styl)
-{
-  svg::circle_element c = make_circle(mcp, styl, radius);
-  make_marker_element(id, ma, mcp, c.str());
-}
-
-void
-make_marker_triangle(const std::string id,
-		   const svg::area<> ma, const svg::point_2t mcp,
-		   const uint radius, const svg::style styl)
-{
-  svg::path_element p = make_path_triangle(mcp, styl, radius);
-  make_marker_element(id, ma, mcp, p.str());
-}
-
-void
-make_marker_x(const std::string id,
-	      const svg::area<> ma, const svg::point_2t mcp,
-	      const uint radius)
-{
-  const std::string s = svg::make_path_center_mark(mcp, radius, radius);
-  make_marker_element(id, ma, mcp, s);
-}
-
-void
-make_marker_rect(const std::string id,
-		 const svg::area<> ma, const svg::point_2t mcp,
-		 const svg::style styl)
-{
-  svg::rect_element p = make_rect(mcp, styl, ma);
-  make_marker_element(id, ma, mcp, p.str());
-}
-
-void
-make_markers()
-{
-  make_marker_circle("c4red", {4, 4}, {2, 2}, 2, style_r);
-  make_marker_circle("c4wcaglg", {4, 4}, {2, 2}, 2, style_wcaglg);
-  make_marker_circle("c4wcagdg", {4, 4}, {2, 2}, 2, style_wcagdg);
-  make_marker_circle("c4black", {4, 4}, {2, 2}, 2, svg::k::b_style);
-
-  make_marker_triangle("t4black", {4, 4}, {2, 2}, 2, svg::k::b_style);
-  make_marker_triangle("t4wcagg", {4, 4}, {2, 2}, 2, style_wcagg);
-
-  make_marker_x("x4wcagg", {4, 4}, {2, 2}, 2);
-
-  make_marker_rect("r4wcaglg", {4, 4}, {2, 2}, style_wcaglg);
-  make_marker_rect("r4wcagdg", {4, 4}, {2, 2}, style_wcagdg);
-};
 
 
 svg::vrange
@@ -127,22 +54,22 @@ test_polyline()
   obj.add_element(pl1);
 
   vrange points2 = make_points_at({xo, yo + linelen});
-  polyline_element pl2 = make_polyline(points2, styl2, "1", "r4wcaglg");
+  polyline_element pl2 = make_polyline(points2, styl2, "4", "r4wcaglg");
   obj.add_element(pl2);
 
   vrange points3 = make_points_at({xo, yo + 2 * linelen});
-  polyline_element pl3 = make_polyline(points3, styl3, "3", "x4wcagg");
+  polyline_element pl3 = make_polyline(points3, styl3, "2", "x4wcagg");
   obj.add_element(pl3);
 
   vrange points5 = make_points_at({xo, yo + 3 * linelen});
-  polyline_element pl5 = make_polyline(points5, styl3, "5", "t4wcagg");
-  obj.add_element(pl3);
+  polyline_element pl5 = make_polyline(points5, styl3, "3", "t4wcagg");
+  obj.add_element(pl5);
 }
 
 
 int main()
 {
-  make_markers();
+  svg::make_markers(obj);
   test_polyline();
   return 0;
 }
