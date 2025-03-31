@@ -1,4 +1,5 @@
 #include "a60-svg.h"
+#include "a60-json-basics.h"
 #include "a60-svg-graphs-line.h"
 
 // static local
