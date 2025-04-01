@@ -907,7 +907,7 @@ struct path_element : virtual public defs_element
   }
 
   void
-  start_element(string name)
+  start_element(const string name)
   {
     if (!_M_visible)
       defs_element::start_element();

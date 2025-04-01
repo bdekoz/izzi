@@ -73,9 +73,8 @@ make_marker_x(const std::string id,
 	      const svg::area<> ma, const svg::point_2t mcp,
 	      const uint radius, const svg::style styl)
 {
-  const std::string s = svg::make_path_center_mark(mcp, radius, radius / 2);
-  const std::string path = draw_path_data(s, styl, svg::k::no_style);
-  return make_marker_element(id, ma, mcp, path);
+  svg::path_element cm = svg::make_path_center_mark(mcp, styl, radius, radius / 2);
+  return make_marker_element(id, ma, mcp, cm.str());
 }
 
 marker_element

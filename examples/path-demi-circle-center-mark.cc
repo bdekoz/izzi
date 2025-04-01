@@ -33,7 +33,7 @@ test_path_demi_circle(svg::svg_element& obj)
   pdcb.add_data(pdcdatab);
   pdcb.add_style(s);
   pdcb.finish_element();
-  obj.add_element(pdcb);  
+  obj.add_element(pdcb);
 }
 
 void
@@ -43,21 +43,14 @@ test_center_mark(svg::svg_element& obj)
   auto [ x, y ] = origin;
 
   //sized_text(obj, k::apercu_typo, 2 * r, "+", x, y);
-
   const auto width = 20;
-  
-  path_element pth(true);
-  string pstr = make_path_center_mark(origin, r, width);
-  path_element::data pthdata = { pstr, 0 };
-  pth.start_element("centermark out");
-  pth.add_data(pthdata); 
-  pth.add_style(s);
-  pth.finish_element();
-  obj.add_element(pth);  
-  
+
+  path_element pth = make_path_center_mark(origin, s, r, width);
+  obj.add_element(pth);
+
   style cstyl = k::w_style;
   cstyl._M_stroke_size = 2;
-  cstyl._M_stroke_opacity = 1.0;  
+  cstyl._M_stroke_opacity = 1.0;
   point_to_circle(obj, { x, y }, cstyl, 4);
 }
 
@@ -67,6 +60,6 @@ int main()
   svg_element obj("path-demi-circle-center-mark", a);
 
   test_path_demi_circle(obj);
-  test_center_mark(obj);  
+  test_center_mark(obj);
   return 0;
 }

@@ -148,7 +148,6 @@ styled_text_link(svg_element& obj, const string text, const point_2t origin,
 }
 
 
-
 /// Text at size.
 void
 sized_text(svg_element& obj, svg::typography typo, const int sz,
@@ -275,6 +274,17 @@ make_line(const point_2t origin, const point_2t end, svg::style s,
 }
 
 
+/// Line between two points.
+void
+points_to_line(svg_element& obj, const svg::style s,
+	       const point_2t origin, const point_2t end,
+	       const string dasharray = "")
+{
+  line_element l = make_line(origin, end, s, dasharray);
+  obj.add_element(l);
+}
+
+
 /// Polyline primitive.
 polyline_element
 make_polyline(const vrange& points, svg::style s,
@@ -289,18 +299,7 @@ make_polyline(const vrange& points, svg::style s,
 }
 
 
-/// Line between two points.
-void
-points_to_line(svg_element& obj, const svg::style s,
-	       const point_2t origin, const point_2t end,
-	       const string dasharray = "")
-{
-  line_element l = make_line(origin, end, s, dasharray);
-  obj.add_element(l);
-}
-
-
-// Create rect_element at origin
+/// Create rect_element at origin
 rect_element
 make_rect(const point_2t origin, const svg::style s, const area<> a,
 	  const string filterstr = "")
@@ -322,7 +321,7 @@ make_rect(const point_2t origin, const svg::style s, const area<> a,
 }
 
 
-// Create rect_element centered at origin
+/// Create rect_element centered at origin
 rect_element
 make_rect_centered(const point_2t origin, const svg::style s, const area<> a,
 		   const string filterstr = "")
@@ -361,6 +360,7 @@ point_to_rect_centered(svg_element& obj, const point_2t origin,
 }
 
 
+/// Make circle element.
 circle_element
 make_circle(const point_2t origin, svg::style s,
 	    const space_type r = 4, const string xform = "")
@@ -589,41 +589,29 @@ make_path_data_from_points(const vrange& lpoints)
 /// Assumes pinstripe, ie top and bottom line layers.
 /// top style defaults: fill opac(0), stroke opac(1), stroke sz 1
 /// bottom style defaults: fill opac(0), stroke opac(1), stroke sz 1.25
-string
-draw_path_data(const string& pathda,
-	       const style& topstyl, const style& bottomstyl)
+path_element
+make_path(const string& pathda, const style& styl, const string name = "")
 {
-  std::ostringstream oss;
-
   // Draw path with this endpoint.
-  path_element::data da = { pathda, 0 };
-
-  // Draw colored line and outline. Draw outline first, so
-  // it will be on the lower layer in the SVG file.
-  if (to_string(bottomstyl._M_stroke_color) != to_string(svg::color::none))
-    {
-      path_element pebase;
-      pebase.start_element();
-      pebase.add_data(da);
-      pebase.add_style(bottomstyl);
-      pebase.finish_element();
-      oss << pebase.str() << k::space;
-    }
-
   path_element pe;
-  pe.start_element();
-  pe.add_data(da);
-  pe.add_style(topstyl);
-  pe.finish_element();
-  oss << pe.str() << k::space;
-
-  return oss.str();
+  if (to_string(styl._M_stroke_color) != to_string(svg::color::none))
+    {
+      path_element::data da = { pathda, 0 };
+      if (name.empty())
+	pe.start_element();
+      else
+	pe.start_element(name);
+      pe.add_data(da);
+      pe.add_style(styl);
+      pe.finish_element();
+    }
+  return pe;
 }
 
 
 /// Center a triangle at this point.
 path_element
-make_path_triangle(const point_2t origin, svg::style s,
+make_path_triangle(const point_2t origin, const svg::style styl,
 		   const double r = 4, const double angle = 120)
 {
   // Find points: orig, orig + (120 x 1), orig + (120 x 2).
@@ -634,14 +622,11 @@ make_path_triangle(const point_2t origin, svg::style s,
   vrange pointz = { p1, p2, p3, p1 };
   string pathda = make_path_data_from_points(pointz);
 
-  // Make closed path.
-  path_element tri(true);
-  path_element::data pthdata = { pathda, 0 };
   string argname = std::to_string(r) + k::hyphen + std::to_string(angle);
-  tri.start_element("triangle-" + argname);
-  tri.add_data(pthdata);
-  tri.add_style(s);
-  tri.finish_element();
+  const string id = "triangle-" + argname;
+
+  path_element::data pthdata = { pathda, 0 };
+  path_element tri = make_path(pathda, styl, id);
   return tri;
 }
 
@@ -660,8 +645,8 @@ point_to_triangle(svg_element& obj, const point_2t origin, svg::style s,
 /// radius 4 is pixels to draw out from center point.
 /// pointsn is number of points to draw (8 for octogon)
 path_element
-make_path_octogon(const point_2t origin, svg::style s, const double r = 4,
-		  const uint pointsn = 8)
+make_path_octogon(const point_2t origin, const svg::style styl,
+		  const double r = 4, const uint pointsn = 8)
 {
   // Find points: orig, orig + (120 x 1), orig + (120 x 2).
   const double angle(360.0/8);
@@ -679,13 +664,8 @@ make_path_octogon(const point_2t origin, svg::style s, const double r = 4,
   pointz.push_back(pointz.front());
   string pathda = make_path_data_from_points(pointz);
 
-  // Make closed path.
-  path_element oct(true);
-  path_element::data pthdata = { pathda, 0 };
-  oct.start_element("octogon-" + std::to_string(r));
-  oct.add_data(pthdata);
-  oct.add_style(s);
-  oct.finish_element();
+  const string id = "octogon-" + std::to_string(r);
+  path_element oct = make_path(pathda, styl, id);
   return oct;
 }
 
@@ -759,8 +739,9 @@ make_path_arc_closed(const point_2t& origin, const double startd,
 
 
 /// Plus or x tilt mark as closed path that can be filled.
-string
-make_path_center_mark(const point_2t& origin, const int len, const int width)
+path_element
+make_path_center_mark(const point_2t& origin, const svg::style styl,
+		      const int len, const int width)
 {
   // Define path as starting at origin, move half width up and to left then
   // move around as if making a plus sign.
@@ -795,7 +776,14 @@ make_path_center_mark(const point_2t& origin, const int len, const int width)
   oss << "H" << k::space << x << k::space;
   oss << "V" << k::space << y << k::space;
 
-  return oss.str();
+  const string pathdata = oss.str();
+
+  string id("center-mark-");
+  string attr(std::to_string(width) + "-" + std::to_string(len));
+  id += attr;
+
+  path_element cm = make_path(pathdata, styl, id);
+  return cm;
 }
 
 
