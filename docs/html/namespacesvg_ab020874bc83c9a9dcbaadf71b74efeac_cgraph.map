@@ -1,5 +1,5 @@
 <map id="svg::make_rect" name="svg::make_rect">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,152,102,179"/>
+<area shape="rect" id="Node000001" title="Create rect_element at origin." alt="" coords="5,152,102,179"/>
 <area shape="rect" id="Node000002" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="152,5,268,48"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,150,100,109,148,63,159,55,162,59,151,67,104,113,68,153"/>
 <area shape="rect" id="Node000004" href="$group__elements.html#a1b22cfab9437b40c8b877ffe5472ff02" title=" " alt="" coords="150,77,271,120"/>

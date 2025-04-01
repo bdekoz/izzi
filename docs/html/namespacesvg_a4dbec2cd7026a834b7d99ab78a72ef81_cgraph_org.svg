@@ -76,7 +76,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="namespacesvg.html#ab020874bc83c9a9dcbaadf71b74efeac" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="namespacesvg.html#ab020874bc83c9a9dcbaadf71b74efeac" target="_top" xlink:title="Create rect_element at origin.">
 <polygon fill="white" stroke="#666666" points="351,-151 278.75,-151 278.75,-131 351,-131 351,-151"/>
 <text text-anchor="middle" x="314.88" y="-139.4" font-family="SourceSans" font-size="8.00">svg::make_rect</text>
 </a>

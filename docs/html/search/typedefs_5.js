@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['size_5ftype_0',['size_type',['../namespacesvg.html#ab7a8579a9e90c8e67a3da368ba496f4f',1,'svg']]],
-  ['space_5ftype_1',['space_type',['../namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e',1,'svg']]],
-  ['stream_5ftype_2',['stream_type',['../group__elements.html#ab9bba04874246f881c7632225c173ff6',1,'svg::element_base']]],
-  ['strings_3',['strings',['../namespacesvg.html#af5f869581be4b983df188993df43f2c4',1,'svg']]]
+  ['palette_0',['palette',['../namespacesvg.html#aeacd3120997f7c88c61a5c70ce9c6822',1,'svg']]],
+  ['palette_5fqf_1',['palette_qf',['../namespacesvg.html#a2efb35a28f287b7e796bca5012bae2c8',1,'svg']]],
+  ['palette_5fqi_2',['palette_qi',['../namespacesvg.html#a0b8a14877328951480552eac5b904979',1,'svg']]],
+  ['point_5f2t_3',['point_2t',['../namespacesvg.html#af074bb68ac49143551503d72f2bff83e',1,'svg']]],
+  ['point_5f2tn_4',['point_2tn',['../namespacesvg.html#ad6572ee040e97b7e2de8a1e13eb40215',1,'svg']]]
 ];

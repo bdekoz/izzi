@@ -22,7 +22,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Create rect_element centered at origin.">
 <polygon fill="#999999" stroke="#666666" points="109.75,-126 0,-126 0,-106 109.75,-106 109.75,-126"/>
 <text text-anchor="middle" x="54.88" y="-114.4" font-family="SourceSans" font-size="8.00">svg::make_rect_centered</text>
 </a>
@@ -31,7 +31,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacesvg.html#ab020874bc83c9a9dcbaadf71b74efeac" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="namespacesvg.html#ab020874bc83c9a9dcbaadf71b74efeac" target="_top" xlink:title="Create rect_element at origin.">
 <polygon fill="white" stroke="#666666" points="218,-126 145.75,-126 145.75,-106 218,-106 218,-126"/>
 <text text-anchor="middle" x="181.88" y="-114.4" font-family="SourceSans" font-size="8.00">svg::make_rect</text>
 </a>

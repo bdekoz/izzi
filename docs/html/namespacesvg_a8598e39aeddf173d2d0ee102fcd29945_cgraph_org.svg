@@ -1470,7 +1470,7 @@
 <!-- Node60 -->
 <g id="Node000060" class="node">
 <title>Node60</title>
-<g id="a_Node000060"><a xlink:href="namespacesvg.html#ae450771820b99cadcbf845a4e712753c" target="_top" xlink:title=" ">
+<g id="a_Node000060"><a xlink:href="namespacesvg.html#ae450771820b99cadcbf845a4e712753c" target="_top" xlink:title="Make circle element.">
 <polygon fill="white" stroke="#666666" points="1100,-416 1022.5,-416 1022.5,-396 1100,-396 1100,-416"/>
 <text text-anchor="middle" x="1061.25" y="-404.4" font-family="SourceSans" font-size="8.00">svg::make_circle</text>
 </a>

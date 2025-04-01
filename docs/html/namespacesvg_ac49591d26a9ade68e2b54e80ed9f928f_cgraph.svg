@@ -49,7 +49,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1412;
 var viewHeight = 868;
-var sectionId = 'dynsection-24';
+var sectionId = 'dynsection-26';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -1498,7 +1498,7 @@ var sectionId = 'dynsection-24';
 <!-- Node59 -->
 <g id="Node000059" class="node">
 <title>Node59</title>
-<g id="a_Node000059"><a xlink:href="namespacesvg.html#ae450771820b99cadcbf845a4e712753c" target="_top" xlink:title=" ">
+<g id="a_Node000059"><a xlink:href="namespacesvg.html#ae450771820b99cadcbf845a4e712753c" target="_top" xlink:title="Make circle element.">
 <polygon fill="white" stroke="#666666" points="966.25,-416 888.75,-416 888.75,-396 966.25,-396 966.25,-416"/>
 <text text-anchor="middle" x="927.5" y="-404.4" font-family="SourceSans" font-size="8.00">svg::make_circle</text>
 </a>

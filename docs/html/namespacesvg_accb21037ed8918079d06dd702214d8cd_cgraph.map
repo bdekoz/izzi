@@ -1,0 +1,7 @@
+<map id="svg::deserialize_json_to_dom_array" name="svg::deserialize_json_to_dom_array">
+<area shape="rect" id="Node000001" title="Load JSON file to in&#45;memory DOM array." alt="" coords="5,5,130,48"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a245a67871265c4375d97e0b37bde8706" title="Deserialize input file." alt="" coords="178,5,302,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,24,162,24,162,29,130,29"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a67131a06be99c02246a0c4ca94c90e1d" title="Deserialize input string." alt="" coords="350,5,474,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="302,24,335,24,335,29,302,29"/>
+</map>

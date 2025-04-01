@@ -40,7 +40,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="namespacesvg.html#a7c25ce3eee490f8a8673c17d77fed46d" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="namespacesvg.html#a7c25ce3eee490f8a8673c17d77fed46d" target="_top" xlink:title="Create rect_element centered at origin.">
 <polygon fill="white" stroke="#666666" points="228.5,-126 118.75,-126 118.75,-106 228.5,-106 228.5,-126"/>
 <text text-anchor="middle" x="173.62" y="-114.4" font-family="SourceSans" font-size="8.00">svg::make_rect_centered</text>
 </a>
@@ -76,7 +76,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="namespacesvg.html#ab020874bc83c9a9dcbaadf71b74efeac" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="namespacesvg.html#ab020874bc83c9a9dcbaadf71b74efeac" target="_top" xlink:title="Create rect_element at origin.">
 <polygon fill="white" stroke="#666666" points="351,-126 278.75,-126 278.75,-106 351,-106 351,-126"/>
 <text text-anchor="middle" x="314.88" y="-114.4" font-family="SourceSans" font-size="8.00">svg::make_rect</text>
 </a>

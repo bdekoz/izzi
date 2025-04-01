@@ -224,7 +224,7 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="namespacesvg.html#ae450771820b99cadcbf845a4e712753c" target="_top" xlink:title=" ">
+<g id="a_Node000012"><a xlink:href="namespacesvg.html#ae450771820b99cadcbf845a4e712753c" target="_top" xlink:title="Make circle element.">
 <polygon fill="white" stroke="#666666" points="508.38,-305 430.88,-305 430.88,-285 508.38,-285 508.38,-305"/>
 <text text-anchor="middle" x="469.62" y="-293.4" font-family="SourceSans" font-size="8.00">svg::make_circle</text>
 </a>
