@@ -90,7 +90,7 @@ struct area
   /// compute max effective segment size given number of segments @rdenom.
   /// NB: if @rdenom is two then this is a max radius value centered
   /// on the page/frame.
-  inline double
+  inline constexpr double
   max_segment_size_n(const uint rdenom = 2) const
   {
     double leastside = std::min(_M_height, _M_width);
@@ -98,7 +98,7 @@ struct area
   }
 
   ///  Convenience function for finding center.
-  inline point_2t
+  inline constexpr point_2t
   center_point() const
   {  return std::make_tuple(_M_width / 2, _M_height / 2); }
 

@@ -16,27 +16,59 @@
 #ifndef izzi_SVG_GRAPHS_LINE_H
 #define izzi_SVG_GRAPHS_LINE_H 1
 
+#include "a60-svg-grid-matrix-systems.h"
 #include "a60-json-basics.h"
+
+namespace {
+
+/// Glyph type sizes.
+constexpr auto lsz = 16; // large bold
+constexpr auto asz = 12; // sub headings
+constexpr auto ssz = 10; // sub sub headings
+
+constexpr svg::area<> achart = { 900, 600 };
+  constexpr auto cpx = std::get<0>(achart.center_point());
+constexpr uint marginx = 20;
+constexpr uint marginy = 20;
+
+} // end anonymous namespace
+
 
 namespace svg {
 
-/// Some Example Line Charts.
-/// https://www.highcharts.com/demo/highcharts/accessible-line
+/**
+   Line Graphs / Line Charts.
 
-// Type sizes.
-const auto lsz = 16; // large bold
-const auto asz = 12; // sub headings
-const auto ssz = 10; // sub sub headings
+   Some Example:
+   https://www.highcharts.com/demo/highcharts/accessible-line
 
-// https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/
+   Outline:
 
-// stroke_dash_array
-// Attribute/stroke-dasharray
+   input has 2 columns: x, y
+     - how many x, what is range, what is delta
+     - how many y, what is range, what is delta
 
-// Marker styles.
-// polyline marker-mid
-// Attribute/marker-mid
+   plot as grid/matrix system given above.
 
+   line: points, linestyle
+
+   x axis: title, tick mark spacing, tick mark style
+   y axis: title, tick mark spacing, tick mark style
+*/
+
+
+
+/**
+   Marker styles, ways to make line start, mid points, and enpoints look distinct.
+
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/
+
+   stroke_dash_array
+   Attribute/stroke-dasharray
+
+   polyline marker-mid
+   Attribute/marker-mid
+*/
 
 /// Base function for generating SVG markers in a defs section.
 marker_element
