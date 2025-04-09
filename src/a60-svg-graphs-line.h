@@ -16,6 +16,7 @@
 #ifndef izzi_SVG_GRAPHS_LINE_H
 #define izzi_SVG_GRAPHS_LINE_H 1
 
+#include "a60-json-basics.h"
 
 namespace svg {
 
@@ -95,24 +96,35 @@ make_markers(svg::svg_element& obj)
   using svg::color::wcag_lgray;
   using svg::color::wcag_gray;
   using svg::color::wcag_dgray;
+  using svg::k::b_style;
   const svg::style style_r = { red, 1.0, red, 0.0, 0.5 };
   const svg::style style_wcaglg = { wcag_lgray, 1.0, wcag_lgray, 0.0, 0.5 };
   const svg::style style_wcagg = { wcag_gray, 1.0, wcag_gray, 0.0, 0.5 };
   const svg::style style_wcagdg = { wcag_dgray, 1.0, wcag_dgray, 0.0, 0.5 };
 
-  obj.add_element(make_marker_circle("c4red", {4, 4}, {2, 2}, 2, style_r));
+  auto m1 = make_marker_circle("c4red", {4, 4}, {2, 2}, 2, style_r);
+  auto m2 = make_marker_circle("c4wcaglg", {4, 4}, {2, 2}, 2, style_wcaglg);
+  auto m3 = make_marker_circle("c4wcagdg", {4, 4}, {2, 2}, 2, style_wcagdg);
+  auto m4 = make_marker_circle("c4black", {4, 4}, {2, 2}, 2, b_style);
+  auto m5 = make_marker_triangle("t4black", {4, 4}, {2, 2}, 2, b_style);
+  auto m6 = make_marker_triangle("t4wcagg", {4, 4}, {2, 2}, 2, style_wcagg);
+  auto m7 = make_marker_x("x4wcagg", {4, 4}, {2, 2}, 2, style_wcaglg);
+  auto m8 = make_marker_rect("r4wcaglg", {4, 4}, {2, 2}, style_wcaglg);
+  auto m9 = make_marker_rect("r4wcagdg", {4, 4}, {2, 2}, style_wcagdg);
 
-  obj.add_element(make_marker_circle("c4wcaglg", {4, 4}, {2, 2}, 2, style_wcaglg));
-  obj.add_element(make_marker_circle("c4wcagdg", {4, 4}, {2, 2}, 2, style_wcagdg));
-  obj.add_element(make_marker_circle("c4black", {4, 4}, {2, 2}, 2, svg::k::b_style));
-
-  obj.add_element(make_marker_triangle("t4black", {4, 4}, {2, 2}, 2, svg::k::b_style));
-  obj.add_element(make_marker_triangle("t4wcagg", {4, 4}, {2, 2}, 2, style_wcagg));
-
-  obj.add_element(make_marker_x("x4wcagg", {4, 4}, {2, 2}, 2, style_wcaglg));
-
-  obj.add_element(make_marker_rect("r4wcaglg", {4, 4}, {2, 2}, style_wcaglg));
-  obj.add_element(make_marker_rect("r4wcagdg", {4, 4}, {2, 2}, style_wcagdg));
+  svg::defs_element def;
+  def.start_element();
+  def.add_raw(m1.str());
+  def.add_raw(m2.str());
+  def.add_raw(m3.str());
+  def.add_raw(m4.str());
+  def.add_raw(m5.str());
+  def.add_raw(m6.str());
+  def.add_raw(m7.str());
+  def.add_raw(m8.str());
+  def.add_raw(m9.str());
+  def.finish_element();
+  obj.add_element(def);
 };
 
 

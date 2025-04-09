@@ -58,7 +58,7 @@ struct element_base
   // Add raw string to group, filter, blend/gradient elements.
   void
   add_raw(const string& raw)
-  { _M_sstream << k::space << raw << k::newline; }
+  { _M_sstream << k::space << raw; }
 
   void
   add_fill(const string id)
@@ -153,7 +153,7 @@ struct group_element : virtual public element_base
 
 void
 group_element::finish_element()
-  { _M_sstream  << finish_group() << k::newline; }
+  { _M_sstream << finish_group() << k::newline; }
 
 
 /**
@@ -177,7 +177,7 @@ struct defs_element : virtual public element_base
 
 void
 defs_element::finish_element()
-{ _M_sstream  << "</defs>" << k::newline; }
+{ _M_sstream << "</defs>" << k::newline; }
 
 
 /**
@@ -419,14 +419,15 @@ linear_gradient::finish_element()
    Attributes:
    id
  */
-struct marker_element : virtual public defs_element
+struct marker_element : virtual public element_base
 {
+  void
+  start_element() { }
+
   // markerWidth="8" markerHeight="8" refX="4" refY="4">
   void
   start_element(const string id, const area<> a, const point_2t p)
   {
-    defs_element::start_element();
-
     auto [ x, y ] = p;
     auto [ w, h ] = a;
     _M_sstream << "<marker id=" << k::quote << id << k::quote << k::space
@@ -445,7 +446,6 @@ void
 marker_element::finish_element()
 {
   _M_sstream << "</marker>" << k::newline;
-  defs_element::finish_element();
 }
 
 
