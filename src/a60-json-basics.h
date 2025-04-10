@@ -38,7 +38,7 @@ using jsonstream = rj::PrettyWriter<rj::StringBuffer>;
 
 /// Serialize set of id_type
 void
-serialize_id_types_json(jsonstream& writer, const auto& ids, string tag)
+serialize_id_types_json(jsonstream& writer, const auto& ids, const string tag)
 {
   writer.String(tag);
   writer.StartArray();
@@ -66,7 +66,7 @@ serialize_id_types_json(jsonstream& writer, const auto& ids, string tag)
 
 /// Deserialize input string.
 rj::Document
-deserialize_json_string_to_dom(string& json)
+deserialize_json_string_to_dom(const string& json)
 {
   // DOM
   rj::Document dom;
@@ -83,7 +83,7 @@ deserialize_json_string_to_dom(string& json)
 
 /// Deserialize input file.
 rj::Document
-deserialize_json_to_dom(string input_file)
+deserialize_json_to_dom(const string input_file)
 {
   // Deserialize input file.
   std::ifstream ifs(input_file);
@@ -105,7 +105,7 @@ deserialize_json_to_dom(string input_file)
 
 /// Load JSON file to in-memory DOM.
 rj::Document
-deserialize_json_to_dom_object(string input_file)
+deserialize_json_to_dom_object(const string input_file)
 {
   rj::Document dom = deserialize_json_to_dom(input_file);
 
@@ -121,7 +121,7 @@ deserialize_json_to_dom_object(string input_file)
 
 /// Load JSON file to in-memory DOM array.
 rj::Document
-deserialize_json_to_dom_array(string input_file)
+deserialize_json_to_dom_array(const string input_file)
 {
   rj::Document dom = deserialize_json_to_dom(input_file);
 
@@ -162,6 +162,18 @@ search_dom_for_int_field(const rj::Document& dom, const string finds)
 	found = a.GetInt();
     }
   return found;
+}
+
+
+double
+extract_dom_value_to_double(const rj::Value& v)
+{
+  double ret(0.0);
+  if (v.IsInt())
+    ret = static_cast<double>(v.GetInt());
+  if (v.IsDouble())
+    ret = v.GetDouble();
+  return ret;
 }
 
 } // namespace svg
