@@ -69,7 +69,7 @@ set_min_satellite_distance(const double kuse)
 */
 int
 radiate_line_and_value(svg_element& obj, const point_2t origin,
-		       const double angled, const size_type v,
+		       const double angled, const ssize_type v,
 		       const int rspace, const int rstart, const int linelen,
 		       const typography& typo,
 		       const style styl = {color::black, 1, color::black, .25, 1})
@@ -195,7 +195,7 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 /// Convenience function for above.
 int
 radiate_glyph_and_id(svg_element& obj, const point_2t origin,
-		     const size_type v, const size_type value_max,
+		     const ssize_type v, const ssize_type value_max,
 		     const int radius, const int rspace, const int rstart,
 		     const string id, const typography& typo)
 {
@@ -218,7 +218,7 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 */
 int
 kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& ids,
-		      const size_type v, const size_type value_max,
+		      const ssize_type v, const ssize_type value_max,
 		      const int radius, const int rspace, const int rstart,
 		      const int linelen,
 		      const typography& typo,
@@ -299,7 +299,7 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
 */
 void
 kusama_ids_orbit_low(svg_element& obj, const point_2t origin, const strings& ids,
-		     const size_type v, const size_type value_max,
+		     const ssize_type v, const ssize_type value_max,
 		     const int radius, const int rspace, const int rstart,
 		     const int linelen,
 		     const typography& typo, const bool wbyvaluep)
@@ -344,7 +344,7 @@ kusama_ids_orbit_low(svg_element& obj, const point_2t origin, const strings& ids
 /// Layer one value's glyphs and ids.
 void
 kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, const strings& ids,
-		     const size_type v, const size_type value_max,
+		     const ssize_type v, const ssize_type value_max,
 		     const int radius, const int rspace, const int rstart,
 		     const int linelen,
 		     const typography& typo, const bool weighbyvaluep)
@@ -398,16 +398,16 @@ kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, const strings& ids
 */
 void
 kusama_collision_transforms(svg_element& obj, const point_2t origin,
-			    std::vector<size_type>& vuvalues, vvstrings& vids,
-			    const size_type value_max,
+			    std::vector<ssize_type>& vuvalues, vvstrings& vids,
+			    const ssize_type value_max,
 			    const int radius, const int rspace, const int rstart,
 			    const typography& typo, const bool weighbyvaluep,
-			    const size_type threshold = 1,
+			    const ssize_type threshold = 1,
 			    const int startlenm = 5)
 {
   // Stash of values/ids for near pass, but after transforms are done.
   vvstrings vidsnear;
-  std::vector<size_type> vuvaluesnear;
+  std::vector<ssize_type> vuvaluesnear;
 
   const int startlen = radius * startlenm;
   const int linelen = rspace * 2;
@@ -420,7 +420,7 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
   for (uint i = 0; i < vuvalues.size(); ++i)
     {
       const strings& ids = vids[i];
-      const size_type v = vuvalues[i];
+      const ssize_type v = vuvalues[i];
       const bool finalp = i + 1 == vuvalues.size();
       const bool firstp = i == 0;
 
@@ -430,7 +430,7 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
       // Continue as skipped only if < value_max / 4 ago, else reset.
       if (skip)
 	{
-	  const size_type vold = vuvalues[i - 1];
+	  const ssize_type vold = vuvalues[i - 1];
 	  if (std::abs(v - vold) > (value_max / 4))
 	    skip = false;
 	}
@@ -482,7 +482,7 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
 svg_element
 kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			     const typography& typo, const id_value_umap& ivm,
-			     const size_type value_max, const int radius,
+			     const ssize_type value_max, const int radius,
 			     const int rspace, const bool weighbyvaluep = true,
 			     const bool collisionp = false,
 			     const bool sortstringsbysizep = false)
@@ -500,7 +500,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   //
   // - VPOINTNS
   // - constuct a vector of points on the circumference with weight
-  std::vector<size_type> vuvalues(uvalues.begin(), uvalues.end());
+  std::vector<ssize_type> vuvalues(uvalues.begin(), uvalues.end());
   std::vector<strings> vids;
   for (const auto& v : vuvalues)
     {
@@ -536,7 +536,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   if (collisionp && vuvalues.size() > 1)
     {
       // Approximate scaling given default typograhics.
-      size_type threshold(1);
+      ssize_type threshold(1);
       if (value_max >= 20 && value_max < 190)
 	threshold = 2;
       if (value_max >= 190 && value_max < 290)

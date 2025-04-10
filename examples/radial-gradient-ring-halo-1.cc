@@ -65,18 +65,18 @@ test_radial_gradient(std::string ofile)
 
   const auto radius = 60;
   const double fuzzpercentage = 0.33;
-  const size_type variance = std::round(radius * fuzzpercentage);
+  const ssize_type variance = std::round(radius * fuzzpercentage);
 
   // outer ring == upper bound, radius + variance.
-  const size_type oring = radius + variance;
+  const ssize_type oring = radius + variance;
   const double oratio = static_cast<double>(oring)/static_cast<double>(radius);
-  const size_type oringperc(round(oratio * 100));
+  const ssize_type oringperc(round(oratio * 100));
   const string oringpercent = to_string(oringperc) + "%";
 
   // inner ring == lower bound, radius - variance.
-  const size_type iring = radius - variance;
+  const ssize_type iring = radius - variance;
   const double iratio = static_cast<double>(iring)/static_cast<double>(radius);
-  const size_type iringperc(round(iratio * 100));
+  const ssize_type iringperc(round(iratio * 100));
   const string iringpercent = to_string(iringperc) + "%";
 
   // Some basic diagnostics.

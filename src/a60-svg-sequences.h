@@ -316,7 +316,7 @@ vertical_sync_roll_seq(const rect_element::data& drin, const color klr,
       sty._M_fill_opacity = opac;
 
       rect_element rsvg1;
-      size_type yblurb = static_cast<int>(drblurb._M_y_origin - stepn);
+      ssize_type yblurb = static_cast<int>(drblurb._M_y_origin - stepn);
       rsvg1.start_element();
       rsvg1.add_data(drblurb);
       rsvg1.add_filter("20y");
@@ -324,7 +324,7 @@ vertical_sync_roll_seq(const rect_element::data& drin, const color klr,
       rsvg1.finish_element();
 
       rect_element rsvg3;
-      // size_type yblurt = static_cast<int>(drblurt._M_y_origin - stepn);
+      // ssize_type yblurt = static_cast<int>(drblurt._M_y_origin - stepn);
       rsvg3.start_element();
       rsvg3.add_data(drblurt);
       rsvg3.add_filter("20y");
@@ -340,7 +340,7 @@ vertical_sync_roll_seq(const rect_element::data& drin, const color klr,
       // Foreground rectangle.
       sty._M_fill_opacity = opac + 0.20;
       rect_element rsvgfg;
-      // size_type y = static_cast<int>(drs._M_y_origin - stepn);
+      // ssize_type y = static_cast<int>(drs._M_y_origin - stepn);
       rsvgfg.start_element();
       rsvgfg.add_data(drs);
       rsvgfg.add_style(sty);
@@ -374,8 +374,8 @@ dot_grid_seq(const rect_element::data& drin, const color klr,
 
   // Start at bottom off-screen and go up.
   // These should all be arguments if this were to be parameterized.
-  size_type negspace = 2 * radius * 1.5;
-  size_type yinit = drin._M_height - radius - ystart;
+  ssize_type negspace = 2 * radius * 1.5;
+  ssize_type yinit = drin._M_height - radius - ystart;
 
   // style sty = { klr, 1.0, klr, 0.0, 0 };
   style sty = { klr, .9, klr, 0.0, 0 };

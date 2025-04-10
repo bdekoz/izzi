@@ -16,8 +16,8 @@ test_radial_gradient(svg_element& obj)
   point_2t cp = obj.center_point();
 
   auto [ xd, yd ] = cp;
-  const size_type x(xd);
-  const size_type y(yd);
+  const ssize_type x(xd);
+  const ssize_type y(yd);
   point_to_ring_halo(obj, make_tuple(x, y + rectw), 60, 0.66, color::blue);
   point_to_ring_halo(obj, make_tuple(x, y - rectw), 60, 0.66, color::blue);
 

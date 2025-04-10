@@ -75,7 +75,7 @@ set_radial_range(const space_type rmin, const space_type rmax)
 
 /// Transform a value on a range to an angle on the radial range.
 inline double
-get_angle(size_type pvalue, size_type pmax)
+get_angle(ssize_type pvalue, ssize_type pmax)
 {
   // Normalize [0, pmax] to range [mindeg, maxdeg] and put pvalue in it.
   const auto [ mindeg, maxdeg ] = get_radial_range();
@@ -141,7 +141,7 @@ adjust_angle_at_orbit_for_distance(double r, double dist,
 
 /// The number of significant digits in @maxval.
 uint
-significant_digits_in(size_type maxval)
+significant_digits_in(ssize_type maxval)
 {
   uint sigdigits(1);
   while (maxval > 1)
@@ -157,23 +157,23 @@ significant_digits_in(size_type maxval)
 /// Value -> Name, as a string where value has labelspaces of fill
 /// NB: Should be the number of significant digits in pmax plus separators.
 /// So, 10 == 2, 100 == 3, 10k == 5 + 1
-size_type&
+ssize_type&
 get_label_spaces()
 {
-  static size_type lspaces;
+  static ssize_type lspaces;
   return lspaces;
 }
 
 
 /// Set the number of label spaces.
 void
-set_label_spaces(size_type spaces)
+set_label_spaces(ssize_type spaces)
 { get_label_spaces() = spaces; }
 
 
 /// Make radial labels.
 string
-make_label_for_value(string pname, size_type pvalue,
+make_label_for_value(string pname, ssize_type pvalue,
 		     const uint valuewidth = 9)
 {
   // Consolidate label text to be "VALUE -> NAME"

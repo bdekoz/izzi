@@ -24,7 +24,7 @@ test_halo_insert(svg_element& obj)
   nobj.start_element(cp, destarea);
 
   point_2t ncp = nobj.center_point();
-  const size_type radius = len / 3;
+  const ssize_type radius = len / 3;
   const double blurspace = radius * 0.5;
   point_to_ring_halo(nobj, ncp, radius, blurspace, color::white, bkgklr);
 

@@ -34,7 +34,7 @@ struct element_base
 
   // Underlying units for 2D (x,y) mapping (same as area::atype).
   using atype = space_type; // ... floating point cartesian points
-  //using atype = size_type; // ... integer cartesian points
+  //using atype = ssize_type; // ... integer cartesian points
 
   /// Virtual, only one buffer.
   stream_type		_M_sstream;
@@ -307,10 +307,10 @@ struct gradient_element : virtual public defs_element
 
   // Express two integers as a suitable offset string percentage.
   const string
-  offset_percentage(const size_type numer, const size_type denom)
+  offset_percentage(const ssize_type numer, const ssize_type denom)
   {
     const double ratio = static_cast<double>(numer)/static_cast<double>(denom);
-    const size_type perc(round(ratio * 100));
+    const ssize_type perc(round(ratio * 100));
     return std::to_string(perc) + "%";
   }
 };
@@ -335,8 +335,8 @@ struct radial_gradient : virtual public gradient_element
   // Radial gradient centered at (cx, cy) of radius.
   // Default for radius, cx, cy is "50%"
   void
-  start_element(const string id, const size_type radius = 0,
-		const size_type cx = 0, const size_type cy = 0)
+  start_element(const string id, const ssize_type radius = 0,
+		const ssize_type cx = 0, const ssize_type cy = 0)
   {
     gradient_element::start_element();
     _M_sstream << "<radialGradient id=" << k::quote << id << k::quote;
@@ -353,9 +353,9 @@ struct radial_gradient : virtual public gradient_element
   // End circle (aka 100% stop) at (cx, cy) with radius.
   // Start circle (aka 0% stop) at (fx, fy) with radius fr.
   void
-  start_element(const string id, const size_type radius,
-		const size_type cx, const size_type cy, const size_type fr,
-		const size_type fx, const size_type fy)
+  start_element(const string id, const ssize_type radius,
+		const ssize_type cx, const ssize_type cy, const ssize_type fr,
+		const ssize_type fx, const ssize_type fy)
   {
     gradient_element::start_element();
     _M_sstream << "<radialGradient id=" << k::quote << id << k::quote

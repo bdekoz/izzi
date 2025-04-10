@@ -64,7 +64,7 @@ to_value_id_mmap(const id_value_umap& ivm, value_set& uniquev)
   for (auto& e: ivm)
     {
       string s = e.first;
-      size_type i = e.second;
+      ssize_type i = e.second;
       vimm.insert(make_pair(i, s));
       uniquev.insert(i);
     }
@@ -79,7 +79,7 @@ to_value_id_mmap(const id_value_umap& ivm, value_set& uniquev)
 void
 radiate_id_at_value(svg_element& obj, const point_2t origin,
 		    const typography& typo, string pname,
-		    size_type pvalue, size_type pmax, double r,
+		    ssize_type pvalue, ssize_type pmax, double r,
 		    bool rotatep)
 {
   const double angled = get_angle(pvalue, pmax);
@@ -108,7 +108,7 @@ svg_element
 radiate_ids_per_value_on_arc(svg_element& obj, const point_2t origin,
 			     const typography& typo,
 			     const id_value_umap& ivm,
-			     const size_type value_max,
+			     const ssize_type value_max,
 			     const int radius, bool rotatep)
 {
   // Probe/Marker display.
@@ -116,7 +116,7 @@ radiate_ids_per_value_on_arc(svg_element& obj, const point_2t origin,
   for (const auto& v : ivm)
     {
       string pname(v.first);
-      size_type pvalue(v.second);
+      ssize_type pvalue(v.second);
       if (pvalue)
 	radiate_id_at_value(obj, origin, typo, pname, pvalue, value_max,
 			    radius, rotatep);
@@ -130,7 +130,7 @@ radiate_ids_per_value_on_arc(svg_element& obj, const point_2t origin,
 void
 radiate_ids_at_uvalue(svg_element& obj, const point_2t origin,
 		      const typography& typo, const strings& ids,
-		      size_type pvalue, size_type pmax, double r,
+		      ssize_type pvalue, ssize_type pmax, double r,
 		      double rspace)
 {
   // Find point on the circumference of the circle closest to value
@@ -159,7 +159,7 @@ radiate_ids_at_uvalue(svg_element& obj, const point_2t origin,
 svg_element
 radiate_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
 			      const typography& typo, const id_value_umap& ivm,
-			      const size_type value_max,
+			      const ssize_type value_max,
 			      const int radius, const int rspace)
 {
   // Make circle perimeter with an arrow to orientate display of data.

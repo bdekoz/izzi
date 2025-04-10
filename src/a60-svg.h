@@ -1,6 +1,6 @@
 // svg API -*- mode: C++ -*-
 
-// Copyright (C) 2019-2022 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2019-2025 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -51,7 +51,7 @@ string_replace(std::string& target, const std::string& match,
 
 
 /// Base integer type: positive and negative, signed integral value.
-using size_type = int;
+using ssize_type = int;
 
 /// Base floating point type.
 using space_type = double;
@@ -60,7 +60,7 @@ using space_type = double;
 using point_2t = std::tuple<space_type, space_type>;
 
 /// Point (x,y) in 2D space with weight n.
-using point_2tn = std::tuple<point_2t, size_type>;
+using point_2tn = std::tuple<point_2t, ssize_type>;
 
 
 /// Convert point_2t to string.
@@ -81,9 +81,9 @@ using vvranges = std::vector<vrange>;
 
 /// Scale value from min to max on range (nfloor, nceil).
 double
-normalize_value_on_range(const size_type value, const size_type min,
-			 const size_type max,
-			 const size_type nfloor, const size_type nceil)
+normalize_value_on_range(const ssize_type value, const ssize_type min,
+			 const ssize_type max,
+			 const ssize_type nfloor, const ssize_type nceil)
 {
   double rmultp(nceil - nfloor);
   double valnum(value - min);
