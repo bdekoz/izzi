@@ -176,5 +176,53 @@ extract_dom_value_to_double(const rj::Value& v)
   return ret;
 }
 
+
+/// Deserialize json array,
+/// extract specific fields from array objects,
+/// return as vec of point_2t
+///
+/// jdata == input is path + filename of input JSON data file
+/// afield == pointer in json file dom to specific array's data
+/// field1 == x field to extract in array
+/// field2 == y field to extract in array
+vrange
+deserialize_json_array_object_field_n(const string jdata, const string afield,
+				      const string field1, const string field2)
+{
+  vrange ret;
+
+  // Load input JSON data file into DOM.
+  // Assuming 2025-era mozilla pageload json input styles, aka
+  // /home/bkoz/src/mozilla-a11y-data-visual-forms/data/2025-01-27-minimal.json
+  rj::Document dom(deserialize_json_to_dom(jdata));
+  rj::Value* ap = rj::Pointer(afield.c_str()).Get(dom);
+  if (ap)
+    {
+      const rj::Value& av = *ap;
+      if (av.IsArray())
+	{
+	  for (uint j = 0; j < av.Size(); ++j)
+	    {
+	      double x(0);
+	      double y(0);
+	      const rj::Value& vssub = av[j];
+	      if (vssub.HasMember(field1.c_str()))
+		{
+		  const rj::Value& vx = vssub[field1.c_str()];
+		  x = extract_dom_value_to_double(vx);
+		}
+	      if (vssub.HasMember(field2.c_str()))
+		{
+		  const rj::Value& vy = vssub[field2.c_str()];
+		  y = extract_dom_value_to_double(vy);
+		}
+	      ret.push_back(std::make_tuple(x, y));
+	    }
+	}
+    }
+
+  return ret;
+}
+
 } // namespace svg
 #endif
