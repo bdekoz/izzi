@@ -26,8 +26,9 @@ constexpr auto lsz = 16; // large bold
 constexpr auto asz = 12; // sub headings
 constexpr auto ssz = 10; // sub sub headings
 
+/// Glyph size and margins
 constexpr svg::area<> achart = { 900, 600 };
-  constexpr auto cpx = std::get<0>(achart.center_point());
+constexpr auto cpx = std::get<0>(achart.center_point());
 constexpr uint marginx = 20;
 constexpr uint marginy = 20;
 
