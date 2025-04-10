@@ -14,70 +14,36 @@ const auto linelen = 150;
 
 }
 
-
-svg::vrange
-make_points_at(const svg::point_2t p)
-{
-  using svg::point_2t;
-
-  auto [ x, y ] = p;
-  const point_2t p0 { x + spacer * 0, y };
-  const point_2t p1 { x + spacer * 1, y - linelen };
-  const point_2t p2 { x + spacer * 2, y + linelen};
-  const point_2t p3 { x + spacer * 3, y };
-  const point_2t p4 { x + spacer * 4, y + spacer };
-  const point_2t p5 { x + spacer * 5, y };
-  const point_2t p6 { x + spacer * 6, y + spacer };
-  const point_2t p7 { x + spacer * 7, y };
-  const point_2t p8 { x + spacer * 8, y + 2 * spacer };
-  const point_2t p9 { x + spacer * 9, y - spacer };
-  svg::vrange points { p0, p1, p2, p3, p4, p5, p6, p7, p8, p9 };
-  return points;
-}
-
 void
 test_chart()
 {
   using namespace std;
   using namespace svg;
 
- #if 0
   // WCAG Black/White/Gray
   const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
-  const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
+  //const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
   const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
 
 
-
-  // Line 1
-  auto xo = 0;
-  auto yo = linelen;
-
-  vrange points1 = make_points_at({xo, yo});
-  polyline_element pl1 = make_polyline(points1, styl1, "2", "c4wcaglg");
-  obj.add_element(pl1);
-
-  vrange points2 = make_points_at({xo, yo + linelen});
-  polyline_element pl2 = make_polyline(points2, styl2, "4", "r4wcaglg");
-  obj.add_element(pl2);
-
-  vrange points3 = make_points_at({xo, yo + 2 * linelen});
-  polyline_element pl3 = make_polyline(points3, styl3, "2", "x4wcagg");
-  obj.add_element(pl3);
-
-  vrange points5 = make_points_at({xo, yo + 3 * linelen});
-  polyline_element pl5 = make_polyline(points5, styl3, "3", "t4wcagg");
-  obj.add_element(pl5);
-#endif
-
   const string jdir("/home/bkoz/src/mozilla-a11y-data-visual-forms/data/");
   const string jfile(jdir + "2025-01-27-minimal.json");
-  const string afield("/firefox/metrics/SpeedIndexProgress");
+  const string afieldpost("/metrics/SpeedIndexProgress");
+  const string afx("/firefox" + afieldpost);
+  const string achrome("/chrome" + afieldpost);
   const string f1("timestamp");
   const string f2("percent");
-  vrange vr1 = deserialize_json_array_object_field_n(jfile, afield, f1, f2);
 
-  cout << vr1.size() << endl;
+  vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
+  polyline_element pl1 = make_polyline(vr1, styl3, "2", "t4wcalg");
+  obj.add_element(pl1);
+
+  vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
+  polyline_element pl2 = make_polyline(vr2, styl1, "4", "c4wcagg");
+  obj.add_element(pl2);
+
+  cout << "x:" << vr1.size() << endl;
+  cout << "y:" << vr2.size() << endl;
 }
 
 
