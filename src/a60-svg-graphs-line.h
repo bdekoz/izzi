@@ -171,15 +171,17 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   using namespace std;
 
   // Scale vrange input to graph.
-  svg_element lgraph(title, "line graph", aplate);
-  
+  svg_element lgraph(title, "line graph", aplate, false);
+
   // Split values and compute ranges for x/y axis.
+#if 0
   vector<double> pointsx(points.size());
   auto llo = [](const point_2t& pt) { return std::get<0>(pt); };
   std::transform(points.begin(), points.end(), pointsx.begin(), llo);
   auto mmx = minmax_element(pointsx.begin(), pointsx.end());
   auto minx = *mmx.first;
   auto maxx = *mmx.second;
+#endif
 
   vector<double> pointsy(points.size());
   std::transform(points.begin(), points.end(), pointsy.begin(),
@@ -193,7 +195,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   // pwidth = marginx + gwidth + marginx
   // pheight = marginy + gheight + marginy
   auto [ pwidth, pheight ] = aplate;
-  double gwidth = pwidth - (2 * marginx);
+  //double gwidth = pwidth - (2 * marginx);
   double gheight = pheight - (2 * marginy);
 
   // Transform data points to scaled cartasian points in graph area.
@@ -217,7 +219,17 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
       cpoints.push_back(make_tuple(x, y));
     }
 
+  // Plot transformed points.
+  const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
+  polyline_element pl1 = make_polyline(cpoints, styl1, "4", "c4wcagg");
+  lgraph.add_element(pl1);
+
   // Add labels.
+  point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (marginy / 2));
+  styled_text(lgraph, xlabel, xlabelp, k::apercu_typo);
+
+  point_2t ylabelp = make_tuple(marginx / 2, pheight / 2);
+  styled_text_r(lgraph, ylabel, ylabelp, k::apercu_typo, 90);
 
   return lgraph;
 }

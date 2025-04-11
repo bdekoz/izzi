@@ -21,9 +21,9 @@ test_chart()
   using namespace svg;
 
   // WCAG Black/White/Gray
-  const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
+  //const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
   //const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
-  const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
+  //const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
 
   const string jdir("/home/bkoz/src/mozilla-a11y-data-visual-forms/data/");
   const string jfile(jdir + "2025-01-27-minimal.json");
@@ -34,15 +34,17 @@ test_chart()
   const string f2("percent");
 
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  polyline_element pl1 = make_polyline(vr1, styl3, "2", "t4wcalg");
-  obj.add_element(pl1);
+  svg_element chart = make_line_graph(a, vr1, "firefox", f1, f2);
+  obj.add_element(chart);
 
+#if 0
   vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
   polyline_element pl2 = make_polyline(vr2, styl1, "4", "c4wcagg");
   obj.add_element(pl2);
 
   cout << "x:" << vr1.size() << endl;
   cout << "y:" << vr2.size() << endl;
+#endif
 }
 
 
