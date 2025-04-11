@@ -219,7 +219,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
       uint xoff = get_xoffset(id, xstart, hspace);
 
       // rect
-      double rheight = normalize_value_on_range(count, 1, maxn, 10, ydelta);
+      double rheight = scale_value_on_range(count, 1, maxn, 10, ydelta);
       double rystart = voffstart - (rheight / 2);
       point_to_rect_centered(obj, std::make_tuple(xoff, rystart),
 			     get_metadata_style(), rwidth, rheight);
@@ -278,7 +278,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 	      uint yoff = vpoffstart + yoffset;
 
 	      // rect
-	      auto normalize_v_o_r = normalize_value_on_range;
+	      auto normalize_v_o_r = scale_value_on_range;
 	      double rheight = normalize_v_o_r(count, 1, maxn, 10, ydelta);
 	      auto rectcp = std::make_tuple(xoff, yoff + (rheight / 2));
 	      point_to_rect_centered(obj, rectcp , pstyl, rwidth, rheight);
@@ -341,7 +341,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 	  sized_text(obj, typov, asz, to_string(total), xoff, yoff);
 
 	  // Notch.
-	  double rheight = normalize_value_on_range(total, 1, maxn, 10, ydelta);
+	  double rheight = scale_value_on_range(total, 1, maxn, 10, ydelta);
 	  double ynotch = voffstart - rheight - vlspace - asz;
 
 	  // Top line.

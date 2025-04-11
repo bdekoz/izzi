@@ -81,9 +81,9 @@ using vvranges = std::vector<vrange>;
 
 /// Scale value from min to max on range (nfloor, nceil).
 double
-normalize_value_on_range(const ssize_type value, const ssize_type min,
-			 const ssize_type max,
-			 const ssize_type nfloor, const ssize_type nceil)
+scale_value_on_range(const ssize_type value, const ssize_type min,
+		     const ssize_type max,
+		     const ssize_type nfloor, const ssize_type nceil)
 {
   double rmultp(nceil - nfloor);
   double valnum(value - min);

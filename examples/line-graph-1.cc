@@ -25,7 +25,6 @@ test_chart()
   //const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
   const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
 
-
   const string jdir("/home/bkoz/src/mozilla-a11y-data-visual-forms/data/");
   const string jfile(jdir + "2025-01-27-minimal.json");
   const string afieldpost("/metrics/SpeedIndexProgress");

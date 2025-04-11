@@ -160,6 +160,68 @@ make_markers(svg::svg_element& obj)
   obj.add_element(def);
 };
 
+
+/// Returns a svg_element with the chart and labels
+/// Assume:
+/// vgrange x axis is monotonically increasing
+svg_element
+make_line_graph(const svg::area<> aplate, const vrange& points,
+		const string title, const string xlabel, const string ylabel)
+{
+  using namespace std;
+
+  // Scale vrange input to graph.
+  svg_element lgraph(title, "line graph", aplate);
+  
+  // Split values and compute ranges for x/y axis.
+  vector<double> pointsx(points.size());
+  auto llo = [](const point_2t& pt) { return std::get<0>(pt); };
+  std::transform(points.begin(), points.end(), pointsx.begin(), llo);
+  auto mmx = minmax_element(pointsx.begin(), pointsx.end());
+  auto minx = *mmx.first;
+  auto maxx = *mmx.second;
+
+  vector<double> pointsy(points.size());
+  std::transform(points.begin(), points.end(), pointsy.begin(),
+		 [](const auto& pt) { return std::get<1>(pt); });
+  auto mmy = minmax_element(pointsy.begin(), pointsy.end());
+  auto miny = *mmy.first;
+  auto maxy = *mmy.second;
+
+  // Locate graph area on plate area.
+  // aplate is plate area with margins, but find out graphable area without margins.
+  // pwidth = marginx + gwidth + marginx
+  // pheight = marginy + gheight + marginy
+  auto [ pwidth, pheight ] = aplate;
+  double gwidth = pwidth - (2 * marginx);
+  double gheight = pheight - (2 * marginy);
+
+  // Transform data points to scaled cartasian points in graph area.
+  vrange cpoints;
+  const double chartyo = pheight - marginy;
+
+  uint i = 0;
+  for (const point_2t& pt : points)
+    {
+      auto [ vx, vy ] = pt;
+
+      // At bottom of graph.
+      point_2t xmatrix = to_point_in_1xn_matrix(aplate, points.size(),
+						i++, marginx, chartyo);
+      double x = get<0>(xmatrix);
+
+      // Y axis grows up from chartyo.
+      const double ylen = scale_value_on_range(vy, miny, maxy, 0, gheight);
+      double y = chartyo - ylen;
+
+      cpoints.push_back(make_tuple(x, y));
+    }
+
+  // Add labels.
+
+  return lgraph;
+}
+
 } // namepace svg
 
 #endif

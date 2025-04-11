@@ -79,7 +79,7 @@ get_angle(ssize_type pvalue, ssize_type pmax)
 {
   // Normalize [0, pmax] to range [mindeg, maxdeg] and put pvalue in it.
   const auto [ mindeg, maxdeg ] = get_radial_range();
-  double d = normalize_value_on_range(pvalue, 0, pmax, mindeg, maxdeg);
+  double d = scale_value_on_range(pvalue, 0, pmax, mindeg, maxdeg);
   return d;
 }
 

@@ -555,9 +555,9 @@ struct color_qf
     // Start by converting rgb to decimal range.
     // color_qi assumes [0,255], color_qf converts to range [0,1]
     auto [r, g, b] = cqi;
-    double rf = normalize_value_on_range(r, 0, 255, 0, 1);
-    double gf = normalize_value_on_range(g, 0, 255, 0, 1);
-    double bf = normalize_value_on_range(b, 0, 255, 0, 1);
+    double rf = scale_value_on_range(r, 0, 255, 0, 1);
+    double gf = scale_value_on_range(g, 0, 255, 0, 1);
+    double bf = scale_value_on_range(b, 0, 255, 0, 1);
     std::initializer_list<double> l1 = { rf, gf, bf };
     double rgb_max = std::max(l1);
 
