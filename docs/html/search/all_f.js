@@ -3,7 +3,7 @@ var searchData=
   ['ochre_0',['ochre',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3190fd3f786f09fd80f60f0d846c383e',1,'svg']]],
   ['odd_1',['odd',['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56ceaaa2b6f2a6066ed8700d83335fc50a2b8e',1,'svg::constants']]],
   ['offset_2',['offset',['../group__elements.html#a7184ab5b189a87b39ca9fe8899573989',1,'svg::text_path_element']]],
-  ['offset_5fpercentage_3',['offset_percentage',['../group__elements.html#ac073843c71ce3e18968fd34d7d2649be',1,'svg::gradient_element']]],
+  ['offset_5fpercentage_3',['offset_percentage',['../group__elements.html#a437bc6cd38193c9178fc4a7a43b7d483',1,'svg::gradient_element']]],
   ['opacity_4',['opacity',['../structsvg_1_1render__state__base.html#a586278e7623f4c620413b7d25f2b6e76',1,'svg::render_state_base']]],
   ['operator_26_5',['operator&amp;',['../namespacesvg_1_1constants.html#a72fdc7852cb7313b00fd6b9b9620cb82',1,'svg::constants']]],
   ['operator_26_3d_6',['operator&amp;=',['../namespacesvg_1_1constants.html#aaa5a6492127062c134ea6e35c9fb59f4',1,'svg::constants']]],

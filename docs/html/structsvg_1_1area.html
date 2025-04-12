@@ -110,12 +110,12 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa8a4fb71f96cfb699f793ae6c2e624cd" id="r_aa8a4fb71f96cfb699f793ae6c2e624cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8a4fb71f96cfb699f793ae6c2e624cd">center_point</a> () const</td></tr>
-<tr class="memdesc:aa8a4fb71f96cfb699f793ae6c2e624cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience function for finding center.  <br /></td></tr>
-<tr class="separator:aa8a4fb71f96cfb699f793ae6c2e624cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4448741c57f4fc12afed34bc887d4c6" id="r_aa4448741c57f4fc12afed34bc887d4c6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4448741c57f4fc12afed34bc887d4c6">max_segment_size_n</a> (const uint rdenom=2) const</td></tr>
-<tr class="memdesc:aa4448741c57f4fc12afed34bc887d4c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given @rdenom scaling factor and SVG canvas area by @obj, compute max effective segment size given number of segments @rdenom. NB: if @rdenom is two then this is a max radius value centered on the page/frame.  <br /></td></tr>
-<tr class="separator:aa4448741c57f4fc12afed34bc887d4c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a284dc446b795241feb2b5bdc5594af36" id="r_a284dc446b795241feb2b5bdc5594af36"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a284dc446b795241feb2b5bdc5594af36">center_point</a> () const</td></tr>
+<tr class="memdesc:a284dc446b795241feb2b5bdc5594af36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience function for finding center.  <br /></td></tr>
+<tr class="separator:a284dc446b795241feb2b5bdc5594af36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9472feaab4b03259f2b6c73b4c86d50" id="r_ad9472feaab4b03259f2b6c73b4c86d50"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9472feaab4b03259f2b6c73b4c86d50">max_segment_size_n</a> (const uint rdenom=2) const</td></tr>
+<tr class="memdesc:ad9472feaab4b03259f2b6c73b4c86d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given @rdenom scaling factor and SVG canvas area by @obj, compute max effective segment size given number of segments @rdenom. NB: if @rdenom is two then this is a max radius value centered on the page/frame.  <br /></td></tr>
+<tr class="separator:ad9472feaab4b03259f2b6c73b4c86d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab55883886ebd22bffe47cfe14fb777f5" id="r_ab55883886ebd22bffe47cfe14fb777f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsvg_1_1area.html">area</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab55883886ebd22bffe47cfe14fb777f5">to_landscape</a> () const</td></tr>
 <tr class="memdesc:ab55883886ebd22bffe47cfe14fb777f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Landscape, aka largest side is horizontal.  <br /></td></tr>
 <tr class="separator:ab55883886ebd22bffe47cfe14fb777f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,8 +177,8 @@ template&lt;typename T1  = svg::space_type&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa8a4fb71f96cfb699f793ae6c2e624cd" name="aa8a4fb71f96cfb699f793ae6c2e624cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8a4fb71f96cfb699f793ae6c2e624cd">&#9670;&#160;</a></span>center_point()</h2>
+<a id="a284dc446b795241feb2b5bdc5594af36" name="a284dc446b795241feb2b5bdc5594af36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a284dc446b795241feb2b5bdc5594af36">&#9670;&#160;</a></span>center_point()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,7 +197,7 @@ template&lt;typename T1  = svg::space_type&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -208,8 +208,8 @@ template&lt;typename T1  = svg::space_type&gt; </div>
 
 </div>
 </div>
-<a id="aa4448741c57f4fc12afed34bc887d4c6" name="aa4448741c57f4fc12afed34bc887d4c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4448741c57f4fc12afed34bc887d4c6">&#9670;&#160;</a></span>max_segment_size_n()</h2>
+<a id="ad9472feaab4b03259f2b6c73b4c86d50" name="ad9472feaab4b03259f2b6c73b4c86d50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9472feaab4b03259f2b6c73b4c86d50">&#9670;&#160;</a></span>max_segment_size_n()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,7 +228,7 @@ template&lt;typename T1  = svg::space_type&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

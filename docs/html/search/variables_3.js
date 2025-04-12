@@ -16,5 +16,6 @@ var searchData=
   ['color_5fmax_5fsize_13',['color_max_size',['../namespacesvg.html#a0762dd8ffa369404d94bb6a13032e63b',1,'svg']]],
   ['colorbrewer2s3s_5fpalette_14',['colorbrewer2s3s_palette',['../namespacesvg.html#aeb01ba059732c058d458a9a18980ff76',1,'svg']]],
   ['colorbrewer2s7s_5fpalette_15',['colorbrewer2s7s_palette',['../namespacesvg.html#a7d470521db1f45b01629c101669a62dd',1,'svg']]],
-  ['colorbrewer2s9s_5fpalette_16',['colorbrewer2s9s_palette',['../namespacesvg.html#a8a078481c8f35f01582ae84ffad2d8ad',1,'svg']]]
+  ['colorbrewer2s9s_5fpalette_16',['colorbrewer2s9s_palette',['../namespacesvg.html#a8a078481c8f35f01582ae84ffad2d8ad',1,'svg']]],
+  ['cpx_17',['cpx',['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#ae33870c144f4f5e0c5bf3574c9e24880',1,'anonymous_namespace{a60-svg-graphs-line.h}']]]
 ];

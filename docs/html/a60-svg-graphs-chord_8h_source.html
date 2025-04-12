@@ -320,7 +320,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>      uint xoff = <a class="code hl_function" href="namespacea60_1_1metadata.html#a4c88caad75ba7fd9dffc58be1f715b28">get_xoffset</a>(<span class="keywordtype">id</span>, xstart, hspace);</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>      <span class="comment">// rect</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>      <span class="keywordtype">double</span> rheight = normalize_value_on_range(count, 1, maxn, 10, ydelta);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>      <span class="keywordtype">double</span> rheight = scale_value_on_range(count, 1, maxn, 10, ydelta);</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>      <span class="keywordtype">double</span> rystart = voffstart - (rheight / 2);</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>      point_to_rect_centered(obj, std::make_tuple(xoff, rystart),</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>                 get_metadata_style(), rwidth, rheight);</div>
@@ -379,7 +379,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>          uint yoff = vpoffstart + yoffset;</div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>          <span class="comment">// rect</span></div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>          <span class="keyword">auto</span> normalize_v_o_r = normalize_value_on_range;</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>          <span class="keyword">auto</span> normalize_v_o_r = scale_value_on_range;</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>          <span class="keywordtype">double</span> rheight = normalize_v_o_r(count, 1, maxn, 10, ydelta);</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>          <span class="keyword">auto</span> rectcp = std::make_tuple(xoff, yoff + (rheight / 2));</div>
 <div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>          point_to_rect_centered(obj, rectcp , pstyl, rwidth, rheight);</div>
@@ -442,7 +442,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>      sized_text(obj, typov, <a class="code hl_variable" href="namespacea60_1_1metadata.html#ad2897b57c74676c8123a3f0af6c873f8">asz</a>, to_string(total), xoff, yoff);</div>
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
 <div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>      <span class="comment">// Notch.</span></div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>      <span class="keywordtype">double</span> rheight = normalize_value_on_range(total, 1, maxn, 10, ydelta);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>      <span class="keywordtype">double</span> rheight = scale_value_on_range(total, 1, maxn, 10, ydelta);</div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>      <span class="keywordtype">double</span> ynotch = voffstart - rheight - <a class="code hl_function" href="namespacea60_1_1metadata.html#a2a619ed21560d442f5dfae5ea8101fce">vlspace</a> - <a class="code hl_variable" href="namespacea60_1_1metadata.html#ad2897b57c74676c8123a3f0af6c873f8">asz</a>;</div>
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>      <span class="comment">// Top line.</span></div>

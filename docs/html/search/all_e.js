@@ -10,6 +10,5 @@ var searchData=
   ['no_5farea_7',['no_area',['../namespacesvg_1_1constants.html#a7ea99d84ad1fa1bcbeb32c206b43c19b',1,'svg::constants']]],
   ['no_5fstyle_8',['no_style',['../namespacesvg_1_1constants.html#a94e31e0f92ab672062d8ebb87e2c8975',1,'svg::constants']]],
   ['none_9',['none',['../structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9a334c4a4c42fdb79d7ebc3e73b517e6f8',1,'svg::typography::none'],['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a334c4a4c42fdb79d7ebc3e73b517e6f8',1,'svg::none'],['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56ceaa334c4a4c42fdb79d7ebc3e73b517e6f8',1,'svg::constants::none']]],
-  ['normal_10',['normal',['../structsvg_1_1typography.html#ac41cf6a133f5b21757130ce5ba72b3d7afea087517c26fadd409bd4b9dc642555',1,'svg::typography::normal'],['../structsvg_1_1typography.html#aba5bf3a1484966319aebc9443746e98cafea087517c26fadd409bd4b9dc642555',1,'svg::typography::normal']]],
-  ['normalize_5fvalue_5fon_5frange_11',['normalize_value_on_range',['../namespacesvg.html#a673cb54838801fae8471436ce43298a9',1,'svg']]]
+  ['normal_10',['normal',['../structsvg_1_1typography.html#ac41cf6a133f5b21757130ce5ba72b3d7afea087517c26fadd409bd4b9dc642555',1,'svg::typography::normal'],['../structsvg_1_1typography.html#aba5bf3a1484966319aebc9443746e98cafea087517c26fadd409bd4b9dc642555',1,'svg::typography::normal']]]
 ];

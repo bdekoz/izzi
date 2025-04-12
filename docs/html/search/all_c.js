@@ -19,5 +19,5 @@ var searchData=
   ['line_5felement_16',['line_element',['../group__elements.html#structsvg_1_1line__element',1,'svg']]],
   ['linear_5fgradient_17',['linear_gradient',['../group__elements.html#structsvg_1_1linear__gradient',1,'svg']]],
   ['lineargradient_18',['linearGradient',['../group__elements.html#a7c19a4d45da1acb512fc1c69048253bfa1f95312db58aef3645ec3865b5bd04d0',1,'svg::gradient_element']]],
-  ['lsz_19',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata::lsz'],['../namespacesvg.html#a2eea4b708723491eb8eb89bf62a67011',1,'svg::lsz']]]
+  ['lsz_19',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata::lsz'],['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a2b26f8273eeb5575186c119188d3b6f5',1,'anonymous_namespace{a60-svg-graphs-line.h}::lsz']]]
 ];

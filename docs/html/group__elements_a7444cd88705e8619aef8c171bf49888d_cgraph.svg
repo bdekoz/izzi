@@ -32,7 +32,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="structsvg_1_1area.html#aa8a4fb71f96cfb699f793ae6c2e624cd" target="_top" xlink:title="Convenience function for finding center.">
+<g id="a_Node000002"><a xlink:href="structsvg_1_1area.html#a284dc446b795241feb2b5bdc5594af36" target="_top" xlink:title="Convenience function for finding center.">
 <polygon fill="white" stroke="#666666" points="248,-26 145.75,-26 145.75,-6 248,-6 248,-26"/>
 <text text-anchor="middle" x="196.88" y="-14.4" font-family="SourceSans" font-size="8.00">svg::area::center_point</text>
 </a>

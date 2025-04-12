@@ -1,7 +1,7 @@
 var searchData=
 [
   ['cell_5fsize_5f3x3_5fmatrix_0',['cell_size_3x3_matrix',['../namespacesvg.html#a4c23f1666b4537666ad08c83b02ce468',1,'svg']]],
-  ['center_5fpoint_1',['center_point',['../structsvg_1_1area.html#aa8a4fb71f96cfb699f793ae6c2e624cd',1,'svg::area::center_point()'],['../group__elements.html#a7444cd88705e8619aef8c171bf49888d',1,'svg::svg_element::center_point()']]],
+  ['center_5fpoint_1',['center_point',['../structsvg_1_1area.html#a284dc446b795241feb2b5bdc5594af36',1,'svg::area::center_point()'],['../group__elements.html#a7444cd88705e8619aef8c171bf49888d',1,'svg::svg_element::center_point()']]],
   ['char_5fheight_5fto_5fpx_2',['char_height_to_px',['../namespacesvg.html#aad389f192f97717bc9244c0cbcb96cc2',1,'svg']]],
   ['char_5fwidth_5fto_5fpx_3',['char_width_to_px',['../namespacesvg.html#aa2776d975cfdb951b8dd6a8fac3d826b',1,'svg']]],
   ['clear_4',['clear',['../structsvg_1_1render__state__base.html#adca6ab44312801da0af0a38f48ea690b',1,'svg::render_state_base']]],

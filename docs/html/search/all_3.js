@@ -15,7 +15,7 @@ var searchData=
   ['ccw_12',['ccw',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03ad5e5cf0370b9d10e06756dbb1806e763',1,'svg::constants']]],
   ['cell_5fsize_5f3x3_5fmatrix_13',['cell_size_3x3_matrix',['../namespacesvg.html#a4c23f1666b4537666ad08c83b02ce468',1,'svg']]],
   ['center_14',['center',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886aadb115059e28d960fa8badfac5516667',1,'svg::typography']]],
-  ['center_5fpoint_15',['center_point',['../structsvg_1_1area.html#aa8a4fb71f96cfb699f793ae6c2e624cd',1,'svg::area::center_point()'],['../group__elements.html#a7444cd88705e8619aef8c171bf49888d',1,'svg::svg_element::center_point()']]],
+  ['center_5fpoint_15',['center_point',['../structsvg_1_1area.html#a284dc446b795241feb2b5bdc5594af36',1,'svg::area::center_point()'],['../group__elements.html#a7444cd88705e8619aef8c171bf49888d',1,'svg::svg_element::center_point()']]],
   ['centerweight_16',['centerweight',['../namespacesvg.html#a5fd971345fcede00e46bd1bd8846f12da2c9223a85c6b5fe898679bb68b4f8fca',1,'svg']]],
   ['centerweightsvg_17',['centerweightsvg',['../namespacesvg.html#a5fd971345fcede00e46bd1bd8846f12da15f08ac29f8904cf5b740041beb88616',1,'svg']]],
   ['centimeter_18',['centimeter',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a76af6da30d1ee8d0df77a69f8091f028',1,'svg']]],
@@ -51,8 +51,9 @@ var searchData=
   ['convert_5fto_5futf8_48',['convert_to_utf8',['../namespacesvg.html#a9c63493f51e361936d7cb0c33098b494',1,'svg']]],
   ['coral_49',['coral',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad2ebed4eaf58509dcc358e1782c38fea',1,'svg']]],
   ['cornflowerblue_50',['cornflowerblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ada4a06b7a74d94538ad7da873f073f4c',1,'svg']]],
-  ['crayolacerulean_51',['crayolacerulean',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a193b1032c4d119684d6579dda48e3012',1,'svg']]],
-  ['crimson_52',['crimson',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a5fa3ccc64c973db27e9fcade0810423e',1,'svg']]],
-  ['cw_53',['cw',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03a0707ba092e91260b305c326e6a353593',1,'svg::constants']]],
-  ['cyan_54',['cyan',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a6411532ba4971f378391776a9db629d3',1,'svg']]]
+  ['cpx_51',['cpx',['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#ae33870c144f4f5e0c5bf3574c9e24880',1,'anonymous_namespace{a60-svg-graphs-line.h}']]],
+  ['crayolacerulean_52',['crayolacerulean',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a193b1032c4d119684d6579dda48e3012',1,'svg']]],
+  ['crimson_53',['crimson',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a5fa3ccc64c973db27e9fcade0810423e',1,'svg']]],
+  ['cw_54',['cw',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03a0707ba092e91260b305c326e6a353593',1,'svg::constants']]],
+  ['cyan_55',['cyan',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a6411532ba4971f378391776a9db629d3',1,'svg']]]
 ];
