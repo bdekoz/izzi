@@ -185,7 +185,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
   vector<double> pointsy(points.size());
   std::transform(points.begin(), points.end(), pointsy.begin(),
-		 [](const auto& pt) { return std::get<1>(pt); });
+		 [](const point_2t& pt) { return std::get<1>(pt); });
   auto mmy = minmax_element(pointsy.begin(), pointsy.end());
   auto miny = *mmy.first;
   auto maxy = *mmy.second;

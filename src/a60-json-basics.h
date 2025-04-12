@@ -165,14 +165,27 @@ search_dom_for_int_field(const rj::Document& dom, const string finds)
 }
 
 
+/// Extract from raw JSON value to double.
 double
 extract_dom_value_to_double(const rj::Value& v)
 {
   double ret(0.0);
-  if (v.IsInt())
-    ret = static_cast<double>(v.GetInt());
-  if (v.IsDouble())
-    ret = v.GetDouble();
+  const bool stringp = v.IsString();
+  const bool numberp = v.IsNumber();
+  const bool boolp = v.IsBool();
+  if (numberp)
+    {
+      // https://miloyip.github.io/rapidjson/md_doc_tutorial.html#QueryNumber
+      ret = v.GetDouble();
+    }
+  if (stringp)
+    {
+      string s = v.GetString();
+      ret = std::stod(s);
+    }
+  if (boolp)
+    ret = static_cast<double>(v.GetBool());
+
   return ret;
 }
 
@@ -187,7 +200,8 @@ extract_dom_value_to_double(const rj::Value& v)
 /// field2 == y field to extract in array
 vrange
 deserialize_json_array_object_field_n(const string jdata, const string afield,
-				      const string field1, const string field2)
+				      const string field1, const string field2,
+				      const bool verbosep = true)
 {
   vrange ret;
 
@@ -206,17 +220,32 @@ deserialize_json_array_object_field_n(const string jdata, const string afield,
 	      double x(0);
 	      double y(0);
 	      const rj::Value& vssub = av[j];
-	      if (vssub.HasMember(field1.c_str()))
+	      const bool f1p = vssub.HasMember(field1.c_str());
+	      const bool f2p = vssub.HasMember(field2.c_str());
+	      if (f1p)
 		{
 		  const rj::Value& vx = vssub[field1.c_str()];
 		  x = extract_dom_value_to_double(vx);
 		}
-	      if (vssub.HasMember(field2.c_str()))
+	      if (f2p)
 		{
 		  const rj::Value& vy = vssub[field2.c_str()];
 		  y = extract_dom_value_to_double(vy);
 		}
-	      ret.push_back(std::make_tuple(x, y));
+
+	      if (f1p && f2p)
+		ret.push_back(std::make_tuple(x, y));
+	      else
+		{
+		  string m("deserialize_json_array_object_field_n:: error ");
+		  m += k::tab;
+		  m += "iteration " + std::to_string(j);
+		  m += " not found";
+		  m += k::newline;
+
+		  if (verbosep)
+		    throw std::runtime_error(m);
+		}
 	    }
 	}
     }
