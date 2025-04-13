@@ -29,8 +29,6 @@ constexpr auto ssz = 10; // sub sub headings
 /// Glyph size and margins
 constexpr svg::area<> achart = { 900, 600 };
 constexpr auto cpx = std::get<0>(achart.center_point());
-constexpr uint marginx = 20;
-constexpr uint marginy = 20;
 
 } // end anonymous namespace
 
@@ -160,18 +158,36 @@ make_markers(svg::svg_element& obj)
   obj.add_element(def);
 };
 
+/// Per-graph constants.
+struct graph_state
+{
+  // Labels.
+  string		title;
+  string		xlabel;
+  string		ylabel;
+
+  // Lines.
+  svg::style		lstyle;
+  string		dasharray;
+  string		markerspoints;
+
+  // Margins/Spaces
+  static constexpr uint marginx = 50;
+  static constexpr uint marginy = 50;
+};
+
 
 /// Returns a svg_element with the chart and labels
 /// Assume:
 /// vgrange x axis is monotonically increasing
 svg_element
 make_line_graph(const svg::area<> aplate, const vrange& points,
-		const string title, const string xlabel, const string ylabel)
+		const graph_state& gstate)
 {
   using namespace std;
 
   // Scale vrange input to graph.
-  svg_element lgraph(title, "line graph", aplate, false);
+  svg_element lgraph(gstate.title, "line graph", aplate, false);
 
   // Split values and compute ranges for x/y axis.
 #if 0
@@ -196,11 +212,11 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   // pheight = marginy + gheight + marginy
   auto [ pwidth, pheight ] = aplate;
   //double gwidth = pwidth - (2 * marginx);
-  double gheight = pheight - (2 * marginy);
+  double gheight = pheight - (2 * gstate.marginy);
 
   // Transform data points to scaled cartasian points in graph area.
   vrange cpoints;
-  const double chartyo = pheight - marginy;
+  const double chartyo = pheight - gstate.marginy;
 
   uint i = 0;
   for (const point_2t& pt : points)
@@ -209,7 +225,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
       // At bottom of graph.
       point_2t xmatrix = to_point_in_1xn_matrix(aplate, points.size(),
-						i++, marginx, chartyo);
+						i++, gstate.marginx, chartyo);
       double x = get<0>(xmatrix);
 
       // Y axis grows up from chartyo.
@@ -220,16 +236,16 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
     }
 
   // Plot transformed points.
-  const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
-  polyline_element pl1 = make_polyline(cpoints, styl1, "4", "c4wcagg");
+  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
+				       gstate.dasharray, gstate.markerspoints);
   lgraph.add_element(pl1);
 
   // Add labels.
-  point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (marginy / 2));
-  styled_text(lgraph, xlabel, xlabelp, k::apercu_typo);
+  point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
+  styled_text(lgraph, gstate.xlabel, xlabelp, k::apercu_typo);
 
-  point_2t ylabelp = make_tuple(marginx / 2, pheight / 2);
-  styled_text_r(lgraph, ylabel, ylabelp, k::apercu_typo, 90);
+  point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
+  styled_text_r(lgraph, gstate.ylabel, ylabelp, k::apercu_typo, 90);
 
   return lgraph;
 }

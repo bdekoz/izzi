@@ -169,7 +169,7 @@ search_dom_for_int_field(const rj::Document& dom, const string finds)
 double
 extract_dom_value_to_double(const rj::Value& v)
 {
-  double ret(0.0);
+  double ret(0.00123);
   const bool stringp = v.IsString();
   const bool numberp = v.IsNumber();
   const bool boolp = v.IsBool();
