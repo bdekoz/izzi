@@ -170,6 +170,7 @@ make_markers(svg::svg_element& obj)
   obj.add_element(def);
 };
 
+
 /// Per-graph constants.
 struct graph_state
 {
@@ -194,7 +195,7 @@ struct graph_state
 /// vgrange x axis is monotonically increasing
 svg_element
 make_line_graph(const svg::area<> aplate, const vrange& points,
-		const graph_state& gstate)
+		const graph_state& gstate, const bool annotationsp = true)
 {
   using namespace std;
 
@@ -202,15 +203,6 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   svg_element lgraph(gstate.title, "line graph", aplate, false);
 
   // Split values and compute ranges for x/y axis.
-#if 0
-  vector<double> pointsx(points.size());
-  auto llo = [](const point_2t& pt) { return std::get<0>(pt); };
-  std::transform(points.begin(), points.end(), pointsx.begin(), llo);
-  auto mmx = minmax_element(pointsx.begin(), pointsx.end());
-  auto minx = *mmx.first;
-  auto maxx = *mmx.second;
-#endif
-
   vector<double> pointsy(points.size());
   std::transform(points.begin(), points.end(), pointsy.begin(),
 		 [](const point_2t& pt) { return std::get<1>(pt); });
@@ -219,7 +211,8 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   auto maxy = *mmy.second;
 
   // Locate graph area on plate area.
-  // aplate is plate area with margins, but find out graphable area without margins.
+  //
+  // aplate is plate area with margins, but graphable area without margins...
   // pwidth = marginx + gwidth + marginx
   // pheight = marginy + gheight + marginy
   auto [ pwidth, pheight ] = aplate;
@@ -227,9 +220,8 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   double gheight = pheight - (2 * gstate.marginy);
 
   // Transform data points to scaled cartasian points in graph area.
-  vrange cpoints;
   const double chartyo = pheight - gstate.marginy;
-
+  vrange cpoints;
   uint i = 0;
   for (const point_2t& pt : points)
     {
@@ -252,12 +244,15 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 				       gstate.dasharray, gstate.markerspoints);
   lgraph.add_element(pl1);
 
-  // Add labels.
-  point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
-  styled_text(lgraph, gstate.xlabel, xlabelp, k::apercu_typo);
+  if (annotationsp)
+    {
+      // Add axis labels.
+      point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
+      styled_text(lgraph, gstate.xlabel, xlabelp, k::apercu_typo);
 
-  point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
-  styled_text_r(lgraph, gstate.ylabel, ylabelp, k::apercu_typo, 90);
+      point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
+      styled_text_r(lgraph, gstate.ylabel, ylabelp, k::apercu_typo, 90);
+    }
 
   return lgraph;
 }
