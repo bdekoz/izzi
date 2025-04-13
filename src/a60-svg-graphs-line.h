@@ -119,9 +119,8 @@ make_marker_rect(const std::string id,
 }
 
 
-/// Make black/white/wcag markers.
-void
-make_markers(svg::svg_element& obj)
+string
+make_marker_set_n(const double i)
 {
   using svg::color::red;
   using svg::color::wcag_lgray;
@@ -133,27 +132,40 @@ make_markers(svg::svg_element& obj)
   const svg::style style_wcagg = { wcag_gray, 1.0, wcag_gray, 0.0, 0.5 };
   const svg::style style_wcagdg = { wcag_dgray, 1.0, wcag_dgray, 0.0, 0.5 };
 
-  auto m1 = make_marker_circle("c4red", {4, 4}, {2, 2}, 2, style_r);
-  auto m2 = make_marker_circle("c4wcaglg", {4, 4}, {2, 2}, 2, style_wcaglg);
-  auto m3 = make_marker_circle("c4wcagdg", {4, 4}, {2, 2}, 2, style_wcagdg);
-  auto m4 = make_marker_circle("c4black", {4, 4}, {2, 2}, 2, b_style);
-  auto m5 = make_marker_triangle("t4black", {4, 4}, {2, 2}, 2, b_style);
-  auto m6 = make_marker_triangle("t4wcagg", {4, 4}, {2, 2}, 2, style_wcagg);
-  auto m7 = make_marker_x("x4wcagg", {4, 4}, {2, 2}, 2, style_wcaglg);
-  auto m8 = make_marker_rect("r4wcaglg", {4, 4}, {2, 2}, style_wcaglg);
-  auto m9 = make_marker_rect("r4wcagdg", {4, 4}, {2, 2}, style_wcagdg);
+  // 4 / 2, etc.
+  const double h(i/2);
+  const string si = std::to_string(static_cast<uint>(i));
+  auto m1 = make_marker_circle("c" + si + "red", {i, i}, {h, h}, h, style_r);
+  auto m2 = make_marker_circle("c" + si + "wcaglg", {i, i}, {h, h}, h, style_wcaglg);
+  auto m3 = make_marker_circle("c" + si + "wcagdg", {i, i}, {h, h}, h, style_wcagdg);
+  auto m4 = make_marker_circle("c" + si + "black", {i, i}, {h, h}, h, b_style);
+  auto m5 = make_marker_triangle("t" + si + "black", {i, i}, {h, h}, h, b_style);
+  auto m6 = make_marker_triangle("t" + si + "wcagg", {i, i}, {h, h}, h, style_wcagg);
+  auto m7 = make_marker_x("x" + si + "wcagg", {i, i}, {h, h}, h, style_wcaglg);
+  auto m8 = make_marker_rect("r" + si + "wcaglg", {i, i}, {h, h}, style_wcaglg);
+  auto m9 = make_marker_rect("r" + si + "wcagdg", {i, i}, {h, h}, style_wcagdg);
+
+  std::ostringstream oss;
+  oss << m1.str() << m2.str() << m3.str() << m4.str()
+      << m5.str() << m6.str() << m7.str() << m8.str() << m9.str();
+  return oss.str();
+}
+
+
+/// Make black/white/wcag markers.
+void
+make_markers(svg::svg_element& obj)
+{
 
   svg::defs_element def;
   def.start_element();
-  def.add_raw(m1.str());
-  def.add_raw(m2.str());
-  def.add_raw(m3.str());
-  def.add_raw(m4.str());
-  def.add_raw(m5.str());
-  def.add_raw(m6.str());
-  def.add_raw(m7.str());
-  def.add_raw(m8.str());
-  def.add_raw(m9.str());
+
+  string m2 = make_marker_set_n(2);
+  def.add_raw(m2);
+
+  string m4 = make_marker_set_n(4);
+  def.add_raw(m4);
+
   def.finish_element();
   obj.add_element(def);
 };

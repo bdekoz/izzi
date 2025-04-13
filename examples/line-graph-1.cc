@@ -35,12 +35,12 @@ test_chart()
   const string f2("percent");
 
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  graph_state gs1 { "firefox", f1, f2, styl1, "2", "t4wcagg"};
+  graph_state gs1 { "firefox", f1, f2, styl1, "2 4", "t2wcagg"};
   svg_element chart1 = make_line_graph(a, vr1, gs1);
   obj.add_element(chart1);
 
   vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
-  graph_state gs2 { "chrome", f1, f2, styl3, "2", "c4wcaglg"};
+  graph_state gs2 { "chrome", f1, f2, styl3, "5 10", "c2wcaglg"};
   svg_element chart2 = make_line_graph(a, vr2, gs2);
   obj.add_element(chart2);
 }
