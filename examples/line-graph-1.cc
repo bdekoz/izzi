@@ -34,17 +34,12 @@ test_chart()
   const string f2("percent");
 
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  svg_element chart = make_line_graph(a, vr1, "firefox", f1, f2);
-  obj.add_element(chart);
+  svg_element chart1 = make_line_graph(a, vr1, "firefox", f1, f2);
+  obj.add_element(chart1);
 
-#if 0
   vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
-  polyline_element pl2 = make_polyline(vr2, styl1, "4", "c4wcagg");
-  obj.add_element(pl2);
-
-  cout << "x:" << vr1.size() << endl;
-  cout << "y:" << vr2.size() << endl;
-#endif
+  svg_element chart2 = make_line_graph(a, vr2, "chrome", f1, f2);
+  obj.add_element(chart2);
 }
 
 
