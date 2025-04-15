@@ -1,0 +1,7 @@
+<map id="svg::traverse_states" name="svg::traverse_states">
+<area shape="rect" id="Node000001" title="Roll through render states given in values squentially, index starts with zero." alt="" coords="5,13,125,40"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#af8550758c7d56d550efe4ea83fe21f5b" title="Given identifier/name/id, get corresponding id_rstate from cache." alt="" coords="173,13,283,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,24,157,24,157,29,125,29"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a96dce340dcdb9eed5deb3164b8bb5585" title=" " alt="" coords="331,5,441,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="284,24,315,24,315,29,284,29"/>
+</map>

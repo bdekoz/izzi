@@ -1,0 +1,25 @@
+<map id="svg::dot_grid_seq" name="svg::dot_grid_seq">
+<area shape="rect" id="Node000001" title="Randomly create grid of [maxwidth] x [maxheight] grid, and fill with dots." alt="" coords="5,215,116,241"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a519382631540ecedee961bfb53e9ae87" title=" " alt="" coords="172,73,290,116"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,212,110,171,162,126,168,122,171,126,165,130,113,175,76,216"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="170,140,292,183"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="96,212,160,186,161,191,98,217"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#ga98a1538c46e39122d8199c12b3a57b5d" title=" " alt="" coords="172,207,290,249"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="116,225,157,225,157,231,116,231"/>
+<area shape="rect" id="Node000011" href="$group__elements.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="172,273,290,316"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="98,239,161,265,160,270,96,244"/>
+<area shape="rect" id="Node000012" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="164,340,298,367"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="75,240,112,282,137,305,165,326,173,331,171,335,162,330,134,309,108,285,71,244"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title="Common transforms include rotate(180)" alt="" coords="355,23,476,65"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="289,76,339,62,341,67,291,81"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="358,89,474,116"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="290,95,342,97,342,102,290,100"/>
+<area shape="rect" id="Node000004" href="$namespacesvg_1_1constants.html#a3972655f1dfdc090ec2592d1fb37e87c" title=" " alt="" coords="533,5,663,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="476,33,518,27,518,32,477,38"/>
+<area shape="rect" id="Node000005" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="534,56,662,83"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="477,50,519,56,518,61,476,55"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="371,148,460,175"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="292,159,356,159,356,164,292,164"/>
+<area shape="rect" id="Node000010" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="346,215,485,241"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="290,225,330,225,330,231,290,231"/>
+</map>

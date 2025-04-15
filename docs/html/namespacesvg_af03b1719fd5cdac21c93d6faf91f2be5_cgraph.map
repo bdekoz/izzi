@@ -1,0 +1,13 @@
+<map id="svg::deserialize_json_array_object_field_n" name="svg::deserialize_json_array_object_field_n">
+<area shape="rect" id="Node000001" title="Deserialize json array, extract specific fields from array objects, return as vec of point_2t." alt="" coords="5,101,132,144"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a5e70da9e68ea73a0fe250439ea5a1b04" title="Deserialize input file." alt="" coords="187,5,312,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,99,178,58,187,53,190,58,181,62,108,103"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a15455ed7fe8f40160e2f9f5e8ad7a3bd" title="Extract from raw JSON value to double." alt="" coords="180,72,319,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="132,110,164,104,165,110,133,115"/>
+<area shape="rect" id="Node000005" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="180,139,319,165"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="133,130,165,136,164,141,132,136"/>
+<area shape="rect" id="Node000006" href="$namespacesvg_1_1constants.html#ade63c3902d37b4d4d207d38aad490c72" title=" " alt="" coords="191,189,308,216"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="112,142,181,175,195,181,193,186,179,180,110,147"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ad8c44f33914f74e752756e210ed904f7" title="Deserialize input string." alt="" coords="367,5,491,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,24,351,24,351,29,312,29"/>
+</map>

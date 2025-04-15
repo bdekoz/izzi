@@ -1,0 +1,21 @@
+<map id="svg::point_2d_to_ray" name="svg::point_2d_to_ray">
+<area shape="rect" id="Node000001" title="Lines radiating from center point (x,y)." alt="" coords="5,147,130,173"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a306eac4c5a7ea755ab6375a65489366f" title=" " alt="" coords="187,5,303,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,144,121,103,176,58,182,54,185,59,179,62,124,107,83,148"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" title=" " alt="" coords="178,72,312,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="104,144,171,118,173,123,106,149"/>
+<area shape="rect" id="Node000006" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="184,139,306,181"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="130,157,169,157,169,163,130,163"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#ga4769af15793cb308d426abb5fd552df5" title=" " alt="" coords="187,205,303,248"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="106,171,173,197,171,202,104,176"/>
+<area shape="rect" id="Node000010" href="$group__elements.html#aa6b4ba04be5858b4943235801f034943" title=" " alt="" coords="187,272,303,315"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="83,172,124,213,179,258,185,261,182,266,176,262,121,217,80,176"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="372,13,488,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="303,24,356,24,356,29,303,29"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="362,80,497,107"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,91,347,91,347,96,312,96"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="385,147,474,173"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="306,157,370,157,370,163,306,163"/>
+<area shape="rect" id="Node000009" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="360,213,499,240"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="303,224,345,224,345,229,303,229"/>
+</map>
