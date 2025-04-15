@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['large_0',['large',['../namespacesvg_1_1constants.html#a44821c901c5a38946ded48f013fa32b0aafacdb0a401ccdf6b48551bbc00e8a74',1,'svg::constants']]],
+  ['large_0',['large',['../namespacesvg.html#adc7e4c413a77264dd28e589407293de8aafacdb0a401ccdf6b48551bbc00e8a74',1,'svg']]],
   ['last_1',['last',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a98bd1c45684cf587ac2347a92dd7bb51',1,'svg']]],
   ['lavender_2',['lavender',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a153fa52654465ad67f045dc293f3b16e',1,'svg']]],
   ['left_3',['left',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a811882fecd5c7618d7099ebbd39ea254',1,'svg::typography']]],
-  ['legend_4',['legend',['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56ceaa3d4dcd6fc8845fa8dfc04c3ea01eb0fb',1,'svg::constants']]],
+  ['legend_4',['legend',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364a3d4dcd6fc8845fa8dfc04c3ea01eb0fb',1,'svg']]],
   ['lemonchiffon_5',['lemonchiffon',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3b5720926e81aca08b9343bb338f3583',1,'svg']]],
   ['letter_5f096_5fh_6',['letter_096_h',['../namespacesvg_1_1constants.html#af3d02dba6f3578fa6196594e0ecffca3',1,'svg::constants']]],
   ['letter_5f096_5fv_7',['letter_096_v',['../namespacesvg_1_1constants.html#ab3907c64f2b83822443c07f4dd2fe1b9',1,'svg::constants']]],
@@ -19,5 +19,6 @@ var searchData=
   ['line_5felement_16',['line_element',['../group__elements.html#structsvg_1_1line__element',1,'svg']]],
   ['linear_5fgradient_17',['linear_gradient',['../group__elements.html#structsvg_1_1linear__gradient',1,'svg']]],
   ['lineargradient_18',['linearGradient',['../group__elements.html#a7c19a4d45da1acb512fc1c69048253bfa1f95312db58aef3645ec3865b5bd04d0',1,'svg::gradient_element']]],
-  ['lsz_19',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata::lsz'],['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a2b26f8273eeb5575186c119188d3b6f5',1,'anonymous_namespace{a60-svg-graphs-line.h}::lsz']]]
+  ['lstyle_19',['lstyle',['../structsvg_1_1graph__state.html#a2b4189965144e2285de4282d9db5006a',1,'svg::graph_state']]],
+  ['lsz_20',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata::lsz'],['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a2b26f8273eeb5575186c119188d3b6f5',1,'anonymous_namespace{a60-svg-graphs-line.h}::lsz']]]
 ];

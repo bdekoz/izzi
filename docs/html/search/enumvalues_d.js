@@ -4,7 +4,7 @@ var searchData=
   ['magenta_1',['magenta',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a4c2a4a7078da0ac6733464eacfd00f86',1,'svg']]],
   ['matchparent_2',['matchparent',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a861a9af05db8d7ebc2f8ee02d50e1615',1,'svg::typography']]],
   ['mathematical_3',['mathematical',['../structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9a32fec2813600cdd66304e600d81d2113',1,'svg::typography']]],
-  ['medium_4',['medium',['../structsvg_1_1typography.html#ac41cf6a133f5b21757130ce5ba72b3d7a075a3e36a0a52dcbc568c05788e8a713',1,'svg::typography::medium'],['../namespacesvg_1_1constants.html#a44821c901c5a38946ded48f013fa32b0a075a3e36a0a52dcbc568c05788e8a713',1,'svg::constants::medium']]],
+  ['medium_4',['medium',['../structsvg_1_1typography.html#ac41cf6a133f5b21757130ce5ba72b3d7a075a3e36a0a52dcbc568c05788e8a713',1,'svg::typography::medium'],['../namespacesvg.html#adc7e4c413a77264dd28e589407293de8a075a3e36a0a52dcbc568c05788e8a713',1,'svg::medium']]],
   ['mediumblue_5',['mediumblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a56f0b1fbfc4968e21e0954555646a5b9',1,'svg']]],
   ['mediumorchid_6',['mediumorchid',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a025a653c5fc64110513169a13e797f77',1,'svg']]],
   ['mediumpurple_7',['mediumpurple',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3399bde7e469480b9c2b720ccf93354b',1,'svg']]],

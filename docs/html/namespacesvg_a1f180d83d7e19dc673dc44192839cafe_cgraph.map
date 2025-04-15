@@ -1,17 +1,17 @@
 <map id="svg::radiate_glyph_and_id" name="svg::radiate_glyph_and_id">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,281,120,324"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#aa2776d975cfdb951b8dd6a8fac3d826b" title="Approximate pixel height of type of point size @sz." alt="" coords="168,172,300,199"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,279,119,244,166,208,175,203,178,208,169,213,123,248,86,283"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#a806415593163e75c9587c2a987dd5112" title="Given identifier/name/id, get corresponding id_render_state from cache." alt="" coords="176,223,292,265"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,281,161,266,163,271,121,286"/>
-<area shape="rect" id="Node000005" href="$structsvg_1_1render__state__base.html#a7c3f23003c7324627764c9547568d42f" title=" " alt="" coords="357,420,494,463"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#aa2776d975cfdb951b8dd6a8fac3d826b" title="Approximate pixel height of type of point size @sz." alt="" coords="168,188,300,215"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,279,124,251,166,224,177,219,179,224,169,229,127,256,91,283"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#af8550758c7d56d550efe4ea83fe21f5b" title="Given identifier/name/id, get corresponding id_rstate from cache." alt="" coords="179,239,289,265"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,283,171,268,172,273,121,288"/>
+<area shape="rect" id="Node000005" href="$structsvg_1_1render__state__base.html#aa16790fbf40ef61f416151c89c267ef3" title=" " alt="" coords="357,420,494,463"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="121,322,354,411,352,416,119,327"/>
 <area shape="rect" id="Node000006" href="$namespacesvg.html#a0a0dce44cf8a75daa516cdf9fade5a85" title=" " alt="" coords="180,289,288,316"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="120,300,165,300,165,305,120,305"/>
-<area shape="rect" id="Node000030" href="$namespacesvg.html#a6cbc319a171a74fdf91e5d4eb55a6f36" title=" " alt="" coords="177,537,291,564"/>
+<area shape="rect" id="Node000030" href="$namespacesvg.html#a91699dd1391d7fe0f91ba98fde5b97a5" title=" " alt="" coords="177,537,291,564"/>
 <area shape="poly" id="edge34_Node000001_Node000030" title=" " alt="" coords="81,323,217,523,212,526,76,326"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#abcde0ef18f90817cb5cb7147211fef05" title=" " alt="" coords="368,84,483,127"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="283,220,298,209,313,191,321,173,330,155,346,137,353,131,357,136,350,141,334,158,326,175,318,194,302,213,286,224"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a96dce340dcdb9eed5deb3164b8bb5585" title=" " alt="" coords="370,84,481,127"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="281,236,298,225,315,203,322,182,329,160,346,137,355,129,359,134,350,141,334,162,327,184,319,206,302,229,284,240"/>
 <area shape="rect" id="Node000007" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="356,252,495,295"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="287,292,341,284,341,289,288,297"/>
 <area shape="rect" id="Node000010" href="$namespacesvg.html#ae7eab6d9ce1f55bcbcc997cd24c5abcf" title="Text with typography, arranged ccw around points (x,y) on a circle." alt="" coords="365,151,486,177"/>

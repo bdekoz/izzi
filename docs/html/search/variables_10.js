@@ -1,7 +1,7 @@
 var searchData=
 [
   ['s_0',['s',['../structsvg_1_1color__qf.html#aad2398a2450789b8464726b8df201d9f',1,'svg::color_qf']]],
-  ['scale_5fmode_1',['scale_mode',['../structsvg_1_1render__state__base.html#acaa3e0e982aa86d7d28ea5352662f647',1,'svg::render_state_base']]],
+  ['scale_5fmode_1',['scale_mode',['../structsvg_1_1collection__rstate.html#a324479cb9d8e402c21259590f6792221',1,'svg::collection_rstate']]],
   ['shsans_2',['shsans',['../namespacesvg_1_1constants.html#a860736522e40a2c065cfb352a89177ee',1,'svg::constants']]],
   ['shsans_5ftypo_3',['shsans_typo',['../namespacesvg_1_1constants.html#a55983a126fa40d9f0beb850ee8954ab2',1,'svg::constants']]],
   ['side_4',['side',['../group__elements.html#a4ac0be8a11091251c4d9ab94f29ea266',1,'svg::text_path_element']]],
@@ -18,5 +18,5 @@ var searchData=
   ['sserif_15',['sserif',['../namespacesvg_1_1constants.html#a84e6f54162fd84206f045bd2724d5297',1,'svg::constants']]],
   ['sserif_5ftypo_16',['sserif_typo',['../namespacesvg_1_1constants.html#a4bf0d3a7b5eca48c9f6e1b65f8bba081',1,'svg::constants']]],
   ['ssz_17',['ssz',['../namespacea60_1_1metadata.html#a3f61ba2d564dca7fe7fde2a0425cac12',1,'a60::metadata::ssz'],['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#aa892633dd865d2799745f06df4a61100',1,'anonymous_namespace{a60-svg-graphs-line.h}::ssz']]],
-  ['styl_18',['styl',['../structsvg_1_1id__render__state.html#aa3b885d59f9430a6fed7aa5ab40d63f6',1,'svg::id_render_state']]]
+  ['styl_18',['styl',['../structsvg_1_1id__rstate.html#a9a5d6d0eabc3706dd0035b8d3b822710',1,'svg::id_rstate']]]
 ];

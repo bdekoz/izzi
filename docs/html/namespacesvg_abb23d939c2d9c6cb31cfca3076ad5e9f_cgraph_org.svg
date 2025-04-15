@@ -12,9 +12,9 @@
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title=" ">
-<polygon fill="#999999" stroke="#666666" points="94.75,-356 0,-356 0,-324 94.75,-324 94.75,-356"/>
-<text text-anchor="start" x="8" y="-344.4" font-family="SourceSans" font-size="8.00">svg::kusama_ids_per</text>
-<text text-anchor="middle" x="47.38" y="-332.4" font-family="SourceSans" font-size="8.00">_uvalue_on_arc</text>
+<polygon fill="#999999" stroke="#666666" points="94.75,-355 0,-355 0,-323 94.75,-323 94.75,-355"/>
+<text text-anchor="start" x="8" y="-343.4" font-family="SourceSans" font-size="8.00">svg::kusama_ids_per</text>
+<text text-anchor="middle" x="47.38" y="-331.4" font-family="SourceSans" font-size="8.00">_uvalue_on_arc</text>
 </a>
 </g>
 </g>
@@ -22,9 +22,9 @@
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:href="namespacesvg.html#aaf18e5a2f38330dcf09fc87ceae40b85" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="233.38,-378 135.62,-378 135.62,-346 233.38,-346 233.38,-378"/>
-<text text-anchor="start" x="143.62" y="-366.4" font-family="SourceSans" font-size="8.00">svg::kusama_collision</text>
-<text text-anchor="middle" x="184.5" y="-354.4" font-family="SourceSans" font-size="8.00">_transforms</text>
+<polygon fill="white" stroke="#666666" points="233.38,-377 135.62,-377 135.62,-345 233.38,-345 233.38,-377"/>
+<text text-anchor="start" x="143.62" y="-365.4" font-family="SourceSans" font-size="8.00">svg::kusama_collision</text>
+<text text-anchor="middle" x="184.5" y="-353.4" font-family="SourceSans" font-size="8.00">_transforms</text>
 </a>
 </g>
 </g>
@@ -32,8 +32,8 @@
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M94.88,-347.57C104.32,-349.11 114.36,-350.74 124.17,-352.34"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="123.61,-355.79 134.04,-353.95 124.73,-348.89 123.61,-355.79"/>
+<path fill="none" stroke="#63b8ff" d="M94.88,-346.57C104.32,-348.11 114.36,-349.74 124.17,-351.34"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="123.61,-354.79 134.04,-352.95 124.73,-347.89 123.61,-354.79"/>
 </a>
 </g>
 </g>
@@ -41,9 +41,9 @@
 <g id="Node000003" class="node">
 <title>Node3</title>
 <g id="a_Node000003"><a xlink:href="namespacesvg.html#abae62a0253b67a62a8f10bfa6ed19464" target="_top" xlink:title="Layer one value&#39;s glyphs and ids.">
-<polygon fill="white" stroke="#666666" points="363.75,-400 274.25,-400 274.25,-368 363.75,-368 363.75,-400"/>
-<text text-anchor="start" x="282.25" y="-388.4" font-family="SourceSans" font-size="8.00">svg::kusama_ids_at</text>
-<text text-anchor="middle" x="319" y="-376.4" font-family="SourceSans" font-size="8.00">_uvalue</text>
+<polygon fill="white" stroke="#666666" points="363.75,-399 274.25,-399 274.25,-367 363.75,-367 363.75,-399"/>
+<text text-anchor="start" x="282.25" y="-387.4" font-family="SourceSans" font-size="8.00">svg::kusama_ids_at</text>
+<text text-anchor="middle" x="319" y="-375.4" font-family="SourceSans" font-size="8.00">_uvalue</text>
 </a>
 </g>
 </g>
@@ -51,8 +51,8 @@
 <g id="edge107_Node000001_Node000003" class="edge">
 <title>Node1&#45;&gt;Node3</title>
 <g id="a_edge107_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M69.72,-356.33C85.6,-367.4 108.31,-381.05 130.75,-387 174.04,-398.48 224.96,-396.74 262.76,-392.68"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="263.02,-396.17 272.55,-391.53 262.21,-389.22 263.02,-396.17"/>
+<path fill="none" stroke="#63b8ff" d="M69.72,-355.33C85.6,-366.4 108.31,-380.05 130.75,-386 174.04,-397.48 224.96,-395.74 262.76,-391.68"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="263.02,-395.17 272.55,-390.53 262.21,-388.22 263.02,-395.17"/>
 </a>
 </g>
 </g>
@@ -60,8 +60,8 @@
 <g id="Node000067" class="node">
 <title>Node67</title>
 <g id="a_Node000067"><a xlink:href="namespacesvg.html#afbc82820a905c8b57fedeee3c4269600" target="_top" xlink:title="Sort vectors of strings to largest length string first. (Or use set&lt;&gt;).">
-<polygon fill="white" stroke="#666666" points="238.25,-328 130.75,-328 130.75,-308 238.25,-308 238.25,-328"/>
-<text text-anchor="middle" x="184.5" y="-316.4" font-family="SourceSans" font-size="8.00">svg::sort_strings_by_size</text>
+<polygon fill="white" stroke="#666666" points="238.25,-327 130.75,-327 130.75,-307 238.25,-307 238.25,-327"/>
+<text text-anchor="middle" x="184.5" y="-315.4" font-family="SourceSans" font-size="8.00">svg::sort_strings_by_size</text>
 </a>
 </g>
 </g>
@@ -69,8 +69,8 @@
 <g id="edge108_Node000001_Node000067" class="edge">
 <title>Node1&#45;&gt;Node67</title>
 <g id="a_edge108_Node000001_Node000067"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M94.88,-332.43C102.75,-331.15 111.05,-329.8 119.28,-328.46"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="119.61,-331.95 128.92,-326.89 118.49,-325.04 119.61,-331.95"/>
+<path fill="none" stroke="#63b8ff" d="M94.88,-331.43C102.75,-330.15 111.05,-328.8 119.28,-327.46"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="119.61,-330.95 128.92,-325.89 118.49,-324.04 119.61,-330.95"/>
 </a>
 </g>
 </g>
@@ -78,8 +78,8 @@
 <g id="Node000068" class="node">
 <title>Node68</title>
 <g id="a_Node000068"><a xlink:href="namespacesvg.html#af2f86928ee5c1dac00eb589bef8b61fb" target="_top" xlink:title="Convert id_value_umap to value_id_mmap + set of unique values.">
-<polygon fill="white" stroke="#666666" points="236.75,-290 132.25,-290 132.25,-270 236.75,-270 236.75,-290"/>
-<text text-anchor="middle" x="184.5" y="-278.4" font-family="SourceSans" font-size="8.00">svg::to_value_id_mmap</text>
+<polygon fill="white" stroke="#666666" points="236.75,-289 132.25,-289 132.25,-269 236.75,-269 236.75,-289"/>
+<text text-anchor="middle" x="184.5" y="-277.4" font-family="SourceSans" font-size="8.00">svg::to_value_id_mmap</text>
 </a>
 </g>
 </g>
@@ -87,8 +87,8 @@
 <g id="edge109_Node000001_Node000068" class="edge">
 <title>Node1&#45;&gt;Node68</title>
 <g id="a_edge109_Node000001_Node000068"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M79.27,-323.56C94.56,-315.7 113.42,-306.41 130.75,-299 134.35,-297.46 138.12,-295.94 141.92,-294.46"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="143.04,-297.78 151.17,-290.99 140.57,-291.23 143.04,-297.78"/>
+<path fill="none" stroke="#63b8ff" d="M79.27,-322.56C94.56,-314.7 113.42,-305.41 130.75,-298 134.35,-296.46 138.12,-294.94 141.92,-293.46"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="143.04,-296.78 151.17,-289.99 140.57,-290.23 143.04,-296.78"/>
 </a>
 </g>
 </g>
@@ -96,8 +96,8 @@
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M233.71,-370C243.18,-371.58 253.18,-373.24 262.85,-374.84"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="262.07,-378.26 272.51,-376.45 263.22,-371.36 262.07,-378.26"/>
+<path fill="none" stroke="#63b8ff" d="M233.71,-369C243.18,-370.58 253.18,-372.24 262.85,-373.84"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="262.07,-377.26 272.51,-375.45 263.22,-370.36 262.07,-377.26"/>
 </a>
 </g>
 </g>
@@ -105,8 +105,8 @@
 <g id="Node000004" class="node">
 <title>Node4</title>
 <g id="a_Node000004"><a xlink:href="namespacesvg.html#a255802f8d9a51515cb44905c4216feaf" target="_top" xlink:title="Transform a value on a range to an angle on the radial range.">
-<polygon fill="white" stroke="#666666" points="800.62,-634 729.12,-634 729.12,-614 800.62,-614 800.62,-634"/>
-<text text-anchor="middle" x="764.88" y="-622.4" font-family="SourceSans" font-size="8.00">svg::get_angle</text>
+<polygon fill="white" stroke="#666666" points="800.62,-633 729.12,-633 729.12,-613 800.62,-613 800.62,-633"/>
+<text text-anchor="middle" x="764.88" y="-621.4" font-family="SourceSans" font-size="8.00">svg::get_angle</text>
 </a>
 </g>
 </g>
@@ -114,8 +114,8 @@
 <g id="edge3_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M332.19,-400.35C363.54,-441.02 451.58,-546.85 552.25,-594 605.16,-618.78 673.02,-624.42 717.44,-625.1"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="717.23,-628.6 727.25,-625.16 717.27,-621.6 717.23,-628.6"/>
+<path fill="none" stroke="#63b8ff" d="M332.19,-399.35C363.54,-440.02 451.58,-545.85 552.25,-593 605.16,-617.78 673.02,-623.42 717.44,-624.1"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="717.23,-627.6 727.25,-624.16 717.27,-620.6 717.23,-627.6"/>
 </a>
 </g>
 </g>
@@ -123,8 +123,8 @@
 <g id="Node000007" class="node">
 <title>Node7</title>
 <g id="a_Node000007"><a xlink:href="namespacesvg.html#ac04db45c1bceafa992beba8d17ae8549" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="516.25,-394 399.75,-394 399.75,-374 516.25,-374 516.25,-394"/>
-<text text-anchor="middle" x="458" y="-382.4" font-family="SourceSans" font-size="8.00">svg::kusama_ids_orbit_low</text>
+<polygon fill="white" stroke="#666666" points="516.25,-393 399.75,-393 399.75,-373 516.25,-373 516.25,-393"/>
+<text text-anchor="middle" x="458" y="-381.4" font-family="SourceSans" font-size="8.00">svg::kusama_ids_orbit_low</text>
 </a>
 </g>
 </g>
@@ -132,8 +132,8 @@
 <g id="edge6_Node000003_Node000007" class="edge">
 <title>Node3&#45;&gt;Node7</title>
 <g id="a_edge6_Node000003_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M364.1,-384C371.76,-384 379.88,-384 388.01,-384"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="387.96,-387.5 397.96,-384 387.96,-380.5 387.96,-387.5"/>
+<path fill="none" stroke="#63b8ff" d="M364.1,-383C371.76,-383 379.88,-383 388.01,-383"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="387.96,-386.5 397.96,-383 387.96,-379.5 387.96,-386.5"/>
 </a>
 </g>
 </g>
@@ -141,9 +141,9 @@
 <g id="Node000065" class="node">
 <title>Node65</title>
 <g id="a_Node000065"><a xlink:href="namespacesvg.html#abdad6c2ba24dc66439ec827282db4d77" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="813.38,-78 716.38,-78 716.38,-46 813.38,-46 813.38,-78"/>
-<text text-anchor="start" x="724.38" y="-66.4" font-family="SourceSans" font-size="8.00">svg::radiate_line_and</text>
-<text text-anchor="middle" x="764.88" y="-54.4" font-family="SourceSans" font-size="8.00">_value</text>
+<polygon fill="white" stroke="#666666" points="813.38,-77 716.38,-77 716.38,-45 813.38,-45 813.38,-77"/>
+<text text-anchor="start" x="724.38" y="-65.4" font-family="SourceSans" font-size="8.00">svg::radiate_line_and</text>
+<text text-anchor="middle" x="764.88" y="-53.4" font-family="SourceSans" font-size="8.00">_value</text>
 </a>
 </g>
 </g>
@@ -151,8 +151,8 @@
 <g id="edge106_Node000003_Node000065" class="edge">
 <title>Node3&#45;&gt;Node65</title>
 <g id="a_edge106_Node000003_Node000065"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M325.2,-367.66C344.32,-310.74 416.73,-120.83 552.25,-50 599.3,-25.41 660.53,-32.35 705.02,-43.09"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="703.93,-46.42 714.48,-45.51 705.66,-39.64 703.93,-46.42"/>
+<path fill="none" stroke="#63b8ff" d="M325.2,-366.66C344.32,-309.74 416.73,-119.83 552.25,-49 599.3,-24.41 660.53,-31.35 705.02,-42.09"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="703.93,-45.42 714.48,-44.51 705.66,-38.64 703.93,-45.42"/>
 </a>
 </g>
 </g>
@@ -160,8 +160,8 @@
 <g id="Node000005" class="node">
 <title>Node5</title>
 <g id="a_Node000005"><a xlink:href="namespacesvg.html#a37b1e7c40b54ff3cdd4e2929cb6b7ba2" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="954.25,-748 856.5,-748 856.5,-728 954.25,-728 954.25,-748"/>
-<text text-anchor="middle" x="905.38" y="-736.4" font-family="SourceSans" font-size="8.00">svg::get_radial_range</text>
+<polygon fill="white" stroke="#666666" points="954.25,-747 856.5,-747 856.5,-727 954.25,-727 954.25,-747"/>
+<text text-anchor="middle" x="905.38" y="-735.4" font-family="SourceSans" font-size="8.00">svg::get_radial_range</text>
 </a>
 </g>
 </g>
@@ -169,8 +169,8 @@
 <g id="edge4_Node000004_Node000005" class="edge">
 <title>Node4&#45;&gt;Node5</title>
 <g id="a_edge4_Node000004_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M774.15,-634.27C789.01,-652.21 821.84,-689.67 855.75,-714 859.91,-716.98 864.49,-719.78 869.13,-722.34"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="867.4,-725.38 877.9,-726.84 870.6,-719.16 867.4,-725.38"/>
+<path fill="none" stroke="#63b8ff" d="M774.15,-633.27C789.01,-651.21 821.84,-688.67 855.75,-713 859.91,-715.98 864.49,-718.78 869.13,-721.34"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="867.4,-724.38 877.9,-725.84 870.6,-718.16 867.4,-724.38"/>
 </a>
 </g>
 </g>
@@ -178,9 +178,9 @@
 <g id="Node000006" class="node">
 <title>Node6</title>
 <g id="a_Node000006"><a xlink:href="namespacesvg.html#a2e5178befe99e2a7d5ede3c02088055f" target="_top" xlink:title="Scale value from min to max on range (nfloor, nceil).">
-<polygon fill="white" stroke="#666666" points="950.12,-798 860.62,-798 860.62,-766 950.12,-766 950.12,-798"/>
-<text text-anchor="start" x="868.62" y="-786.4" font-family="SourceSans" font-size="8.00">svg::scale_value_on</text>
-<text text-anchor="middle" x="905.38" y="-774.4" font-family="SourceSans" font-size="8.00">_range</text>
+<polygon fill="white" stroke="#666666" points="950.12,-797 860.62,-797 860.62,-765 950.12,-765 950.12,-797"/>
+<text text-anchor="start" x="868.62" y="-785.4" font-family="SourceSans" font-size="8.00">svg::scale_value_on</text>
+<text text-anchor="middle" x="905.38" y="-773.4" font-family="SourceSans" font-size="8.00">_range</text>
 </a>
 </g>
 </g>
@@ -188,8 +188,8 @@
 <g id="edge5_Node000004_Node000006" class="edge">
 <title>Node4&#45;&gt;Node6</title>
 <g id="a_edge5_Node000004_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M770.56,-634.27C782.03,-658.43 813.64,-719.64 855.75,-757 856.53,-757.69 857.33,-758.36 858.14,-759.03"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="856.06,-761.84 866.25,-764.74 860.09,-756.12 856.06,-761.84"/>
+<path fill="none" stroke="#63b8ff" d="M770.56,-633.27C782.03,-657.43 813.64,-718.64 855.75,-756 856.53,-756.69 857.33,-757.36 858.14,-758.03"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="856.06,-760.84 866.25,-763.74 860.09,-755.12 856.06,-760.84"/>
 </a>
 </g>
 </g>
@@ -197,8 +197,8 @@
 <g id="edge11_Node000007_Node000004" class="edge">
 <title>Node7&#45;&gt;Node4</title>
 <g id="a_edge11_Node000007_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M461.58,-394.39C469.56,-424.44 496.77,-512.15 552.25,-558 577.59,-578.94 663.37,-601.33 717.62,-613.9"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="716.68,-617.28 727.21,-616.09 718.24,-610.45 716.68,-617.28"/>
+<path fill="none" stroke="#63b8ff" d="M461.58,-393.39C469.56,-423.44 496.77,-511.15 552.25,-557 577.59,-577.94 663.37,-600.33 717.62,-612.9"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="716.68,-616.28 727.21,-615.09 718.24,-609.45 716.68,-616.28"/>
 </a>
 </g>
 </g>
@@ -206,8 +206,8 @@
 <g id="Node000008" class="node">
 <title>Node8</title>
 <g id="a_Node000008"><a xlink:href="namespacesvg.html#a6b1624bb42af7e9269fc6088e6a26fd7" target="_top" xlink:title="Adjust angle above to CW/CCW orientation.">
-<polygon fill="white" stroke="#666666" points="1107.5,-482 991,-482 991,-462 1107.5,-462 1107.5,-482"/>
-<text text-anchor="middle" x="1049.25" y="-470.4" font-family="SourceSans" font-size="8.00">svg::adjust_angle_rotation</text>
+<polygon fill="white" stroke="#666666" points="1107.5,-481 991,-481 991,-461 1107.5,-461 1107.5,-481"/>
+<text text-anchor="middle" x="1049.25" y="-469.4" font-family="SourceSans" font-size="8.00">svg::adjust_angle_rotation</text>
 </a>
 </g>
 </g>
@@ -215,8 +215,8 @@
 <g id="edge7_Node000007_Node000008" class="edge">
 <title>Node7&#45;&gt;Node8</title>
 <g id="a_edge7_Node000007_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M485.12,-394.39C503.81,-401.82 529.57,-412.04 552.25,-421 622.32,-448.67 636.68,-465.7 710,-483 773.3,-497.94 790.78,-493.11 855.75,-496 899.82,-497.96 911.24,-501.54 955,-496 971.55,-493.9 989.36,-489.8 1004.94,-485.56"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1005.71,-488.98 1014.39,-482.9 1003.81,-482.25 1005.71,-488.98"/>
+<path fill="none" stroke="#63b8ff" d="M485.12,-393.39C503.81,-400.82 529.57,-411.04 552.25,-420 622.32,-447.67 636.68,-464.7 710,-482 773.3,-496.94 790.78,-492.11 855.75,-495 899.82,-496.96 911.24,-500.54 955,-495 971.55,-492.9 989.36,-488.8 1004.94,-484.56"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1005.71,-487.98 1014.39,-481.9 1003.81,-481.25 1005.71,-487.98"/>
 </a>
 </g>
 </g>
@@ -224,8 +224,8 @@
 <g id="Node000011" class="node">
 <title>Node11</title>
 <g id="a_Node000011"><a xlink:href="namespacesvg.html#aa2776d975cfdb951b8dd6a8fac3d826b" target="_top" xlink:title="Approximate pixel height of type of point size @sz.">
-<polygon fill="white" stroke="#666666" points="955,-309 855.75,-309 855.75,-289 955,-289 955,-309"/>
-<text text-anchor="middle" x="905.38" y="-297.4" font-family="SourceSans" font-size="8.00">svg::char_width_to_px</text>
+<polygon fill="white" stroke="#666666" points="955,-310 855.75,-310 855.75,-290 955,-290 955,-310"/>
+<text text-anchor="middle" x="905.38" y="-298.4" font-family="SourceSans" font-size="8.00">svg::char_width_to_px</text>
 </a>
 </g>
 </g>
@@ -233,8 +233,8 @@
 <g id="edge10_Node000007_Node000011" class="edge">
 <title>Node7&#45;&gt;Node11</title>
 <g id="a_edge10_Node000007_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M516.73,-386.49C589.79,-387.67 718.33,-383.1 819.75,-344 838.17,-336.9 838.42,-327.44 855.75,-318 858.26,-316.63 860.88,-315.32 863.56,-314.06"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="864.85,-317.31 872.62,-310.1 862.05,-310.89 864.85,-317.31"/>
+<path fill="none" stroke="#63b8ff" d="M516.5,-384.88C589.32,-385.42 717.61,-380.19 819.75,-343 837.82,-336.42 838.7,-327.88 855.75,-319 858.45,-317.6 861.27,-316.23 864.14,-314.93"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="865.39,-318.2 873.22,-311.05 862.65,-311.76 865.39,-318.2"/>
 </a>
 </g>
 </g>
@@ -252,8 +252,8 @@
 <g id="edge12_Node000007_Node000012" class="edge">
 <title>Node7&#45;&gt;Node12</title>
 <g id="a_edge12_Node000007_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M461.18,-373.53C468.39,-341.47 494.32,-243.52 552.25,-189 670.45,-77.76 881.43,-100.99 985.98,-121.42"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="985,-124.8 995.5,-123.34 986.38,-117.93 985,-124.8"/>
+<path fill="none" stroke="#63b8ff" d="M461.18,-372.53C468.39,-340.47 494.32,-242.52 552.25,-188 670.42,-76.79 881.41,-100.54 985.98,-121.25"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="984.99,-124.62 995.49,-123.19 986.39,-117.77 984.99,-124.62"/>
 </a>
 </g>
 </g>
@@ -261,8 +261,8 @@
 <g id="Node000015" class="node">
 <title>Node15</title>
 <g id="a_Node000015"><a xlink:href="namespacesvg.html#aa53e14ab312cd6603afd649a44cba7aa" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="674,-334 552.25,-334 552.25,-314 674,-314 674,-334"/>
-<text text-anchor="middle" x="613.12" y="-322.4" font-family="SourceSans" font-size="8.00">svg::kusama_ids_orbit_high</text>
+<polygon fill="white" stroke="#666666" points="674,-333 552.25,-333 552.25,-313 674,-313 674,-333"/>
+<text text-anchor="middle" x="613.12" y="-321.4" font-family="SourceSans" font-size="8.00">svg::kusama_ids_orbit_high</text>
 </a>
 </g>
 </g>
@@ -270,8 +270,8 @@
 <g id="edge15_Node000007_Node000015" class="edge">
 <title>Node7&#45;&gt;Node15</title>
 <g id="a_edge15_Node000007_Node000015"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M485.67,-373.55C510.41,-363.86 547.45,-349.34 575.06,-338.52"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="576.06,-341.89 584.09,-334.98 573.5,-335.37 576.06,-341.89"/>
+<path fill="none" stroke="#63b8ff" d="M485.67,-372.55C510.41,-362.86 547.45,-348.34 575.06,-337.52"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="576.06,-340.89 584.09,-333.98 573.5,-334.37 576.06,-340.89"/>
 </a>
 </g>
 </g>
@@ -279,8 +279,8 @@
 <g id="Node000020" class="node">
 <title>Node20</title>
 <g id="a_Node000020"><a xlink:href="namespacesvg.html#ade1cf7ebdd2b204618501e8d0cc28629" target="_top" xlink:title="Line between two points.">
-<polygon fill="white" stroke="#666666" points="808.12,-577 721.62,-577 721.62,-557 808.12,-557 808.12,-577"/>
-<text text-anchor="middle" x="764.88" y="-565.4" font-family="SourceSans" font-size="8.00">svg::points_to_line</text>
+<polygon fill="white" stroke="#666666" points="808.12,-576 721.62,-576 721.62,-556 808.12,-556 808.12,-576"/>
+<text text-anchor="middle" x="764.88" y="-564.4" font-family="SourceSans" font-size="8.00">svg::points_to_line</text>
 </a>
 </g>
 </g>
@@ -288,8 +288,8 @@
 <g id="edge102_Node000007_Node000020" class="edge">
 <title>Node7&#45;&gt;Node20</title>
 <g id="a_edge102_Node000007_Node000020"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M462.71,-394.48C472.66,-420.92 502.56,-490.6 552.25,-524 599.19,-555.55 664.3,-564.85 709.87,-567.17"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="709.65,-570.66 719.78,-567.56 709.93,-563.67 709.65,-570.66"/>
+<path fill="none" stroke="#63b8ff" d="M462.71,-393.48C472.66,-419.92 502.56,-489.6 552.25,-523 599.19,-554.55 664.3,-563.85 709.87,-566.17"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="709.65,-569.66 719.78,-566.56 709.93,-562.67 709.65,-569.66"/>
 </a>
 </g>
 </g>
@@ -297,9 +297,9 @@
 <g id="Node000031" class="node">
 <title>Node31</title>
 <g id="a_Node000031"><a xlink:href="namespacesvg.html#a1f180d83d7e19dc673dc44192839cafe" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="807.75,-444 722,-444 722,-412 807.75,-412 807.75,-444"/>
-<text text-anchor="start" x="730" y="-432.4" font-family="SourceSans" font-size="8.00">svg::radiate_glyph</text>
-<text text-anchor="middle" x="764.88" y="-420.4" font-family="SourceSans" font-size="8.00">_and_id</text>
+<polygon fill="white" stroke="#666666" points="807.75,-443 722,-443 722,-411 807.75,-411 807.75,-443"/>
+<text text-anchor="start" x="730" y="-431.4" font-family="SourceSans" font-size="8.00">svg::radiate_glyph</text>
+<text text-anchor="middle" x="764.88" y="-419.4" font-family="SourceSans" font-size="8.00">_and_id</text>
 </a>
 </g>
 </g>
@@ -307,8 +307,8 @@
 <g id="edge103_Node000007_Node000031" class="edge">
 <title>Node7&#45;&gt;Node31</title>
 <g id="a_edge103_Node000007_Node000031"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M516.69,-392.74C528.45,-394.5 540.75,-396.32 552.25,-398 606.07,-405.85 667.63,-414.55 710.42,-420.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="709.81,-423.99 720.2,-421.92 710.78,-417.06 709.81,-423.99"/>
+<path fill="none" stroke="#63b8ff" d="M516.69,-391.74C528.45,-393.5 540.75,-395.32 552.25,-397 606.07,-404.85 667.63,-413.55 710.42,-419.55"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="709.81,-422.99 720.2,-420.92 710.78,-416.06 709.81,-422.99"/>
 </a>
 </g>
 </g>
@@ -316,8 +316,8 @@
 <g id="edge104_Node000007_Node000065" class="edge">
 <title>Node7&#45;&gt;Node65</title>
 <g id="a_edge104_Node000007_Node000065"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M458.72,-373.66C458.17,-331.1 462.19,-168.05 552.25,-92 594.07,-56.69 657.95,-52.11 704.59,-54.57"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="704.33,-58.06 714.54,-55.23 704.8,-51.07 704.33,-58.06"/>
+<path fill="none" stroke="#63b8ff" d="M458.72,-372.66C458.17,-330.1 462.19,-167.05 552.25,-91 594.07,-55.69 657.95,-51.11 704.59,-53.57"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="704.33,-57.06 714.54,-54.23 704.8,-50.07 704.33,-57.06"/>
 </a>
 </g>
 </g>
@@ -325,8 +325,8 @@
 <g id="Node000066" class="node">
 <title>Node66</title>
 <g id="a_Node000066"><a xlink:href="namespacesvg.html#a05f20ffd56f6e435d7088fb10826709b" target="_top" xlink:title="The number of significant digits in @maxval.">
-<polygon fill="white" stroke="#666666" points="819.75,-154 710,-154 710,-134 819.75,-134 819.75,-154"/>
-<text text-anchor="middle" x="764.88" y="-142.4" font-family="SourceSans" font-size="8.00">svg::significant_digits_in</text>
+<polygon fill="white" stroke="#666666" points="819.75,-153 710,-153 710,-133 819.75,-133 819.75,-153"/>
+<text text-anchor="middle" x="764.88" y="-141.4" font-family="SourceSans" font-size="8.00">svg::significant_digits_in</text>
 </a>
 </g>
 </g>
@@ -334,8 +334,8 @@
 <g id="edge105_Node000007_Node000066" class="edge">
 <title>Node7&#45;&gt;Node66</title>
 <g id="a_edge105_Node000007_Node000066"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M468.66,-373.78C500.5,-340.55 606.08,-233.86 710,-168 714.95,-164.86 720.39,-161.92 725.84,-159.26"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="727.23,-162.47 734.85,-155.11 724.3,-156.11 727.23,-162.47"/>
+<path fill="none" stroke="#63b8ff" d="M468.66,-372.78C500.5,-339.55 606.08,-232.86 710,-167 714.95,-163.86 720.39,-160.92 725.84,-158.26"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="727.23,-161.47 734.85,-154.11 724.3,-155.11 727.23,-161.47"/>
 </a>
 </g>
 </g>
@@ -343,8 +343,8 @@
 <g id="Node000009" class="node">
 <title>Node9</title>
 <g id="a_Node000009"><a xlink:href="namespacesvg.html#a010fea242a289d173d521b501140cd72" target="_top" xlink:title="Zero degrees is top, going clockwise (cw).">
-<polygon fill="white" stroke="#666666" points="1260,-507 1143.5,-507 1143.5,-487 1260,-487 1260,-507"/>
-<text text-anchor="middle" x="1201.75" y="-495.4" font-family="SourceSans" font-size="8.00">svg::zero_angle_north_ccw</text>
+<polygon fill="white" stroke="#666666" points="1260,-506 1143.5,-506 1143.5,-486 1260,-486 1260,-506"/>
+<text text-anchor="middle" x="1201.75" y="-494.4" font-family="SourceSans" font-size="8.00">svg::zero_angle_north_ccw</text>
 </a>
 </g>
 </g>
@@ -352,8 +352,8 @@
 <g id="edge8_Node000008_Node000009" class="edge">
 <title>Node8&#45;&gt;Node9</title>
 <g id="a_edge8_Node000008_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1107.58,-481.52C1115.48,-482.84 1123.67,-484.2 1131.75,-485.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1131.15,-488.99 1141.59,-487.17 1132.3,-482.08 1131.15,-488.99"/>
+<path fill="none" stroke="#63b8ff" d="M1107.58,-480.52C1115.48,-481.84 1123.67,-483.2 1131.75,-484.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1131.15,-487.99 1141.59,-486.17 1132.3,-481.08 1131.15,-487.99"/>
 </a>
 </g>
 </g>
@@ -361,8 +361,8 @@
 <g id="Node000010" class="node">
 <title>Node10</title>
 <g id="a_Node000010"><a xlink:href="namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" target="_top" xlink:title="Zero degrees is top, going clockwise (cw).">
-<polygon fill="white" stroke="#666666" points="1258.12,-554 1145.38,-554 1145.38,-534 1258.12,-534 1258.12,-554"/>
-<text text-anchor="middle" x="1201.75" y="-542.4" font-family="SourceSans" font-size="8.00">svg::zero_angle_north_cw</text>
+<polygon fill="white" stroke="#666666" points="1258.12,-553 1145.38,-553 1145.38,-533 1258.12,-533 1258.12,-553"/>
+<text text-anchor="middle" x="1201.75" y="-541.4" font-family="SourceSans" font-size="8.00">svg::zero_angle_north_cw</text>
 </a>
 </g>
 </g>
@@ -370,8 +370,8 @@
 <g id="edge9_Node000008_Node000010" class="edge">
 <title>Node8&#45;&gt;Node10</title>
 <g id="a_edge9_Node000008_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1072.13,-482.47C1097.55,-494.63 1139.69,-514.79 1168.77,-528.7"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1166.94,-531.71 1177.47,-532.86 1169.96,-525.39 1166.94,-531.71"/>
+<path fill="none" stroke="#63b8ff" d="M1072.13,-481.47C1097.55,-493.63 1139.69,-513.79 1168.77,-527.7"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1166.94,-530.71 1177.47,-531.86 1169.96,-524.39 1166.94,-530.71"/>
 </a>
 </g>
 </g>
@@ -416,8 +416,8 @@
 <g id="edge22_Node000015_Node000004" class="edge">
 <title>Node15&#45;&gt;Node4</title>
 <g id="a_edge22_Node000015_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M615.63,-334.32C621.53,-371.72 645.94,-502.37 710,-586 716.42,-594.38 725.21,-601.66 733.83,-607.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="731.76,-610.37 742.08,-612.76 735.5,-604.45 731.76,-610.37"/>
+<path fill="none" stroke="#63b8ff" d="M615.63,-333.32C621.53,-370.72 645.94,-501.37 710,-585 716.42,-593.38 725.21,-600.66 733.83,-606.54"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="731.76,-609.37 742.08,-611.76 735.5,-603.45 731.76,-609.37"/>
 </a>
 </g>
 </g>
@@ -425,8 +425,8 @@
 <g id="edge20_Node000015_Node000008" class="edge">
 <title>Node15&#45;&gt;Node8</title>
 <g id="a_edge20_Node000015_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M618.18,-334.47C628.76,-360.12 659.88,-426.02 710,-453 795.17,-498.85 910.5,-493.63 982.09,-484.04"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="982.29,-487.55 991.7,-482.68 981.31,-480.62 982.29,-487.55"/>
+<path fill="none" stroke="#63b8ff" d="M618.18,-333.47C628.76,-359.12 659.88,-425.02 710,-452 795.17,-497.85 910.5,-492.63 982.09,-483.04"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="982.29,-486.55 991.7,-481.68 981.31,-479.62 982.29,-486.55"/>
 </a>
 </g>
 </g>
@@ -434,8 +434,8 @@
 <g id="edge21_Node000015_Node000011" class="edge">
 <title>Node15&#45;&gt;Node11</title>
 <g id="a_edge21_Node000015_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M674.36,-330.35C715.56,-333.36 771.28,-334.81 819.75,-327 828.86,-325.53 847.84,-319.36 865.53,-313.18"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="866.59,-316.51 874.84,-309.88 864.25,-309.92 866.59,-316.51"/>
+<path fill="none" stroke="#63b8ff" d="M674.31,-329.02C715.49,-331.88 771.2,-333.29 819.75,-326 835.62,-323.62 852.61,-318.85 867.18,-314.05"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="868.04,-317.46 876.36,-310.9 865.77,-310.84 868.04,-317.46"/>
 </a>
 </g>
 </g>
@@ -443,8 +443,8 @@
 <g id="edge23_Node000015_Node000012" class="edge">
 <title>Node15&#45;&gt;Node12</title>
 <g id="a_edge23_Node000015_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M626.76,-313.51C644.46,-299.21 678.07,-273.49 710,-257 801.92,-209.53 916.73,-172.77 986.18,-152.78"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="986.81,-156.24 995.47,-150.13 984.89,-149.51 986.81,-156.24"/>
+<path fill="none" stroke="#63b8ff" d="M626.45,-312.74C644.06,-298.47 677.86,-272.54 710,-256 801.89,-208.69 916.71,-172.31 986.17,-152.56"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="986.78,-156.02 995.46,-149.94 984.89,-149.28 986.78,-156.02"/>
 </a>
 </g>
 </g>
@@ -452,9 +452,9 @@
 <g id="Node000016" class="node">
 <title>Node16</title>
 <g id="a_Node000016"><a xlink:href="namespacesvg.html#a3a981b6bbcf7466e6e90eacbe8cf126d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="952.38,-78 858.38,-78 858.38,-46 952.38,-46 952.38,-78"/>
-<text text-anchor="start" x="866.38" y="-66.4" font-family="SourceSans" font-size="8.00">svg::adjust_angle_at</text>
-<text text-anchor="middle" x="905.38" y="-54.4" font-family="SourceSans" font-size="8.00">_orbit_for_distance</text>
+<polygon fill="white" stroke="#666666" points="952.38,-77 858.38,-77 858.38,-45 952.38,-45 952.38,-77"/>
+<text text-anchor="start" x="866.38" y="-65.4" font-family="SourceSans" font-size="8.00">svg::adjust_angle_at</text>
+<text text-anchor="middle" x="905.38" y="-53.4" font-family="SourceSans" font-size="8.00">_orbit_for_distance</text>
 </a>
 </g>
 </g>
@@ -462,8 +462,8 @@
 <g id="edge16_Node000015_Node000016" class="edge">
 <title>Node15&#45;&gt;Node16</title>
 <g id="a_edge16_Node000015_Node000016"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M623.32,-313.93C635.3,-300.69 656.77,-276.56 674,-255 690.87,-233.89 688.57,-222.47 710,-206 751.54,-174.08 777.22,-193.58 819.75,-163 848.26,-142.5 873,-110.27 888.25,-87.75"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="891.15,-89.71 893.73,-79.43 885.31,-85.85 891.15,-89.71"/>
+<path fill="none" stroke="#63b8ff" d="M623.32,-312.93C635.3,-299.69 656.77,-275.56 674,-254 690.87,-232.89 688.57,-221.47 710,-205 751.54,-173.08 777.22,-192.58 819.75,-162 848.26,-141.5 873,-109.27 888.25,-86.75"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="891.15,-88.71 893.73,-78.43 885.31,-84.85 891.15,-88.71"/>
 </a>
 </g>
 </g>
@@ -471,8 +471,8 @@
 <g id="Node000018" class="node">
 <title>Node18</title>
 <g id="a_Node000018"><a xlink:href="namespacesvg.html#acf3b42875f3a4e7bee10c21670c166cc" target="_top" xlink:title="The smallest (sattelite) radius size allowed in a kusama orbit.">
-<polygon fill="white" stroke="#666666" points="1100.38,-192 998.12,-192 998.12,-172 1100.38,-172 1100.38,-192"/>
-<text text-anchor="middle" x="1049.25" y="-180.4" font-family="SourceSans" font-size="8.00">svg::get_min_ring_size</text>
+<polygon fill="white" stroke="#666666" points="1100.38,-191 998.12,-191 998.12,-171 1100.38,-171 1100.38,-191"/>
+<text text-anchor="middle" x="1049.25" y="-179.4" font-family="SourceSans" font-size="8.00">svg::get_min_ring_size</text>
 </a>
 </g>
 </g>
@@ -480,8 +480,8 @@
 <g id="edge24_Node000015_Node000018" class="edge">
 <title>Node15&#45;&gt;Node18</title>
 <g id="a_edge24_Node000015_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M631.52,-313.6C650.26,-302.85 681.27,-286.35 710,-277 815.12,-242.77 855.83,-282.87 955,-234 974.47,-224.41 972.29,-211.99 991,-201 993.49,-199.54 996.11,-198.17 998.79,-196.89"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1000.15,-200.12 1008,-193 997.43,-193.67 1000.15,-200.12"/>
+<path fill="none" stroke="#63b8ff" d="M631.52,-312.6C650.26,-301.85 681.27,-285.35 710,-276 815.12,-241.77 855.83,-281.87 955,-233 974.47,-223.41 972.29,-210.99 991,-200 993.49,-198.54 996.11,-197.17 998.79,-195.89"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1000.15,-199.12 1008,-192 997.43,-192.67 1000.15,-199.12"/>
 </a>
 </g>
 </g>
@@ -489,9 +489,9 @@
 <g id="Node000019" class="node">
 <title>Node19</title>
 <g id="a_Node000019"><a xlink:href="namespacesvg.html#a8947ce56afc2d9fadeb3d946d20f2a35" target="_top" xlink:title="The minimum distance between satellites in high orbit.">
-<polygon fill="white" stroke="#666666" points="814.12,-318 715.62,-318 715.62,-286 814.12,-286 814.12,-318"/>
-<text text-anchor="start" x="723.62" y="-306.4" font-family="SourceSans" font-size="8.00">svg::get_min_satellite</text>
-<text text-anchor="middle" x="764.88" y="-294.4" font-family="SourceSans" font-size="8.00">_distance</text>
+<polygon fill="white" stroke="#666666" points="814.12,-317 715.62,-317 715.62,-285 814.12,-285 814.12,-317"/>
+<text text-anchor="start" x="723.62" y="-305.4" font-family="SourceSans" font-size="8.00">svg::get_min_satellite</text>
+<text text-anchor="middle" x="764.88" y="-293.4" font-family="SourceSans" font-size="8.00">_distance</text>
 </a>
 </g>
 </g>
@@ -499,8 +499,8 @@
 <g id="edge25_Node000015_Node000019" class="edge">
 <title>Node15&#45;&gt;Node19</title>
 <g id="a_edge25_Node000015_Node000019"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M674.17,-315.18C684,-313.74 694.18,-312.24 704,-310.8"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="704.44,-314.27 713.82,-309.35 703.42,-307.34 704.44,-314.27"/>
+<path fill="none" stroke="#63b8ff" d="M674.17,-314.18C684,-312.74 694.18,-311.24 704,-309.8"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="704.44,-313.27 713.82,-308.35 703.42,-306.34 704.44,-313.27"/>
 </a>
 </g>
 </g>
@@ -508,8 +508,8 @@
 <g id="edge26_Node000015_Node000020" class="edge">
 <title>Node15&#45;&gt;Node20</title>
 <g id="a_edge26_Node000015_Node000020"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M620,-334.35C634.72,-360.19 674.55,-429.54 710,-486 723.39,-507.32 739.45,-531.28 750.53,-547.57"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="747.34,-549.1 755.87,-555.38 753.12,-545.15 747.34,-549.1"/>
+<path fill="none" stroke="#63b8ff" d="M620,-333.35C634.72,-359.19 674.55,-428.54 710,-485 723.39,-506.32 739.45,-530.28 750.53,-546.57"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="747.34,-548.1 755.87,-554.38 753.12,-544.15 747.34,-548.1"/>
 </a>
 </g>
 </g>
@@ -517,8 +517,8 @@
 <g id="edge37_Node000015_Node000031" class="edge">
 <title>Node15&#45;&gt;Node31</title>
 <g id="a_edge37_Node000015_Node000031"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M629.03,-334.35C652.63,-350.74 699.17,-383.06 730.9,-405.1"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="728.78,-407.89 738.99,-410.71 732.77,-402.14 728.78,-407.89"/>
+<path fill="none" stroke="#63b8ff" d="M629.03,-333.35C652.63,-349.74 699.17,-382.06 730.9,-404.1"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="728.78,-406.89 738.99,-409.71 732.77,-401.14 728.78,-406.89"/>
 </a>
 </g>
 </g>
@@ -526,8 +526,8 @@
 <g id="edge100_Node000015_Node000065" class="edge">
 <title>Node15&#45;&gt;Node65</title>
 <g id="a_edge100_Node000015_Node000065"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M618.04,-313.57C629.67,-283.15 665.99,-192.44 710,-125 718.75,-111.59 730.07,-97.94 740.07,-86.79"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="742.54,-89.28 746.72,-79.55 737.38,-84.55 742.54,-89.28"/>
+<path fill="none" stroke="#63b8ff" d="M618.04,-312.57C629.67,-282.15 665.99,-191.44 710,-124 718.75,-110.59 730.07,-96.94 740.07,-85.79"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="742.54,-88.28 746.72,-78.55 737.38,-83.55 742.54,-88.28"/>
 </a>
 </g>
 </g>
@@ -535,8 +535,8 @@
 <g id="edge101_Node000015_Node000066" class="edge">
 <title>Node15&#45;&gt;Node66</title>
 <g id="a_edge101_Node000015_Node000066"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M619.99,-313.69C638.81,-280.69 697.21,-179.21 710,-168 713.6,-164.85 717.67,-162.05 721.93,-159.58"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="723.42,-162.75 730.73,-155.08 720.23,-156.52 723.42,-162.75"/>
+<path fill="none" stroke="#63b8ff" d="M622.23,-312.75C634.28,-297.27 657.29,-266.78 674,-239 692.44,-208.34 684.14,-191.73 710,-167 713.24,-163.9 716.94,-161.16 720.86,-158.75"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="722.38,-161.91 729.55,-154.12 719.08,-155.73 722.38,-161.91"/>
 </a>
 </g>
 </g>
@@ -544,8 +544,8 @@
 <g id="edge18_Node000016_Node000012" class="edge">
 <title>Node16&#45;&gt;Node12</title>
 <g id="a_edge18_Node000016_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M933.01,-78.46C949.46,-88.37 971.15,-100.96 991,-111 993.5,-112.26 996.07,-113.53 998.69,-114.78"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="996.95,-117.83 1007.49,-118.87 999.9,-111.48 996.95,-117.83"/>
+<path fill="none" stroke="#63b8ff" d="M933.26,-77.37C953.59,-89.65 979.83,-105.29 991,-111 993.49,-112.27 996.06,-113.55 998.67,-114.8"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="996.93,-117.85 1007.47,-118.91 999.89,-111.51 996.93,-117.85"/>
 </a>
 </g>
 </g>
@@ -553,8 +553,8 @@
 <g id="edge19_Node000016_Node000014" class="edge">
 <title>Node16&#45;&gt;Node14</title>
 <g id="a_edge19_Node000016_Node000014"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M952.72,-64.27C993.5,-66.33 1054.46,-69.56 1107.5,-73 1121.04,-73.88 1135.68,-74.93 1149.26,-75.95"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1148.63,-79.41 1158.86,-76.67 1149.15,-72.43 1148.63,-79.41"/>
+<path fill="none" stroke="#63b8ff" d="M952.72,-63.56C993.49,-65.87 1054.45,-69.43 1107.5,-73 1121.04,-73.91 1135.68,-74.97 1149.26,-75.99"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1148.62,-79.45 1158.86,-76.72 1149.15,-72.47 1148.62,-79.45"/>
 </a>
 </g>
 </g>
@@ -571,8 +571,8 @@
 <g id="edge17_Node000016_Node000017" class="edge">
 <title>Node16&#45;&gt;Node17</title>
 <g id="a_edge17_Node000016_Node000017"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M952.83,-71.82C963.98,-74.18 976.04,-76.73 987.72,-79.2"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="986.77,-82.58 997.28,-81.22 988.22,-75.73 986.77,-82.58"/>
+<path fill="none" stroke="#63b8ff" d="M952.83,-71.15C964.46,-73.69 977.1,-76.45 989.25,-79.11"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="988.23,-82.47 998.75,-81.18 989.73,-75.63 988.23,-82.47"/>
 </a>
 </g>
 </g>
@@ -590,8 +590,8 @@
 <g id="edge27_Node000020_Node000021" class="edge">
 <title>Node20&#45;&gt;Node21</title>
 <g id="a_edge27_Node000020_Node000021"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M788.57,-577.44C828.48,-595.15 914.27,-630.4 991,-643 1042.09,-651.39 1056.11,-649.31 1107.5,-643 1176.83,-634.49 1206.4,-649.79 1260,-605 1289.92,-580 1268.63,-552.77 1296,-525 1296.59,-524.4 1297.2,-523.81 1297.83,-523.23"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1299.7,-526.21 1305.51,-517.35 1295.44,-520.65 1299.7,-526.21"/>
+<path fill="none" stroke="#63b8ff" d="M788.57,-576.44C828.48,-594.15 914.27,-629.4 991,-642 1042.09,-650.39 1056.11,-648.31 1107.5,-642 1176.83,-633.49 1206.29,-648.66 1260,-604 1289.67,-579.33 1268.85,-552.41 1296,-525 1296.6,-524.4 1297.21,-523.81 1297.84,-523.24"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1299.7,-526.21 1305.53,-517.36 1295.45,-520.65 1299.7,-526.21"/>
 </a>
 </g>
 </g>
@@ -608,8 +608,8 @@
 <g id="edge29_Node000020_Node000023" class="edge">
 <title>Node20&#45;&gt;Node23</title>
 <g id="a_edge29_Node000020_Node000023"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M785.11,-577.37C796.28,-584.12 810.02,-593.74 819.75,-605 842.89,-631.76 827.54,-654.64 855.75,-676 902.13,-711.12 1070.66,-731.63 1153.76,-739.83"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1153.34,-743.3 1163.63,-740.78 1154.02,-736.34 1153.34,-743.3"/>
+<path fill="none" stroke="#63b8ff" d="M785.11,-576.37C796.28,-583.12 810.02,-592.74 819.75,-604 842.89,-630.76 827.57,-653.6 855.75,-675 902.11,-710.2 1070.65,-731.23 1153.76,-739.68"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1153.33,-743.16 1163.63,-740.66 1154.03,-736.19 1153.33,-743.16"/>
 </a>
 </g>
 </g>
@@ -683,8 +683,8 @@
 <g id="edge34_Node000023_Node000028" class="edge">
 <title>Node23&#45;&gt;Node28</title>
 <g id="a_edge34_Node000023_Node000028"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1213.37,-733.84C1225.98,-721.27 1246.94,-698.75 1260,-676 1283.72,-634.67 1263.94,-610.26 1296,-575 1296.57,-574.37 1297.16,-573.76 1297.76,-573.17"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1299.67,-576.12 1305.26,-567.12 1295.28,-570.67 1299.67,-576.12"/>
+<path fill="none" stroke="#63b8ff" d="M1213.35,-733.65C1225.93,-720.86 1246.87,-697.98 1260,-675 1283.43,-633.99 1264.16,-609.9 1296,-575 1296.57,-574.38 1297.16,-573.76 1297.76,-573.17"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1299.67,-576.12 1305.27,-567.13 1295.29,-570.67 1299.67,-576.12"/>
 </a>
 </g>
 </g>
@@ -765,18 +765,17 @@
 <g id="edge38_Node000031_Node000011" class="edge">
 <title>Node31&#45;&gt;Node11</title>
 <g id="a_edge38_Node000031_Node000011"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M802.96,-411.55C809.08,-407.72 814.97,-403.2 819.75,-398 846.12,-369.28 827.49,-344.87 855.75,-318 856.78,-317.02 857.88,-316.08 859.01,-315.19"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="860.56,-318.36 867.17,-310.07 856.84,-312.43 860.56,-318.36"/>
+<path fill="none" stroke="#63b8ff" d="M802.92,-410.52C809.04,-406.69 814.95,-402.18 819.75,-397 845.71,-369 827.96,-345.18 855.75,-319 856.79,-318.02 857.88,-317.09 859.03,-316.21"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="860.57,-319.37 867.19,-311.1 856.86,-313.43 860.57,-319.37"/>
 </a>
 </g>
 </g>
 <!-- Node32 -->
 <g id="Node000032" class="node">
 <title>Node32</title>
-<g id="a_Node000032"><a xlink:href="namespacesvg.html#a806415593163e75c9587c2a987dd5112" target="_top" xlink:title="Given identifier/name/id, get corresponding id_render_state from cache.">
-<polygon fill="white" stroke="#666666" points="948.62,-444 862.12,-444 862.12,-412 948.62,-412 948.62,-444"/>
-<text text-anchor="start" x="870.12" y="-432.4" font-family="SourceSans" font-size="8.00">svg::get_id_render</text>
-<text text-anchor="middle" x="905.38" y="-420.4" font-family="SourceSans" font-size="8.00">_state</text>
+<g id="a_Node000032"><a xlink:href="namespacesvg.html#af8550758c7d56d550efe4ea83fe21f5b" target="_top" xlink:title="Given identifier/name/id, get corresponding id_rstate from cache.">
+<polygon fill="white" stroke="#666666" points="946.75,-437 864,-437 864,-417 946.75,-417 946.75,-437"/>
+<text text-anchor="middle" x="905.38" y="-425.4" font-family="SourceSans" font-size="8.00">svg::get_id_rstate</text>
 </a>
 </g>
 </g>
@@ -784,18 +783,18 @@
 <g id="edge39_Node000031_Node000032" class="edge">
 <title>Node31&#45;&gt;Node32</title>
 <g id="a_edge39_Node000031_Node000032"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M808.18,-428C821.48,-428 836.35,-428 850.35,-428"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="850.34,-431.5 860.34,-428 850.34,-424.5 850.34,-431.5"/>
+<path fill="none" stroke="#63b8ff" d="M808.18,-427C822.12,-427 837.78,-427 852.35,-427"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="852.24,-430.5 862.24,-427 852.24,-423.5 852.24,-430.5"/>
 </a>
 </g>
 </g>
 <!-- Node34 -->
 <g id="Node000034" class="node">
 <title>Node34</title>
-<g id="a_Node000034"><a xlink:href="structsvg_1_1render__state__base.html#a7c3f23003c7324627764c9547568d42f" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1100.75,-394 997.75,-394 997.75,-362 1100.75,-362 1100.75,-394"/>
-<text text-anchor="start" x="1005.75" y="-382.4" font-family="SourceSans" font-size="8.00">svg::render_state_base</text>
-<text text-anchor="middle" x="1049.25" y="-370.4" font-family="SourceSans" font-size="8.00">::is_visible</text>
+<g id="a_Node000034"><a xlink:href="structsvg_1_1render__state__base.html#aa16790fbf40ef61f416151c89c267ef3" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1100.75,-393 997.75,-393 997.75,-361 1100.75,-361 1100.75,-393"/>
+<text text-anchor="start" x="1005.75" y="-381.4" font-family="SourceSans" font-size="8.00">svg::render_state_base</text>
+<text text-anchor="middle" x="1049.25" y="-369.4" font-family="SourceSans" font-size="8.00">::is_visible</text>
 </a>
 </g>
 </g>
@@ -803,8 +802,8 @@
 <g id="edge41_Node000031_Node000034" class="edge">
 <title>Node31&#45;&gt;Node34</title>
 <g id="a_edge41_Node000031_Node000034"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M808.09,-414.92C823.04,-410.65 840.04,-406.19 855.75,-403 898.85,-394.25 948.03,-387.93 985.89,-383.83"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="986.18,-387.32 995.76,-382.79 985.44,-380.36 986.18,-387.32"/>
+<path fill="none" stroke="#63b8ff" d="M807.86,-417.68C822.93,-414.46 840.07,-410.92 855.75,-408 899.18,-399.92 948.35,-392.02 986.13,-386.22"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="986.62,-389.69 995.97,-384.72 985.56,-382.77 986.62,-389.69"/>
 </a>
 </g>
 </g>
@@ -812,8 +811,8 @@
 <g id="Node000035" class="node">
 <title>Node35</title>
 <g id="a_Node000035"><a xlink:href="namespacesvg.html#a0a0dce44cf8a75daa516cdf9fade5a85" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="945.62,-558 865.12,-558 865.12,-538 945.62,-538 945.62,-558"/>
-<text text-anchor="middle" x="905.38" y="-546.4" font-family="SourceSans" font-size="8.00">svg::radial_text_r</text>
+<polygon fill="white" stroke="#666666" points="945.62,-557 865.12,-557 865.12,-537 945.62,-537 945.62,-557"/>
+<text text-anchor="middle" x="905.38" y="-545.4" font-family="SourceSans" font-size="8.00">svg::radial_text_r</text>
 </a>
 </g>
 </g>
@@ -821,17 +820,17 @@
 <g id="edge42_Node000031_Node000035" class="edge">
 <title>Node31&#45;&gt;Node35</title>
 <g id="a_edge42_Node000031_Node000035"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M784.84,-444.43C810.82,-466.94 857.28,-507.2 883.99,-530.33"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="881.55,-532.85 891.4,-536.76 886.13,-527.56 881.55,-532.85"/>
+<path fill="none" stroke="#63b8ff" d="M784.84,-443.43C810.82,-465.94 857.28,-506.2 883.99,-529.33"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="881.55,-531.85 891.4,-535.76 886.13,-526.56 881.55,-531.85"/>
 </a>
 </g>
 </g>
 <!-- Node49 -->
 <g id="Node000049" class="node">
 <title>Node49</title>
-<g id="a_Node000049"><a xlink:href="namespacesvg.html#a6cbc319a171a74fdf91e5d4eb55a6f36" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="948.25,-347 862.5,-347 862.5,-327 948.25,-327 948.25,-347"/>
-<text text-anchor="middle" x="905.38" y="-335.4" font-family="SourceSans" font-size="8.00">svg::radiate_glyph</text>
+<g id="a_Node000049"><a xlink:href="namespacesvg.html#a91699dd1391d7fe0f91ba98fde5b97a5" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="948.25,-348 862.5,-348 862.5,-328 948.25,-328 948.25,-348"/>
+<text text-anchor="middle" x="905.38" y="-336.4" font-family="SourceSans" font-size="8.00">svg::radiate_glyph</text>
 </a>
 </g>
 </g>
@@ -839,18 +838,18 @@
 <g id="edge68_Node000031_Node000049" class="edge">
 <title>Node31&#45;&gt;Node49</title>
 <g id="a_edge68_Node000031_Node000049"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M797.86,-411.59C805.23,-407.43 812.9,-402.78 819.75,-398 837.06,-385.91 838.71,-379.47 855.75,-367 862.2,-362.28 869.41,-357.55 876.27,-353.3"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="877.88,-356.41 884.62,-348.24 874.26,-350.42 877.88,-356.41"/>
+<path fill="none" stroke="#63b8ff" d="M796.73,-410.64C804.35,-406.37 812.43,-401.66 819.75,-397 836.4,-386.4 839.58,-382.32 855.75,-371 863.42,-365.63 871.84,-359.87 879.49,-354.69"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="881.38,-357.63 887.71,-349.14 877.46,-351.83 881.38,-357.63"/>
 </a>
 </g>
 </g>
 <!-- Node33 -->
 <g id="Node000033" class="node">
 <title>Node33</title>
-<g id="a_Node000033"><a xlink:href="namespacesvg.html#abcde0ef18f90817cb5cb7147211fef05" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1092.5,-444 1006,-444 1006,-412 1092.5,-412 1092.5,-444"/>
-<text text-anchor="start" x="1014" y="-432.4" font-family="SourceSans" font-size="8.00">svg::get_id_render</text>
-<text text-anchor="middle" x="1049.25" y="-420.4" font-family="SourceSans" font-size="8.00">_state_cache</text>
+<g id="a_Node000033"><a xlink:href="namespacesvg.html#a96dce340dcdb9eed5deb3164b8bb5585" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1090.62,-443 1007.88,-443 1007.88,-411 1090.62,-411 1090.62,-443"/>
+<text text-anchor="start" x="1015.88" y="-431.4" font-family="SourceSans" font-size="8.00">svg::get_id_rstate</text>
+<text text-anchor="middle" x="1049.25" y="-419.4" font-family="SourceSans" font-size="8.00">_cache</text>
 </a>
 </g>
 </g>
@@ -858,8 +857,8 @@
 <g id="edge40_Node000032_Node000033" class="edge">
 <title>Node32&#45;&gt;Node33</title>
 <g id="a_edge40_Node000032_Node000033"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M948.94,-428C963.25,-428 979.4,-428 994.46,-428"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="994.2,-431.5 1004.2,-428 994.2,-424.5 994.2,-431.5"/>
+<path fill="none" stroke="#63b8ff" d="M947.03,-427C962.32,-427 979.91,-427 996.1,-427"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="996.07,-430.5 1006.07,-427 996.07,-423.5 996.07,-430.5"/>
 </a>
 </g>
 </g>
@@ -867,8 +866,8 @@
 <g id="edge66_Node000035_Node000009" class="edge">
 <title>Node35&#45;&gt;Node9</title>
 <g id="a_edge66_Node000035_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M946.08,-541.12C993.67,-532.88 1074.24,-518.92 1132.02,-508.91"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1132.51,-512.38 1141.76,-507.22 1131.31,-505.48 1132.51,-512.38"/>
+<path fill="none" stroke="#63b8ff" d="M946.08,-540.12C993.67,-531.88 1074.24,-517.92 1132.02,-507.91"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1132.51,-511.38 1141.76,-506.22 1131.31,-504.48 1132.51,-511.38"/>
 </a>
 </g>
 </g>
@@ -876,8 +875,8 @@
 <g id="edge67_Node000035_Node000010" class="edge">
 <title>Node35&#45;&gt;Node10</title>
 <g id="a_edge67_Node000035_Node000010"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M946.08,-547.46C994.19,-546.81 1075.99,-545.7 1133.89,-544.91"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1133.66,-548.41 1143.62,-544.78 1133.57,-541.41 1133.66,-548.41"/>
+<path fill="none" stroke="#63b8ff" d="M946.08,-546.46C994.19,-545.81 1075.99,-544.7 1133.89,-543.91"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1133.66,-547.41 1143.62,-543.78 1133.57,-540.41 1133.66,-547.41"/>
 </a>
 </g>
 </g>
@@ -885,8 +884,8 @@
 <g id="edge43_Node000035_Node000012" class="edge">
 <title>Node35&#45;&gt;Node12</title>
 <g id="a_edge43_Node000035_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M913.2,-537.69C924.02,-520.79 944.93,-485.76 955,-453 993.17,-328.86 914.82,-268.19 991,-163 991.74,-161.98 992.53,-160.99 993.36,-160.04"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="995.62,-162.72 1000.74,-153.44 990.95,-157.5 995.62,-162.72"/>
+<path fill="none" stroke="#63b8ff" d="M912.82,-536.55C923.49,-518.71 944.68,-480.9 955,-446 991.06,-323.99 915.5,-264.41 991,-162 991.51,-161.31 992.04,-160.63 992.6,-159.98"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="994.73,-162.77 999.71,-153.42 989.98,-157.63 994.73,-162.77"/>
 </a>
 </g>
 </g>
@@ -894,8 +893,8 @@
 <g id="Node000036" class="node">
 <title>Node36</title>
 <g id="a_Node000036"><a xlink:href="namespacesvg.html#ae7eab6d9ce1f55bcbcc997cd24c5abcf" target="_top" xlink:title="Text with typography, arranged ccw around points (x,y) on a circle.">
-<polygon fill="white" stroke="#666666" points="1094.75,-596 1003.75,-596 1003.75,-576 1094.75,-576 1094.75,-596"/>
-<text text-anchor="middle" x="1049.25" y="-584.4" font-family="SourceSans" font-size="8.00">svg::radial_text_ccw</text>
+<polygon fill="white" stroke="#666666" points="1094.75,-595 1003.75,-595 1003.75,-575 1094.75,-575 1094.75,-595"/>
+<text text-anchor="middle" x="1049.25" y="-583.4" font-family="SourceSans" font-size="8.00">svg::radial_text_ccw</text>
 </a>
 </g>
 </g>
@@ -903,8 +902,8 @@
 <g id="edge44_Node000035_Node000036" class="edge">
 <title>Node35&#45;&gt;Node36</title>
 <g id="a_edge44_Node000035_Node000036"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M945.52,-558.48C961.8,-562.85 980.9,-567.96 998.19,-572.59"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="997.21,-575.95 1007.77,-575.16 999.02,-569.19 997.21,-575.95"/>
+<path fill="none" stroke="#63b8ff" d="M945.52,-557.48C961.8,-561.85 980.9,-566.96 998.19,-571.59"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="997.21,-574.95 1007.77,-574.16 999.02,-568.19 997.21,-574.95"/>
 </a>
 </g>
 </g>
@@ -912,8 +911,8 @@
 <g id="Node000048" class="node">
 <title>Node48</title>
 <g id="a_Node000048"><a xlink:href="namespacesvg.html#a27b1041d0851178e4835e1f623a46161" target="_top" xlink:title="Text with typography, arranged cw around points (x,y) on a circle.">
-<polygon fill="white" stroke="#666666" points="1092.88,-634 1005.62,-634 1005.62,-614 1092.88,-614 1092.88,-634"/>
-<text text-anchor="middle" x="1049.25" y="-622.4" font-family="SourceSans" font-size="8.00">svg::radial_text_cw</text>
+<polygon fill="white" stroke="#666666" points="1092.88,-633 1005.62,-633 1005.62,-613 1092.88,-613 1092.88,-633"/>
+<text text-anchor="middle" x="1049.25" y="-621.4" font-family="SourceSans" font-size="8.00">svg::radial_text_cw</text>
 </a>
 </g>
 </g>
@@ -921,8 +920,8 @@
 <g id="edge64_Node000035_Node000048" class="edge">
 <title>Node35&#45;&gt;Node48</title>
 <g id="a_edge64_Node000035_Node000048"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M919.46,-558.48C935.52,-570.94 963.97,-591.72 991,-605 994.29,-606.62 997.75,-608.15 1001.27,-609.58"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="999.91,-612.81 1010.5,-613.07 1002.39,-606.26 999.91,-612.81"/>
+<path fill="none" stroke="#63b8ff" d="M919.46,-557.48C935.52,-569.94 963.97,-590.72 991,-604 994.29,-605.62 997.75,-607.15 1001.27,-608.58"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="999.91,-611.81 1010.5,-612.07 1002.39,-605.26 999.91,-611.81"/>
 </a>
 </g>
 </g>
@@ -930,8 +929,8 @@
 <g id="Node000037" class="node">
 <title>Node37</title>
 <g id="a_Node000037"><a xlink:href="namespacesvg.html#a5791c1fc9121f01e5f666b7ce0367dfa" target="_top" xlink:title="Text at @origin, with style and ... a transformation=rotation of @deg about @rorigin.">
-<polygon fill="white" stroke="#666666" points="1242.38,-596 1161.12,-596 1161.12,-576 1242.38,-576 1242.38,-596"/>
-<text text-anchor="middle" x="1201.75" y="-584.4" font-family="SourceSans" font-size="8.00">svg::styled_text_r</text>
+<polygon fill="white" stroke="#666666" points="1242.38,-595 1161.12,-595 1161.12,-575 1242.38,-575 1242.38,-595"/>
+<text text-anchor="middle" x="1201.75" y="-583.4" font-family="SourceSans" font-size="8.00">svg::styled_text_r</text>
 </a>
 </g>
 </g>
@@ -939,8 +938,8 @@
 <g id="edge45_Node000036_Node000037" class="edge">
 <title>Node36&#45;&gt;Node37</title>
 <g id="a_edge45_Node000036_Node000037"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1095,-586C1112.13,-586 1131.8,-586 1149.49,-586"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1149.27,-589.5 1159.27,-586 1149.27,-582.5 1149.27,-589.5"/>
+<path fill="none" stroke="#63b8ff" d="M1095,-585C1112.13,-585 1131.8,-585 1149.49,-585"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1149.27,-588.5 1159.27,-585 1149.27,-581.5 1149.27,-588.5"/>
 </a>
 </g>
 </g>
@@ -948,8 +947,8 @@
 <g id="edge59_Node000037_Node000021" class="edge">
 <title>Node37&#45;&gt;Node21</title>
 <g id="a_edge59_Node000037_Node000021"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1235.78,-575.53C1244.05,-572.17 1252.65,-568 1260,-563 1279.24,-549.92 1277.13,-538.61 1296,-525 1297.35,-524.03 1298.75,-523.07 1300.17,-522.15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1301.82,-525.24 1308.66,-517.15 1298.27,-519.21 1301.82,-525.24"/>
+<path fill="none" stroke="#63b8ff" d="M1235.43,-574.59C1243.79,-571.21 1252.53,-567.01 1260,-562 1279.06,-549.22 1277.3,-538.3 1296,-525 1297.36,-524.03 1298.76,-523.09 1300.19,-522.17"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1301.83,-525.27 1308.7,-517.2 1298.3,-519.22 1301.83,-525.27"/>
 </a>
 </g>
 </g>
@@ -967,8 +966,8 @@
 <g id="edge46_Node000037_Node000038" class="edge">
 <title>Node37&#45;&gt;Node38</title>
 <g id="a_edge46_Node000037_Node000038"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1211.64,-596.48C1227.26,-614.39 1261.27,-651.26 1296,-675 1297.54,-676.05 1299.14,-677.08 1300.77,-678.09"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1298.65,-680.91 1309.08,-682.81 1302.11,-674.83 1298.65,-680.91"/>
+<path fill="none" stroke="#63b8ff" d="M1211.37,-595.32C1226.83,-613.33 1260.96,-650.9 1296,-675 1297.54,-676.06 1299.13,-677.09 1300.76,-678.1"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1298.64,-680.92 1309.06,-682.83 1302.1,-674.84 1298.64,-680.92"/>
 </a>
 </g>
 </g>
@@ -986,8 +985,8 @@
 <g id="edge60_Node000037_Node000045" class="edge">
 <title>Node37&#45;&gt;Node45</title>
 <g id="a_edge60_Node000037_Node000045"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1241.08,-575.59C1247.99,-572.4 1254.68,-568.29 1260,-563 1289.97,-533.21 1266.86,-505.6 1296,-475 1296.48,-474.5 1296.96,-474.01 1297.46,-473.53"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1299.49,-476.39 1305.15,-467.43 1295.14,-470.9 1299.49,-476.39"/>
+<path fill="none" stroke="#63b8ff" d="M1241.06,-574.57C1247.98,-571.38 1254.67,-567.27 1260,-562 1289.74,-532.56 1267.08,-505.25 1296,-475 1296.58,-474.39 1297.19,-473.79 1297.81,-473.21"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1299.69,-476.17 1305.42,-467.26 1295.38,-470.66 1299.69,-476.17"/>
 </a>
 </g>
 </g>
@@ -1004,8 +1003,8 @@
 <g id="edge62_Node000037_Node000046" class="edge">
 <title>Node37&#45;&gt;Node46</title>
 <g id="a_edge62_Node000037_Node000046"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1242.71,-576.25C1249.32,-573.01 1255.48,-568.71 1260,-563 1326.39,-479.11 1227.92,-407.52 1296,-325 1296.44,-324.47 1296.9,-323.95 1297.37,-323.44"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1299.3,-326.38 1304.95,-317.41 1294.94,-320.9 1299.3,-326.38"/>
+<path fill="none" stroke="#63b8ff" d="M1242.71,-575.24C1249.32,-572.01 1255.48,-567.71 1260,-562 1326.14,-478.47 1228.17,-407.16 1296,-325 1296.44,-324.47 1296.9,-323.95 1297.37,-323.44"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1299.3,-326.38 1304.95,-317.42 1294.94,-320.9 1299.3,-326.38"/>
 </a>
 </g>
 </g>
@@ -1023,8 +1022,8 @@
 <g id="edge63_Node000037_Node000047" class="edge">
 <title>Node37&#45;&gt;Node47</title>
 <g id="a_edge63_Node000037_Node000047"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1226.65,-596.43C1246.84,-605.23 1276.37,-618.11 1301.42,-629.03"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1299.88,-632.18 1310.45,-632.97 1302.68,-625.76 1299.88,-632.18"/>
+<path fill="none" stroke="#63b8ff" d="M1226.33,-595.44C1246.67,-604.46 1276.69,-617.75 1302,-628.96"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1300.57,-632.16 1311.13,-633.01 1303.41,-625.76 1300.57,-632.16"/>
 </a>
 </g>
 </g>
@@ -1207,8 +1206,8 @@
 <g id="edge65_Node000048_Node000037" class="edge">
 <title>Node48&#45;&gt;Node37</title>
 <g id="a_edge65_Node000048_Node000037"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1091.77,-613.52C1109.65,-609 1130.74,-603.68 1149.57,-598.92"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1150.35,-602.33 1159.19,-596.49 1148.64,-595.55 1150.35,-602.33"/>
+<path fill="none" stroke="#63b8ff" d="M1091.77,-612.52C1109.65,-608 1130.74,-602.68 1149.57,-597.92"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1150.35,-601.33 1159.19,-595.49 1148.64,-594.55 1150.35,-601.33"/>
 </a>
 </g>
 </g>
@@ -1216,8 +1215,8 @@
 <g id="edge69_Node000049_Node000008" class="edge">
 <title>Node49&#45;&gt;Node8</title>
 <g id="a_edge69_Node000049_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M913.99,-347.26C923.59,-360.22 940.59,-383.21 955,-403 971.12,-425.13 968.93,-436.79 991,-453 992.74,-454.28 994.57,-455.47 996.47,-456.59"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="994.52,-459.53 1005.02,-460.88 997.65,-453.27 994.52,-459.53"/>
+<path fill="none" stroke="#63b8ff" d="M913.62,-348.5C932.19,-375.28 980.72,-444.56 991,-452 992.78,-453.29 994.66,-454.49 996.6,-455.62"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="994.85,-458.66 1005.36,-459.95 997.95,-452.39 994.85,-458.66"/>
 </a>
 </g>
 </g>
@@ -1225,8 +1224,8 @@
 <g id="edge72_Node000049_Node000012" class="edge">
 <title>Node49&#45;&gt;Node12</title>
 <g id="a_edge72_Node000049_Node000012"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M944.4,-326.55C948.37,-324.24 952.03,-321.43 955,-318 1001.27,-264.52 946.58,-218.03 991,-163 991.93,-161.85 992.92,-160.74 993.97,-159.68"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="996.17,-162.39 1001.68,-153.34 991.73,-156.99 996.17,-162.39"/>
+<path fill="none" stroke="#63b8ff" d="M944.41,-327.56C948.38,-325.25 952.04,-322.43 955,-319 1001.76,-264.8 945.71,-217.44 991,-162 991.65,-161.2 992.33,-160.43 993.03,-159.68"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="994.98,-162.63 1000.32,-153.48 990.44,-157.3 994.98,-162.63"/>
 </a>
 </g>
 </g>
@@ -1234,8 +1233,8 @@
 <g id="edge74_Node000049_Node000018" class="edge">
 <title>Node49&#45;&gt;Node18</title>
 <g id="a_edge74_Node000049_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M943.65,-326.57C947.85,-324.26 951.77,-321.43 955,-318 990.82,-279.91 955.65,-244.53 991,-206 993.83,-202.92 997.11,-200.22 1000.65,-197.86"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1002.12,-201.05 1009.14,-193.11 998.71,-194.94 1002.12,-201.05"/>
+<path fill="none" stroke="#63b8ff" d="M943.66,-327.59C947.86,-325.27 951.78,-322.44 955,-319 991.3,-280.2 955.18,-244.24 991,-205 993.7,-202.04 996.82,-199.44 1000.18,-197.15"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1001.86,-200.22 1008.83,-192.24 998.41,-194.13 1001.86,-200.22"/>
 </a>
 </g>
 </g>
@@ -1243,8 +1242,8 @@
 <g id="edge89_Node000049_Node000034" class="edge">
 <title>Node49&#45;&gt;Node34</title>
 <g id="a_edge89_Node000049_Node000034"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M942.54,-347.45C955.95,-351.33 971.57,-355.84 986.61,-360.19"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="985.4,-363.48 995.97,-362.89 987.34,-356.75 985.4,-363.48"/>
+<path fill="none" stroke="#63b8ff" d="M944.39,-348.45C957.35,-352.01 972.18,-356.09 986.5,-360.03"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="985.29,-363.32 995.86,-362.6 987.14,-356.57 985.29,-363.32"/>
 </a>
 </g>
 </g>
@@ -1252,8 +1251,8 @@
 <g id="Node000050" class="node">
 <title>Node50</title>
 <g id="a_Node000050"><a xlink:href="namespacesvg.html#a8049c9c931294d04d25967268d85d226" target="_top" xlink:title="Import svg file, convert it to svg_element for insertion. ifile is a plain SVG file with a 1:1 aspect...">
-<polygon fill="white" stroke="#666666" points="1250.62,-277 1152.88,-277 1152.88,-257 1250.62,-257 1250.62,-277"/>
-<text text-anchor="middle" x="1201.75" y="-265.4" font-family="SourceSans" font-size="8.00">svg::file_to_svg_insert</text>
+<polygon fill="white" stroke="#666666" points="1250.62,-276 1152.88,-276 1152.88,-256 1250.62,-256 1250.62,-276"/>
+<text text-anchor="middle" x="1201.75" y="-264.4" font-family="SourceSans" font-size="8.00">svg::file_to_svg_insert</text>
 </a>
 </g>
 </g>
@@ -1261,8 +1260,8 @@
 <g id="edge70_Node000049_Node000050" class="edge">
 <title>Node49&#45;&gt;Node50</title>
 <g id="a_edge70_Node000049_Node000050"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M939.39,-326.59C944.84,-324.18 950.25,-321.33 955,-318 974.86,-304.08 969.15,-287.52 991,-277 1037.88,-254.41 1097.7,-253.91 1141.44,-257.88"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1140.96,-261.35 1151.26,-258.88 1141.67,-254.38 1140.96,-261.35"/>
+<path fill="none" stroke="#63b8ff" d="M939.71,-327.57C945.06,-325.18 950.36,-322.33 955,-319 975.24,-304.45 968.67,-287.08 991,-276 1037.61,-252.86 1097.46,-252.42 1141.29,-256.56"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1140.81,-260.02 1151.13,-257.6 1141.55,-253.06 1140.81,-260.02"/>
 </a>
 </g>
 </g>
@@ -1270,8 +1269,8 @@
 <g id="Node000051" class="node">
 <title>Node51</title>
 <g id="a_Node000051"><a xlink:href="namespacesvg.html#a1a3bf270598169ec9826a0e19ea9e758" target="_top" xlink:title="Get the label space. Value &#45;&gt; Name, as a string where value has labelspaces of fill NB: Should be the...">
-<polygon fill="white" stroke="#666666" points="1098.12,-306 1000.38,-306 1000.38,-286 1098.12,-286 1098.12,-306"/>
-<text text-anchor="middle" x="1049.25" y="-294.4" font-family="SourceSans" font-size="8.00">svg::get_label_spaces</text>
+<polygon fill="white" stroke="#666666" points="1098.12,-305 1000.38,-305 1000.38,-285 1098.12,-285 1098.12,-305"/>
+<text text-anchor="middle" x="1049.25" y="-293.4" font-family="SourceSans" font-size="8.00">svg::get_label_spaces</text>
 </a>
 </g>
 </g>
@@ -1279,8 +1278,8 @@
 <g id="edge73_Node000049_Node000051" class="edge">
 <title>Node49&#45;&gt;Node51</title>
 <g id="a_edge73_Node000049_Node000051"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M942.54,-326.55C960.39,-321.39 982.13,-315.11 1001.25,-309.58"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1002.06,-312.99 1010.69,-306.85 1000.12,-306.27 1002.06,-312.99"/>
+<path fill="none" stroke="#63b8ff" d="M940.72,-327.59C959.4,-321.93 982.75,-314.85 1002.91,-308.74"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1003.73,-312.15 1012.28,-305.9 1001.7,-305.45 1003.73,-312.15"/>
 </a>
 </g>
 </g>
@@ -1297,8 +1296,8 @@
 <g id="edge75_Node000049_Node000052" class="edge">
 <title>Node49&#45;&gt;Node52</title>
 <g id="a_edge75_Node000049_Node000052"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M941.81,-326.6C946.56,-324.25 951.12,-321.41 955,-318 980.08,-295.92 965.56,-273.66 991,-252 1015.29,-231.32 1095.62,-206.5 1149.52,-191.51"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1150.42,-194.89 1159.13,-188.86 1148.56,-188.14 1150.42,-194.89"/>
+<path fill="none" stroke="#63b8ff" d="M942.1,-327.51C946.75,-325.19 951.21,-322.38 955,-319 980.52,-296.24 965.05,-273.27 991,-251 1015.1,-230.31 1095.08,-206.01 1149.01,-191.32"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1149.89,-194.71 1158.64,-188.73 1148.07,-187.95 1149.89,-194.71"/>
 </a>
 </g>
 </g>
@@ -1306,8 +1305,8 @@
 <g id="Node000060" class="node">
 <title>Node60</title>
 <g id="a_Node000060"><a xlink:href="namespacesvg.html#a68c014cdc144d2d0125a8ce849e8804d" target="_top" xlink:title="Draws a circle around a point (x,y), of style (s), of radius (r).">
-<polygon fill="white" stroke="#666666" points="1093.25,-344 1005.25,-344 1005.25,-324 1093.25,-324 1093.25,-344"/>
-<text text-anchor="middle" x="1049.25" y="-332.4" font-family="SourceSans" font-size="8.00">svg::point_to_circle</text>
+<polygon fill="white" stroke="#666666" points="1093.25,-343 1005.25,-343 1005.25,-323 1093.25,-323 1093.25,-343"/>
+<text text-anchor="middle" x="1049.25" y="-331.4" font-family="SourceSans" font-size="8.00">svg::point_to_circle</text>
 </a>
 </g>
 </g>
@@ -1315,8 +1314,8 @@
 <g id="edge90_Node000049_Node000060" class="edge">
 <title>Node49&#45;&gt;Node60</title>
 <g id="a_edge90_Node000049_Node000060"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M948.56,-336.11C962.75,-335.81 978.78,-335.47 993.78,-335.15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="993.56,-338.66 1003.49,-334.95 993.42,-331.66 993.56,-338.66"/>
+<path fill="none" stroke="#63b8ff" d="M948.56,-336.51C962.75,-336.01 978.78,-335.45 993.78,-334.92"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="993.62,-338.43 1003.49,-334.58 993.37,-331.43 993.62,-338.43"/>
 </a>
 </g>
 </g>
@@ -1324,8 +1323,8 @@
 <g id="edge71_Node000050_Node000029" class="edge">
 <title>Node50&#45;&gt;Node29</title>
 <g id="a_edge71_Node000050_Node000029"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1250.78,-266.47C1292.43,-267.25 1353.87,-271.39 1405,-287 1427.48,-293.87 1450.82,-306.79 1467.7,-317.35"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1465.73,-320.25 1476.03,-322.73 1469.53,-314.37 1465.73,-320.25"/>
+<path fill="none" stroke="#63b8ff" d="M1250.79,-265.77C1292.44,-266.79 1353.89,-271.26 1405,-287 1427.47,-293.92 1450.81,-306.84 1467.69,-317.39"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1465.72,-320.29 1476.03,-322.75 1469.51,-314.4 1465.72,-320.29"/>
 </a>
 </g>
 </g>
@@ -1333,8 +1332,8 @@
 <g id="edge76_Node000052_Node000021" class="edge">
 <title>Node52&#45;&gt;Node21</title>
 <g id="a_edge76_Node000052_Node000021"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1214.1,-188.15C1227.42,-200.77 1249.08,-223.65 1260,-248 1301.78,-341.21 1234.55,-393.4 1296,-475 1296.23,-475.31 1296.47,-475.61 1296.71,-475.91"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1294.04,-478.2 1303.69,-482.59 1298.88,-473.15 1294.04,-478.2"/>
+<path fill="none" stroke="#63b8ff" d="M1214.57,-188.41C1227.94,-200.9 1249.23,-223.17 1260,-247 1302.26,-340.48 1234.31,-393.03 1296,-475 1296.23,-475.31 1296.47,-475.61 1296.71,-475.91"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1294.04,-478.2 1303.68,-482.59 1298.88,-473.15 1294.04,-478.2"/>
 </a>
 </g>
 </g>
@@ -1517,8 +1516,8 @@
 <g id="edge91_Node000060_Node000021" class="edge">
 <title>Node60&#45;&gt;Node21</title>
 <g id="a_edge91_Node000060_Node000021"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1093.7,-344.45C1098.66,-346.76 1103.4,-349.58 1107.5,-353 1133.14,-374.42 1118.45,-396.89 1143.5,-419 1165.83,-438.7 1236.62,-464.24 1289.01,-481.32"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1287.86,-484.62 1298.45,-484.37 1290.01,-477.96 1287.86,-484.62"/>
+<path fill="none" stroke="#63b8ff" d="M1093.72,-343.43C1098.68,-345.74 1103.41,-348.56 1107.5,-352 1133.37,-373.75 1118.22,-396.55 1143.5,-419 1165.77,-438.77 1236.57,-464.29 1288.98,-481.35"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1287.83,-484.66 1298.42,-484.39 1289.98,-478 1287.83,-484.66"/>
 </a>
 </g>
 </g>
@@ -1535,8 +1534,8 @@
 <g id="edge92_Node000060_Node000061" class="edge">
 <title>Node60&#45;&gt;Node61</title>
 <g id="a_edge92_Node000060_Node000061"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1084.46,-344.44C1092.12,-347.03 1100.15,-349.95 1107.5,-353 1129.75,-362.24 1154.04,-374.56 1172.24,-384.26"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1170.4,-387.25 1180.87,-388.91 1173.73,-381.09 1170.4,-387.25"/>
+<path fill="none" stroke="#63b8ff" d="M1084.78,-343.5C1092.35,-346.07 1100.26,-348.96 1107.5,-352 1129.95,-361.44 1154.4,-374.12 1172.62,-384.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1170.81,-387.07 1181.25,-388.84 1174.19,-380.94 1170.81,-387.07"/>
 </a>
 </g>
 </g>
@@ -1544,8 +1543,8 @@
 <g id="edge96_Node000061_Node000026" class="edge">
 <title>Node61&#45;&gt;Node26</title>
 <g id="a_edge96_Node000061_Node000026"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1212.74,-410.08C1225.93,-424.04 1248.79,-450.64 1260,-478 1302.07,-580.65 1250.32,-623.9 1296,-725 1302.43,-739.24 1313.07,-752.76 1323.18,-763.6"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1320.53,-765.9 1330.02,-770.6 1325.53,-761.01 1320.53,-765.9"/>
+<path fill="none" stroke="#63b8ff" d="M1213.2,-410.39C1226.46,-424.27 1248.93,-450.21 1260,-477 1302.52,-579.94 1250.17,-623.49 1296,-725 1302.43,-739.24 1313.07,-752.77 1323.17,-763.61"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1320.52,-765.9 1330.01,-770.6 1325.53,-761.01 1320.52,-765.9"/>
 </a>
 </g>
 </g>
@@ -1563,8 +1562,8 @@
 <g id="edge93_Node000061_Node000062" class="edge">
 <title>Node61&#45;&gt;Node62</title>
 <g id="a_edge93_Node000061_Node000062"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1211.92,-410.47C1224.17,-424.87 1245.98,-451.97 1260,-478 1281.81,-518.48 1264.84,-541.18 1296,-575 1296.47,-575.51 1296.95,-576 1297.44,-576.49"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1295.08,-579.08 1305.05,-582.66 1299.48,-573.64 1295.08,-579.08"/>
+<path fill="none" stroke="#63b8ff" d="M1211.94,-410.3C1224.22,-424.49 1246.06,-451.21 1260,-477 1282.07,-517.82 1264.61,-540.82 1296,-575 1296.47,-575.51 1296.94,-576.01 1297.43,-576.49"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1295.07,-579.08 1305.04,-582.67 1299.48,-573.65 1295.07,-579.08"/>
 </a>
 </g>
 </g>

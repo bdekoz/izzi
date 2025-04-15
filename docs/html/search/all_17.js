@@ -5,7 +5,7 @@ var searchData=
   ['wcag_5fdgray_2',['wcag_dgray',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad347cc825aaaad98fc756825227a9646',1,'svg']]],
   ['wcag_5fgray_3',['wcag_gray',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a7866ece5d1cf6e56138cd09edb155ee1',1,'svg']]],
   ['wcag_5flgray_4',['wcag_lgray',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a79f0ed760a8d41c7da2e48e68d1f46ff',1,'svg']]],
-  ['weigh_5',['weigh',['../structsvg_1_1render__state__base.html#a512ef54ea6bc8ec727dd749d1117e425',1,'svg::render_state_base']]],
+  ['weigh_5',['weigh',['../structsvg_1_1collection__rstate.html#acd07339f2c51b3d98efbda1038690786',1,'svg::collection_rstate']]],
   ['weight_6',['weight',['../structsvg_1_1typography.html#ac41cf6a133f5b21757130ce5ba72b3d7',1,'svg::typography']]],
   ['white_7',['white',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad508fe45cecaf653904a0e774084bb5c',1,'svg']]],
   ['wink_5fto_5fcolor_5fseq_8',['wink_to_color_seq',['../namespacesvg.html#a559f742ae1f654eae1dec9857da7a4cb',1,'svg']]],

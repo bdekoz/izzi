@@ -15,7 +15,7 @@ var searchData=
   ['a6_5fmm_5fh_12',['a6_mm_h',['../namespacesvg_1_1constants.html#a974b91586faa49d16dd3b2814ba60d2b',1,'svg::constants']]],
   ['achart_13',['achart',['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a72c52d1689517197baa277ac8fd5f411',1,'anonymous_namespace{a60-svg-graphs-line.h}']]],
   ['al_14',['al',['../namespacesvg_1_1constants.html#a8367d729b134b34ffe866dd756b1dab4',1,'svg::constants']]],
-  ['alt_15',['alt',['../structsvg_1_1render__state__base.html#a575497de398e32918e5a59d1705decb0',1,'svg::render_state_base']]],
+  ['alt_15',['alt',['../structsvg_1_1collection__rstate.html#a344ab1e64e172e1d22ed23ba6dc3f40b',1,'svg::collection_rstate']]],
   ['apercu_5ftypo_16',['apercu_typo',['../namespacesvg_1_1constants.html#aa8fd50affcf4fa829e85235ac317f16f',1,'svg::constants']]],
   ['apercumo_5ftypo_17',['apercumo_typo',['../namespacesvg_1_1constants.html#a1056b67ee1d5fca1fdd470363d2a6a75',1,'svg::constants']]],
   ['aprcu_18',['aprcu',['../namespacesvg_1_1constants.html#ad82fdfa899faf1a29518bc5ae9d6f568',1,'svg::constants']]],

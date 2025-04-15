@@ -22,8 +22,8 @@
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:href="namespacesvg.html#aa2776d975cfdb951b8dd6a8fac3d826b" target="_top" xlink:title="Approximate pixel height of type of point size @sz.">
-<polygon fill="white" stroke="#666666" points="221,-649 121.75,-649 121.75,-629 221,-629 221,-649"/>
-<text text-anchor="middle" x="171.38" y="-637.4" font-family="SourceSans" font-size="8.00">svg::char_width_to_px</text>
+<polygon fill="white" stroke="#666666" points="221,-637 121.75,-637 121.75,-617 221,-617 221,-637"/>
+<text text-anchor="middle" x="171.38" y="-625.4" font-family="SourceSans" font-size="8.00">svg::char_width_to_px</text>
 </a>
 </g>
 </g>
@@ -31,18 +31,17 @@
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M58.95,-567.34C73.75,-582.61 97.55,-605.21 121.75,-620 123.89,-621.31 126.13,-622.55 128.43,-623.73"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="126.81,-626.84 137.35,-627.87 129.75,-620.49 126.81,-626.84"/>
+<path fill="none" stroke="#63b8ff" d="M63.09,-567.26C78.3,-579.57 100.46,-596.31 121.75,-608 124.25,-609.37 126.88,-610.7 129.55,-611.96"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="128.04,-615.12 138.6,-615.92 130.85,-608.71 128.04,-615.12"/>
 </a>
 </g>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="namespacesvg.html#a806415593163e75c9587c2a987dd5112" target="_top" xlink:title="Given identifier/name/id, get corresponding id_render_state from cache.">
-<polygon fill="white" stroke="#666666" points="214.62,-611 128.12,-611 128.12,-579 214.62,-579 214.62,-611"/>
-<text text-anchor="start" x="136.12" y="-599.4" font-family="SourceSans" font-size="8.00">svg::get_id_render</text>
-<text text-anchor="middle" x="171.38" y="-587.4" font-family="SourceSans" font-size="8.00">_state</text>
+<g id="a_Node000003"><a xlink:href="namespacesvg.html#af8550758c7d56d550efe4ea83fe21f5b" target="_top" xlink:title="Given identifier/name/id, get corresponding id_rstate from cache.">
+<polygon fill="white" stroke="#666666" points="212.75,-599 130,-599 130,-579 212.75,-579 212.75,-599"/>
+<text text-anchor="middle" x="171.38" y="-587.4" font-family="SourceSans" font-size="8.00">svg::get_id_rstate</text>
 </a>
 </g>
 </g>
@@ -50,15 +49,15 @@
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node1&#45;&gt;Node3</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M86,-565.65C96.03,-569.14 106.86,-572.91 117.3,-576.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="115.98,-579.79 126.58,-579.77 118.28,-573.17 115.98,-579.79"/>
+<path fill="none" stroke="#63b8ff" d="M86,-563.65C98.45,-567.39 112.14,-571.51 124.8,-575.31"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="123.57,-578.59 134.15,-578.12 125.58,-571.89 123.57,-578.59"/>
 </a>
 </g>
 </g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="structsvg_1_1render__state__base.html#a7c3f23003c7324627764c9547568d42f" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="structsvg_1_1render__state__base.html#aa16790fbf40ef61f416151c89c267ef3" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="366.75,-463 263.75,-463 263.75,-431 366.75,-431 366.75,-463"/>
 <text text-anchor="start" x="271.75" y="-451.4" font-family="SourceSans" font-size="8.00">svg::render_state_base</text>
 <text text-anchor="middle" x="315.25" y="-439.4" font-family="SourceSans" font-size="8.00">::is_visible</text>
@@ -95,7 +94,7 @@
 <!-- Node30 -->
 <g id="Node000030" class="node">
 <title>Node30</title>
-<g id="a_Node000030"><a xlink:href="namespacesvg.html#a6cbc319a171a74fdf91e5d4eb55a6f36" target="_top" xlink:title=" ">
+<g id="a_Node000030"><a xlink:href="namespacesvg.html#a91699dd1391d7fe0f91ba98fde5b97a5" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="214.25,-375 128.5,-375 128.5,-355 214.25,-355 214.25,-375"/>
 <text text-anchor="middle" x="171.38" y="-363.4" font-family="SourceSans" font-size="8.00">svg::radiate_glyph</text>
 </a>
@@ -113,10 +112,10 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="namespacesvg.html#abcde0ef18f90817cb5cb7147211fef05" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="358.5,-715 272,-715 272,-683 358.5,-683 358.5,-715"/>
-<text text-anchor="start" x="280" y="-703.4" font-family="SourceSans" font-size="8.00">svg::get_id_render</text>
-<text text-anchor="middle" x="315.25" y="-691.4" font-family="SourceSans" font-size="8.00">_state_cache</text>
+<g id="a_Node000004"><a xlink:href="namespacesvg.html#a96dce340dcdb9eed5deb3164b8bb5585" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="356.62,-715 273.88,-715 273.88,-683 356.62,-683 356.62,-715"/>
+<text text-anchor="start" x="281.88" y="-703.4" font-family="SourceSans" font-size="8.00">svg::get_id_rstate</text>
+<text text-anchor="middle" x="315.25" y="-691.4" font-family="SourceSans" font-size="8.00">_cache</text>
 </a>
 </g>
 </g>
@@ -124,8 +123,8 @@
 <g id="edge3_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M209.28,-611.37C213.45,-613.96 217.46,-616.84 221,-620 242.52,-639.21 234.89,-655.48 257,-674 258.65,-675.38 260.39,-676.7 262.2,-677.96"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="260.01,-680.72 270.37,-682.95 263.65,-674.75 260.01,-680.72"/>
+<path fill="none" stroke="#63b8ff" d="M207.81,-599.4C212.56,-601.75 217.12,-604.59 221,-608 246.08,-630.08 232.36,-651.43 257,-674 259.1,-675.92 261.37,-677.71 263.76,-679.38"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="261.73,-682.25 272.1,-684.42 265.35,-676.26 261.73,-682.25"/>
 </a>
 </g>
 </g>

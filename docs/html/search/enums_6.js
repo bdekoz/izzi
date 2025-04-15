@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['scale_0',['scale',['../namespacesvg_1_1constants.html#a44821c901c5a38946ded48f013fa32b0',1,'svg::constants']]],
-  ['select_1',['select',['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56cea',1,'svg::constants']]]
+  ['scale_0',['scale',['../namespacesvg.html#adc7e4c413a77264dd28e589407293de8',1,'svg']]],
+  ['select_1',['select',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364',1,'svg']]]
 ];

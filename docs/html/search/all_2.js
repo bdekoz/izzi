@@ -2,8 +2,8 @@ var searchData=
 [
   ['b_0',['b',['../structsvg_1_1color__qi.html#a94509c37a67c806dadd94f0997d9cff0',1,'svg::color_qi::b'],['../namespacesvg_1_1constants.html#ae9da6dd40a5f86e7a71427a4f59fdd60',1,'svg::constants::b']]],
   ['b_5fstyle_1',['b_style',['../namespacesvg_1_1constants.html#a7678f877a21502cd4491b481afc5f67c',1,'svg::constants']]],
-  ['background_2',['background',['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56ceaad229bbf31eaeebc7c88897732d8b932d',1,'svg::constants']]],
-  ['baseline_3',['baseline',['../structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9',1,'svg::typography::baseline'],['../namespacesvg_1_1constants.html#a44821c901c5a38946ded48f013fa32b0ae7e14cdcfbc59bba291688ae9cf039d6',1,'svg::constants::baseline']]],
+  ['background_2',['background',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364ad229bbf31eaeebc7c88897732d8b932d',1,'svg']]],
+  ['baseline_3',['baseline',['../structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9',1,'svg::typography::baseline'],['../namespacesvg.html#adc7e4c413a77264dd28e589407293de8ae7e14cdcfbc59bba291688ae9cf039d6',1,'svg::baseline']]],
   ['bellflower_4',['bellflower',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a2fb7109b70437ffa6f627970103c5ccf',1,'svg']]],
   ['benikaba_5',['benikaba',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1afab89269758476190df0bf13d67bec34',1,'svg']]],
   ['benimidori_6',['benimidori',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ae66d3fdc848c9b22f9cf00c67c8a36fd',1,'svg']]],
@@ -15,9 +15,9 @@ var searchData=
   ['blueprintdark_12',['blueprintdark',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a4508e32977e9695d4d6d32faf17e3b2b',1,'svg']]],
   ['blueprintlight_13',['blueprintlight',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a94e965f7384c8e41743b1e941ad005b0',1,'svg']]],
   ['blueviolet_14',['blueviolet',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1acc28f4945fea3b8866fe4b653814e2eb',1,'svg']]],
-  ['blur_15',['blur',['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56ceaaaefcd320422617869da103b5eed7041c',1,'svg::constants']]],
+  ['blur_15',['blur',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364aaefcd320422617869da103b5eed7041c',1,'svg']]],
   ['bold_16',['bold',['../structsvg_1_1typography.html#ac41cf6a133f5b21757130ce5ba72b3d7a69dcab4a73aeec2113f69b61e6263da8',1,'svg::typography']]],
   ['botan_17',['botan',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a9ad589c7127a1842632a92bd0c1d9977',1,'svg']]],
-  ['bottom_18',['bottom',['../namespacesvg_1_1constants.html#a39dbe47fdf4e5c28e2cbd2b2c0c56ceaa71f262d796bed1ab30e8a2d5a8ddee6f',1,'svg::constants']]],
+  ['bottom_18',['bottom',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364a71f262d796bed1ab30e8a2d5a8ddee6f',1,'svg']]],
   ['byakuroku_19',['byakuroku',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1aef677a50da32fd455ebbaa375dd4fae5',1,'svg']]]
 ];

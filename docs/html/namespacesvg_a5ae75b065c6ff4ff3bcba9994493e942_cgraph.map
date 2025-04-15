@@ -4,8 +4,8 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,157,200,87,203,91,95,162"/>
 <area shape="rect" id="Node000004" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="368,93,506,136"/>
 <area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="137,160,185,152,352,125,353,130,186,157,138,165"/>
-<area shape="rect" id="Node000007" href="$namespacesvg.html#a806415593163e75c9587c2a987dd5112" title="Given identifier/name/id, get corresponding id_render_state from cache." alt="" coords="191,363,306,405"/>
-<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="86,185,221,349,217,352,82,189"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#af8550758c7d56d550efe4ea83fe21f5b" title="Given identifier/name/id, get corresponding id_rstate from cache." alt="" coords="193,367,304,393"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="86,185,227,353,223,356,82,189"/>
 <area shape="rect" id="Node000009" href="$namespacesvg.html#a68c014cdc144d2d0125a8ce849e8804d" title="Draws a circle around a point (x,y), of style (s), of radius (r)." alt="" coords="378,160,495,187"/>
 <area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="138,171,363,171,363,176,138,176"/>
 <area shape="rect" id="Node000023" href="$namespacesvg.html#a0a0dce44cf8a75daa516cdf9fade5a85" title=" " alt="" coords="195,236,302,263"/>
@@ -18,8 +18,8 @@
 <area shape="rect" id="Node000005" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="562,69,701,112"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="506,103,547,98,547,104,507,109"/>
 <area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="488,90,513,79,592,37,594,42,516,84,491,95"/>
-<area shape="rect" id="Node000008" href="$namespacesvg.html#abcde0ef18f90817cb5cb7147211fef05" title=" " alt="" coords="379,413,494,456"/>
-<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="307,397,365,413,364,418,306,402"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a96dce340dcdb9eed5deb3164b8bb5585" title=" " alt="" coords="382,413,492,456"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="298,391,367,412,366,417,296,396"/>
 <area shape="rect" id="Node000010" href="$group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" title=" " alt="" coords="749,20,883,63"/>
 <area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="495,170,542,166,594,157,648,143,699,122,714,111,723,99,733,86,747,73,753,69,756,73,750,77,737,90,728,102,718,115,702,126,650,148,595,163,542,171,496,175"/>
 <area shape="rect" id="Node000012" href="$namespacesvg.html#ae450771820b99cadcbf845a4e712753c" title="Make circle element." alt="" coords="580,187,683,213"/>
