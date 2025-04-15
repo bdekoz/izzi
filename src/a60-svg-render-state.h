@@ -97,6 +97,19 @@ namespace constants {
   operator^=(select& __a, select __b)
   { return __a = __a ^ __b; }
 
+  /// Forwarding functions.
+  inline void
+  set_select(k::select& a, const k::select& b)
+  { a = b; }
+
+  inline void
+  clear_select(k::select& a, const k::select& b)
+  { a &= ~b; }
+
+  inline void
+  flip_select(k::select& a, const k::select& b)
+  { a |= b; }
+
 
   /**
      Some high-level nobs for rendering: scale tuning.
@@ -189,18 +202,6 @@ struct render_state_base
     __utype isv(static_cast<__utype>(visible_mode & v));
     return isv > 0;
   }
-
-  void
-  set(k::select& a, const k::select& b)
-  { a = b; }
-
-  void
-  clear(k::select& a, const k::select& b)
-  { a &= ~b; }
-
-  void
-  flip(k::select& a, const k::select& b)
-  { a |= b; }
 
   string
   mangle() const
@@ -317,7 +318,7 @@ add_to_id_render_state_cache(const string id, const style styl,
   id_render_state_umap& cache = get_id_render_state_cache();
 
   id_render_state state(styl, id);
-  state.set(state.visible_mode, vis);
+  set_select(state.visible_mode, vis);
   cache.insert(std::make_pair(id, state));
 }
 
