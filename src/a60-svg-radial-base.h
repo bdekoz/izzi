@@ -331,7 +331,7 @@ splay_ids_around(svg_element& obj, const typography& typo,
 	  // Make a ring on point on the kusama circle for the id.
 	  auto [ x, y ] = get_circumference_point_d(angled2, r, origin);
 	  auto rring = rspace / 2;
-	  const id_render_state ridst = get_id_render_state(s);
+	  const id_rstate ridst = get_id_rstate(s);
 	  style rstyl = ridst.styl;
 	  point_to_circle(obj, { x, y }, rstyl, rring);
 	}

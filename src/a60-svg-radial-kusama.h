@@ -94,7 +94,7 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
 */
 int
 radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
-	      const id_render_state idst,
+	      const id_rstate idst,
 	      const int kr, const int rspace, const int rstart)
 {
   // Kusama circle radius, enforce miniumum size.
@@ -157,9 +157,9 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
 		     const double angled, const double kr, const int rspace,
 		     const int rstart, const string id, const typography& typo)
 {
-  const id_render_state idst = get_id_render_state(id);
+  const id_rstate idst = get_id_rstate(id);
 
-  // Switch based on id_render_state settings.
+  // Switch based on id_rstate settings.
   // Length used of glyphs along radiated ray from origin, if any.
   int glyphr(0);
   if (idst.is_visible(svg::k::select::glyph))
@@ -177,7 +177,7 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
       const string playingabv(" -> ");
       if (id.find(playingabv) != string::npos)
 	{
-	  const id_render_state idstp = get_id_render_state(playingabv);
+	  const id_rstate idstp = get_id_rstate(playingabv);
 	  typoz._M_style = idstp.styl;
 	}
       radial_text_r(obj, id, typoz, idr, origin, angled);

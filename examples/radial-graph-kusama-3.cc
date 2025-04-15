@@ -25,7 +25,7 @@ init_render_state()
   const select dviz = select::glyph | select::vector | select::text;
 
   // Set empty identifiers (aka "") to default layer selection and style.
-  add_to_id_render_state_cache("", dstyl, dviz);
+  add_to_id_rstate_cache("", dstyl, dviz);
 }
 
 

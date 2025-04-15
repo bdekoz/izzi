@@ -19,8 +19,6 @@
 
 namespace svg {
 
-namespace constants {
-
   /**
      Selected or Active in render area.
      Make discrete element or layer (visible, outline, etc) if true.
@@ -99,15 +97,15 @@ namespace constants {
 
   /// Forwarding functions.
   inline void
-  set_select(k::select& a, const k::select& b)
+  set_select(select& a, const select& b)
   { a = b; }
 
   inline void
-  clear_select(k::select& a, const k::select& b)
+  clear_select(select& a, const select& b)
   { a &= ~b; }
 
   inline void
-  flip_select(k::select& a, const k::select& b)
+  flip_select(select& a, const select& b)
   { a |= b; }
 
 
@@ -164,13 +162,26 @@ namespace constants {
       }
     return enum_map[e];
   }
-} // namespace constants
 
 
-/// Settings for rendering collection-derived objects.
+/// Settings for glyph, graphic, chart, and collection object render.
 struct render_state_base
 {
   k::select	visible_mode;
+
+  bool
+  is_visible(const k::select v) const
+  {
+    using __utype = typename std::underlying_type<k::select>::type;
+    __utype isv(static_cast<__utype>(visible_mode & v));
+    return isv > 0;
+  }
+};
+
+
+/// Collection derived states.
+struct collection_rstate : public render_state_base
+{
   k::select	outline_mode;
   k::scale	scale_mode;
 
@@ -186,22 +197,14 @@ struct render_state_base
   // Alternate output naming mode via scheme (true = info, false = map)
   bool		alt;
 
-  render_state_base(const double o = 0.10,
+  collection_rstate(const double o = 0.10,
 		    const k::scale rscale = k::scale::medium)
-  : visible_mode(k::select::none), outline_mode(k::select::none),
+  : render_state_base(k::select::none), outline_mode(k::select::none),
     scale_mode(rscale), opacity(o), text_scale_max(0),
     weigh(false), color_generated(true), alt(false)
   { }
 
-  render_state_base(const render_state_base&) = default;
-
-  bool
-  is_visible(const k::select v) const
-  {
-    using __utype = typename std::underlying_type<k::select>::type;
-    __utype isv(static_cast<__utype>(visible_mode & v));
-    return isv > 0;
-  }
+  collection_rstate(const collection_rstate&) = default;
 
   string
   mangle() const
@@ -248,7 +251,7 @@ struct render_state_base
 
 
 ///  Render settings for collections.
-struct render_state : public render_state_base
+struct color_rstate : public collection_rstate
 {
   using	colormap = std::unordered_map<string, color_qi>;
 
@@ -264,22 +267,22 @@ struct render_state : public render_state_base
       throw std::runtime_error("render_state::get_color " + s + " not found");
   }
 
-  render_state() = default;
+  color_rstate() = default;
 };
 
 
 /// Global state.
-render_state&
+color_rstate&
 get_render_state()
 {
-  static render_state state;
+  static color_rstate state;
   return state;
 }
 
 
 /// Named render state.
 /// Datum to take id string and tie it to visual representation.
-struct id_render_state: public render_state_base
+struct id_rstate: public render_state_base
 {
   style		styl; // Overrides render_state_base.opacity
   string	name;
@@ -289,47 +292,47 @@ struct id_render_state: public render_state_base
   static style	dstyl;
 
   explicit
-  id_render_state(const style s = dstyl, const string f = "",
+  id_rstate(const style s = dstyl, const string f = "",
 		  const double angle = 0.0, const double scale = 1.0)
   : styl(s), name(f), rotate(angle), multiple(scale) { }
 
-  id_render_state(const id_render_state&) = default;
-  id_render_state& operator=(const id_render_state&) = default;
+  id_rstate(const id_rstate&) = default;
+  id_rstate& operator=(const id_rstate&) = default;
 };
 
-style id_render_state::dstyl = { color::black, 0.5, color::black, 0.5, 2 };
+style id_rstate::dstyl = { color::black, 0.5, color::black, 0.5, 2 };
 
-using id_render_state_umap = std::unordered_map<string, id_render_state>;
+using id_rstate_umap = std::unordered_map<string, id_rstate>;
 
 
-id_render_state_umap&
-get_id_render_state_cache()
+id_rstate_umap&
+get_id_rstate_cache()
 {
-  static id_render_state_umap cache;
+  static id_rstate_umap cache;
   return cache;
 }
 
 
 /// Add value to cache with base style of styl, colors klr, visibility vis.
 void
-add_to_id_render_state_cache(const string id, const style styl,
+add_to_id_rstate_cache(const string id, const style styl,
 			     const k::select vis)
 {
-  id_render_state_umap& cache = get_id_render_state_cache();
+  id_rstate_umap& cache = get_id_rstate_cache();
 
-  id_render_state state(styl, id);
+  id_rstate state(styl, id);
   set_select(state.visible_mode, vis);
   cache.insert(std::make_pair(id, state));
 }
 
 
-/// Given identifier/name/id, get corresponding id_render_state from cache.
-const id_render_state
-get_id_render_state(const string id)
+/// Given identifier/name/id, get corresponding id_rstate from cache.
+const id_rstate
+get_id_rstate(const string id)
 {
-  const id_render_state_umap& cache = get_id_render_state_cache();
+  const id_rstate_umap& cache = get_id_rstate_cache();
 
-  id_render_state ret;
+  id_rstate ret;
   if (cache.count(id) == 1)
     {
       auto iter = cache.find(id);
@@ -350,7 +353,7 @@ get_id_render_state(const string id)
 
 /// Roll through render states given in values squentially,
 /// index starts with zero.
-const id_render_state
+const id_rstate
 traverse_states(const strings& values)
 {
   static uint indx(0);
@@ -366,7 +369,7 @@ traverse_states(const strings& values)
       indx = 0;
       value = values[indx];
     }
-  return get_id_render_state(value);
+  return get_id_rstate(value);
 }
 
 } // namespace svg
