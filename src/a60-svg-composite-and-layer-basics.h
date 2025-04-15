@@ -236,13 +236,13 @@ insert_svg_at(svg_element& obj, const string isvg,
 /// @bleedxoffset is distance from spine pushed outward.
 void
 composite_bleed_areas(svg_element& obj,
-		      const svg::k::select slxt, const double bleedin,
+		      const svg::select slxt, const double bleedin,
 		      const double bleedxoffset = 0)
 {
   const double bleedpx = get_dpi() * bleedin;
   const double bleedpxo = get_dpi() * (bleedin + (bleedxoffset / 2));
 
-  if (slxt == svg::k::select::odd)
+  if (slxt == svg::select::odd)
     {
       // LHS
       // Individual glyph shapes grid.
@@ -250,7 +250,7 @@ composite_bleed_areas(svg_element& obj,
       const point_2t p = { bleedpx, bleedpxo };
       obj.start_element(p, obj._M_area);
     }
-  if (slxt == svg::k::select::even)
+  if (slxt == svg::select::even)
     {
       // RHS
       // Radial metadata dimensions grid.

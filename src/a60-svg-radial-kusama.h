@@ -108,7 +108,7 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
   const double glyphrotate = idst.rotate;
 
   int glyphr(0);
-  if (idst.is_visible(svg::k::select::svg))
+  if (idst.is_visible(svg::select::svg))
     {
       // SVG to be inserted is
       // - square canvas width/height of 100 pixels
@@ -128,7 +128,7 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
       glyphr += scaledsize;
     }
 
-  if (idst.is_visible(svg::k::select::vector))
+  if (idst.is_visible(svg::select::vector))
     {
       const int vr = rstart + rspace + kra;
       point_2t p = get_circumference_point_d(angleda, vr, origin);
@@ -162,11 +162,11 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
   // Switch based on id_rstate settings.
   // Length used of glyphs along radiated ray from origin, if any.
   int glyphr(0);
-  if (idst.is_visible(svg::k::select::glyph))
+  if (idst.is_visible(svg::select::glyph))
     glyphr += radiate_glyph(obj, origin, angled, idst, kr, rspace, rstart);
 
   // Id name.
-  if (idst.is_visible(svg::k::select::text) && !id.empty())
+  if (idst.is_visible(svg::select::text) && !id.empty())
     {
       const int idr = rstart + glyphr + rspace;
 

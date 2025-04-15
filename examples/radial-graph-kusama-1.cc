@@ -7,7 +7,7 @@ init_render_state()
   using namespace std;
   using namespace svg;
 
-  using select = svg::k::select;
+  using select = svg::select;
 
   // Set radial range for this viz.
   point_2t& rrange = get_radial_range();

@@ -21,7 +21,7 @@ init_render_state()
   rrange = { 0, 359 };
 
   // Default layer selections are  vector, glyph and text.
-  using select = svg::k::select;
+  using select = svg::select;
   const select dviz = select::glyph | select::vector | select::text;
 
   // Set empty identifiers (aka "") to default layer selection and style.

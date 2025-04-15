@@ -167,12 +167,12 @@ namespace svg {
 /// Settings for glyph, graphic, chart, and collection object render.
 struct render_state_base
 {
-  k::select	visible_mode;
+  select	visible_mode;
 
   bool
-  is_visible(const k::select v) const
+  is_visible(const select v) const
   {
-    using __utype = typename std::underlying_type<k::select>::type;
+    using __utype = typename std::underlying_type<select>::type;
     __utype isv(static_cast<__utype>(visible_mode & v));
     return isv > 0;
   }
@@ -182,8 +182,8 @@ struct render_state_base
 /// Collection derived states.
 struct collection_rstate : public render_state_base
 {
-  k::select	outline_mode;
-  k::scale	scale_mode;
+  select	outline_mode;
+  scale		scale_mode;
 
   double	opacity;
   int		text_scale_max;
@@ -198,8 +198,8 @@ struct collection_rstate : public render_state_base
   bool		alt;
 
   collection_rstate(const double o = 0.10,
-		    const k::scale rscale = k::scale::medium)
-  : render_state_base(k::select::none), outline_mode(k::select::none),
+		    const scale rscale = scale::medium)
+  : render_state_base(select::none), outline_mode(select::none),
     scale_mode(rscale), opacity(o), text_scale_max(0),
     weigh(false), color_generated(true), alt(false)
   { }
@@ -209,7 +209,6 @@ struct collection_rstate : public render_state_base
   string
   mangle() const
   {
-    using k::select;
     string mangled;
 
     bool foundp = false;
@@ -316,7 +315,7 @@ get_id_rstate_cache()
 /// Add value to cache with base style of styl, colors klr, visibility vis.
 void
 add_to_id_rstate_cache(const string id, const style styl,
-			     const k::select vis)
+			     const select vis)
 {
   id_rstate_umap& cache = get_id_rstate_cache();
 
