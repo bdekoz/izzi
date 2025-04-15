@@ -16,8 +16,10 @@
 #ifndef izzi_SVG_GRAPHS_LINE_H
 #define izzi_SVG_GRAPHS_LINE_H 1
 
-#include "a60-svg-grid-matrix-systems.h"
 #include "a60-json-basics.h"
+#include "a60-svg-grid-matrix-systems.h"
+#include "a60-svg-render-state.h"
+
 
 namespace {
 
@@ -173,14 +175,14 @@ make_markers(svg::svg_element& obj)
 
 
 /// Per-graph constants.
-struct graph_state
+struct graph_rstate : public render_state_base
 {
   // Labels.
   string		title;
   string		xlabel;
   string		ylabel;
 
-  // Lines.
+  // Lines, markers, points.
   svg::style		lstyle;
   string		dasharray;
   string		markerspoints;
@@ -196,7 +198,7 @@ struct graph_state
 /// vgrange x axis is monotonically increasing
 svg_element
 make_line_graph(const svg::area<> aplate, const vrange& points,
-		const graph_state& gstate, const bool annotationsp = true)
+		const graph_rstate& gstate, const bool annotationsp = true)
 {
   using namespace std;
 
