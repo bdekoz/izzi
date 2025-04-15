@@ -119,6 +119,7 @@ make_marker_rect(const std::string id,
 }
 
 
+/// Create a set of markers bounded by a rectangle of size n.
 string
 make_marker_set_n(const double i)
 {
@@ -152,7 +153,7 @@ make_marker_set_n(const double i)
 }
 
 
-/// Make black/white/wcag markers.
+/// Make black/white/wcag markers with sizes 4x4 and 2x2.
 void
 make_markers(svg::svg_element& obj)
 {
