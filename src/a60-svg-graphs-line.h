@@ -188,8 +188,8 @@ struct graph_rstate : public render_state_base
   string		markerspoints;
 
   // Margins/Spaces
-  static constexpr uint marginx = 50;
-  static constexpr uint marginy = 50;
+  static constexpr uint marginx = 100;
+  static constexpr uint marginy = 100;
 };
 
 
@@ -219,7 +219,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   // pwidth = marginx + gwidth + marginx
   // pheight = marginy + gheight + marginy
   auto [ pwidth, pheight ] = aplate;
-  //double gwidth = pwidth - (2 * marginx);
+  //double gwidth = pwidth - (2 * gstate.marginx);
   double gheight = pheight - (2 * gstate.marginy);
 
   // Transform data points to scaled cartasian points in graph area.
@@ -255,7 +255,17 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
       point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
       styled_text_r(lgraph, gstate.ylabel, ylabelp, k::apercu_typo, 90);
-    }
+
+      // Add axis lines.
+      line_element lx = make_line({gstate.marginx, pheight - gstate.marginy},
+				  {pwidth - gstate.marginx, pheight - gstate.marginy},
+				  gstate.lstyle);
+      line_element ly = make_line({gstate.marginx, pheight - gstate.marginy},
+				  {gstate.marginx, gstate.marginy},
+				  gstate.lstyle);
+      lgraph.add_element(lx);
+      lgraph.add_element(ly);
+}
 
   return lgraph;
 }
