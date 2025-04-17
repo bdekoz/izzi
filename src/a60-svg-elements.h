@@ -851,8 +851,15 @@ struct polyline_element : virtual public element_base
       }
     if (!markerpoints.empty())
       {
-	_M_sstream << "marker-mid=" << k::quote << "url(#";
-	_M_sstream << markerpoints << ")" << k::quote << k::space;
+	string mkr;
+	mkr += k::quote;
+	mkr += "url(#";
+	mkr += markerpoints;
+	mkr += ")";
+	mkr += k::quote;
+
+	_M_sstream << "marker-mid=" << mkr << k::space;
+	_M_sstream << "marker-end=" << mkr << k::space;
       }
   }
 
