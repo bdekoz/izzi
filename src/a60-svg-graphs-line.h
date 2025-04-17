@@ -16,6 +16,8 @@
 #ifndef izzi_SVG_GRAPHS_LINE_H
 #define izzi_SVG_GRAPHS_LINE_H 1
 
+#include <set>
+
 #include "a60-json-basics.h"
 #include "a60-svg-grid-matrix-systems.h"
 #include "a60-svg-render-state.h"
@@ -23,10 +25,23 @@
 
 namespace {
 
+// Color and style constants.
+using svg::color::red;
+using svg::color::wcag_lgray;
+using svg::color::wcag_gray;
+using svg::color::wcag_dgray;
+using svg::k::b_style;
+
+const svg::style style_r = { red, 1.0, red, 0.0, 0.5 };
+const svg::style style_wcaglg = { wcag_lgray, 1.0, wcag_lgray, 0.0, 0.5 };
+const svg::style style_wcagg = { wcag_gray, 1.0, wcag_gray, 0.0, 0.5 };
+const svg::style style_wcagdg = { wcag_dgray, 1.0, wcag_dgray, 0.0, 0.5 };
+
 /// Glyph type sizes.
-constexpr auto lsz = 16; // large bold
-constexpr auto asz = 12; // sub headings
-constexpr auto ssz = 10; // sub sub headings
+constexpr auto lsz = 16; // title large bold
+constexpr auto asz = 12; // h1
+constexpr auto ssz = 10; // text, sub sub headings
+constexpr auto ticsz = 7; // tic text
 
 /// Glyph size and margins
 constexpr svg::area<> achart = { 900, 600 };
@@ -125,16 +140,6 @@ make_marker_rect(const std::string id,
 string
 make_marker_set_n(const double i)
 {
-  using svg::color::red;
-  using svg::color::wcag_lgray;
-  using svg::color::wcag_gray;
-  using svg::color::wcag_dgray;
-  using svg::k::b_style;
-  const svg::style style_r = { red, 1.0, red, 0.0, 0.5 };
-  const svg::style style_wcaglg = { wcag_lgray, 1.0, wcag_lgray, 0.0, 0.5 };
-  const svg::style style_wcagg = { wcag_gray, 1.0, wcag_gray, 0.0, 0.5 };
-  const svg::style style_wcagdg = { wcag_dgray, 1.0, wcag_dgray, 0.0, 0.5 };
-
   // 4 / 2, etc.
   const double h(i/2);
   const string si = std::to_string(static_cast<uint>(i));
@@ -224,10 +229,12 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
   // Transform data points to scaled cartasian points in graph area.
   const double chartyo = pheight - gstate.marginy;
+  const double chartxe = pwidth - gstate.marginx;
+
   vrange cpoints;
-  uint i = 0;
-  for (const point_2t& pt : points)
+  for (uint i = 0; i < points.size(); i++)
     {
+      const point_2t& pt = points[i];
       auto [ vx, vy ] = pt;
 
       // At bottom of graph.
@@ -245,27 +252,80 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   // Plot transformed points.
   polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
 				       gstate.dasharray, gstate.markerspoints);
-  lgraph.add_element(pl1);
 
+  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
+  lgraph.add_element(pl1);
+  lgraph.add_raw(group_element::finish_group());
+
+  // Add annotations, labels, metadata
   if (annotationsp)
     {
+      // Start annotation group.
+      lgraph.add_raw(group_element::start_group("annotation-" + gstate.title));
+
+      // Base typo for axis and tic labels.
+      auto anntypo = k::apercu_typo;
+      anntypo._M_style = style_wcaglg;
+      anntypo._M_size = asz;
+
       // Add axis labels.
       point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
-      styled_text(lgraph, gstate.xlabel, xlabelp, k::apercu_typo);
+      styled_text(lgraph, gstate.xlabel, xlabelp, anntypo);
 
       point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
-      styled_text_r(lgraph, gstate.ylabel, ylabelp, k::apercu_typo, 90);
+      styled_text_r(lgraph, gstate.ylabel, ylabelp, anntypo, 90);
 
       // Add axis lines.
-      line_element lx = make_line({gstate.marginx, pheight - gstate.marginy},
-				  {pwidth - gstate.marginx, pheight - gstate.marginy},
+      line_element lx = make_line({gstate.marginx, chartyo}, {chartxe, chartyo},
 				  gstate.lstyle);
-      line_element ly = make_line({gstate.marginx, pheight - gstate.marginy},
+      line_element ly = make_line({gstate.marginx, chartyo},
 				  {gstate.marginx, gstate.marginy},
 				  gstate.lstyle);
       lgraph.add_element(lx);
       lgraph.add_element(ly);
-}
+
+      anntypo._M_size = ticsz;
+
+      // X tic marks
+      // X tic labels
+      // x axis is monotonically increasing
+      for (uint i = 0; i < cpoints.size(); i++)
+	{
+	  const point_2t& cpt = cpoints[i];
+	  const double x = std::get<0>(cpt);
+	  const double yto = chartyo + asz;
+
+	  const point_2t& pt = points[i];
+	  const string xval = std::to_string(static_cast<uint>(std::get<0>(pt)));
+	  styled_text(lgraph, xval, {x, yto}, anntypo);
+	}
+
+      // Y tic marks
+      // Y tic labels
+      const double yrange(maxy - miny);
+      const double yscale(gheight / yrange);
+
+      const double xto = gstate.marginx - asz;
+
+      // Filter tic labels to unique smallest subset of significant lables of yticsteps.
+      const double yticsteps = 10; // number of y tic labels
+      const double ydelta = yrange / yticsteps;
+      vector<uint> ypointssig(pointsy.size());
+      std::transform(pointsy.begin(), pointsy.end(), ypointssig.begin(),
+		     [ydelta](const double& d) { return static_cast<uint>(d / ydelta); });
+      std::set<double> ypoints(ypointssig.begin(), ypointssig.end());
+
+      // Add y tic labels.
+      for (const double& y:  ypoints)
+	{
+	  const uint yui = y * ydelta;
+	  const double yto = chartyo - (yui * yscale);
+	  styled_text(lgraph, std::to_string(yui), {xto, yto}, anntypo);
+	}
+
+      // End group
+      lgraph.add_raw(group_element::finish_group());
+    }
 
   return lgraph;
 }

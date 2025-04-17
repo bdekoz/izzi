@@ -44,7 +44,7 @@ scale_proportional_to_weight(double radius, double weight)
 /// Text at @origin, with style.
 void
 styled_text(svg_element& obj, const string text, const point_2t origin,
-	    svg::typography typo)
+	    const typography typo)
 {
   using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
@@ -60,7 +60,7 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
 /// Text at @origin, with style and transform
 void
 styled_text(svg_element& obj, const string text, const point_2t origin,
-	    svg::typography typo, const string xform)
+	    const typography typo, const string xform)
 {
   using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
@@ -77,7 +77,7 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
 ///  a transformation=rotation of @deg about @rorigin.
 void
 styled_text_r(svg_element& obj, const string text, const point_2t origin,
-	      svg::typography typo, const double deg)
+	      const typography typo, const double deg)
 {
   using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
@@ -94,7 +94,7 @@ styled_text_r(svg_element& obj, const string text, const point_2t origin,
 ///  a transformation=rotation of @deg about @rorigin.
 void
 styled_text_r(svg_element& obj, const string text, const point_2t origin,
-	      svg::typography typo, const double deg, const point_2t rorigin)
+	      const typography typo, const double deg, const point_2t rorigin)
 {
   using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
@@ -111,7 +111,7 @@ styled_text_r(svg_element& obj, const string text, const point_2t origin,
 /// Text at @origin, with style and link.
 void
 styled_text_link(svg_element& obj, const string text, const point_2t origin,
-		 svg::typography typo, const string uri)
+		 const typography typo, const string uri)
 {
   using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
@@ -183,7 +183,7 @@ sized_text_r(svg_element& obj, svg::typography typo, const int sz,
 /// Text of maxlen length, overflow goes on line below.
 uint
 text_line_n(svg_element& obj, const point_2t origin, const string text,
-	    svg::typography typo, const int sz, const uint maxlen)
+	    const svg::typography typo, const int sz, const uint maxlen)
 {
   auto [ x, y ] = origin;
 
@@ -213,7 +213,7 @@ text_line_n(svg_element& obj, const point_2t origin, const string text,
 /// Text of maxlen length rotated, overflow goes on line below.
 uint
 text_line_n_r(svg_element& obj, const point_2t origin, const string text,
-	      svg::typography typo, const uint sz, const uint maxlen,
+	      const svg::typography typo, const uint sz, const uint maxlen,
 	      const uint lettingsz = 0)
 {
   const auto [ x, y ] = origin;

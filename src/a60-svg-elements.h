@@ -101,9 +101,29 @@ struct element_base
  */
 struct group_element : virtual public element_base
 {
+  static string
+  start_group(const string name = "")
+  {
+    string ret("<g");
+    if (!name.empty())
+      {
+       ret += " id=";
+       ret += k::quote;
+       ret += name;
+       ret += k::quote;
+      }
+    ret += ">";
+    ret += k::newline;
+    return ret;
+  }
+
+  static string
+  finish_group()
+  { return "</g>"; }
+
   void
   start_element()
-  { _M_sstream << "<g>" << k::newline; }
+  { _M_sstream << start_group(); }
 
   /// For groups of elements that have the same name.
   ///
@@ -113,10 +133,7 @@ struct group_element : virtual public element_base
   /// SVG into a named group element instead.
   void
   start_element(string name)
-  {
-    _M_sstream << "<g id=" << k::quote << name << k::quote
-	       << ">" << k::newline;
-  }
+  { _M_sstream << start_group(name); }
 
   // For groups of elements with style as specified.
   void
@@ -145,10 +162,6 @@ struct group_element : virtual public element_base
 
   void
   finish_element();
-
-  static string
-  finish_group()
-  { return "</g>"; }
 };
 
 void

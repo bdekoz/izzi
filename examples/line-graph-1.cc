@@ -22,9 +22,9 @@ test_chart()
   using namespace svg;
 
   // WCAG Black/White/Gray
-  const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
+  const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 3 };
   //const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
-  const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
+  const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 3 };
 
   const string jdir("/home/bkoz/src/mozilla-a11y-data-visual-forms/data/");
   const string jfile(jdir + "2025-01-27-minimal.json");
@@ -35,12 +35,12 @@ test_chart()
   const string f2("percent");
 
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  graph_rstate gs1 { select::all, "firefox", f1, f2, styl1, "2 4", "t2wcagg"};
+  graph_rstate gs1 { select::all, "firefox", f1, f2, styl1, "2", "t2wcagg"};
   svg_element chart1 = make_line_graph(a, vr1, gs1);
   obj.add_element(chart1);
 
   vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
-  graph_rstate gs2 { select::all, "chrome", f1, f2, styl3, "5 10", "c2wcaglg"};
+  graph_rstate gs2 { select::all, "chrome", f1, f2, styl3, "4", "c2wcaglg"};
   svg_element chart2 = make_line_graph(a, vr2, gs2);
   obj.add_element(chart2);
 }
