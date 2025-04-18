@@ -211,6 +211,16 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   svg_element lgraph(gstate.title, "line graph", aplate, false);
 
   // Split values and compute ranges for x/y axis.
+
+  // x
+  vector<double> pointsx(points.size());
+  std::transform(points.begin(), points.end(), pointsx.begin(),
+		 [](const point_2t& pt) { return std::get<0>(pt); });
+  auto mmx = minmax_element(pointsx.begin(), pointsx.end());
+  auto minx = *mmx.first;
+  auto maxx = *mmx.second;
+
+  // y
   vector<double> pointsy(points.size());
   std::transform(points.begin(), points.end(), pointsy.begin(),
 		 [](const point_2t& pt) { return std::get<1>(pt); });
@@ -224,7 +234,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   // pwidth = marginx + gwidth + marginx
   // pheight = marginy + gheight + marginy
   auto [ pwidth, pheight ] = aplate;
-  //double gwidth = pwidth - (2 * gstate.marginx);
+  double gwidth = pwidth - (2 * gstate.marginx);
   double gheight = pheight - (2 * gstate.marginy);
 
   // Transform data points to scaled cartasian points in graph area.
@@ -238,9 +248,8 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
       auto [ vx, vy ] = pt;
 
       // At bottom of graph.
-      point_2t xmatrix = to_point_in_1xn_matrix(aplate, points.size(),
-						i++, gstate.marginx, chartyo);
-      double x = get<0>(xmatrix);
+      const double xlen = scale_value_on_range(vx, minx, maxx, 0, gwidth);
+      double x = gstate.marginx + xlen;
 
       // Y axis grows up from chartyo.
       const double ylen = scale_value_on_range(vy, miny, maxy, 0, gheight);
@@ -307,7 +316,8 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
       const double xto = gstate.marginx - asz;
 
-      // Filter tic labels to unique smallest subset of significant lables of yticsteps.
+      // Filter tic labels to unique smallest subset of significant
+      // lables of yticsteps.
       const double yticsteps = 10; // number of y tic labels
       const double ydelta = yrange / yticsteps;
       vector<uint> ypointssig(pointsy.size());
