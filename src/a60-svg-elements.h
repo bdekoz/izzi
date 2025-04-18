@@ -31,6 +31,7 @@ namespace svg {
 struct element_base
 {
   using stream_type = std::ostringstream;
+  static constexpr char finish_tag = k::greaterthan;
 
   // Underlying units for 2D (x,y) mapping (same as area::atype).
   using atype = space_type; // ... floating point cartesian points
@@ -715,6 +716,11 @@ struct circle_element : virtual public element_base
     atype		_M_radius;
   };
 
+  // Verbose opening/closing pair tags for circle_element.
+  // Default assumes the more compact XML "self-closed tag" for circle element.
+  static constexpr const char*	tag_open = "<circle>";
+  static constexpr const char*	tag_closing = "</circle>";
+
   // Either serialize immediately (as below), or create data structure
   // that adds data to data_vec and then finish_element serializes.
   void
@@ -739,6 +745,7 @@ struct circle_element : virtual public element_base
 
   void
   finish_element();
+
 };
 
 void

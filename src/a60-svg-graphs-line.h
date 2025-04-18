@@ -198,6 +198,46 @@ struct graph_rstate : public render_state_base
 };
 
 
+/// Return set of paths corresponding to marker shapes with tooltips.
+string
+make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
+			     const graph_rstate& gstate, const double r)
+{
+  const string finish_hard { element_base::finish_tag };
+
+  string ret;
+  for (uint i = 0; i < points.size(); i++)
+    {
+      auto [ vx, vy ] = points[i];
+      auto [ cx, cy ] = cpoints[i];
+
+      //svg::circle_element c = make_circle(cpoints[i], gstate.lstyle, r);
+      circle_element c;
+      circle_element::data dc = { cx, cy, r };
+      c.start_element();
+      c.add_data(dc);
+      c.add_style(gstate.lstyle);
+      c.add_raw(finish_hard);
+
+      title_element tooltip;
+      string tipstr;
+      tipstr += std::to_string(vy);
+      tipstr += '%';
+      tipstr += k::comma + k::space;
+      tipstr += std::to_string(vx);
+      tipstr += "ms";
+      tooltip.start_element(tipstr);
+      tooltip.finish_element();
+      c.add_raw(tooltip.str());
+
+      c.add_raw(circle_element::tag_closing);
+
+      ret += c.str();
+    }
+  return ret;
+}
+
+
 /// Returns a svg_element with the chart and labels
 /// Assume:
 /// vgrange x axis is monotonically increasing
@@ -229,18 +269,17 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   auto maxy = *mmy.second;
 
   // Locate graph area on plate area.
-  //
-  // aplate is plate area with margins, but graphable area without margins...
+  // aplate is total plate area with margins, aka
   // pwidth = marginx + gwidth + marginx
   // pheight = marginy + gheight + marginy
   auto [ pwidth, pheight ] = aplate;
   double gwidth = pwidth - (2 * gstate.marginx);
   double gheight = pheight - (2 * gstate.marginy);
 
-  // Transform data points to scaled cartasian points in graph area.
   const double chartyo = pheight - gstate.marginy;
   const double chartxe = pwidth - gstate.marginx;
 
+  // Transform data points to scaled cartasian points in graph area.
   vrange cpoints;
   for (uint i = 0; i < points.size(); i++)
     {
@@ -259,11 +298,25 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
     }
 
   // Plot transformed points.
+  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
+
+#if 0
+  // Use polylines and markerspoints
   polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
 				       gstate.dasharray, gstate.markerspoints);
-
-  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
   lgraph.add_element(pl1);
+#else
+  // Use polyline base and set of marker paths with orignal values as tooltips on top.
+  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, gstate.dasharray);
+  lgraph.add_element(pl1);
+
+  lgraph.add_raw(group_element::start_group("points-values" + gstate.title));
+  string markers = make_line_graph_markers_tips(points, cpoints, gstate, 2);
+  lgraph.add_raw(markers);
+  lgraph.add_raw(group_element::finish_group());
+#endif
+
+
   lgraph.add_raw(group_element::finish_group());
 
   // Add annotations, labels, metadata
