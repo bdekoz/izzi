@@ -203,7 +203,7 @@ string
 make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 			     const graph_rstate& gstate, const double r)
 {
-  const string finish_hard { element_base::finish_tag };
+  const string finish_hard(string { element_base::finish_tag } + k::newline);
 
   string ret;
   for (uint i = 0; i < points.size(); i++)
@@ -221,16 +221,17 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 
       title_element tooltip;
       string tipstr;
-      tipstr += std::to_string(vy);
+      tipstr += std::to_string(static_cast<uint>(vy));
       tipstr += '%';
-      tipstr += k::comma + k::space;
-      tipstr += std::to_string(vx);
+      tipstr += k::comma;
+      tipstr += k::space;
+      tipstr += std::to_string(static_cast<uint>(vx));
       tipstr += "ms";
       tooltip.start_element(tipstr);
       tooltip.finish_element();
       c.add_raw(tooltip.str());
 
-      c.add_raw(circle_element::tag_closing);
+      c.add_raw(string { circle_element::tag_closing } + k::newline);
 
       ret += c.str();
     }
@@ -296,28 +297,6 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
       cpoints.push_back(make_tuple(x, y));
     }
-
-  // Plot transformed points.
-  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
-
-#if 0
-  // Use polylines and markerspoints
-  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-				       gstate.dasharray, gstate.markerspoints);
-  lgraph.add_element(pl1);
-#else
-  // Use polyline base and set of marker paths with orignal values as tooltips on top.
-  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, gstate.dasharray);
-  lgraph.add_element(pl1);
-
-  lgraph.add_raw(group_element::start_group("points-values" + gstate.title));
-  string markers = make_line_graph_markers_tips(points, cpoints, gstate, 2);
-  lgraph.add_raw(markers);
-  lgraph.add_raw(group_element::finish_group());
-#endif
-
-
-  lgraph.add_raw(group_element::finish_group());
 
   // Add annotations, labels, metadata
   if (annotationsp)
@@ -389,6 +368,26 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
       // End group
       lgraph.add_raw(group_element::finish_group());
     }
+
+  // Plot transformed points.
+  // This has to be the last, top layers if tooltips are to work.
+#if 0
+  // Use polylines and markerspoints
+  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
+				       gstate.dasharray, gstate.markerspoints);
+  lgraph.add_element(pl1);
+#else
+  // Use polyline base and set of marker paths with orignal values as tooltips on top.
+  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
+  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, gstate.dasharray);
+  lgraph.add_element(pl1);
+  lgraph.add_raw(group_element::finish_group());
+
+  lgraph.add_raw(group_element::start_group("points-values-" + gstate.title));
+  string markers = make_line_graph_markers_tips(points, cpoints, gstate, 2);
+  lgraph.add_raw(markers);
+  lgraph.add_raw(group_element::finish_group());
+#endif
 
   return lgraph;
 }
