@@ -1,9 +1,5 @@
 <map id="svg::filter_element::gaussian_blur" name="svg::filter_element::gaussian_blur">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,120,65"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#a14631cdcd8f6985199683ac3f2d92159" title=" " alt="" coords="168,23,282,65"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,41,152,41,152,47,120,47"/>
-<area shape="rect" id="Node000003" href="$namespacesvg_1_1constants.html#a3972655f1dfdc090ec2592d1fb37e87c" title=" " alt="" coords="330,5,459,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,33,314,28,315,33,283,38"/>
-<area shape="rect" id="Node000004" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="330,56,459,83"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="283,50,316,55,315,60,282,55"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,120,48"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a14631cdcd8f6985199683ac3f2d92159" title=" " alt="" coords="168,5,282,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,24,152,24,152,29,120,29"/>
 </map>

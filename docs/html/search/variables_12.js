@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['v_0',['v',['../structsvg_1_1color__qf.html#a186bba2de5a59115e59161076a68449c',1,'svg::color_qf']]],
-  ['v1080p_5fh_1',['v1080p_h',['../namespacesvg_1_1constants.html#ad76f7994c99f6c82f8bcf4afa77385fa',1,'svg::constants']]],
-  ['v1080p_5fv_2',['v1080p_v',['../namespacesvg_1_1constants.html#a476fd77ecac33a859404f220c2676314',1,'svg::constants']]],
-  ['v4k_5fh_3',['v4k_h',['../namespacesvg_1_1constants.html#ab183e983bc4cb26dbfa67e600c877eed',1,'svg::constants']]],
-  ['v4k_5fv_4',['v4k_v',['../namespacesvg_1_1constants.html#a4be2c8cd32de6775b1f83c5cf750d6e7',1,'svg::constants']]],
-  ['visible_5fmode_5',['visible_mode',['../structsvg_1_1render__state__base.html#a7036f53a7ab20ebf3e7b32d1890d50f8',1,'svg::render_state_base']]]
+  ['tag_5fclosing_0',['tag_closing',['../group__elements.html#ab476eb76138afbaa41e6255d2786460c',1,'svg::circle_element']]],
+  ['tag_5fopen_1',['tag_open',['../group__elements.html#a8f35626e39ab3fbf22339348aa3609e8',1,'svg::circle_element']]],
+  ['text_5fscale_5fmax_2',['text_scale_max',['../structsvg_1_1collection__rstate.html#af1c018910e0a4c2905c7f3483f895ede',1,'svg::collection_rstate']]],
+  ['ticsz_3',['ticsz',['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a26ddf4a83521925ccba6e6727ce8b644',1,'anonymous_namespace{a60-svg-graphs-line.h}']]],
+  ['title_4',['title',['../structsvg_1_1graph__rstate.html#a0899edc716a47d2277e726e537705f20',1,'svg::graph_rstate']]]
 ];

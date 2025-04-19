@@ -19,9 +19,9 @@ var searchData=
   ['internationalorange_16',['internationalorange',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a528f731a4d64ef8ce815e38e9f7112f1',1,'svg']]],
   ['is_5fvisible_17',['is_visible',['../structsvg_1_1render__state__base.html#aa16790fbf40ef61f416151c89c267ef3',1,'svg::render_state_base']]],
   ['italic_18',['italic',['../structsvg_1_1typography.html#aba5bf3a1484966319aebc9443746e98ca030c5b6d1e5715105943ac111d9671bf',1,'svg::typography']]],
-  ['itype_19',['itype',['../structsvg_1_1color__qi.html#aca2e01ff1f6b9c1a01f6e1fde89b4f97',1,'svg::color_qi']]],
-  ['ivory_20',['ivory',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ac55c68625ca1da0e1d4a922fc8cb373e',1,'svg']]],
-  ['izzi_21',['izzi',['../index.html',1,'']]],
+  ['iterator_19',['iterator',['../classsvg_1_1string_1_1iterator.html',1,'svg::string']]],
+  ['itype_20',['itype',['../structsvg_1_1color__qi.html#aca2e01ff1f6b9c1a01f6e1fde89b4f97',1,'svg::color_qi']]],
+  ['ivory_21',['ivory',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ac55c68625ca1da0e1d4a922fc8cb373e',1,'svg']]],
   ['izzi_5fhue_5fpalette_22',['izzi_hue_palette',['../namespacesvg.html#ade9b17ed678790ae8f018b798160b377',1,'svg']]],
   ['izzi_5fpalette_23',['izzi_palette',['../namespacesvg.html#aaea796845322874cb98039b1301c39d6',1,'svg']]]
 ];

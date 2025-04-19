@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['klrs_0',['klrs',['../structsvg_1_1color__rstate.html#a5b308a1b9a98936b32cec3c8d2fe503d',1,'svg::color_rstate']]]
+  ['jp_5fpalette_0',['jp_palette',['../namespacesvg.html#a20cce17387f1d753e5aa511c066961a9',1,'svg']]]
 ];

@@ -1,17 +1,10 @@
 <map id="svg::group_element::start_element" name="svg::group_element::start_element">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,115,128,157"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="185,5,306,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,112,174,64,192,54,194,58,177,69,103,116"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="383,43,472,69"/>
-<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="128,120,367,66,369,72,129,125"/>
-<area shape="rect" id="Node000004" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title="Common transforms include rotate(180)" alt="" coords="185,173,306,216"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,153,171,167,169,172,127,159"/>
-<area shape="rect" id="Node000005" href="$namespacesvg_1_1constants.html#a3972655f1dfdc090ec2592d1fb37e87c" title=" " alt="" coords="363,127,492,153"/>
-<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="128,134,347,136,347,142,128,139"/>
-<area shape="rect" id="Node000007" href="$namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38" title=" " alt="" coords="176,240,315,267"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="91,156,129,191,177,226,187,231,185,236,174,230,126,195,87,160"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,34,368,44,367,49,306,39"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="306,174,365,156,367,161,307,179"/>
-<area shape="rect" id="Node000006" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="364,181,492,208"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="306,192,348,192,348,197,306,197"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,64,128,107"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="176,5,297,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,62,160,50,162,55,129,67"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="345,43,434,69"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="128,77,330,59,330,64,128,82"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title="Common transforms include rotate(180)" alt="" coords="176,123,297,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,104,162,116,160,121,127,109"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="298,36,330,42,329,47,297,41"/>
 </map>
