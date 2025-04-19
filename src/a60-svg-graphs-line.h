@@ -43,9 +43,13 @@ constexpr auto asz = 12; // h1
 constexpr auto ssz = 10; // text, sub sub headings
 constexpr auto ticsz = 7; // tic text
 
-/// Glyph size and margins
+/// Glyph size and margins.
 constexpr svg::area<> achart = { 900, 600 };
 constexpr auto cpx = std::get<0>(achart.center_point());
+
+/// Line creation options.
+constexpr ushort line_1_polyline(100);
+constexpr ushort line_2_polyline_tooltips(200);
 
 } // end anonymous namespace
 
@@ -239,6 +243,102 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 }
 
 
+/// Axis Labels
+/// Axis X/Y Ticmarks
+void
+make_line_graph_annotations(const svg::area<> aplate,
+			    const vrange& points, const vrange& cpoints,
+			    const graph_rstate& gstate,
+			    svg_element& lgraph)
+{
+  using namespace std;
+  const string finish_hard(string { element_base::finish_tag } + k::newline);
+
+  // Locate graph area on plate area.
+  auto [ pwidth, pheight ] = aplate;
+  //double gwidth = pwidth - (2 * gstate.marginx);
+  double gheight = pheight - (2 * gstate.marginy);
+  const double chartyo = pheight - gstate.marginy;
+  const double chartxe = pwidth - gstate.marginx;
+
+  // Start annotation group.
+  lgraph.add_raw(group_element::start_group("annotation-" + gstate.title));
+
+  // Base typo for axis and tic labels.
+  auto anntypo = k::apercu_typo;
+  anntypo._M_style = style_wcaglg;
+  anntypo._M_size = asz;
+
+  // Add axis labels.
+  point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
+  styled_text(lgraph, gstate.xlabel, xlabelp, anntypo);
+
+  point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
+  styled_text_r(lgraph, gstate.ylabel, ylabelp, anntypo, 90);
+
+  // Add axis lines.
+  line_element lx = make_line({gstate.marginx, chartyo}, {chartxe, chartyo},
+			      gstate.lstyle);
+  line_element ly = make_line({gstate.marginx, chartyo},
+			      {gstate.marginx, gstate.marginy},
+			      gstate.lstyle);
+  lgraph.add_element(lx);
+  lgraph.add_element(ly);
+
+  anntypo._M_size = ticsz;
+
+  // X tic marks
+  // X tic labels
+  // x axis is monotonically increasing
+  for (uint i = 0; i < cpoints.size(); i++)
+    {
+      const point_2t& cpt = cpoints[i];
+      const double x = std::get<0>(cpt);
+      const double yto = chartyo + asz;
+
+      const point_2t& pt = points[i];
+      const string xval = std::to_string(static_cast<uint>(std::get<0>(pt)));
+      styled_text(lgraph, xval, {x, yto}, anntypo);
+    }
+
+  // Y tic marks
+  // Y tic labels
+  vector<double> pointsy(points.size());
+  std::transform(points.begin(), points.end(), pointsy.begin(),
+		 [](const point_2t& pt) { return std::get<1>(pt); });
+  auto mmy = minmax_element(pointsy.begin(), pointsy.end());
+  auto miny = *mmy.first;
+  auto maxy = *mmy.second;
+
+  const double yrange(maxy - miny);
+  const double yscale(gheight / yrange);
+
+  const double xto = gstate.marginx - asz;
+
+  // Filter tic labels to unique smallest subset of significant
+  // lables of yticsteps.
+  const double yticsteps = 10; // number of y tic labels
+  const double ydelta = yrange / yticsteps;
+
+  vector<uint> ypointsi(points.size());
+  std::transform(points.begin(), points.end(), ypointsi.begin(),
+		 [ydelta](const point_2t& pt)
+		 { return static_cast<uint>(std::get<1>(pt) / ydelta); });
+  std::set<double> ypoints(ypointsi.begin(), ypointsi.end());
+
+  // Add y tic labels.
+  for (const double& y:  ypoints)
+    {
+      const uint yui = y * ydelta;
+      const double yto = chartyo - (yui * yscale);
+      styled_text(lgraph, std::to_string(yui), {xto, yto}, anntypo);
+    }
+
+  // End group
+  lgraph.add_raw(group_element::finish_group());
+}
+
+
 /// Returns a svg_element with the chart and labels
 /// Assume:
 /// vgrange x axis is monotonically increasing
@@ -276,9 +376,8 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   auto [ pwidth, pheight ] = aplate;
   double gwidth = pwidth - (2 * gstate.marginx);
   double gheight = pheight - (2 * gstate.marginy);
-
   const double chartyo = pheight - gstate.marginy;
-  const double chartxe = pwidth - gstate.marginx;
+  //const double chartxe = pwidth - gstate.marginx;
 
   // Transform data points to scaled cartasian points in graph area.
   vrange cpoints;
@@ -300,94 +399,34 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
   // Add annotations, labels, metadata
   if (annotationsp)
-    {
-      // Start annotation group.
-      lgraph.add_raw(group_element::start_group("annotation-" + gstate.title));
+    make_line_graph_annotations(aplate, points, cpoints, gstate, lgraph);
 
-      // Base typo for axis and tic labels.
-      auto anntypo = k::apercu_typo;
-      anntypo._M_style = style_wcaglg;
-      anntypo._M_size = asz;
-
-      // Add axis labels.
-      point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
-      styled_text(lgraph, gstate.xlabel, xlabelp, anntypo);
-
-      point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
-      styled_text_r(lgraph, gstate.ylabel, ylabelp, anntypo, 90);
-
-      // Add axis lines.
-      line_element lx = make_line({gstate.marginx, chartyo}, {chartxe, chartyo},
-				  gstate.lstyle);
-      line_element ly = make_line({gstate.marginx, chartyo},
-				  {gstate.marginx, gstate.marginy},
-				  gstate.lstyle);
-      lgraph.add_element(lx);
-      lgraph.add_element(ly);
-
-      anntypo._M_size = ticsz;
-
-      // X tic marks
-      // X tic labels
-      // x axis is monotonically increasing
-      for (uint i = 0; i < cpoints.size(); i++)
-	{
-	  const point_2t& cpt = cpoints[i];
-	  const double x = std::get<0>(cpt);
-	  const double yto = chartyo + asz;
-
-	  const point_2t& pt = points[i];
-	  const string xval = std::to_string(static_cast<uint>(std::get<0>(pt)));
-	  styled_text(lgraph, xval, {x, yto}, anntypo);
-	}
-
-      // Y tic marks
-      // Y tic labels
-      const double yrange(maxy - miny);
-      const double yscale(gheight / yrange);
-
-      const double xto = gstate.marginx - asz;
-
-      // Filter tic labels to unique smallest subset of significant
-      // lables of yticsteps.
-      const double yticsteps = 10; // number of y tic labels
-      const double ydelta = yrange / yticsteps;
-      vector<uint> ypointssig(pointsy.size());
-      std::transform(pointsy.begin(), pointsy.end(), ypointssig.begin(),
-		     [ydelta](const double& d) { return static_cast<uint>(d / ydelta); });
-      std::set<double> ypoints(ypointssig.begin(), ypointssig.end());
-
-      // Add y tic labels.
-      for (const double& y:  ypoints)
-	{
-	  const uint yui = y * ydelta;
-	  const double yto = chartyo - (yui * yscale);
-	  styled_text(lgraph, std::to_string(yui), {xto, yto}, anntypo);
-	}
-
-      // End group
-      lgraph.add_raw(group_element::finish_group());
-    }
 
   // Plot transformed points.
-  // This has to be the last, top layers if tooltips are to work.
-#if 0
-  // Use polylines and markerspoints
-  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-				       gstate.dasharray, gstate.markerspoints);
-  lgraph.add_element(pl1);
-#else
-  // Use polyline base and set of marker paths with orignal values as tooltips on top.
-  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
-  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, gstate.dasharray);
-  lgraph.add_element(pl1);
-  lgraph.add_raw(group_element::finish_group());
+  // Ungrouped tooltips have to be the last, top layer to work.
+  //constexpr ushort line_strategy = line_1_polyline;
+  constexpr ushort line_strategy = line_2_polyline_tooltips;
+  if constexpr(line_strategy == line_1_polyline)
+    {
+      // Use polylines and markerspoints
+      polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
+					   gstate.dasharray, gstate.markerspoints);
+      lgraph.add_element(pl1);
+    }
+  if constexpr(line_strategy == line_2_polyline_tooltips)
+    {
+      // Use polyline base and set of marker paths with orignal values
+      // as tooltips on top.
+      lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
+      polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, gstate.dasharray);
+      lgraph.add_element(pl1);
+      lgraph.add_raw(group_element::finish_group());
 
-  lgraph.add_raw(group_element::start_group("points-values-" + gstate.title));
-  string markers = make_line_graph_markers_tips(points, cpoints, gstate, 2);
-  lgraph.add_raw(markers);
-  lgraph.add_raw(group_element::finish_group());
-#endif
+      lgraph.add_raw(group_element::start_group("points-values-" + gstate.title));
+      string markers = make_line_graph_markers_tips(points, cpoints, gstate, 4);
+      lgraph.add_raw(markers);
+      lgraph.add_raw(group_element::finish_group());
+    }
 
   return lgraph;
 }
