@@ -56,10 +56,18 @@ struct element_base
   void
   str(const string& s) { return _M_sstream.str(s); }
 
-  // Add raw string to group, filter, blend/gradient elements.
+  // Add sub element.
+  void
+  add_element(const element_base& e)
+  { _M_sstream << e.str(); }
+
+  // Add raw string to group; filter, blend/gradient elements.
   void
   add_raw(const string& raw)
   { _M_sstream << k::space << raw; }
+
+  void
+  add_title(const string& t);
 
   void
   add_fill(const string id)
@@ -665,6 +673,11 @@ struct rect_element : virtual public element_base
     atype		_M_height;
   };
 
+  // Verbose opening/closing pair tags for circle_element.
+  // Default assumes the more compact XML "self-closed tag" for circle element.
+  static constexpr const char*  tag_open = "<rect>";
+  static constexpr const char*  tag_closing = "</rect>";
+
   /// Either serialize immediately (as below), or create data structure
   /// that adds data to data_vec and then finish_element serializes.
   void
@@ -1249,12 +1262,7 @@ struct svg_element : virtual public element_base
 
   void
   add_title()
-  {
-    title_element te;
-    te.start_element(_M_name);
-    te.finish_element();
-    add_raw(te.str());
-  }
+  { element_base::add_title(_M_name); }
 
   void
   add_desc(const string desc)
@@ -1262,15 +1270,11 @@ struct svg_element : virtual public element_base
     desc_element de;
     de.start_element(desc);
     de.finish_element();
-    add_raw(de.str());
+    add_element(de);
   }
 
   void
   add_filters();
-
-  void
-  add_element(const element_base& e)
-  { _M_sstream << e.str(); }
 
   void
   write();

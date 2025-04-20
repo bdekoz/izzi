@@ -19,6 +19,14 @@
 
 namespace svg {
 
+void
+element_base::add_title(const string& t)
+{
+  title_element te;
+  te.start_element(t);
+  te.finish_element();
+  add_element(te);
+}
 
 void
 svg_element::write()
