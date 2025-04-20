@@ -396,13 +396,13 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
       cpoints.push_back(make_tuple(x, y));
     }
 
-  // Add annotations, labels, metadata
+  // Add annotations first: any labels, metadata, ticmarks, legends
   if (annotationsp)
     make_line_graph_annotations(aplate, points, cpoints, gstate, lgraph);
 
 
   // Plot transformed points.
-  // Ungrouped tooltips have to be the last, top layer to work.
+  // Grouped tooltips have to be the last, aka top layer of SVG to work (?).
   //constexpr ushort line_strategy = line_1_polyline;
   constexpr ushort line_strategy = line_2_polyline_tooltips;
   if constexpr(line_strategy == line_1_polyline)
