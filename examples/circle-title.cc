@@ -11,17 +11,15 @@ test_title(std::string ofile)
   point_2t cp = obj.center_point();
   auto [ x, y ] = cp;
 
-  const auto space = 150;
-
   // Black
   //const style styl1 = { color::wcag_lgray, 1.0, color::black, 0.0, 2 };
-  const style styl1 = { color::wcag_lgray, 0, color::black, 1.0, .5 };
+  const style styl1 = { color::wcag_lgray, 1.0, color::black, 1.0, .5 };
 
   const string finish_hard(string { element_base::finish_tag } + k::newline);
 
   double r1 = 150;
   circle_element c;
-  circle_element::data dc = { x - space, y, r1 };
+  circle_element::data dc = { x - r1/2, y, r1 };
   c.start_element();
   c.add_data(dc);
   c.add_style(styl1);
