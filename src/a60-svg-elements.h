@@ -32,6 +32,7 @@ struct element_base
 {
   using stream_type = std::ostringstream;
   static constexpr char finish_tag = k::greaterthan;
+  static constexpr const char* self_finish_tag = " />";
 
   // Underlying units for 2D (x,y) mapping (same as area::atype).
   using atype = space_type; // ... floating point cartesian points
@@ -708,7 +709,7 @@ struct rect_element : virtual public element_base
 
 void
 rect_element::finish_element()
-{ _M_sstream  << " />" << k::newline; }
+{ _M_sstream  << element_base::self_finish_tag << k::newline; }
 
 
 /**
@@ -763,7 +764,7 @@ struct circle_element : virtual public element_base
 
 void
 circle_element::finish_element()
-{ _M_sstream  << " />" << k::newline; }
+{ _M_sstream  << element_base::self_finish_tag << k::newline; }
 
 
 /**
@@ -827,7 +828,7 @@ struct line_element : virtual public element_base
 
 void
 line_element::finish_element()
-{ _M_sstream  << " />" << k::newline; }
+{ _M_sstream  << element_base::self_finish_tag << k::newline; }
 
 
 /**
@@ -897,7 +898,7 @@ struct polyline_element : virtual public element_base
 
 void
 polyline_element::finish_element()
-{ _M_sstream  << " />" << k::newline; }
+{ _M_sstream  << element_base::self_finish_tag << k::newline; }
 
 
 
@@ -961,7 +962,7 @@ struct path_element : virtual public defs_element
 void
 path_element::finish_element()
 {
-  _M_sstream  << " />";
+  _M_sstream  << element_base::self_finish_tag;
   if (!_M_visible)
     defs_element::finish_element();
   _M_sstream << k::newline;
@@ -1064,7 +1065,7 @@ struct image_element : virtual public element_base
 
 void
 image_element::finish_element()
-{ _M_sstream  << " />" << k::newline; }
+{ _M_sstream  << element_base::self_finish_tag << k::newline; }
 
 
 /**
@@ -1186,7 +1187,7 @@ struct video_element : virtual public foreign_element
 
     _M_sstream << "<source src=" << k::quote << src << k::quote << k::space;
     _M_sstream << "type=" << k::quote << "video/mp4" << k::quote;
-    _M_sstream << " />" << k::newline;
+    _M_sstream << element_base::self_finish_tag << k::newline;
   }
 
   void

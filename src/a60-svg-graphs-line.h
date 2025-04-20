@@ -223,7 +223,6 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       c.add_style(gstate.lstyle);
       c.add_raw(finish_hard);
 
-      title_element tooltip;
       string tipstr(gstate.title);
       tipstr += k::newline;
       tipstr += std::to_string(static_cast<uint>(vy));
@@ -232,7 +231,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       tipstr += k::space;
       tipstr += std::to_string(static_cast<uint>(vx));
       tipstr += "ms";
-      c.add_title(tooltip);
+      c.add_title(tipstr);
 
       c.add_raw(string { circle_element::tag_closing } + k::newline);
 
