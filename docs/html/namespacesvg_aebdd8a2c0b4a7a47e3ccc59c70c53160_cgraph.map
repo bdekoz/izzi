@@ -1,11 +1,11 @@
 <map id="svg::point_to_octogon" name="svg::point_to_octogon">
 <area shape="rect" id="Node000001" title="Center an octogon at this point." alt="" coords="5,176,138,203"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" title=" " alt="" coords="192,109,326,152"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,173,177,154,178,159,118,178"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="199,109,320,152"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,173,184,151,185,157,118,178"/>
 <area shape="rect" id="Node000004" href="$namespacesvg.html#a0aef2c05effd76b41bfbfee32442cf9a" title="Center an octogon at this point. radius 4 is pixels to draw out from center point...." alt="" coords="186,205,333,232"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="139,197,170,202,170,207,138,202"/>
 <area shape="rect" id="Node000003" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="389,88,523,115"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="327,118,374,111,374,116,327,123"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="320,119,373,111,374,116,321,124"/>
 <area shape="rect" id="Node000005" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="387,139,525,181"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="306,202,371,183,373,188,307,207"/>
 <area shape="rect" id="Node000007" href="$namespacesvg.html#a8425f83abab02eedb240bc2a893cd513" title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers...." alt="" coords="406,205,507,232"/>

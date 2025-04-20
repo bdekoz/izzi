@@ -432,10 +432,10 @@
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1005.62,-352 904.88,-352 904.88,-320 1005.62,-320 1005.62,-352"/>
-<text text-anchor="start" x="912.88" y="-340.4" font-family="SourceSans" font-size="8.00">svg::svg_element::add</text>
-<text text-anchor="middle" x="955.25" y="-328.4" font-family="SourceSans" font-size="8.00">_element</text>
+<g id="a_Node000017"><a xlink:href="group__elements.html#ada0333b46b2547c6152f3f5811016a12" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1000.75,-352 909.75,-352 909.75,-320 1000.75,-320 1000.75,-352"/>
+<text text-anchor="start" x="917.75" y="-340.4" font-family="SourceSans" font-size="8.00">svg::element_base::</text>
+<text text-anchor="middle" x="955.25" y="-328.4" font-family="SourceSans" font-size="8.00">add_element</text>
 </a>
 </g>
 </g>
@@ -479,8 +479,8 @@
 <g id="edge22_Node000017_Node000018" class="edge">
 <title>Node17&#45;&gt;Node18</title>
 <g id="a_edge22_Node000017_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1005.99,-324.18C1017.09,-321.54 1028.91,-318.73 1040.19,-316.05"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1040.86,-319.49 1049.78,-313.77 1039.24,-312.68 1040.86,-319.49"/>
+<path fill="none" stroke="#63b8ff" d="M1000.96,-325.38C1013.34,-322.43 1026.94,-319.2 1039.85,-316.13"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1040.59,-319.56 1049.51,-313.84 1038.97,-312.75 1040.59,-319.56"/>
 </a>
 </g>
 </g>
@@ -1244,8 +1244,8 @@
 <g id="edge74_Node000053_Node000017" class="edge">
 <title>Node53&#45;&gt;Node17</title>
 <g id="a_edge74_Node000053_Node000017"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M850.74,-336C864.08,-336 879.03,-336 893.33,-336"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="893.1,-339.5 903.1,-336 893.1,-332.5 893.1,-339.5"/>
+<path fill="none" stroke="#63b8ff" d="M850.74,-336C865.57,-336 882.39,-336 898.09,-336"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="897.77,-339.5 907.77,-336 897.77,-332.5 897.77,-339.5"/>
 </a>
 </g>
 </g>

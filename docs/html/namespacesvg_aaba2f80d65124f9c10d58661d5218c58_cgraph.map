@@ -1,6 +1,6 @@
 <map id="svg::make_markers" name="svg::make_markers">
 <area shape="rect" id="Node000001" title="Make black/white/wcag markers with sizes 4x4 and 2x2." alt="" coords="5,655,124,681"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" title=" " alt="" coords="177,403,312,445"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="184,403,305,445"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,653,170,514,214,456,219,459,174,518,77,656"/>
 <area shape="rect" id="Node000004" href="$group__elements.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="803,597,924,640"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="124,665,391,659,565,650,740,636,787,630,788,635,741,641,565,656,391,664,124,670"/>
@@ -11,7 +11,7 @@
 <area shape="rect" id="Node000034" href="$group__elements.html#a948868c6f5dea784ded14c26cc1d2139" title=" " alt="" coords="1174,836,1294,879"/>
 <area shape="poly" id="edge52_Node000001_Node000034" title=" " alt="" coords="71,681,80,722,99,780,129,841,150,868,173,893,207,919,238,938,267,952,297,960,361,968,443,968,865,968,940,969,998,968,1055,958,1124,935,1164,913,1197,887,1201,892,1166,918,1126,940,1056,964,999,973,940,974,865,973,443,973,361,973,296,966,265,957,235,943,204,923,170,897,146,872,125,843,94,782,75,724,66,682"/>
 <area shape="rect" id="Node000003" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="589,391,723,417"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,403,365,393,474,388,573,393,573,398,474,394,365,399,313,408"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,405,365,393,474,388,573,393,573,398,474,394,365,399,306,410"/>
 <area shape="poly" id="edge51_Node000006_Node000003" title=" " alt="" coords="255,526,299,481,330,457,364,438,416,419,471,408,573,399,574,404,472,413,418,425,366,442,333,461,303,485,259,530"/>
 <area shape="rect" id="Node000007" href="$namespacesvg.html#a9f746a2fcfb397567be5af437c5df8ae" title=" " alt="" coords="372,452,516,479"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="275,525,364,488,382,482,384,487,366,493,277,530"/>

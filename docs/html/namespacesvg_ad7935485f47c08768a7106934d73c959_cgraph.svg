@@ -160,10 +160,10 @@ var sectionId = 'dynsection-82';
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="910,-270 809.25,-270 809.25,-238 910,-238 910,-270"/>
-<text text-anchor="start" x="817.25" y="-258.4" font-family="SourceSans" font-size="8.00">svg::svg_element::add</text>
-<text text-anchor="middle" x="859.62" y="-246.4" font-family="SourceSans" font-size="8.00">_element</text>
+<g id="a_Node000005"><a xlink:href="group__elements.html#ada0333b46b2547c6152f3f5811016a12" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="905.12,-270 814.12,-270 814.12,-238 905.12,-238 905.12,-270"/>
+<text text-anchor="start" x="822.12" y="-258.4" font-family="SourceSans" font-size="8.00">svg::element_base::</text>
+<text text-anchor="middle" x="859.62" y="-246.4" font-family="SourceSans" font-size="8.00">add_element</text>
 </a>
 </g>
 </g>

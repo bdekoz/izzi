@@ -31,10 +31,10 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="223.62,-296 122.88,-296 122.88,-264 223.62,-264 223.62,-296"/>
-<text text-anchor="start" x="130.88" y="-284.4" font-family="SourceSans" font-size="8.00">svg::svg_element::add</text>
-<text text-anchor="middle" x="173.25" y="-272.4" font-family="SourceSans" font-size="8.00">_element</text>
+<g id="a_Node000002"><a xlink:href="group__elements.html#ada0333b46b2547c6152f3f5811016a12" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="218.75,-296 127.75,-296 127.75,-264 218.75,-264 218.75,-296"/>
+<text text-anchor="start" x="135.75" y="-284.4" font-family="SourceSans" font-size="8.00">svg::element_base::</text>
+<text text-anchor="middle" x="173.25" y="-272.4" font-family="SourceSans" font-size="8.00">add_element</text>
 </a>
 </g>
 </g>
@@ -171,8 +171,8 @@
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M223.99,-280C233.07,-280 242.63,-280 251.99,-280"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="251.75,-283.5 261.75,-280 251.75,-276.5 251.75,-283.5"/>
+<path fill="none" stroke="#63b8ff" d="M218.96,-280C229.55,-280 241.02,-280 252.2,-280"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="252.18,-283.5 262.18,-280 252.18,-276.5 252.18,-283.5"/>
 </a>
 </g>
 </g>

@@ -599,10 +599,10 @@ var sectionId = 'dynsection-28';
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1405.38,-450.45 1304.62,-450.45 1304.62,-418.45 1405.38,-418.45 1405.38,-450.45"/>
-<text text-anchor="start" x="1312.62" y="-438.85" font-family="SourceSans" font-size="8.00">svg::svg_element::add</text>
-<text text-anchor="middle" x="1355" y="-426.85" font-family="SourceSans" font-size="8.00">_element</text>
+<g id="a_Node000020"><a xlink:href="group__elements.html#ada0333b46b2547c6152f3f5811016a12" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1400.5,-450.45 1309.5,-450.45 1309.5,-418.45 1400.5,-418.45 1400.5,-450.45"/>
+<text text-anchor="start" x="1317.5" y="-438.85" font-family="SourceSans" font-size="8.00">svg::element_base::</text>
+<text text-anchor="middle" x="1355" y="-426.85" font-family="SourceSans" font-size="8.00">add_element</text>
 </a>
 </g>
 </g>
@@ -1411,8 +1411,8 @@ var sectionId = 'dynsection-28';
 <g id="edge78_Node000056_Node000020" class="edge">
 <title>Node56&#45;&gt;Node20</title>
 <g id="a_edge78_Node000056_Node000020"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1250.49,-426.69C1263.83,-427.69 1278.78,-428.82 1293.08,-429.89"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1292.63,-433.36 1302.86,-430.62 1293.15,-426.38 1292.63,-433.36"/>
+<path fill="none" stroke="#63b8ff" d="M1250.49,-426.69C1265.32,-427.81 1282.14,-429.07 1297.84,-430.24"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1297.29,-433.71 1307.53,-430.97 1297.82,-426.73 1297.29,-433.71"/>
 </a>
 </g>
 </g>

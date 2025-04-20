@@ -1,8 +1,8 @@
 var searchData=
 [
   ['tab_0',['tab',['../namespacesvg_1_1constants.html#ade63c3902d37b4d4d207d38aad490c72',1,'svg::constants']]],
-  ['tag_5fclosing_1',['tag_closing',['../group__elements.html#ab476eb76138afbaa41e6255d2786460c',1,'svg::circle_element']]],
-  ['tag_5fopen_2',['tag_open',['../group__elements.html#a8f35626e39ab3fbf22339348aa3609e8',1,'svg::circle_element']]],
+  ['tag_5fclosing_1',['tag_closing',['../group__elements.html#aee8e29170c0cd8fa061d86444e3541ed',1,'svg::rect_element::tag_closing'],['../group__elements.html#ab476eb76138afbaa41e6255d2786460c',1,'svg::circle_element::tag_closing']]],
+  ['tag_5fopen_2',['tag_open',['../group__elements.html#ac2d67d29ea5f9bd406cf54b58741c1bf',1,'svg::rect_element::tag_open'],['../group__elements.html#a8f35626e39ab3fbf22339348aa3609e8',1,'svg::circle_element::tag_open']]],
   ['telecom_3',['telecom',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364a29e7396b6b7e8b8ab20daabcde1c7732',1,'svg']]],
   ['text_4',['text',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364a1cb251ec0d568de6a929b520c4aed8d1',1,'svg']]],
   ['text_5fafter_5fedge_5',['text_after_edge',['../structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9a84c11f4a95c38190831ef2514d00b40e',1,'svg::typography']]],

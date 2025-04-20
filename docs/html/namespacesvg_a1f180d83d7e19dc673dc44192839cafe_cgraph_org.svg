@@ -278,10 +278,10 @@
 <!-- Node18 -->
 <g id="Node000018" class="node">
 <title>Node18</title>
-<g id="a_Node000018"><a xlink:href="group__elements.html#aaa5f1a136f2b5c61d647a47ec53fe31d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="666.88,-296 566.12,-296 566.12,-264 666.88,-264 666.88,-296"/>
-<text text-anchor="start" x="574.12" y="-284.4" font-family="SourceSans" font-size="8.00">svg::svg_element::add</text>
-<text text-anchor="middle" x="616.5" y="-272.4" font-family="SourceSans" font-size="8.00">_element</text>
+<g id="a_Node000018"><a xlink:href="group__elements.html#ada0333b46b2547c6152f3f5811016a12" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="662,-296 571,-296 571,-264 662,-264 662,-296"/>
+<text text-anchor="start" x="579" y="-284.4" font-family="SourceSans" font-size="8.00">svg::element_base::</text>
+<text text-anchor="middle" x="616.5" y="-272.4" font-family="SourceSans" font-size="8.00">add_element</text>
 </a>
 </g>
 </g>
@@ -804,8 +804,8 @@
 <g id="edge48_Node000039_Node000018" class="edge">
 <title>Node39&#45;&gt;Node18</title>
 <g id="a_edge48_Node000039_Node000018"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M511.99,-282.12C525.33,-281.84 540.28,-281.54 554.58,-281.25"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="554.43,-284.75 564.36,-281.05 554.29,-277.75 554.43,-284.75"/>
+<path fill="none" stroke="#63b8ff" d="M511.99,-282.12C526.82,-281.81 543.64,-281.47 559.34,-281.15"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="559.1,-284.65 569.02,-280.95 558.95,-277.66 559.1,-284.65"/>
 </a>
 </g>
 </g>
