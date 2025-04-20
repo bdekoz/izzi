@@ -8,10 +8,13 @@ if [ ! -n "$CCFILE" ]; then
     exit 1;
 fi
 
+#INCLUDEF="-I/usr/include/rapidjson -I../src/"
+INCLUDEF="-I../src/"
+
 WARNF="-Werror -Wfatal-errors -Wall -Wextra -Wunused -Wno-deprecated-declarations"
 COMPILEF="-std=gnu++20 -O2 -g -march=native"
 #COMPILEF="-std=gnu++17 -O2 -g -march=native -D_GLIBCXX_DEBUG"
 
 EXEFILE=`echo $CCFILE | sed 's/.cc/.exe/g'`
 
-g++ $WARNF $COMPILEF -I../src/ $CCFILE -o ${EXEFILE}
+g++ $WARNF $INCLUDEF $COMPILEF $CCFILE -o ${EXEFILE}

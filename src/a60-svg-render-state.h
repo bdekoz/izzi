@@ -176,6 +176,9 @@ struct render_state_base
     __utype isv(static_cast<__utype>(visible_mode & v));
     return isv > 0;
   }
+
+  render_state_base(const select m = select::none) : visible_mode(m)
+  { }
 };
 
 

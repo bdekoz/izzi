@@ -51,6 +51,9 @@ string_replace(std::string& target, const std::string& match,
 
 
 /// Base integer type: positive and negative, signed integral value.
+using ushort = unsigned short;
+using uint = unsigned int;
+using ulong = unsigned long;
 using ssize_type = int;
 
 /// Base floating point type.

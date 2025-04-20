@@ -18,7 +18,7 @@
 
 #include <set>
 
-#include "a60-json-basics.h"
+#include "izzi-json-basics.h"
 #include "a60-svg-grid-matrix-systems.h"
 #include "a60-svg-render-state.h"
 
@@ -48,8 +48,8 @@ constexpr svg::area<> achart = { 900, 600 };
 constexpr auto cpx = std::get<0>(achart.center_point());
 
 /// Line creation options.
-constexpr ushort line_1_polyline(100);
-constexpr ushort line_2_polyline_tooltips(200);
+constexpr svg::ushort line_1_polyline(100);
+constexpr svg::ushort line_2_polyline_tooltips(200);
 
 } // end anonymous namespace
 

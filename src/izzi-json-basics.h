@@ -13,21 +13,30 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // General Public License for more details.
 
-#ifndef a60_JSON_BASICS_H
-#define a60_JSON_BASICS_H 1
+#ifndef izzi_JSON_BASICS_H
+#define izzi_JSON_BASICS_H 1
 
 #include <iostream>
 #include <sstream>
 #include <fstream>
 
 #define RAPIDJSON_HAS_STDSTRING 1
+
+#ifdef __clang__
+#include "prettywriter.h"
+#include "pointer.h"
+#include "filereadstream.h"
+#include "reader.h"
+#include "document.h"
+#include "error/en.h"
+#else
 #include "rapidjson/prettywriter.h"
 #include "rapidjson/pointer.h"
 #include "rapidjson/filereadstream.h"
 #include "rapidjson/reader.h"
 #include "rapidjson/document.h"
 #include "rapidjson/error/en.h"
-
+#endif
 
 namespace svg {
 
