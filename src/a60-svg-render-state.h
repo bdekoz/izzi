@@ -24,34 +24,39 @@ namespace svg {
      Make discrete element or layer (visible, outline, etc) if true.
      Used as a (visibility, outline, etc.) bitmask
   */
-  enum class select : uint
+  enum class select
     {
      none		= 1u << 0, ///< nothing
      cartography	= 1u << 1, ///< cartographic elements
      vector		= 1u << 2, ///< svg path, circle, rectangle, etc.
-     cloud		= 1u << 3, ///< opacity color fill version of vector
-     blur		= 1u << 4, ///< blur or gradient version of vector
-     echo		= 1u << 5, ///< b & w outline version of vector
-     text		= 1u << 6, ///< title, metadata, header
-     legend		= 1u << 7, ///< text and symbol legends
-     exitnode		= 1u << 8, ///< tor exit node infrastructure
-     telecom		= 1u << 9, ///< telecom infrastructure
-     glyph		= 1u << 10, ///< glyph
-     image		= 1u << 11, ///< image
-     svg		= 1u << 12, ///< svg element, perhaps nested
-     alt		= 1u << 13, ///< alternate use specified in situ
-     background		= 1u << 14, ///< background elements
-     raster		= 1u << 15, ///< raster (pixel) elements
-     top		= 1u << 16, ///< top
-     bottom		= 1u << 17, ///< bottom
-     inner		= 1u << 18, ///< inner
-     outer		= 1u << 19, ///< outer
-     next		= 1u << 20, ///< next
-     previous		= 1u << 21, ///< previous
-     even		= 1u << 22, ///< even
-     odd		= 1u << 23, ///< odd
-     all		= 1u << 24, ///< all elements and layers
-     _S_end		= 1u << 25  ///< last
+     blur		= 1u << 3, ///< blur or gradient version of vector
+     echo		= 1u << 4, ///< b & w outline version of vector
+     text		= 1u << 5, ///< metadata, header
+     title		= 1u << 6, ///< title
+     axis		= 1u << 7, ///< axes
+     grid		= 1u << 8, ///< grid
+     linex		= 1u << 9, ///< horizontal lines
+     liney		= 1u << 10, ///< vertical lines
+     ticks		= 1u << 11, ///< ticks,markers
+     legend		= 1u << 12, ///< text and symbol legends
+     exitnode		= 1u << 13, ///< tor exit node infrastructure
+     telecom		= 1u << 14, ///< telecom infrastructure
+     glyph		= 1u << 15, ///< glyph
+     image		= 1u << 16, ///< image
+     svg		= 1u << 17, ///< svg element, perhaps nested
+     alt		= 1u << 18, ///< alternate use specified in situ
+     background		= 1u << 19, ///< background elements
+     raster		= 1u << 20, ///< raster (pixel) elements
+     top		= 1u << 21, ///< top
+     bottom		= 1u << 22, ///< bottom
+     inner		= 1u << 23, ///< inner
+     outer		= 1u << 24, ///< outer
+     next		= 1u << 25, ///< next
+     previous		= 1u << 26, ///< previous
+     even		= 1u << 27, ///< even
+     odd		= 1u << 28, ///< odd
+     all		= 1u << 29, ///< all elements and layers
+     _S_end		= 1u << 30  ///< last
     };
 
   inline constexpr select

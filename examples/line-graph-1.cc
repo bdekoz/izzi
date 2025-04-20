@@ -32,7 +32,7 @@ test_chart()
   const string afx("/firefox" + afieldpost);
   const string achrome("/chrome" + afieldpost);
   const string f1("timestamp");
-  const string f2("percent");
+  const string f2("%");
 
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
   graph_rstate gs1 { select::all, "firefox", f1, f2, styl1, "2", "t2wcagg"};

@@ -244,10 +244,11 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 /// Axis Labels
 /// Axis X/Y Ticmarks
 void
-make_line_graph_annotations(const svg::area<> aplate,
+make_line_graph_annotations(const area<> aplate,
 			    const vrange& points, const vrange& cpoints,
 			    const graph_rstate& gstate,
-			    svg_element& lgraph)
+			    svg_element& lgraph,
+			    const typography typo = k::apercu_typo)
 {
   using namespace std;
   const string finish_hard(string { element_base::finish_tag } + k::newline);
@@ -262,78 +263,83 @@ make_line_graph_annotations(const svg::area<> aplate,
   // Start annotation group.
   lgraph.add_raw(group_element::start_group("annotation-" + gstate.title));
 
-  // Base typo for axis and tic labels.
-  auto anntypo = k::apercu_typo;
+  // Base typo for axis.
+  typography anntypo = typo;
   anntypo._M_style = style_wcaglg;
   anntypo._M_size = asz;
+  if (gstate.is_visible(select::axis))
+    {
+      // Add axis labels.
+      point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
+      styled_text(lgraph, gstate.xlabel, xlabelp, anntypo);
 
-  // Add axis labels.
-  point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
-  styled_text(lgraph, gstate.xlabel, xlabelp, anntypo);
+      point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
+      styled_text(lgraph, gstate.ylabel, ylabelp, anntypo);
 
-  point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
-  styled_text_r(lgraph, gstate.ylabel, ylabelp, anntypo, 90);
+      // Add axis lines.
+      line_element lx = make_line({gstate.marginx, chartyo}, {chartxe, chartyo},
+				  gstate.lstyle);
+      line_element ly = make_line({gstate.marginx, chartyo},
+				  {gstate.marginx, gstate.marginy},
+				  gstate.lstyle);
+      lgraph.add_element(lx);
+      lgraph.add_element(ly);
+    }
 
-  // Add axis lines.
-  line_element lx = make_line({gstate.marginx, chartyo}, {chartxe, chartyo},
-			      gstate.lstyle);
-  line_element ly = make_line({gstate.marginx, chartyo},
-			      {gstate.marginx, gstate.marginy},
-			      gstate.lstyle);
-  lgraph.add_element(lx);
-  lgraph.add_element(ly);
-
+  // Base typo for tic labels.
   anntypo._M_size = ticsz;
-
-  // X tic marks
-  // X tic labels
-  // x axis is monotonically increasing
-  for (uint i = 0; i < cpoints.size(); i++)
+  if (gstate.is_visible(select::ticks))
     {
-      const point_2t& cpt = cpoints[i];
-      const double x = std::get<0>(cpt);
-      const double yto = chartyo + asz;
+      // X tic marks
+      // X tic labels
+      // x axis is monotonically increasing
+      for (uint i = 0; i < cpoints.size(); i++)
+	{
+	  const point_2t& cpt = cpoints[i];
+	  const double x = std::get<0>(cpt);
+	  const double yto = chartyo + asz;
 
-      const point_2t& pt = points[i];
-      const string xval = std::to_string(static_cast<uint>(std::get<0>(pt)));
-      styled_text(lgraph, xval, {x, yto}, anntypo);
+	  const point_2t& pt = points[i];
+	  const string xval = std::to_string(static_cast<uint>(std::get<0>(pt)));
+	  styled_text(lgraph, xval, {x, yto}, anntypo);
+	}
+
+      // Y tic marks
+      // Y tic labels
+      vector<double> pointsy(points.size());
+      std::transform(points.begin(), points.end(), pointsy.begin(),
+		     [](const point_2t& pt) { return std::get<1>(pt); });
+      auto mmy = minmax_element(pointsy.begin(), pointsy.end());
+      auto miny = *mmy.first;
+      auto maxy = *mmy.second;
+
+      const double yrange(maxy - miny);
+      const double yscale(gheight / yrange);
+
+      const double xto = gstate.marginx - asz;
+
+      // Filter tic labels to unique smallest subset of significant
+      // lables of yticsteps.
+      const double yticsteps = 10; // number of y tic labels
+      const double ydelta = yrange / yticsteps;
+
+      vector<uint> ypointsi(points.size());
+      std::transform(points.begin(), points.end(), ypointsi.begin(),
+		     [ydelta](const point_2t& pt)
+		     { return static_cast<uint>(std::get<1>(pt) / ydelta); });
+      std::set<double> ypoints(ypointsi.begin(), ypointsi.end());
+
+      // Add y tic labels.
+      for (const double& y:  ypoints)
+	{
+	  const uint yui = y * ydelta;
+	  const double yto = chartyo - (yui * yscale);
+	  styled_text(lgraph, std::to_string(yui), {xto, yto}, anntypo);
+	}
+
+      // End group
+      lgraph.add_raw(group_element::finish_group());
     }
-
-  // Y tic marks
-  // Y tic labels
-  vector<double> pointsy(points.size());
-  std::transform(points.begin(), points.end(), pointsy.begin(),
-		 [](const point_2t& pt) { return std::get<1>(pt); });
-  auto mmy = minmax_element(pointsy.begin(), pointsy.end());
-  auto miny = *mmy.first;
-  auto maxy = *mmy.second;
-
-  const double yrange(maxy - miny);
-  const double yscale(gheight / yrange);
-
-  const double xto = gstate.marginx - asz;
-
-  // Filter tic labels to unique smallest subset of significant
-  // lables of yticsteps.
-  const double yticsteps = 10; // number of y tic labels
-  const double ydelta = yrange / yticsteps;
-
-  vector<uint> ypointsi(points.size());
-  std::transform(points.begin(), points.end(), ypointsi.begin(),
-		 [ydelta](const point_2t& pt)
-		 { return static_cast<uint>(std::get<1>(pt) / ydelta); });
-  std::set<double> ypoints(ypointsi.begin(), ypointsi.end());
-
-  // Add y tic labels.
-  for (const double& y:  ypoints)
-    {
-      const uint yui = y * ydelta;
-      const double yto = chartyo - (yui * yscale);
-      styled_text(lgraph, std::to_string(yui), {xto, yto}, anntypo);
-    }
-
-  // End group
-  lgraph.add_raw(group_element::finish_group());
 }
 
 
