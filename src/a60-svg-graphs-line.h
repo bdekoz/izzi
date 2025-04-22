@@ -445,27 +445,32 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   // Grouped tooltips have to be the last, aka top layer of SVG to work (?).
   //constexpr ushort line_strategy = line_1_polyline;
   constexpr ushort line_strategy = line_2_polyline_tooltips;
-  if constexpr(line_strategy == line_1_polyline)
+  if (gstate.is_visible(select::vector))
     {
-      // Use polylines and markerspoints
-      polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-					   gstate.dasharray, gstate.markerspoints);
-      lgraph.add_element(pl1);
-    }
-  if constexpr(line_strategy == line_2_polyline_tooltips)
-    {
-      // Use polyline base and set of marker paths with orignal values
-      // as tooltips on top.
-      lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
-      polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-					   gstate.dasharray);
-      lgraph.add_element(pl1);
-      lgraph.add_raw(group_element::finish_group());
+      if constexpr(line_strategy == line_1_polyline)
+	{
+	  // Use polylines and markerspoints
+	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
+					       gstate.dasharray,
+					       gstate.markerspoints);
+	  lgraph.add_element(pl1);
+	}
+      if constexpr(line_strategy == line_2_polyline_tooltips)
+	{
+	  // Use polyline base and set of marker paths with orignal values
+	  // as tooltips on top.
+	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
+	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
+					       gstate.dasharray);
+	  lgraph.add_element(pl1);
+	  lgraph.add_raw(group_element::finish_group());
 
-      lgraph.add_raw(group_element::start_group("points-values-" + gstate.title));
-      string markers = make_line_graph_markers_tips(points, cpoints, gstate, 4);
-      lgraph.add_raw(markers);
-      lgraph.add_raw(group_element::finish_group());
+	  lgraph.add_raw(group_element::start_group("values-" + gstate.title));
+	  string markers = make_line_graph_markers_tips(points, cpoints,
+							gstate, 4);
+	  lgraph.add_raw(markers);
+	  lgraph.add_raw(group_element::finish_group());
+	}
     }
 
   return lgraph;

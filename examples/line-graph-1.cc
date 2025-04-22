@@ -35,7 +35,8 @@ test_chart()
   const string f2("percent");
 
   //svg::select glayers { select::ticks | select::axis };
-  svg::select glayers { select::ticks };
+  //svg::select glayers { select::ticks | select::vector };
+  svg::select glayers { select::vector };
 
   // Deserialize data.
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
