@@ -37,16 +37,25 @@ test_chart()
   //svg::select glayers { select::ticks | select::axis };
   svg::select glayers { select::ticks };
 
+  // Deserialize data.
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
+  vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
+
+  // Find combined ranges.
+  double maxx = max(get<0>(vr1.back()), get<0>(vr2.back()));
+  point_2t rangex = make_tuple(0, maxx);
+  double maxy = max(get<1>(vr1.back()), get<1>(vr2.back()));
+  point_2t rangey = make_tuple(0, maxy);
+
   graph_rstate gs1 { glayers, "firefox", f1, f2, "ms", "%",
 		     styl1, "2", "t2wcagg"};
-  svg_element chart1 = make_line_graph(a, vr1, gs1);
+  svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);
   obj.add_element(chart1);
 
-  vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
+
   graph_rstate gs2 { glayers, "chrome", f1, f2, "ms", "%",
 		     styl3, "4", "c2wcaglg"};
-  svg_element chart2 = make_line_graph(a, vr2, gs2);
+  svg_element chart2 = make_line_graph(a, vr2, gs2, rangex, rangey);
   obj.add_element(chart2);
 }
 

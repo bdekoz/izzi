@@ -373,7 +373,9 @@ make_line_graph_annotations(const area<> aplate,
 /// vgrange x axis is monotonically increasing
 svg_element
 make_line_graph(const svg::area<> aplate, const vrange& points,
-		const graph_rstate& gstate, const bool annotationsp = true)
+		const graph_rstate& gstate,
+		const point_2t xrange = { },
+		const point_2t yrange = { })
 {
   using namespace std;
 
@@ -386,17 +388,27 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   vector<double> pointsx(points.size());
   std::transform(points.begin(), points.end(), pointsx.begin(),
 		 [](const point_2t& pt) { return std::get<0>(pt); });
-  auto mmx = minmax_element(pointsx.begin(), pointsx.end());
-  auto minx = *mmx.first;
-  auto maxx = *mmx.second;
+  double minx = get<0>(xrange);
+  double maxx = get<1>(xrange);
+  if (minx == 0 && maxx == 0)
+    {
+      auto mmx = minmax_element(pointsx.begin(), pointsx.end());
+      minx = *mmx.first;
+      maxx = *mmx.second;
+    }
 
   // y
   vector<double> pointsy(points.size());
   std::transform(points.begin(), points.end(), pointsy.begin(),
 		 [](const point_2t& pt) { return std::get<1>(pt); });
-  auto mmy = minmax_element(pointsy.begin(), pointsy.end());
-  auto miny = *mmy.first;
-  auto maxy = *mmy.second;
+  double miny = get<0>(yrange);
+  double maxy = get<1>(yrange);
+  if (miny == 0 && maxy == 0)
+    {
+      auto mmy = minmax_element(pointsy.begin(), pointsy.end());
+      miny = *mmy.first;
+      maxy = *mmy.second;
+    }
 
   // Locate graph area on plate area.
   // aplate is total plate area with margins, aka
@@ -427,8 +439,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
     }
 
   // Add annotations first: any labels, metadata, ticmarks, legends
-  if (annotationsp)
-    make_line_graph_annotations(aplate, pointsx, pointsy, gstate, lgraph);
+  make_line_graph_annotations(aplate, pointsx, pointsy, gstate, lgraph);
 
   // Plot transformed points.
   // Grouped tooltips have to be the last, aka top layer of SVG to work (?).
