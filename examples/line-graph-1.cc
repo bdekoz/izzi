@@ -32,15 +32,17 @@ test_chart()
   const string afx("/firefox" + afieldpost);
   const string achrome("/chrome" + afieldpost);
   const string f1("timestamp");
-  const string f2("%");
+  const string f2("percent");
+
+  svg::select layers { select::ticks | select::axis };
 
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  graph_rstate gs1 { select::all, "firefox", f1, f2, styl1, "2", "t2wcagg"};
+  graph_rstate gs1 { layers, "firefox", f1, f2, styl1, "2", "t2wcagg"};
   svg_element chart1 = make_line_graph(a, vr1, gs1);
   obj.add_element(chart1);
 
   vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
-  graph_rstate gs2 { select::all, "chrome", f1, f2, styl3, "4", "c2wcaglg"};
+  graph_rstate gs2 { layers, "chrome", f1, f2, styl3, "4", "c2wcaglg"};
   svg_element chart2 = make_line_graph(a, vr2, gs2);
   obj.add_element(chart2);
 }
