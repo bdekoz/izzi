@@ -79,6 +79,27 @@ namespace svg {
 */
 
 
+/// Per-graph constants.
+struct graph_rstate : public render_state_base
+{
+  // Labels.
+  string		title;
+  string		xlabel;
+  string		ylabel;
+  string		xticku;		// tick mark units
+  string		yticku;
+
+  // Lines, markers, points.
+  svg::style		lstyle;
+  string		dasharray;
+  string		markerspoints;
+
+  // Margins/Spaces
+  static constexpr uint marginx = 100;
+  static constexpr uint marginy = 100;
+};
+
+
 
 /**
    Marker styles, ways to make line start, mid points, and enpoints look distinct.
@@ -182,25 +203,6 @@ make_markers(svg::svg_element& obj)
 
   def.finish_element();
   obj.add_element(def);
-};
-
-
-/// Per-graph constants.
-struct graph_rstate : public render_state_base
-{
-  // Labels.
-  string		title;
-  string		xlabel;
-  string		ylabel;
-
-  // Lines, markers, points.
-  svg::style		lstyle;
-  string		dasharray;
-  string		markerspoints;
-
-  // Margins/Spaces
-  static constexpr uint marginx = 100;
-  static constexpr uint marginy = 100;
 };
 
 
@@ -321,9 +323,10 @@ make_line_graph_annotations(const area<> aplate,
       // Add x tic labels.
       for (const double& x: xpoints)
 	{
-	  const uint xui = x * xticsteps; // narrowed unique x
+	  const uint xui = x * xticsteps;
 	  const double xto = gstate.marginx + (xui * xscale);
-	  styled_text(lgraph, std::to_string(xui), {xto, ygo}, anntypo);
+	  const string sxui = std::to_string(xui) + gstate.xticku;
+	  styled_text(lgraph, sxui, {xto, ygo}, anntypo);
 	}
 
       // Y tic labels
@@ -334,7 +337,7 @@ make_line_graph_annotations(const area<> aplate,
       const double yrange(maxy - miny);
       const double yscale(gheight / yrange);
 
-      const double yxto = gstate.marginx - asz;
+      const double xgo = gstate.marginx - asz;
 
       // Filter tic labels to unique smallest subset of significant
       // lables of yticsteps.
@@ -353,7 +356,8 @@ make_line_graph_annotations(const area<> aplate,
 	{
 	  const uint yui = y * ydelta;
 	  const double yto = chartyo - (yui * yscale);
-	  styled_text(lgraph, std::to_string(yui), {yxto, yto}, anntypo);
+	  const string syui = std::to_string(yui) + gstate.yticku;
+	  styled_text(lgraph, syui, {xgo, yto}, anntypo);
 	}
 
       lgraph.add_raw(group_element::finish_group());
