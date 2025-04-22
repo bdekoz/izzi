@@ -8,7 +8,7 @@ var searchData=
   ['value_5fid_5fummap_5',['value_id_ummap',['../namespacesvg.html#a089ff454d88ea5f21f093a0dcc465894',1,'svg']]],
   ['value_5fset_6',['value_set',['../namespacesvg.html#a6b7ee83cfb4607a23d5dde4a30dd8c07',1,'svg']]],
   ['value_5ftype_7',['value_type',['../namespacesvg.html#a8159dacec93cb2f99519b62ef83c739a',1,'svg']]],
-  ['vector_8',['vector',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364a6ba8844da718b4a65f60dbfd0d92d6ef',1,'svg']]],
+  ['vector_8',['vector',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a6ba8844da718b4a65f60dbfd0d92d6ef',1,'svg']]],
   ['veronica_9',['veronica',['../namespacesvg.html#a5fd971345fcede00e46bd1bd8846f12dafaa82036538b8f367fcf7bfd4c63b789',1,'svg']]],
   ['vertical_5fsync_5froll_5fseq_10',['vertical_sync_roll_seq',['../namespacesvg.html#a86609091f372674e0e117d33551cdac8',1,'svg']]],
   ['video_5felement_11',['video_element',['../group__elements.html#structsvg_1_1video__element',1,'svg']]],
@@ -16,7 +16,7 @@ var searchData=
   ['visible_5fmode_13',['visible_mode',['../structsvg_1_1render__state__base.html#a7036f53a7ab20ebf3e7b32d1890d50f8',1,'svg::render_state_base']]],
   ['vlspace_14',['vlspace',['../namespacea60_1_1metadata.html#a2a619ed21560d442f5dfae5ea8101fce',1,'a60::metadata']]],
   ['vrange_15',['vrange',['../namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d',1,'svg']]],
-  ['vspace_16',['vspace',['../namespacea60_1_1metadata.html#a888d9b1e7402e335f8e7544373855a92',1,'a60::metadata']]],
+  ['vspace_16',['vspace',['../namespacesvg.html#aa3a977b3ba28e5647518914fdf2ea62e',1,'svg::vspace'],['../namespacea60_1_1metadata.html#a888d9b1e7402e335f8e7544373855a92',1,'a60::metadata::vspace()']]],
   ['vstrings_17',['vstrings',['../namespacesvg.html#aabe2c7e16151253fd5bbbc2a3ddbd170',1,'svg']]],
   ['vvranges_18',['vvranges',['../namespacesvg.html#a7c943f2610ce0566f8cc86ffd76c2739',1,'svg']]],
   ['vvstrings_19',['vvstrings',['../namespacesvg.html#a674485c274059679fc6a9c65feb627b9',1,'svg']]]

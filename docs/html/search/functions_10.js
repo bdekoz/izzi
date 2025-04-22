@@ -13,5 +13,6 @@ var searchData=
   ['random_5fcolor_10',['random_color',['../namespacesvg.html#aa56d06e856c04fd40424c2c02ee05dfc',1,'svg::random_color(const uint startoffset=0)'],['../namespacesvg.html#a218a128291e7dabce7575fe834d2be26',1,'svg::random_color(const _Spectrm &amp;spectrm, const uint startoffset=0)']]],
   ['remove_5fmatches_5fid_5fvalue_5fmap_11',['remove_matches_id_value_map',['../namespacesvg.html#a3ce2632db7e0dc229e23fe839a4ca56f',1,'svg']]],
   ['render_5fmetadata_5faggregate_5fchord_12',['render_metadata_aggregate_chord',['../namespacea60_1_1metadata.html#abb1e8fbeb00e7bf7a8f019c0fd951073',1,'a60::metadata']]],
-  ['rotate_13',['rotate',['../structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0',1,'svg::transform::rotate(int deg)'],['../structsvg_1_1transform.html#a4cac245f50dd098d7afb862503fddd27',1,'svg::transform::rotate(int deg, int x, int y)']]]
+  ['render_5fstate_5fbase_13',['render_state_base',['../structsvg_1_1render__state__base.html#a3410b564d0afbc70c71cd16a2a333680',1,'svg::render_state_base']]],
+  ['rotate_14',['rotate',['../structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0',1,'svg::transform::rotate(int deg)'],['../structsvg_1_1transform.html#a4cac245f50dd098d7afb862503fddd27',1,'svg::transform::rotate(int deg, int x, int y)']]]
 ];

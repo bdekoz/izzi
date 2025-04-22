@@ -6,7 +6,7 @@ var searchData=
   ['r4s_3',['r4s',['../namespacesvg.html#adc7e4c413a77264dd28e589407293de8abd1c5fb73fb99b9b540307dbb3a4335a',1,'svg']]],
   ['r5s_4',['r5s',['../namespacesvg.html#adc7e4c413a77264dd28e589407293de8a3a199e96d52b2309f5369a687b62d10c',1,'svg']]],
   ['radialgradient_5',['radialGradient',['../group__elements.html#a7c19a4d45da1acb512fc1c69048253bfa1ef4c255bfa3d1d0e4d8509e44bc7a54',1,'svg::gradient_element']]],
-  ['raster_6',['raster',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364a5c4b511a3d70a42ea3d7a7c632160381',1,'svg']]],
+  ['raster_6',['raster',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a5c4b511a3d70a42ea3d7a7c632160381',1,'svg']]],
   ['red_7',['red',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1abda9643ac6601722a28f238714274da4',1,'svg::red'],['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#abda9643ac6601722a28f238714274da4',1,'anonymous_namespace{a60-svg-graphs-line.h}::red']]],
   ['redorange_8',['redorange',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a2c84d97638de6e4e9c3ddff03f92cd51',1,'svg']]],
   ['redwisteria_9',['redwisteria',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1aa748cf2661f3eccccd59f1299834a6d5',1,'svg']]],

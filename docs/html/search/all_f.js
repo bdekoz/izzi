@@ -1,7 +1,7 @@
 var searchData=
 [
   ['ochre_0',['ochre',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3190fd3f786f09fd80f60f0d846c383e',1,'svg']]],
-  ['odd_1',['odd',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364aa2b6f2a6066ed8700d83335fc50a2b8e',1,'svg']]],
+  ['odd_1',['odd',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579aa2b6f2a6066ed8700d83335fc50a2b8e',1,'svg']]],
   ['offset_2',['offset',['../group__elements.html#a7184ab5b189a87b39ca9fe8899573989',1,'svg::text_path_element']]],
   ['offset_5fpercentage_3',['offset_percentage',['../group__elements.html#a437bc6cd38193c9178fc4a7a43b7d483',1,'svg::gradient_element']]],
   ['opacity_4',['opacity',['../structsvg_1_1collection__rstate.html#ad771efd9601196d05178381a21db6d0e',1,'svg::collection_rstate']]],
@@ -18,6 +18,6 @@ var searchData=
   ['orange_15',['orange',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1afe01d67a002dfa0f3ac084298142eccd',1,'svg']]],
   ['orangered_16',['orangered',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1af942a5b0776d7b0b52ffbdc54df6a5d3',1,'svg']]],
   ['orchid_17',['orchid',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a93b1453c8ec5a548389c935052536ccb',1,'svg']]],
-  ['outer_18',['outer',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364a7cfcbd1c1575dd7eae454f18b9267188',1,'svg']]],
+  ['outer_18',['outer',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a7cfcbd1c1575dd7eae454f18b9267188',1,'svg']]],
   ['outline_5fmode_19',['outline_mode',['../structsvg_1_1collection__rstate.html#a479c4a4cae90f09d39f51dd2d21bd9ea',1,'svg::collection_rstate']]]
 ];

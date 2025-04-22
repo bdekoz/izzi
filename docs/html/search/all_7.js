@@ -16,7 +16,7 @@ var searchData=
   ['get_5frender_5fstate_13',['get_render_state',['../namespacesvg.html#a9bbb71e1b98bb42075c84d93acd09fc1',1,'svg']]],
   ['get_5fxoffset_14',['get_xoffset',['../namespacea60_1_1metadata.html#a4c88caad75ba7fd9dffc58be1f715b28',1,'a60::metadata']]],
   ['ginshu_15',['ginshu',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a84f5b548ef752699167012b275e54132',1,'svg']]],
-  ['glyph_16',['glyph',['../namespacesvg.html#a002e0601d79c9a5d0315097b51f10364ad0df69451cb647905e5af2fddaf910b3',1,'svg']]],
+  ['glyph_16',['glyph',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579ad0df69451cb647905e5af2fddaf910b3',1,'svg']]],
   ['gold_17',['gold',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ae07e81c20cf5935f5225765f0af81755',1,'svg']]],
   ['goldenrod_18',['goldenrod',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1acf32f5cd9a11a837faccbbb96b3c8170',1,'svg']]],
   ['goldenyellow_19',['goldenyellow',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a1f1d534788a2b332c5444c8063a38c04',1,'svg']]],
@@ -36,5 +36,6 @@ var searchData=
   ['greaterthan_33',['greaterthan',['../namespacesvg_1_1constants.html#a7d91648d51f4083f7b46653a9fb4ea02',1,'svg::constants']]],
   ['green_34',['green',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a9f27410725ab8cc8854a2769c7a516b8',1,'svg']]],
   ['greenyellow_35',['greenyellow',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1add675e7d49f43ce4437518439af03897',1,'svg']]],
-  ['group_5felement_36',['group_element',['../group__elements.html#structsvg_1_1group__element',1,'svg']]]
+  ['grid_36',['grid',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579aff4a008470319a22d9cf3d14af485977',1,'svg']]],
+  ['group_5felement_37',['group_element',['../group__elements.html#structsvg_1_1group__element',1,'svg']]]
 ];
