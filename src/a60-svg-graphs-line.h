@@ -278,9 +278,6 @@ make_line_graph_annotations(const area<> aplate,
   const double chartyo = pheight - gstate.marginy;
   const double chartxe = pwidth - gstate.marginx;
 
-  // Start annotation group.
-  lgraph.add_raw(group_element::start_group("annotation-" + gstate.title));
-
   // Base typo for axis.
   typography anntypo = typo;
   anntypo._M_style = style_wcaglg;
@@ -376,9 +373,6 @@ make_line_graph_annotations(const area<> aplate,
 
       lgraph.add_raw(group_element::finish_group());
     }
-
-  // End toplevel group
-  lgraph.add_raw(group_element::finish_group());
 }
 
 

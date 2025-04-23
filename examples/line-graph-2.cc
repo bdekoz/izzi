@@ -52,7 +52,6 @@ test_chart()
   // Find combined ranges, assume zero start.
   point_2t rangex = make_tuple(0, xpoints.back());
   point_2t rangey = make_tuple(0, ypoints.back());
-  cout << xpoints.back() << endl;
 
   // Set graph styles.
   svg::select vlayer { select::vector };
