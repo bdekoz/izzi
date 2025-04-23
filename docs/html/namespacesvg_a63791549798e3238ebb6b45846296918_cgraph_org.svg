@@ -40,7 +40,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="namespacesvg.html#ad1d925b7cf91db8bfa19b009812549fc" target="_top" xlink:title="Crossed lines, no fill. X marks the ....">
+<g id="a_Node000003"><a xlink:href="namespacesvg.html#ab5b15443e2f917511ee48f522499786d" target="_top" xlink:title="Crossed lines, no fill. X marks the ....">
 <polygon fill="white" stroke="#666666" points="241.25,-107 133,-107 133,-87 241.25,-87 241.25,-107"/>
 <text text-anchor="middle" x="187.12" y="-95.4" font-family="SourceSans" font-size="8.00">svg::make_crossed_lines</text>
 </a>
@@ -77,7 +77,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="namespacesvg.html#a520130e7464e62521cf59e048a48cee7" target="_top" xlink:title="Line primitive.">
+<g id="a_Node000006"><a xlink:href="namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7" target="_top" xlink:title="Line primitive.">
 <polygon fill="white" stroke="#666666" points="369.75,-126 297.5,-126 297.5,-106 369.75,-106 369.75,-126"/>
 <text text-anchor="middle" x="333.62" y="-114.4" font-family="SourceSans" font-size="8.00">svg::make_line</text>
 </a>

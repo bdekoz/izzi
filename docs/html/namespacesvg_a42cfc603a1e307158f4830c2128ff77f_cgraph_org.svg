@@ -110,7 +110,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="namespacesvg.html#ae450771820b99cadcbf845a4e712753c" target="_top" xlink:title="Make circle element.">
+<g id="a_Node000003"><a xlink:href="namespacesvg.html#a0229229c74c571ea3f45a653e8dd7e53" target="_top" xlink:title="Make circle element.">
 <polygon fill="white" stroke="#666666" points="557.88,-552 480.38,-552 480.38,-532 557.88,-532 557.88,-552"/>
 <text text-anchor="middle" x="519.12" y="-540.4" font-family="SourceSans" font-size="8.00">svg::make_circle</text>
 </a>
@@ -352,7 +352,7 @@
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="namespacesvg.html#a7c25ce3eee490f8a8673c17d77fed46d" target="_top" xlink:title="Create rect_element centered at origin.">
+<g id="a_Node000017"><a xlink:href="namespacesvg.html#a7a295be306c0550a690075e94c1dfd46" target="_top" xlink:title="Create rect_element centered at origin.">
 <polygon fill="white" stroke="#666666" points="418.12,-390 308.38,-390 308.38,-370 418.12,-370 418.12,-390"/>
 <text text-anchor="middle" x="363.25" y="-378.4" font-family="SourceSans" font-size="8.00">svg::make_rect_centered</text>
 </a>
@@ -370,7 +370,7 @@
 <!-- Node18 -->
 <g id="Node000018" class="node">
 <title>Node18</title>
-<g id="a_Node000018"><a xlink:href="namespacesvg.html#ab020874bc83c9a9dcbaadf71b74efeac" target="_top" xlink:title="Create rect_element at origin.">
+<g id="a_Node000018"><a xlink:href="namespacesvg.html#aab7d11a5ce14c5bfa6eeea480fddccde" target="_top" xlink:title="Create rect_element at origin.">
 <polygon fill="white" stroke="#666666" points="555.25,-446 483,-446 483,-426 555.25,-426 555.25,-446"/>
 <text text-anchor="middle" x="519.12" y="-434.4" font-family="SourceSans" font-size="8.00">svg::make_rect</text>
 </a>
@@ -491,7 +491,7 @@
 <!-- Node24 -->
 <g id="Node000024" class="node">
 <title>Node24</title>
-<g id="a_Node000024"><a xlink:href="namespacesvg.html#a7172c35bcf356f5675e22033ba8b9f9b" target="_top" xlink:title="Center a triangle at this point.">
+<g id="a_Node000024"><a xlink:href="namespacesvg.html#af6826e7ec9634d458899928a57f1e9c2" target="_top" xlink:title="Center a triangle at this point.">
 <polygon fill="white" stroke="#666666" points="418.12,-202 308.38,-202 308.38,-182 418.12,-182 418.12,-202"/>
 <text text-anchor="middle" x="363.25" y="-190.4" font-family="SourceSans" font-size="8.00">svg::make_path_triangle</text>
 </a>
@@ -751,7 +751,7 @@
 <!-- Node37 -->
 <g id="Node000037" class="node">
 <title>Node37</title>
-<g id="a_Node000037"><a xlink:href="namespacesvg.html#ad40c251365511ceb10b9d0dc6a40a153" target="_top" xlink:title="Plus or x tilt mark as closed path that can be filled.">
+<g id="a_Node000037"><a xlink:href="namespacesvg.html#a2fa1b20c774442f47173235750c9d0e8" target="_top" xlink:title="Plus or x tilt mark as closed path that can be filled.">
 <polygon fill="white" stroke="#666666" points="426.75,-142 299.75,-142 299.75,-122 426.75,-122 426.75,-142"/>
 <text text-anchor="middle" x="363.25" y="-130.4" font-family="SourceSans" font-size="8.00">svg::make_path_center_mark</text>
 </a>

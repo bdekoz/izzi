@@ -67,7 +67,7 @@ var sectionId = 'dynsection-39';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacesvg.html#ae450771820b99cadcbf845a4e712753c" target="_top" xlink:title="Make circle element.">
+<g id="a_Node000002"><a xlink:href="namespacesvg.html#a0229229c74c571ea3f45a653e8dd7e53" target="_top" xlink:title="Make circle element.">
 <polygon fill="white" stroke="#666666" points="243.12,-226 165.62,-226 165.62,-206 243.12,-206 243.12,-226"/>
 <text text-anchor="middle" x="204.38" y="-214.4" font-family="SourceSans" font-size="8.00">svg::make_circle</text>
 </a>

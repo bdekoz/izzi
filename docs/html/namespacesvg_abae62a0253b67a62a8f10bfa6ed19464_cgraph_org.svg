@@ -195,7 +195,7 @@
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="namespacesvg.html#ade1cf7ebdd2b204618501e8d0cc28629" target="_top" xlink:title="Line between two points.">
+<g id="a_Node000017"><a xlink:href="namespacesvg.html#a5d073d4f1034406430d6c36caa04d98f" target="_top" xlink:title="Line between two points.">
 <polygon fill="white" stroke="#666666" points="533.88,-520.45 447.38,-520.45 447.38,-500.45 533.88,-500.45 533.88,-520.45"/>
 <text text-anchor="middle" x="490.62" y="-508.85" font-family="SourceSans" font-size="8.00">svg::points_to_line</text>
 </a>
@@ -488,7 +488,7 @@
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="namespacesvg.html#a520130e7464e62521cf59e048a48cee7" target="_top" xlink:title="Line primitive.">
+<g id="a_Node000020"><a xlink:href="namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7" target="_top" xlink:title="Line primitive.">
 <polygon fill="white" stroke="#666666" points="1116.88,-752.45 1044.62,-752.45 1044.62,-732.45 1116.88,-732.45 1116.88,-752.45"/>
 <text text-anchor="middle" x="1080.75" y="-740.85" font-family="SourceSans" font-size="8.00">svg::make_line</text>
 </a>
@@ -1113,7 +1113,7 @@
 <!-- Node54 -->
 <g id="Node000054" class="node">
 <title>Node54</title>
-<g id="a_Node000054"><a xlink:href="namespacesvg.html#a68c014cdc144d2d0125a8ce849e8804d" target="_top" xlink:title="Draws a circle around a point (x,y), of style (s), of radius (r).">
+<g id="a_Node000054"><a xlink:href="namespacesvg.html#a1d16cd376f9fdb4745bff0d7a1971927" target="_top" xlink:title="Draws a circle around a point (x,y), of style (s), of radius (r).">
 <polygon fill="white" stroke="#666666" points="976,-433.45 888,-433.45 888,-413.45 976,-413.45 976,-433.45"/>
 <text text-anchor="middle" x="932" y="-421.85" font-family="SourceSans" font-size="8.00">svg::point_to_circle</text>
 </a>
@@ -1289,7 +1289,7 @@
 <!-- Node55 -->
 <g id="Node000055" class="node">
 <title>Node55</title>
-<g id="a_Node000055"><a xlink:href="namespacesvg.html#ae450771820b99cadcbf845a4e712753c" target="_top" xlink:title="Make circle element.">
+<g id="a_Node000055"><a xlink:href="namespacesvg.html#a0229229c74c571ea3f45a653e8dd7e53" target="_top" xlink:title="Make circle element.">
 <polygon fill="white" stroke="#666666" points="1119.5,-400.45 1042,-400.45 1042,-380.45 1119.5,-380.45 1119.5,-400.45"/>
 <text text-anchor="middle" x="1080.75" y="-388.85" font-family="SourceSans" font-size="8.00">svg::make_circle</text>
 </a>

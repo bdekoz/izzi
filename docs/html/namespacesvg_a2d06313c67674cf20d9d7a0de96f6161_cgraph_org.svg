@@ -38,7 +38,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="namespacesvg.html#a7172c35bcf356f5675e22033ba8b9f9b" target="_top" xlink:title="Center a triangle at this point.">
+<g id="a_Node000006"><a xlink:href="namespacesvg.html#af6826e7ec9634d458899928a57f1e9c2" target="_top" xlink:title="Center a triangle at this point.">
 <polygon fill="white" stroke="#666666" points="269.75,-158 160,-158 160,-138 269.75,-138 269.75,-158"/>
 <text text-anchor="middle" x="214.88" y="-146.4" font-family="SourceSans" font-size="8.00">svg::make_path_triangle</text>
 </a>

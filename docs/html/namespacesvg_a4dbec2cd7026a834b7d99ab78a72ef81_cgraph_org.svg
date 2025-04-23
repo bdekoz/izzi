@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacesvg.html#a86c2af50137dc32e8aec3e6186372f92" target="_top" xlink:title="Rectangle at this point.">
+<g id="a_Node000002"><a xlink:href="namespacesvg.html#a63bfafab00a3be5d02d17e0604b686ef" target="_top" xlink:title="Rectangle at this point.">
 <polygon fill="white" stroke="#666666" points="224,-192 141.25,-192 141.25,-172 224,-172 224,-192"/>
 <text text-anchor="middle" x="182.62" y="-180.4" font-family="SourceSans" font-size="8.00">svg::point_to_rect</text>
 </a>
@@ -76,7 +76,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="namespacesvg.html#ab020874bc83c9a9dcbaadf71b74efeac" target="_top" xlink:title="Create rect_element at origin.">
+<g id="a_Node000005"><a xlink:href="namespacesvg.html#aab7d11a5ce14c5bfa6eeea480fddccde" target="_top" xlink:title="Create rect_element at origin.">
 <polygon fill="white" stroke="#666666" points="346.12,-151 273.88,-151 273.88,-131 346.12,-131 346.12,-151"/>
 <text text-anchor="middle" x="310" y="-139.4" font-family="SourceSans" font-size="8.00">svg::make_rect</text>
 </a>

@@ -1,12 +1,12 @@
 <map id="svg::paint_edges_with_char_index" name="svg::paint_edges_with_char_index">
 <area shape="rect" id="Node000001" title="Paint the edges of a physical page. Assumes page is square. / @rlen is height of painted rectangle fr..." alt="" coords="5,127,140,169"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a86c2af50137dc32e8aec3e6186372f92" title="Rectangle at this point." alt="" coords="194,109,304,136"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a63bfafab00a3be5d02d17e0604b686ef" title="Rectangle at this point." alt="" coords="194,109,304,136"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,136,178,130,179,135,140,141"/>
 <area shape="rect" id="Node000013" href="$structsvg_1_1style.html#a67d14f365913125ab597def583559b5c" title="Convenience function to set all colors at once." alt="" coords="188,160,310,187"/>
 <area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="140,155,173,160,172,165,140,160"/>
 <area shape="rect" id="Node000003" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="358,48,479,91"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="293,106,343,90,344,95,294,111"/>
-<area shape="rect" id="Node000005" href="$namespacesvg.html#ab020874bc83c9a9dcbaadf71b74efeac" title="Create rect_element at origin." alt="" coords="370,164,467,191"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#aab7d11a5ce14c5bfa6eeea480fddccde" title="Create rect_element at origin." alt="" coords="370,164,467,191"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="294,134,362,156,360,161,292,139"/>
 <area shape="rect" id="Node000004" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="527,5,662,32"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,49,530,34,532,39,480,54"/>

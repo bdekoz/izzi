@@ -144,7 +144,7 @@ var sectionId = 'dynsection-37';
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="namespacesvg.html#a520130e7464e62521cf59e048a48cee7" target="_top" xlink:title="Line primitive.">
+<g id="a_Node000007"><a xlink:href="namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7" target="_top" xlink:title="Line primitive.">
 <polygon fill="white" stroke="#666666" points="355.88,-387 283.62,-387 283.62,-367 355.88,-367 355.88,-387"/>
 <text text-anchor="middle" x="319.75" y="-375.4" font-family="SourceSans" font-size="8.00">svg::make_line</text>
 </a>
