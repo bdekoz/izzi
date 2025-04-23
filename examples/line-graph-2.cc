@@ -22,9 +22,9 @@ test_chart()
   using namespace svg;
 
   // WCAG Black/White/Gray
-  const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 3 };
-  const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
-  const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 3 };
+  const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 1 };
+  const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 1 };
+  const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 1 };
 
   const string jdir("/home/bkoz/src/mozilla-a11y-data-visual-forms/data/");
   const string jfile(jdir + "2025-01-27-minimal.json");
@@ -56,9 +56,9 @@ test_chart()
   // Set graph styles.
   svg::select vlayer { select::vector };
   graph_rstate gs1 { vlayer, "firefox", f1, f2, "ms", "%",
-		     styl1, { "t2wcagg", "2", "", "", "" } };
+		     styl1, { "r2wcadg", "2", "", "square", "" } };
   graph_rstate gs2 { vlayer, "chrome", f1, f2, "ms", "%",
-		     styl3, { "c2wcaglg", "4", "", "", "" } };
+		     styl3, { "c2wcaglg", "4", "", "round", "" } };
   graph_rstate gsa { {select::ticks}, "chrome", f1, f2, "ms", "%",
 		     styl2, { "", "", "", "", "" } };
 

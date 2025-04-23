@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+     id="svg2" xml:space="preserve"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+x="0px" y="0px"
+width="900.000000px" height="600.000000px"
+viewBox="0 0 900.000000 600.000000" enable-background="new 0 0 900.000000 600.000000">
+
+<title>
+line-graph-2
+</title>
+<defs>
+    <filter id="gblur10" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+      <feOffset dx="0" dy="0" />
+     </filter>
+    <filter id="gblur20" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+      <feOffset dx="0" dy="0" />
+    </filter>
+    <filter id="gblur10y" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 10" />
+      <feOffset dx="0" dy="0" />
+    </filter>
+    <filter id="gblur20y" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 20" />
+      <feOffset dx="0" dy="0" />
+    </filter>
+  </defs>
+
+ <g id="ticks-chrome">
+<text x="100.000000" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">0ms</text>
+<text x="299.316629" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">500ms</text>
+<text x="379.043280" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">700ms</text>
+<text x="418.906606" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">800ms</text>
+<text x="458.769932" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">900ms</text>
+<text x="498.633257" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">1000ms</text>
+<text x="538.496583" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">1100ms</text>
+<text x="578.359909" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">1200ms</text>
+<text x="618.223235" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">1300ms</text>
+<text x="658.086560" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">1400ms</text>
+<text x="697.949886" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">1500ms</text>
+<text x="737.813212" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">1600ms</text>
+<text x="777.676538" y="512.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">1700ms</text>
+<text x="88.000000" y="500.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">0%</text>
+<text x="88.000000" y="460.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">10%</text>
+<text x="88.000000" y="420.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">20%</text>
+<text x="88.000000" y="340.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">40%</text>
+<text x="88.000000" y="300.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">50%</text>
+<text x="88.000000" y="260.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">60%</text>
+<text x="88.000000" y="220.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">70%</text>
+<text x="88.000000" y="140.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">90%</text>
+<text x="88.000000" y="100.000000" font-family="Apercu" font-size="7.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(148,148,148); stroke-opacity:0; stroke-width:0.5">100%</text>
+ </g> <g id="polyline-firefox">
+<polyline points="100,500 305.296,420 391.401,416 428.075,416 481.492,416 491.059,416 499.032,416 504.613,416 511.39,416 521.355,416 531.321,416 574.374,416 613.838,280 617.426,284 621.412,280 628.986,280 635.364,280 640.945,284 647.323,284 653.303,284 658.884,284 663.269,284 667.654,284 672.437,284 677.62,284 681.207,284 683.998,284 687.187,280 691.572,280 695.159,280 699.146,280 701.538,280 705.125,276 710.706,276 712.301,272 715.091,268 718.28,260 721.868,260 725.057,252 728.246,252 730.638,244 734.226,244 737.415,240 741.002,228 744.191,220 747.38,104 800,100 " stroke-dasharray="2" marker-mid="url(#r2wcadg)" marker-end="url(#r2wcadg)"  style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" />
+ </g> <g id="values-firefox">
+ <rect x="96.000000" y="496.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+0%, 0ms
+</title>
+ </rect>
+<rect x="301.296128" y="416.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+20%, 515ms
+</title>
+ </rect>
+<rect x="387.400911" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 731ms
+</title>
+ </rect>
+<rect x="424.075171" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 823ms
+</title>
+ </rect>
+<rect x="477.492027" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 957ms
+</title>
+ </rect>
+<rect x="487.059226" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 981ms
+</title>
+ </rect>
+<rect x="495.031891" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 1001ms
+</title>
+ </rect>
+<rect x="500.612756" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 1015ms
+</title>
+ </rect>
+<rect x="507.389522" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 1032ms
+</title>
+ </rect>
+<rect x="517.355353" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 1057ms
+</title>
+ </rect>
+<rect x="527.321185" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 1082ms
+</title>
+ </rect>
+<rect x="570.373576" y="412.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+21%, 1190ms
+</title>
+ </rect>
+<rect x="609.838269" y="276.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+55%, 1289ms
+</title>
+ </rect>
+<rect x="613.425968" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1298ms
+</title>
+ </rect>
+<rect x="617.412301" y="276.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+55%, 1308ms
+</title>
+ </rect>
+<rect x="624.986333" y="276.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+55%, 1327ms
+</title>
+ </rect>
+<rect x="631.364465" y="276.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+55%, 1343ms
+</title>
+ </rect>
+<rect x="636.945330" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1357ms
+</title>
+ </rect>
+<rect x="643.323462" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1373ms
+</title>
+ </rect>
+<rect x="649.302961" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1388ms
+</title>
+ </rect>
+<rect x="654.883827" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1402ms
+</title>
+ </rect>
+<rect x="659.268793" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1413ms
+</title>
+ </rect>
+<rect x="663.653759" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1424ms
+</title>
+ </rect>
+<rect x="668.437358" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1436ms
+</title>
+ </rect>
+<rect x="673.619590" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1449ms
+</title>
+ </rect>
+<rect x="677.207289" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1458ms
+</title>
+ </rect>
+<rect x="679.997722" y="280.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+54%, 1465ms
+</title>
+ </rect>
+<rect x="683.186788" y="276.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+55%, 1473ms
+</title>
+ </rect>
+<rect x="687.571754" y="276.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+55%, 1484ms
+</title>
+ </rect>
+<rect x="691.159453" y="276.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+55%, 1493ms
+</title>
+ </rect>
+<rect x="695.145786" y="276.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+55%, 1503ms
+</title>
+ </rect>
+<rect x="697.537585" y="276.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+55%, 1509ms
+</title>
+ </rect>
+<rect x="701.125285" y="272.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+56%, 1518ms
+</title>
+ </rect>
+<rect x="706.706150" y="272.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+56%, 1532ms
+</title>
+ </rect>
+<rect x="708.300683" y="268.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+57%, 1536ms
+</title>
+ </rect>
+<rect x="711.091116" y="264.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+58%, 1543ms
+</title>
+ </rect>
+<rect x="714.280182" y="256.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+60%, 1551ms
+</title>
+ </rect>
+<rect x="717.867882" y="256.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+60%, 1560ms
+</title>
+ </rect>
+<rect x="721.056948" y="248.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+62%, 1568ms
+</title>
+ </rect>
+<rect x="724.246014" y="248.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+62%, 1576ms
+</title>
+ </rect>
+<rect x="726.637813" y="240.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+64%, 1582ms
+</title>
+ </rect>
+<rect x="730.225513" y="240.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+64%, 1591ms
+</title>
+ </rect>
+<rect x="733.414579" y="236.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+65%, 1599ms
+</title>
+ </rect>
+<rect x="737.002278" y="224.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+68%, 1608ms
+</title>
+ </rect>
+<rect x="740.191344" y="216.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+70%, 1616ms
+</title>
+ </rect>
+<rect x="743.380410" y="100.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+99%, 1624ms
+</title>
+ </rect>
+<rect x="796.000000" y="96.000000" width="8.000000" height="8.000000"
+ style="fill:rgb(148,148,148); fill-opacity:0; stroke:rgb(148,148,148); stroke-opacity:1; stroke-width:1" >
+<title>
+firefox
+100%, 1756ms
+</title>
+ </rect>
+ </g> <g id="polyline-chrome">
+<polyline points="100,500 324.431,432 413.326,432 431.264,432 450.399,432 470.33,432 497.039,432 517.768,432 536.902,432 616.23,332 629.784,332 636.56,332 642.938,332 649.715,332 656.492,332 663.269,332 669.647,328 676.424,328 682.802,328 689.579,328 696.355,328 703.132,324 709.909,320 716.287,316 722.665,308 729.442,296 736.219,284 742.995,272 749.772,256 756.15,104 762.927,100 " stroke-dasharray="4" marker-mid="url(#c2wcaglg)" marker-end="url(#c2wcaglg)"  style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" />
+ </g> <g id="values-chrome">
+ <circle cx="100.000000" cy="500.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+0%, 0ms
+</title>
+ </circle>
+<circle cx="324.430524" cy="432.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+17%, 563ms
+</title>
+ </circle>
+<circle cx="413.325740" cy="432.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+17%, 786ms
+</title>
+ </circle>
+<circle cx="431.264237" cy="432.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+17%, 831ms
+</title>
+ </circle>
+<circle cx="450.398633" cy="432.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+17%, 879ms
+</title>
+ </circle>
+<circle cx="470.330296" cy="432.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+17%, 929ms
+</title>
+ </circle>
+<circle cx="497.038724" cy="432.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+17%, 996ms
+</title>
+ </circle>
+<circle cx="517.767654" cy="432.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+17%, 1048ms
+</title>
+ </circle>
+<circle cx="536.902050" cy="432.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+17%, 1096ms
+</title>
+ </circle>
+<circle cx="616.230068" cy="332.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+42%, 1295ms
+</title>
+ </circle>
+<circle cx="629.783599" cy="332.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+42%, 1329ms
+</title>
+ </circle>
+<circle cx="636.560364" cy="332.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+42%, 1346ms
+</title>
+ </circle>
+<circle cx="642.938497" cy="332.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+42%, 1362ms
+</title>
+ </circle>
+<circle cx="649.715262" cy="332.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+42%, 1379ms
+</title>
+ </circle>
+<circle cx="656.492027" cy="332.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+42%, 1396ms
+</title>
+ </circle>
+<circle cx="663.268793" cy="332.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+42%, 1413ms
+</title>
+ </circle>
+<circle cx="669.646925" cy="328.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+43%, 1429ms
+</title>
+ </circle>
+<circle cx="676.423690" cy="328.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+43%, 1446ms
+</title>
+ </circle>
+<circle cx="682.801822" cy="328.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+43%, 1462ms
+</title>
+ </circle>
+<circle cx="689.578588" cy="328.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+43%, 1479ms
+</title>
+ </circle>
+<circle cx="696.355353" cy="328.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+43%, 1496ms
+</title>
+ </circle>
+<circle cx="703.132118" cy="324.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+44%, 1513ms
+</title>
+ </circle>
+<circle cx="709.908884" cy="320.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+45%, 1530ms
+</title>
+ </circle>
+<circle cx="716.287016" cy="316.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+46%, 1546ms
+</title>
+ </circle>
+<circle cx="722.665148" cy="308.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+48%, 1562ms
+</title>
+ </circle>
+<circle cx="729.441913" cy="296.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+51%, 1579ms
+</title>
+ </circle>
+<circle cx="736.218679" cy="284.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+54%, 1596ms
+</title>
+ </circle>
+<circle cx="742.995444" cy="272.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+57%, 1613ms
+</title>
+ </circle>
+<circle cx="749.772210" cy="256.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+61%, 1630ms
+</title>
+ </circle>
+<circle cx="756.150342" cy="104.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+99%, 1646ms
+</title>
+ </circle>
+<circle cx="762.927107" cy="100.000000" r="4.000000" style="fill:rgb(46,46,46); fill-opacity:0; stroke:rgb(46,46,46); stroke-opacity:1; stroke-width:1" >
+<title>
+chrome
+100%, 1663ms
+</title>
+ </circle>
+ </g></svg>
+

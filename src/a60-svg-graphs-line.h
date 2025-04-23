@@ -47,7 +47,7 @@ constexpr auto ticsz = 7; // tic text
 constexpr svg::area<> achart = { 900, 600 };
 constexpr auto cpx = std::get<0>(achart.center_point());
 
-/// Line creation options.
+/// Polyline/line creation options.
 constexpr svg::ushort line_1_polyline(100);
 constexpr svg::ushort line_2_polyline_tooltips(200);
 
@@ -56,7 +56,7 @@ constexpr svg::ushort line_2_polyline_tooltips(200);
 
 namespace svg {
 
-
+/// Split range, so one dimension of (x,y) cartesian plane.
 using vspace = std::vector<double>;
 
 
@@ -93,19 +93,18 @@ split_vrange(const vrange& cpoints, vspace& xpoints, vspace& ypoints)
 */
 
 
-/// Per-graph constants.
+/// Per-graph constants, metadata, text.
 struct graph_rstate : public render_state_base
 {
   // Labels.
-  string		title;
-  string		xlabel;
+  string		title;		// graph/chart title
+  string		xlabel;		// x axis label
   string		ylabel;
-  string		xticku;		// tick mark units
+  string		xticku;		// x axis tick mark units postfix
   string		yticku;
 
-  // Lines, markers, points.
-  style			lstyle;
-  stroke_style		sstyle;
+  style			lstyle;		// line style
+  stroke_style		sstyle;		// stroke style, if any.
 
   // Margins/Spaces
   static constexpr uint marginx = 100;
@@ -222,7 +221,7 @@ make_markers(svg::svg_element& obj)
 /// Return set of paths corresponding to marker shapes with tooltips.
 string
 make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
-			     const graph_rstate& gstate, const double r)
+			     const graph_rstate& gstate, const double radius)
 {
   const string finish_hard(string { element_base::finish_tag } + k::newline);
 
@@ -232,14 +231,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       auto [ vx, vy ] = points[i];
       auto [ cx, cy ] = cpoints[i];
 
-      //svg::circle_element c = make_circle(cpoints[i], gstate.lstyle, r);
-      circle_element c;
-      circle_element::data dc = { cx, cy, r };
-      c.start_element();
-      c.add_data(dc);
-      c.add_style(gstate.lstyle);
-      c.add_raw(finish_hard);
-
+      // Generate displayed tooltip text....
       string tipstr(gstate.title);
       tipstr += k::newline;
       tipstr += std::to_string(static_cast<uint>(vy));
@@ -248,11 +240,43 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       tipstr += k::space;
       tipstr += std::to_string(static_cast<uint>(vx));
       tipstr += "ms";
-      c.add_title(tipstr);
 
-      c.add_raw(string { circle_element::tag_closing } + k::newline);
+      const bool roundp = gstate.sstyle.linecap == "round";
+      const bool squarep = gstate.sstyle.linecap == "square";
 
-      ret += c.str();
+      // Centered.
+      // svg::circle_element c = make_circle(cpoints[i], gstate.lstyle, r);
+      if (roundp)
+	{
+	  circle_element c;
+	  circle_element::data dc = { cx, cy, radius };
+	  c.start_element();
+	  c.add_data(dc);
+	  c.add_style(gstate.lstyle);
+	  c.add_raw(finish_hard);
+	  c.add_title(tipstr);
+	  c.add_raw(string { circle_element::tag_closing } + k::newline);
+	  ret += c.str();
+	}
+
+      // Centered.
+      // svg::rect_element r = (cpoints[i], gstate.lstyle, {2 * r, 2 * r});
+      if (squarep)
+	{
+	  rect_element r;
+	  rect_element::data dr = { cx - radius, cy - radius,
+				    2 * radius, 2 * radius };
+	  r.start_element();
+	  r.add_data(dr);
+	  r.add_style(gstate.lstyle);
+	  r.add_raw(finish_hard);
+	  r.add_title(tipstr);
+	  r.add_raw(string { rect_element::tag_closing } + k::newline);
+	  ret += r.str();
+	}
+
+      if (!roundp && !squarep)
+	throw std::runtime_error("make_line_graph_markers_tips linecap missing");
     }
   return ret;
 }
