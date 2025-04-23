@@ -51,19 +51,23 @@ test_polyline()
   auto yo = linelen;
 
   vrange points1 = make_points_at({xo, yo});
-  polyline_element pl1 = make_polyline(points1, styl1, "2", "c4wcaglg");
+  const stroke_style sstyl1 = {"c4wcaglg", "2", "", "", ""};
+  polyline_element pl1 = make_polyline(points1, styl1, sstyl1);
   obj.add_element(pl1);
 
   vrange points2 = make_points_at({xo, yo + linelen});
-  polyline_element pl2 = make_polyline(points2, styl2, "4", "r4wcaglg");
+  const stroke_style sstyl2 = {"r4wcaglg", "4", "", "", ""};
+  polyline_element pl2 = make_polyline(points2, styl2, sstyl2);
   obj.add_element(pl2);
 
   vrange points3 = make_points_at({xo, yo + 2 * linelen});
-  polyline_element pl3 = make_polyline(points3, styl3, "2", "x4wcagg");
+  const stroke_style sstyl3 = {"x4wcagg", "2", "", "", ""};
+  polyline_element pl3 = make_polyline(points3, styl3, sstyl3);
   obj.add_element(pl3);
 
   vrange points5 = make_points_at({xo, yo + 3 * linelen});
-  polyline_element pl5 = make_polyline(points5, styl3, "3", "t4wcagg");
+  const stroke_style sstyl5 = {"t4wcagg", "3", "", "", ""};
+  polyline_element pl5 = make_polyline(points5, styl3, sstyl5);
   obj.add_element(pl5);
 }
 

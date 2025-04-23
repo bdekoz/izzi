@@ -104,9 +104,8 @@ struct graph_rstate : public render_state_base
   string		yticku;
 
   // Lines, markers, points.
-  svg::style		lstyle;
-  string		dasharray;
-  string		markerspoints;
+  style			lstyle;
+  stroke_style		sstyle;
 
   // Margins/Spaces
   static constexpr uint marginx = 100;
@@ -459,8 +458,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	{
 	  // Use polylines and markerspoints
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-					       gstate.dasharray,
-					       gstate.markerspoints);
+					       gstate.sstyle);
 	  lgraph.add_element(pl1);
 	}
       if constexpr(line_strategy == line_2_polyline_tooltips)
@@ -469,7 +467,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  // as tooltips on top.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-					       gstate.dasharray);
+					       gstate.sstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
 

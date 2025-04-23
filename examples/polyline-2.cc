@@ -21,6 +21,7 @@ test_polyline_1()
   const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
   //const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
   //const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
+  const stroke_style sstyl1 = {"c8", "", "", "", ""};
 
   // Line 1
   const point_2t p1 { x + spacer * 0, y };
@@ -32,7 +33,7 @@ test_polyline_1()
   const point_2t p7 { x + spacer * 6, y + spacer };
   const point_2t p8 { x + spacer * 7, y };
   vrange points { p1, p2, p3, p4, p5, p6, p7, p8 };
-  polyline_element pl = make_polyline(points, styl1, "", "c8");
+  polyline_element pl = make_polyline(points, styl1, sstyl1);
   obj.add_element(pl);
 }
 
@@ -46,6 +47,7 @@ test_polyline_2()
   //const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
   //const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
   const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
+  const stroke_style sstyl3 = {"c4", "5", "", "", ""};
 
   // Line 1
   x -= 2 * linelen;
@@ -59,7 +61,7 @@ test_polyline_2()
   const point_2t p7 { x + spacer * 6, y + spacer };
   const point_2t p8 { x + spacer * 7, y };
   vrange points { p1, p2, p3, p4, p5, p6, p7, p8 };
-  polyline_element pl = make_polyline(points, styl3, "5", "c4");
+  polyline_element pl = make_polyline(points, styl3, sstyl3);
   obj.add_element(pl);
 }
 

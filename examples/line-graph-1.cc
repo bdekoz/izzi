@@ -49,13 +49,13 @@ test_chart()
   point_2t rangey = make_tuple(0, maxy);
 
   graph_rstate gs1 { glayers, "firefox", f1, f2, "ms", "%",
-		     styl1, "2", "t2wcagg"};
+		     styl1, { "t2wcagg", "2", "", "", "" } };
   svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);
   obj.add_element(chart1);
 
 
   graph_rstate gs2 { glayers, "chrome", f1, f2, "ms", "%",
-		     styl3, "4", "c2wcaglg"};
+		     styl3, { "c2wcaglg", "4", "", "", "" } };
   svg_element chart2 = make_line_graph(a, vr2, gs2, rangex, rangey);
   obj.add_element(chart2);
 }

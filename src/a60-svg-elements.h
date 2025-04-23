@@ -851,9 +851,8 @@ struct polyline_element : virtual public element_base
 
   // Either serialize immediately (as below), or create data structure
   // that adds data to data_vec and then finish_element serializes.
-  // NB: https://yuanchuan.dev/fun-with-stroke-dasharray
   void
-  add_data(const string dasharray = "", const string markerpoints = "")
+  add_data(const stroke_style& sstyl)
   {
     if (!polypoints.empty())
       {
@@ -864,24 +863,24 @@ struct polyline_element : virtual public element_base
 	    _M_sstream << x << k::comma << y << k::space;
 	  }
 	_M_sstream << k::quote << k::space;
-      }
 
-    if (!dasharray.empty())
-      {
-	_M_sstream << "stroke-dasharray=" << k::quote;
-	_M_sstream << dasharray << k::quote << k::space;
-      }
-    if (!markerpoints.empty())
-      {
-	string mkr;
-	mkr += k::quote;
-	mkr += "url(#";
-	mkr += markerpoints;
-	mkr += ")";
-	mkr += k::quote;
+	if (!sstyl.dasharray.empty())
+	  {
+	    _M_sstream << "stroke-dasharray=" << k::quote;
+	    _M_sstream << sstyl.dasharray << k::quote << k::space;
+	  }
+	if (!sstyl.markerspoints.empty())
+	  {
+	    string mkr;
+	    mkr += k::quote;
+	    mkr += "url(#";
+	    mkr += sstyl.markerspoints;
+	    mkr += ")";
+	    mkr += k::quote;
 
-	_M_sstream << "marker-mid=" << mkr << k::space;
-	_M_sstream << "marker-end=" << mkr << k::space;
+	    _M_sstream << "marker-mid=" << mkr << k::space;
+	    _M_sstream << "marker-end=" << mkr << k::space;
+	  }
       }
   }
 

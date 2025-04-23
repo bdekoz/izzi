@@ -166,6 +166,26 @@ struct style
 };
 
 
+/// Additional path/line/polyline stroke styles.
+// NB: https://yuanchuan.dev/fun-with-stroke-dasharray
+struct stroke_style 
+{
+  // marker-start, marker-mid, marker-end
+  string		markerspoints;
+
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dasharray
+  string		dasharray;
+
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dashoffset
+  string		dashoffset;
+
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-linecap
+  string		linecap; // butt, round, square
+
+  string		path_length;
+};
+
+
 const string
 to_string(const style& s)
 {

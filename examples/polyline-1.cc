@@ -46,6 +46,7 @@ test_polyline_2()
   //const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
   //const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
   const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
+  const stroke_style sstyl = {"", "5", "", "", ""};
 
   // Line 1
   x -= 2 * linelen;
@@ -59,7 +60,7 @@ test_polyline_2()
   const point_2t p7 { x + spacer * 6, y + spacer };
   const point_2t p8 { x + spacer * 7, y };
   vrange points { p1, p2, p3, p4, p5, p6, p7, p8 };
-  polyline_element pl = make_polyline(points, styl3, "5");
+  polyline_element pl = make_polyline(points, styl3, sstyl);
   obj.add_element(pl);
 }
 

@@ -56,10 +56,11 @@ test_chart()
   // Set graph styles.
   svg::select vlayer { select::vector };
   graph_rstate gs1 { vlayer, "firefox", f1, f2, "ms", "%",
-		     styl1, "2", "t2wcagg"};
+		     styl1, { "t2wcagg", "2", "", "", "" } };
   graph_rstate gs2 { vlayer, "chrome", f1, f2, "ms", "%",
-		     styl3, "4", "c2wcaglg"};
-  graph_rstate gsa { {select::ticks}, "chrome", f1, f2, "ms", "%", styl2, "", ""};
+		     styl3, { "c2wcaglg", "4", "", "", "" } };
+  graph_rstate gsa { {select::ticks}, "chrome", f1, f2, "ms", "%",
+		     styl2, { "", "", "", "", "" } };
 
 
   // Draw axis, ticks, etc.
