@@ -22,6 +22,7 @@
 #include <tuple>
 #include <string>
 #include <vector>
+#include <set>
 #include <unordered_map>
 #include <sstream>
 
@@ -78,6 +79,7 @@ to_string(point_2t p)
 
 
 /// Latitude and Longitude Ranges.
+using srange = std::set<point_2t>;
 using vrange = std::vector<point_2t>;
 using vvranges = std::vector<vrange>;
 

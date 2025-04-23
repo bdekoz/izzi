@@ -56,7 +56,21 @@ constexpr svg::ushort line_2_polyline_tooltips(200);
 
 namespace svg {
 
-  using vspace = std::vector<double>;
+
+using vspace = std::vector<double>;
+
+
+/// Decompose/split ranges to spaces.
+void
+split_vrange(const vrange& cpoints, vspace& xpoints, vspace& ypoints)
+{
+ for (const auto& [x, y] : cpoints)
+   {
+     xpoints.push_back(x);
+     ypoints.push_back(y);
+   }
+}
+
 
 /**
    Line Graphs / Line Charts.
@@ -441,7 +455,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   // Add annotations first: any labels, metadata, ticmarks, legends
   make_line_graph_annotations(aplate, pointsx, pointsy, gstate, lgraph);
 
-  // Plot transformed points.
+  // Plot path of points on cartesian plane.
   // Grouped tooltips have to be the last, aka top layer of SVG to work (?).
   //constexpr ushort line_strategy = line_1_polyline;
   constexpr ushort line_strategy = line_2_polyline_tooltips;
