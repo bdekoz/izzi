@@ -13,7 +13,7 @@ var searchData=
   ['make_5fline_10',['make_line',['../namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7',1,'svg']]],
   ['make_5fline_5fgraph_11',['make_line_graph',['../namespacesvg.html#a8af6e5b4f2bfa0899433be1cb61c8e88',1,'svg']]],
   ['make_5fline_5fgraph_5fannotations_12',['make_line_graph_annotations',['../namespacesvg.html#a9665955f010a8c80e3a8a7a6a0a9b915',1,'svg']]],
-  ['make_5fline_5fgraph_5fmarkers_5ftips_13',['make_line_graph_markers_tips',['../namespacesvg.html#ac1bd4107734c5c2cf353ed944940ad92',1,'svg']]],
+  ['make_5fline_5fgraph_5fmarkers_5ftips_13',['make_line_graph_markers_tips',['../namespacesvg.html#a0e4e42755f8221387ede36824f675ac8',1,'svg']]],
   ['make_5fmarker_5fcircle_14',['make_marker_circle',['../namespacesvg.html#a9f746a2fcfb397567be5af437c5df8ae',1,'svg']]],
   ['make_5fmarker_5felement_15',['make_marker_element',['../namespacesvg.html#af02ffb403f990d5ac674a7c1d728fe5b',1,'svg']]],
   ['make_5fmarker_5frect_16',['make_marker_rect',['../namespacesvg.html#af4cccaef5cd8538c487e0d26197a23d4',1,'svg']]],

@@ -49,7 +49,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="structsvg_1_1graph__rstate.html" target="_top" xlink:title="Per&#45;graph constants.">
+<g id="a_Node000004"><a xlink:href="structsvg_1_1graph__rstate.html" target="_top" xlink:title="Per&#45;graph constants, metadata, text.">
 <polygon fill="white" stroke="#666666" points="194.38,-76 112.38,-76 112.38,-56 194.38,-56 194.38,-76"/>
 <text text-anchor="middle" x="153.38" y="-64.4" font-family="SourceSans" font-size="8.00">svg::graph_rstate</text>
 </a>
