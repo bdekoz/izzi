@@ -244,6 +244,11 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       const bool roundp = gstate.sstyle.linecap == "round";
       const bool squarep = gstate.sstyle.linecap == "square";
 
+      // Markers are closed paths that are filled with no stroke.
+      style fillstyl = gstate.lstyle;
+      fillstyl._M_stroke_opacity = 0;
+      fillstyl._M_fill_opacity = 1;
+
       // Centered.
       // svg::circle_element c = make_circle(cpoints[i], gstate.lstyle, r);
       if (roundp)
@@ -252,7 +257,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 	  circle_element::data dc = { cx, cy, radius };
 	  c.start_element();
 	  c.add_data(dc);
-	  c.add_style(gstate.lstyle);
+	  c.add_style(fillstyl);
 	  c.add_raw(finish_hard);
 	  c.add_title(tipstr);
 	  c.add_raw(string { circle_element::tag_closing } + k::newline);
@@ -268,7 +273,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 				    2 * radius, 2 * radius };
 	  r.start_element();
 	  r.add_data(dr);
-	  r.add_style(gstate.lstyle);
+	  r.add_style(fillstyl);
 	  r.add_raw(finish_hard);
 	  r.add_title(tipstr);
 	  r.add_raw(string { rect_element::tag_closing } + k::newline);
@@ -497,7 +502,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
 	  lgraph.add_raw(group_element::start_group("values-" + gstate.title));
 	  string markers = make_line_graph_markers_tips(points, cpoints,
-							gstate, 4);
+							gstate, 3);
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
 	}
