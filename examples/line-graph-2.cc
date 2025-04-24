@@ -68,8 +68,8 @@ test_chart()
 
   // Draw graph(s).
   svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);
-  obj.add_element(chart1);
   svg_element chart2 = make_line_graph(a, vr2, gs2, rangex, rangey);
+  obj.add_element(chart1);
   obj.add_element(chart2);
 }
 

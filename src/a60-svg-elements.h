@@ -869,6 +869,16 @@ struct polyline_element : virtual public element_base
 	    _M_sstream << "stroke-dasharray=" << k::quote;
 	    _M_sstream << sstyl.dasharray << k::quote << k::space;
 	  }
+	if (!sstyl.dashoffset.empty())
+	  {
+	    _M_sstream << "stroke-dashoffset=" << k::quote;
+	    _M_sstream << sstyl.dashoffset << k::quote << k::space;
+	  }
+	if (!sstyl.linecap.empty())
+	  {
+	    _M_sstream << "stroke-linecap=" << k::quote;
+	    _M_sstream << sstyl.linecap << k::quote << k::space;
+	  }
 	if (!sstyl.markerspoints.empty())
 	  {
 	    string mkr;
