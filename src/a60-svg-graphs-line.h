@@ -21,21 +21,10 @@
 #include "izzi-json-basics.h"
 #include "a60-svg-grid-matrix-systems.h"
 #include "a60-svg-render-state.h"
+#include "a60-svg-markers.h"
 
 
 namespace {
-
-// Color and style constants.
-using svg::color::red;
-using svg::color::wcag_lgray;
-using svg::color::wcag_gray;
-using svg::color::wcag_dgray;
-using svg::k::b_style;
-
-const svg::style style_r = { red, 1.0, red, 0.0, 0.5 };
-const svg::style style_wcaglg = { wcag_lgray, 1.0, wcag_lgray, 0.0, 0.5 };
-const svg::style style_wcagg = { wcag_gray, 1.0, wcag_gray, 0.0, 0.5 };
-const svg::style style_wcagdg = { wcag_dgray, 1.0, wcag_dgray, 0.0, 0.5 };
 
 /// Glyph type sizes.
 constexpr auto lsz = 16; // title large bold
@@ -60,7 +49,7 @@ namespace svg {
 using vspace = std::vector<double>;
 
 
-/// Decompose/split ranges to spaces.
+/// Decompose/split 2D ranges to 1D spaces.
 void
 split_vrange(const vrange& cpoints, vspace& xpoints, vspace& ypoints)
 {
@@ -96,6 +85,10 @@ split_vrange(const vrange& cpoints, vspace& xpoints, vspace& ypoints)
 /// Per-graph constants, metadata, text.
 struct graph_rstate : public render_state_base
 {
+  // Margins/Spaces
+  static constexpr uint marginx = 100;
+  static constexpr uint marginy = 100;
+
   // Labels.
   string		title;		// graph/chart title
   string		xlabel;		// x axis label
@@ -105,116 +98,6 @@ struct graph_rstate : public render_state_base
 
   style			lstyle;		// line style
   stroke_style		sstyle;		// stroke style, if any.
-
-  // Margins/Spaces
-  static constexpr uint marginx = 100;
-  static constexpr uint marginy = 100;
-};
-
-
-
-/**
-   Marker styles, ways to make line start, mid points, and enpoints look distinct.
-
-   https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/
-
-   stroke_dash_array
-   Attribute/stroke-dasharray
-
-   polyline marker-mid
-   Attribute/marker-mid
-*/
-
-/// Base function for generating SVG markers in a defs section.
-marker_element
-make_marker_element(const std::string id,
-		    const svg::area<> ma, const svg::point_2t mcp,
-		    const std::string raw)
-{
-  svg::marker_element mkr;
-  mkr.start_element(id, ma, mcp);
-  mkr.add_raw(raw.c_str());
-  mkr.finish_element();
-  return mkr;
-}
-
-marker_element
-make_marker_circle(const std::string id,
-		   const svg::area<> ma, const svg::point_2t mcp,
-		   const uint radius, const svg::style styl)
-{
-  svg::circle_element c = make_circle(mcp, styl, radius);
-  return make_marker_element(id, ma, mcp, c.str());
-}
-
-marker_element
-make_marker_triangle(const std::string id,
-		   const svg::area<> ma, const svg::point_2t mcp,
-		   const uint radius, const svg::style styl)
-{
-  svg::path_element p = make_path_triangle(mcp, styl, radius);
-  return make_marker_element(id, ma, mcp, p.str());
-}
-
-marker_element
-make_marker_x(const std::string id,
-	      const svg::area<> ma, const svg::point_2t mcp,
-	      const uint radius, const svg::style styl)
-{
-  svg::path_element cm = svg::make_path_center_mark(mcp, styl, radius, radius / 2);
-  return make_marker_element(id, ma, mcp, cm.str());
-}
-
-marker_element
-make_marker_rect(const std::string id,
-		 const svg::area<> ma, const svg::point_2t mcp,
-		 const svg::style styl)
-{
-  svg::rect_element p = make_rect_centered(mcp, styl, ma);
-  return make_marker_element(id, ma, mcp, p.str());
-}
-
-
-/// Create a set of markers bounded by a rectangle of size n.
-string
-make_marker_set_n(const double i)
-{
-  // 4 / 2, etc.
-  const double h(i/2);
-  const string si = std::to_string(static_cast<uint>(i));
-  auto m1 = make_marker_circle("c" + si + "red", {i, i}, {h, h}, h, style_r);
-  auto m2 = make_marker_circle("c" + si + "wcaglg", {i, i}, {h, h}, h, style_wcaglg);
-  auto m3 = make_marker_circle("c" + si + "wcagdg", {i, i}, {h, h}, h, style_wcagdg);
-  auto m4 = make_marker_circle("c" + si + "black", {i, i}, {h, h}, h, b_style);
-  auto m5 = make_marker_triangle("t" + si + "black", {i, i}, {h, h}, h, b_style);
-  auto m6 = make_marker_triangle("t" + si + "wcagg", {i, i}, {h, h}, h, style_wcagg);
-  auto m7 = make_marker_x("x" + si + "wcagg", {i, i}, {h, h}, h, style_wcaglg);
-  auto m8 = make_marker_rect("r" + si + "wcaglg", {i, i}, {h, h}, style_wcaglg);
-  auto m9 = make_marker_rect("r" + si + "wcagdg", {i, i}, {h, h}, style_wcagdg);
-
-  std::ostringstream oss;
-  oss << m1.str() << m2.str() << m3.str() << m4.str()
-      << m5.str() << m6.str() << m7.str() << m8.str() << m9.str();
-  return oss.str();
-}
-
-
-/// Make black/white/wcag markers with sizes 4x4 and 2x2.
-void
-make_markers(svg::svg_element& obj)
-{
-
-  svg::defs_element def;
-  def.start_element();
-
-  string m2 = make_marker_set_n(2);
-  def.add_raw(m2);
-
-  string m4 = make_marker_set_n(4);
-  def.add_raw(m4);
-
-  def.finish_element();
-  obj.add_element(def);
 };
 
 
@@ -285,7 +168,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
     }
   return ret;
 }
-
+  
 
 /// Axis Labels
 /// Axis X/Y Ticmarks
@@ -308,7 +191,7 @@ make_line_graph_annotations(const area<> aplate,
 
   // Base typo for axis.
   typography anntypo = typo;
-  anntypo._M_style = style_wcaglg;
+  anntypo._M_style = k::wcaglg_style;
   anntypo._M_size = asz;
   if (gstate.is_visible(select::axis))
     {

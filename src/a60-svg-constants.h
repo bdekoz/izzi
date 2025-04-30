@@ -87,6 +87,11 @@ const style no_style = { color::none, 0.0, color::none, 0.0, 0 };
 const style b_style = { color::black, 1.0, color::white, 0.0, 0.5 };
 const style w_style = { color::white, 1.0, color::black, 0.0, 0.5 };
 
+const style r_style = { color::red, 1.0, color::red, 0.0, 0.5 };
+const style wcaglg_style = { color::wcag_lgray, 1.0, color::wcag_lgray, 0.0, 0.5 };
+const style wcagg_style = { color::wcag_gray, 1.0, color::wcag_gray, 0.0, 0.5 };
+const style wcagdg_style = { color::wcag_dgray, 1.0, color::wcag_dgray, 0.0, 0.5 };
+
 
 /// Useful typography constants.
 typography::anchor a = typography::anchor::middle;
