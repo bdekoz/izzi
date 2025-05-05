@@ -40,17 +40,17 @@ test_chart()
 
   // Deserialize data.
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  auto [ maxx, maxy ] = minmax_vrange(vr1);
-  point_2t rangex = make_tuple(0, maxx);
+  auto [ maxx, maxy ] = minmax_vrange(vr1, 1000);
+  point_2t rangex = make_tuple(0, maxx * 1000);
   point_2t rangey = make_tuple(0, maxy);
 
-  graph_rstate gs1 { glayers, "firefox", f1, f2, "ms", "%",
+  graph_rstate gs1 { glayers, "firefox", f1, "% complete", "s", "%",
 		     styl1, { "t2wcagg", "2", "", "round", "" } };
   svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);
   obj.add_element(chart1);
 
-  gs1.visible_mode = select::axis;
-  svg_element anno = make_line_graph_annotations(a, vr1, gs1);
+  gs1.visible_mode = select::ticks;
+  svg_element anno = make_line_graph_annotations(a, vr1, gs1, 1000);
   obj.add_element(anno);
 }
 

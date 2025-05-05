@@ -76,13 +76,39 @@ union_vrange(const vrange& r1, const vrange& r2)
 /// Combine two vranges, combine values, find min/max and return (xmax, ymax)
 /// NB: Assumes zero is min.
 point_2t
-minmax_vrange(const vrange& r1)
+minmax_vrange(const vrange& r1,
+	      const double xscale = 1, const double yscale = 1)
 {
   vspace xpoints;
   vspace ypoints;
-  split_vrange(r1, xpoints, ypoints);
+  split_vrange(r1, xpoints, ypoints, xscale, yscale);
   sort(xpoints.begin(), xpoints.end());
   sort(ypoints.begin(), ypoints.end());
+
+  // For x axis, need to insert padding
+  // iff axes are scaled down and/or have values with truncated significant digits.
+  const bool padp(true);
+  if (padp)
+    {
+      const uint pown = 1;
+      const double sigd = pow(10, pown);
+
+      const double dx = xpoints.back();
+      double ix = std::round(dx * sigd) / sigd;
+      if (ix > dx)
+	{
+	  xpoints.push_back(ix);
+	  std::cout << "x adj: " << k::tab << dx << k::tab << ix << std::endl;
+	}
+
+      const double dy = ypoints.back();
+      uint iy = std::round(dy * sigd) / sigd;
+      if (iy > dy)
+	{
+	  ypoints.push_back(iy);
+	  std::cout << "y adj: " << k::tab << dy << k::tab << iy << std::endl;
+	}
+    }
 
   // Find combined ranges, assume zero start.
   point_2t rangemaxx = std::make_tuple(xpoints.back(), ypoints.back());
@@ -266,11 +292,6 @@ make_line_graph_annotations(const area<> aplate,
       lanno.add_raw(group_element::finish_group());
     }
 
-  // Separate tic label values for x/y axis.
-  vspace pointsx;
-  vspace pointsy;
-  split_vrange(points, pointsx, pointsy, xscale, yscale);
-
   // Base typo for tic labels.
   // NB: Assume pointsx/pointsy are monotonically increasing.
   anntypo._M_size = ticsz;
@@ -278,11 +299,16 @@ make_line_graph_annotations(const area<> aplate,
     {
       lanno.add_raw(group_element::start_group("ticks-" + gstate.title));
 
-      // X tic labels
-      auto mmx = minmax_element(pointsx.begin(), pointsx.end());
-      auto minx = *mmx.first;
-      auto maxx = *mmx.second;
+      // Separate tic label values for x/y axis.
+      vspace pointsx;
+      vspace pointsy;
+      split_vrange(points, pointsx, pointsy, xscale, yscale);
+      auto [ maxx, maxy ] = minmax_vrange(points, xscale, yscale);
+      pointsx.push_back(maxx);
+      pointsy.push_back(maxy);
 
+      // X tic labels
+      auto minx = 0;
       const double xrange(maxx - minx);
       const double xscale(gwidth / xrange);
 
@@ -306,10 +332,7 @@ make_line_graph_annotations(const area<> aplate,
 	}
 
       // Y tic labels
-      auto mmy = minmax_element(pointsy.begin(), pointsy.end());
-      auto miny = *mmy.first;
-      auto maxy = *mmy.second;
-
+      auto miny = 0;
       const double yrange(maxy - miny);
       const double yscale(gheight / yrange);
 
