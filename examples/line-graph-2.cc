@@ -21,11 +21,7 @@ test_chart()
   using namespace std;
   using namespace svg;
 
-  // WCAG Black/White/Gray
-  const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 1 };
-  const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 1 };
-  const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 1 };
-
+  // JSON location, offsets, fields.
   const string jdir("/home/bkoz/src/mozilla-a11y-data-visual-forms/data/");
   const string jfile(jdir + "2025-01-27-minimal.json");
   const string afieldpost("/metrics/SpeedIndexProgress");
@@ -34,37 +30,39 @@ test_chart()
   const string f1("timestamp");
   const string f2("percent");
 
+  // Color constants.
+  // WCAG Black/White/Gray
+  const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 1 };
+  const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 1 };
+  const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 1 };
+
+  // Set graph styles.
   //svg::select glayers { select::ticks | select::axis };
   //svg::select glayers { select::ticks | select::vector };
 
-
-  // Deserialize A/B data.
-  vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
-
-  vspace xpoints;
-  vspace ypoints;
-  split_vrange(vr1, xpoints, ypoints);
-  split_vrange(vr2, xpoints, ypoints);
-  sort(xpoints.begin(), xpoints.end());
-  sort(ypoints.begin(), ypoints.end());
-
-  // Find combined ranges, assume zero start.
-  point_2t rangex = make_tuple(0, xpoints.back());
-  point_2t rangey = make_tuple(0, ypoints.back());
-
-  // Set graph styles.
   svg::select vlayer { select::vector };
   graph_rstate gs1 { vlayer, "firefox", f1, f2, "ms", "%",
 		     styl1, { "r2wcadg", "3", "", "square", "" } };
   graph_rstate gs2 { vlayer, "chrome", f1, f2, "ms", "%",
 		     styl3, { "c2wcaglg", "1 2", "", "round", "" } };
-  graph_rstate gsa { {select::ticks}, "chrome", f1, f2, "ms", "%",
+  graph_rstate gsa { {select::ticks}, "chrome", f1, f2, "s", "%",
 		     styl2, { "", "", "", "", "" } };
 
 
+  // Deserialize A/B data.
+  vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
+  vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
+  vrange vunion = union_vrange(vr1, vr2);
+
   // Draw axis, ticks, etc.
-  make_line_graph_annotations(a, xpoints, ypoints, gsa, obj);
+  // NB scale x axis from milliseconds in json to seconds in display.
+  svg_element anno = make_line_graph_annotations(a, vunion, gsa, 1000);
+  obj.add_element(anno);
+
+  // Find combined ranges, assume zero start.
+  auto [ maxx, maxy ] = minmax_vrange(vunion);
+  point_2t rangex = make_tuple(0, maxx);
+  point_2t rangey = make_tuple(0, maxy);
 
   // Draw graph(s).
   svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);

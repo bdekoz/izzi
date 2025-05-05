@@ -31,8 +31,9 @@ namespace svg {
 struct element_base
 {
   using stream_type = std::ostringstream;
-  static constexpr char finish_tag = k::greaterthan;
-  static constexpr const char* self_finish_tag = " />";
+  static constexpr char		finish_tag = k::greaterthan;
+  static constexpr  string	finish_hard = string({ element_base::finish_tag }) + k::newline;
+  static constexpr const char*	self_finish_tag = " />";
 
   // Underlying units for 2D (x,y) mapping (same as area::atype).
   using atype = space_type; // ... floating point cartesian points

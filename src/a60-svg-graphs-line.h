@@ -49,15 +49,65 @@ namespace svg {
 using vspace = std::vector<double>;
 
 
-/// Decompose/split 2D ranges to 1D spaces.
+/// Decompose/split 2D ranges to 1D spaces, perhaps with scaling.
 void
-split_vrange(const vrange& cpoints, vspace& xpoints, vspace& ypoints)
+split_vrange(const vrange& cpoints, vspace& xpoints, vspace& ypoints,
+	     const double xscale = 1, const double yscale = 1)
 {
  for (const auto& [x, y] : cpoints)
    {
-     xpoints.push_back(x);
-     ypoints.push_back(y);
+     xpoints.push_back(x / xscale);
+     ypoints.push_back(y / yscale);
    }
+}
+
+
+/// Union two ranges.
+vrange
+union_vrange(const vrange& r1, const vrange& r2)
+{
+  vrange vr;
+  vr.insert(vr.end(), r1.begin(), r1.end());
+  vr.insert(vr.end(), r2.begin(), r2.end());
+  return vr;
+}
+
+
+/// Combine two vranges, combine values, find min/max and return (xmax, ymax)
+/// NB: Assumes zero is min.
+point_2t
+minmax_vrange(const vrange& r1)
+{
+  vspace xpoints;
+  vspace ypoints;
+  split_vrange(r1, xpoints, ypoints);
+  sort(xpoints.begin(), xpoints.end());
+  sort(ypoints.begin(), ypoints.end());
+
+  // Find combined ranges, assume zero start.
+  point_2t rangemaxx = std::make_tuple(xpoints.back(), ypoints.back());
+  return rangemaxx;
+}
+
+
+/// Truncate double to double with pown signifigant digits.
+vspace
+narrow_vspace(const vspace& points, uint pown)
+{
+  const double sigd = pow(10, pown);
+  vspace npoints;
+  for (const double& d : points)
+    {
+      double dn(d);
+      if (dn > 0)
+	{
+	  uint itrunc(dn * sigd);
+	  npoints.push_back(itrunc / sigd);
+	}
+      else
+	npoints.push_back(dn);
+    }
+  return npoints;
 }
 
 
@@ -81,7 +131,6 @@ split_vrange(const vrange& cpoints, vspace& xpoints, vspace& ypoints)
    y axis: title, tick mark spacing, tick mark style
 */
 
-
 /// Per-graph constants, metadata, text.
 struct graph_rstate : public render_state_base
 {
@@ -95,6 +144,7 @@ struct graph_rstate : public render_state_base
   string		ylabel;
   string		xticku;		// x axis tick mark units postfix
   string		yticku;
+  static constexpr uint xtickdigits = 1;
 
   style			lstyle;		// line style
   stroke_style		sstyle;		// stroke style, if any.
@@ -106,8 +156,6 @@ string
 make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 			     const graph_rstate& gstate, const double radius)
 {
-  const string finish_hard(string { element_base::finish_tag } + k::newline);
-
   string ret;
   for (uint i = 0; i < points.size(); i++)
     {
@@ -141,7 +189,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 	  c.start_element();
 	  c.add_data(dc);
 	  c.add_style(fillstyl);
-	  c.add_raw(finish_hard);
+	  c.add_raw(element_base::finish_hard);
 	  c.add_title(tipstr);
 	  c.add_raw(string { circle_element::tag_closing } + k::newline);
 	  ret += c.str();
@@ -157,7 +205,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 	  r.start_element();
 	  r.add_data(dr);
 	  r.add_style(fillstyl);
-	  r.add_raw(finish_hard);
+	  r.add_raw(element_base::finish_hard);
 	  r.add_title(tipstr);
 	  r.add_raw(string { rect_element::tag_closing } + k::newline);
 	  ret += r.str();
@@ -168,19 +216,19 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
     }
   return ret;
 }
-  
+
 
 /// Axis Labels
 /// Axis X/Y Ticmarks
-void
+svg_element
 make_line_graph_annotations(const area<> aplate,
-			    const vspace& pointsx, const vspace& pointsy,
+			    const vrange& points,
 			    const graph_rstate& gstate,
-			    svg_element& lgraph,
+			    const double xscale = 1, const double yscale = 1,
 			    const typography typo = k::apercu_typo)
 {
   using namespace std;
-  const string finish_hard(string { element_base::finish_tag } + k::newline);
+  svg_element lanno(gstate.title, "line graph annotation", aplate, false);
 
   // Locate graph area on plate area.
   auto [ pwidth, pheight ] = aplate;
@@ -193,16 +241,18 @@ make_line_graph_annotations(const area<> aplate,
   typography anntypo = typo;
   anntypo._M_style = k::wcaglg_style;
   anntypo._M_size = asz;
+
+  // Axes and Labels
   if (gstate.is_visible(select::axis))
     {
-      lgraph.add_raw(group_element::start_group("axes-" + gstate.title));
+      lanno.add_raw(group_element::start_group("axes-" + gstate.title));
 
       // Add axis labels.
       point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
-      styled_text(lgraph, gstate.xlabel, xlabelp, anntypo);
+      styled_text(lanno, gstate.xlabel, xlabelp, anntypo);
 
       point_2t ylabelp = make_tuple(gstate.marginx / 2, pheight / 2);
-      styled_text(lgraph, gstate.ylabel, ylabelp, anntypo);
+      styled_text(lanno, gstate.ylabel, ylabelp, anntypo);
 
       // Add axis lines.
       line_element lx = make_line({gstate.marginx, chartyo}, {chartxe, chartyo},
@@ -210,18 +260,23 @@ make_line_graph_annotations(const area<> aplate,
       line_element ly = make_line({gstate.marginx, chartyo},
 				  {gstate.marginx, gstate.marginy},
 				  gstate.lstyle);
-      lgraph.add_element(lx);
-      lgraph.add_element(ly);
+      lanno.add_element(lx);
+      lanno.add_element(ly);
 
-      lgraph.add_raw(group_element::finish_group());
+      lanno.add_raw(group_element::finish_group());
     }
+
+  // Separate tic label values for x/y axis.
+  vspace pointsx;
+  vspace pointsy;
+  split_vrange(points, pointsx, pointsy, xscale, yscale);
 
   // Base typo for tic labels.
   // NB: Assume pointsx/pointsy are monotonically increasing.
   anntypo._M_size = ticsz;
   if (gstate.is_visible(select::ticks))
     {
-      lgraph.add_raw(group_element::start_group("ticks-" + gstate.title));
+      lanno.add_raw(group_element::start_group("ticks-" + gstate.title));
 
       // X tic labels
       auto mmx = minmax_element(pointsx.begin(), pointsx.end());
@@ -234,21 +289,20 @@ make_line_graph_annotations(const area<> aplate,
       const double ygo = gstate.marginy + gheight + asz;
 
       // Filter tic labels to unique smallest subset of significant labels.
-      const double xticsteps = 100; // number of x tic labels
-      auto xnarrowl = [xticsteps](const double& d)
-		      { return static_cast<uint>(d / xticsteps); };
-      vector<uint> xpointsi(pointsx.size());
-      std::transform(pointsx.begin(), pointsx.end(), xpointsi.begin(),
-		     xnarrowl);
-      std::set<double> xpoints(xpointsi.begin(), xpointsi.end());
+      vspace xpointsn = narrow_vspace(pointsx, gstate.xtickdigits);
 
       // Add x tic labels.
+      std::set<double> xpoints(xpointsn.begin(), xpointsn.end());
       for (const double& x: xpoints)
 	{
-	  const uint xui = x * xticsteps;
-	  const double xto = gstate.marginx + (xui * xscale);
-	  const string sxui = std::to_string(xui) + gstate.xticku;
-	  styled_text(lgraph, sxui, {xto, ygo}, anntypo);
+	  //const uint xui = x * xticsteps;
+	  const double xto = gstate.marginx + (x * xscale);
+
+	  ostringstream oss;
+	  oss << fixed << setprecision(gstate.xtickdigits) << x;
+	  const string sxui = oss.str() + gstate.xticku;
+
+	  styled_text(lanno, sxui, {xto, ygo}, anntypo);
 	}
 
       // Y tic labels
@@ -259,7 +313,9 @@ make_line_graph_annotations(const area<> aplate,
       const double yrange(maxy - miny);
       const double yscale(gheight / yrange);
 
-      const double xgo = gstate.marginx - asz;
+      // Positions for left and right y-axis tic labels.
+      const double xgol = gstate.marginx - asz;			// left
+      const double xgor = gstate.marginx + gwidth + asz;	// right
 
       // Filter tic labels to unique smallest subset of significant
       // lables of yticsteps.
@@ -279,11 +335,14 @@ make_line_graph_annotations(const area<> aplate,
 	  const uint yui = y * ydelta;
 	  const double yto = chartyo - (yui * yscale);
 	  const string syui = std::to_string(yui) + gstate.yticku;
-	  styled_text(lgraph, syui, {xgo, yto}, anntypo);
+	  styled_text(lanno, syui, {xgol, yto}, anntypo);
+	  styled_text(lanno, syui, {xgor, yto}, anntypo);
 	}
 
-      lgraph.add_raw(group_element::finish_group());
+      lanno.add_raw(group_element::finish_group());
     }
+
+  return lanno;
 }
 
 
@@ -293,41 +352,13 @@ make_line_graph_annotations(const area<> aplate,
 svg_element
 make_line_graph(const svg::area<> aplate, const vrange& points,
 		const graph_rstate& gstate,
-		const point_2t xrange = { },
-		const point_2t yrange = { })
+		const point_2t xrange, const point_2t yrange)
 {
   using namespace std;
-
-  // Scale vrange input to graph.
   svg_element lgraph(gstate.title, "line graph", aplate, false);
 
-  // Split values and compute ranges for x/y axis.
-
-  // x
-  vector<double> pointsx(points.size());
-  std::transform(points.begin(), points.end(), pointsx.begin(),
-		 [](const point_2t& pt) { return std::get<0>(pt); });
-  double minx = get<0>(xrange);
-  double maxx = get<1>(xrange);
-  if (minx == 0 && maxx == 0)
-    {
-      auto mmx = minmax_element(pointsx.begin(), pointsx.end());
-      minx = *mmx.first;
-      maxx = *mmx.second;
-    }
-
-  // y
-  vector<double> pointsy(points.size());
-  std::transform(points.begin(), points.end(), pointsy.begin(),
-		 [](const point_2t& pt) { return std::get<1>(pt); });
-  double miny = get<0>(yrange);
-  double maxy = get<1>(yrange);
-  if (miny == 0 && maxy == 0)
-    {
-      auto mmy = minmax_element(pointsy.begin(), pointsy.end());
-      miny = *mmy.first;
-      maxy = *mmy.second;
-    }
+  auto [ minx, maxx ] = xrange;
+  auto [ miny, maxy ] = yrange;
 
   // Locate graph area on plate area.
   // aplate is total plate area with margins, aka
@@ -337,7 +368,6 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   double gwidth = pwidth - (2 * gstate.marginx);
   double gheight = pheight - (2 * gstate.marginy);
   const double chartyo = pheight - gstate.marginy;
-  //const double chartxe = pwidth - gstate.marginx;
 
   // Transform data points to scaled cartasian points in graph area.
   vrange cpoints;
@@ -356,9 +386,6 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
       cpoints.push_back(make_tuple(x, y));
     }
-
-  // Add annotations first: any labels, metadata, ticmarks, legends
-  make_line_graph_annotations(aplate, pointsx, pointsy, gstate, lgraph);
 
   // Plot path of points on cartesian plane.
   // Grouped tooltips have to be the last, aka top layer of SVG to work (?).

@@ -24,7 +24,7 @@ test_chart()
   // WCAG Black/White/Gray
   const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 3 };
   //const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
-  const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 3 };
+  //const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 3 };
 
   const string jdir("/home/bkoz/src/mozilla-a11y-data-visual-forms/data/");
   const string jfile(jdir + "2025-01-27-minimal.json");
@@ -40,24 +40,18 @@ test_chart()
 
   // Deserialize data.
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
-
-  // Find combined ranges.
-  double maxx = max(get<0>(vr1.back()), get<0>(vr2.back()));
+  auto [ maxx, maxy ] = minmax_vrange(vr1);
   point_2t rangex = make_tuple(0, maxx);
-  double maxy = max(get<1>(vr1.back()), get<1>(vr2.back()));
   point_2t rangey = make_tuple(0, maxy);
 
   graph_rstate gs1 { glayers, "firefox", f1, f2, "ms", "%",
-		     styl1, { "t2wcagg", "2", "", "", "" } };
+		     styl1, { "t2wcagg", "2", "", "round", "" } };
   svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);
   obj.add_element(chart1);
 
-
-  graph_rstate gs2 { glayers, "chrome", f1, f2, "ms", "%",
-		     styl3, { "c2wcaglg", "4", "", "", "" } };
-  svg_element chart2 = make_line_graph(a, vr2, gs2, rangex, rangey);
-  obj.add_element(chart2);
+  gs1.visible_mode = select::axis;
+  svg_element anno = make_line_graph_annotations(a, vr1, gs1);
+  obj.add_element(anno);
 }
 
 
