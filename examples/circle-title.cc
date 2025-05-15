@@ -25,7 +25,7 @@ test_title(std::string ofile)
   c.add_style(styl1);
   c.add_raw(finish_hard);
   c.add_title("uss callister into infinity");
-  c.add_raw(string { circle_element::tag_closing } + k::newline);
+  c.add_raw(string { circle_element::pair_finish_tag } + k::newline);
 
   obj.add_element(c);
 }
