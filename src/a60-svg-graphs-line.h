@@ -26,17 +26,9 @@
 
 namespace {
 
-/// Glyph type sizes.
-constexpr auto lsz = 16; // title large bold
-constexpr auto asz = 12; // h1
-constexpr auto ssz = 10; // text, sub sub headings
-constexpr auto ticsz = 7; // tic text
-
-/// Glyph size and margins.
-constexpr svg::area<> achart = { 900, 600 };
-constexpr auto cpx = std::get<0>(achart.center_point());
-
 /// Polyline/line creation options.
+/// 1: use one line with css dasharray and markers mid, end points
+/// 2: use two lines one with css dasharray, one with path tooltips
 constexpr svg::ushort line_1_polyline(100);
 constexpr svg::ushort line_2_polyline_tooltips(200);
 
@@ -85,8 +77,8 @@ minmax_vrange(const vrange& r1,
   sort(xpoints.begin(), xpoints.end());
   sort(ypoints.begin(), ypoints.end());
 
-  // For x axis, need to insert padding
-  // iff axes are scaled down and/or have values with truncated significant digits.
+  // For x axis, need to insert padding iff axes are scaled down
+  // and/or have values with truncated significant digits.
   const bool padp(true);
   if (padp)
     {
@@ -161,8 +153,14 @@ narrow_vspace(const vspace& points, uint pown)
 struct graph_rstate : public render_state_base
 {
   // Margins/Spaces
-  static constexpr uint marginx = 100;
-  static constexpr uint marginy = 100;
+  static constexpr uint marginx		= 100;
+  static constexpr uint marginy		= 100;
+
+  /// Glyph type sizes.
+  static constexpr uint ttitlesz	= 16; // title large bold
+  static constexpr uint th1sz		= 12; // h1
+  static constexpr uint tpsz		= 10; // text, paragraph,
+  static constexpr uint tticsz		= 7; // tic text
 
   // Labels.
   string		title;		// graph/chart title
@@ -170,7 +168,7 @@ struct graph_rstate : public render_state_base
   string		ylabel;
   string		xticku;		// x axis tick mark units postfix
   string		yticku;
-  static constexpr uint xtickdigits = 1;
+  static constexpr uint xtickdigits	= 1;
 
   style			lstyle;		// line style
   stroke_style		sstyle;		// stroke style, if any.
@@ -180,7 +178,8 @@ struct graph_rstate : public render_state_base
 /// Return set of paths corresponding to marker shapes with tooltips.
 string
 make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
-			     const graph_rstate& gstate, const double radius)
+			     const graph_rstate& gstate, const double radius,
+			     const bool fillp = true)
 {
   string ret;
   for (uint i = 0; i < points.size(); i++)
@@ -198,15 +197,20 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       tipstr += std::to_string(static_cast<uint>(vx));
       tipstr += "ms";
 
-      const bool roundp = gstate.sstyle.linecap == "round";
-      const bool squarep = gstate.sstyle.linecap == "square";
+      const string& linecap = gstate.sstyle.linecap;
+      const bool roundp = linecap == "round" || linecap == "circle";
+      const bool squarep = linecap == "square";
+      const bool trianglep = linecap == "triangle";
 
       // Markers are closed paths that are filled with no stroke.
-      style fillstyl = gstate.lstyle;
-      fillstyl._M_stroke_opacity = 0;
-      fillstyl._M_fill_opacity = 1;
+      style styl = gstate.lstyle;
+      if (fillp)
+	{
+	  styl._M_stroke_opacity = 0;
+	  styl._M_fill_opacity = 1;
+	}
 
-      // Centered.
+      // Circle Centered.
       // svg::circle_element c = make_circle(cpoints[i], gstate.lstyle, r);
       if (roundp)
 	{
@@ -214,14 +218,14 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 	  circle_element::data dc = { cx, cy, radius };
 	  c.start_element();
 	  c.add_data(dc);
-	  c.add_style(fillstyl);
+	  c.add_style(styl);
 	  c.add_raw(element_base::finish_hard);
 	  c.add_title(tipstr);
-	  c.add_raw(string { circle_element::tag_closing } + k::newline);
+	  c.add_raw(string { circle_element::pair_finish_tag } + k::newline);
 	  ret += c.str();
 	}
 
-      // Centered.
+      // Square Centered.
       // svg::rect_element r = (cpoints[i], gstate.lstyle, {2 * r, 2 * r});
       if (squarep)
 	{
@@ -230,15 +234,33 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 				    2 * radius, 2 * radius };
 	  r.start_element();
 	  r.add_data(dr);
-	  r.add_style(fillstyl);
+	  r.add_style(styl);
 	  r.add_raw(element_base::finish_hard);
 	  r.add_title(tipstr);
-	  r.add_raw(string { rect_element::tag_closing } + k::newline);
+	  r.add_raw(string { rect_element::pair_finish_tag } + k::newline);
 	  ret += r.str();
 	}
 
-      if (!roundp && !squarep)
-	throw std::runtime_error("make_line_graph_markers_tips linecap missing");
+      // Triangle Centered.
+      // svg::path_element t = (cpoints[i], gstate.lstyle, {2 * r, 2 * r});
+      if (trianglep)
+	{
+	  path_element p = make_path_triangle(cpoints[i], styl, radius, 120,
+					      false);
+	  p.add_title(tipstr);
+	  p.add_raw(string { path_element::pair_finish_tag } + k::newline);
+	  ret += p.str();
+	}
+
+      // Throw if marker style not supported.
+      if (!roundp && !squarep && !trianglep)
+	{
+	  string m("make_line_graph_markers_tips:: ");
+	  m += "linecap value invalid or missing, currently set to: ";
+	  m += linecap;
+	  m += k::newline;
+	  throw std::runtime_error(m);
+	}
     }
   return ret;
 }
@@ -266,7 +288,7 @@ make_line_graph_annotations(const area<> aplate,
   // Base typo for axis.
   typography anntypo = typo;
   anntypo._M_style = k::wcaglg_style;
-  anntypo._M_size = asz;
+  anntypo._M_size = graph_rstate::th1sz;
 
   // Axes and Labels
   if (gstate.is_visible(select::axis))
@@ -294,7 +316,7 @@ make_line_graph_annotations(const area<> aplate,
 
   // Base typo for tic labels.
   // NB: Assume pointsx/pointsy are monotonically increasing.
-  anntypo._M_size = ticsz;
+  anntypo._M_size = graph_rstate::tticsz;
   if (gstate.is_visible(select::ticks))
     {
       lanno.add_raw(group_element::start_group("ticks-" + gstate.title));
@@ -312,7 +334,7 @@ make_line_graph_annotations(const area<> aplate,
       const double xrange(maxx - minx);
       const double xscale(gwidth / xrange);
 
-      const double ygo = gstate.marginy + gheight + asz;
+      const double ygo = gstate.marginy + gheight + graph_rstate::th1sz;
 
       // Filter tic labels to unique smallest subset of significant labels.
       vspace xpointsn = narrow_vspace(pointsx, gstate.xtickdigits);
@@ -337,8 +359,8 @@ make_line_graph_annotations(const area<> aplate,
       const double yscale(gheight / yrange);
 
       // Positions for left and right y-axis tic labels.
-      const double xgol = gstate.marginx - asz;			// left
-      const double xgor = gstate.marginx + gwidth + asz;	// right
+      const double xgol = gstate.marginx - graph_rstate::th1sz;		// left
+      const double xgor = gstate.marginx + gwidth + graph_rstate::th1sz;// right
 
       // Filter tic labels to unique smallest subset of significant
       // lables of yticsteps.

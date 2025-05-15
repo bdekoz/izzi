@@ -677,8 +677,8 @@ struct rect_element : virtual public element_base
 
   // Verbose opening/closing pair tags for circle_element.
   // Default assumes the more compact XML "self-closed tag" for circle element.
-  static constexpr const char*  tag_open = "<rect>";
-  static constexpr const char*  tag_closing = "</rect>";
+  static constexpr const char*  pair_open_tag = "<rect>";
+  static constexpr const char*  pair_finish_tag = "</rect>";
 
   /// Either serialize immediately (as below), or create data structure
   /// that adds data to data_vec and then finish_element serializes.
@@ -733,8 +733,8 @@ struct circle_element : virtual public element_base
 
   // Verbose opening/closing pair tags for circle_element.
   // Default assumes the more compact XML "self-closed tag" for circle element.
-  static constexpr const char*	tag_open = "<circle>";
-  static constexpr const char*	tag_closing = "</circle>";
+  static constexpr const char*	pair_open_tag = "<circle>";
+  static constexpr const char*	pair_finish_tag = "</circle>";
 
   // Either serialize immediately (as below), or create data structure
   // that adds data to data_vec and then finish_element serializes.
@@ -929,6 +929,8 @@ struct path_element : virtual public defs_element
     string		_M_d;
     atype		_M_length;
   };
+
+  static constexpr const char*	pair_finish_tag = "</path>";
 
   // Put in defs section, making it not drawn but still usefule for text_path.
   bool			_M_visible;

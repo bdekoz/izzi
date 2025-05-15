@@ -590,7 +590,8 @@ make_path_data_from_points(const vrange& lpoints)
 /// top style defaults: fill opac(0), stroke opac(1), stroke sz 1
 /// bottom style defaults: fill opac(0), stroke opac(1), stroke sz 1.25
 path_element
-make_path(const string& pathda, const style& styl, const string name = "")
+make_path(const string& pathda, const style& styl,
+	  const string name = "", const bool selfclosingtagp = true)
 {
   // Draw path with this endpoint.
   path_element pe;
@@ -603,7 +604,10 @@ make_path(const string& pathda, const style& styl, const string name = "")
 	pe.start_element(name);
       pe.add_data(da);
       pe.add_style(styl);
-      pe.finish_element();
+      if (selfclosingtagp)
+	pe.finish_element();
+      else
+	pe.add_raw(element_base::finish_hard);
     }
   return pe;
 }
@@ -612,7 +616,8 @@ make_path(const string& pathda, const style& styl, const string name = "")
 /// Center a triangle at this point.
 path_element
 make_path_triangle(const point_2t origin, const style styl,
-		   const double r = 4, const double angle = 120)
+		   const double r = 4, const double angle = 120,
+		   const bool selfclosingtagp = true)
 {
   // Find points: orig, orig + (120 x 1), orig + (120 x 2).
   double zo = zero_angle_north_cw(angle);
@@ -626,7 +631,7 @@ make_path_triangle(const point_2t origin, const style styl,
   const string id = "triangle-" + argname;
 
   path_element::data pthdata = { pathda, 0 };
-  path_element tri = make_path(pathda, styl, id);
+  path_element tri = make_path(pathda, styl, id, selfclosingtagp);
   return tri;
 }
 
