@@ -13,12 +13,11 @@ var searchData=
   ['a6_5f096_5fh_10',['a6_096_h',['../namespacesvg_1_1constants.html#aea4891b43d258419619744310b017579',1,'svg::constants']]],
   ['a6_5f096_5fv_11',['a6_096_v',['../namespacesvg_1_1constants.html#ad52879469afcbe972aed32b825a21bee',1,'svg::constants']]],
   ['a6_5fmm_5fh_12',['a6_mm_h',['../namespacesvg_1_1constants.html#a974b91586faa49d16dd3b2814ba60d2b',1,'svg::constants']]],
-  ['achart_13',['achart',['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a72c52d1689517197baa277ac8fd5f411',1,'anonymous_namespace{a60-svg-graphs-line.h}']]],
-  ['al_14',['al',['../namespacesvg_1_1constants.html#a8367d729b134b34ffe866dd756b1dab4',1,'svg::constants']]],
-  ['alt_15',['alt',['../structsvg_1_1collection__rstate.html#a344ab1e64e172e1d22ed23ba6dc3f40b',1,'svg::collection_rstate']]],
-  ['apercu_5ftypo_16',['apercu_typo',['../namespacesvg_1_1constants.html#aa8fd50affcf4fa829e85235ac317f16f',1,'svg::constants']]],
-  ['apercumo_5ftypo_17',['apercumo_typo',['../namespacesvg_1_1constants.html#a1056b67ee1d5fca1fdd470363d2a6a75',1,'svg::constants']]],
-  ['aprcu_18',['aprcu',['../namespacesvg_1_1constants.html#ad82fdfa899faf1a29518bc5ae9d6f568',1,'svg::constants']]],
-  ['aprcumo_19',['aprcumo',['../namespacesvg_1_1constants.html#ade7b4502715f847625ea7babf6f6ebef',1,'svg::constants']]],
-  ['asz_20',['asz',['../namespacea60_1_1metadata.html#ad2897b57c74676c8123a3f0af6c873f8',1,'a60::metadata::asz'],['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a2af8a75e4decfb63ed4759b50d560262',1,'anonymous_namespace{a60-svg-graphs-line.h}::asz']]]
+  ['al_13',['al',['../namespacesvg_1_1constants.html#a8367d729b134b34ffe866dd756b1dab4',1,'svg::constants']]],
+  ['alt_14',['alt',['../structsvg_1_1collection__rstate.html#a344ab1e64e172e1d22ed23ba6dc3f40b',1,'svg::collection_rstate']]],
+  ['apercu_5ftypo_15',['apercu_typo',['../namespacesvg_1_1constants.html#aa8fd50affcf4fa829e85235ac317f16f',1,'svg::constants']]],
+  ['apercumo_5ftypo_16',['apercumo_typo',['../namespacesvg_1_1constants.html#a1056b67ee1d5fca1fdd470363d2a6a75',1,'svg::constants']]],
+  ['aprcu_17',['aprcu',['../namespacesvg_1_1constants.html#ad82fdfa899faf1a29518bc5ae9d6f568',1,'svg::constants']]],
+  ['aprcumo_18',['aprcumo',['../namespacesvg_1_1constants.html#ade7b4502715f847625ea7babf6f6ebef',1,'svg::constants']]],
+  ['asz_19',['asz',['../namespacea60_1_1metadata.html#ad2897b57c74676c8123a3f0af6c873f8',1,'a60::metadata']]]
 ];

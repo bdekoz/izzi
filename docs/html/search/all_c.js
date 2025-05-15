@@ -26,5 +26,5 @@ var searchData=
   ['linex_23',['linex',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a7af3f32e7f6f3bd3fd8cc047c1ba8ee6',1,'svg']]],
   ['liney_24',['liney',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a22ba1f9d2f01584a436f3e60567247a5',1,'svg']]],
   ['lstyle_25',['lstyle',['../structsvg_1_1graph__rstate.html#abbbcc01d132bb79b12e3ff82d08e1572',1,'svg::graph_rstate']]],
-  ['lsz_26',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata::lsz'],['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a2b26f8273eeb5575186c119188d3b6f5',1,'anonymous_namespace{a60-svg-graphs-line.h}::lsz']]]
+  ['lsz_26',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata']]]
 ];

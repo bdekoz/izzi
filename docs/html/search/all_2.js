@@ -1,7 +1,7 @@
 var searchData=
 [
   ['b_0',['b',['../structsvg_1_1color__qi.html#a94509c37a67c806dadd94f0997d9cff0',1,'svg::color_qi::b'],['../namespacesvg_1_1constants.html#ae9da6dd40a5f86e7a71427a4f59fdd60',1,'svg::constants::b']]],
-  ['b_5fstyle_1',['b_style',['../namespacesvg_1_1constants.html#a7678f877a21502cd4491b481afc5f67c',1,'svg::constants::b_style'],['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a7678f877a21502cd4491b481afc5f67c',1,'anonymous_namespace{a60-svg-graphs-line.h}::b_style']]],
+  ['b_5fstyle_1',['b_style',['../namespacesvg_1_1constants.html#a7678f877a21502cd4491b481afc5f67c',1,'svg::constants']]],
   ['background_2',['background',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579ad229bbf31eaeebc7c88897732d8b932d',1,'svg']]],
   ['baseline_3',['baseline',['../structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9',1,'svg::typography::baseline'],['../namespacesvg.html#adc7e4c413a77264dd28e589407293de8ae7e14cdcfbc59bba291688ae9cf039d6',1,'svg::baseline']]],
   ['bellflower_4',['bellflower',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a2fb7109b70437ffa6f627970103c5ccf',1,'svg']]],

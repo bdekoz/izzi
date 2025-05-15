@@ -19,10 +19,6 @@ var searchData=
   ['sserif_16',['sserif',['../namespacesvg_1_1constants.html#a84e6f54162fd84206f045bd2724d5297',1,'svg::constants']]],
   ['sserif_5ftypo_17',['sserif_typo',['../namespacesvg_1_1constants.html#a4bf0d3a7b5eca48c9f6e1b65f8bba081',1,'svg::constants']]],
   ['sstyle_18',['sstyle',['../structsvg_1_1graph__rstate.html#a6c23d6a6265d65f07b9025237e17a641',1,'svg::graph_rstate']]],
-  ['ssz_19',['ssz',['../namespacea60_1_1metadata.html#a3f61ba2d564dca7fe7fde2a0425cac12',1,'a60::metadata::ssz'],['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#aa892633dd865d2799745f06df4a61100',1,'anonymous_namespace{a60-svg-graphs-line.h}::ssz']]],
-  ['styl_20',['styl',['../structsvg_1_1id__rstate.html#a9a5d6d0eabc3706dd0035b8d3b822710',1,'svg::id_rstate']]],
-  ['style_5fr_21',['style_r',['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a42e2fb455a91cb3e8c7d2750c23bbb1d',1,'anonymous_namespace{a60-svg-graphs-line.h}']]],
-  ['style_5fwcagdg_22',['style_wcagdg',['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a5609671bdf5552f2250e25ec81fb6519',1,'anonymous_namespace{a60-svg-graphs-line.h}']]],
-  ['style_5fwcagg_23',['style_wcagg',['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#aacae256355acb00230b5ee269d758fa0',1,'anonymous_namespace{a60-svg-graphs-line.h}']]],
-  ['style_5fwcaglg_24',['style_wcaglg',['../namespaceanonymous__namespace_02a60-svg-graphs-line_8h_03.html#a6c184c2518b7f9ff188a81bfd01b9da4',1,'anonymous_namespace{a60-svg-graphs-line.h}']]]
+  ['ssz_19',['ssz',['../namespacea60_1_1metadata.html#a3f61ba2d564dca7fe7fde2a0425cac12',1,'a60::metadata']]],
+  ['styl_20',['styl',['../structsvg_1_1id__rstate.html#a9a5d6d0eabc3706dd0035b8d3b822710',1,'svg::id_rstate']]]
 ];

@@ -1,0 +1,5 @@
+<map id="svg::minmax_vrange" name="svg::minmax_vrange">
+<area shape="rect" id="Node000001" title="Combine two vranges, combine values, find min/max and return (xmax, ymax) NB: Assumes zero is min." alt="" coords="5,5,140,29"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ab75e98b85793fbf54a37fbb78b478c5b" title="Decompose/split 2D ranges to 1D spaces, perhaps with scaling." alt="" coords="188,5,302,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,14,172,14,172,20,140,20"/>
+</map>
