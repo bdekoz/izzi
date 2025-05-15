@@ -40,11 +40,12 @@ test_chart()
   //svg::select glayers { select::ticks | select::axis };
   //svg::select glayers { select::ticks | select::vector };
 
-  svg::select vlayer { select::vector };
-  graph_rstate gs1 { vlayer, "firefox", f1, f2, "ms", "%",
-		     styl3, { "r2wcadg", "3", "", "triangle", "" } };
-  graph_rstate gs2 { vlayer, "chrome", f1, f2, "ms", "%",
-		     styl1, { "c2wcaglg", "1 2", "", "round", "" } };
+  graph_rstate gs1 { select::vector, "firefox", f1, f2,
+		     "ms", "%", styl3,
+		     { "r2wcadg", "1 2", "", "triangle", "" } };
+  graph_rstate gs2 { select::vector | select::echo, "chrome", f1, f2,
+		     "ms", "%", styl1,
+		     { "c2wcaglg", "3", "", "round", "" } };
   graph_rstate gsa { {select::ticks}, "chrome", f1, f2, "s", "%",
 		     styl2, { "", "", "", "", "" } };
 

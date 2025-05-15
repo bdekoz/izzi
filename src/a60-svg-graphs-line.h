@@ -178,8 +178,7 @@ struct graph_rstate : public render_state_base
 /// Return set of paths corresponding to marker shapes with tooltips.
 string
 make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
-			     const graph_rstate& gstate, const double radius,
-			     const bool fillp = true)
+			     const graph_rstate& gstate, const double radius)
 {
   string ret;
   for (uint i = 0; i < points.size(); i++)
@@ -202,13 +201,13 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       const bool squarep = linecap == "square";
       const bool trianglep = linecap == "triangle";
 
-      // Markers are closed paths that are filled with no stroke.
+      // Markers default to closed paths that are filled with no stroke.
+      // Setting visible to vector | echo induces outline behavior.
       style styl = gstate.lstyle;
-      if (fillp)
-	{
-	  styl._M_stroke_opacity = 0;
-	  styl._M_fill_opacity = 1;
-	}
+      styl._M_fill_opacity = 1;
+      if (gstate.is_visible(select::echo))
+	styl._M_fill_color = color::white;
+
 
       // Circle Centered.
       // svg::circle_element c = make_circle(cpoints[i], gstate.lstyle, r);
