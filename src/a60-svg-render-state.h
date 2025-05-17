@@ -52,10 +52,9 @@ namespace svg {
      background		= 1u << 23, ///< background elements
      top		= 1u << 24, ///< top
      bottom		= 1u << 25, ///< bottom
-     inner		= 1u << 26, ///< inner
-     outer		= 1u << 27, ///< outer
-     odd		= 1u << 28, ///< odd
-     even		= 1u << 29, ///< even
+     odd		= 1u << 26, ///< odd
+     even		= 1u << 27, ///< even
+     all		= 1u << 29, ///< all
      _S_end		= 1u << 30  ///< last
     };
 
