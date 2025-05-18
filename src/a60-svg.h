@@ -18,6 +18,7 @@
 
 #include <cstddef>
 #include <cmath>
+#include <algorithm>
 #include <array>
 #include <tuple>
 #include <string>
@@ -77,11 +78,95 @@ to_string(point_2t p)
   return oss.str();
 }
 
+/// Split range, so one dimension of (x,y) cartesian plane.
+using vspace = std::vector<double>;
 
 /// Latitude and Longitude Ranges.
 using srange = std::set<point_2t>;
 using vrange = std::vector<point_2t>;
 using vvranges = std::vector<vrange>;
+
+
+/// Decompose/split 2D ranges to 1D spaces, perhaps with scaling.
+void
+split_vrange(const vrange& cpoints, vspace& xpoints, vspace& ypoints,
+	     const double xscale = 1, const double yscale = 1)
+{
+ for (const auto& [x, y] : cpoints)
+   {
+     xpoints.push_back(x / xscale);
+     ypoints.push_back(y / yscale);
+   }
+}
+
+
+/// Union two ranges.
+vrange
+union_vrange(const vrange& r1, const vrange& r2)
+{
+  vrange vr;
+  vr.insert(vr.end(), r1.begin(), r1.end());
+  vr.insert(vr.end(), r2.begin(), r2.end());
+  return vr;
+}
+
+
+/// Combine two vranges, combine values, find min/max and return (xmax, ymax)
+/// NB: Assumes zero is min.
+point_2t
+minmax_vrange(const vrange& r1,
+	      const double xscale = 1, const double yscale = 1)
+{
+  vspace xpoints;
+  vspace ypoints;
+  split_vrange(r1, xpoints, ypoints, xscale, yscale);
+  sort(xpoints.begin(), xpoints.end());
+  sort(ypoints.begin(), ypoints.end());
+
+  // For x axis, need to insert padding iff axes are scaled down
+  // and/or have values with truncated significant digits.
+  const bool padp(true);
+  if (padp)
+    {
+      const uint pown = 1;
+      const double sigd = pow(10, pown);
+
+      const double dx = xpoints.back();
+      double ix = std::round(dx * sigd) / sigd;
+      if (ix > dx)
+	xpoints.push_back(ix);
+
+      const double dy = ypoints.back();
+      uint iy = std::round(dy * sigd) / sigd;
+      if (iy > dy)
+	ypoints.push_back(iy);
+    }
+
+  // Find combined ranges, assume zero start.
+  point_2t rangemaxx = std::make_tuple(xpoints.back(), ypoints.back());
+  return rangemaxx;
+}
+
+
+/// Truncate double to double with pown signifigant digits.
+vspace
+narrow_vspace(const vspace& points, uint pown)
+{
+  const double sigd = pow(10, pown);
+  vspace npoints;
+  for (const double& d : points)
+    {
+      double dn(d);
+      if (dn > 0)
+	{
+	  uint itrunc(dn * sigd);
+	  npoints.push_back(itrunc / sigd);
+	}
+      else
+	npoints.push_back(dn);
+    }
+  return npoints;
+}
 
 
 /// Scale value from min to max on range (nfloor, nceil).
