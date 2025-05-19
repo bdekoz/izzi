@@ -10,8 +10,8 @@ var searchData=
   ['make_5flabel_5ffor_5fvalue_7',['make_label_for_value',['../namespacesvg.html#a3e2e60c924acb8de9ef72289ab5fe0a9',1,'svg']]],
   ['make_5fline_8',['make_line',['../namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7',1,'svg']]],
   ['make_5fline_5fgraph_9',['make_line_graph',['../namespacesvg.html#a5affcd2017ce707148f3561187eae902',1,'svg']]],
-  ['make_5fline_5fgraph_5fannotations_10',['make_line_graph_annotations',['../namespacesvg.html#a09f237f3b2b574ec947eef5d74be19fa',1,'svg']]],
-  ['make_5fline_5fgraph_5fmarkers_5ftips_11',['make_line_graph_markers_tips',['../namespacesvg.html#ae318b481fb2a168a7315eb94971919a8',1,'svg']]],
+  ['make_5fline_5fgraph_5fannotations_10',['make_line_graph_annotations',['../namespacesvg.html#a25505b7268e527cedd0cc6ba94e07725',1,'svg']]],
+  ['make_5fline_5fgraph_5fmarkers_5ftips_11',['make_line_graph_markers_tips',['../namespacesvg.html#a0e4e42755f8221387ede36824f675ac8',1,'svg']]],
   ['make_5fmarker_5fcircle_12',['make_marker_circle',['../namespacesvg.html#a75c6caa3e403eec96c8e1f39394b7286',1,'svg']]],
   ['make_5fmarker_5felement_13',['make_marker_element',['../namespacesvg.html#a56ab414cf370cb20fa25d06d2a9b07bb',1,'svg']]],
   ['make_5fmarker_5frect_14',['make_marker_rect',['../namespacesvg.html#a6b53509c8447134239e362c7983fb9b2',1,'svg']]],
@@ -35,5 +35,5 @@ var searchData=
   ['mangle_32',['mangle',['../structsvg_1_1collection__rstate.html#a37acc494e5fe5267cc51d023325c7330',1,'svg::collection_rstate']]],
   ['matrix_33',['matrix',['../structsvg_1_1transform.html#a357456381323e5c6f936edad79f0827a',1,'svg::transform']]],
   ['max_5fsegment_5fsize_5fn_34',['max_segment_size_n',['../structsvg_1_1area.html#ad9472feaab4b03259f2b6c73b4c86d50',1,'svg::area']]],
-  ['minmax_5fvrange_35',['minmax_vrange',['../namespacesvg.html#aab828144742888b6933b985336382484',1,'svg']]]
+  ['max_5fvrange_35',['max_vrange',['../namespacesvg.html#a9316267f4d5030ca298dbbe2d4c55b18',1,'svg::max_vrange(vspace &amp;xpoints, vspace &amp;ypoints, const uint pown)'],['../namespacesvg.html#ac004938f77cd6e1209c04946721f8f43',1,'svg::max_vrange(const vrange &amp;points, const uint pown, const double xscale=1, const double yscale=1)']]]
 ];

@@ -1,11 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$structsvg_1_1render__state__base.html" title="Settings for glyph, graphic, chart, and collection object render." alt="" coords="5,53,154,77"/>
-<area shape="rect" id="Node000001" href="$structsvg_1_1collection__rstate.html" title="Collection derived states." alt="" coords="202,5,340,29"/>
-<area shape="poly" id="edge21_Node000000_Node000001" title=" " alt="" coords="144,46,220,27,221,32,145,52"/>
-<area shape="rect" id="Node000003" href="$structsvg_1_1graph__rstate.html" title="Per&#45;graph constants, metadata, text." alt="" coords="212,53,330,77"/>
-<area shape="poly" id="edge23_Node000000_Node000003" title=" " alt="" coords="169,62,212,62,212,68,169,68"/>
-<area shape="rect" id="Node000004" href="$structsvg_1_1id__rstate.html" title="Named render state. Datum to take id string and tie it to visual representation." alt="" coords="223,101,318,125"/>
-<area shape="poly" id="edge24_Node000000_Node000004" title=" " alt="" coords="145,79,223,99,222,104,144,84"/>
-<area shape="rect" id="Node000002" href="$structsvg_1_1color__rstate.html" title="Render settings for collections." alt="" coords="388,5,500,29"/>
-<area shape="poly" id="edge22_Node000001_Node000002" title=" " alt="" coords="356,14,387,14,387,20,356,20"/>
+<area shape="rect" id="Node000000" href="$structsvg_1_1render__state__base.html" title="Settings for glyph, graphic, chart, and collection object render." alt="" coords="5,56,143,83"/>
+<area shape="rect" id="Node000001" href="$structsvg_1_1collection__rstate.html" title="Collection derived states." alt="" coords="191,5,317,32"/>
+<area shape="poly" id="edge21_Node000000_Node000001" title=" " alt="" coords="138,49,203,30,205,35,139,54"/>
+<area shape="rect" id="Node000003" href="$structsvg_1_1graph__rstate.html" title="Per&#45;graph constants, metadata, text." alt="" coords="199,56,308,83"/>
+<area shape="poly" id="edge23_Node000000_Node000003" title=" " alt="" coords="159,67,199,67,199,72,159,72"/>
+<area shape="rect" id="Node000004" href="$structsvg_1_1id__rstate.html" title="Named render state. Datum to take id string and tie it to visual representation." alt="" coords="210,107,298,133"/>
+<area shape="poly" id="edge24_Node000000_Node000004" title=" " alt="" coords="139,85,210,105,208,110,138,90"/>
+<area shape="rect" id="Node000002" href="$structsvg_1_1color__rstate.html" title="Render settings for collections." alt="" coords="365,5,467,32"/>
+<area shape="poly" id="edge22_Node000001_Node000002" title=" " alt="" coords="333,16,364,16,364,21,333,21"/>
 </map>

@@ -1,25 +1,25 @@
 <map id="svg::make_crossed_lines" name="svg::make_crossed_lines">
-<area shape="rect" id="Node000001" title="Crossed lines, no fill. X marks the ...." alt="" coords="5,158,161,182"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="215,40,364,77"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,156,240,82,242,87,108,160"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7" title="Line primitive." alt="" coords="238,134,340,158"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="161,159,223,151,223,157,162,164"/>
-<area shape="rect" id="Node000011" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="216,182,363,206"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="162,177,201,181,200,187,161,182"/>
-<area shape="rect" id="Node000012" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="209,230,370,254"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="116,180,210,216,231,223,229,228,208,221,114,185"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="418,5,566,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="364,43,402,36,403,42,365,48"/>
-<area shape="rect" id="Node000005" href="$group__elements.html#a306eac4c5a7ea755ab6375a65489366f" title=" " alt="" coords="429,67,555,103"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="330,131,414,106,415,111,332,136"/>
-<area shape="rect" id="Node000007" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="426,128,559,165"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="341,144,410,144,410,149,341,149"/>
-<area shape="rect" id="Node000009" href="$group__elements.html#ga4769af15793cb308d426abb5fd552df5" title=" " alt="" coords="429,189,555,226"/>
-<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="333,156,371,168,417,182,415,187,369,173,331,161"/>
-<area shape="rect" id="Node000010" href="$group__elements.html#aa6b4ba04be5858b4943235801f034943" title=" " alt="" coords="429,251,555,287"/>
-<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="342,154,372,168,388,185,397,203,405,220,420,236,425,240,422,245,416,240,400,222,392,205,384,188,368,172,340,158"/>
-<area shape="rect" id="Node000006" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="614,73,739,97"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="556,82,599,82,599,88,556,88"/>
-<area shape="rect" id="Node000008" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="629,134,724,158"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="559,144,614,144,614,149,559,149"/>
+<area shape="rect" id="Node000001" title="Crossed lines, no fill. X marks the ...." alt="" coords="5,172,150,199"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="204,43,342,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,169,223,92,225,96,102,174"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7" title="Line primitive." alt="" coords="225,147,321,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="150,173,209,165,210,171,150,179"/>
+<area shape="rect" id="Node000011" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="206,197,340,224"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="150,192,191,197,190,203,150,197"/>
+<area shape="rect" id="Node000012" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="198,248,348,275"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="111,197,199,234,216,240,214,245,197,238,109,202"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="396,5,534,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="342,48,380,40,381,46,343,53"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#a306eac4c5a7ea755ab6375a65489366f" title=" " alt="" coords="407,72,523,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="313,144,391,116,393,121,315,149"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="404,139,526,181"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="322,157,389,157,389,163,322,163"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#ga4769af15793cb308d426abb5fd552df5" title=" " alt="" coords="407,205,523,248"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="316,171,349,183,393,198,391,204,347,188,314,177"/>
+<area shape="rect" id="Node000010" href="$group__elements.html#aa6b4ba04be5858b4943235801f034943" title=" " alt="" coords="407,272,523,315"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="323,169,350,183,367,202,375,221,383,239,398,258,401,261,397,265,394,262,378,242,370,223,362,205,346,187,320,173"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="582,80,699,107"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="524,91,567,91,567,96,524,96"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="596,147,685,173"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="526,157,581,157,581,163,526,163"/>
 </map>

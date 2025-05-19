@@ -1,27 +1,27 @@
 <map id="svg::paint_edges_with_char_index" name="svg::paint_edges_with_char_index">
-<area shape="rect" id="Node000001" title="Paint the edges of a physical page. Assumes page is square. / @rlen is height of painted rectangle fr..." alt="" coords="5,119,149,156"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a63bfafab00a3be5d02d17e0604b686ef" title="Rectangle at this point." alt="" coords="207,101,324,125"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,125,191,120,191,125,149,131"/>
-<area shape="rect" id="Node000013" href="$structsvg_1_1style.html#a67d14f365913125ab597def583559b5c" title="Convenience function to set all colors at once." alt="" coords="197,149,334,173"/>
-<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="149,144,182,148,181,153,149,149"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="382,46,515,82"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,98,367,83,368,88,313,103"/>
-<area shape="rect" id="Node000005" href="$namespacesvg.html#aab7d11a5ce14c5bfa6eeea480fddccde" title="Create rect_element at origin." alt="" coords="398,152,500,176"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="312,123,389,145,388,150,310,128"/>
-<area shape="rect" id="Node000004" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="563,5,711,29"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="515,45,571,31,572,36,517,50"/>
-<area shape="rect" id="Node000006" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="574,54,700,90"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="470,149,562,100,574,95,576,99,565,105,473,154"/>
-<area shape="rect" id="Node000008" href="$group__elements.html#a1b22cfab9437b40c8b877ffe5472ff02" title=" " alt="" coords="570,115,704,152"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="500,153,555,144,555,149,501,158"/>
-<area shape="rect" id="Node000009" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="570,176,704,213"/>
-<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="501,170,555,179,555,184,500,175"/>
-<area shape="rect" id="Node000011" href="$group__elements.html#gad01750ac554c6bd6871a930c90e17a04" title=" " alt="" coords="574,238,700,274"/>
-<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="473,174,565,223,576,228,574,233,562,228,470,179"/>
-<area shape="rect" id="Node000012" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="574,299,700,336"/>
-<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="461,175,502,227,532,257,565,284,572,289,569,293,562,289,528,261,498,230,457,178"/>
-<area shape="rect" id="Node000007" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="759,60,883,84"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="701,69,743,69,743,74,701,74"/>
-<area shape="rect" id="Node000010" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="773,183,868,206"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="704,192,757,192,757,197,704,197"/>
+<area shape="rect" id="Node000001" title="Paint the edges of a physical page. Assumes page is square. / @rlen is height of painted rectangle fr..." alt="" coords="5,127,140,169"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a63bfafab00a3be5d02d17e0604b686ef" title="Rectangle at this point." alt="" coords="194,109,304,136"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,136,178,130,179,135,140,141"/>
+<area shape="rect" id="Node000013" href="$structsvg_1_1style.html#a67d14f365913125ab597def583559b5c" title="Convenience function to set all colors at once." alt="" coords="188,160,310,187"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="140,155,173,160,172,165,140,160"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="358,48,479,91"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="293,106,343,90,344,95,294,111"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#aab7d11a5ce14c5bfa6eeea480fddccde" title="Create rect_element at origin." alt="" coords="370,164,467,191"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="294,134,362,156,360,161,292,139"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="527,5,662,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,49,530,34,532,39,480,54"/>
+<area shape="rect" id="Node000006" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="536,56,653,99"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="440,161,526,108,534,104,536,109,529,113,442,166"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#a1b22cfab9437b40c8b877ffe5472ff02" title=" " alt="" coords="534,123,655,165"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="467,166,518,156,519,161,468,171"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="534,189,655,232"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="468,184,519,194,518,199,467,189"/>
+<area shape="rect" id="Node000011" href="$group__elements.html#gad01750ac554c6bd6871a930c90e17a04" title=" " alt="" coords="536,256,653,299"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="442,189,529,242,536,246,534,251,526,246,440,193"/>
+<area shape="rect" id="Node000012" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="536,323,653,365"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="430,190,469,245,497,279,529,309,533,312,530,316,526,313,493,282,465,249,426,193"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="710,64,826,91"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="653,75,694,75,694,80,653,80"/>
+<area shape="rect" id="Node000010" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="723,197,812,224"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="656,208,708,208,708,213,656,213"/>
 </map>

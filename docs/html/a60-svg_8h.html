@@ -100,6 +100,7 @@ $(function(){ initResizable(false); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
 <code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -123,7 +124,7 @@ $(function(){ initResizable(false); });
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="a60-svg_8h__incl.svg" width="100%" height="453"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="a60-svg_8h__incl.svg" width="100%" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div>
 <p><a href="a60-svg_8h_source.html">Go to the source code of this file.</a></p>
@@ -168,6 +169,9 @@ Typedefs</h2></td></tr>
 <tr class="separator:a128598af8ab3a73f5d25ddd8575b8b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a915848d2fa32c5a4443025d38f629f5d" id="r_a915848d2fa32c5a4443025d38f629f5d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">svg::vrange</a> = std::vector&lt;<a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a>&gt;</td></tr>
 <tr class="separator:a915848d2fa32c5a4443025d38f629f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3a977b3ba28e5647518914fdf2ea62e" id="r_aa3a977b3ba28e5647518914fdf2ea62e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#aa3a977b3ba28e5647518914fdf2ea62e">svg::vspace</a> = std::vector&lt;double&gt;</td></tr>
+<tr class="memdesc:aa3a977b3ba28e5647518914fdf2ea62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split range, so one dimension of (x,y) cartesian plane.  <br /></td></tr>
+<tr class="separator:aa3a977b3ba28e5647518914fdf2ea62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabe2c7e16151253fd5bbbc2a3ddbd170" id="r_aabe2c7e16151253fd5bbbc2a3ddbd170"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#aabe2c7e16151253fd5bbbc2a3ddbd170">svg::vstrings</a> = <a class="el" href="namespacesvg.html#af5f869581be4b983df188993df43f2c4">strings</a></td></tr>
 <tr class="separator:aabe2c7e16151253fd5bbbc2a3ddbd170"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c943f2610ce0566f8cc86ffd76c2739" id="r_a7c943f2610ce0566f8cc86ffd76c2739"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a7c943f2610ce0566f8cc86ffd76c2739">svg::vvranges</a> = std::vector&lt;<a class="el" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">vrange</a>&gt;</td></tr>
@@ -199,6 +203,15 @@ Functions</h2></td></tr>
 <tr class="separator:ae42b583ceed2552c466993683f819ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0737c2bc885eed5614a3604bf1a472a6" id="r_a0737c2bc885eed5614a3604bf1a472a6"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1constants.html#a0737c2bc885eed5614a3604bf1a472a6">svg::constants::lessthan</a> ('&lt;')</td></tr>
 <tr class="separator:a0737c2bc885eed5614a3604bf1a472a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac004938f77cd6e1209c04946721f8f43" id="r_ac004938f77cd6e1209c04946721f8f43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#ac004938f77cd6e1209c04946721f8f43">svg::max_vrange</a> (const <a class="el" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;points, const <a class="el" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> pown, const double xscale=1, const double yscale=1)</td></tr>
+<tr class="memdesc:ac004938f77cd6e1209c04946721f8f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Just the range info, none of the temporary objects.  <br /></td></tr>
+<tr class="separator:ac004938f77cd6e1209c04946721f8f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9316267f4d5030ca298dbbe2d4c55b18" id="r_a9316267f4d5030ca298dbbe2d4c55b18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a9316267f4d5030ca298dbbe2d4c55b18">svg::max_vrange</a> (<a class="el" href="namespacesvg.html#aa3a977b3ba28e5647518914fdf2ea62e">vspace</a> &amp;xpoints, <a class="el" href="namespacesvg.html#aa3a977b3ba28e5647518914fdf2ea62e">vspace</a> &amp;ypoints, const <a class="el" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> pown)</td></tr>
+<tr class="memdesc:a9316267f4d5030ca298dbbe2d4c55b18"><td class="mdescLeft">&#160;</td><td class="mdescRight">For each dimension of vrnage, find min/max and return (xmax, ymax) NB: Assumes zero is min.  <br /></td></tr>
+<tr class="separator:a9316267f4d5030ca298dbbe2d4c55b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a146854def101fda6cf807910ae725526" id="r_a146854def101fda6cf807910ae725526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#aa3a977b3ba28e5647518914fdf2ea62e">vspace</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a146854def101fda6cf807910ae725526">svg::narrow_vspace</a> (const <a class="el" href="namespacesvg.html#aa3a977b3ba28e5647518914fdf2ea62e">vspace</a> &amp;points, <a class="el" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> pown)</td></tr>
+<tr class="memdesc:a146854def101fda6cf807910ae725526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Truncate double to double with pown signifigant digits.  <br /></td></tr>
+<tr class="separator:a146854def101fda6cf807910ae725526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7f04c2ea699a1b1e2e790de5ac33f38" id="r_aa7f04c2ea699a1b1e2e790de5ac33f38"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1constants.html#aa7f04c2ea699a1b1e2e790de5ac33f38">svg::constants::newline</a> ('\n')</td></tr>
 <tr class="separator:aa7f04c2ea699a1b1e2e790de5ac33f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e0b0d9314bc47324ee39884bf8bb2fd" id="r_a0e0b0d9314bc47324ee39884bf8bb2fd"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd">svg::constants::pi</a> (3.14159265358979323846)</td></tr>
@@ -214,6 +227,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac460bc8db60d85c3ae1cf8b1a903405e" id="r_ac460bc8db60d85c3ae1cf8b1a903405e"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e">svg::constants::space</a> (' ')</td></tr>
 <tr class="memdesc:ac460bc8db60d85c3ae1cf8b1a903405e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatting character constants.  <br /></td></tr>
 <tr class="separator:ac460bc8db60d85c3ae1cf8b1a903405e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab75e98b85793fbf54a37fbb78b478c5b" id="r_ab75e98b85793fbf54a37fbb78b478c5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#ab75e98b85793fbf54a37fbb78b478c5b">svg::split_vrange</a> (const <a class="el" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;cpoints, <a class="el" href="namespacesvg.html#aa3a977b3ba28e5647518914fdf2ea62e">vspace</a> &amp;xpoints, <a class="el" href="namespacesvg.html#aa3a977b3ba28e5647518914fdf2ea62e">vspace</a> &amp;ypoints, const double xscale=1, const double yscale=1)</td></tr>
+<tr class="memdesc:ab75e98b85793fbf54a37fbb78b478c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decompose/split 2D ranges to 1D spaces, perhaps with scaling.  <br /></td></tr>
+<tr class="separator:ab75e98b85793fbf54a37fbb78b478c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48ac748e89e22789d1772326a98dd7b6" id="r_a48ac748e89e22789d1772326a98dd7b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6">svg::string_replace</a> (std::string &amp;target, const std::string &amp;match, const std::string &amp;replace)</td></tr>
 <tr class="separator:a48ac748e89e22789d1772326a98dd7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade63c3902d37b4d4d207d38aad490c72" id="r_ade63c3902d37b4d4d207d38aad490c72"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1constants.html#ade63c3902d37b4d4d207d38aad490c72">svg::constants::tab</a> ('\t')</td></tr>
@@ -221,6 +237,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac10e7d47d031b121174fc0e65232980f" id="r_ac10e7d47d031b121174fc0e65232980f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#ac10e7d47d031b121174fc0e65232980f">svg::to_string</a> (<a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> p)</td></tr>
 <tr class="memdesc:ac10e7d47d031b121174fc0e65232980f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e" title="Point (x,y) in 2D space.">point_2t</a> to string.  <br /></td></tr>
 <tr class="separator:ac10e7d47d031b121174fc0e65232980f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1920c859565686aa7e28ecf5bf1b7ccc" id="r_a1920c859565686aa7e28ecf5bf1b7ccc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">vrange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a1920c859565686aa7e28ecf5bf1b7ccc">svg::union_vrange</a> (const <a class="el" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;r1, const <a class="el" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;r2)</td></tr>
+<tr class="memdesc:a1920c859565686aa7e28ecf5bf1b7ccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Union two ranges.  <br /></td></tr>
+<tr class="separator:a1920c859565686aa7e28ecf5bf1b7ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

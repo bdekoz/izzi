@@ -1,21 +1,21 @@
 <map id="a60::metadata::analyze_metadata_aggregate_chord" name="a60::metadata::analyze_metadata_aggregate_chord">
-<area shape="rect" id="Node000001" title="Analyze metadata directory or subset of it, and generate summary output for all in directory...." alt="" coords="5,99,182,135"/>
-<area shape="rect" id="Node000002" href="$namespacea60_1_1metadata.html#abb1e8fbeb00e7bf7a8f019c0fd951073" title="Analyze metadata directory or subset of it and generate summary output for all in directory." alt="" coords="230,99,406,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,114,214,114,214,120,182,120"/>
-<area shape="rect" id="Node000003" href="$namespacea60_1_1metadata.html#a1fde7b7617a6da1a221d09f4ce033ee9" title=" " alt="" coords="454,99,608,135"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="406,114,439,114,439,120,406,120"/>
-<area shape="rect" id="Node000004" href="$namespacea60_1_1metadata.html#a4c88caad75ba7fd9dffc58be1f715b28" title="Compute xoffset." alt="" coords="872,5,1002,42"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="571,96,611,79,656,64,760,41,857,28,857,33,761,47,657,69,613,84,573,101"/>
-<area shape="rect" id="Node000005" href="$namespacea60_1_1metadata.html#a0e1ca2f297681851edcf2f74d3bf663e" title="Grid, titles, labels for h_chord_graph. @yscale == how much to vertically scale the bar graph from ce..." alt="" coords="656,99,811,135"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="609,114,641,114,641,120,609,120"/>
-<area shape="rect" id="Node000006" href="$namespacea60_1_1metadata.html#a22b86d9f6417957b79f6e9dab13296dc" title=" " alt="" coords="859,92,1015,116"/>
-<area shape="poly" id="edge9_Node000003_Node000006" title=" " alt="" coords="596,95,656,84,753,80,844,87,843,92,753,85,657,89,597,101"/>
-<area shape="rect" id="Node000007" href="$namespacea60_1_1metadata.html#a2a619ed21560d442f5dfae5ea8101fce" title="Distance between label and top/bottom of line or text." alt="" coords="860,157,1014,181"/>
-<area shape="poly" id="edge10_Node000003_Node000007" title=" " alt="" coords="601,133,657,145,754,157,845,163,845,169,753,162,656,150,600,139"/>
-<area shape="rect" id="Node000008" href="$namespacea60_1_1metadata.html#a888d9b1e7402e335f8e7544373855a92" title=" " alt="" coords="862,206,1012,230"/>
-<area shape="poly" id="edge11_Node000003_Node000008" title=" " alt="" coords="572,133,657,166,755,190,847,205,846,210,753,195,656,172,570,138"/>
-<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="774,96,880,46,882,51,777,101"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="811,109,843,107,844,112,811,115"/>
-<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="809,133,873,150,872,155,807,139"/>
-<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="763,134,807,162,860,191,879,198,877,203,858,195,805,167,760,138"/>
+<area shape="rect" id="Node000001" title="Analyze metadata directory or subset of it, and generate summary output for all in directory...." alt="" coords="5,101,173,144"/>
+<area shape="rect" id="Node000002" href="$namespacea60_1_1metadata.html#abb1e8fbeb00e7bf7a8f019c0fd951073" title="Analyze metadata directory or subset of it and generate summary output for all in directory." alt="" coords="221,101,388,144"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,120,205,120,205,125,173,125"/>
+<area shape="rect" id="Node000003" href="$namespacea60_1_1metadata.html#a1fde7b7617a6da1a221d09f4ce033ee9" title=" " alt="" coords="436,101,577,144"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="389,120,420,120,420,125,389,125"/>
+<area shape="rect" id="Node000004" href="$namespacea60_1_1metadata.html#a4c88caad75ba7fd9dffc58be1f715b28" title="Compute xoffset." alt="" coords="828,5,945,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="546,98,584,81,625,65,722,43,812,30,813,35,723,48,626,71,586,86,549,103"/>
+<area shape="rect" id="Node000005" href="$namespacea60_1_1metadata.html#a0e1ca2f297681851edcf2f74d3bf663e" title="Grid, titles, labels for h_chord_graph. @yscale == how much to vertically scale the bar graph from ce..." alt="" coords="625,101,767,144"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="578,120,610,120,610,125,578,125"/>
+<area shape="rect" id="Node000006" href="$namespacea60_1_1metadata.html#a22b86d9f6417957b79f6e9dab13296dc" title=" " alt="" coords="815,84,958,111"/>
+<area shape="poly" id="edge9_Node000003_Node000006" title=" " alt="" coords="573,98,625,87,715,81,799,85,799,90,715,87,626,92,574,103"/>
+<area shape="rect" id="Node000007" href="$namespacea60_1_1metadata.html#a2a619ed21560d442f5dfae5ea8101fce" title="Distance between label and top/bottom of line or text." alt="" coords="818,136,955,163"/>
+<area shape="poly" id="edge10_Node000003_Node000007" title=" " alt="" coords="574,142,626,153,717,159,803,156,803,161,717,164,625,159,573,147"/>
+<area shape="rect" id="Node000008" href="$namespacea60_1_1metadata.html#a888d9b1e7402e335f8e7544373855a92" title=" " alt="" coords="819,191,954,217"/>
+<area shape="poly" id="edge11_Node000003_Node000008" title=" " alt="" coords="560,142,626,164,718,183,804,194,803,200,717,188,625,169,558,147"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="739,99,828,53,830,58,741,103"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="767,111,799,106,800,112,768,116"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="768,130,803,135,802,140,767,135"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="747,142,816,172,838,182,836,187,814,177,745,147"/>
 </map>

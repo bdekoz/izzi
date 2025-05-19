@@ -1,9 +1,9 @@
 <map id="svg::adjust_angle_at_orbit_for_distance" name="svg::adjust_angle_at_orbit_for_distance">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,140,64"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#ad731faf1d114f53f85c018df27e301e2" title="Find cartesian distance between two 2D points." alt="" coords="188,5,339,29"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,33,172,28,173,33,141,38"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="189,54,338,90"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,52,174,57,173,62,140,57"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="387,54,535,90"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="338,69,372,69,372,74,338,74"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,131,69"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ad731faf1d114f53f85c018df27e301e2" title="Find cartesian distance between two 2D points." alt="" coords="179,5,317,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,35,163,30,164,35,132,40"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="179,56,317,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,56,164,61,163,66,131,61"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="365,56,503,99"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="318,75,349,75,349,80,318,80"/>
 </map>
