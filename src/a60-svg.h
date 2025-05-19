@@ -111,15 +111,11 @@ union_vrange(const vrange& r1, const vrange& r2)
 }
 
 
-/// Combine two vranges, combine values, find min/max and return (xmax, ymax)
+/// For each dimension of vrnage, find min/max and return (xmax, ymax)
 /// NB: Assumes zero is min.
 point_2t
-minmax_vrange(const vrange& r1,
-	      const double xscale = 1, const double yscale = 1)
+max_vrange(vspace& xpoints, vspace& ypoints, const uint pown)
 {
-  vspace xpoints;
-  vspace ypoints;
-  split_vrange(r1, xpoints, ypoints, xscale, yscale);
   sort(xpoints.begin(), xpoints.end());
   sort(ypoints.begin(), ypoints.end());
 
@@ -128,7 +124,6 @@ minmax_vrange(const vrange& r1,
   const bool padp(true);
   if (padp)
     {
-      const uint pown = 1;
       const double sigd = pow(10, pown);
 
       const double dx = xpoints.back();
@@ -145,6 +140,19 @@ minmax_vrange(const vrange& r1,
   // Find combined ranges, assume zero start.
   point_2t rangemaxx = std::make_tuple(xpoints.back(), ypoints.back());
   return rangemaxx;
+}
+
+
+/// Just the range info, none of the temporary objects.
+point_2t
+max_vrange(const vrange& points, const uint pown,
+	   const double xscale = 1, const double yscale = 1)
+{
+  vspace pointsx;
+  vspace pointsy;
+  split_vrange(points, pointsx, pointsy, xscale, yscale);
+  point_2t ret = max_vrange(pointsx, pointsy, pown);
+  return ret;
 }
 
 

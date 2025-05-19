@@ -182,7 +182,7 @@ svg_element
 make_line_graph_annotations(const area<> aplate,
 			    const vrange& points,
 			    const graph_rstate& gstate,
-			    const double xscale = 1, const double yscale = 1,
+			    const double xscalein = 1, const double yscalein = 1,
 			    const typography typo = k::apercu_typo)
 {
   using namespace std;
@@ -228,15 +228,15 @@ make_line_graph_annotations(const area<> aplate,
   // NB: Assume pointsx/pointsy are monotonically increasing.
   anntypo._M_size = graph_rstate::tticsz;
 
-  // Separate tic label values for each (x, y) axis.
-  vspace pointsx;
-  vspace pointsy;
-  split_vrange(points, pointsx, pointsy, xscale, yscale);
-  auto [ maxx, maxy ] = minmax_vrange(points, xscale, yscale); // round up
-  pointsx.push_back(maxx);
-  pointsy.push_back(maxy);
+  // Separate tic label values for each (x, y) axis, find ranges for each.
+  auto [ maxx, maxy ] = max_vrange(points, gstate.xticdigits, xscalein, yscalein);
   auto minx = 0;
   auto miny = 0;
+
+  const double xrange(maxx - minx);
+  const double xscale(gwidth / xrange);
+  const double yrange(maxy - miny);
+  const double yscale(gheight / yrange);
 
   // Generate tic marks
   if (gstate.is_visible(select::ticks))
@@ -244,53 +244,35 @@ make_line_graph_annotations(const area<> aplate,
       lanno.add_raw(group_element::start_group("ticks-" + gstate.title));
 
       // X tic labels
-      const double xrange(maxx - minx);
-      const double xscale(gwidth / xrange);
-
       const double ygo = gstate.marginy + gheight + graph_rstate::th1sz;
 
-      // Filter tic labels to unique smallest subset of significant labels.
-      vspace xpointsn = narrow_vspace(pointsx, gstate.xticdigits);
-
-      // Add x tic labels.
-      std::set<double> xpoints(xpointsn.begin(), xpointsn.end());
-      for (const double& x: xpoints)
+      // Filter tic labels to unique smallest subset of significant
+      // lables of xticsteps.
+      // const double xdelta = 1.0 / (10 * gstate.yticdigits);
+      const double xdelta = 0.1;
+      for (double x = minx; x < maxx + xdelta; x += xdelta)
 	{
-	  //const uint xui = x * xticsteps;
-	  const double xto = gstate.marginx + (x * xscale);
-
+	  const double xto = chartxo + (x * xscale);
 	  ostringstream oss;
 	  oss << fixed << setprecision(gstate.xticdigits) << x;
 	  const string sxui = oss.str() + gstate.xticu;
-
 	  styled_text(lanno, sxui, {xto, ygo}, anntypo);
 	}
 
       // Y tic labels
-      const double yrange(maxy - miny);
-      const double yscale(gheight / yrange);
-
       // Positions for left and right y-axis tic labels.
-      const double xgol = gstate.marginx - graph_rstate::th1sz;		// left
-      const double xgor = gstate.marginx + gwidth + graph_rstate::th1sz;// right
+      // left
+      const double xgol = gstate.marginx - graph_rstate::th1sz;
+      // right
+      const double xgor = gstate.marginx + gwidth + graph_rstate::th1sz;
 
       // Filter tic labels to unique smallest subset of significant
       // lables of yticsteps.
       const double ydelta = yrange / gstate.yticdigits;
-
-      auto ynarrowl = [ydelta](const double& d)
-		      { return static_cast<uint>(d / ydelta); };
-      vector<uint> ypointsi(pointsy.size());
-      std::transform(pointsy.begin(), pointsy.end(), ypointsi.begin(),
-		     ynarrowl);
-      std::set<double> ypoints(ypointsi.begin(), ypointsi.end());
-
-      // Add y tic labels.
-      for (const double& y: ypoints)
+      for (double y = miny; y < maxy + ydelta; y += ydelta)
 	{
-	  const uint yui = y * ydelta;
-	  const double yto = chartyo - (yui * yscale);
-	  const string syui = std::to_string(yui) + gstate.yticu;
+	  const double yto = chartyo - (y * yscale);
+	  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
 	  styled_text(lanno, syui, {xgol, yto}, anntypo);
 	  styled_text(lanno, syui, {xgor, yto}, anntypo);
 	}
@@ -298,7 +280,7 @@ make_line_graph_annotations(const area<> aplate,
       lanno.add_raw(group_element::finish_group());
     }
 
-  // Horizontal lines linking y-axis tic labels, perhaps with magnification-ready text.
+  // Horizontal lines linking y-axis tic labels, with magnification-ready text.
   if (gstate.is_visible(select::linex))
     {
       lanno.add_raw(group_element::start_group("ticks-" + gstate.title));

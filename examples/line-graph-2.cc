@@ -60,7 +60,7 @@ test_chart()
   obj.add_element(anno);
 
   // Find combined ranges, assume zero start.
-  auto [ maxx, maxy ] = minmax_vrange(vunion, 1000);
+  auto [ maxx, maxy ] = max_vrange(vunion, graph_rstate::xticdigits, 1000);
   point_2t rangex = make_tuple(0, maxx * 1000);
   point_2t rangey = make_tuple(0, maxy);
 

@@ -40,7 +40,7 @@ test_chart()
 
   // Deserialize data.
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  auto [ maxx, maxy ] = minmax_vrange(vr1, 1000);
+  auto [ maxx, maxy ] = max_vrange(vr1, graph_rstate::xticdigits, 1000);
   point_2t rangex = make_tuple(0, maxx * 1000);
   point_2t rangey = make_tuple(0, maxy);
 
