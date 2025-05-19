@@ -46,9 +46,8 @@ test_chart()
   graph_rstate gs2 { select::vector | select::echo, "chrome", f1, f2,
 		     "ms", "%", styl1,
 		     { "c2wcaglg", "3", "", "round", "" } };
-  graph_rstate gsa { {select::ticks}, "chrome", f1, f2, "s", "%",
-		     styl2, { "", "", "", "", "" } };
-
+  graph_rstate gsa { select::ticks | select::linex, "annotation", f1, f2,
+		     "s", "%", styl2, { "", "", "", "", "" } };
 
   // Deserialize A/B data.
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);

@@ -238,18 +238,16 @@ make_line_graph_annotations(const area<> aplate,
   const double yrange(maxy - miny);
   const double yscale(gheight / yrange);
 
+  // const double xdelta = 1.0 / (10 * gstate.yticdigits);
+  const double xdelta = 0.1;
+  const double ydelta = yrange / gstate.yticdigits;
+
   // Generate tic marks
   if (gstate.is_visible(select::ticks))
     {
-      lanno.add_raw(group_element::start_group("ticks-" + gstate.title));
-
       // X tic labels
+      lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
       const double ygo = gstate.marginy + gheight + graph_rstate::th1sz;
-
-      // Filter tic labels to unique smallest subset of significant
-      // lables of xticsteps.
-      // const double xdelta = 1.0 / (10 * gstate.yticdigits);
-      const double xdelta = 0.1;
       for (double x = minx; x < maxx + xdelta; x += xdelta)
 	{
 	  const double xto = chartxo + (x * xscale);
@@ -258,17 +256,13 @@ make_line_graph_annotations(const area<> aplate,
 	  const string sxui = oss.str() + gstate.xticu;
 	  styled_text(lanno, sxui, {xto, ygo}, anntypo);
 	}
+      lanno.add_raw(group_element::finish_group());
 
       // Y tic labels
       // Positions for left and right y-axis tic labels.
-      // left
-      const double xgol = gstate.marginx - graph_rstate::th1sz;
-      // right
-      const double xgor = gstate.marginx + gwidth + graph_rstate::th1sz;
-
-      // Filter tic labels to unique smallest subset of significant
-      // lables of yticsteps.
-      const double ydelta = yrange / gstate.yticdigits;
+      lanno.add_raw(group_element::start_group("tic-y-" + gstate.title));
+      const double xgol = gstate.marginx - graph_rstate::th1sz;			// left
+      const double xgor = gstate.marginx + gwidth + graph_rstate::th1sz;       // right
       for (double y = miny; y < maxy + ydelta; y += ydelta)
 	{
 	  const double yto = chartyo - (y * yscale);
@@ -276,18 +270,22 @@ make_line_graph_annotations(const area<> aplate,
 	  styled_text(lanno, syui, {xgol, yto}, anntypo);
 	  styled_text(lanno, syui, {xgor, yto}, anntypo);
 	}
-
       lanno.add_raw(group_element::finish_group());
     }
 
   // Horizontal lines linking y-axis tic labels, with magnification-ready text.
   if (gstate.is_visible(select::linex))
     {
-      lanno.add_raw(group_element::start_group("ticks-" + gstate.title));
+      lanno.add_raw(group_element::start_group("tic-y-lines-" + gstate.title));
 
       style hlstyl = gstate.lstyle;
-      hlstyl._M_stroke_color = color::gray20;
-      line_element lx = make_line({chartxo, chartyo}, {chartxe, chartyo}, hlstyl);
+      hlstyl._M_stroke_color = color::gray10;
+      for (double y = miny + ydelta; y < maxy + ydelta; y += ydelta)
+	{
+	  const double yto = chartyo - (y * yscale);
+	  line_element lxe = make_line({chartxo + graph_rstate::th1sz, yto}, {chartxe - graph_rstate::th1sz, yto}, hlstyl);
+	  lanno.add_element(lxe);
+	}
 
       lanno.add_raw(group_element::finish_group());
     }
