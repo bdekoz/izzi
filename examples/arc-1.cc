@@ -28,11 +28,10 @@ test_arc(std::string ofile)
   string sw = make_path_arc_circumference(ps, pw, r);
   string nw = make_path_arc_circumference(pw, pn, r);
 
-  const bool is_visible = true;
   const string arc_name("arc-v");
 
   // Make arc path 1
-  path_element parc1(is_visible);
+  path_element parc1;
   path_element::data da1 = { nw, 0 };
   parc1.start_element(arc_name + "1");
   parc1.add_data(da1);
@@ -43,7 +42,7 @@ test_arc(std::string ofile)
   // Make arc path 2
   const int rlarge = r * 2;
   style s2 = { color::green, 0.0, color::green, 1.0, 1.5 };
-  path_element parc2(is_visible);
+  path_element parc2;
   const string arc2 = make_path_arc_closed(cp, get_circumference_point_d(dn, rlarge, cp),
 					   get_circumference_point_d(dw, rlarge, cp),
 					   rlarge, 1, 1);

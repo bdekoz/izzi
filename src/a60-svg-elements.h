@@ -58,10 +58,14 @@ struct element_base
   void
   str(const string& s) { return _M_sstream.str(s); }
 
-  // Add sub element.
+  // Add sub element e to base object
   void
   add_element(const element_base& e)
   { _M_sstream << e.str(); }
+
+  // Add sub element e to base object in non-visible defs section
+  void
+  store_element(const element_base& e);
 
   // Add raw string to group; filter, blend/gradient elements.
   void
@@ -177,7 +181,7 @@ struct group_element : virtual public element_base
 
 void
 group_element::finish_element()
-  { _M_sstream << finish_group() << k::newline; }
+{ _M_sstream << finish_group() << k::newline; }
 
 
 /**
@@ -191,9 +195,17 @@ group_element::finish_element()
  */
 struct defs_element : virtual public element_base
 {
+  static string
+  start_defs()
+  { return "<defs>"; }
+
+  static string
+  finish_defs()
+  { return "</defs>"; }
+
   void
   start_element()
-  { _M_sstream << "<defs>" << k::newline; }
+  { _M_sstream << start_defs() << k::newline; }
 
   void
   finish_element();
@@ -201,7 +213,15 @@ struct defs_element : virtual public element_base
 
 void
 defs_element::finish_element()
-{ _M_sstream << "</defs>" << k::newline; }
+{ _M_sstream << finish_defs() << k::newline; }
+
+void
+element_base::store_element(const element_base& e)
+{
+  _M_sstream << defs_element::start_defs();
+  _M_sstream << e.str();
+  _M_sstream << defs_element::finish_defs();
+}
 
 
 /**
@@ -922,7 +942,7 @@ polyline_element::finish_element()
    Attributes:
    d, pathLength
 */
-struct path_element : virtual public defs_element
+struct path_element : virtual public element_base
 {
   struct data
   {
@@ -931,11 +951,6 @@ struct path_element : virtual public defs_element
   };
 
   static constexpr const char*	pair_finish_tag = "</path>";
-
-  // Put in defs section, making it not drawn but still usefule for text_path.
-  bool			_M_visible;
-
-  path_element(const bool visible = true) : _M_visible(visible) { }
 
   /// Either serialize immediately (as below), or create data structure
   /// that adds data to data_vec and then finish_element serializes.
@@ -954,19 +969,11 @@ struct path_element : virtual public defs_element
 
   void
   start_element()
-  {
-    if (!_M_visible)
-      defs_element::start_element();
-    _M_sstream << "<path ";
-  }
+  { _M_sstream << "<path "; }
 
   void
   start_element(const string name)
-  {
-    if (!_M_visible)
-      defs_element::start_element();
-    _M_sstream << "<path id=" << k::quote << name << k::quote << k::space;
-  }
+  { _M_sstream << "<path id=" << k::quote << name << k::quote << k::space; }
 
   void
   finish_element();
@@ -976,8 +983,6 @@ void
 path_element::finish_element()
 {
   _M_sstream  << element_base::self_finish_tag;
-  if (!_M_visible)
-    defs_element::finish_element();
   _M_sstream << k::newline;
 }
 

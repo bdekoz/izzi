@@ -106,13 +106,13 @@ direction_arc_title_at(svg_element& obj, const point_2t origin,
   string titlearc = make_path_arc_circumference(pmax, pmin, radius);
 
   string arc_name("arc-text");
-  path_element parc(false);
+  path_element parc;
   path_element::data da = { titlearc, 0 };
   parc.start_element(arc_name);
   parc.add_data(da);
   parc.add_style(typo._M_style);
   parc.finish_element();
-  obj.add_element(parc);
+  obj.store_element(parc);
 
   // Put it together.
   text_element::data dt = { 0, 0, title, typo };

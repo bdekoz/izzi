@@ -24,9 +24,8 @@ test_arc(std::string ofile)
   string nw = make_path_arc_circumference(p3, p0, r);
 
   // Make arc path
-  const bool is_visible = true;
   string arc_name("arc");
-  path_element parc(is_visible);
+  path_element parc;
   path_element::data da = { nw, 0 };
   parc.start_element(arc_name);
   parc.add_data(da);

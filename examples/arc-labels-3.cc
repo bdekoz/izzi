@@ -34,7 +34,7 @@ test_arc(std::string ofile)
 
   // Make arc 1 vector path
   string arc_namev("arc-v");
-  path_element parcv(true);
+  path_element parcv;
   path_element::data dav = { make_path_arc_circumference(p0, p3, r, 1), 0 };
   parcv.start_element(arc_namev);
   parcv.add_data(dav);
@@ -42,17 +42,16 @@ test_arc(std::string ofile)
   parcv.finish_element();
   obj.add_element(parcv);
 
-  const bool is_visible = false;
   string arc_name("arc-text-");
 
   // Make arc 1 text path
-  path_element parc(is_visible);
+  path_element parc;
   path_element::data da = { nw, 0 };
   parc.start_element(arc_name + to_string(1));
   parc.add_data(da);
   parc.add_style(s);
   parc.finish_element();
-  obj.add_element(parc);
+  obj.store_element(parc);
 
   // Make label text 1 and style it.
   const string text("web vitals 2020");
@@ -70,14 +69,14 @@ test_arc(std::string ofile)
   point_2t p20 = get_circumference_point_d(zero_angle_north_cw(0), r * 2, cp);
   point_2t p21 = get_circumference_point_d(zero_angle_north_cw(90), r * 2, cp);
 
-  path_element parc2(is_visible);
+  path_element parc2;
   string nw2 = make_path_arc_circumference(p20, p21, r * 2, 0, 1);
   path_element::data da2 = { nw2, 0 };
   parc2.start_element(arc_name + to_string(2));
   parc2.add_data(da2);
   parc2.add_style(s);
   parc2.finish_element();
-  obj.add_element(parc2);
+  obj.store_element(parc2);
 
   // Put it together 2.
   text_element::data dt2 = { 0, 0, "START", typoleft };
@@ -91,14 +90,14 @@ test_arc(std::string ofile)
   // Make arc 3 text path
   point_2t p22 = get_circumference_point_d(zero_angle_north_cw(180), r * 2, cp);
   point_2t p23 = get_circumference_point_d(zero_angle_north_cw(270), r * 2, cp);
-  path_element parc3(is_visible);
+  path_element parc3;
   string nw3 = make_path_arc_circumference(p22, p23, r * 2, 0, 1);
   path_element::data da3 = { nw3, 0 };
   parc3.start_element(arc_name + to_string(3));
   parc3.add_data(da3);
   parc3.add_style(s);
   parc3.finish_element();
-  obj.add_element(parc3);
+  obj.store_element(parc3);
 
   // Put it together 3.
   text_element::data dt3 = { 0, 0, "END", typoleft };
