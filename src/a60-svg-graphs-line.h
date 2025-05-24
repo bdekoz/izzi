@@ -227,6 +227,7 @@ make_line_graph_annotations(const area<> aplate,
   // Base typo for tic labels.
   // NB: Assume pointsx/pointsy are monotonically increasing.
   anntypo._M_size = graph_rstate::tticsz;
+  anntypo._M_baseline = typography::baseline::central;
 
   // Separate tic label values for each (x, y) axis, find ranges for each.
   auto [ maxx, maxy ] = max_vrange(points, gstate.xticdigits, xscalein, yscalein);
@@ -263,7 +264,8 @@ make_line_graph_annotations(const area<> aplate,
       lanno.add_raw(group_element::start_group("tic-y-" + gstate.title));
       const double xgol = gstate.marginx - graph_rstate::th1sz;			// left
       const double xgor = gstate.marginx + gwidth + graph_rstate::th1sz;       // right
-      for (double y = miny; y < maxy + ydelta; y += ydelta)
+      const double starty = miny != 0 ? miny : miny + ydelta; // skip zero label
+      for (double y = starty; y < maxy + ydelta; y += ydelta)
 	{
 	  const double yto = chartyo - (y * yscale);
 	  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
@@ -273,25 +275,30 @@ make_line_graph_annotations(const area<> aplate,
       lanno.add_raw(group_element::finish_group());
     }
 
-  // Horizontal lines linking y-axis tic labels, with magnification-ready text.
+  // Horizontal lines linking left and right y-axis tic label value to each other,
+  // perhaps with magnification-ready micro text.
   if (gstate.is_visible(select::linex))
     {
       lanno.add_raw(group_element::start_group("tic-y-lines-" + gstate.title));
 
       style hlstyl = gstate.lstyle;
       hlstyl._M_stroke_color = color::gray10;
+
       anntypo._M_size = 3;
+      anntypo._M_style.set_colors(color::gray20);
       for (double y = miny + ydelta; y < maxy + ydelta; y += ydelta)
 	{
+	  // Base line layer.
 	  const double yto = chartyo - (y * yscale);
 	  line_element lxe = make_line({chartxo + graph_rstate::th1sz, yto},
 				       {chartxe - graph_rstate::th1sz, yto}, hlstyl);
 	  lanno.add_element(lxe);
 
-	  // Add y-axis tic numbers along line for magnification guides.
+	  // Add y-axis tic numbers along line for use when magnified.
 	  if (gstate.is_visible(select::alt))
 	    {
-	      for (double x = minx; x < maxx + xdelta; x += xdelta)
+	      // Skip first and last as covered by either Y-axes tic marks.
+	      for (double x = minx + xdelta; x < maxx; x += xdelta)
 		{
 		  const double xto = chartxo + (x * xscale);
 		  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
