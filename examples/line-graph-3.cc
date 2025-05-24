@@ -40,14 +40,17 @@ test_chart()
   //svg::select glayers { select::ticks | select::axis };
   //svg::select glayers { select::ticks | select::vector };
 
-  graph_rstate gs1 { select::vector, "firefox", f1, f2,
-		     "ms", "%", styl3,
+  graph_rstate gs1 { select::vector,
+		     "firefox", f1, f2, "ms", "%", styl3,
 		     { "r2wcadg", "1 2", "", "triangle", "" } };
-  graph_rstate gs2 { select::vector | select::echo, "chrome", f1, f2,
-		     "ms", "%", styl1,
+
+  graph_rstate gs2 { select::vector | select::echo,
+		     "chrome", f1, f2, "ms", "%", styl1,
 		     { "c2wcaglg", "3", "", "round", "" } };
-  graph_rstate gsa { select::ticks | select::linex, "annotation", f1, f2,
-		     "s", "%", styl2, { "", "", "", "", "" } };
+
+  graph_rstate gsa { select::ticks | select::linex | select::alt,
+		     "annotation", f1, f2, "s", "%", styl2,
+		     { "", "", "", "", "" } };
 
   // Deserialize A/B data.
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);

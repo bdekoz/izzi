@@ -243,11 +243,11 @@ make_line_graph_annotations(const area<> aplate,
   const double ydelta = yrange / gstate.yticdigits;
 
   // Generate tic marks
+  const double ygo = gstate.marginy + gheight + graph_rstate::th1sz;
   if (gstate.is_visible(select::ticks))
     {
       // X tic labels
       lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
-      const double ygo = gstate.marginy + gheight + graph_rstate::th1sz;
       for (double x = minx; x < maxx + xdelta; x += xdelta)
 	{
 	  const double xto = chartxo + (x * xscale);
@@ -280,12 +280,24 @@ make_line_graph_annotations(const area<> aplate,
 
       style hlstyl = gstate.lstyle;
       hlstyl._M_stroke_color = color::gray10;
+      anntypo._M_size = 3;
       for (double y = miny + ydelta; y < maxy + ydelta; y += ydelta)
 	{
 	  const double yto = chartyo - (y * yscale);
 	  line_element lxe = make_line({chartxo + graph_rstate::th1sz, yto},
 				       {chartxe - graph_rstate::th1sz, yto}, hlstyl);
 	  lanno.add_element(lxe);
+
+	  // Add y-axis tic numbers along line for magnification guides.
+	  if (gstate.is_visible(select::alt))
+	    {
+	      for (double x = minx; x < maxx + xdelta; x += xdelta)
+		{
+		  const double xto = chartxo + (x * xscale);
+		  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
+		  styled_text(lanno, syui, {xto, yto}, anntypo);
+		}
+	    }
 	}
 
       lanno.add_raw(group_element::finish_group());
