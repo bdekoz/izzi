@@ -283,7 +283,8 @@ make_line_graph_annotations(const area<> aplate,
       for (double y = miny + ydelta; y < maxy + ydelta; y += ydelta)
 	{
 	  const double yto = chartyo - (y * yscale);
-	  line_element lxe = make_line({chartxo + graph_rstate::th1sz, yto}, {chartxe - graph_rstate::th1sz, yto}, hlstyl);
+	  line_element lxe = make_line({chartxo + graph_rstate::th1sz, yto},
+				       {chartxe - graph_rstate::th1sz, yto}, hlstyl);
 	  lanno.add_element(lxe);
 	}
 
