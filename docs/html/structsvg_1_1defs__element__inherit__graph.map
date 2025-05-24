@@ -1,13 +1,11 @@
 <map id="svg::defs_element" name="svg::defs_element">
-<area shape="rect" id="Node000001" title=" " alt="" coords="158,80,271,107"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#structsvg_1_1gradient__element" title=" " alt="" coords="72,155,208,181"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,119,155,156,151,152,189,116"/>
-<area shape="rect" id="Node000006" href="$group__elements.html#structsvg_1_1path__element" title=" " alt="" coords="232,155,347,181"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="240,116,278,152,274,156,236,119"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#structsvg_1_1element__base" title="Abstract base class for all SVG Elements." alt="" coords="157,5,272,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,48,217,80,212,80,212,48"/>
-<area shape="rect" id="Node000004" href="$group__elements.html#structsvg_1_1linear__gradient" title="Linear gradients https://developer.mozilla.org/en&#45;US/docs/Web/SVG/Element/linearGradient." alt="" coords="5,229,128,256"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="118,194,81,231,77,227,114,191"/>
-<area shape="rect" id="Node000005" href="$group__elements.html#structsvg_1_1radial__gradient" title="Circular gradients https://developer.mozilla.org/en&#45;US/docs/Web/SVG/Element/radialGradient." alt="" coords="152,229,274,256"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="165,191,202,227,199,231,162,194"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="87,77,209,101"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#structsvg_1_1gradient__element" title=" " alt="" coords="76,149,220,172"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="150,116,150,148,145,148,145,116"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#structsvg_1_1element__base" title="Abstract base class for all SVG Elements." alt="" coords="85,5,210,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,45,150,77,145,77,145,45"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#structsvg_1_1linear__gradient" title="Linear gradients https://developer.mozilla.org/en&#45;US/docs/Web/SVG/Element/linearGradient." alt="" coords="5,220,136,244"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="126,185,84,222,81,218,123,181"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#structsvg_1_1radial__gradient" title="Circular gradients https://developer.mozilla.org/en&#45;US/docs/Web/SVG/Element/radialGradient." alt="" coords="160,220,290,244"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="173,181,215,218,211,222,170,185"/>
 </map>

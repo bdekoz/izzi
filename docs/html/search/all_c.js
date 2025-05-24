@@ -25,6 +25,7 @@ var searchData=
   ['linecap_22',['linecap',['../structsvg_1_1stroke__style.html#ad47f71fbaac8ba3aa83b5f69227b1082',1,'svg::stroke_style']]],
   ['linex_23',['linex',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a7af3f32e7f6f3bd3fd8cc047c1ba8ee6',1,'svg']]],
   ['liney_24',['liney',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a22ba1f9d2f01584a436f3e60567247a5',1,'svg']]],
-  ['lstyle_25',['lstyle',['../structsvg_1_1graph__rstate.html#abbbcc01d132bb79b12e3ff82d08e1572',1,'svg::graph_rstate']]],
-  ['lsz_26',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata']]]
+  ['link_5felement_25',['link_element',['../group__elements.html#structsvg_1_1link__element',1,'svg']]],
+  ['lstyle_26',['lstyle',['../structsvg_1_1graph__rstate.html#abbbcc01d132bb79b12e3ff82d08e1572',1,'svg::graph_rstate']]],
+  ['lsz_27',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata']]]
 ];

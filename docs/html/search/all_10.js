@@ -10,7 +10,7 @@ var searchData=
   ['palette_5fqf_7',['palette_qf',['../namespacesvg.html#a2efb35a28f287b7e796bca5012bae2c8',1,'svg']]],
   ['palette_5fqi_8',['palette_qi',['../namespacesvg.html#a0b8a14877328951480552eac5b904979',1,'svg']]],
   ['palevioletred_9',['palevioletred',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1af563b4203617143423a84a1936dfdd69',1,'svg']]],
-  ['path_5felement_10',['path_element',['../group__elements.html#structsvg_1_1path__element',1,'svg::path_element'],['../group__elements.html#a4b1f09e62cadcaef08acdf086511ba1d',1,'svg::path_element::path_element()']]],
+  ['path_5felement_10',['path_element',['../group__elements.html#structsvg_1_1path__element',1,'svg']]],
   ['path_5flength_11',['path_length',['../structsvg_1_1stroke__style.html#a223610515f8f7cd358a2ffb72103bb75',1,'svg::stroke_style']]],
   ['path_5fname_12',['path_name',['../group__elements.html#a587c09f176fe7379d00f62fca012cbe2',1,'svg::text_path_element']]],
   ['peony_13',['peony',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1afd990eff10b3157097bfaa0fac56caa9',1,'svg']]],
