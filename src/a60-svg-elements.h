@@ -58,14 +58,14 @@ struct element_base
   void
   str(const string& s) { return _M_sstream.str(s); }
 
+  // Add sub element e to base object in non-visible defs section
+  void
+  store_element(const element_base& e);
+
   // Add sub element e to base object
   void
   add_element(const element_base& e)
   { _M_sstream << e.str(); }
-
-  // Add sub element e to base object in non-visible defs section
-  void
-  store_element(const element_base& e);
 
   // Add raw string to group; filter, blend/gradient elements.
   void
@@ -222,6 +222,37 @@ element_base::store_element(const element_base& e)
   _M_sstream << e.str();
   _M_sstream << defs_element::finish_defs();
 }
+
+
+/**
+   Link SVG element. a
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/a
+
+   Attributes:
+   id
+ */
+struct link_element : virtual public element_base
+{
+  void
+  start_element()
+  { _M_sstream << "<a "; }
+
+  void
+  finish_element();
+
+  void
+  add_data(const string& url)
+  {
+    _M_sstream << "href=" << k::quote << url << k::quote;
+    _M_sstream << element_base::finish_tag;
+  }
+};
+
+void
+link_element::finish_element()
+{ _M_sstream << "</a>" << k::newline; }
 
 
 /**
