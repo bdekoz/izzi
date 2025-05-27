@@ -794,8 +794,8 @@ make_path_center_mark(const point_2t& origin, const style styl,
 
 /// Crossed lines, no fill. X marks the ....
 string
-make_crossed_lines(const point_2t origin, const style s, const double radius,
-		   const double tiltd = 0.0)
+make_crossed_lines(const point_2t origin, const style s,
+		   const double radius, const double tiltd = 0.0)
 {
   auto d0 = zero_angle_north_cw(0 + tiltd);
   auto d6 = zero_angle_north_cw(180 + tiltd);
@@ -825,6 +825,59 @@ point_to_crossed_lines(svg_element& obj, const point_2t origin,
 {
   string pl = make_crossed_lines(origin, styl, radius, tiltd);
   obj.add_raw(pl);
+}
+
+
+/// Make grid palette for display.
+/// NB @klrs can be color_qis or array/palette.
+svg_element
+display_color_qis(const auto& klrs,
+		  const area<> a, const typography& typobase)
+{
+  const auto [ awidth, aheight ] = a;
+
+  typography typo = typobase;
+  typo._M_style = k::w_style;
+  typo._M_size = 9;
+  typo._M_align = typography::align::left;
+  typo._M_baseline = typography::baseline::central;
+  typo._M_anchor = typography::anchor::start;
+
+  // Draw out colors.
+  auto rwidth = 20;
+  auto rheight = 80;
+  auto rspace = 4;
+  auto typsz = 7;
+
+  // Turn off RAII.
+  svg_element obj("color_qis_" + std::to_string(klrs.size()) + "_palette",
+		  a, false);
+  obj.start();
+
+  auto x = rwidth, y = rheight;
+  auto xoffset = 0;
+  for (const auto& klr : klrs)
+    {
+      // Color block
+      const style s = { klr, 1.0, klr, 0.0, 2 };
+      point_2t p = { x + xoffset, y };
+      point_to_rect_centered(obj, p, s, rwidth, rheight);
+
+      // Label.
+      sized_text_r(obj, typo, typsz, to_string(klr),
+		   x + xoffset, y - rheight / 2 + rspace, 90);
+
+      if (xoffset + rwidth + rspace < awidth - rwidth - rspace)
+	xoffset += rwidth + rspace;
+      else
+	{
+	  xoffset = 0;
+	  y += (rheight + rspace + rspace);
+	}
+    }
+
+  obj.finish_element();
+  return obj;
 }
 
 } // namespace svg

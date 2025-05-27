@@ -3,7 +3,7 @@
 // alpha60
 // bittorrent x scrape x data + analytics
 
-// Copyright (c) 2024, Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (c) 2024-2025, Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60 library.  This library is free
 // software; you can redistribute it and/or modify it under the terms
@@ -16,10 +16,11 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // General Public License for more details.
 
-#ifndef MiL_SVG_COLOR_COLORBAND_H
-#define MiL_SVG_COLOR_COLORBAND_H 1
+#ifndef MiL_SVG_COLOR_BAND_H
+#define MiL_SVG_COLOR_BAND_H 1
 
 //#include "a60-svg-color-palette.h"
+#include <iostream>
 
 
 namespace svg {
@@ -104,33 +105,20 @@ make_color_band_v2(const colorband& cb, const ushort neededh)
 {
   // Find starting hue and number of samples in the color band.
   color_qi h = std::get<0>(cb);
-  const ushort hn = std::get<1>(cb) - 1;
 
-  color_qis cband;
-  color_qis cbando;
-  for (ushort i = 0; i < neededh; ++i)
+  std::set<color_qi> uklrs;
+  while (uklrs.size() < neededh)
     {
-      // Start by pushing all original hues into colorband if space.
-      if (i < hn)
-	{
-	  cband.push_back(h);
-	  h = next_color(h);
-	}
-      else
-	{
-	  // All discrete hues in the original colorband; aka palette.
-	  if (i == hn)
-	    cbando = cband;
+      std::cout << to_string(h) << std::endl;
 
-	  for (ushort ii = 0; ii < cbando.size(); ++ii)
-	    {
-	      color_qi krgb = cbando[ii];
-	      color_qf khsv(krgb);
-	    }
-
-	  // Done.
-	}
+      color_qf hhsv = mutate_color_qf(h);
+      uklrs.insert(hhsv.to_color_qi());
+      h = next_color(h);
     }
+
+  color_qis cband(uklrs.begin(), uklrs.end());
+  std::sort(cband.begin(), cband.end(), svg::color_qf_lt_v);
+  std::reverse(cband.begin(), cband.end());
 
   return cband;
 }
@@ -139,7 +127,10 @@ make_color_band_v2(const colorband& cb, const ushort neededh)
 /// Forwarding function.
 color_qis
 make_color_band(const colorband& cb, const ushort neededh)
-{ return make_color_band_v1(cb, neededh, active_spectrum()); }
+{
+  return make_color_band_v1(cb, neededh, active_spectrum());
+  //return make_color_band_v2(cb, neededh);
+}
 
 
 /// Flip through color band colors.

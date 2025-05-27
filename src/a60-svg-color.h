@@ -1,6 +1,6 @@
 // svg color -*- mode: C++ -*-
 
-// Copyright (C) 2014-2023 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2025 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -666,20 +666,10 @@ struct color_qf
 };
 
 
-inline bool
-operator==(const color_qf& c1, const color_qf& c2)
-{
-  const bool t1 = c1.h == c2.h;
-  const bool t2 = c1.s == c2.s;
-  const bool t3 = c1.v == c2.v;
-  return t1 && t2 && t3;
-}
-
 /// Convert color_qf to string.
 const std::string
 to_string(const color_qf klr)
 { return color_qf::to_string(klr); }
-
 
 
 /// Less than compare for color_qf
@@ -713,21 +703,61 @@ color_qf_lt_hue_v2(const color_qf& k1, const color_qf& k2)
     return lth;
 };
 
+bool
+color_qf_lt_v(const color_qf& k1, const color_qf& k2)
+{
+  using ftype = color_qf::ftype;
+  const ftype k1hyp = std::sqrt((k1.s * k1.s) + (k1.v * k1.v));
+  const ftype k2hyp = std::sqrt((k2.s * k2.s) + (k2.v * k2.v));
+
+  const ftype habs1 = 360.0 - k1.h;
+  const ftype k1d = std::sqrt((k1hyp * k1hyp) + (habs1 * habs1));
+  const ftype habs2 = 360.0 - k2.h;
+  const ftype k2d = std::sqrt((k2hyp * k2hyp) + (habs2 * habs2));
+  return k1d < k2d;
+};
+
 /// Forwarding function.
 inline bool
-color_qf_lt_hue(const color_qf& k1, const color_qf& k2)
+color_qf_lt(const color_qf& k1, const color_qf& k2)
 { return color_qf_lt_hue_v2(k1, k2); };
 
 
-/*
-color_qf
-mutate_color_qf(const color_qf& k,
-		const float vh = 0, const float vs = 0, const float vv = 0)
+inline bool
+operator==(const color_qf& c1, const color_qf& c2)
 {
-
-  return k;
+  const bool t1 = c1.h == c2.h;
+  const bool t2 = c1.s == c2.s;
+  const bool t3 = c1.v == c2.v;
+  return t1 && t2 && t3;
 }
-*/
+
+inline bool
+operator<(const color_qf& c1, const color_qf& c2)
+{ return color_qf_lt(c1, c2); }
+
+
+/// Return a variant on saturation/value only.
+color_qf
+mutate_color_qf(const color_qf& k)
+{
+  color_qf ret(k);
+  static std::mt19937_64 rg(std::random_device{}());
+  auto distr = std::uniform_real_distribution<>(0.5, 1);
+
+  // saturation 0.5 to 1, aka more saturated.
+  double stry = distr(rg);
+  if (ret.s < stry)
+    ret.s = stry;
+
+  // value 0.5 to 1, aka less dark
+  double vtry = distr(rg);
+  if (ret.v < vtry)
+    ret.v = vtry;
+
+  return ret;
+}
+
 
 /**
   Combine color a with color b in percentages ad and ab, respectively.

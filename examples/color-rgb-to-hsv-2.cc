@@ -64,7 +64,7 @@ test_color(std::string ofile)
   // 2 draw sorted
   auto [ x, y ] = obj.center_point();
   point_2t p2 = make_tuple(0, y);
-  sort(klrs_g.begin(), klrs_g.end(), color_qf_lt_hue);
+  sort(klrs_g.begin(), klrs_g.end(), color_qf_lt);
   draw_spectrum(obj, klrs_g, p2);
 }
 

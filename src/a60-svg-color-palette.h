@@ -379,7 +379,7 @@ active_spectrum(const bool sortbyhuep = false)
   static bool initp(false);
   if (sortbyhuep && !initp)
     {
-      std::sort(spectrum.begin(), spectrum.end(), svg::color_qf_lt_hue);
+      std::sort(spectrum.begin(), spectrum.end(), svg::color_qf_lt);
       std::reverse(spectrum.begin(), spectrum.end());
       initp = true;
     }
