@@ -104,19 +104,22 @@ color_qis
 make_color_band_v2(const colorband& cb, const ushort neededh)
 {
   // Find starting hue and number of samples in the color band.
-  color_qi h = std::get<0>(cb);
+  color_qis cband;
+  auto [ klr, sz ] = cband_g;
 
+  // Start with the original colorband.
   std::set<color_qi> uklrs;
+  for (uint i = 0; i < sz; ++i)
+    uklrs.push_back(start_at_color(klr));
+
+  // Add as necessary.
   while (uklrs.size() < neededh)
     {
-      std::cout << to_string(h) << std::endl;
-
-      color_qf hhsv = mutate_color_qf(h);
+      color_qf hhsv = mutate_color_qf(start_at_color(klr));
       uklrs.insert(hhsv.to_color_qi());
-      h = next_color(h);
     }
 
-  color_qis cband(uklrs.begin(), uklrs.end());
+  cband.insert(uklrs.begin(), uklrs.end());
   std::sort(cband.begin(), cband.end(), svg::color_qf_lt);  
   std::reverse(cband.begin(), cband.end());
 
