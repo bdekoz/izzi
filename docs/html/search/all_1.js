@@ -13,7 +13,7 @@ var searchData=
   ['a60_10',['a60',['../namespacea60.html',1,'']]],
   ['a60_2dsvg_2dbase_2dtypes_2eh_11',['a60-svg-base-types.h',['../a60-svg-base-types_8h.html',1,'']]],
   ['a60_2dsvg_2dcodecvt_2eh_12',['a60-svg-codecvt.h',['../a60-svg-codecvt_8h.html',1,'']]],
-  ['a60_2dsvg_2dcolor_2dcolorband_2eh_13',['a60-svg-color-colorband.h',['../a60-svg-color-colorband_8h.html',1,'']]],
+  ['a60_2dsvg_2dcolor_2dband_2eh_13',['a60-svg-color-band.h',['../a60-svg-color-band_8h.html',1,'']]],
   ['a60_2dsvg_2dcolor_2dpalette_2eh_14',['a60-svg-color-palette.h',['../a60-svg-color-palette_8h.html',1,'']]],
   ['a60_2dsvg_2dcolor_2eh_15',['a60-svg-color.h',['../a60-svg-color_8h.html',1,'']]],
   ['a60_2dsvg_2dcomposite_2dand_2dlayer_2dbasics_2eh_16',['a60-svg-composite-and-layer-basics.h',['../a60-svg-composite-and-layer-basics_8h.html',1,'']]],

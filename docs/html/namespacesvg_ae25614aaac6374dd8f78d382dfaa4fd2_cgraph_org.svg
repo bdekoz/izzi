@@ -101,9 +101,9 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="namespacesvg.html#a6ef86da421061b502a4cec162970c4e9" target="_top" xlink:title="Forwarding function.">
-<polygon fill="white" stroke="#666666" points="550.38,-91.75 453.38,-91.75 453.38,-74 550.38,-74 550.38,-91.75"/>
-<text text-anchor="middle" x="501.88" y="-80.15" font-family="SourceSans" font-size="8.00">svg::color_qf_lt_hue</text>
+<g id="a_Node000004"><a xlink:href="namespacesvg.html#ad15806ae856c597bdb6a2e928ca31481" target="_top" xlink:title="Forwarding function.">
+<polygon fill="white" stroke="#666666" points="540.62,-91.75 463.12,-91.75 463.12,-74 540.62,-74 540.62,-91.75"/>
+<text text-anchor="middle" x="501.88" y="-80.15" font-family="SourceSans" font-size="8.00">svg::color_qf_lt</text>
 </a>
 </g>
 </g>
@@ -111,8 +111,8 @@
 <g id="edge3_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M404.14,-82.88C416.26,-82.88 429.3,-82.88 441.76,-82.88"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="441.49,-86.38 451.49,-82.88 441.49,-79.38 441.49,-86.38"/>
+<path fill="none" stroke="#63b8ff" d="M404.14,-82.88C419.54,-82.88 436.44,-82.88 451.73,-82.88"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="451.56,-86.38 461.56,-82.88 451.56,-79.38 451.56,-86.38"/>
 </a>
 </g>
 </g>
@@ -129,8 +129,8 @@
 <g id="edge4_Node000004_Node000005" class="edge">
 <title>Node4&#45;&gt;Node5</title>
 <g id="a_edge4_Node000004_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M550.76,-82.88C560.07,-82.88 569.98,-82.88 579.74,-82.88"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="579.58,-86.38 589.58,-82.88 579.58,-79.38 579.58,-86.38"/>
+<path fill="none" stroke="#63b8ff" d="M541.1,-82.88C552.9,-82.88 566.26,-82.88 579.39,-82.88"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="579.3,-86.38 589.3,-82.88 579.3,-79.38 579.3,-86.38"/>
 </a>
 </g>
 </g>

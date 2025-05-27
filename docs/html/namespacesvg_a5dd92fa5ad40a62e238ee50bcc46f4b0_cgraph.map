@@ -1,11 +1,19 @@
 <map id="svg::make_color_band_v2" name="svg::make_color_band_v2">
-<area shape="rect" id="Node000001" title="Algorightm is HSV generation." alt="" coords="5,5,166,29"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a554dc780ece47a3937550a8bd113b604" title="Loop through color array starting at position c." alt="" coords="214,5,317,29"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,14,198,14,198,20,166,20"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Oklab https://bottosson.github.io/posts/oklab/." alt="" coords="365,5,502,29"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,14,349,14,349,20,317,20"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#a6ef86da421061b502a4cec162970c4e9" title="Forwarding function." alt="" coords="550,5,680,29"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="503,14,535,14,535,20,503,20"/>
-<area shape="rect" id="Node000005" href="$namespacesvg.html#a804d33f9f3d2f0debdcfc4317f5b8487" title=" " alt="" coords="728,5,875,29"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="680,14,712,14,712,20,680,20"/>
+<area shape="rect" id="Node000001" title="Algorightm is HSV generation." alt="" coords="5,101,166,125"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ace451856d4faf4d251a5a49aba625c3e" title=" " alt="" coords="235,5,349,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,99,152,69,213,39,230,32,232,37,215,44,155,74,107,103"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a729fd8229f85437952bc2607156bb61a" title="Return a variant on saturation/value only." alt="" coords="224,53,360,77"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,98,223,78,224,84,140,103"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a554dc780ece47a3937550a8bd113b604" title="Loop through color array starting at position c." alt="" coords="240,101,344,125"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="166,110,225,110,225,116,166,116"/>
+<area shape="rect" id="Node000008" href="$structsvg_1_1color__qf.html#a30ec40001ed2f3d197f1c2f04dfde69f" title="Back to RGB https://www.rapidtables.com/convert/color/hsv&#45;to&#45;rgb.html." alt="" coords="214,149,370,173"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="140,123,224,143,223,148,139,128"/>
+<area shape="rect" id="Node000009" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="244,197,340,221"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="107,123,155,152,215,183,232,189,230,194,213,188,152,157,104,128"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Oklab https://bottosson.github.io/posts/oklab/." alt="" coords="418,101,555,125"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="344,110,402,110,402,116,344,116"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#ad15806ae856c597bdb6a2e928ca31481" title="Forwarding function." alt="" coords="603,101,707,125"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="556,110,588,110,588,116,556,116"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#a804d33f9f3d2f0debdcfc4317f5b8487" title=" " alt="" coords="755,101,902,125"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="707,110,739,110,739,116,707,116"/>
 </map>

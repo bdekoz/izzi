@@ -2,7 +2,7 @@ var searchData=
 [
   ['a60_2dsvg_2dbase_2dtypes_2eh_0',['a60-svg-base-types.h',['../a60-svg-base-types_8h.html',1,'']]],
   ['a60_2dsvg_2dcodecvt_2eh_1',['a60-svg-codecvt.h',['../a60-svg-codecvt_8h.html',1,'']]],
-  ['a60_2dsvg_2dcolor_2dcolorband_2eh_2',['a60-svg-color-colorband.h',['../a60-svg-color-colorband_8h.html',1,'']]],
+  ['a60_2dsvg_2dcolor_2dband_2eh_2',['a60-svg-color-band.h',['../a60-svg-color-band_8h.html',1,'']]],
   ['a60_2dsvg_2dcolor_2dpalette_2eh_3',['a60-svg-color-palette.h',['../a60-svg-color-palette_8h.html',1,'']]],
   ['a60_2dsvg_2dcolor_2eh_4',['a60-svg-color.h',['../a60-svg-color_8h.html',1,'']]],
   ['a60_2dsvg_2dcomposite_2dand_2dlayer_2dbasics_2eh_5',['a60-svg-composite-and-layer-basics.h',['../a60-svg-composite-and-layer-basics_8h.html',1,'']]],

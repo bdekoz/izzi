@@ -62,5 +62,6 @@ var searchData=
   ['moegi_59',['moegi',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a80fea0f370f7a85847d0a11ecfcd9daf',1,'svg']]],
   ['multiple_60',['multiple',['../structsvg_1_1id__rstate.html#ad33c99bcbe234ebbb0690980cbf7bb54',1,'svg::id_rstate']]],
   ['murasaki_61',['murasaki',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a51bd83111913cc5c74f28db9d31713c4',1,'svg']]],
-  ['mxcllnt_5ftypo_62',['mxcllnt_typo',['../namespacesvg_1_1constants.html#a979b6f66cd4ca6736b19ebb9e42a9d44',1,'svg::constants']]]
+  ['mutate_5fcolor_5fqf_62',['mutate_color_qf',['../namespacesvg.html#a729fd8229f85437952bc2607156bb61a',1,'svg']]],
+  ['mxcllnt_5ftypo_63',['mxcllnt_typo',['../namespacesvg_1_1constants.html#a979b6f66cd4ca6736b19ebb9e42a9d44',1,'svg::constants']]]
 ];
