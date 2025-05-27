@@ -411,11 +411,12 @@ random_color(const _Spectrm& spectrm, const uint startoffset = 0)
 }
 
 /// Loop through color array starting at position c.
+/// Iff klr is not found, return color::none as the next color.
 color_qi
 next_color(const color_qi klr)
 {
   auto& spectrum = active_spectrum();
-  color_qi cnext = spectrum.front();
+  color_qi cnext = color::none;
   auto itr = std::find(spectrum.begin(), spectrum.end(), klr);
   if (itr != spectrum.end())
     {
