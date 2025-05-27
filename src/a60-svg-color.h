@@ -703,24 +703,45 @@ color_qf_lt_hue_v2(const color_qf& k1, const color_qf& k2)
     return lth;
 };
 
+color_qf::ftype
+color_qf_distance(const color_qf& k1, const color_qf& k2)
+{
+  using ftype = color_qf::ftype;
+  const ftype sdist = std::abs(k1.s - k2.s);
+  const ftype vdist = std::abs(k1.v - k2.v);
+
+  const ftype habs = std::abs(k1.h - k2.h);
+  const ftype hdist = habs > 180 ? 360 - habs : habs;
+
+  // Euclidean distance.
+  //return std::sqrt(hdist*hdist + sdist*sdist + vdist*vdist);
+
+  // Weighted.
+  //return hdist*hweight + sdist*sweight + vdist*vweight;
+  return hdist*1.2 + sdist*2 + vdist*3;
+}
+
+
+/// Default compare distances from k1,k2 to black
 bool
 color_qf_lt_v(const color_qf& k1, const color_qf& k2)
 {
   using ftype = color_qf::ftype;
-  const ftype k1hyp = std::sqrt((k1.s * k1.s) + (k1.v * k1.v));
-  const ftype k2hyp = std::sqrt((k2.s * k2.s) + (k2.v * k2.v));
 
-  const ftype habs1 = 360.0 - k1.h;
-  const ftype k1d = std::sqrt((k1hyp * k1hyp) + (habs1 * habs1));
-  const ftype habs2 = 360.0 - k2.h;
-  const ftype k2d = std::sqrt((k2hyp * k2hyp) + (habs2 * habs2));
-  return k1d < k2d;
+  const color_qf originklr = color::black;
+
+  // Compute distance from both arguments to compare color.
+  ftype d1 = color_qf_distance(k1, originklr);
+  ftype d2 = color_qf_distance(k2, originklr);
+  const bool ret = d1 < d2;
+  return ret;
 };
+
 
 /// Forwarding function.
 inline bool
 color_qf_lt(const color_qf& k1, const color_qf& k2)
-{ return color_qf_lt_hue_v2(k1, k2); };
+{ return color_qf_lt_v(k1, k2); };
 
 
 inline bool

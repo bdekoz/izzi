@@ -117,7 +117,7 @@ make_color_band_v2(const colorband& cb, const ushort neededh)
     }
 
   color_qis cband(uklrs.begin(), uklrs.end());
-  std::sort(cband.begin(), cband.end(), svg::color_qf_lt_v);
+  std::sort(cband.begin(), cband.end(), svg::color_qf_lt);  
   std::reverse(cband.begin(), cband.end());
 
   return cband;
