@@ -323,7 +323,6 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 		const point_2t xrange, const point_2t yrange)
 {
   using namespace std;
-  svg_element lgraph(gstate.title, "line graph", aplate, false);
 
   auto [ minx, maxx ] = xrange;
   auto [ miny, maxy ] = yrange;
@@ -356,9 +355,12 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
     }
 
   // Plot path of points on cartesian plane.
+  svg_element lgraph(gstate.title, "line graph", aplate, false);
+
   // Grouped tooltips have to be the last, aka top layer of SVG to work (?).
   //constexpr ushort line_strategy = line_1_polyline;
   constexpr ushort line_strategy = line_2_polyline_tooltips;
+
   if (gstate.is_visible(select::vector))
     {
       if constexpr(line_strategy == line_1_polyline)
