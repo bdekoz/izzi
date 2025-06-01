@@ -145,10 +145,11 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
     Draw glyph and id on ray from origin as part of kusama.
     skip (origin to rstart) + rspace + glyph of radius + rspace + id
 
-    @origin is center of the primary/base circle for kusama renderings.
-    @radius is of the kusama satellite circle on the ray.
-    @rstart is the length from origin along the ray to begin rendering
-    @rspace is the distance between text/vector/glyph elements
+    @param origin is center of the primary/base circle for kusama renderings.
+    @param kr is of the kusama satellite circle on the ray.
+    @param rspace is the distance between text/vector/glyph elements
+    @param rstart is the length from origin along the ray to begin rendering
+
 
     Returns the length along the arc of the generated glyph.
 */
@@ -211,10 +212,10 @@ radiate_glyph_and_id(svg_element& obj, const point_2t origin,
    Simplest version, make satellite circle on circumference and splay
    or append id's around it.
 
-   @linelen	Length of line on a ray from origin to value.
+   @param radius Length of line on a ray from origin to value.
 
-   @satdistance Multiple used to compute distance between two satellite values.
-		Ueful defaults: 3.3 for 12pt, 2 for 7pt.
+   @param satdistance Multiple used to compute distance between two
+   satellite values. Useful defaults: 3.3 for 12pt, 2 for 7pt.
 */
 int
 kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& ids,
@@ -394,7 +395,7 @@ kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, const strings& ids
   not considered neighbors.
 
   startlen is the point at which high-orbit is drawn after transform.
-  @startlenm is the multiple of radius that is startlen.
+  @param rstart is the multiple of radius that is startlen.
 */
 void
 kusama_collision_transforms(svg_element& obj, const point_2t origin,

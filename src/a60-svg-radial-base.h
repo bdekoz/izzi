@@ -99,10 +99,10 @@ adjust_angle_rotation(const double dorig, const k::rrotation rot)
 
 /**
    Angle adjustment such that two points on the circumference path of
-   radius r from origin are a minimum of @distance apart.
+   radius @param r from origin are a minimum of @param dist apart.
 
-   NB: If it cannot be computed directly, returns a minimum adjustment
-   angle that defaults to 0.25 degrees.
+   NB: If it cannot be computed directly, returns @param minadjust, a
+   minimum adjustment angle that defaults to 0.25 degrees.
 */
 inline double
 adjust_angle_at_orbit_for_distance(double r, double dist,
@@ -139,7 +139,7 @@ adjust_angle_at_orbit_for_distance(double r, double dist,
 }
 
 
-/// The number of significant digits in @maxval.
+/// The number of significant digits in @param maxval.
 uint
 significant_digits_in(ssize_type maxval)
 {

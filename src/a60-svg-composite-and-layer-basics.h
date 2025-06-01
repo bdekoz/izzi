@@ -1,6 +1,6 @@
 // svg composite and layer basics -*- mode: C++ -*-
 
-// Copyright (C) 2014-2020 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2020, 2025 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -75,7 +75,7 @@ make_2_channel_insert(svg_element& obj, string insert1, string insert2)
 /// Paint the edges of a physical page.
 /// Assumes page is square.
 ////
-/// @rlen is height of painted rectangle from edge.
+/// @param rlen is height of painted rectangle from edge.
 /// NB: 0.125 is a common bleed == 12 pixels.
 /// First attempt was, common bleed plus 2 pixel "on page" -> 14. Not enough.
 void
@@ -178,11 +178,12 @@ element_to_svg_insert(const string isvgpre)
 
 
 /// Embed svg in group element.
-/// @origin is where glyph placement is inside containing svg element.
-/// @origsize is original file width/height constant
-/// @isize is final  width/height
-/// @isvg is the string from one of the two functions above (*_to_svg_insert).
-/// @syl is overide style information: defaults to no_style.
+/// @param obj is containing svg
+/// @param origin is where glyph placement is inside containing svg element.
+/// @param origsize is original file width/height constant
+/// @param isize is final  width/height
+/// @param isvg is the raw svg string to insert, assumes _M_lifetime == false.
+/// @param styl is overide style information: defaults to no_style.
 ///
 /// NB This only works is the file has no styles set in svg, group, or
 /// individual element definitions (like circle, path, rectangle,
@@ -231,9 +232,9 @@ insert_svg_at(svg_element& obj, const string isvg,
 /// Composite frame on bleed.
 /// For printed objects with a center gutter, some intra-page
 /// adjustments are necessary.
-/// @slxt is odd/even (left/right)
-/// @bleedin is bleed size for one edge in inches. (1/8)
-/// @bleedxoffset is distance from spine pushed outward.
+/// @param slxt is odd/even (left/right)
+/// @param bleedin is bleed size for one edge in inches. (1/8)
+/// @param bleedxoffset is distance from spine pushed outward.
 void
 composite_bleed_areas(svg_element& obj,
 		      const svg::select slxt, const double bleedin,

@@ -82,8 +82,8 @@ viewBox="0 0 __width __height" enable-background="new 0 0 __width __height">
 
 /// SVG element for nested svg_element.
 /// Use name, area, unit, typo for viewport frame
-/// @origin x,y position
-/// @desta height, width of destination. (If > that _M_area) then enlarge.
+/// @param p origin x,y position
+/// @param desta height, width of destination, iff > _M_area then enlarge.
 void
 svg_element::start_element(const point_2t p, const area destarea,
 			   const style& styl)

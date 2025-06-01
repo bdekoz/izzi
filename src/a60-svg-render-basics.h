@@ -41,7 +41,7 @@ scale_proportional_to_weight(double radius, double weight)
 }
 
 
-/// Text at @origin, with style.
+/// Text at @param origin, with style.
 void
 styled_text(svg_element& obj, const string text, const point_2t origin,
 	    const typography typo)
@@ -57,7 +57,7 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
 }
 
 
-/// Text at @origin, with style and transform
+/// Text at @param origin, with style and transform
 void
 styled_text(svg_element& obj, const string text, const point_2t origin,
 	    const typography typo, const string xform)
@@ -73,8 +73,8 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
 }
 
 
-/// Text at @origin, with style and ...
-///  a transformation=rotation of @deg about @rorigin.
+/// Text at @param origin, with style and ...
+///  a transformation=rotation of @param deg about origin.
 void
 styled_text_r(svg_element& obj, const string text, const point_2t origin,
 	      const typography typo, const double deg)
@@ -90,8 +90,8 @@ styled_text_r(svg_element& obj, const string text, const point_2t origin,
 }
 
 
-/// Text at @origin, with style and ...
-///  a transformation=rotation of @deg about @rorigin.
+/// Text at @param origin, with style and ...
+///  a transformation=rotation of @param deg about @param rorigin.
 void
 styled_text_r(svg_element& obj, const string text, const point_2t origin,
 	      const typography typo, const double deg, const point_2t rorigin)
@@ -108,7 +108,7 @@ styled_text_r(svg_element& obj, const string text, const point_2t origin,
 }
 
 
-/// Text at @origin, with style and link.
+/// Text at @param origin, with style and link.
 void
 styled_text_link(svg_element& obj, const string text, const point_2t origin,
 		 const typography typo, const string uri)
@@ -817,7 +817,7 @@ make_crossed_lines(const point_2t origin, const style s,
 
 
 /// Point to center mark as crossed lines.
-/// Default is a plus sign at origin, but @tiltd can rotate.
+/// Default is a plus sign at origin, but @param tiltd can rotate.
 void
 point_to_crossed_lines(svg_element& obj, const point_2t origin,
 		       const style& styl, const int radius,
@@ -829,7 +829,7 @@ point_to_crossed_lines(svg_element& obj, const point_2t origin,
 
 
 /// Make grid palette for display.
-/// NB @klrs can be color_qis or array/palette.
+/// NB @param klrs can be color_qis or array/palette.
 svg_element
 display_color_qis(const auto& klrs,
 		  const area<> a, const typography& typobase)

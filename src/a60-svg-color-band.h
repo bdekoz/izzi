@@ -158,7 +158,7 @@ make_color_band(const colorband& cb, const ushort neededh)
 
 
 /// Flip through color band colors.
-/// @bandn is the number of colors in the colorband.
+/// @param bandn is the number of colors in the colorband.
 color_qi
 next_in_color_band(const colorband& cb, const ushort bandn = 400)
 {

@@ -42,7 +42,7 @@ get_xoffset(const string& id, const uint xstart, const double hspace)
 
 
 /// Grid, titles, labels for h_chord_graph.
-/// @yscale == how much to vertically scale the bar graph from center.
+/// @param yscale == how much to vertically scale the bar graph from center.
 svg_element
 h_chord_graph_labels(const string aggname, const area<> a = svg::k::v1080p_h)
 {

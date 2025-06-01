@@ -86,9 +86,9 @@ struct area
   atype			_M_width;
   atype			_M_height;
 
-  /// Given @rdenom scaling factor and SVG canvas area by @obj,
+  /// Given @param rdenom scaling factor and SVG canvas area by @obj,
   /// compute max effective segment size given number of segments @rdenom.
-  /// NB: if @rdenom is two then this is a max radius value centered
+  /// NB: if rdenom is two then this is a max radius value centered
   /// on the page/frame.
   inline constexpr double
   max_segment_size_n(const uint rdenom = 2) const
