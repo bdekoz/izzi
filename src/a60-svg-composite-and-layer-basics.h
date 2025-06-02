@@ -229,6 +229,42 @@ insert_svg_at(svg_element& obj, const string isvg,
 }
 
 
+/// Take @param obj as some kind of svg element or group of elements,
+/// and embed it as a nested svg at a location centered at @param pos
+/// on the main svg.
+svg_element
+nest_inner_svg_element_centered(const svg_element& obj, const point_2t& p)
+{
+  // Find centered position.
+  const auto a = obj._M_area;
+  const auto [ width, height ] = a;
+  const auto [ xo, yo ] = p;
+
+  bool outofbounds(false);
+
+  double x(0);
+  if (xo > (width / 2))
+    x = xo - (width / 2);
+  else
+    outofbounds = true;
+
+  double y(0);
+  if (yo > (height / 2))
+    y = yo - (height / 2);
+  else
+    outofbounds = true;
+
+  if (outofbounds)
+    throw std::runtime_error("nest_inner_svg_element_centered::out of bounds");
+
+  svg_element nested_obj("inner-" + obj._M_name, a, false);
+  nested_obj.start_element({x, y}, a);
+  nested_obj.add_element(obj);
+  nested_obj.finish_element();
+  return nested_obj;
+}
+
+
 /// Composite frame on bleed.
 /// For printed objects with a center gutter, some intra-page
 /// adjustments are necessary.
