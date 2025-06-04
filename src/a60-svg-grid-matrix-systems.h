@@ -201,20 +201,27 @@ to_point_in_1x8_matrix(const area<> a, const uint i, const double margin)
 
 
 /// For positioning a linear list of glyphs along a horizontal line.
-/// NB: i is from find_id_index with tag, so is an offset starting at zero.
+/// @param n is number of matrix cells, greater than one.
+/// @param i is from find_id_index with tag, so is an offset starting at zero.
+/// @param centeredp adjusts to the center of the cell, default is left aligned.
+/// @param y is what y axis to use.
 point_2t
-to_point_in_1xn_matrix(const area<> a, const uint n, const uint i, const double margin,
-		       const uint yoff)
+to_point_in_1xn_matrix(const area<> a, const uint n, const uint i,
+		       const double margin, const double y,
+		       const bool centeredp = false)
 {
   using std::make_tuple;
 
   const auto [width, height] = a;
   const auto widthadj = width - (2 * margin);
-  const ulong xdelta = widthadj / n;
+  const double xdelta = widthadj / n;
 
-  const uint xoff = margin + (i * xdelta);
+  double xoff = margin + (i * xdelta);
 
-  return make_tuple(xoff, yoff);
+  if (centeredp)
+    xoff += xdelta / 2;
+
+  return make_tuple(xoff, y);
 }
 
 
