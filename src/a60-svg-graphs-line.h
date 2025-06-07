@@ -239,8 +239,8 @@ make_line_graph_annotations(const area<> aplate,
   const double yrange(maxy - miny);
   const double yscale(gheight / yrange);
 
-  // const double xdelta = 1.0 / (10 * gstate.yticdigits);
-  const double xdelta = 0.1;
+  // Use 20 tic marks for the x axis.
+  const double xdelta = std::max(xrange / 20, 0.1);
   const double ydelta = yrange / gstate.yticdigits;
 
   // Generate tic marks
