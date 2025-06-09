@@ -7,7 +7,7 @@ var searchData=
   ['to_5fcolor_5fqi_4',['to_color_qi',['../structsvg_1_1color__qf.html#a30ec40001ed2f3d197f1c2f04dfde69f',1,'svg::color_qf']]],
   ['to_5flandscape_5',['to_landscape',['../structsvg_1_1area.html#ab55883886ebd22bffe47cfe14fb777f5',1,'svg::area']]],
   ['to_5fpoint_5fin_5f1x8_5fmatrix_6',['to_point_in_1x8_matrix',['../namespacesvg.html#acd76b2a2b583ee6172758102216083af',1,'svg']]],
-  ['to_5fpoint_5fin_5f1xn_5fmatrix_7',['to_point_in_1xn_matrix',['../namespacesvg.html#a710834c08daa80ab6d0858b8941a6cd6',1,'svg']]],
+  ['to_5fpoint_5fin_5f1xn_5fmatrix_7',['to_point_in_1xn_matrix',['../namespacesvg.html#a62d6f7a7f986e5049ab3a8f72e80d7b4',1,'svg']]],
   ['to_5fpoint_5fin_5f2x4_5fmatrix_8',['to_point_in_2x4_matrix',['../namespacesvg.html#a4b1d2c633dbd01fcd97b92e4579c8cb0',1,'svg']]],
   ['to_5fpoint_5fin_5f3x3_5fmatrix_9',['to_point_in_3x3_matrix',['../namespacesvg.html#a116e3e953a52a683b7e4cf010a43f65b',1,'svg']]],
   ['to_5fpoint_5fin_5fmatrix_10',['to_point_in_matrix',['../namespacesvg.html#a775a01d459873fd0c8d2dabb88a889e5',1,'svg']]],
