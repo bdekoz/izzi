@@ -239,8 +239,23 @@ make_line_graph_annotations(const area<> aplate,
   const double yrange(maxy - miny);
   const double yscale(gheight / yrange);
 
-  // Use 20 tic marks for the x axis.
-  const double xdelta = std::max(xrange / 20, 0.1);
+  // Derive the number of tick marks.
+
+  // Use a multiple of 5 to make natural counting easier.
+  // Start with an assumption of 20 tic marks for the x axis.
+  double xtickn(xrange * 2); // .5 sec
+  if (xtickn < 10)
+    xtickn = 10;
+  if (xtickn > 30)
+    xtickn = xrange;
+
+  // X axis is seconds, xtickn minimum delta is 0.1 sec.
+  double xdelta = std::max(xrange / xtickn, 0.1);
+
+  // Round up to significant digits, so if xdelta is 0.18 round to 0.2.
+  xdelta = std::round(xdelta * gstate.xticdigits * 10) / (gstate.xticdigits * 10);
+
+  // Y axis is simpler, 0, 10, 20, ..., 80, 90, 100 in percent.
   const double ydelta = yrange / gstate.yticdigits;
 
   // Generate tic marks
@@ -249,7 +264,7 @@ make_line_graph_annotations(const area<> aplate,
     {
       // X tic labels
       lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
-      for (double x = minx; x < maxx + xdelta; x += xdelta)
+      for (double x = minx; x < maxx; x += xdelta)
 	{
 	  const double xto = chartxo + (x * xscale);
 	  ostringstream oss;
@@ -298,7 +313,7 @@ make_line_graph_annotations(const area<> aplate,
 	  if (gstate.is_visible(select::alt))
 	    {
 	      // Skip first and last as covered by either Y-axes tic marks.
-	      for (double x = minx + xdelta; x < maxx; x += xdelta)
+	      for (double x = minx + xdelta; x < maxx - xdelta; x += xdelta)
 		{
 		  const double xto = chartxo + (x * xscale);
 		  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
