@@ -248,6 +248,20 @@ struct link_element : virtual public element_base
     _M_sstream << "href=" << k::quote << url << k::quote;
     _M_sstream << element_base::finish_tag;
   }
+
+  /// Overload for rel=x form.
+  /// https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/preload
+  /// @param relt attribute that describes the relationship of the
+  /// target object to the link object
+  /// @param ast type of resource.
+  void
+  add_data(const string& url, const string relt, const string ast)
+  {
+    _M_sstream << "rel=" << k::quote << relt << k::quote << k::space;
+    _M_sstream << "href=" << k::quote << url << k::quote << k::space;
+    _M_sstream << "as=" << k::quote << ast << k::quote << k::space;
+    _M_sstream << element_base::finish_tag;
+  }
 };
 
 void
