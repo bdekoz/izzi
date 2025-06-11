@@ -246,7 +246,7 @@ make_line_graph_annotations(const area<> aplate,
   double xtickn(xrange * 2); // .5 sec
   if (xtickn < 10)
     xtickn = 10;
-  if (xtickn > 30)
+  if (xtickn > 26)
     xtickn = xrange;
 
   // X axis is seconds, xtickn minimum delta is 0.1 sec.
@@ -277,8 +277,9 @@ make_line_graph_annotations(const area<> aplate,
       // Y tic labels
       // Positions for left and right y-axis tic labels.
       lanno.add_raw(group_element::start_group("tic-y-" + gstate.title));
-      const double xgol = gstate.marginx - graph_rstate::th1sz;			// left
-      const double xgor = gstate.marginx + gwidth + graph_rstate::th1sz;       // right
+      const double yticspacer = graph_rstate::th1sz * 2;
+      const double xgol = gstate.marginx - yticspacer;			// left
+      const double xgor = gstate.marginx + gwidth + yticspacer;         // right
       const double starty = miny != 0 ? miny : miny + ydelta; // skip zero label
       for (double y = starty; y < maxy + ydelta; y += ydelta)
 	{
