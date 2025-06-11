@@ -146,29 +146,33 @@ find_vrange_change_points(const vrange& vr)
 point_2t
 max_vrange(vspace& xpoints, vspace& ypoints, const uint pown)
 {
-  sort(xpoints.begin(), xpoints.end());
-  sort(ypoints.begin(), ypoints.end());
-
-  // For x axis, need to insert padding iff axes are scaled down
-  // and/or have values with truncated significant digits.
-  const bool padp(true);
-  if (padp)
+  point_2t rangemaxx = { 0, 0 };
+  if (!xpoints.empty() && !ypoints.empty())
     {
-      const double sigd = pow(10, pown);
+      sort(xpoints.begin(), xpoints.end());
+      sort(ypoints.begin(), ypoints.end());
 
-      const double dx = xpoints.back();
-      double ix = std::round(dx * sigd) / sigd;
-      if (ix > dx)
-	xpoints.push_back(ix);
+      // For x axis, need to insert padding iff axes are scaled down
+      // and/or have values with truncated significant digits.
+      const bool padp(true);
+      if (padp)
+	{
+	  const double sigd = pow(10, pown);
 
-      const double dy = ypoints.back();
-      uint iy = std::round(dy * sigd) / sigd;
-      if (iy > dy)
-	ypoints.push_back(iy);
+	  const double dx = xpoints.back();
+	  double ix = std::round(dx * sigd) / sigd;
+	  if (ix > dx)
+	    xpoints.push_back(ix);
+
+	  const double dy = ypoints.back();
+	  uint iy = std::round(dy * sigd) / sigd;
+	  if (iy > dy)
+	    ypoints.push_back(iy);
+	}
+
+      // Find combined ranges, assume zero start.
+      rangemaxx = std::make_tuple(xpoints.back(), ypoints.back());
     }
-
-  // Find combined ranges, assume zero start.
-  point_2t rangemaxx = std::make_tuple(xpoints.back(), ypoints.back());
   return rangemaxx;
 }
 
