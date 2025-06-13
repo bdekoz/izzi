@@ -41,18 +41,26 @@ scale_proportional_to_weight(double radius, double weight)
 }
 
 
+/// Text elemetn at @param origin, with style.
+text_element
+style_text(const string text, const point_2t origin, const typography typo)
+{
+  auto [ x, y ] = origin;
+  text_element::data dt = { x, y, text, typo };
+  text_element t;
+  t.start_element();
+  t.add_data(dt);
+  t.finish_element();
+  return t;
+}
+
+
 /// Text at @param origin, with style.
 void
 styled_text(svg_element& obj, const string text, const point_2t origin,
 	    const typography typo)
 {
-  using atype = decltype(obj._M_area)::atype;
-  auto [ x, y ] = origin;
-  text_element::data dt = { atype(x), atype(y), text, typo };
-  text_element t;
-  t.start_element();
-  t.add_data(dt);
-  t.finish_element();
+  text_element t = style_text(text, origin, typo);
   obj.add_element(t);
 }
 
@@ -108,6 +116,7 @@ styled_text_r(svg_element& obj, const string text, const point_2t origin,
 }
 
 
+/// XXX
 /// Text at @param origin, with style and link.
 void
 styled_text_link(svg_element& obj, const string text, const point_2t origin,
