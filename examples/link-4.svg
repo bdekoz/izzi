@@ -1,13 +1,6 @@
 <svg width="1000" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
-  <!-- Main SVG content -->
-  <circle cx="100" cy="100" r="50" fill="blue" class="tooltip-trigger"/>
-
-  <!-- Hidden preview image -->
-  <image id="preview-image" xlink:href="../docs/image/floor-angle-shadow-blur.jpg" x="0" y="0" width="200" height="150" visibility="hidden" />
-
-</svg>
-
+  <!-- Script -->  
 <script>
   const tooltipTrigger = document.querySelector('.tooltip-trigger');
   const previewImage = document.getElementById('preview-image');
@@ -23,3 +16,12 @@
     previewImage.setAttribute('visibility', 'hidden');
   });
 </script>
+  
+  <!-- Main SVG content -->
+  <circle cx="500" cy="300" r="50" fill="blue" class="tooltip-trigger"/>
+
+  <!-- Hidden preview image -->
+  <image id="preview-image" xlink:href="../docs/image/floor-angle-shadow-blur.jpg" x="0" y="0" width="200" height="150" visibility="hidden" />
+
+</svg>
+
