@@ -14,24 +14,6 @@ viewBox="0 0 559.000000 794.000000" enable-background="new 0 0 559.000000 794.00
 <title>
 circle-title-image
 </title>
-<defs>
-    <filter id="gblur10" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-      <feOffset dx="0" dy="0" />
-     </filter>
-    <filter id="gblur20" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur10y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 10" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur20y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-  </defs>
 
 <circle cx="259.500000" cy="397.000000" r="10.000000" style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(0,0,0); stroke-opacity:1; stroke-width:0.5" >
 <a href="https://www.sfgate.com/"><text x="269.500000" y="397.000000" font-family="Atkinson Hyperlegible" font-size="12.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(0,0,0); fill-opacity:1; stroke:rgb(255,255,255); stroke-opacity:0; stroke-width:0.5">SF</text>
@@ -40,7 +22,7 @@ circle-title-image
 uss callister into infinity
 </title>
  </circle><circle cx="299.500000" cy="397.000000" r="10.000000" style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(0,0,0); stroke-opacity:1; stroke-width:0.5" >
-<a rel="preload" href="../docs/image/floor-angle-shadow-blur.jpg" as="image/svg+xml"  /><title>
+<a rel="preload" href="../docs/image/floor-angle-shadow-blur.jpg" as="image" type="image/jpeg" crossorigin=""  /><title>
 uss enterprise
 </title>
  </circle></svg>
