@@ -14,24 +14,6 @@ viewBox="0 0 559.000000 794.000000" enable-background="new 0 0 559.000000 794.00
 <title>
 circle-title-image
 </title>
-<defs>
-    <filter id="gblur10" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-      <feOffset dx="0" dy="0" />
-     </filter>
-    <filter id="gblur20" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur10y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 10" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur20y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-  </defs>
 
 <circle cx="259.500000" cy="397.000000" r="10.000000" style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(0,0,0); stroke-opacity:1; stroke-width:0.5" >
 <title>
@@ -41,9 +23,9 @@ uss callister into infinity
 </title>
 </circle>
 
+  <a rel="preload" href="../docs/image/floor-angle-shadow-blur.jpg" as="image" type="image/jpg" crossorigin="*" />
 <circle cx="299.500000" cy="397.000000" r="10.000000" style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(0,0,0); stroke-opacity:1; stroke-width:0.5" >
   <title>
-  <a rel="preload" href="../docs/image/floor-angle-shadow-blur.jpg" as="image/svg+xml"  />
 uss enterprise
 </title>
 </circle>
