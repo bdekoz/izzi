@@ -20,13 +20,10 @@ test_link(std::string ofile)
   link_element lp;
   lp.start_element();
   lp.add_data(isrc, "preload", "image");
-  lp.finish_element();
   obj.add_element(lp);
   
 
   // Second link.
-
-
   link_element l;
   l.start_element();
   l.add_data(isrc);
