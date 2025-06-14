@@ -40,7 +40,7 @@ circle-title-image
 uss callister into infinity
 </title>
  </circle><circle cx="299.500000" cy="397.000000" r="10.000000" style="fill:rgb(148,148,148); fill-opacity:1; stroke:rgb(0,0,0); stroke-opacity:1; stroke-width:0.5" >
-<a rel="preload" href="../docs/image/floor-angle-shadow-blur.jpg" as="image"  /><title>
+<a rel="preload" href="../docs/image/floor-angle-shadow-blur.jpg" as="image/svg+xml"  /><title>
 uss enterprise
 </title>
  </circle></svg>
