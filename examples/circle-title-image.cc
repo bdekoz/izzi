@@ -10,7 +10,7 @@ test_title(svg_element& obj)
 
   point_2t cp = obj.center_point();
   auto [ x, y ] = cp;
-  double r = 150;
+  double r = 10;
 
   // Black
   //const style styl1 = { color::wcag_lgray, 1.0, color::black, 0.0, 2 };
