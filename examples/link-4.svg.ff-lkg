@@ -4,7 +4,7 @@
   <circle cx="500" cy="300" r="50" fill="blue" class="tooltip-trigger"/>
 
   <!-- Hidden preview image -->
-  <image id="preview-image" xlink:href="https://../docs/image/floor-angle-shadow-blur.jpg" x="0" y="0" width="200" height="150" visibility="hidden" crossorigin="anonymous" />
+  <image id="preview-image" xlink:href="../docs/image/floor-angle-shadow-blur.jpg" x="0" y="0" width="200" height="150" visibility="hidden" crossorigin="anonymous" />
 
   <!-- Script -->  
 <script>

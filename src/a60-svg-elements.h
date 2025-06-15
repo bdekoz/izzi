@@ -255,12 +255,14 @@ struct link_element : virtual public element_base
   /// target object to the link object
   /// @param ast type of resource.
   void
-  add_data(const string& url, const string relt, const string ast)
+  add_data(const string& url, const string relt, const string ast,
+	   const string cors = "anonymous")
   {
     _M_sstream << "rel=" << k::quote << relt << k::quote << k::space;
     _M_sstream << "href=" << k::quote << url << k::quote << k::space;
     _M_sstream << "as=" << k::quote << ast << k::quote << k::space;
-    _M_sstream << element_base::self_finish_tag;
+    _M_sstream << "crossorigin=" << k::quote << cors << k::quote << k::space;
+    _M_sstream << element_base::finish_tag;
   }
 };
 
