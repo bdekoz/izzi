@@ -7,7 +7,7 @@
   <image id="preview-image" xlink:href="https://../docs/image/floor-angle-shadow-blur.jpg" x="0" y="0" width="200" height="150" visibility="hidden" crossorigin="anonymous" />
 
   <!-- Script -->  
-<script>
+<script crossorigin="anonymous">
   const tooltipTrigger = document.querySelector('.tooltip-trigger');
   const previewImage = document.getElementById('preview-image');
 
