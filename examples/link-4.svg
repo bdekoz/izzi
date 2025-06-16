@@ -4,7 +4,7 @@
   <circle cx="500" cy="300" r="50" fill="blue" class="tooltip-trigger"/>
 
   <!-- Hidden preview image -->
-  <image id="preview-image" href="https://github.com/bdekoz/izzi/tree/main/docs/image/floor-angle-shadow-blur.jpg" x="0" y="0" width="200" height="150" visibility="hidden" crossorigin="anonymous" />
+  <image id="preview-image" href="https://raw.githubusercontent.com/bdekoz/izzi/refs/heads/main/examples/image/floor-angle-shadow-blur.jpg" x="0" y="0" width="200" height="150" visibility="hidden" crossorigin="anonymous" />
 
   <!-- Script -->  
 <script type="text/javascript" crossorigin="anonymous">
@@ -14,7 +14,7 @@
   tooltipTrigger.addEventListener('mouseover', function(event) {
     // Position the image near the cursor
     previewImage.setAttribute('x', event.pageX + 10);
-    previewImage.setAttribute('y', event.pageY + 10);
+    previewImage.setAttribute('y', event.pageY + 150);
     previewImage.setAttribute('visibility', 'visible');
   });
 
