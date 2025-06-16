@@ -14,26 +14,9 @@ viewBox="0 0 816.000000 1056.000000" enable-background="new 0 0 816.000000 1056.
 <title>
 link-3
 </title>
-<defs>
-    <filter id="gblur10" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-      <feOffset dx="0" dy="0" />
-     </filter>
-    <filter id="gblur20" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur10y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 10" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur20y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-  </defs>
 
-<a rel="preload" href="../docs/image/floor-angle-shadow-blur.jpg" as="image" crossorigin="anonymous" ></a>
+<a rel="preload" href="../docs/image/floor-angle-shadow-blur.jpg" as="image" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <a href="../docs/image/floor-angle-shadow-blur.jpg"><circle cx="383.000000" cy="528.000000" r="50.000000" style="fill:rgb(255,0,0); fill-opacity:1; stroke:rgb(255,0,0); stroke-opacity:0; stroke-width:0.5" >
 <title>
 red dot boom
