@@ -262,6 +262,8 @@ struct link_element : virtual public element_base
     _M_sstream << "href=" << k::quote << url << k::quote << k::space;
     _M_sstream << "as=" << k::quote << ast << k::quote << k::space;
     _M_sstream << "crossorigin=" << k::quote << cors << k::quote << k::space;
+    _M_sstream << "referrerpolicy=" << k::quote << "no-referrer" << k::quote;
+    _M_sstream << k::space;
     _M_sstream << element_base::finish_tag;
   }
 };

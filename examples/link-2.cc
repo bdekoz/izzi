@@ -10,7 +10,7 @@ test_link(std::string ofile)
   svg_element obj(ofile, a);
   point_2t cp = obj.center_point();
 
-  const string isrc = "../docs/image/floor-angle-shadow-blur.jpg";
+  const string isrc = "image/floor-angle-shadow-blur.jpg";
 
   link_element l;
   l.start_element();
