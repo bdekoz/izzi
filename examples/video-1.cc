@@ -17,7 +17,7 @@ test_video(std::string ofile)
   foreign_element fe;
   fe.start_element(cp, av, arect);
 
-  const string vsrc = "../docs/image/star-x-0-blink-0.2s.1080p.mkv";
+  const string vsrc = "image/star-x-0-blink-0.2s.1080p.mkv";
   video_element ve;
   ve.start_element(arect, vsrc, rd);
   ve.finish_element();

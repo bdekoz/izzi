@@ -10,7 +10,7 @@ test_image(std::string ofile)
   point_2t cp = obj.center_point();
   auto [ cpx, cpy ] = cp;
 
-  const string isrc = "../docs/image/floor-angle-shadow-blur.jpg";
+  const string isrc = "image/floor-angle-shadow-blur.jpg";
   image_element i;
   image_element::data di = { isrc, cpx, cpy, 403, 302 };
   i.start_element();

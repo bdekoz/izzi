@@ -33,7 +33,7 @@ test_video(std::string ofile)
   const style grystyl = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 2 };
 
   const string isrc="asama-0-oo-ee-oo-loop-5l.3.concat-all-ascii-white-1s.1080p-960x540.mp4";
-  const string vsrc = "../docs/image/" + isrc;
+  const string vsrc = "image/" + isrc;
 
   const area<> av(960, 540); // frame size of video file
   const area<> arect(480, 270); // size of video in svg
