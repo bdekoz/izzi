@@ -1219,7 +1219,9 @@ foreign_element::finish_element()
 
 
 /// Video object embedded in SVG container.
-/// Wrapped in foreign element.
+/// NB: HTML elements video/audio/iframe/canvas can be used w/o foreignElement.
+/// This approach uses HTML wrapped in foreign element.
+/// https://www.w3.org/TR/SVG2/embedded.html#HTMLElements
 /// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
 struct video_element : virtual public foreign_element
 {
@@ -1243,6 +1245,7 @@ struct video_element : virtual public foreign_element
   start_element(const area<> a, const string src, const rect_element::data,
 		const string attr = R"(autoplay="true" loop="true" muted="true")")
   {
+    // <html:video and </html:video
     _M_sstream << R"(<video xmlns="http://www.w3.org/1999/xhtml" )";
     _M_sstream << attr << k::space;
 
@@ -1264,6 +1267,59 @@ struct video_element : virtual public foreign_element
 void
 video_element::finish_element()
 { _M_sstream  << "</video>" << k::newline; }
+
+
+/// iframe object embedded in SVG container.
+/// NB: HTML elements video/audio/iframe/canvas can be used w/o foreignElement.
+/// This approach uses HTML wrapped in foreign element.
+/// https://www.w3.org/TR/SVG2/embedded.html#HTMLElements
+/// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+struct iframe_element : virtual public foreign_element
+{
+  // Empty.
+  void
+  start_element()
+  { _M_sstream << "<html:iframe>" << k::newline; }
+
+  /// iframe.
+  /// a is width and height of video as embedded in page
+  /// r is the foreign object, with x/y offset and scaled size
+  ///
+  /// attr is attribues for iframe_element
+  /// autoplay="true" or removed
+  /// loop="true/false"
+  /// muted="true/false"
+  /// controls, controlslist,
+  /// crossorigin, disablepictureinpicture, disableremoteplayback
+  ///
+  void
+  start_element(const area<> a, const string src, const rect_element::data,
+		const string attr = R"(sandbox=allow-scripts allow-same-origin)")
+  {
+    // <html:video and </html:video
+    _M_sstream << R"(<html:iframe )";
+    _M_sstream << attr << k::space;
+
+    string strip = R"(width="WWW" height="HHH" > )";
+    string_replace(strip, "WWW", std::to_string(a._M_width));
+    string_replace(strip, "HHH", std::to_string(a._M_height));
+    _M_sstream << strip;
+    _M_sstream << k::newline;
+    // img-src
+
+    _M_sstream << "<source src=" << k::quote << src << k::quote << k::space;
+    // image/webp or image/jpeg
+    _M_sstream << "type=" << k::quote << "image/webp" << k::quote;
+    _M_sstream << element_base::self_finish_tag << k::newline;
+  }
+
+  void
+  finish_element();
+};
+
+void
+iframe_element::finish_element()
+{ _M_sstream  << "</html:iframe>" << k::newline; }
 
 
 /**
