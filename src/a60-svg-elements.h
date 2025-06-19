@@ -1410,7 +1410,6 @@ struct svg_element : virtual public element_base
     this->add_title();
     if (!desc.empty())
       this->add_desc(desc);
-    this->add_filters();
   }
 
   void
