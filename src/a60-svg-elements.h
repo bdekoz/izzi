@@ -1225,10 +1225,19 @@ foreign_element::finish_element()
 /// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
 struct video_element : virtual public foreign_element
 {
-  // Empty.
+  void
+  start_element(const string& id)
+  {
+    //const string svideo = "<html:video";
+    const string svideo = R"(<video xmlns="http://www.w3.org/1999/xhtml" )";
+    _M_sstream << svideo << k::space;
+    if (!id.empty())
+      _M_sstream << "id=" << k::quote << id << k::quote << k::space;
+  }
+
   void
   start_element()
-  { _M_sstream << "<video>" << k::newline; }
+  { start_element(""); }
 
   /// Video.
   /// a is width and height of video as embedded in page
@@ -1242,11 +1251,9 @@ struct video_element : virtual public foreign_element
   /// crossorigin, disablepictureinpicture, disableremoteplayback
   ///
   void
-  start_element(const area<> a, const string src, const rect_element::data,
-		const string attr = R"(autoplay="true" loop="true" muted="true")")
+  add_data(const area<> a, const string src, const string mtype = "video/mp4",
+	   const string attr = R"(autoplay="true" loop="true" muted="true")")
   {
-    // <html:video and </html:video
-    _M_sstream << R"(<video xmlns="http://www.w3.org/1999/xhtml" )";
     _M_sstream << attr << k::space;
 
     string strip = R"(width="WWW" height="HHH" > )";
@@ -1256,7 +1263,7 @@ struct video_element : virtual public foreign_element
     _M_sstream << k::newline;
 
     _M_sstream << "<source src=" << k::quote << src << k::quote << k::space;
-    _M_sstream << "type=" << k::quote << "video/mp4" << k::quote;
+    _M_sstream << "type=" << k::quote << mtype << k::quote;
     _M_sstream << element_base::self_finish_tag << k::newline;
   }
 
@@ -1277,23 +1284,27 @@ video_element::finish_element()
 struct iframe_element : virtual public foreign_element
 {
   void
-  start_element()
+  start_element(const string& id)
   {
-    const string iframes = "<html:iframe";
-    //const string iframes = R"(<iframe xmlns="http://www.w3.org/1999/xhtml" )";
-    _M_sstream << iframes;
+    //const string siframe = "<html:iframe";
+    const string siframe = R"(<iframe xmlns="http://www.w3.org/1999/xhtml" )";
+    _M_sstream << siframe << k::space;
+    if (!id.empty())
+      _M_sstream << "id=" << k::quote << id << k::quote << k::space;
   }
+
+  void
+  start_element()
+  { start_element(""); }
 
   /// iframe.
   /// a is width and height of video as embedded in page
   /// r is the foreign object, with x/y offset and scaled size
   ///
   void
-  add_data(const area<> a, const string src, const string id,
+  add_data(const area<> a, const string src,
 	   const string attr = R"(sandbox="allow-scripts allow-same-origin")")
   {
-    _M_sstream << id << k::space;
-    
     string strip = R"(width="WWW" height="HHH" )";
     string_replace(strip, "WWW", std::to_string(a._M_width));
     string_replace(strip, "HHH", std::to_string(a._M_height));

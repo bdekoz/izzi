@@ -11,8 +11,8 @@ test_iframe(std::string ofile)
   area<> ai = {403, 302};    
   const string isrc = "image/floor-angle-shadow-blur.jpg";
   iframe_element i;
-  i.start_element();
-  i.add_data(ai, isrc, "raster");
+  i.start_element("raster");
+  i.add_data(ai, isrc);
   i.finish_element();
   obj.add_element(i);
 }

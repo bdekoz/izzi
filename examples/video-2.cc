@@ -60,8 +60,8 @@ test_video(std::string ofile)
   fe.start_element(vp, av, arect);
 
   video_element ve;
-  rect_element::data rd = { vpx, vpy, rwidth, rheight};
-  ve.start_element(arect, vsrc, rd);
+  ve.start_element();
+  ve.add_data(arect, vsrc);
   ve.finish_element();
   fe.add_raw(ve.str());
 

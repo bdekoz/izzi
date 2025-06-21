@@ -2,11 +2,9 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1"
      id="svg2" xml:space="preserve"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:cc="http://creativecommons.org/ns#"
-     xmlns:svg="http://www.w3.org/2000/svg"
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:html="http://www.w3.org/1999/xhtml"
 x="0px" y="0px"
 width="1920.000000px" height="1080.000000px"
 viewBox="0 0 1920.000000 1080.000000" enable-background="new 0 0 1920.000000 1080.000000">
@@ -14,25 +12,6 @@ viewBox="0 0 1920.000000 1080.000000" enable-background="new 0 0 1920.000000 108
 <title>
 video-2
 </title>
-<defs>
-    <filter id="gblur10" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-      <feOffset dx="0" dy="0" />
-     </filter>
-    <filter id="gblur20" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur10y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 10" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur20y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-  </defs>
-
 <rect x="0.000000" y="0.000000" width="1920.000000" height="1080.000000"
  style="fill:rgb(118,118,118); fill-opacity:0; stroke:rgb(118,118,118); stroke-opacity:1; stroke-width:2" />
 <rect x="720.000000" y="405.000000" width="480.000000" height="270.000000"
@@ -45,7 +24,7 @@ video-2
 <g id="video-wrapper" transform="scale(1,1)">
 
 <foreignObject x="720.000000" y="405.000000" width="960.000000" height="540.000000">
- <video xmlns="http://www.w3.org/1999/xhtml" autoplay="true" loop="true" muted="true" width="480.000000" height="270.000000" > 
+ <video xmlns="http://www.w3.org/1999/xhtml"  autoplay="true" loop="true" muted="true" width="480.000000" height="270.000000" > 
 <source src="image/asama-0-oo-ee-oo-loop-5l.3.concat-all-ascii-white-1s.1080p-960x540.mp4" type="video/mp4" />
 </video>
  </foreignObject></g></g>
