@@ -16,15 +16,13 @@ test_title(std::string ofile)
   // Black
   const style styl1 = { color::wcag_lgray, 1, color::black, 1.0, .5 };
 
-  const string finish_hard(string { element_base::finish_tag } + k::newline);
-
   double r1 = 150;
   rect_element r;
   rect_element::data dr = { x - space, y, r1, r1 };
   r.start_element();
   r.add_data(dr);
   r.add_style(styl1);
-  r.add_raw(finish_hard);
+  r.add_raw(element_base::finish_tag_hard);
   r.add_title("uss callister into infinity");
   r.add_raw(string { rect_element::pair_finish_tag } + k::newline);
 

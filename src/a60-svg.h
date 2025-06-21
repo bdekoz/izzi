@@ -301,8 +301,6 @@ constexpr char hyphen('-');
 constexpr char comma(',');
 constexpr char tab('\t');
 constexpr char newline('\n');
-constexpr char greaterthan('>');
-constexpr char lessthan('<');
 
 
 /**

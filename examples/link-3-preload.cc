@@ -34,7 +34,7 @@ test_link(std::string ofile)
   c.start_element();
   c.add_data(dc);
   c.add_style(k::r_style);
-  c.add_raw(element_base::finish_hard);
+  c.add_raw(element_base::finish_tag_hard);
   c.add_title("red dot boom");
   c.add_raw(circle_element::pair_finish_tag);
   l.add_element(c);

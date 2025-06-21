@@ -22,7 +22,7 @@ test_title(svg_element& obj)
   c.start_element();
   c.add_data(dc);
   c.add_style(styl1);
-  c.add_raw(element_base::finish_hard);
+  c.add_raw(element_base::finish_tag_hard);
 
   link_element l;
   l.start_element();
@@ -42,7 +42,7 @@ test_title(svg_element& obj)
   c2.start_element();
   c2.add_data(dc2);
   c2.add_style(styl1);
-  c2.add_raw(element_base::finish_hard);
+  c2.add_raw(element_base::finish_tag_hard);
 
   link_element l2;
   l2.start_element();

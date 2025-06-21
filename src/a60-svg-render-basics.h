@@ -616,7 +616,7 @@ make_path(const string& pathda, const style& styl,
       if (selfclosingtagp)
 	pe.finish_element();
       else
-	pe.add_raw(element_base::finish_hard);
+	pe.add_raw(element_base::finish_tag_hard);
     }
   return pe;
 }

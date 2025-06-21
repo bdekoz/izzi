@@ -128,7 +128,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 	  c.start_element();
 	  c.add_data(dc);
 	  c.add_style(styl);
-	  c.add_raw(element_base::finish_hard);
+	  c.add_raw(element_base::finish_tag_hard);
 	  c.add_title(tipstr);
 	  c.add_raw(string { circle_element::pair_finish_tag } + k::newline);
 	  ret += c.str();
@@ -144,7 +144,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 	  r.start_element();
 	  r.add_data(dr);
 	  r.add_style(styl);
-	  r.add_raw(element_base::finish_hard);
+	  r.add_raw(element_base::finish_tag_hard);
 	  r.add_title(tipstr);
 	  r.add_raw(string { rect_element::pair_finish_tag } + k::newline);
 	  ret += r.str();

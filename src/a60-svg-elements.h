@@ -31,8 +31,8 @@ namespace svg {
 struct element_base
 {
   using stream_type = std::ostringstream;
-  static constexpr char		finish_tag = k::greaterthan;
-  static constexpr  string	finish_hard = string({ element_base::finish_tag }) + k::newline;
+  static constexpr const char*	finish_tag = " >";
+  static constexpr string	finish_tag_hard = string(finish_tag) + k::newline;
   static constexpr const char*	self_finish_tag = " />";
 
   // Underlying units for 2D (x,y) mapping (same as area::atype).
@@ -67,14 +67,6 @@ struct element_base
   add_element(const element_base& e)
   { _M_sstream << e.str(); }
 
-  // Add raw string to group; filter, blend/gradient elements.
-  void
-  add_raw(const string& raw)
-  { _M_sstream << k::space << raw; }
-
-  void
-  add_title(const string& t);
-
   void
   add_fill(const string id)
   {
@@ -91,9 +83,17 @@ struct element_base
     _M_sstream << "url(#" << id << ")" << k::quote;
   }
 
+  // Add raw string to group; filter, blend/gradient elements.
+  void
+  add_raw(const string& raw)
+  { _M_sstream << k::space << raw; }
+
   void
   add_style(const style& sty)
   { _M_sstream << to_string(sty); }
+
+  void
+  add_title(const string& t);
 
   /// Common transforms include rotate(180)
   void
@@ -1276,41 +1276,35 @@ video_element::finish_element()
 /// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 struct iframe_element : virtual public foreign_element
 {
-  // Empty.
   void
   start_element()
-  { _M_sstream << "<html:iframe>" << k::newline; }
+  {
+    const string iframes = "<html:iframe";
+    //const string iframes = R"(<iframe xmlns="http://www.w3.org/1999/xhtml" )";
+    _M_sstream << iframes;
+  }
 
   /// iframe.
   /// a is width and height of video as embedded in page
   /// r is the foreign object, with x/y offset and scaled size
   ///
-  /// attr is attribues for iframe_element
-  /// autoplay="true" or removed
-  /// loop="true/false"
-  /// muted="true/false"
-  /// controls, controlslist,
-  /// crossorigin, disablepictureinpicture, disableremoteplayback
-  ///
   void
-  start_element(const area<> a, const string src, const rect_element::data,
-		const string attr = R"(sandbox=allow-scripts allow-same-origin)")
+  add_data(const area<> a, const string src, const string id,
+	   const string attr = R"(sandbox="allow-scripts allow-same-origin")")
   {
-    // <html:video and </html:video
-    _M_sstream << R"(<html:iframe )";
-    _M_sstream << attr << k::space;
-
-    string strip = R"(width="WWW" height="HHH" > )";
+    _M_sstream << id << k::space;
+    
+    string strip = R"(width="WWW" height="HHH" )";
     string_replace(strip, "WWW", std::to_string(a._M_width));
     string_replace(strip, "HHH", std::to_string(a._M_height));
-    _M_sstream << strip;
-    _M_sstream << k::newline;
-    // img-src
+    _M_sstream << strip << k::space;
+    _M_sstream << "src=" << k::quote << src << k::quote << k::space;
+    _M_sstream << attr;
+    _M_sstream << element_base::finish_tag_hard;
 
-    _M_sstream << "<source src=" << k::quote << src << k::quote << k::space;
     // image/webp or image/jpeg
-    _M_sstream << "type=" << k::quote << "image/webp" << k::quote;
-    _M_sstream << element_base::self_finish_tag << k::newline;
+    //_M_sstream << "type=" << k::quote << "image/webp" << k::quote;
+    //_M_sstream << element_base::self_finish_tag << k::newline;
   }
 
   void
@@ -1319,7 +1313,7 @@ struct iframe_element : virtual public foreign_element
 
 void
 iframe_element::finish_element()
-{ _M_sstream  << "</html:iframe>" << k::newline; }
+{ _M_sstream  << "</iframe>" << k::newline; }
 
 
 /**
