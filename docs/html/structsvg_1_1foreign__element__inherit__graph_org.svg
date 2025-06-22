@@ -20,7 +20,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="group__elements.html#structsvg_1_1iframe__element" target="_top" xlink:title="iframe object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used w/o ...">
+<g id="a_Node000003"><a xlink:href="group__elements.html#structsvg_1_1iframe__element" target="_top" xlink:title="iframe HTML object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used...">
 <polygon fill="white" stroke="#666666" points="93.25,-20 0,-20 0,0 93.25,0 93.25,-20"/>
 <text text-anchor="middle" x="46.62" y="-8.4" font-family="SourceSans" font-size="8.00">svg::iframe_element</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="group__elements.html#structsvg_1_1video__element" target="_top" xlink:title="Video object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used w/o f...">
+<g id="a_Node000005"><a xlink:href="group__elements.html#structsvg_1_1video__element" target="_top" xlink:title="video HTML object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used ...">
 <polygon fill="white" stroke="#666666" points="310,-20 221.25,-20 221.25,0 310,0 310,-20"/>
 <text text-anchor="middle" x="265.62" y="-8.4" font-family="SourceSans" font-size="8.00">svg::video_element</text>
 </a>
