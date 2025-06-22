@@ -1099,6 +1099,13 @@ struct image_element : virtual public element_base
     atype		_M_height;
   };
 
+  void
+  start_element()
+  { _M_sstream << "<image "; }
+
+  void
+  finish_element();
+
   /// Either serialize immediately (as below), or create data structure
   /// that adds data to data_vec and then finish_element serializes.
   void
@@ -1121,12 +1128,39 @@ struct image_element : virtual public element_base
     _M_sstream << strip;
   }
 
+  /// Visibility and other HTML/img attributes.
+  /// @param vattr = visibility attribute, "visible" or "hidden"
+  /// @param lattr = loading attribute, "lazy" or "eager"
   void
-  start_element()
-  { _M_sstream << "<image "; }
+  add_data(const data& d, const bool xtra,
+	   const string vattr = "visible", const string lattr = "lazy")
+  {
+    using k::quote;
+    using k::space;
 
-  void
-  finish_element();
+    const string x("__x");
+    const string y("__y");
+    const string w("__w");
+    const string h("__h");
+    const string ref("__ref");
+
+    string strip = R"_delimiter_(href="__ref" x="__x" y="__y" width="__w" height="__h"
+)_delimiter_";
+
+    string_replace(strip, ref, d._M_xref);
+    string_replace(strip, x, std::to_string(d._M_x_origin));
+    string_replace(strip, y, std::to_string(d._M_y_origin));
+    string_replace(strip, w, std::to_string(d._M_width));
+    string_replace(strip, h, std::to_string(d._M_height));
+    _M_sstream << strip << k::space;
+
+    if (xtra)
+      {
+	_M_sstream << "visibility=" << quote << vattr << quote << space;
+	_M_sstream << "loading=" << quote << lattr << quote << space;
+	_M_sstream << "srcset=" << quote << d._M_xref << quote << space;
+      }
+  }
 };
 
 
