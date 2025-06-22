@@ -24,7 +24,7 @@ video-2
 <g id="video-wrapper" transform="scale(1,1)">
 
 <foreignObject x="720.000000" y="405.000000" width="960.000000" height="540.000000">
- <video xmlns="http://www.w3.org/1999/xhtml"  autoplay="true" loop="true" muted="true" width="480.000000" height="270.000000" > 
+ <video xmlns="http://www.w3.org/1999/xhtml"   width="480.000000" height="270.000000"  autoplay="true" loop="true" muted="true"  >
 <source src="image/asama-0-oo-ee-oo-loop-5l.3.concat-all-ascii-white-1s.1080p-960x540.mp4" type="video/mp4" />
 </video>
  </foreignObject></g></g>

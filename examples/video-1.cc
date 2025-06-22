@@ -11,11 +11,11 @@ test_video(std::string ofile)
   
   const area<> av(1080, 1920);
   const area<> arect(270, 480);
-
+  const string vsrc = "image/star-x-0-blink-0.2s.1080p.mkv";
+  
   foreign_element fe;
   fe.start_element(cp, av, arect);
 
-  const string vsrc = "image/star-x-0-blink-0.2s.1080p.mkv";
   video_element ve;
   ve.start_element("star-x-blink");
   ve.add_data(arect, vsrc, "video/mp4");

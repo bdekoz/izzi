@@ -1158,7 +1158,7 @@ know.
 	    <rect x="0" y="0" width="300" height="200"></rect>
 	    <foreignObject x="-151" y="-104" width="500" height="400">
 		<video xmlns="http://www.w3.org/1999/xhtml" width="300" height="200" controls="" style="position: fixed; left: 151px; top: 104px;">
-		    <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />
+		    <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" />less
 		</video>
 	    </foreignObject>
 	</g>
@@ -1254,13 +1254,13 @@ struct video_element : virtual public foreign_element
   add_data(const area<> a, const string src, const string mtype = "video/mp4",
 	   const string attr = R"(autoplay="true" loop="true" muted="true")")
   {
-    _M_sstream << attr << k::space;
-
-    string strip = R"(width="WWW" height="HHH" > )";
+    string strip = R"(width="WWW" height="HHH" )";
     string_replace(strip, "WWW", std::to_string(a._M_width));
     string_replace(strip, "HHH", std::to_string(a._M_height));
-    _M_sstream << strip;
-    _M_sstream << k::newline;
+    _M_sstream << k::space;
+    _M_sstream << strip << k::space;
+    _M_sstream << attr << k::space;
+    _M_sstream << element_base::finish_tag_hard;
 
     _M_sstream << "<source src=" << k::quote << src << k::quote << k::space;
     _M_sstream << "type=" << k::quote << mtype << k::quote;
@@ -1302,21 +1302,23 @@ struct iframe_element : virtual public foreign_element
   /// r is the foreign object, with x/y offset and scaled size
   ///
   void
-  add_data(const area<> a, const string src,
+  add_data(const area<> a, const string src, const string mtype = "image/jpeg",
 	   const string attr = R"(sandbox="allow-scripts allow-same-origin")")
   {
     string strip = R"(width="WWW" height="HHH" )";
     string_replace(strip, "WWW", std::to_string(a._M_width));
     string_replace(strip, "HHH", std::to_string(a._M_height));
+    _M_sstream << k::space;
     _M_sstream << strip << k::space;
-    _M_sstream << "src=" << k::quote << src << k::quote << k::space;
+    //    _M_sstream << "src=" << k::quote << src << k::quote << k::space;
     _M_sstream << attr;
     _M_sstream << element_base::finish_tag_hard;
 
     // image/webp or image/jpeg
-    //_M_sstream << "type=" << k::quote << "image/webp" << k::quote;
-    //_M_sstream << element_base::self_finish_tag << k::newline;
-  }
+    _M_sstream << "<source src=" << k::quote << src << k::quote << k::space;
+    _M_sstream << "type=" << k::quote << mtype << k::quote << k::space;
+    _M_sstream << element_base::self_finish_tag << k::newline;
+   }
 
   void
   finish_element();
