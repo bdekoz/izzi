@@ -2,8 +2,8 @@
 
 # Examples
 
-- ## sources [src](https://github.com/bdekoz/izzi/tree/main/examples)
-- ## as rendered
+- ## sources [c++](https://github.com/bdekoz/izzi/tree/main/examples)
+- ## as rendered svg
   - [iframe-1](../examples/iframe-1.svg)
   - [iframe-2](../examples/iframe-2.svg)
   - [image-1](../examples/image-1.svg)
