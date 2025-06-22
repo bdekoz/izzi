@@ -1,6 +1,9 @@
 ![izzi wind graphic logo](image/izzi-wind-square-v2.png)
-- [examples source directory](https://github.com/bdekoz/izzi/tree/main/examples)
-- examples rendered
+
+# Examples
+
+- ## sources [src](https://github.com/bdekoz/izzi/tree/main/examples)
+- ## as rendered
   - [iframe-1](../examples/iframe-1.svg)
   - [iframe-2](../examples/iframe-2.svg)
   - [image-1](../examples/image-1.svg)
