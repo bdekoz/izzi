@@ -1363,6 +1363,57 @@ iframe_element::finish_element()
 { _M_sstream  << "</iframe>" << k::newline; }
 
 
+/// HTML object embedded in SVG container.
+/// Unlike image_elements, object_elements are not locked down for scripting.
+/// NB: HTML elements video/audio/object/canvas can be used w/o foreignElement.
+/// This approach uses HTML wrapped in foreign element.
+/// https://www.w3.org/TR/SVG2/embedded.html#HTMLElements
+/// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
+struct object_element : virtual public foreign_element
+{
+  void
+  start_element(const string& id)
+  {
+    //const string sobject = "<html:object";
+    const string sobject = R"(<object xmlns="http://www.w3.org/1999/xhtml" )";
+    _M_sstream << sobject << k::space;
+    if (!id.empty())
+      _M_sstream << "id=" << k::quote << id << k::quote << k::space;
+  }
+
+  void
+  start_element()
+  { start_element(""); }
+
+  /// object.
+  /// @param a is width and height of video as embedded in page
+  /// @param src is the resourcce URL
+  /// @param mtype is the MIME type
+  /// @param attr are any ad-hoc HTML attributes.
+  void
+  add_data(const area<> a, const string src, const string mtype = "image/jpeg",
+	   const string attr = R"(sandbox="allow-scripts allow-same-origin")")
+  {
+    string strip = R"(width="WWW" height="HHH" )";
+    string_replace(strip, "WWW", std::to_string(a._M_width));
+    string_replace(strip, "HHH", std::to_string(a._M_height));
+    _M_sstream << k::space;
+    _M_sstream << strip << k::space;
+    _M_sstream << "data=" << k::quote << src << k::quote << k::space;
+    _M_sstream << "type=" << k::quote << mtype << k::quote << k::space;
+    _M_sstream << attr << k::space;
+    _M_sstream << element_base::finish_tag_hard;
+   }
+
+  void
+  finish_element();
+};
+
+void
+object_element::finish_element()
+{ _M_sstream  << "</object>" << k::newline; }
+
+
 /**
    A SVG object element.
 
