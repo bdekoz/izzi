@@ -2,11 +2,9 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1"
      id="svg2" xml:space="preserve"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:cc="http://creativecommons.org/ns#"
-     xmlns:svg="http://www.w3.org/2000/svg"
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:html="http://www.w3.org/1999/xhtml"
 x="0px" y="0px"
 width="816.000000px" height="1056.000000px"
 viewBox="0 0 816.000000 1056.000000" enable-background="new 0 0 816.000000 1056.000000">
@@ -14,26 +12,7 @@ viewBox="0 0 816.000000 1056.000000" enable-background="new 0 0 816.000000 1056.
 <title>
 link-2
 </title>
-<defs>
-    <filter id="gblur10" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-      <feOffset dx="0" dy="0" />
-     </filter>
-    <filter id="gblur20" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur10y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 10" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-    <filter id="gblur20y" x="0" y="0">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0, 20" />
-      <feOffset dx="0" dy="0" />
-    </filter>
-  </defs>
-
-<a href="../docs/image/floor-angle-shadow-blur.jpg"><text x="408.000000" y="528.000000" font-family="Atkinson Hyperlegible" font-size="12.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(0,0,0); fill-opacity:1; stroke:rgb(255,255,255); stroke-opacity:0; stroke-width:0.5">place where it happened</text>
+<a href="image/floor-angle-shadow-blur.jpg" ><text x="408.000000" y="528.000000" font-family="Atkinson Hyperlegible" font-size="12.000000pt" text-anchor="middle" text-align="center" font-weight="400" font-style="normal"  style="fill:rgb(0,0,0); fill-opacity:1; stroke:rgb(255,255,255); stroke-opacity:0; stroke-width:0.5">place where it happened</text>
 </a>
 </svg>
 
