@@ -1252,7 +1252,7 @@ foreign_element::finish_element()
 { _M_sstream  << " </foreignObject></g></g>" << k::newline; }
 
 
-/// Video object embedded in SVG container.
+/// video HTML object embedded in SVG container.
 /// NB: HTML elements video/audio/iframe/canvas can be used w/o foreignElement.
 /// This approach uses HTML wrapped in foreign element.
 /// https://www.w3.org/TR/SVG2/embedded.html#HTMLElements
@@ -1310,7 +1310,7 @@ video_element::finish_element()
 { _M_sstream  << "</video>" << k::newline; }
 
 
-/// iframe object embedded in SVG container.
+/// iframe HTML object embedded in SVG container.
 /// NB: HTML elements video/audio/iframe/canvas can be used w/o foreignElement.
 /// This approach uses HTML wrapped in foreign element.
 /// https://www.w3.org/TR/SVG2/embedded.html#HTMLElements
@@ -1385,11 +1385,11 @@ struct object_element : virtual public foreign_element
   start_element()
   { start_element(""); }
 
-  /// object.
+  /// Add resource to object.
   /// @param a is width and height of video as embedded in page
-  /// @param src is the resourcce URL
+  /// @param src is the resource URL
   /// @param mtype is the MIME type
-  /// @param attr are any ad-hoc HTML attributes.
+  /// @param attr is any collection of ad-hoc HTML attributes.
   void
   add_data(const area<> a, const string src, const string mtype = "image/jpeg",
 	   const string attr = R"(sandbox="allow-scripts allow-same-origin")")
