@@ -24,16 +24,11 @@
 #include "a60-svg-markers.h"
 
 
-namespace {
-
 /// Polyline/line creation options.
 /// 1: use one line with css dasharray and markers mid, end points
 /// 2: use two lines one with css dasharray, one with path tooltips
 constexpr svg::ushort line_1_polyline(100);
 constexpr svg::ushort line_2_polyline_tooltips(200);
-
-} // end anonymous namespace
-
 
 namespace svg {
 
