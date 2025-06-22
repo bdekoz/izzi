@@ -13,6 +13,5 @@ var searchData=
   ['get_5fmin_5fsatellite_5fdistance_10',['get_min_satellite_distance',['../namespacesvg.html#a8947ce56afc2d9fadeb3d946d20f2a35',1,'svg']]],
   ['get_5fradial_5frange_11',['get_radial_range',['../namespacesvg.html#a37b1e7c40b54ff3cdd4e2929cb6b7ba2',1,'svg']]],
   ['get_5frender_5fstate_12',['get_render_state',['../namespacesvg.html#a9bbb71e1b98bb42075c84d93acd09fc1',1,'svg']]],
-  ['get_5fxoffset_13',['get_xoffset',['../namespacea60_1_1metadata.html#a4c88caad75ba7fd9dffc58be1f715b28',1,'a60::metadata']]],
-  ['greaterthan_14',['greaterthan',['../namespacesvg_1_1constants.html#a7d91648d51f4083f7b46653a9fb4ea02',1,'svg::constants']]]
+  ['get_5fxoffset_13',['get_xoffset',['../namespacea60_1_1metadata.html#a4c88caad75ba7fd9dffc58be1f715b28',1,'a60::metadata']]]
 ];

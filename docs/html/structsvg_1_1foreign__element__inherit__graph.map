@@ -1,7 +1,9 @@
 <map id="svg::foreign_element" name="svg::foreign_element">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,142,101"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#structsvg_1_1video__element" title="Video object embedded in SVG container. Wrapped in foreign element. https://developer...." alt="" coords="9,149,138,172"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="76,116,76,148,71,148,71,116"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#structsvg_1_1element__base" title="Abstract base class for all SVG Elements." alt="" coords="11,5,136,29"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,45,76,77,71,77,71,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="75,80,204,107"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#structsvg_1_1iframe__element" title="iframe object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used w/o ..." alt="" coords="5,155,130,181"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,120,82,156,78,152,114,116"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#structsvg_1_1video__element" title="Video object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used w/o f..." alt="" coords="154,155,272,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="165,116,202,152,198,156,161,120"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#structsvg_1_1element__base" title="Abstract base class for all SVG Elements." alt="" coords="82,5,197,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,48,142,80,137,80,137,48"/>
 </map>

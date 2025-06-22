@@ -1,5 +1,5 @@
 <map id="svg::detect_collision" name="svg::detect_collision">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,139,29"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#ad731faf1d114f53f85c018df27e301e2" title="Find cartesian distance between two 2D points." alt="" coords="187,5,338,29"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,14,171,14,171,20,139,20"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,128,32"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ad731faf1d114f53f85c018df27e301e2" title="Find cartesian distance between two 2D points." alt="" coords="176,5,314,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,16,160,16,160,21,128,21"/>
 </map>
