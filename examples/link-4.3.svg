@@ -15,14 +15,14 @@
   <!-- Script -->  
 <script id="s2" type="text/javascript" crossorigin="anonymous">
     function showTooltip(event, tooltipId) {
-      const tooltip = document.getElementById(tooltipId);
+      const tooltipimg = document.getElementById(tooltipId);
       tooltipimg.setAttribute('x', event.pageX + 10);
       tooltipimg.setAttribute('y', event.pageY - 150);
       tooltipimg.setAttribute('visibility', 'visible');
     }
 
     function hideTooltip(tooltipId) {
-      const tooltip = document.getElementById(tooltipId);
+      const tooltipimg = document.getElementById(tooltipId);
       tooltipimg.setAttribute('visibility', 'hidden');      
       }
 </script>
