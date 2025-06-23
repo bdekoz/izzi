@@ -14,6 +14,8 @@
   - [link-2](../examples/link-2.svg)
   - [link-3](../examples/link-3.svg)
   - [link-4](../examples/link-4.svg)  
+  - [link-5](../examples/link-5.svg)  
   - [object-1](../examples/object-1.svg)
   - [rect title](../examples/rectangle-title.svg)
   - [circle title](../examples/circle-title.svg)    
+
