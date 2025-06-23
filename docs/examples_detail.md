@@ -20,3 +20,4 @@
   - [object-1](../examples/object-1.svg)
   - [rect title](../examples/rectangle-title.svg)
   - [circle title](../examples/circle-title.svg)
+  - [circle title image](../examples/circle-title-image-1.svg)
