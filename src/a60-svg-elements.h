@@ -1415,6 +1415,66 @@ object_element::finish_element()
 
 
 /**
+   A SVG script element.
+
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/script
+*/
+struct script_element : virtual public foreign_element
+{
+  void
+  start_element(const string& id)
+  {
+    const string shead = R"(<script type="text/javascript" crossorigin="anonymous")";
+    _M_sstream << shead << k::space;
+    if (!id.empty())
+      _M_sstream << "id=" << k::quote << id << k::quote << k::space;
+    _M_sstream << element_base::finish_tag_hard;
+  }
+
+  void
+  start_element()
+  { start_element(""); }
+
+  /// showTooltip(id)
+  /// hideTooltip(id)
+  static const string&
+  tooltips()
+  {
+    static string js = R"(
+    function showTooltip(event, tooltipId) {
+      const tooltipimg = document.getElementById(tooltipId);
+      tooltipimg.setAttribute('x', event.pageX + 10);
+      tooltipimg.setAttribute('y', event.pageY - 150);
+      tooltipimg.setAttribute('visibility', 'visible');
+    }
+
+    function hideTooltip(tooltipId) {
+      const tooltipimg = document.getElementById(tooltipId);
+      tooltipimg.setAttribute('visibility', 'hidden');
+    }
+    )";
+    return js;
+  }
+
+  /// Add string with script source.
+  /// @param scriptstr script source
+  void
+  add_data(const string scriptstr)
+  {
+    _M_sstream << scriptstr;
+    _M_sstream << k::newline;
+   }
+
+  void
+  finish_element();
+};
+
+void
+script_element::finish_element()
+{ _M_sstream  << "</script>" << k::newline; }
+
+
+/**
    A SVG object element.
 
    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
