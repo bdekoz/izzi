@@ -1,0 +1,30 @@
+<svg width="1000" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  
+  <!-- Main SVG content -->
+  <circle id="c1" cx="500" cy="200" r="10" fill="blue" class="tooltip-trigger"   />
+  <circle id="c2" cx="500" cy="400" r="10" fill="green" class="tooltip-trigger"   />
+
+  <!-- 1 4032x3024 -->
+  <!-- 2 4080x3060 -->
+  <!--
+      onmouseover="showTooltip(event, 'tooltip1')" onmouseout="hideTooltip('tooltip1')"
+   -->
+  <image id="tooltip1" href="image/floor-angle-shadow-blur.jpg" x="0" y="0" width="200" height="150" visibility="hidden" crossorigin="anonymous" onmouseover="showTooltip(event, 'tooltip1')" onmouseout="hideTooltip('tooltip1')" />
+  <image id="tooltip2" href="image/green-grass-swirl.jpg" x="0" y="0" width="200" height="150" visibility="hidden" crossorigin="anonymous" onmouseover="showTooltip(event, 'tooltip2')" onmouseout="hideTooltip('tooltip2')" />  
+
+  <!-- Script -->  
+<script id="s2" type="text/javascript" crossorigin="anonymous">
+    function showTooltip(event, tooltipId) {
+      const tooltip = document.getElementById(tooltipId);
+      tooltipimg.setAttribute('x', event.pageX + 10);
+      tooltipimg.setAttribute('y', event.pageY - 150);
+      tooltipimg.setAttribute('visibility', 'visible');
+    }
+
+    function hideTooltip(tooltipId) {
+      const tooltip = document.getElementById(tooltipId);
+      tooltipimg.setAttribute('visibility', 'hidden');      
+      }
+</script>
+</svg>
+
