@@ -1100,8 +1100,17 @@ struct image_element : virtual public element_base
   };
 
   void
+  start_element(const string& id)
+  {
+    const string simg = "<image ";
+    _M_sstream << simg << k::space;
+    if (!id.empty())
+      _M_sstream << "id=" << k::quote << id << k::quote << k::space;
+  }
+
+  void
   start_element()
-  { _M_sstream << "<image "; }
+  { start_element(""); }
 
   void
   finish_element();
@@ -1117,33 +1126,6 @@ struct image_element : virtual public element_base
     const string h("__h");
     const string ref("__ref");
 
-    string strip = R"_delimiter_(xlink:href="__ref" x="__x" y="__y" width="__w" height="__h"
-)_delimiter_";
-
-    string_replace(strip, ref, d._M_xref);
-    string_replace(strip, x, std::to_string(d._M_x_origin));
-    string_replace(strip, y, std::to_string(d._M_y_origin));
-    string_replace(strip, w, std::to_string(d._M_width));
-    string_replace(strip, h, std::to_string(d._M_height));
-    _M_sstream << strip;
-  }
-
-  /// Visibility and other HTML/img attributes.
-  /// @param vattr = visibility attribute, "visible" or "hidden"
-  /// @param lattr = loading attribute, "lazy" or "eager"
-  void
-  add_data(const data& d, const bool xtra,
-	   const string vattr = "visible", const string lattr = "lazy")
-  {
-    using k::quote;
-    using k::space;
-
-    const string x("__x");
-    const string y("__y");
-    const string w("__w");
-    const string h("__h");
-    const string ref("__ref");
-
     string strip = R"_delimiter_(href="__ref" x="__x" y="__y" width="__w" height="__h"
 )_delimiter_";
 
@@ -1153,13 +1135,18 @@ struct image_element : virtual public element_base
     string_replace(strip, w, std::to_string(d._M_width));
     string_replace(strip, h, std::to_string(d._M_height));
     _M_sstream << strip << k::space;
+  }
 
-    if (xtra)
-      {
-	_M_sstream << "visibility=" << quote << vattr << quote << space;
-	_M_sstream << "loading=" << quote << lattr << quote << space;
-	_M_sstream << "srcset=" << quote << d._M_xref << quote << space;
-      }
+  /// Visibility and other HTML/img attributes.
+  /// @param vattr = visibility attribute, "visible" or "hidden"
+  /// @param cors = CORS, "anonymous" or "use-credentials"
+  /// @param lattr = loading attribute, "lazy" or "eager"
+  void
+  add_data(const data& d, const string vattr, const string cors)
+  {
+    add_data(d);
+    _M_sstream << "visibility=" << k::quote << vattr << k::quote << k::space;
+    _M_sstream << "crossorigin=" << k::quote << cors << k::quote << k::space;
   }
 };
 
@@ -1438,7 +1425,7 @@ struct script_element : virtual public foreign_element
   /// showTooltip(id)
   /// hideTooltip(id)
   static const string&
-  tooltips()
+  tooltip_script()
   {
     static string js = R"(
     function showTooltip(event, tooltipId) {
@@ -1454,6 +1441,17 @@ struct script_element : virtual public foreign_element
     }
     )";
     return js;
+  }
+
+  static const string
+  tooltip_attribute(const string& id)
+  {
+    const string toolr("__toolt");
+    string strip1 = R"_delimiter_(onmouseover="showTooltip(event, '__toolt')" )_delimiter_";
+    string strip2 = R"_delimiter_(onmouseout="hideTooltip('__toolt')" )_delimiter_";
+    string_replace(strip1, toolr, id);
+    string_replace(strip2, toolr, id);
+    return k::space + strip1 + k::space + strip2;
   }
 
   /// Add string with script source.
