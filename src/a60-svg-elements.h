@@ -1406,7 +1406,7 @@ object_element::finish_element()
 
    https://developer.mozilla.org/en-US/docs/Web/SVG/Element/script
 */
-struct script_element : virtual public foreign_element
+struct script_element : virtual public element_base
 {
   void
   start_element(const string& id)
