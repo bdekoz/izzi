@@ -16,7 +16,7 @@ test_link(std::string ofile)
   point_2t cp = obj.center_point();
   auto [ x, y] = cp;
 
-  // First link, preload.
+  // First link, preload (is self-paired so no need to finish).
   link_element lp;
   lp.start_element();
   lp.add_data(isrc, "preload", "image");
