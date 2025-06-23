@@ -1,7 +1,7 @@
 <map id="svg::max_vrange" name="svg::max_vrange">
-<area shape="rect" id="Node000001" title="Just the range info, none of the temporary objects." alt="" coords="5,31,112,57"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a9316267f4d5030ca298dbbe2d4c55b18" title="For each dimension of vrnage, find min/max and return (xmax, ymax) NB: Assumes zero is min." alt="" coords="160,5,266,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,33,144,27,145,33,112,38"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#ab75e98b85793fbf54a37fbb78b478c5b" title="Decompose/split 2D ranges to 1D spaces, perhaps with scaling." alt="" coords="160,56,266,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="112,50,145,55,144,61,112,55"/>
+<area shape="rect" id="Node000001" title="Just the range info, none of the temporary objects." alt="" coords="5,29,120,53"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a9316267f4d5030ca298dbbe2d4c55b18" title="For each dimension of vrnage, find min/max and return (xmax, ymax) NB: Assumes zero is min." alt="" coords="168,5,282,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,30,152,25,153,31,121,35"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ab75e98b85793fbf54a37fbb78b478c5b" title="Decompose/split 2D ranges to 1D spaces, perhaps with scaling." alt="" coords="168,53,282,77"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="121,47,153,52,152,57,120,52"/>
 </map>
