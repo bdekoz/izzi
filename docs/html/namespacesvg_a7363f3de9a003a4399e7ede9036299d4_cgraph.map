@@ -1,7 +1,7 @@
 <map id="svg::to_string" name="svg::to_string">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,101,29"/>
-<area shape="rect" id="Node000002" href="$structsvg_1_1color__qi.html#a7cefe883889f6530d9d53cfcb6435b41" title=" " alt="" coords="149,5,294,29"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,14,133,14,133,20,101,20"/>
-<area shape="rect" id="Node000003" href="$structsvg_1_1color__qi.html#a75df9c35be86175ff4a66eaf896026eb" title=" " alt="" coords="342,5,482,29"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="294,14,327,14,327,20,294,20"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,95,32"/>
+<area shape="rect" id="Node000002" href="$structsvg_1_1color__qi.html#a7cefe883889f6530d9d53cfcb6435b41" title=" " alt="" coords="143,5,277,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,16,127,16,127,21,95,21"/>
+<area shape="rect" id="Node000003" href="$structsvg_1_1color__qi.html#a75df9c35be86175ff4a66eaf896026eb" title=" " alt="" coords="325,5,453,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="277,16,310,16,310,21,277,21"/>
 </map>

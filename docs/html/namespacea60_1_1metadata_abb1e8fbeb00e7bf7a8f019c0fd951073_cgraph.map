@@ -1,19 +1,19 @@
 <map id="a60::metadata::render_metadata_aggregate_chord" name="a60::metadata::render_metadata_aggregate_chord">
-<area shape="rect" id="Node000001" title="Analyze metadata directory or subset of it and generate summary output for all in directory." alt="" coords="5,99,182,135"/>
-<area shape="rect" id="Node000002" href="$namespacea60_1_1metadata.html#a1fde7b7617a6da1a221d09f4ce033ee9" title=" " alt="" coords="230,99,384,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,114,214,114,214,120,182,120"/>
-<area shape="rect" id="Node000003" href="$namespacea60_1_1metadata.html#a4c88caad75ba7fd9dffc58be1f715b28" title="Compute xoffset." alt="" coords="648,5,777,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="346,96,387,79,431,64,536,41,632,28,633,33,537,47,433,69,389,84,349,101"/>
-<area shape="rect" id="Node000004" href="$namespacea60_1_1metadata.html#a0e1ca2f297681851edcf2f74d3bf663e" title="Grid, titles, labels for h_chord_graph." alt="" coords="432,99,586,135"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="384,114,417,114,417,120,384,120"/>
-<area shape="rect" id="Node000005" href="$namespacea60_1_1metadata.html#a22b86d9f6417957b79f6e9dab13296dc" title=" " alt="" coords="634,92,791,116"/>
-<area shape="poly" id="edge8_Node000002_Node000005" title=" " alt="" coords="371,95,432,84,528,80,619,87,619,92,528,85,432,89,372,101"/>
-<area shape="rect" id="Node000006" href="$namespacea60_1_1metadata.html#a2a619ed21560d442f5dfae5ea8101fce" title="Distance between label and top/bottom of line or text." alt="" coords="636,157,789,181"/>
-<area shape="poly" id="edge9_Node000002_Node000006" title=" " alt="" coords="376,133,432,145,529,157,621,163,620,169,529,162,432,150,375,139"/>
-<area shape="rect" id="Node000007" href="$namespacea60_1_1metadata.html#a888d9b1e7402e335f8e7544373855a92" title=" " alt="" coords="637,206,788,230"/>
-<area shape="poly" id="edge10_Node000002_Node000007" title=" " alt="" coords="348,133,433,166,530,190,623,205,622,210,529,195,431,172,346,138"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="550,96,656,46,658,51,552,101"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="587,109,619,107,619,112,587,115"/>
-<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="584,133,649,150,648,155,583,139"/>
-<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="538,134,583,162,635,191,654,198,652,203,633,195,580,167,536,138"/>
+<area shape="rect" id="Node000001" title="Analyze metadata directory or subset of it and generate summary output for all in directory." alt="" coords="5,101,173,144"/>
+<area shape="rect" id="Node000002" href="$namespacea60_1_1metadata.html#a1fde7b7617a6da1a221d09f4ce033ee9" title=" " alt="" coords="221,101,362,144"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,120,205,120,205,125,173,125"/>
+<area shape="rect" id="Node000003" href="$namespacea60_1_1metadata.html#a4c88caad75ba7fd9dffc58be1f715b28" title="Compute xoffset." alt="" coords="612,5,730,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="331,98,368,81,409,65,506,43,597,30,597,35,507,48,411,71,370,86,333,103"/>
+<area shape="rect" id="Node000004" href="$namespacea60_1_1metadata.html#a0e1ca2f297681851edcf2f74d3bf663e" title="Grid, titles, labels for h_chord_graph." alt="" coords="410,101,551,144"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="362,120,395,120,395,125,362,125"/>
+<area shape="rect" id="Node000005" href="$namespacea60_1_1metadata.html#a22b86d9f6417957b79f6e9dab13296dc" title=" " alt="" coords="599,84,743,111"/>
+<area shape="poly" id="edge8_Node000002_Node000005" title=" " alt="" coords="357,98,410,87,499,81,584,85,583,90,499,87,410,92,358,103"/>
+<area shape="rect" id="Node000006" href="$namespacea60_1_1metadata.html#a2a619ed21560d442f5dfae5ea8101fce" title="Distance between label and top/bottom of line or text." alt="" coords="602,136,740,163"/>
+<area shape="poly" id="edge9_Node000002_Node000006" title=" " alt="" coords="358,142,410,153,502,159,587,156,587,161,502,164,410,159,357,147"/>
+<area shape="rect" id="Node000007" href="$namespacea60_1_1metadata.html#a888d9b1e7402e335f8e7544373855a92" title=" " alt="" coords="604,191,738,217"/>
+<area shape="poly" id="edge10_Node000002_Node000007" title=" " alt="" coords="345,142,411,164,502,183,589,194,588,200,501,188,409,169,343,147"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="523,99,613,53,615,58,526,103"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="552,111,584,106,584,112,552,116"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="552,130,588,135,587,140,552,135"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="532,142,600,172,623,182,621,187,598,177,530,147"/>
 </map>

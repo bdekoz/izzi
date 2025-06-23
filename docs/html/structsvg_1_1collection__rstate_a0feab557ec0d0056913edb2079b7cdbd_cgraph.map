@@ -1,7 +1,7 @@
 <map id="svg::collection_rstate::collection_rstate" name="svg::collection_rstate::collection_rstate">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,144,42"/>
-<area shape="rect" id="Node000002" href="$structsvg_1_1collection__rstate.html#ac14a0abf670e63aa7dfc488d9006d41c" title=" " alt="" coords="192,5,330,42"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,21,176,21,176,26,144,26"/>
-<area shape="rect" id="Node000003" href="$structsvg_1_1render__state__base.html#a3410b564d0afbc70c71cd16a2a333680" title=" " alt="" coords="378,5,526,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,21,363,21,363,26,330,26"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,132,48"/>
+<area shape="rect" id="Node000002" href="$structsvg_1_1collection__rstate.html#ac14a0abf670e63aa7dfc488d9006d41c" title=" " alt="" coords="180,5,306,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,24,164,24,164,29,132,29"/>
+<area shape="rect" id="Node000003" href="$structsvg_1_1render__state__base.html#a3410b564d0afbc70c71cd16a2a333680" title=" " alt="" coords="354,5,491,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,24,338,24,338,29,307,29"/>
 </map>

@@ -1,11 +1,11 @@
 <map id="svg::make_path_arc_closed" name="svg::make_path_arc_closed">
-<area shape="rect" id="Node000001" title="Same but with degree range arguments instead of points. NB: Assumes appropriate zero_angle_north_cw/c..." alt="" coords="5,36,135,73"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="183,5,331,42"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,41,167,36,168,41,136,46"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#a8e3421a573ebb8e56428ce8c76f3f9ec" title="Make closed path between two points and the center of a circle of radius r. Points like: get_circumfe..." alt="" coords="192,67,322,103"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="136,62,177,69,176,75,135,68"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="379,5,527,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="331,21,363,21,363,26,331,26"/>
-<area shape="rect" id="Node000005" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="406,73,501,97"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="322,82,390,82,390,88,322,88"/>
+<area shape="rect" id="Node000001" title="Same but with degree range arguments instead of points. NB: Assumes appropriate zero_angle_north_cw/c..." alt="" coords="5,39,127,81"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="175,5,313,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,46,159,40,160,45,128,51"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a8e3421a573ebb8e56428ce8c76f3f9ec" title="Make closed path between two points and the center of a circle of radius r. Points like: get_circumfe..." alt="" coords="183,72,304,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="128,69,169,77,168,82,127,74"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="361,5,499,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="314,24,345,24,345,29,314,29"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="386,80,475,107"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="305,91,370,91,370,96,305,96"/>
 </map>
