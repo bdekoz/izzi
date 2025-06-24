@@ -24,14 +24,13 @@
 #include "a60-svg-markers.h"
 
 
+namespace svg {
+
 /// Polyline/line creation options.
 /// 1: use one line with css dasharray and markers mid, end points
 /// 2: use two lines one with css dasharray, one with path tooltips
 constexpr svg::ushort line_1_polyline(100);
 constexpr svg::ushort line_2_polyline_tooltips(200);
-
-namespace svg {
-
 
 /**
    Line Graphs / Line Charts.
@@ -331,7 +330,8 @@ make_line_graph_annotations(const area<> aplate,
 svg_element
 make_line_graph(const svg::area<> aplate, const vrange& points,
 		const graph_rstate& gstate,
-		const point_2t xrange, const point_2t yrange)
+		const point_2t xrange, const point_2t yrange,
+		const ushort line_strategy = line_2_polyline_tooltips)
 {
   using namespace std;
 
@@ -367,27 +367,24 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
   // Plot path of points on cartesian plane.
   svg_element lgraph(gstate.title, "line graph", aplate, false);
-
-  // Grouped tooltips have to be the last, aka top layer of SVG to work (?).
-  //constexpr ushort line_strategy = line_1_polyline;
-  constexpr ushort line_strategy = line_2_polyline_tooltips;
-
   if (gstate.is_visible(select::vector))
     {
-      if constexpr(line_strategy == line_1_polyline)
+      if (line_strategy == line_1_polyline)
 	{
 	  // Use polylines and markerspoints
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
 					       gstate.sstyle);
 	  lgraph.add_element(pl1);
 	}
-      if constexpr(line_strategy == line_2_polyline_tooltips)
+      if (line_strategy == line_2_polyline_tooltips)
 	{
 	  // Use polyline base and set of marker paths with orignal values
 	  // as tooltips on top.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
+	  stroke_style no_markerstyle = gstate.sstyle;
+	  no_markerstyle.markerspoints = "";
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-					       gstate.sstyle);
+					       no_markerstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
 
