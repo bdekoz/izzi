@@ -47,7 +47,7 @@ test_chart()
   graph_rstate gs1 { glayers, "firefox", f1, "% complete", "s", "%",
 		     styl1, { "t2wcagg", "2", "", "round", "" } };
   svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey,
-				       svg::line_1_polyline);
+				       svg::line_chart_style_1);
   obj.add_element(chart1);
 
   gs1.visible_mode = select::ticks;

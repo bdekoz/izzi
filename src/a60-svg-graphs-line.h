@@ -26,11 +26,15 @@
 
 namespace svg {
 
-/// Polyline/line creation options.
+/// Polyline/line options.
 /// 1: use one line with css dasharray and markers mid, end points
-/// 2: use two lines one with css dasharray, one with path tooltips
-constexpr svg::ushort line_1_polyline(100);
-constexpr svg::ushort line_2_polyline_tooltips(200);
+/// 2: use two lines: one with css dasharray and no markerspoints, two
+///    with explicit marker paths and added text tooltips
+/// 3: use two lines and add js + image tooltips: like 2 above
+///    but add image tooltips, with js controlling image visibility.
+constexpr svg::ushort line_chart_style_1(100);
+constexpr svg::ushort line_chart_style_2(200);
+constexpr svg::ushort line_chart_style_3(300);
 
 /**
    Line Graphs / Line Charts.
@@ -324,14 +328,15 @@ make_line_graph_annotations(const area<> aplate,
 }
 
 
-/// Returns a svg_element with the chart and labels
+/// Returns a svg_element with the line chart drawn in one of three ways.
 /// Assume:
 /// vgrange x axis is monotonically increasing
 svg_element
 make_line_graph(const svg::area<> aplate, const vrange& points,
 		const graph_rstate& gstate,
 		const point_2t xrange, const point_2t yrange,
-		const ushort line_strategy = line_2_polyline_tooltips)
+		const ushort line_strategy = line_chart_style_2,
+		const string& imgprefix = "", const string& imgtype = ".webp")
 {
   using namespace std;
 
@@ -369,14 +374,16 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
   svg_element lgraph(gstate.title, "line graph", aplate, false);
   if (gstate.is_visible(select::vector))
     {
-      if (line_strategy == line_1_polyline)
+      if (line_strategy == line_chart_style_1)
 	{
 	  // Use polylines and markerspoints
+	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
 					       gstate.sstyle);
 	  lgraph.add_element(pl1);
+	  lgraph.add_raw(group_element::finish_group());
 	}
-      if (line_strategy == line_2_polyline_tooltips)
+      if (line_strategy == line_chart_style_2)
 	{
 	  // Use polyline base and set of marker paths with orignal values
 	  // as tooltips on top.
@@ -388,11 +395,43 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
 
-	  lgraph.add_raw(group_element::start_group("values-" + gstate.title));
+	  // Markers + text tooltips.
+	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
 	  string markers = make_line_graph_markers_tips(points, cpoints,
 							gstate, 3);
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
+	}
+      if (line_strategy == line_chart_style_3)
+	{
+	  // Use polyline base and set of marker paths with orignal values
+	  // as tooltips on top.
+	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
+	  stroke_style no_markerstyle = gstate.sstyle;
+	  no_markerstyle.markerspoints = "";
+	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
+					       no_markerstyle);
+	  lgraph.add_element(pl1);
+	  lgraph.add_raw(group_element::finish_group());
+
+	  // Markers + text tooltips.
+	  /// add attribute with image id
+	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
+	  string markers = make_line_graph_markers_tips(points, cpoints,
+							gstate, 3);
+	  lgraph.add_raw(markers);
+	  lgraph.add_raw(group_element::finish_group());
+
+	  // Images with image id, default to hidden.
+	  // XXX
+	  string s = imgprefix + imgtype;
+
+	  // Add js to control visibility.
+	   script_element scrpt;
+	   scrpt.start_element("tooltip-js");
+	   scrpt.add_data(script_element::tooltip_script());
+	   scrpt.finish_element();
+	   lgraph.add_element(scrpt);
 	}
     }
 
