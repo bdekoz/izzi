@@ -595,24 +595,26 @@ make_path_data_from_points(const vrange& lpoints)
 
 
 /// Draw path given serialized path data.
-/// Assumes pinstripe, ie top and bottom line layers.
+/// Can be used to make pinstripes, ie top and bottom line layers.
 /// top style defaults: fill opac(0), stroke opac(1), stroke sz 1
 /// bottom style defaults: fill opac(0), stroke opac(1), stroke sz 1.25
 path_element
-make_path(const string& pathda, const style& styl,
-	  const string name = "", const bool selfclosingtagp = true)
+make_path(const string& pathda, const style& styl, const string id = "",
+	  const bool selfclosingtagp = true, const string xattr = "")
 {
   // Draw path with this endpoint.
   path_element pe;
   if (to_string(styl._M_stroke_color) != to_string(svg::color::none))
     {
       path_element::data da = { pathda, 0 };
-      if (name.empty())
+      if (id.empty())
 	pe.start_element();
       else
-	pe.start_element(name);
+	pe.start_element(id);
       pe.add_data(da);
       pe.add_style(styl);
+      if (!xattr.empty())
+	pe.add_raw(xattr);
       if (selfclosingtagp)
 	pe.finish_element();
       else
@@ -626,7 +628,7 @@ make_path(const string& pathda, const style& styl,
 path_element
 make_path_triangle(const point_2t origin, const style styl,
 		   const double r = 4, const double angle = 120,
-		   const bool selfclosingtagp = true)
+		   const bool selfclosingtagp = true, const string xattr = "")
 {
   // Find points: orig, orig + (120 x 1), orig + (120 x 2).
   double zo = zero_angle_north_cw(angle);
@@ -640,7 +642,7 @@ make_path_triangle(const point_2t origin, const style styl,
   const string id = "triangle-" + argname;
 
   path_element::data pthdata = { pathda, 0 };
-  path_element tri = make_path(pathda, styl, id, selfclosingtagp);
+  path_element tri = make_path(pathda, styl, id, selfclosingtagp, xattr);
   return tri;
 }
 

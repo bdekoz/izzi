@@ -83,16 +83,48 @@ struct graph_rstate : public render_state_base
 };
 
 
-/// Return set of paths corresponding to marker shapes with tooltips.
+/// Return set of images for image tooltips, one for each point.
+/// @param aimg is size of image embedded inside svg element.
+/// @pathprefix is the path to the directory with the store of images
+/// @idimgbase is the root name for what will be document level unique names of
+/// sequentially numbered images (say fximage-, for fximage-101 et al)
 string
-make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
-			     const graph_rstate& gstate, const double radius)
+make_line_graph_image_set(const area<> aimg, const vrange& points,
+			  const string imgidbase, const string pathprefix,
+			  const string imgprefix, const string imgext)
+{
+  string ret;
+  for (const point_2t p : points)
+    {
+      const string xms = std::to_string(static_cast<uint>(std::get<0>(p)));
+      const string isrc = pathprefix + imgprefix + xms + imgext;
+      const string imgid = imgidbase + xms;
+      auto [ width, height ] = aimg;
+
+      image_element i;
+      image_element::data di = { isrc, 0, 0, width, height };
+      i.start_element(imgid);
+      i.add_data(di, "hidden", "anonymous");
+      i.finish_element();
+      ret += i.str();
+    }
+  return ret;
+}
+
+/// Return set of paths of marker shapes with text tooltips.
+string
+make_line_graph_markers(const vrange& points, const vrange& cpoints,
+			const graph_rstate& gstate, const double radius,
+			const string imgidbase = "")
 {
   string ret;
   for (uint i = 0; i < points.size(); i++)
     {
       auto [ vx, vy ] = points[i];
       auto [ cx, cy ] = cpoints[i];
+
+      const string xms = std::to_string(static_cast<uint>(vx));
+      const string imgid = imgidbase + xms;
 
       // Generate displayed tooltip text....
       string tipstr(gstate.title);
@@ -101,7 +133,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       tipstr += '%';
       tipstr += k::comma;
       tipstr += k::space;
-      tipstr += std::to_string(static_cast<uint>(vx));
+      tipstr += xms;
       tipstr += "ms";
 
       const string& linecap = gstate.sstyle.linecap;
@@ -126,6 +158,8 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 	  c.start_element();
 	  c.add_data(dc);
 	  c.add_style(styl);
+	  if (!imgidbase.empty())
+	    c.add_raw(script_element::tooltip_attribute(imgid));
 	  c.add_raw(element_base::finish_tag_hard);
 	  c.add_title(tipstr);
 	  c.add_raw(string { circle_element::pair_finish_tag } + k::newline);
@@ -142,6 +176,8 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
 	  r.start_element();
 	  r.add_data(dr);
 	  r.add_style(styl);
+	  if (!imgidbase.empty())
+	    r.add_raw(script_element::tooltip_attribute(imgid));
 	  r.add_raw(element_base::finish_tag_hard);
 	  r.add_title(tipstr);
 	  r.add_raw(string { rect_element::pair_finish_tag } + k::newline);
@@ -152,8 +188,12 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       // svg::path_element t = (cpoints[i], gstate.lstyle, {2 * r, 2 * r});
       if (trianglep)
 	{
+	  string xattr;
+	  if (!imgidbase.empty())
+	    xattr = script_element::tooltip_attribute(imgid);
+
 	  path_element p = make_path_triangle(cpoints[i], styl, radius, 120,
-					      false);
+					      false, xattr);
 	  p.add_title(tipstr);
 	  p.add_raw(string { path_element::pair_finish_tag } + k::newline);
 	  ret += p.str();
@@ -162,7 +202,7 @@ make_line_graph_markers_tips(const vrange& points, const vrange& cpoints,
       // Throw if marker style not supported.
       if (!roundp && !squarep && !trianglep)
 	{
-	  string m("make_line_graph_markers_tips:: ");
+	  string m("make_line_graph_markers:: ");
 	  m += "linecap value invalid or missing, currently set to: ";
 	  m += linecap;
 	  m += k::newline;
@@ -336,7 +376,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 		const graph_rstate& gstate,
 		const point_2t xrange, const point_2t yrange,
 		const ushort line_strategy = line_chart_style_2,
-		const string& imgprefix = "", const string& imgtype = ".webp")
+		const string imgidbase = "")
 {
   using namespace std;
 
@@ -397,8 +437,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
 	  // Markers + text tooltips.
 	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
-	  string markers = make_line_graph_markers_tips(points, cpoints,
-							gstate, 3);
+	  string markers = make_line_graph_markers(points, cpoints, gstate, 3);
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
 	}
@@ -417,21 +456,15 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  // Markers + text tooltips.
 	  /// add attribute with image id
 	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
-	  string markers = make_line_graph_markers_tips(points, cpoints,
-							gstate, 3);
+	  string markers = make_line_graph_markers(points, cpoints, gstate, 3,
+						   imgidbase);
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
 
-	  // Images with image id, default to hidden.
-	  // XXX
-	  string s = imgprefix + imgtype;
+	  // Add images with image id, default to hidden
+	  // (make_line_graph_image_set)
 
-	  // Add js to control visibility.
-	   script_element scrpt;
-	   scrpt.start_element("tooltip-js");
-	   scrpt.add_data(script_element::tooltip_script());
-	   scrpt.finish_element();
-	   lgraph.add_element(scrpt);
+	  // Add script_element::tooltip_script()
 	}
     }
 
