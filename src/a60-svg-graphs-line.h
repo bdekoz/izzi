@@ -346,7 +346,7 @@ make_line_graph_annotations(const area<> aplate,
       hlstyl._M_stroke_color = color::gray10;
 
       anntypo._M_size = 3;
-      anntypo._M_style.set_colors(color::gray20);
+      //anntypo._M_style.set_colors(color::gray20);
       for (double y = miny + ydelta; y < maxy + ydelta; y += ydelta)
 	{
 	  // Base line layer.
