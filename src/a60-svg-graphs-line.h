@@ -216,6 +216,13 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 /// Axis Labels
 /// Axis X/Y Ticmarks
 /// X line increments
+///
+/// @param aplate = total size of graph area
+/// @param points = vector of {x,y} points to graph
+/// @param gstate = graph render state
+/// @param xscale = scale x axis by this ammount (1000 if converting ms to s)
+/// @param yscale = scale y axis by this ammount
+/// @param typo = typography to use for labels
 svg_element
 make_line_graph_annotations(const area<> aplate,
 			    const vrange& points,
@@ -368,9 +375,20 @@ make_line_graph_annotations(const area<> aplate,
 }
 
 
-/// Returns a svg_element with the line chart drawn in one of three ways.
-/// Assume:
+/// Returns a svg_element with the rendered line graph (char).
+/// Assumptions:
 /// vgrange x axis is monotonically increasing
+///
+/// NB1: Axes and labels drawn in a separate pass (make_line_graph_annotations).
+/// NB2: Output file of x-axis point values for image tooltips if strategy = 3.
+///
+/// @param aplate = total size of graph area
+/// @param points = vector of {x,y} points to graph
+/// @param gstate = graph render state
+/// @param xrange = unified x-axis range for all graphs if multiplot
+/// @param yrange = unified y-axis range for all graphs if multiplot
+/// @param line_strategy = type of graph to render, from simplest to tooltips
+/// @param imgidbase = unique text prefix over multimap for image tooltips
 svg_element
 make_line_graph(const svg::area<> aplate, const vrange& points,
 		const graph_rstate& gstate,
@@ -464,7 +482,21 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  // Add images with image id, default to hidden
 	  // (make_line_graph_image_set)
 
-	  // Add script_element::tooltip_script()
+	  // Add javascript to control images
+	  // (script_element::tooltip_script)
+
+	  // Output points used to that screenshots can be matched to
+	  // the appropriate marker point/tooltip.
+	  const string ofname(gstate.title + "-x-axis-control-points.csv");
+	  ofstream ofs(ofname, ios_base::out);
+	  if (ofs.good())
+	    {
+	      for (const point_2t& p : points)
+		{
+		  const uint ui = get<0>(p);
+		  ofs << ui << k::comma << k::space;
+		}
+	    }
 	}
     }
 

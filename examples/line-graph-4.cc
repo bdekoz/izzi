@@ -84,15 +84,16 @@ test_chart()
   // 2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-firefox_09200.webp
   const svg::area<> aimg = { 200, 150 };
   const string imgext = ".webp";
+  const string imgpath = "/filmstrip/";
   string fxpre = "2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-firefox_";
   string chpre = "2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-chrome_";
 
   string imageset1 = make_line_graph_image_set(aimg, vr1, fxidbase,
-					       "/filmstrip/", fxpre, imgext);
+					       imgpath, fxpre, imgext);
   obj.add_raw(imageset1);
 
-  string imageset2 = make_line_graph_image_set(aimg, vr2, "chrome-img-",
-					       "/filmstrip/", chpre, imgext);
+  string imageset2 = make_line_graph_image_set(aimg, vr2, chidbase,
+					       imgpath, chpre, imgext);
   obj.add_raw(imageset2);
 
 
