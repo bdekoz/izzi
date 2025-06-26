@@ -243,7 +243,7 @@ make_line_graph_annotations(const area<> aplate,
 
   // Base typo for annotations.
   typography anntypo = typo;
-  anntypo._M_style = k::wcaglg_style;
+  anntypo._M_style = k::wcagg_style;
   anntypo._M_size = graph_rstate::th1sz;
 
   // Axes and Labels
