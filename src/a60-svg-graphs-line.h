@@ -129,7 +129,10 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       auto [ vx, vy ] = points[i];
       auto [ cx, cy ] = cpoints[i];
 
-      const string xms = std::to_string(static_cast<uint>(vx));
+      std::ostringstream oss;
+      oss << std::setfill('0') << std::setw(5);
+      oss << static_cast<uint>(vx);
+      const string xms = oss.str();
       const string imgid = imgidbase + xms;
 
       // Generate displayed tooltip text....
@@ -139,7 +142,7 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       tipstr += '%';
       tipstr += k::comma;
       tipstr += k::space;
-      tipstr += xms;
+      tipstr += std::to_string(static_cast<uint>(vx));
       tipstr += "ms";
 
       const string& linecap = gstate.sstyle.linecap;
