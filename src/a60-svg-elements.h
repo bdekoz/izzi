@@ -1430,9 +1430,13 @@ struct script_element : virtual public element_base
     static string js = R"(
     function showTooltip(event, tooltipId) {
       const tooltipimg = document.getElementById(tooltipId);
-      tooltipimg.setAttribute('x', event.pageX + 10);
-      tooltipimg.setAttribute('y', event.pageY - 150);
-      tooltipimg.setAttribute('visibility', 'visible');
+      if (tooltipimg) {
+	tooltipimg.setAttribute('x', event.pageX + 10);
+	tooltipimg.setAttribute('y', event.pageY - 150);
+	tooltipimg.setAttribute('visibility', 'visible');
+      } else {
+	console.error(`Element with ID "${tooltipId}" not found.`);
+      }
     }
 
     function hideTooltip(tooltipId) {
