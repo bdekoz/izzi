@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Center an octogon at this point. radius 4 is pixels to draw out from center point...." alt="" coords="5,272,153,299"/>
 <area shape="rect" id="Node000002" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="207,91,345,133"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,270,237,142,241,146,97,274"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#a8b2e7da5235688e0f753d35fc1079c87" title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers...." alt="" coords="225,243,326,269"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers...." alt="" coords="225,243,326,269"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,272,210,263,210,268,154,277"/>
 <area shape="rect" id="Node000012" href="$namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91" title="Make single path segment." alt="" coords="211,293,340,336"/>
 <area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="154,294,196,300,195,305,153,299"/>

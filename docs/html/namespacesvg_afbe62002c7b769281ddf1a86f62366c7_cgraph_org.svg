@@ -38,7 +38,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="namespacesvg.html#a5c3daa77c4f641f5ac5fd9d31a8c15d3" target="_top" xlink:title="Center a triangle at this point.">
+<g id="a_Node000006"><a xlink:href="namespacesvg.html#a6745faec7f5b60dcb4fc12cbdbf56bd7" target="_top" xlink:title="Center a triangle at this point.">
 <polygon fill="white" stroke="#666666" points="269.75,-156 160,-156 160,-136 269.75,-136 269.75,-156"/>
 <text text-anchor="middle" x="214.88" y="-144.4" font-family="SourceSans" font-size="8.00">svg::make_path_triangle</text>
 </a>
@@ -132,7 +132,7 @@
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="namespacesvg.html#a8b2e7da5235688e0f753d35fc1079c87" target="_top" xlink:title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers....">
+<g id="a_Node000009"><a xlink:href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" target="_top" xlink:title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers....">
 <polygon fill="white" stroke="#666666" points="405.38,-214 329.38,-214 329.38,-194 405.38,-194 405.38,-214"/>
 <text text-anchor="middle" x="367.38" y="-202.4" font-family="SourceSans" font-size="8.00">svg::make_path</text>
 </a>

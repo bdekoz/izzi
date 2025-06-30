@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['line_5f1_5fpolyline_0',['line_1_polyline',['../a60-svg-graphs-line_8h.html#ad5c74ee03d68d9c96bb3e92944483fb6',1,'a60-svg-graphs-line.h']]],
-  ['line_5f2_5fpolyline_5ftooltips_1',['line_2_polyline_tooltips',['../a60-svg-graphs-line_8h.html#a8846f4f633ceadf103a207abdf41a741',1,'a60-svg-graphs-line.h']]]
+  ['line_5fchart_5fstyle_5f1_0',['line_chart_style_1',['../namespacesvg.html#a9fe3bdf9b1b5bb25a21914fd9cb50fba',1,'svg']]],
+  ['line_5fchart_5fstyle_5f2_1',['line_chart_style_2',['../namespacesvg.html#a41084ede07f3c4f2a7f1f72ba333be49',1,'svg']]],
+  ['line_5fchart_5fstyle_5f3_2',['line_chart_style_3',['../namespacesvg.html#a65c40baf682d1ff8518681736ce9f50d',1,'svg']]]
 ];

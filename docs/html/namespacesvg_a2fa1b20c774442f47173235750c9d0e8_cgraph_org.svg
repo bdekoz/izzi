@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacesvg.html#a8b2e7da5235688e0f753d35fc1079c87" target="_top" xlink:title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers....">
+<g id="a_Node000002"><a xlink:href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" target="_top" xlink:title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers....">
 <polygon fill="white" stroke="#666666" points="239,-142 163,-142 163,-122 239,-122 239,-142"/>
 <text text-anchor="middle" x="201" y="-130.4" font-family="SourceSans" font-size="8.00">svg::make_path</text>
 </a>

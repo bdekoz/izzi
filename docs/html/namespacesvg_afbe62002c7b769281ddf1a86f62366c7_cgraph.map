@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,241,164,268"/>
 <area shape="rect" id="Node000002" href="$namespacesvg.html#a56ab414cf370cb20fa25d06d2a9b07bb" title="Base function for generating SVG markers in a defs section." alt="" coords="212,101,372,128"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,239,257,135,260,139,108,243"/>
-<area shape="rect" id="Node000006" href="$namespacesvg.html#a5c3daa77c4f641f5ac5fd9d31a8c15d3" title="Center a triangle at this point." alt="" coords="219,300,365,327"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a6745faec7f5b60dcb4fc12cbdbf56bd7" title="Center a triangle at this point." alt="" coords="219,300,365,327"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="135,266,228,293,227,298,134,271"/>
 <area shape="rect" id="Node000003" href="$group__elements.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="627,31,748,73"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="372,99,611,61,612,67,373,105"/>
@@ -12,7 +12,7 @@
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="324,98,429,52,431,57,326,103"/>
 <area shape="rect" id="Node000007" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="426,447,564,489"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="313,325,455,435,452,439,310,329"/>
-<area shape="rect" id="Node000009" href="$namespacesvg.html#a8b2e7da5235688e0f753d35fc1079c87" title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers...." alt="" coords="444,223,546,249"/>
+<area shape="rect" id="Node000009" href="$namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers...." alt="" coords="444,223,546,249"/>
 <area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="328,297,443,253,445,258,330,302"/>
 <area shape="rect" id="Node000016" href="$namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91" title="Make single path segment." alt="" coords="430,292,560,335"/>
 <area shape="poly" id="edge17_Node000006_Node000016" title=" " alt="" coords="366,311,415,311,415,316,366,316"/>

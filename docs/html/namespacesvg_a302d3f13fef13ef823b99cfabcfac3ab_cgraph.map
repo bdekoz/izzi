@@ -1,5 +1,5 @@
 <map id="svg::make_path" name="svg::make_path">
-<area shape="rect" id="Node000001" title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers...." alt="" coords="5,176,107,203"/>
+<area shape="rect" id="Node000001" title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers...." alt="" coords="5,176,107,203"/>
 <area shape="rect" id="Node000002" href="$group__elements.html#a807f3c30f2ace338ad10aaf230b47665" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="155,5,276,48"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,174,98,120,124,88,153,58,157,55,160,59,156,62,128,91,102,123,67,177"/>
 <area shape="rect" id="Node000004" href="$group__elements.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="155,72,276,115"/>

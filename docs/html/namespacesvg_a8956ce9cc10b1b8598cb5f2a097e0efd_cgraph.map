@@ -63,11 +63,11 @@
 <area shape="poly" id="edge30_Node000022_Node000026" title=" " alt="" coords="888,377,986,324,995,320,997,324,988,329,891,382"/>
 <area shape="poly" id="edge26_Node000023_Node000012" title=" " alt="" coords="1115,424,1160,424,1160,429,1115,429"/>
 <area shape="poly" id="edge32_Node000027_Node000017" title=" " alt="" coords="499,694,522,683,536,671,545,658,554,645,570,632,580,627,583,631,573,637,558,649,549,661,540,675,525,688,501,699"/>
-<area shape="rect" id="Node000028" href="$namespacesvg.html#a5c3daa77c4f641f5ac5fd9d31a8c15d3" title="Center a triangle at this point." alt="" coords="583,748,729,775"/>
+<area shape="rect" id="Node000028" href="$namespacesvg.html#a6745faec7f5b60dcb4fc12cbdbf56bd7" title="Center a triangle at this point." alt="" coords="583,748,729,775"/>
 <area shape="poly" id="edge33_Node000027_Node000028" title=" " alt="" coords="504,722,583,741,582,746,503,727"/>
 <area shape="rect" id="Node000029" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="795,799,933,841"/>
 <area shape="poly" id="edge34_Node000028_Node000029" title=" " alt="" coords="707,773,780,794,779,799,705,778"/>
-<area shape="rect" id="Node000031" href="$namespacesvg.html#a8b2e7da5235688e0f753d35fc1079c87" title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers...." alt="" coords="813,647,914,673"/>
+<area shape="rect" id="Node000031" href="$namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers...." alt="" coords="813,647,914,673"/>
 <area shape="poly" id="edge36_Node000028_Node000031" title=" " alt="" coords="684,745,820,678,823,683,687,750"/>
 <area shape="rect" id="Node000035" href="$namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91" title="Make single path segment." alt="" coords="799,865,928,908"/>
 <area shape="poly" id="edge44_Node000028_Node000035" title=" " alt="" coords="676,773,726,810,790,851,798,856,796,860,787,856,723,814,673,777"/>

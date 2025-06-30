@@ -10,7 +10,7 @@
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="343,102,379,96,380,101,343,108"/>
 <area shape="rect" id="Node000005" href="$group__elements.html#ac4cb549d62ec6d614189e4585089c58d" title=" " alt="" coords="395,131,522,173"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="343,130,380,136,379,141,343,135"/>
-<area shape="rect" id="Node000007" href="$namespacesvg.html#a8b2e7da5235688e0f753d35fc1079c87" title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers...." alt="" coords="408,197,509,224"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers...." alt="" coords="408,197,509,224"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="336,185,393,196,392,201,335,190"/>
 <area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="505,195,520,183,533,168,539,153,545,123,550,92,556,75,568,58,570,57,574,60,572,62,561,78,555,93,550,124,545,155,537,171,524,187,508,199"/>
 <area shape="rect" id="Node000008" href="$group__elements.html#a807f3c30f2ace338ad10aaf230b47665" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="570,72,692,115"/>

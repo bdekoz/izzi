@@ -49,7 +49,7 @@
 <script type="application/ecmascript">
 var viewWidth = 975;
 var viewHeight = 823;
-var sectionId = 'dynsection-48';
+var sectionId = 'dynsection-49';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -650,7 +650,7 @@ var sectionId = 'dynsection-48';
 <!-- Node28 -->
 <g id="Node000028" class="node">
 <title>Node28</title>
-<g id="a_Node000028"><a xlink:href="namespacesvg.html#a5c3daa77c4f641f5ac5fd9d31a8c15d3" target="_top" xlink:title="Center a triangle at this point.">
+<g id="a_Node000028"><a xlink:href="namespacesvg.html#a6745faec7f5b60dcb4fc12cbdbf56bd7" target="_top" xlink:title="Center a triangle at this point.">
 <polygon fill="white" stroke="#666666" points="542.88,-258 433.12,-258 433.12,-238 542.88,-238 542.88,-258"/>
 <text text-anchor="middle" x="488" y="-246.4" font-family="SourceSans" font-size="8.00">svg::make_path_triangle</text>
 </a>
@@ -687,7 +687,7 @@ var sectionId = 'dynsection-48';
 <!-- Node31 -->
 <g id="Node000031" class="node">
 <title>Node31</title>
-<g id="a_Node000031"><a xlink:href="namespacesvg.html#a8b2e7da5235688e0f753d35fc1079c87" target="_top" xlink:title="Draw path given serialized path data. Assumes pinstripe, ie top and bottom line layers....">
+<g id="a_Node000031"><a xlink:href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" target="_top" xlink:title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers....">
 <polygon fill="white" stroke="#666666" points="681.88,-334 605.88,-334 605.88,-314 681.88,-314 681.88,-334"/>
 <text text-anchor="middle" x="643.88" y="-322.4" font-family="SourceSans" font-size="8.00">svg::make_path</text>
 </a>
