@@ -24,9 +24,11 @@ test_chart()
   // JSON location, offsets, fields.
   const string jdir("/home/bkoz/src/mozilla-a11y-data-visual-forms/data/");
   const string jfile(jdir + "2025-01-27-minimal.json");
+  const string bfirefox("firefox");
+  const string bchrome("chrome");
   const string afieldpost("/metrics/SpeedIndexProgress");
-  const string afx("/firefox" + afieldpost);
-  const string achrome("/chrome" + afieldpost);
+  const string afx("/" + bfirefox + afieldpost);
+  const string achrome("" + bchrome + afieldpost);
   const string f1("timestamp");
   const string f2("percent");
 
@@ -41,11 +43,11 @@ test_chart()
   //svg::select glayers { select::ticks | select::vector };
 
   graph_rstate gs1 { select::vector,
-		     "firefox", f1, f2, "ms", "%", styl3,
+		     bfirefox, f1, f2, "ms", "%", styl3,
 		     { "r2wcadg", "1 2", "", "triangle", "" } };
 
   graph_rstate gs2 { select::vector | select::echo,
-		     "chrome", f1, f2, "ms", "%", styl1,
+		     bchrome, f1, f2, "ms", "%", styl1,
 		     { "c2wcaglg", "3", "", "round", "" } };
 
   graph_rstate gsa { select::ticks | select::linex | select::alt,
@@ -70,11 +72,11 @@ test_chart()
   point_2t rangey = make_tuple(0, maxy);
 
   // Draw graph(s).
-  const string fxidbase = "firefox-img-";
+  const string fxidbase = bfirefox + "-img-";
   svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey,
 				       line_chart_style_3, fxidbase);
 
-  const string chidbase = "chrome-img-";
+  const string chidbase = bchrome + "-img-";
   svg_element chart2 = make_line_graph(a, vr2, gs2, rangex, rangey,
 				       line_chart_style_3, chidbase);
   obj.add_element(chart1);
@@ -85,8 +87,9 @@ test_chart()
   const svg::area<> aimg = { 200, 150 };
   const string imgext = ".webp";
   const string imgpath = "/filmstrip/";
-  string fxpre = "2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-firefox_";
-  string chpre = "2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-chrome_";
+  const string tpmeta = "2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-";
+  string fxpre = tpmeta + bfirefox + "_";
+  string chpre = tpmeta + bchrome + "_";
 
   string imageset1 = make_line_graph_image_set(aimg, vr1, fxidbase,
 					       imgpath, fxpre, imgext);

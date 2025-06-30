@@ -88,6 +88,8 @@ struct graph_rstate : public render_state_base
 /// @pathprefix is the path to the directory with the store of images
 /// @idimgbase is the root name for what will be document level unique names of
 /// sequentially numbered images (say fximage-, for fximage-101 et al)
+/// Expected, zero filled imageid.
+/// 2025-06-26-android-15-ptablet-talkback-4usted-firefox_13188.webp
 string
 make_line_graph_image_set(const area<> aimg, const vrange& points,
 			  const string imgidbase, const string pathprefix,
@@ -96,7 +98,11 @@ make_line_graph_image_set(const area<> aimg, const vrange& points,
   string ret;
   for (const point_2t p : points)
     {
-      const string xms = std::to_string(static_cast<uint>(std::get<0>(p)));
+      std::ostringstream oss;
+      oss << std::setfill('0') << std::setw(5);
+      oss << static_cast<uint>(std::get<0>(p));
+      const string xms = oss.str();
+
       const string isrc = pathprefix + imgprefix + xms + imgext;
       const string imgid = imgidbase + xms;
       auto [ width, height ] = aimg;
