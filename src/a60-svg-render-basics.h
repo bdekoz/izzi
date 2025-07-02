@@ -57,7 +57,7 @@ style_text(const string text, const point_2t origin, const typography typo)
 
 /// Text at @param origin, with style.
 void
-styled_text(svg_element& obj, const string text, const point_2t origin,
+styled_text(element_base& obj, const string text, const point_2t origin,
 	    const typography typo)
 {
   text_element t = style_text(text, origin, typo);
@@ -67,12 +67,11 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
 
 /// Text at @param origin, with style and transform
 void
-styled_text(svg_element& obj, const string text, const point_2t origin,
+styled_text(element_base& obj, const string text, const point_2t origin,
 	    const typography typo, const string xform)
 {
-  using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
-  text_element::data dt = { atype(x), atype(y), text, typo };
+  text_element::data dt = { space_type(x), space_type(y), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt, xform);
@@ -84,12 +83,11 @@ styled_text(svg_element& obj, const string text, const point_2t origin,
 /// Text at @param origin, with style and ...
 ///  a transformation=rotation of @param deg about origin.
 void
-styled_text_r(svg_element& obj, const string text, const point_2t origin,
+styled_text_r(element_base& obj, const string text, const point_2t origin,
 	      const typography typo, const double deg)
 {
-  using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
-  text_element::data dt = { atype(x), atype(y), text, typo };
+  text_element::data dt = { space_type(x), space_type(y), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt, svg::transform::rotate(deg, x, y));
@@ -101,13 +99,12 @@ styled_text_r(svg_element& obj, const string text, const point_2t origin,
 /// Text at @param origin, with style and ...
 ///  a transformation=rotation of @param deg about @param rorigin.
 void
-styled_text_r(svg_element& obj, const string text, const point_2t origin,
+styled_text_r(element_base& obj, const string text, const point_2t origin,
 	      const typography typo, const double deg, const point_2t rorigin)
 {
-  using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
   auto [ rx, ry ] = rorigin;
-  text_element::data dt = { atype(x), atype(y), text, typo };
+  text_element::data dt = { space_type(x), space_type(y), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt, svg::transform::rotate(deg, rx, ry));
@@ -119,12 +116,11 @@ styled_text_r(svg_element& obj, const string text, const point_2t origin,
 /// XXX
 /// Text at @param origin, with style and link.
 void
-styled_text_link(svg_element& obj, const string text, const point_2t origin,
+styled_text_link(element_base& obj, const string text, const point_2t origin,
 		 const typography typo, const string uri)
 {
-  using atype = decltype(obj._M_area)::atype;
   auto [ x, y ] = origin;
-  text_element::data dt = { atype(x), atype(y), text, typo };
+  text_element::data dt = { space_type(x), space_type(y), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt);
@@ -159,12 +155,11 @@ styled_text_link(svg_element& obj, const string text, const point_2t origin,
 
 /// Text at size.
 void
-sized_text(svg_element& obj, svg::typography typo, const int sz,
+sized_text(element_base& obj, svg::typography typo, const int sz,
 	   const string text, const int tx, const int ty)
 {
-  using atype = decltype(obj._M_area)::atype;
   typo._M_size = sz;
-  text_element::data dt = { atype(tx), atype(ty), text, typo };
+  text_element::data dt = { space_type(tx), space_type(ty), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt);
@@ -175,12 +170,11 @@ sized_text(svg_element& obj, svg::typography typo, const int sz,
 
 /// Text at size, with a transformation=rotation.
 void
-sized_text_r(svg_element& obj, svg::typography typo, const int sz,
+sized_text_r(element_base& obj, svg::typography typo, const int sz,
 	     const string text, const int tx, const int ty, const double deg)
 {
-  using atype = decltype(obj._M_area)::atype;
   typo._M_size = sz;
-  text_element::data dt = { atype(tx), atype(ty), text, typo };
+  text_element::data dt = { space_type(tx), space_type(ty), text, typo };
   text_element t;
   t.start_element();
   t.add_data(dt, svg::transform::rotate(deg, tx, ty));
