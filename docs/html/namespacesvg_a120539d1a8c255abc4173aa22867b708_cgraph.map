@@ -1,15 +1,15 @@
 <map id="svg::make_line_graph_image_set" name="svg::make_line_graph_image_set">
-<area shape="rect" id="Node000001" title="Return set of images for image tooltips, one for each point." alt="" coords="5,105,138,148"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#abfa06ef3bc0a99045eac1a61c80ce46c" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="191,5,314,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,102,184,58,193,53,195,58,187,62,110,107"/>
-<area shape="rect" id="Node000004" href="$group__elements.html#gad9598e7ef20232bf2eb3e5ed14a4848d" title=" " alt="" coords="191,72,314,115"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="137,112,176,105,177,110,138,117"/>
-<area shape="rect" id="Node000005" href="$group__elements.html#af55d63d69abb6ef89ee0460a936085a7" title=" " alt="" coords="191,139,314,181"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="138,136,177,143,176,149,137,141"/>
-<area shape="rect" id="Node000007" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="186,205,320,232"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="108,146,187,191,199,196,197,201,184,196,105,151"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="370,13,487,40"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="315,24,355,24,355,29,315,29"/>
-<area shape="rect" id="Node000006" href="$group__elements.html#ad192becf9565fd5d15094d275e207481" title="Empty when the output buffer is." alt="" coords="368,139,489,181"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="315,157,353,157,353,163,315,163"/>
+<area shape="rect" id="Node000001" title="Return set of images for image tooltips, one for each point." alt="" coords="5,97,145,134"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#abfa06ef3bc0a99045eac1a61c80ce46c" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="200,5,332,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,95,191,52,204,46,206,51,194,57,111,99"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#gad9598e7ef20232bf2eb3e5ed14a4848d" title=" " alt="" coords="200,67,332,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="145,102,185,95,185,101,145,107"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#af55d63d69abb6ef89ee0460a936085a7" title=" " alt="" coords="200,128,332,165"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="145,124,185,131,185,136,145,129"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="193,189,340,213"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="110,132,194,175,210,181,208,186,192,179,108,137"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="392,12,517,36"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="333,21,377,21,377,26,333,26"/>
+<area shape="rect" id="Node000006" href="$group__elements.html#ad192becf9565fd5d15094d275e207481" title="Empty when the output buffer is." alt="" coords="388,128,521,165"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="333,144,373,144,373,149,333,149"/>
 </map>

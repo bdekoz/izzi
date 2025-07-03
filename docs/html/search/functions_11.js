@@ -14,8 +14,8 @@ var searchData=
   ['set_5fradial_5frange_11',['set_radial_range',['../namespacesvg.html#a258a081612c8e9d9fba969ca25c0de15',1,'svg']]],
   ['set_5fselect_12',['set_select',['../namespacesvg.html#aaef4a912d3522ffd634cbd7093468c0b',1,'svg']]],
   ['significant_5fdigits_5fin_13',['significant_digits_in',['../namespacesvg.html#a05f20ffd56f6e435d7088fb10826709b',1,'svg']]],
-  ['sized_5ftext_14',['sized_text',['../namespacesvg.html#ab2d2020c33da2e0215837673e530b991',1,'svg']]],
-  ['sized_5ftext_5fr_15',['sized_text_r',['../namespacesvg.html#a4399801aa964203bcab6e6ab2e7b4200',1,'svg']]],
+  ['sized_5ftext_14',['sized_text',['../namespacesvg.html#aba9f46c82a468e5594eedb3b4ff14f9e',1,'svg']]],
+  ['sized_5ftext_5fr_15',['sized_text_r',['../namespacesvg.html#a1309ce987f4e87ad97a1f3638a7af541',1,'svg']]],
   ['skew_5fx_16',['skew_x',['../structsvg_1_1transform.html#a7c4e73957dd2cfa4304fee722f9afda6',1,'svg::transform']]],
   ['skew_5fy_17',['skew_y',['../structsvg_1_1transform.html#a4898dde3bfb3473e40354aea31598f00',1,'svg::transform']]],
   ['sort_5fstrings_5fby_5fsize_18',['sort_strings_by_size',['../namespacesvg.html#afbc82820a905c8b57fedeee3c4269600',1,'svg']]],
@@ -37,9 +37,9 @@ var searchData=
   ['str_34',['str',['../group__elements.html#ad893ef9c13a15464c96d8a85c08af30f',1,'svg::element_base::str() const'],['../group__elements.html#a2987720d75340144dfebdb42479bf31f',1,'svg::element_base::str(const string &amp;s)']]],
   ['string_5freplace_35',['string_replace',['../namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6',1,'svg']]],
   ['style_5ftext_36',['style_text',['../namespacesvg.html#a0e9e70f0f3460e0edbfff4c40e56c1a0',1,'svg']]],
-  ['styled_5ftext_37',['styled_text',['../namespacesvg.html#a3bd5b25b1bf593d203db0996577b779f',1,'svg::styled_text(svg_element &amp;obj, const string text, const point_2t origin, const typography typo)'],['../namespacesvg.html#a460ec0b40f0fd15483c3411e2324dea7',1,'svg::styled_text(svg_element &amp;obj, const string text, const point_2t origin, const typography typo, const string xform)']]],
-  ['styled_5ftext_5flink_38',['styled_text_link',['../namespacesvg.html#a0473eab7a353d9136e61a7f896d2137c',1,'svg']]],
-  ['styled_5ftext_5fr_39',['styled_text_r',['../namespacesvg.html#a289756f72239f34c2e6df0f7d9dd2d29',1,'svg::styled_text_r(svg_element &amp;obj, const string text, const point_2t origin, const typography typo, const double deg)'],['../namespacesvg.html#a9629b860c0241dbd761c2c47feeeaca6',1,'svg::styled_text_r(svg_element &amp;obj, const string text, const point_2t origin, const typography typo, const double deg, const point_2t rorigin)']]],
+  ['styled_5ftext_37',['styled_text',['../namespacesvg.html#a67906a7cc5e5a26f54de5d2c2a438b2a',1,'svg::styled_text(element_base &amp;obj, const string text, const point_2t origin, const typography typo)'],['../namespacesvg.html#ab3898a8ddd70eda92fe8d6ba4cc05aba',1,'svg::styled_text(element_base &amp;obj, const string text, const point_2t origin, const typography typo, const string xform)']]],
+  ['styled_5ftext_5flink_38',['styled_text_link',['../namespacesvg.html#a8ccdcddfa39a7958693ea522fe98528b',1,'svg']]],
+  ['styled_5ftext_5fr_39',['styled_text_r',['../namespacesvg.html#ad3c5f59f86bb309de4efd1187e5c004b',1,'svg::styled_text_r(element_base &amp;obj, const string text, const point_2t origin, const typography typo, const double deg)'],['../namespacesvg.html#a0ba564abd3f73d12da5b7967405c0a52',1,'svg::styled_text_r(element_base &amp;obj, const string text, const point_2t origin, const typography typo, const double deg, const point_2t rorigin)']]],
   ['svg_5felement_40',['svg_element',['../group__elements.html#a37ae577b4ce06afd6d12e9413c96320c',1,'svg::svg_element::svg_element(const string __title, const area &amp;__cv, const bool lifetime=true, const unit u=svg::unit::pixel, const typography &amp;__typo=k::smono_typo)'],['../group__elements.html#ab571b0a06ceabe6ee1ec741db1f1d806',1,'svg::svg_element::svg_element(const string __title, const string desc, const area &amp;__cv, const bool lifetime=true)'],['../group__elements.html#afec94c65ee8ce53a60d63f082a032ca0',1,'svg::svg_element::svg_element(const svg_element &amp;other)']]],
   ['swipe_5fleft_5fseq_41',['swipe_left_seq',['../namespacesvg.html#a049dfba72934c9f0dd7f6ac082f1f276',1,'svg']]]
 ];

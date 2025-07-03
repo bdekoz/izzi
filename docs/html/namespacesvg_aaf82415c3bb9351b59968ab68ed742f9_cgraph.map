@@ -1,8 +1,8 @@
 <map id="svg::make_2_channel_insert" name="svg::make_2_channel_insert">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,135,77"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="183,5,304,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,42,167,37,168,42,135,48"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="352,43,486,69"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="135,56,183,57,304,57,336,57,336,62,304,63,183,63,135,61"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,34,337,40,336,45,304,39"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,33,144,70"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="192,5,325,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,38,176,33,177,39,145,44"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="373,40,520,64"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="144,51,192,52,325,52,357,51,358,57,325,57,192,57,144,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="326,31,358,36,357,41,325,36"/>
 </map>

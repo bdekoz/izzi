@@ -1,9 +1,9 @@
 <map id="svg::deserialize_json_array_object_field_n" name="svg::deserialize_json_array_object_field_n">
-<area shape="rect" id="Node000001" title="Deserialize json array, extract specific fields from array objects, return as vec of point_2t." alt="" coords="5,39,132,81"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a5e70da9e68ea73a0fe250439ea5a1b04" title="Deserialize input file." alt="" coords="187,5,312,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,46,171,38,172,44,133,51"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#a15455ed7fe8f40160e2f9f5e8ad7a3bd" title="Extract from raw JSON value to double." alt="" coords="180,72,319,115"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="133,69,165,75,164,80,132,74"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#ad8c44f33914f74e752756e210ed904f7" title="Deserialize input string." alt="" coords="367,5,491,48"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,24,351,24,351,29,312,29"/>
+<area shape="rect" id="Node000001" title="Deserialize json array, extract specific fields from array objects, return as vec of point_2t." alt="" coords="5,36,142,73"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a5e70da9e68ea73a0fe250439ea5a1b04" title="Deserialize input file." alt="" coords="196,5,332,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,41,181,34,181,40,143,46"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a15455ed7fe8f40160e2f9f5e8ad7a3bd" title="Extract from raw JSON value to double." alt="" coords="190,67,339,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="143,63,174,68,174,73,142,68"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ad8c44f33914f74e752756e210ed904f7" title="Deserialize input string." alt="" coords="387,5,523,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="333,21,372,21,372,26,333,26"/>
 </map>
