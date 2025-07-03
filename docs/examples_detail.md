@@ -1,4 +1,4 @@
-![izzi wind graphic logo](image/izzi-wind-square-v2.png)
+![izzi wind graphic logo](image/izzi-wind-square-v2.svg)
 
 # Examples
 
