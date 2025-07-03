@@ -342,7 +342,7 @@ make_rect_centered(const point_2t origin, const style s, const area<> a,
 
 /// Rectangle at this point.
 void
-point_to_rect(svg_element& obj, const point_2t origin, style s,
+point_to_rect(element_base& obj, const point_2t origin, style s,
 	      double width = 4, double height = 4,
 	      const string filterstr = "")
 {
@@ -353,8 +353,7 @@ point_to_rect(svg_element& obj, const point_2t origin, style s,
 
 /// Center a rectangle at this point.
 void
-point_to_rect_centered(svg_element& obj, const point_2t origin,
-		       style s,
+point_to_rect_centered(element_base& obj, const point_2t origin, style s,
 		       double width = 4, double height = 4,
 		       const string filterstr = "")
 {
