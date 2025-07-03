@@ -21,3 +21,4 @@
   - [rect title](../examples/rectangle-title.svg)
   - [circle title](../examples/circle-title.svg)
   - [circle title image](../examples/circle-title-image-1.svg)
+  - [circle title image nested](../examples/circle-title-image-nested.svg)
