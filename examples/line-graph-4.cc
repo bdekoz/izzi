@@ -86,7 +86,7 @@ test_chart()
   // 2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-firefox_09200.webp
   const svg::area<> aimg = { 200, 150 };
   const string imgext = ".webp";
-  const string imgpath = "/filmstrip/";
+  const string imgpath = "../filmstrip/";
   const string tpmeta = "2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-";
   string fxpre = tpmeta + bfirefox + "_";
   string chpre = tpmeta + bchrome + "_";
