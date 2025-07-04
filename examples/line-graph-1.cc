@@ -44,10 +44,12 @@ test_chart()
   point_2t rangex = make_tuple(0, maxx * 1000);
   point_2t rangey = make_tuple(0, maxy);
 
-  graph_rstate gs1 { glayers, "firefox", f1, "% complete", "s", "%",
-		     styl1, { "t2wcagg", "2", "", "round", "" } };
-  svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey,
-				       svg::line_chart_style_1);
+  graph_rstate gs1 {
+		     glayers, "firefox", f1, "% complete", "s", "%",
+		     styl1, { "t2wcagg", "2", "", "round", "" },
+		     chart_line_style_1, {0,0}, ""
+		   };
+  svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);
   obj.add_element(chart1);
 
   gs1.visible_mode = select::ticks;

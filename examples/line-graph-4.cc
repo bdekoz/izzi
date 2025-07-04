@@ -32,6 +32,9 @@ test_chart()
   const string f1("timestamp");
   const string f2("percent");
 
+  const string fxidbase = bfirefox + "-img-";
+  const string chidbase = bchrome + "-img-";
+  
   // Color constants.
   // WCAG Black/White/Gray
   const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 1 };
@@ -42,17 +45,22 @@ test_chart()
   //svg::select glayers { select::ticks | select::axis };
   //svg::select glayers { select::ticks | select::vector };
 
-  graph_rstate gs1 { select::vector,
-		     bfirefox, f1, f2, "ms", "%", styl3,
-		     { "r2wcadg", "1 2", "", "triangle", "" } };
+  graph_rstate gs1 {
+		     select::vector,
+		     bfirefox, f1, f2, "ms", "%",
+		     styl3, { "r2wcadg", "1 2", "", "triangle", "" },
+		     chart_line_style_3, {0,0}, ""
+		   };
 
   graph_rstate gs2 { select::vector | select::echo,
-		     bchrome, f1, f2, "ms", "%", styl1,
-		     { "c2wcaglg", "3", "", "round", "" } };
+		     bchrome, f1, f2, "ms", "%",
+		     styl1, { "c2wcaglg", "3", "", "round", "" },
+		     chart_line_style_3, {0,0}, "" };
 
   graph_rstate gsa { select::ticks | select::linex | select::alt,
-		     "annotation", f1, f2, "s", "%", styl2,
-		     { "", "", "", "", "" } };
+		     "annotation", f1, f2, "s", "%",
+		     styl2, { "", "", "", "", "" },
+		     chart_line_style_3, {0,0}, "" };
 
   // Deserialize A/B data.
   vrange vr1a = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
@@ -72,13 +80,10 @@ test_chart()
   point_2t rangey = make_tuple(0, maxy);
 
   // Draw graph(s).
-  const string fxidbase = bfirefox + "-img-";
-  svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey,
-				       line_chart_style_3, fxidbase);
+  svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);
 
-  const string chidbase = bchrome + "-img-";
-  svg_element chart2 = make_line_graph(a, vr2, gs2, rangex, rangey,
-				       line_chart_style_3, chidbase);
+  svg_element chart2 = make_line_graph(a, vr2, gs2, rangex, rangey);
+
   obj.add_element(chart1);
   obj.add_element(chart2);
 

@@ -32,9 +32,9 @@ namespace svg {
 ///    with explicit marker paths and added text tooltips
 /// 3: use two lines and add js + image tooltips: like 2 above
 ///    but add image tooltips, with js controlling image visibility.
-constexpr svg::ushort line_chart_style_1(100);
-constexpr svg::ushort line_chart_style_2(200);
-constexpr svg::ushort line_chart_style_3(300);
+constexpr ushort chart_line_style_1(100);
+constexpr ushort chart_line_style_2(200);
+constexpr ushort chart_line_style_3(300);
 
 /**
    Line Graphs / Line Charts.
@@ -59,27 +59,35 @@ constexpr svg::ushort line_chart_style_3(300);
 /// Per-graph constants, metadata, text.
 struct graph_rstate : public render_state_base
 {
-  // Margins/Spaces
-  static constexpr uint marginx		= 100;
-  static constexpr uint marginy		= 100;
+  // visible_mode
+
+  /// Title or graph/chart metadata
+  string		title;
+
+  /// Margins/Spaces
+  static constexpr uint xmargin		= 100;
+  static constexpr uint ymargin		= 100;
   static constexpr uint xticdigits	= 1; // sig digits xaxis
   static constexpr uint yticdigits	= 10; // number y tic labels
 
-  /// Glyph type sizes.
+  /// Type sizes.
   static constexpr uint ttitlesz	= 16; // title large bold
   static constexpr uint th1sz		= 12; // h1
   static constexpr uint tpsz		= 10; // text, paragraph,
   static constexpr uint tticsz		= 7; // tic text
 
-  // Labels.
-  string		title;		// graph/chart title
+  /// Labels, tic units.
   string		xlabel;		// x axis label
   string		ylabel;
   string		xticu;		// x axis tick mark units postfix
   string		yticu;
 
-  style			lstyle;		// line style
-  stroke_style		sstyle;		// stroke style, if any.
+  /// Line/Outline/Markers/Tooltip styles
+  style			lstyle;		/// line style
+  stroke_style		sstyle;		/// marker stroke style, if any.
+  ushort		line_mode;	/// chart_line_style_n to use
+  area<space_type>	tooltip_area;	/// chart_line_style_3 tooltip size
+  string		tooltip_id;	/// chart_line_style_3 toolip id prefix
 };
 
 
@@ -244,11 +252,11 @@ make_line_graph_annotations(const area<> aplate,
 
   // Locate graph area on plate area.
   auto [ pwidth, pheight ] = aplate;
-  double gwidth = pwidth - (2 * gstate.marginx);
-  double gheight = pheight - (2 * gstate.marginy);
-  const double chartyo = pheight - gstate.marginy;
-  const double chartxo = gstate.marginx;
-  const double chartxe = pwidth - gstate.marginx;
+  double gwidth = pwidth - (2 * gstate.xmargin);
+  double gheight = pheight - (2 * gstate.ymargin);
+  const double chartyo = pheight - gstate.ymargin;
+  const double chartxo = gstate.xmargin;
+  const double chartxe = pwidth - gstate.xmargin;
 
   // Base typo for annotations.
   typography anntypo = typo;
@@ -261,7 +269,7 @@ make_line_graph_annotations(const area<> aplate,
       lanno.add_raw(group_element::start_group("axes-" + gstate.title));
 
       // Add axis labels.
-      point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.marginy / 2));
+      point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.ymargin / 2));
       styled_text(lanno, gstate.xlabel, xlabelp, anntypo);
 
       point_2t ylabelp = make_tuple(chartxo / 2, pheight / 2);
@@ -270,7 +278,7 @@ make_line_graph_annotations(const area<> aplate,
       // Add axis lines.
       line_element lx = make_line({chartxo, chartyo}, {chartxe, chartyo},
 				  gstate.lstyle);
-      line_element ly = make_line({chartxo, chartyo}, {chartxo, gstate.marginy},
+      line_element ly = make_line({chartxo, chartyo}, {chartxo, gstate.ymargin},
 				  gstate.lstyle);
       lanno.add_element(lx);
       lanno.add_element(ly);
@@ -313,7 +321,7 @@ make_line_graph_annotations(const area<> aplate,
   const double ydelta = yrange / gstate.yticdigits;
 
   // Generate tic marks
-  const double ygo = gstate.marginy + gheight + graph_rstate::th1sz;
+  const double ygo = gstate.ymargin + gheight + graph_rstate::th1sz;
   if (gstate.is_visible(select::ticks))
     {
       // X tic labels
@@ -332,8 +340,8 @@ make_line_graph_annotations(const area<> aplate,
       // Positions for left and right y-axis tic labels.
       lanno.add_raw(group_element::start_group("tic-y-" + gstate.title));
       const double yticspacer = graph_rstate::th1sz * 2;
-      const double xgol = gstate.marginx - yticspacer;			// left
-      const double xgor = gstate.marginx + gwidth + yticspacer;         // right
+      const double xgol = gstate.xmargin - yticspacer;			// left
+      const double xgor = gstate.xmargin + gwidth + yticspacer;         // right
       const double starty = miny != 0 ? miny : miny + ydelta; // skip zero label
       for (double y = starty; y < maxy + ydelta; y += ydelta)
 	{
@@ -401,9 +409,7 @@ make_line_graph_annotations(const area<> aplate,
 svg_element
 make_line_graph(const svg::area<> aplate, const vrange& points,
 		const graph_rstate& gstate,
-		const point_2t xrange, const point_2t yrange,
-		const ushort line_strategy = line_chart_style_2,
-		const string imgidbase = "")
+		const point_2t xrange, const point_2t yrange)
 {
   using namespace std;
 
@@ -412,12 +418,12 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
   // Locate graph area on plate area.
   // aplate is total plate area with margins, aka
-  // pwidth = marginx + gwidth + marginx
-  // pheight = marginy + gheight + marginy
+  // pwidth = xmargin + gwidth + xmargin
+  // pheight = ymargin + gheight + ymargin
   auto [ pwidth, pheight ] = aplate;
-  double gwidth = pwidth - (2 * gstate.marginx);
-  double gheight = pheight - (2 * gstate.marginy);
-  const double chartyo = pheight - gstate.marginy;
+  double gwidth = pwidth - (2 * gstate.xmargin);
+  double gheight = pheight - (2 * gstate.ymargin);
+  const double chartyo = pheight - gstate.ymargin;
 
   // Transform data points to scaled cartasian points in graph area.
   vrange cpoints;
@@ -428,7 +434,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
       // At bottom of graph.
       const double xlen = scale_value_on_range(vx, minx, maxx, 0, gwidth);
-      double x = gstate.marginx + xlen;
+      double x = gstate.xmargin + xlen;
 
       // Y axis grows up from chartyo.
       const double ylen = scale_value_on_range(vy, miny, maxy, 0, gheight);
@@ -438,10 +444,10 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
     }
 
   // Plot path of points on cartesian plane.
-  svg_element lgraph(gstate.title, "line graph", aplate, false);
+  svg_element lgraph(gstate.title + "_line_graph", "line graph", aplate, false);
   if (gstate.is_visible(select::vector))
     {
-      if (line_strategy == line_chart_style_1)
+      if (gstate.line_mode == chart_line_style_1)
 	{
 	  // Use polylines and markerspoints
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
@@ -450,7 +456,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
 	}
-      if (line_strategy == line_chart_style_2)
+      if (gstate.line_mode == chart_line_style_2)
 	{
 	  // Use polyline base and set of marker paths with orignal values
 	  // as tooltips on top.
@@ -468,7 +474,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
 	}
-      if (line_strategy == line_chart_style_3)
+      if (gstate.line_mode == chart_line_style_3)
 	{
 	  // Use polyline base and set of marker paths with orignal values
 	  // as tooltips on top.
@@ -484,7 +490,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  /// add attribute with image id
 	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
 	  string markers = make_line_graph_markers(points, cpoints, gstate, 3,
-						   imgidbase);
+						   gstate.tooltip_id);
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
 
