@@ -1,5 +1,7 @@
 <map id="svg::area&lt; T1 &gt;" name="svg::area&lt; T1 &gt;">
-<area shape="rect" id="Node000001" title=" " alt="" coords="14,5,124,29"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="96,5,207,29"/>
 <area shape="rect" id="Node000002" href="$structsvg_1_1area.html" title=" " alt="" coords="5,90,133,114"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,45,72,90,66,90,66,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,42,82,92,78,88,128,38"/>
+<area shape="rect" id="Node000003" href="$structsvg_1_1area.html" title=" " alt="" coords="156,90,315,114"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,38,226,88,223,92,172,42"/>
 </map>

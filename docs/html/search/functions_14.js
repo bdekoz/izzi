@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['vertical_5fsync_5froll_5fseq_0',['vertical_sync_roll_seq',['../namespacesvg.html#a86609091f372674e0e117d33551cdac8',1,'svg']]],
-  ['vlspace_1',['vlspace',['../namespacea60_1_1metadata.html#a2a619ed21560d442f5dfae5ea8101fce',1,'a60::metadata']]],
-  ['vspace_2',['vspace',['../namespacea60_1_1metadata.html#a888d9b1e7402e335f8e7544373855a92',1,'a60::metadata']]]
+  ['wink_5fto_5fcolor_5fseq_0',['wink_to_color_seq',['../namespacesvg.html#a559f742ae1f654eae1dec9857da7a4cb',1,'svg']]],
+  ['write_1',['write',['../group__elements.html#ad0dc5b62a932a1fc38c5cc98d4eaac6c',1,'svg::svg_element']]]
 ];
