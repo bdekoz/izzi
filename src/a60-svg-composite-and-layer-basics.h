@@ -271,31 +271,36 @@ nest_inner_svg_element_centered(const svg_element& obj, const point_2t& p)
 /// svg.
 /// Returns a svg_element that can then be add_element from outer svg.
 svg_element
-nest_inner_element_centered(const element_base& eb, const point_2t& p,
-			    const area<> a, const string name)
+nest_inner_element(const element_base& eb, const point_2t& p,
+		   const area<> a, const string name,
+		   const bool centerp = true)
 {
   // Find centered position.
   const auto [ width, height ] = a;
   const auto [ xo, yo ] = p;
 
-  bool outofbounds(false);
+  double x(xo);
+  double y(yo);
 
-  double x(0);
-  if (xo > (width / 2))
-    x = xo - (width / 2);
-  else
-    outofbounds = true;
+  if (centerp)
+    {
+      bool outofbounds(false);
 
-  double y(0);
-  if (yo > (height / 2))
-    y = yo - (height / 2);
-  else
-    outofbounds = true;
+      if (xo > (width / 2))
+	x = xo - (width / 2);
+      else
+	outofbounds = true;
 
-  if (outofbounds)
-    throw std::runtime_error("nest_inner_svg_element_centered::out of bounds");
+      if (yo > (height / 2))
+	y = yo - (height / 2);
+      else
+	outofbounds = true;
 
-  svg_element nested_obj("inner-" + name, a, true);
+      if (outofbounds)
+	throw std::runtime_error("nest_inner_element::out of bounds");
+    }
+
+  svg_element nested_obj("inner-" + name, a, false);
   nested_obj.start_element({x, y}, a);
   nested_obj.add_element(eb);
   nested_obj.finish_element();
