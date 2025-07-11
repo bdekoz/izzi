@@ -202,14 +202,15 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 	}
 
       // Triangle Centered.
-      // svg::path_element t = (cpoints[i], gstate.lstyle, {2 * r, 2 * r});
       if (trianglep)
 	{
 	  string xattr;
 	  if (!imgidbase.empty())
 	    xattr = script_element::tooltip_attribute(imgid);
 
-	  path_element p = make_path_triangle(cpoints[i], styl, radius, 120,
+	  // Visual weight of triangle is smaller, so enlarge slightly.
+	  const double tradius = radius * 1.3;
+	  path_element p = make_path_triangle(cpoints[i], styl, tradius, 120,
 					      false, xattr);
 	  p.add_title(tipstr);
 	  p.add_raw(string { path_element::pair_finish_tag } + k::newline);
