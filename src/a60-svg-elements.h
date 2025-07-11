@@ -1424,6 +1424,7 @@ struct script_element : virtual public element_base
 
   /// showTooltip(id)
   /// hideTooltip(id)
+  /// event.x vs. event.pageX, event.y vs. event.pageY
   static const string&
   tooltip_script()
   {
@@ -1432,7 +1433,7 @@ struct script_element : virtual public element_base
       const tooltipimg = document.getElementById(tooltipId);
       if (tooltipimg) {
 	tooltipimg.setAttribute('x', event.x);
-	tooltipimg.setAttribute('y', event.y - 150);
+	tooltipimg.setAttribute('y', event.y);
 	tooltipimg.setAttribute('visibility', 'visible');
       } else {
 	console.error(`Element with ID "${tooltipId}" not found.`);
