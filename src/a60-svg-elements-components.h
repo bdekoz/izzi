@@ -66,7 +66,7 @@ svg_element::start_element()
 
   string strip = R"_delimiter_(x="0__unit" y="0__unit"
 width="__width__unit" height="__height__unit"
-viewBox="0 0 __width __height" enable-background="new 0 0 __width __height">
+viewBox="0 0 __width __height" enable-background="new 0 0 __width __height" role="img">
 )_delimiter_";
 
   string_replace(strip, unit, to_string(_M_unit));
