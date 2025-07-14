@@ -1,11 +1,11 @@
 <map id="svg::foreign_element" name="svg::foreign_element">
-<area shape="rect" id="Node000001" title=" " alt="" coords="161,77,298,101"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#structsvg_1_1iframe__element" title="iframe HTML object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used..." alt="" coords="5,149,139,172"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,110,98,151,96,146,189,105"/>
-<area shape="rect" id="Node000004" href="$group__elements.html#structsvg_1_1object__element" title="HTML object embedded in SVG container. Unlike image_elements, object_elements are not locked down for..." alt="" coords="163,149,296,172"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="232,116,232,148,227,148,227,116"/>
-<area shape="rect" id="Node000005" href="$group__elements.html#structsvg_1_1video__element" title="video HTML object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used ..." alt="" coords="320,149,448,172"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="269,105,360,146,358,151,267,110"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#structsvg_1_1element__base" title="Abstract base class for all SVG Elements." alt="" coords="167,5,292,29"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,45,232,77,227,77,227,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="151,80,280,107"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#structsvg_1_1iframe__element" title="iframe HTML object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used..." alt="" coords="5,155,130,181"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,116,95,156,92,152,175,111"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#structsvg_1_1object__element" title="HTML object embedded in SVG container. Unlike image_elements, object_elements are not locked down for..." alt="" coords="154,155,277,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="218,122,218,154,213,154,213,122"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#structsvg_1_1video__element" title="video HTML object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used ..." alt="" coords="300,155,419,181"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="255,112,335,152,333,156,253,116"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#structsvg_1_1element__base" title="Abstract base class for all SVG Elements." alt="" coords="158,5,273,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,48,218,80,213,80,213,48"/>
 </map>

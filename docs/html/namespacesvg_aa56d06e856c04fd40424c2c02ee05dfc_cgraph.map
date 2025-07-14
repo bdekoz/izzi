@@ -1,11 +1,11 @@
 <map id="svg::random_color" name="svg::random_color">
-<area shape="rect" id="Node000001" title="Random entry from array above." alt="" coords="5,5,128,29"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Oklab https://bottosson.github.io/posts/oklab/." alt="" coords="176,5,313,29"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,14,160,14,160,20,128,20"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#ad15806ae856c597bdb6a2e928ca31481" title="Forwarding function." alt="" coords="361,5,464,29"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="314,14,346,14,346,20,314,20"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#ace451856d4faf4d251a5a49aba625c3e" title="Default compare distances from k1,k2 to black." alt="" coords="512,5,627,29"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="465,14,497,14,497,20,465,20"/>
-<area shape="rect" id="Node000005" href="$namespacesvg.html#ac96d0e1435f308aecc6e4c362a2c769d" title=" " alt="" coords="675,5,818,29"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="627,14,659,14,659,20,627,20"/>
+<area shape="rect" id="Node000001" title="Random entry from array above." alt="" coords="5,5,119,32"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a86299e1b709e10d8ddbe9fe4e5231dc5" title="Oklab https://bottosson.github.io/posts/oklab/." alt="" coords="167,5,293,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,16,151,16,151,21,119,21"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ad15806ae856c597bdb6a2e928ca31481" title="Forwarding function." alt="" coords="341,5,437,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="294,16,326,16,326,21,294,21"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#ace451856d4faf4d251a5a49aba625c3e" title="Default compare distances from k1,k2 to black." alt="" coords="485,5,592,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="438,16,470,16,470,21,438,21"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#ac96d0e1435f308aecc6e4c362a2c769d" title=" " alt="" coords="640,5,772,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="592,16,624,16,624,21,592,21"/>
 </map>

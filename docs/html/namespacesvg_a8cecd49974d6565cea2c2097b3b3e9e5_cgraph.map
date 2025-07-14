@@ -1,7 +1,7 @@
 <map id="svg::deserialize_json_to_dom_array" name="svg::deserialize_json_to_dom_array">
-<area shape="rect" id="Node000001" title="Load JSON file to in&#45;memory DOM array." alt="" coords="5,5,142,42"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a5e70da9e68ea73a0fe250439ea5a1b04" title="Deserialize input file." alt="" coords="190,5,326,42"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,21,174,21,174,26,142,26"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#ad8c44f33914f74e752756e210ed904f7" title="Deserialize input string." alt="" coords="374,5,510,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="326,21,358,21,358,26,326,26"/>
+<area shape="rect" id="Node000001" title="Load JSON file to in&#45;memory DOM array." alt="" coords="5,5,130,48"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a5e70da9e68ea73a0fe250439ea5a1b04" title="Deserialize input file." alt="" coords="178,5,302,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,24,162,24,162,29,130,29"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ad8c44f33914f74e752756e210ed904f7" title="Deserialize input string." alt="" coords="350,5,474,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="302,24,335,24,335,29,302,29"/>
 </map>

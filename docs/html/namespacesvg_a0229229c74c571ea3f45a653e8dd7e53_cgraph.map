@@ -1,17 +1,17 @@
 <map id="svg::make_circle" name="svg::make_circle">
-<area shape="rect" id="Node000001" title="Make circle element." alt="" coords="5,152,117,176"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#a519382631540ecedee961bfb53e9ae87" title=" " alt="" coords="168,53,295,90"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,149,163,100,173,95,176,100,166,105,83,154"/>
-<area shape="rect" id="Node000005" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="165,115,298,151"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="117,151,149,145,150,150,118,156"/>
-<area shape="rect" id="Node000007" href="$group__elements.html#ga98a1538c46e39122d8199c12b3a57b5d" title=" " alt="" coords="168,176,295,213"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="118,171,153,178,152,183,117,176"/>
-<area shape="rect" id="Node000008" href="$group__elements.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="168,237,295,274"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="83,174,166,223,176,228,173,232,163,227,80,178"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title="Common transforms include rotate(180)" alt="" coords="346,5,479,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="295,52,331,43,332,48,296,57"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="350,66,475,90"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="296,71,335,73,335,78,296,77"/>
-<area shape="rect" id="Node000006" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="365,121,460,145"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="298,130,350,130,350,136,298,136"/>
+<area shape="rect" id="Node000001" title="Make circle element." alt="" coords="5,164,109,191"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a519382631540ecedee961bfb53e9ae87" title=" " alt="" coords="159,56,276,99"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,161,155,108,162,104,165,109,158,113,79,166"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="157,123,278,165"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="109,164,141,157,142,162,110,169"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#ga98a1538c46e39122d8199c12b3a57b5d" title=" " alt="" coords="159,189,276,232"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="110,185,144,193,143,198,109,191"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="159,256,276,299"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="79,189,158,242,165,246,162,250,155,246,76,193"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title="Common transforms include rotate(180)" alt="" coords="326,5,447,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="276,57,310,47,312,52,277,62"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="328,72,445,99"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="277,77,313,79,313,85,276,83"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="342,131,431,157"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="278,141,327,141,327,147,278,147"/>
 </map>
