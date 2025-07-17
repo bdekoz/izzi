@@ -555,7 +555,8 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  ofstream ofs(ofname, ios_base::out);
 	  if (ofs.good())
 	    {
-	      for (const point_2t& p : points)
+	      const vrange& vizpoints = find_visual_change_points(points);
+	      for (const point_2t& p : vizpoints)
 		{
 		  const uint ui = get<0>(p);
 		  ofs << ui << k::comma << k::space;
