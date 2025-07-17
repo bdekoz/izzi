@@ -91,6 +91,54 @@ struct graph_rstate : public render_state_base
 };
 
 
+/// Simplify sorted vrange by removing interior duplicates.
+vrange
+find_change_points(const vrange& vr)
+{
+  // Transform range to the simplest expression, where multiple points
+  // without significant vertical change are coalesed to starting
+  // control point and ending control point.
+  vrange simplevr;
+  point_2t last = { -1.0, -1.0 };
+  double duprangep(false);
+  for (const point_2t& pt : vr)
+    {
+      auto [ x, y] = pt;
+      if (y != get<1>(last))
+	{
+	  if (duprangep == true)
+	    {
+	      simplevr.push_back(last);
+	      duprangep = false;
+	    }
+	  simplevr.push_back(pt);
+	}
+      else
+	duprangep = true;
+      last = pt;
+    }
+  return simplevr;
+}
+
+
+/// Simplify change points to only markers where visual complete changes
+/// @param points already simplified change points
+vrange
+find_visual_change_points(const vrange& points)
+{
+  vrange simplest;
+  point_2t last = { -1.0, -1.0 };
+  for (const point_2t& pt : vr)
+    {
+      auto [ x, y] = pt;
+      if (y != get<1>(last))
+	simplest.push_back(pt);
+      last = pt;
+    }
+  return simplest;
+}
+
+
 /// Return set of images for image tooltips, one for each point.
 /// @param aimg is size of image embedded inside svg element.
 /// @pathprefix is the path to the directory with the store of images

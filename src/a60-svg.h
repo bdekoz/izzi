@@ -111,36 +111,6 @@ union_vrange(const vrange& r1, const vrange& r2)
 }
 
 
-/// Simplify sorted vrange by removing interior duplicates.
-vrange
-find_vrange_change_points(const vrange& vr)
-{
-  // Transform range to the simplest expression, where multiple points
-  // without significant vertical change are coalesed to starting
-  // control point and ending control point.
-  vrange simplevr;
-  point_2t last = { -1.0, -1.0 };
-  double duprangep(false);
-  for (const point_2t& pt : vr)
-    {
-      auto [ x, y] = pt;
-      if (y != get<1>(last))
-	{
-	  if (duprangep == true)
-	    {
-	      simplevr.push_back(last);
-	      duprangep = false;
-	    }
-	  simplevr.push_back(pt);
-	}
-      else
-	duprangep = true;
-      last = pt;
-    }
-  return simplevr;
-}
-
-
 /// For each dimension of vrnage, find min/max and return (xmax, ymax)
 /// NB: Assumes zero is min.
 point_2t

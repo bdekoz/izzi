@@ -64,9 +64,9 @@ test_chart()
 
   // Deserialize A/B data.
   vrange vr1a = deserialize_json_array_object_field_n(jfile, afx, f1, f2);
-  vrange vr1 = find_vrange_change_points(vr1a);
+  vrange vr1 = find_change_points(vr1a);
   vrange vr2a = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
-  vrange vr2 = find_vrange_change_points(vr2a);
+  vrange vr2 = find_change_points(vr2a);
   vrange vunion = union_vrange(vr1, vr2);
 
   // Draw axis, ticks, etc.
