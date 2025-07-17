@@ -128,7 +128,7 @@ find_visual_change_points(const vrange& points)
 {
   vrange simplest;
   point_2t last = { -1.0, -1.0 };
-  for (const point_2t& pt : vr)
+  for (const point_2t& pt : points)
     {
       auto [ x, y] = pt;
       if (y != get<1>(last))
