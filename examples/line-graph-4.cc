@@ -106,7 +106,8 @@ test_chart()
 
 
   // Add js to control visibility of images.
-  obj.add_element(script_element::tooltip_script());
+  script_element::scope context = script_element::scope::element;
+  obj.add_element(script_element::tooltip_script(context));
 }
 
 
