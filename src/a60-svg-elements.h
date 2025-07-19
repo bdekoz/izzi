@@ -1408,6 +1408,11 @@ object_element::finish_element()
 */
 struct script_element : virtual public element_base
 {
+  /// Where is the script element placed? On/within the element
+  /// itself, or at the document (global)? Neither (none),
+  /// alongside/same level (parent)?
+  enum class scope { none, document, parent, element };
+
   void
   start_element(const string& id)
   {
@@ -1426,7 +1431,7 @@ struct script_element : virtual public element_base
   /// hideTooltip(id)
   /// event.x vs. event.pageX, event.y vs. event.pageY
   static const string&
-  tooltip_script()
+  tooltip_javascript()
   {
     static string js = R"(
     function showTooltip(event, tooltipId) {
@@ -1465,6 +1470,18 @@ struct script_element : virtual public element_base
     return k::space + strip1 + k::space + strip2;
   }
 
+  // Script element for js to control visibility of images.
+  static const script_element
+  tooltip_script()
+  {
+    script_element scrpt;
+    scrpt.start_element("tooltip-js");
+    scrpt.add_data(script_element::tooltip_javascript());
+    scrpt.finish_element();
+    return scrpt;
+  }
+
+
   /// Add string with script source.
   /// @param scriptstr script source
   void
@@ -1497,7 +1514,7 @@ struct svg_element : virtual public element_base
   const area		_M_area;
   const unit		_M_unit;
   const typography&	_M_typo;
-  const bool		_M_lifetime;
+  const bool		_M_lifetime;  // scope document scope element
 
   svg_element(const string __title, const area& __cv,
 	      const bool lifetime = true,
@@ -1574,10 +1591,11 @@ struct svg_element : virtual public element_base
   }
 
   void
-  finish()
+  finish(const bool writep = true)
   {
     this->finish_element();
-    this->write();
+    if (writep)
+      this->write();
   }
 };
 /// @} group elements
