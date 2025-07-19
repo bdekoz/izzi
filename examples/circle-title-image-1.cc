@@ -39,7 +39,8 @@ test_tooltip(svg_element& obj)
   obj.add_element(c);
 
   // script
-  obj.add_element(script_element::tooltip_script());
+  script_element::scope context = script_element::scope::element;
+  obj.add_element(script_element::tooltip_script(context));
 }
 
 
