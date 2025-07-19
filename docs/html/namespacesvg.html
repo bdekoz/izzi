@@ -648,6 +648,12 @@ Functions</h2></td></tr>
 <tr class="separator:aba9b8107293644580401259e4c11e96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad501a17ea65f759e1639b07f44fb0501" id="r_ad501a17ea65f759e1639b07f44fb0501"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#a128598af8ab3a73f5d25ddd8575b8b99">ushort</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad501a17ea65f759e1639b07f44fb0501">chart_line_style_3</a> (300)</td></tr>
 <tr class="separator:ad501a17ea65f759e1639b07f44fb0501"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac131d4a87b851ade1230727ee950b1f9" id="r_ac131d4a87b851ade1230727ee950b1f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac131d4a87b851ade1230727ee950b1f9">find_change_points</a> (const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;vr)</td></tr>
+<tr class="memdesc:ac131d4a87b851ade1230727ee950b1f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplify sorted vrange by removing interior duplicates.  <br /></td></tr>
+<tr class="separator:ac131d4a87b851ade1230727ee950b1f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9b05761fc9102e32545037cddae6ca2" id="r_ac9b05761fc9102e32545037cddae6ca2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9b05761fc9102e32545037cddae6ca2">find_visual_change_points</a> (const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;points)</td></tr>
+<tr class="memdesc:ac9b05761fc9102e32545037cddae6ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplify change points to only markers where visual complete changes.  <br /></td></tr>
+<tr class="separator:ac9b05761fc9102e32545037cddae6ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a120539d1a8c255abc4173aa22867b708" id="r_a120539d1a8c255abc4173aa22867b708"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a120539d1a8c255abc4173aa22867b708">make_line_graph_image_set</a> (const <a class="el" href="structsvg_1_1area.html">area</a>&lt;&gt; aimg, const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;points, const string imgidbase, const string pathprefix, const string imgprefix, const string imgext)</td></tr>
 <tr class="memdesc:a120539d1a8c255abc4173aa22867b708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return set of images for image tooltips, one for each point.  <br /></td></tr>
 <tr class="separator:a120539d1a8c255abc4173aa22867b708"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -993,9 +999,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a1920c859565686aa7e28ecf5bf1b7ccc" id="r_a1920c859565686aa7e28ecf5bf1b7ccc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1920c859565686aa7e28ecf5bf1b7ccc">union_vrange</a> (const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;r1, const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;r2)</td></tr>
 <tr class="memdesc:a1920c859565686aa7e28ecf5bf1b7ccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Union two ranges.  <br /></td></tr>
 <tr class="separator:a1920c859565686aa7e28ecf5bf1b7ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12c7473d36925b45272f7112d7f230b9" id="r_a12c7473d36925b45272f7112d7f230b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12c7473d36925b45272f7112d7f230b9">find_vrange_change_points</a> (const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;vr)</td></tr>
-<tr class="memdesc:a12c7473d36925b45272f7112d7f230b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simplify sorted vrange by removing interior duplicates.  <br /></td></tr>
-<tr class="separator:a12c7473d36925b45272f7112d7f230b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9316267f4d5030ca298dbbe2d4c55b18" id="r_a9316267f4d5030ca298dbbe2d4c55b18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9316267f4d5030ca298dbbe2d4c55b18">max_vrange</a> (<a class="el" href="#aa3a977b3ba28e5647518914fdf2ea62e">vspace</a> &amp;xpoints, <a class="el" href="#aa3a977b3ba28e5647518914fdf2ea62e">vspace</a> &amp;ypoints, const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a> pown)</td></tr>
 <tr class="memdesc:a9316267f4d5030ca298dbbe2d4c55b18"><td class="mdescLeft">&#160;</td><td class="mdescRight">For each dimension of vrnage, find min/max and return (xmax, ymax) NB: Assumes zero is min.  <br /></td></tr>
 <tr class="separator:a9316267f4d5030ca298dbbe2d4c55b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3240,6 +3243,54 @@ template&lt;typename _Spectrm&gt; </div>
 
 </div>
 </div>
+<a id="ac131d4a87b851ade1230727ee950b1f9" name="ac131d4a87b851ade1230727ee950b1f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac131d4a87b851ade1230727ee950b1f9">&#9670;&#160;</a></span>find_change_points()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> svg::find_change_points </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>vr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Simplify sorted vrange by removing interior duplicates. </p>
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00096">96</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+
+</div>
+</div>
+<a id="ac9b05761fc9102e32545037cddae6ca2" name="ac9b05761fc9102e32545037cddae6ca2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9b05761fc9102e32545037cddae6ca2">&#9670;&#160;</a></span>find_visual_change_points()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> svg::find_visual_change_points </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>points</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Simplify change points to only markers where visual complete changes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">points</td><td>already simplified change points </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00127">127</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+
+</div>
+</div>
 <a id="a120539d1a8c255abc4173aa22867b708" name="a120539d1a8c255abc4173aa22867b708"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a120539d1a8c255abc4173aa22867b708">&#9670;&#160;</a></span>make_line_graph_image_set()</h2>
 
@@ -3287,7 +3338,7 @@ template&lt;typename _Spectrm&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00102">102</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00150">150</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 <div id="dynsection-23" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-23-summary" class="dynsummary" style="display:block;">
@@ -3334,7 +3385,7 @@ template&lt;typename _Spectrm&gt; </div>
 
 <p>Return set of paths of marker shapes with text tooltips. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00130">130</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00178">178</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 <div id="dynsection-24" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-24-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-24-summary" class="dynsummary" style="display:block;">
@@ -3397,7 +3448,7 @@ template&lt;typename _Spectrm&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00245">245</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00293">293</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 <div id="dynsection-25" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-25-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-25-summary" class="dynsummary" style="display:block;">
@@ -3456,9 +3507,8 @@ template&lt;typename _Spectrm&gt; </div>
   </table>
   </dd>
 </dl>
-<p>add attribute with image id</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00411">411</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00459">459</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 <div id="dynsection-26" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-26-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-26-summary" class="dynsummary" style="display:block;">
@@ -8849,27 +8899,6 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 </div>
 </div>
-<a id="a12c7473d36925b45272f7112d7f230b9" name="a12c7473d36925b45272f7112d7f230b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12c7473d36925b45272f7112d7f230b9">&#9670;&#160;</a></span>find_vrange_change_points()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> svg::find_vrange_change_points </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>vr</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Simplify sorted vrange by removing interior duplicates. </p>
-
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00116">116</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
-
-</div>
-</div>
 <a id="a9316267f4d5030ca298dbbe2d4c55b18" name="a9316267f4d5030ca298dbbe2d4c55b18"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9316267f4d5030ca298dbbe2d4c55b18">&#9670;&#160;</a></span>max_vrange() <span class="overload">[1/2]</span></h2>
 
@@ -8896,7 +8925,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>For each dimension of vrnage, find min/max and return (xmax, ymax) NB: Assumes zero is min. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00147">147</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00117">117</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 
 </div>
 </div>
@@ -8931,7 +8960,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Just the range info, none of the temporary objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00182">182</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00152">152</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 <div id="dynsection-113" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-113-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-113-summary" class="dynsummary" style="display:block;">
@@ -8963,7 +8992,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Truncate double to double with pown signifigant digits. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00195">195</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00165">165</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 
 </div>
 </div>
@@ -9003,7 +9032,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Scale value from min to max on range (nfloor, nceil). </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00216">216</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00186">186</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 
 </div>
 </div>
@@ -9028,7 +9057,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Find cartesian distance between two 2D points. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00230">230</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00200">200</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 
 </div>
 </div>
@@ -9061,7 +9090,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00244">244</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00214">214</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 <div id="dynsection-114" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-114-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-114-summary" class="dynsummary" style="display:block;">
@@ -9089,7 +9118,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Resolution of output display device. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00256">256</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00226">226</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 
 </div>
 </div>
@@ -9110,7 +9139,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Conversion between point size to pixels given dpi density. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00265">265</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00235">235</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 
 </div>
 </div>
@@ -9139,7 +9168,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Approximate pixel height of type of point size @sz. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00282">282</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00252">252</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 
 </div>
 </div>
@@ -9168,7 +9197,7 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Approximate pixel height of type of point size @sz. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00288">288</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg_8h_source.html#l00258">258</a> of file <a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>.</p>
 
 </div>
 </div>
