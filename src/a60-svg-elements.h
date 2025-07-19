@@ -1431,31 +1431,60 @@ struct script_element : virtual public element_base
   /// hideTooltip(id)
   /// event.x vs. event.pageX, event.y vs. event.pageY
   static const string&
-  tooltip_javascript()
+  tooltip_javascript(const scope context)
   {
-    static string js = R"(
+    static string js_show_element = R"(
     function showTooltip(event, tooltipId) {
       const tooltipimg = document.getElementById(tooltipId);
       if (tooltipimg) {
-	const svge = tooltipimg.parentElement;
-	const brect = svge.getBoundingClientRect();
+	const ge = tooltipimg.parentElement;
+	const svge = ge.parentElement;
+	const brect = ge.getBoundingClientRect();
 	const bx = brect.left;
 	const by = brect.top;
 
-	tooltipimg.setAttribute('x', event.x + bx + "px");
-	tooltipimg.setAttribute('y', event.y + by + "px");
+	tooltipimg.setAttribute('x', event.x + bx);
+	tooltipimg.setAttribute('y', event.y + by);
 
 	tooltipimg.setAttribute('visibility', 'visible');
       } else {
 	console.error(`Element with ID "${tooltipId}" not found.`);
       }
     }
+    )";
 
+    static string js_show_document = R"(
+    function showTooltip(event, tooltipId) {
+      const tooltipimg = document.getElementById(tooltipId);
+      if (tooltipimg) {
+	const ge = tooltipimg.parentElement;
+	const svge = ge.parentElement;
+	const brect = ge.getBoundingClientRect();
+	const bx = brect.left;
+	const by = brect.top;
+
+	tooltipimg.setAttribute('x', event.pageX - bx);
+	tooltipimg.setAttribute('y', event.pageY - by - tooltipimg.offsetHeight);
+	tooltipimg.setAttribute('visibility', 'visible');
+      } else {
+	console.error(`Element with ID "${tooltipId}" not found.`);
+      }
+    }
+    )";
+
+    static string js_hide = R"(
     function hideTooltip(tooltipId) {
       const tooltipimg = document.getElementById(tooltipId);
       tooltipimg.setAttribute('visibility', 'hidden');
     }
     )";
+
+    static string js;
+    if (context == scope::element)
+      js = js_show_element + k::newline + js_hide;
+    if (context == scope::document)
+      js = js_show_document + k::newline + js_hide;
+
     return js;
   }
 
@@ -1472,11 +1501,11 @@ struct script_element : virtual public element_base
 
   // Script element for js to control visibility of images.
   static const script_element
-  tooltip_script()
+  tooltip_script(const scope context)
   {
     script_element scrpt;
     scrpt.start_element("tooltip-js");
-    scrpt.add_data(script_element::tooltip_javascript());
+    scrpt.add_data(script_element::tooltip_javascript(context));
     scrpt.finish_element();
     return scrpt;
   }
