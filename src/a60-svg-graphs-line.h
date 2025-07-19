@@ -498,7 +498,7 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
     {
       if (gstate.line_mode == chart_line_style_1)
 	{
-	  // Use polylines and markerspoints
+	  // Use polyline and CSS-based markerspoints all in one line.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
 					       gstate.sstyle);
@@ -507,8 +507,8 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	}
       if (gstate.line_mode == chart_line_style_2)
 	{
-	  // Use polyline base and set of marker paths with orignal values
-	  // as tooltips on top.
+	  // Use polyline base on bottom line.
+	  // Use a second set of marker paths with value as text tooltips on top.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
 	  no_markerstyle.markerspoints = "";
@@ -525,8 +525,9 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	}
       if (gstate.line_mode == chart_line_style_3)
 	{
-	  // Use polyline base and set of marker paths with orignal values
-	  // as tooltips on top.
+	  // Use polyline base on bottom line.
+	  // Use a second set of simplified marker paths with value as tooltips on top.
+	  // Use text and image tooltips.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
 	  no_markerstyle.markerspoints = "";
@@ -535,10 +536,13 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
 
-	  // Markers + text tooltips.
-	  /// add attribute with image id
+	  // Markers + text tooltips, add image id + js to make image visible.
+	  // Use simplified points, aka only the visual change points.
+	  const vrange& vizpoints = find_visual_change_points(points);
+	  const vrange& cvizpoints = find_visual_change_points(cpoints); // xxx ?
+
 	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
-	  string markers = make_line_graph_markers(points, cpoints, gstate, 3,
+	  string markers = make_line_graph_markers(vizpoints, cvizpoints, gstate, 3,
 						   gstate.tooltip_id);
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
@@ -548,20 +552,6 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 
 	  // Add javascript to control images
 	  // (script_element::tooltip_script)
-
-	  // Output points used to that screenshots can be matched to
-	  // the appropriate marker point/tooltip.
-	  const string ofname(gstate.title + "-x-axis-control-points.csv");
-	  ofstream ofs(ofname, ios_base::out);
-	  if (ofs.good())
-	    {
-	      const vrange& vizpoints = find_visual_change_points(points);
-	      for (const point_2t& p : vizpoints)
-		{
-		  const uint ui = get<0>(p);
-		  ofs << ui << k::comma << k::space;
-		}
-	    }
 	}
     }
 

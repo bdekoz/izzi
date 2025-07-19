@@ -37,7 +37,6 @@ svg_element::write()
       std::ofstream f(filename);
       if (!f.is_open() || !f.good())
 	throw std::runtime_error("svg_element::write fail");
-
       f << _M_sstream.str() << std::endl;
     }
   catch(std::exception& e)
