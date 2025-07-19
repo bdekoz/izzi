@@ -44,11 +44,7 @@ test_tooltip(svg_element& obj)
   gobj.add_element(c);
 
   // script
-  script_element scrpt;
-  scrpt.start_element("tooltip-js");
-  scrpt.add_data(script_element::tooltip_script());
-  scrpt.finish_element();
-  gobj.add_element(scrpt);
+  gobj.add_element(script_element::tooltip_script());
 
 
   svg::svg_element embeddedobj = nest_inner_svg_element_centered(gobj, cp);

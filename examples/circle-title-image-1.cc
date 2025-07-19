@@ -39,11 +39,7 @@ test_tooltip(svg_element& obj)
   obj.add_element(c);
 
   // script
-  script_element scrpt;
-  scrpt.start_element("tooltip-js");
-  scrpt.add_data(script_element::tooltip_script());
-  scrpt.finish_element();
-  obj.add_element(scrpt);
+  obj.add_element(script_element::tooltip_script());
 }
 
 
