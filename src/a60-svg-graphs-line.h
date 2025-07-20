@@ -187,9 +187,9 @@ transform_to_graph_points(const svg::area<> aplate, const vrange& points,
 /// Expected, zero filled imageid.
 /// 2025-06-26-android-15-ptablet-talkback-4usted-firefox_13188.webp
 string
-make_line_graph_image_set(const area<> aimg, const vrange& points,
-			  const string imgidbase, const string pathprefix,
-			  const string imgprefix, const string imgext)
+make_line_graph_image_set(const vrange& points, const graph_rstate& gstate,
+			  const string pathprefix, const string imgprefix,
+			  const string imgext)
 {
   string ret;
   for (const point_2t p : points)
@@ -200,8 +200,8 @@ make_line_graph_image_set(const area<> aimg, const vrange& points,
       const string xms = oss.str();
 
       const string isrc = pathprefix + imgprefix + xms + imgext;
-      const string imgid = imgidbase + xms;
-      auto [ width, height ] = aimg;
+      const string imgid = gstate.tooltip_id + xms;
+      auto [ width, height ] = gstate.tooltip_area;
 
       image_element i;
       image_element::data di = { isrc, 0, 0, width, height };
@@ -212,6 +212,7 @@ make_line_graph_image_set(const area<> aimg, const vrange& points,
     }
   return ret;
 }
+
 
 /// Return set of paths of marker shapes with text tooltips.
 string
