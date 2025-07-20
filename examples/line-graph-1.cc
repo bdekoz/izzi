@@ -45,15 +45,16 @@ test_chart()
   point_2t rangey = make_tuple(0, maxy);
 
   graph_rstate gs1 {
-		     glayers, "firefox", f1, "% complete", "s", "%",
+    		     glayers, "firefox", a, chart_line_style_1,  
+		     f1, "% complete", "s", "%",
 		     styl1, { "t2wcagg", "2", "", "round", "" },
-		     chart_line_style_1, {0,0}, ""
+		     {0,0}, ""
 		   };
-  svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);
+  svg_element chart1 = make_line_graph(vr1, gs1, rangex, rangey);
   obj.add_element(chart1);
 
   gs1.visible_mode = select::ticks;
-  svg_element anno = make_line_graph_annotations(a, vr1, gs1, 1000);
+  svg_element anno = make_line_graph_annotations(vr1, gs1, 1000);
   obj.add_element(anno);
 }
 

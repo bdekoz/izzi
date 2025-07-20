@@ -41,17 +41,20 @@ test_chart()
   //svg::select glayers { select::ticks | select::vector };
 
   svg::select vlayer { select::vector };
-  graph_rstate gs1 { vlayer, "firefox", f1, f2, "ms", "%",
+  graph_rstate gs1 { vlayer, "firefox", a, chart_line_style_1, 
+		     f1, f2, "ms", "%",
 		     styl3, { "r2wcadg", "3", "", "square", "" },
-		     chart_line_style_1, {0,0}, "" };
+		     {0,0}, "" };
 
-  graph_rstate gs2 { vlayer, "chrome", f1, f2, "ms", "%",
+  graph_rstate gs2 { vlayer, "chrome", a, chart_line_style_1, 
+		     f1, f2, "ms", "%",
 		     styl1, { "c2wcaglg", "1 2", "", "round", "" },
-		     chart_line_style_1, {0,0}, "" };
+		     {0,0}, "" };
 
-  graph_rstate gsa { {select::ticks}, "chrome", f1, f2, "s", "%",
+  graph_rstate gsa { {select::ticks}, "chrome", a, chart_line_style_1, 
+		     f1, f2, "s", "%",
 		     styl2, { "", "", "", "", "" },
-		     chart_line_style_1, {0,0}, "" };
+		     {0,0}, "" };
 
 
   // Deserialize A/B data.
@@ -61,7 +64,7 @@ test_chart()
 
   // Draw axis, ticks, etc.
   // NB scale x axis from milliseconds in json to seconds in display.
-  svg_element anno = make_line_graph_annotations(a, vunion, gsa, 1000);
+  svg_element anno = make_line_graph_annotations(vunion, gsa, 1000);
   obj.add_element(anno);
 
   // Find combined ranges, assume zero start.
@@ -70,8 +73,8 @@ test_chart()
   point_2t rangey = make_tuple(0, maxy);
 
   // Draw graph(s).
-  svg_element chart1 = make_line_graph(a, vr1, gs1, rangex, rangey);
-  svg_element chart2 = make_line_graph(a, vr2, gs2, rangex, rangey);
+  svg_element chart1 = make_line_graph(vr1, gs1, rangex, rangey);
+  svg_element chart2 = make_line_graph(vr2, gs2, rangex, rangey);
   obj.add_element(chart1);
   obj.add_element(chart2);
 }

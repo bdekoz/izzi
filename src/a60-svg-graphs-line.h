@@ -32,9 +32,12 @@ namespace svg {
 ///    with explicit marker paths and added text tooltips
 /// 3: use two lines and add js + image tooltips: like 2 above
 ///    but add image tooltips, with js controlling image visibility.
-constexpr ushort chart_line_style_1(100);
-constexpr ushort chart_line_style_2(200);
-constexpr ushort chart_line_style_3(300);
+enum graph_mode : ushort
+  {
+    chart_line_style_1	= 100,
+    chart_line_style_2	= 200,
+    chart_line_style_3	= 300
+  };
 
 /**
    Line Graphs / Line Charts.
@@ -56,19 +59,23 @@ constexpr ushort chart_line_style_3(300);
    y axis: title, tick mark spacing, tick mark style
 */
 
-/// Per-graph constants, metadata, text.
+/// Per-graph constants, metadata, configuration, text.
 struct graph_rstate : public render_state_base
 {
-  // visible_mode
+  using area_type = area<space_type>;
 
-  /// Title or graph/chart metadata
-  string		title;
+  // visible_mode (render_state_base)
+
+  /// Key data: title, area, mode
+  string		title;		/// graph title
+  area_type		graph_area;	/// graph area
+  graph_mode		mode;		/// chart_line_style_n to use
 
   /// Margins/Spaces
   static constexpr uint xmargin		= 100;
   static constexpr uint ymargin		= 100;
   static constexpr uint xticdigits	= 1; // sig digits xaxis
-  static constexpr uint yticdigits	= 10; // number y tic labels
+  static constexpr uint yticdigits	= 10; // number y tic labelsf
 
   /// Type sizes.
   static constexpr uint ttitlesz	= 16; // title large bold
@@ -85,8 +92,7 @@ struct graph_rstate : public render_state_base
   /// Line/Outline/Markers/Tooltip styles
   style			lstyle;		/// line style
   stroke_style		sstyle;		/// marker stroke style, if any.
-  ushort		mode;	/// chart_line_style_n to use
-  area<space_type>	tooltip_area;	/// chart_line_style_3 tooltip size
+  area_type		tooltip_area;	/// chart_line_style_3 tooltip size
   string		tooltip_id;	/// chart_line_style_3 toolip id prefix
 };
 
@@ -142,7 +148,7 @@ find_visual_change_points(const vrange& points)
 /// Map data points to cartestian points on graph area.
 /// @param data points
 vrange
-transform_to_graph_points(const svg::area<> aplate, const vrange& points,
+transform_to_graph_points(const vrange& points,
 			  const graph_rstate& gstate,
 			  const point_2t xrange, const point_2t yrange)
 {
@@ -153,7 +159,7 @@ transform_to_graph_points(const svg::area<> aplate, const vrange& points,
   // aplate is total plate area with margins, aka
   // pwidth = xmargin + gwidth + xmargin
   // pheight = ymargin + gheight + ymargin
-  auto [ pwidth, pheight ] = aplate;
+  auto [ pwidth, pheight ] = gstate.graph_area;
   double gwidth = pwidth - (2 * gstate.xmargin);
   double gheight = pheight - (2 * gstate.ymargin);
   const double chartyo = pheight - gstate.ymargin;
@@ -331,17 +337,16 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 /// @param yscale = scale y axis by this ammount
 /// @param typo = typography to use for labels
 svg_element
-make_line_graph_annotations(const area<> aplate,
-			    const vrange& points,
+make_line_graph_annotations(const vrange& points,
 			    const graph_rstate& gstate,
-			    const double xscalein = 1, const double yscalein = 1,
+			    const double xscale = 1, const double yscale = 1,
 			    const typography typo = k::apercu_typo)
 {
   using namespace std;
-  svg_element lanno(gstate.title, "line graph annotation", aplate, false);
+  svg_element lanno(gstate.title, "line graph annotation", gstate.graph_area, false);
 
   // Locate graph area on plate area.
-  auto [ pwidth, pheight ] = aplate;
+  auto [ pwidth, pheight ] = gstate.graph_area;
   double gwidth = pwidth - (2 * gstate.xmargin);
   double gheight = pheight - (2 * gstate.ymargin);
   const double chartyo = pheight - gstate.ymargin;
@@ -382,14 +387,14 @@ make_line_graph_annotations(const area<> aplate,
   anntypo._M_baseline = typography::baseline::central;
 
   // Separate tic label values for each (x, y) axis, find ranges for each.
-  auto [ maxx, maxy ] = max_vrange(points, gstate.xticdigits, xscalein, yscalein);
+  auto [ maxx, maxy ] = max_vrange(points, gstate.xticdigits, xscale, yscale);
   auto minx = 0;
   auto miny = 0;
 
   const double xrange(maxx - minx);
-  const double xscale(gwidth / xrange);
+  const double gxscale(gwidth / xrange);
   const double yrange(maxy - miny);
-  const double yscale(gheight / yrange);
+  const double gyscale(gheight / yrange);
 
   // Derive the number of tick marks.
 
@@ -418,7 +423,7 @@ make_line_graph_annotations(const area<> aplate,
       lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
       for (double x = minx; x < maxx; x += xdelta)
 	{
-	  const double xto = chartxo + (x * xscale);
+	  const double xto = chartxo + (x * gxscale);
 	  ostringstream oss;
 	  oss << fixed << setprecision(gstate.xticdigits) << x;
 	  const string sxui = oss.str() + gstate.xticu;
@@ -435,7 +440,7 @@ make_line_graph_annotations(const area<> aplate,
       const double starty = miny != 0 ? miny : miny + ydelta; // skip zero label
       for (double y = starty; y < maxy + ydelta; y += ydelta)
 	{
-	  const double yto = chartyo - (y * yscale);
+	  const double yto = chartyo - (y * gyscale);
 	  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
 	  styled_text(lanno, syui, {xgol, yto}, anntypo);
 	  styled_text(lanno, syui, {xgor, yto}, anntypo);
@@ -457,7 +462,7 @@ make_line_graph_annotations(const area<> aplate,
       for (double y = miny + ydelta; y < maxy + ydelta; y += ydelta)
 	{
 	  // Base line layer.
-	  const double yto = chartyo - (y * yscale);
+	  const double yto = chartyo - (y * gyscale);
 	  line_element lxe = make_line({chartxo + graph_rstate::th1sz, yto},
 				       {chartxe - graph_rstate::th1sz, yto}, hlstyl);
 	  lanno.add_element(lxe);
@@ -468,7 +473,7 @@ make_line_graph_annotations(const area<> aplate,
 	      // Skip first and last as covered by either Y-axes tic marks.
 	      for (double x = minx + xdelta; x < maxx - xdelta; x += xdelta)
 		{
-		  const double xto = chartxo + (x * xscale);
+		  const double xto = chartxo + (x * gxscale);
 		  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
 		  styled_text(lanno, syui, {xto, yto}, anntypo);
 		}
@@ -497,16 +502,16 @@ make_line_graph_annotations(const area<> aplate,
 /// @param line_strategy = type of graph to render, from simplest to tooltips
 /// @param imgidbase = unique text prefix over multimap for image tooltips
 svg_element
-make_line_graph(const svg::area<> aplate, const vrange& points,
-		const graph_rstate& gstate,
+make_line_graph(const vrange& points, const graph_rstate& gstate,
 		const point_2t xrange, const point_2t yrange)
 {
   using namespace std;
-  const vrange cpoints = transform_to_graph_points(aplate, points,
-						   gstate, xrange, yrange);
+  const vrange cpoints = transform_to_graph_points(points, gstate,
+						   xrange, yrange);
 
   // Plot path of points on cartesian plane.
-  svg_element lgraph(gstate.title + "_line_graph", "line graph", aplate, false);
+  const string gname = gstate.title + "_line_graph";
+  svg_element lgraph(gname, "line graph", gstate.graph_area, false);
   if (gstate.is_visible(select::vector))
     {
       if (gstate.mode == chart_line_style_1)
