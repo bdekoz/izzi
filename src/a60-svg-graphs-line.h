@@ -85,7 +85,7 @@ struct graph_rstate : public render_state_base
   /// Line/Outline/Markers/Tooltip styles
   style			lstyle;		/// line style
   stroke_style		sstyle;		/// marker stroke style, if any.
-  ushort		line_mode;	/// chart_line_style_n to use
+  ushort		mode;	/// chart_line_style_n to use
   area<space_type>	tooltip_area;	/// chart_line_style_3 tooltip size
   string		tooltip_id;	/// chart_line_style_3 toolip id prefix
 };
@@ -136,6 +136,46 @@ find_visual_change_points(const vrange& points)
       last = pt;
     }
   return simplest;
+}
+
+
+/// Map data points to cartestian points on graph area.
+/// @param data points
+vrange
+transform_to_graph_points(const svg::area<> aplate, const vrange& points,
+			  const graph_rstate& gstate,
+			  const point_2t xrange, const point_2t yrange)
+{
+  auto [ minx, maxx ] = xrange;
+  auto [ miny, maxy ] = yrange;
+
+  // Locate graph area on plate area.
+  // aplate is total plate area with margins, aka
+  // pwidth = xmargin + gwidth + xmargin
+  // pheight = ymargin + gheight + ymargin
+  auto [ pwidth, pheight ] = aplate;
+  double gwidth = pwidth - (2 * gstate.xmargin);
+  double gheight = pheight - (2 * gstate.ymargin);
+  const double chartyo = pheight - gstate.ymargin;
+
+  // Transform data points to scaled cartasian points in graph area.
+  vrange cpoints;
+  for (uint i = 0; i < points.size(); i++)
+    {
+      const point_2t& pt = points[i];
+      auto [ vx, vy ] = pt;
+
+      // At bottom of graph.
+      const double xlen = scale_value_on_range(vx, minx, maxx, 0, gwidth);
+      double x = gstate.xmargin + xlen;
+
+      // Y axis grows up from chartyo.
+      const double ylen = scale_value_on_range(vy, miny, maxy, 0, gheight);
+      double y = chartyo - ylen;
+
+      cpoints.push_back(std::make_tuple(x, y));
+    }
+  return cpoints;
 }
 
 
@@ -461,54 +501,26 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 		const point_2t xrange, const point_2t yrange)
 {
   using namespace std;
-
-  auto [ minx, maxx ] = xrange;
-  auto [ miny, maxy ] = yrange;
-
-  // Locate graph area on plate area.
-  // aplate is total plate area with margins, aka
-  // pwidth = xmargin + gwidth + xmargin
-  // pheight = ymargin + gheight + ymargin
-  auto [ pwidth, pheight ] = aplate;
-  double gwidth = pwidth - (2 * gstate.xmargin);
-  double gheight = pheight - (2 * gstate.ymargin);
-  const double chartyo = pheight - gstate.ymargin;
-
-  // Transform data points to scaled cartasian points in graph area.
-  vrange cpoints;
-  for (uint i = 0; i < points.size(); i++)
-    {
-      const point_2t& pt = points[i];
-      auto [ vx, vy ] = pt;
-
-      // At bottom of graph.
-      const double xlen = scale_value_on_range(vx, minx, maxx, 0, gwidth);
-      double x = gstate.xmargin + xlen;
-
-      // Y axis grows up from chartyo.
-      const double ylen = scale_value_on_range(vy, miny, maxy, 0, gheight);
-      double y = chartyo - ylen;
-
-      cpoints.push_back(make_tuple(x, y));
-    }
+  const vrange cpoints = transform_to_graph_points(aplate, points,
+						   gstate, xrange, yrange);
 
   // Plot path of points on cartesian plane.
   svg_element lgraph(gstate.title + "_line_graph", "line graph", aplate, false);
   if (gstate.is_visible(select::vector))
     {
-      if (gstate.line_mode == chart_line_style_1)
+      if (gstate.mode == chart_line_style_1)
 	{
-	  // Use polyline and CSS-based markerspoints all in one line.
+	  // Use polyline and CSS-based markerspoints all in one line on layer 1.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
 					       gstate.sstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
 	}
-      if (gstate.line_mode == chart_line_style_2)
+      if (gstate.mode == chart_line_style_2)
 	{
-	  // Use polyline base on bottom line.
-	  // Use a second set of marker paths with value as text tooltips on top.
+	  // Use polyline base line on layer 1.
+	  // Use set of marker points paths with value as text tooltips on layer 2.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
 	  no_markerstyle.markerspoints = "";
@@ -523,11 +535,11 @@ make_line_graph(const svg::area<> aplate, const vrange& points,
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
 	}
-      if (gstate.line_mode == chart_line_style_3)
+      if (gstate.mode == chart_line_style_3)
 	{
-	  // Use polyline base on bottom line.
-	  // Use a second set of simplified marker paths with value as tooltips on top.
-	  // Use text and image tooltips.
+	  // Use polyline base line on layer 1 of control points (subset points).
+	  // Use set of control points marker paths with value as text tooltips on layer 2.
+	  // Use set of image points (subset control points) image elements on layer 3.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
 	  no_markerstyle.markerspoints = "";
