@@ -1,5 +1,5 @@
 <map id="svg::graph_rstate" name="svg::graph_rstate">
-<area shape="rect" id="Node000001" title="Per&#45;graph constants, metadata, text." alt="" coords="19,80,129,107"/>
+<area shape="rect" id="Node000001" title="Per&#45;graph constants, metadata, configuration, text." alt="" coords="19,80,129,107"/>
 <area shape="rect" id="Node000002" href="$structsvg_1_1render__state__base.html" title="Settings for glyph, graphic, chart, and collection object render." alt="" coords="5,5,143,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,48,77,80,71,80,71,48"/>
 </map>

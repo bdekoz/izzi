@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['property_0',['property',['../structsvg_1_1typography.html#aba5bf3a1484966319aebc9443746e98c',1,'svg::typography']]]
+  ['matrix_5fvariant_0',['matrix_variant',['../namespacesvg.html#a5fd971345fcede00e46bd1bd8846f12d',1,'svg']]]
 ];

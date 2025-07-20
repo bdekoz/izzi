@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unit_0',['unit',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887',1,'svg']]]
+  ['type_0',['type',['../group__elements.html#ac64d934321130203c62ad7b07c5da07c',1,'svg::filter_element::type'],['../group__elements.html#a7c19a4d45da1acb512fc1c69048253bf',1,'svg::gradient_element::type']]]
 ];

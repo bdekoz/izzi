@@ -11,9 +11,9 @@ var searchData=
   ['make_5fcrossed_5flines_8',['make_crossed_lines',['../namespacesvg.html#ab5b15443e2f917511ee48f522499786d',1,'svg']]],
   ['make_5flabel_5ffor_5fvalue_9',['make_label_for_value',['../namespacesvg.html#a3e2e60c924acb8de9ef72289ab5fe0a9',1,'svg']]],
   ['make_5fline_10',['make_line',['../namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7',1,'svg']]],
-  ['make_5fline_5fgraph_11',['make_line_graph',['../namespacesvg.html#a5affcd2017ce707148f3561187eae902',1,'svg']]],
-  ['make_5fline_5fgraph_5fannotations_12',['make_line_graph_annotations',['../namespacesvg.html#a25505b7268e527cedd0cc6ba94e07725',1,'svg']]],
-  ['make_5fline_5fgraph_5fimage_5fset_13',['make_line_graph_image_set',['../namespacesvg.html#a120539d1a8c255abc4173aa22867b708',1,'svg']]],
+  ['make_5fline_5fgraph_11',['make_line_graph',['../namespacesvg.html#a73f6fc13e78bec727ce1fb86a5bdca66',1,'svg']]],
+  ['make_5fline_5fgraph_5fannotations_12',['make_line_graph_annotations',['../namespacesvg.html#a7c5eb6a6b53dc3fcb98e29106026c9a8',1,'svg']]],
+  ['make_5fline_5fgraph_5fimage_5fset_13',['make_line_graph_image_set',['../namespacesvg.html#aca1fc445de85afb37dfcd95eb94b414e',1,'svg']]],
   ['make_5fline_5fgraph_5fmarkers_14',['make_line_graph_markers',['../namespacesvg.html#ab025866e7ce3764e91258efffa44be2c',1,'svg']]],
   ['make_5fmarker_5fcircle_15',['make_marker_circle',['../namespacesvg.html#a75c6caa3e403eec96c8e1f39394b7286',1,'svg']]],
   ['make_5fmarker_5felement_16',['make_marker_element',['../namespacesvg.html#a56ab414cf370cb20fa25d06d2a9b07bb',1,'svg']]],
@@ -58,9 +58,10 @@ var searchData=
   ['midori_55',['midori',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1adf2d7e63cac30bb42c05e893c35c8aa8',1,'svg']]],
   ['millimeter_56',['millimeter',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a1f19b37530dfd9dbdecb42e0a19bc8d3',1,'svg']]],
   ['mm_57',['mm',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887ab3cd915d758008bd19d0f2428fbb354a',1,'svg']]],
-  ['moegi_58',['moegi',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a80fea0f370f7a85847d0a11ecfcd9daf',1,'svg']]],
-  ['multiple_59',['multiple',['../structsvg_1_1id__rstate.html#ad33c99bcbe234ebbb0690980cbf7bb54',1,'svg::id_rstate']]],
-  ['murasaki_60',['murasaki',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a51bd83111913cc5c74f28db9d31713c4',1,'svg']]],
-  ['mutate_5fcolor_5fqf_61',['mutate_color_qf',['../namespacesvg.html#a729fd8229f85437952bc2607156bb61a',1,'svg']]],
-  ['mxcllnt_5ftypo_62',['mxcllnt_typo',['../namespacesvg_1_1constants.html#a979b6f66cd4ca6736b19ebb9e42a9d44',1,'svg::constants']]]
+  ['mode_58',['mode',['../structsvg_1_1graph__rstate.html#a7e9be4e5f8c06ef0468d72549f04861d',1,'svg::graph_rstate']]],
+  ['moegi_59',['moegi',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a80fea0f370f7a85847d0a11ecfcd9daf',1,'svg']]],
+  ['multiple_60',['multiple',['../structsvg_1_1id__rstate.html#ad33c99bcbe234ebbb0690980cbf7bb54',1,'svg::id_rstate']]],
+  ['murasaki_61',['murasaki',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a51bd83111913cc5c74f28db9d31713c4',1,'svg']]],
+  ['mutate_5fcolor_5fqf_62',['mutate_color_qf',['../namespacesvg.html#a729fd8229f85437952bc2607156bb61a',1,'svg']]],
+  ['mxcllnt_5ftypo_63',['mxcllnt_typo',['../namespacesvg_1_1constants.html#a979b6f66cd4ca6736b19ebb9e42a9d44',1,'svg::constants']]]
 ];

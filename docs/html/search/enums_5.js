@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rrotation_0',['rrotation',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03',1,'svg::constants']]]
+  ['property_0',['property',['../structsvg_1_1typography.html#aba5bf3a1484966319aebc9443746e98c',1,'svg::typography']]]
 ];

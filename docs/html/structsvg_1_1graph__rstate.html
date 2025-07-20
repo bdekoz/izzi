@@ -91,6 +91,7 @@ $(function(){ initResizable(false); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="structsvg_1_1graph__rstate-members.html">List of all members</a>  </div>
@@ -98,7 +99,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Per-graph constants, metadata, text.  
+<p>Per-graph constants, metadata, configuration, text.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>&gt;</code></p>
@@ -110,11 +111,22 @@ $(function(){ initResizable(false); });
 <div class="center"><iframe scrolling="no" frameborder="0" src="structsvg_1_1graph__rstate__inherit__graph.svg" width="148" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a2008c8080dd3209d8e3d8cbaca1c24d6" id="r_a2008c8080dd3209d8e3d8cbaca1c24d6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2008c8080dd3209d8e3d8cbaca1c24d6">area_type</a> = <a class="el" href="structsvg_1_1area.html">area</a>&lt;<a class="el" href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a>&gt;</td></tr>
+<tr class="separator:a2008c8080dd3209d8e3d8cbaca1c24d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a0899edc716a47d2277e726e537705f20" id="r_a0899edc716a47d2277e726e537705f20"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0899edc716a47d2277e726e537705f20">title</a></td></tr>
-<tr class="memdesc:a0899edc716a47d2277e726e537705f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Title or graph/chart metadata.  <br /></td></tr>
+<tr class="memdesc:a0899edc716a47d2277e726e537705f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Key data: title, area, mode.  <br /></td></tr>
 <tr class="separator:a0899edc716a47d2277e726e537705f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c46fb98e02a286080350ac7fe354d1" id="r_a55c46fb98e02a286080350ac7fe354d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a2008c8080dd3209d8e3d8cbaca1c24d6">area_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55c46fb98e02a286080350ac7fe354d1">graph_area</a></td></tr>
+<tr class="memdesc:a55c46fb98e02a286080350ac7fe354d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">graph title  <br /></td></tr>
+<tr class="separator:a55c46fb98e02a286080350ac7fe354d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e9be4e5f8c06ef0468d72549f04861d" id="r_a7e9be4e5f8c06ef0468d72549f04861d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#a629cd6de1083f53fa0193c7a753db998">graph_mode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e9be4e5f8c06ef0468d72549f04861d">mode</a></td></tr>
+<tr class="memdesc:a7e9be4e5f8c06ef0468d72549f04861d"><td class="mdescLeft">&#160;</td><td class="mdescRight">graph area  <br /></td></tr>
+<tr class="separator:a7e9be4e5f8c06ef0468d72549f04861d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d82b1d2be49455aae1f651fd71652b" id="r_a58d82b1d2be49455aae1f651fd71652b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58d82b1d2be49455aae1f651fd71652b">xlabel</a></td></tr>
 <tr class="memdesc:a58d82b1d2be49455aae1f651fd71652b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Labels, tic units.  <br /></td></tr>
 <tr class="separator:a58d82b1d2be49455aae1f651fd71652b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,12 +142,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a6c23d6a6265d65f07b9025237e17a641" id="r_a6c23d6a6265d65f07b9025237e17a641"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsvg_1_1stroke__style.html">stroke_style</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c23d6a6265d65f07b9025237e17a641">sstyle</a></td></tr>
 <tr class="memdesc:a6c23d6a6265d65f07b9025237e17a641"><td class="mdescLeft">&#160;</td><td class="mdescRight">line style  <br /></td></tr>
 <tr class="separator:a6c23d6a6265d65f07b9025237e17a641"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a592e5fe0f95e5ed8a376e0d0458484e9" id="r_a592e5fe0f95e5ed8a376e0d0458484e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#a128598af8ab3a73f5d25ddd8575b8b99">ushort</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a592e5fe0f95e5ed8a376e0d0458484e9">line_mode</a></td></tr>
-<tr class="memdesc:a592e5fe0f95e5ed8a376e0d0458484e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">marker stroke style, if any.  <br /></td></tr>
-<tr class="separator:a592e5fe0f95e5ed8a376e0d0458484e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59429f3bc6feebed3c0a919ca18dc225" id="r_a59429f3bc6feebed3c0a919ca18dc225"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsvg_1_1area.html">area</a>&lt; <a class="el" href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59429f3bc6feebed3c0a919ca18dc225">tooltip_area</a></td></tr>
-<tr class="memdesc:a59429f3bc6feebed3c0a919ca18dc225"><td class="mdescLeft">&#160;</td><td class="mdescRight">chart_line_style_n to use  <br /></td></tr>
-<tr class="separator:a59429f3bc6feebed3c0a919ca18dc225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48836a9d68437c6ac3eaa3c1a316d299" id="r_a48836a9d68437c6ac3eaa3c1a316d299"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a2008c8080dd3209d8e3d8cbaca1c24d6">area_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48836a9d68437c6ac3eaa3c1a316d299">tooltip_area</a></td></tr>
+<tr class="memdesc:a48836a9d68437c6ac3eaa3c1a316d299"><td class="mdescLeft">&#160;</td><td class="mdescRight">marker stroke style, if any.  <br /></td></tr>
+<tr class="separator:a48836a9d68437c6ac3eaa3c1a316d299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d2511629fbf3388372a9df551839460" id="r_a2d2511629fbf3388372a9df551839460"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d2511629fbf3388372a9df551839460">tooltip_id</a></td></tr>
 <tr class="memdesc:a2d2511629fbf3388372a9df551839460"><td class="mdescLeft">&#160;</td><td class="mdescRight">chart_line_style_3 tooltip size  <br /></td></tr>
 <tr class="separator:a2d2511629fbf3388372a9df551839460"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,7 +155,7 @@ Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:aa5947810d45828011cac63e1362918e0" id="r_aa5947810d45828011cac63e1362918e0"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5947810d45828011cac63e1362918e0">xmargin</a> = 100</td></tr>
-<tr class="memdesc:aa5947810d45828011cac63e1362918e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Margins/Spaces.  <br /></td></tr>
+<tr class="memdesc:aa5947810d45828011cac63e1362918e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">chart_line_style_n to use  <br /></td></tr>
 <tr class="separator:aa5947810d45828011cac63e1362918e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fe7e8e2d071a0524d1bfb26f92a3180" id="r_a9fe7e8e2d071a0524d1bfb26f92a3180"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fe7e8e2d071a0524d1bfb26f92a3180">ymargin</a> = 100</td></tr>
 <tr class="separator:a9fe7e8e2d071a0524d1bfb26f92a3180"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,7 +182,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a3410b564d0afbc70c71cd16a2a333680 inherit pub_methods_structsvg_1_1render__state__base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Per-graph constants, metadata, text. </p>
+<div class="textblock"><p>Per-graph constants, metadata, configuration, text. </p>
 <p>Line Graphs / Line Charts.</p>
 <p>Some Example: <a href="https://www.highcharts.com/demo/highcharts/accessible-line">https://www.highcharts.com/demo/highcharts/accessible-line</a></p>
 <p>Outline:</p>
@@ -185,8 +194,25 @@ Additional Inherited Members</h2></td></tr>
 <p>line: points, linestyle</p>
 <p>x axis: title, tick mark spacing, tick mark style y axis: title, tick mark spacing, tick mark style </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00060">60</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00063">63</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a2008c8080dd3209d8e3d8cbaca1c24d6" name="a2008c8080dd3209d8e3d8cbaca1c24d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2008c8080dd3209d8e3d8cbaca1c24d6">&#9670;&#160;</a></span>area_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a2008c8080dd3209d8e3d8cbaca1c24d6">svg::graph_rstate::area_type</a> = <a class="el" href="structsvg_1_1area.html">area</a>&lt;<a class="el" href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00065">65</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="a0899edc716a47d2277e726e537705f20" name="a0899edc716a47d2277e726e537705f20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0899edc716a47d2277e726e537705f20">&#9670;&#160;</a></span>title</h2>
 
@@ -199,9 +225,45 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Title or graph/chart metadata. </p>
+<p>Key data: title, area, mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00065">65</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00070">70</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+
+</div>
+</div>
+<a id="a55c46fb98e02a286080350ac7fe354d1" name="a55c46fb98e02a286080350ac7fe354d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55c46fb98e02a286080350ac7fe354d1">&#9670;&#160;</a></span>graph_area</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a2008c8080dd3209d8e3d8cbaca1c24d6">area_type</a> svg::graph_rstate::graph_area</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>graph title </p>
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00071">71</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+
+</div>
+</div>
+<a id="a7e9be4e5f8c06ef0468d72549f04861d" name="a7e9be4e5f8c06ef0468d72549f04861d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e9be4e5f8c06ef0468d72549f04861d">&#9670;&#160;</a></span>mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacesvg.html#a629cd6de1083f53fa0193c7a753db998">graph_mode</a> svg::graph_rstate::mode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>graph area </p>
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00072">72</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -225,9 +287,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Margins/Spaces. </p>
+<p>chart_line_style_n to use </p>
+<p>Margins/Spaces </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00068">68</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00075">75</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -251,7 +314,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00069">69</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00076">76</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -275,7 +338,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00070">70</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00077">77</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -299,7 +362,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00071">71</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00078">78</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -325,7 +388,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Type sizes. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00074">74</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00081">81</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -349,7 +412,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00075">75</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00082">82</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -373,7 +436,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00076">76</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00083">83</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -397,7 +460,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00077">77</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00084">84</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -415,7 +478,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Labels, tic units. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00080">80</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00087">87</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -431,7 +494,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00081">81</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00088">88</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -447,7 +510,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00082">82</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00089">89</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -463,7 +526,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00083">83</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00090">90</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -481,7 +544,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Line/Outline/Markers/Tooltip styles. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00086">86</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00093">93</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -499,43 +562,25 @@ Additional Inherited Members</h2></td></tr>
 
 <p>line style </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00087">87</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00094">94</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
-<a id="a592e5fe0f95e5ed8a376e0d0458484e9" name="a592e5fe0f95e5ed8a376e0d0458484e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a592e5fe0f95e5ed8a376e0d0458484e9">&#9670;&#160;</a></span>line_mode</h2>
+<a id="a48836a9d68437c6ac3eaa3c1a316d299" name="a48836a9d68437c6ac3eaa3c1a316d299"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48836a9d68437c6ac3eaa3c1a316d299">&#9670;&#160;</a></span>tooltip_area</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacesvg.html#a128598af8ab3a73f5d25ddd8575b8b99">ushort</a> svg::graph_rstate::line_mode</td>
+          <td class="memname"><a class="el" href="#a2008c8080dd3209d8e3d8cbaca1c24d6">area_type</a> svg::graph_rstate::tooltip_area</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>marker stroke style, if any. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00088">88</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
-
-</div>
-</div>
-<a id="a59429f3bc6feebed3c0a919ca18dc225" name="a59429f3bc6feebed3c0a919ca18dc225"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59429f3bc6feebed3c0a919ca18dc225">&#9670;&#160;</a></span>tooltip_area</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structsvg_1_1area.html">area</a>&lt;<a class="el" href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a>&gt; svg::graph_rstate::tooltip_area</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>chart_line_style_n to use </p>
-
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00089">89</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00095">95</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
@@ -553,7 +598,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>chart_line_style_3 tooltip size </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00090">90</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00096">96</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
 
 </div>
 </div>
