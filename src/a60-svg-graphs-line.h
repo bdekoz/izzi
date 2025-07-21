@@ -242,8 +242,6 @@ make_line_graph_images(const vrange& points, const graph_rstate& gstate,
       g.add_element(i);
     }
   g.finish_group();
-  g.flush();
-
   return g.str();
 }
 
