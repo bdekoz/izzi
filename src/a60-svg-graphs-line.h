@@ -589,7 +589,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 
 /// Line graph 3 needs more parameters.
 svg_element
-make_line_graph(const vrange& points, const vspace& tpoints, graph_rstate& gstate,
+make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstate,
 		const point_2t xrange, const point_2t yrange,
 		const string metadata)
 {
@@ -616,13 +616,11 @@ make_line_graph(const vrange& points, const vspace& tpoints, graph_rstate& gstat
 
 	  // Markers + text tooltips, add image id + js to make image visible.
 	  // Use simplified points, aka only the visual change points.
-	  const vrange& vizpoints = find_visual_change_points(points);
-	  const vrange& toolpoints = find_tooltip_points(vizpoints, tpoints);
-	  const vrange& ctoolpoints = transform_to_graph_points(toolpoints, gstate,
-								xrange, yrange);
+	  const vrange& ctpoints = transform_to_graph_points(tpoints, gstate,
+							     xrange, yrange);
 
 	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
-	  string markers = make_line_graph_markers(toolpoints, ctoolpoints, gstate, 3,
+	  string markers = make_line_graph_markers(tpoints, ctpoints, gstate, 3,
 						   gstate.tooltip_id);
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
@@ -630,7 +628,7 @@ make_line_graph(const vrange& points, const vspace& tpoints, graph_rstate& gstat
 	  // Add tool images to graph_rstate.
 	  // Add this plus script at the same layer of the DOM, which varies.
 	  const string tooltipprefix = metadata + k::hyphen + gstate.title + "_";
-	  group_element ttips = make_tooltip_images(toolpoints, gstate, tooltipprefix);
+	  group_element ttips = make_tooltip_images(tpoints, gstate, tooltipprefix);
 	  gstate.tooltip_images = ttips.str();
 	}
     }
