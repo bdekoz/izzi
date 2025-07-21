@@ -262,5 +262,35 @@ deserialize_json_array_object_field_n(const string jdata, const string afield,
   return ret;
 }
 
+
+/// Iterate over json object in data file and return keys as ints.
+vspace
+extract_object_keys_as_vspace(const string jdata, const string jobjpath)
+{
+  vspace ret;
+
+  rj::Document dom(deserialize_json_to_dom(jdata));
+  rj::Value* ap = rj::Pointer(jobjpath.c_str()).Get(dom);
+
+  // Iterate over the members of the JSON object
+  if (ap)
+    {
+      const rj::Value& obj = *ap;
+
+      using citerator = rj::Value::ConstMemberIterator;
+      for (citerator itr = obj.MemberBegin(); itr != obj.MemberEnd(); ++itr)
+	{
+	  // Get the key (member name), keys are always strings in JSON objects
+	  std::string key = itr->name.GetString();
+	  ret.push_back(space_type(std::atoi(key.c_str())));
+
+	  // Also get the value associated with the key
+	  //const rapidjson::Value& value = itr->value;
+	}
+    }
+  return ret;
+}
+
+
 } // namespace svg
 #endif

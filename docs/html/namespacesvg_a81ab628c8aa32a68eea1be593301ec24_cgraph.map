@@ -1,0 +1,23 @@
+<map id="svg::make_tooltip_images" name="svg::make_tooltip_images">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,113,158,140"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="211,5,332,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,110,204,58,213,53,215,58,207,62,109,115"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a71cf2eb89a562527f14c4ca4c027c2b9" title=" " alt="" coords="211,72,333,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,111,195,104,196,109,159,116"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#aca1fc445de85afb37dfcd95eb94b414e" title="Return set of images for image tooltips, one for each point." alt="" coords="206,139,338,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="159,137,191,143,190,148,158,143"/>
+<area shape="rect" id="Node000011" href="$group__elements.html#a9b6e3d5d06ec76dc07afff3261e32487" title=" " alt="" coords="211,205,333,248"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="109,138,207,191,215,195,213,200,204,196,107,143"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#abfa06ef3bc0a99045eac1a61c80ce46c" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="392,39,515,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="316,136,337,124,385,91,392,87,395,91,387,96,339,129,319,141"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#gad9598e7ef20232bf2eb3e5ed14a4848d" title=" " alt="" coords="392,105,515,148"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="338,145,376,138,377,143,339,150"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#af55d63d69abb6ef89ee0460a936085a7" title=" " alt="" coords="392,172,515,215"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="339,170,377,177,376,182,338,175"/>
+<area shape="rect" id="Node000010" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="386,239,520,265"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="319,179,339,191,363,208,387,224,398,230,396,235,385,229,360,213,337,196,316,184"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="571,47,687,73"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="515,57,555,57,555,63,515,63"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#ad192becf9565fd5d15094d275e207481" title="Empty when the output buffer is." alt="" coords="568,172,690,215"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="515,191,553,191,553,196,515,196"/>
+</map>

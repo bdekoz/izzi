@@ -42,19 +42,19 @@ test_chart()
 		     "firefox", a, chart_line_style_2,
 		     f1, f2, "ms", "%", styl3,
 		     { "r2wcadg", "1 2", "", "triangle", "" },
-		     {0,0}, "" };
+		     {0,0}, "", "" };
 
   graph_rstate gs2 { select::vector | select::echo,
 		     "chrome", a, chart_line_style_2,
 		     f1, f2, "ms", "%", styl1,
 		     { "c2wcaglg", "3", "", "round", "" },
-		     {0,0}, "" };
+		     {0,0}, "", "" };
 
   graph_rstate gsa { select::ticks | select::linex | select::alt,
 		     "annotation", a, chart_line_style_2,
 		     f1, f2, "s", "%", styl2,
 		     { "", "", "", "", "" },
-		     {0,0}, "" };
+		     {0,0}, "", "" };
 
   // Deserialize A/B data.
   vrange vr1 = deserialize_json_array_object_field_n(jfile, afx, f1, f2);

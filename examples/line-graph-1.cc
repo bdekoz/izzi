@@ -48,7 +48,7 @@ test_chart()
     		     glayers, "firefox", a, chart_line_style_1,  
 		     f1, "% complete", "s", "%",
 		     styl1, { "t2wcagg", "2", "", "round", "" },
-		     {0,0}, ""
+		     {0,0}, "", ""
 		   };
   svg_element chart1 = make_line_graph(vr1, gs1, rangex, rangey);
   obj.add_element(chart1);

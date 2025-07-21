@@ -94,6 +94,7 @@ struct graph_rstate : public render_state_base
   stroke_style		sstyle;		/// marker stroke style, if any.
   area_type		tooltip_area;	/// chart_line_style_3 tooltip size
   string		tooltip_id;	/// chart_line_style_3 toolip id prefix
+  string		tooltip_images;	/// chart_line_style 3 set of image elements
 };
 
 
@@ -127,7 +128,7 @@ find_change_points(const vrange& vr)
 }
 
 
-/// Simplify change points to only markers where visual complete changes
+/// Tramsform change points to points where the y-axis (% visual complete) changes
 /// @param points already simplified change points
 vrange
 find_visual_change_points(const vrange& points)
@@ -142,6 +143,28 @@ find_visual_change_points(const vrange& points)
       last = pt;
     }
   return simplest;
+}
+
+
+/// Tramsform change points to points where the x-axis (time) matches a value in onlypoints.
+/// @param points already simplified change points
+vrange
+find_tooltip_points(const vrange& points, const vspace& onlypoints)
+{
+  vrange edited;
+  for (const space_type& matchx : onlypoints)
+    {
+      for (const auto&  pt : points)
+	{
+	  auto [ x, y ] = pt;
+	  if (x == matchx)
+	    {
+	      edited.push_back(pt);
+	      break;
+	    }
+	}
+    }
+  return edited;
 }
 
 
@@ -217,6 +240,21 @@ make_line_graph_image_set(const vrange& points, const graph_rstate& gstate,
       ret += i.str();
     }
   return ret;
+}
+
+
+// Group of images used for tooltips.
+group_element
+make_tooltip_images(const vrange& points, const graph_rstate& gstate,
+		    const string tooltipprefix,
+		    const string imgpath = "../filmstrip/", const string imgext = ".webp")
+{
+  string imgs = make_line_graph_image_set(points, gstate, imgpath, tooltipprefix, imgext);
+  group_element g;
+  g.start_group(gstate.title + "-tooltip-images");
+  g.add_raw(imgs);
+  g.finish_group();
+  return g;
 }
 
 
@@ -499,8 +537,7 @@ make_line_graph_annotations(const vrange& points,
 /// @param gstate = graph render state
 /// @param xrange = unified x-axis range for all graphs if multiplot
 /// @param yrange = unified y-axis range for all graphs if multiplot
-/// @param line_strategy = type of graph to render, from simplest to tooltips
-/// @param imgidbase = unique text prefix over multimap for image tooltips
+/// @param metadata = image filename prefix for tooltips if present
 svg_element
 make_line_graph(const vrange& points, const graph_rstate& gstate,
 		const point_2t xrange, const point_2t yrange)
@@ -518,8 +555,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 	{
 	  // Use polyline and CSS-based markerspoints all in one line on layer 1.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
-	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-					       gstate.sstyle);
+	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, gstate.sstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
 	}
@@ -530,8 +566,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
 	  no_markerstyle.markerspoints = "";
-	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-					       no_markerstyle);
+	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, no_markerstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
 
@@ -543,33 +578,60 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 	}
       if (gstate.mode == chart_line_style_3)
 	{
+	  string m("requested mode requires use of different overloaded function");
+	  throw std::runtime_error(m);
+	}
+    }
+
+  return lgraph;
+}
+
+
+/// Line graph 3 needs more parameters.
+svg_element
+make_line_graph(const vrange& points, const vspace& tpoints, graph_rstate& gstate,
+		const point_2t xrange, const point_2t yrange,
+		const string metadata)
+{
+  using namespace std;
+  const vrange cpoints = transform_to_graph_points(points, gstate,
+						   xrange, yrange);
+
+  // Plot path of points on cartesian plane.
+  const string gname = gstate.title + "_line_graph";
+  svg_element lgraph(gname, "line graph", gstate.graph_area, false);
+  if (gstate.is_visible(select::vector))
+    {
+      if (gstate.mode == chart_line_style_3)
+	{
 	  // Use polyline base line on layer 1 of control points (subset points).
 	  // Use set of control points marker paths with value as text tooltips on layer 2.
 	  // Use set of image points (subset control points) image elements on layer 3.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
 	  no_markerstyle.markerspoints = "";
-	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle,
-					       no_markerstyle);
+	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, no_markerstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
 
 	  // Markers + text tooltips, add image id + js to make image visible.
 	  // Use simplified points, aka only the visual change points.
 	  const vrange& vizpoints = find_visual_change_points(points);
-	  const vrange& cvizpoints = find_visual_change_points(cpoints); // xxx ?
+	  const vrange& toolpoints = find_tooltip_points(vizpoints, tpoints);
+	  const vrange& ctoolpoints = transform_to_graph_points(toolpoints, gstate,
+								xrange, yrange);
 
 	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
-	  string markers = make_line_graph_markers(vizpoints, cvizpoints, gstate, 3,
+	  string markers = make_line_graph_markers(toolpoints, ctoolpoints, gstate, 3,
 						   gstate.tooltip_id);
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
 
-	  // Add images with image id, default to hidden
-	  // (make_line_graph_image_set)
-
-	  // Add javascript to control images
-	  // (script_element::tooltip_script)
+	  // Add tool images to graph_rstate.
+	  // Add this plus script at the same layer of the DOM, which varies.
+	  const string tooltipprefix = metadata + k::hyphen + gstate.title + "_";
+	  group_element ttips = make_tooltip_images(toolpoints, gstate, tooltipprefix);
+	  gstate.tooltip_images = ttips.str();
 	}
     }
 
