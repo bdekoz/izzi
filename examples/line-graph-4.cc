@@ -85,29 +85,15 @@ test_chart()
   point_2t rangey = make_tuple(0, maxy);
 
   // Draw graph(s).
-  svg_element chart1 = make_line_graph(vr1, gs1, rangex, rangey);
+  const string tpmeta = "2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-";
+  svg_element chart1 = make_line_graph(vr1, vr1, gs1, rangex, rangey, tpmeta);
 
-  svg_element chart2 = make_line_graph(vr2, gs2, rangex, rangey);
+  svg_element chart2 = make_line_graph(vr2, vr2, gs2, rangex, rangey, tpmeta);
 
   obj.add_element(chart1);
+  obj.add_raw(gs1.tooltip_images);    
   obj.add_element(chart2);
-
-  // Add images, assuming filenames like:
-  // 2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-firefox_09200.webp
-  const string imgext = ".webp";
-  const string imgpath = "../filmstrip/";
-  const string tpmeta = "2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-";
-  string fxpre = tpmeta + bfirefox + "_";
-  string chpre = tpmeta + bchrome + "_";
-
-  string imageset1 = make_line_graph_image_set(vr1, gs1, imgpath,
-					       fxpre, imgext);
-  obj.add_raw(imageset1);
-
-  string imageset2 = make_line_graph_image_set(vr2, gs2, imgpath,
-					       chpre, imgext);
-  obj.add_raw(imageset2);
-
+  obj.add_raw(gs2.tooltip_images);  
 
   // Add js to control visibility of images.
   script_element::scope context = script_element::scope::element;
