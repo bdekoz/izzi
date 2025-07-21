@@ -631,11 +631,8 @@ make_path_triangle(const point_2t origin, const style styl,
   vrange pointz = { p1, p2, p3, p1 };
   string pathda = make_path_data_from_points(pointz);
 
-  string argname = std::to_string(r) + k::hyphen + std::to_string(angle);
-  const string id = "triangle-" + argname;
-
   path_element::data pthdata = { pathda, 0 };
-  path_element tri = make_path(pathda, styl, id, selfclosingtagp, xattr);
+  path_element tri = make_path(pathda, styl, "", selfclosingtagp, xattr);
   return tri;
 }
 
