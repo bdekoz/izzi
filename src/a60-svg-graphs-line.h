@@ -221,7 +221,8 @@ make_line_graph_images(const vrange& points, const graph_rstate& gstate,
 		       const string imgpath = "../filmstrip/",
 		       const string imgext = ".webp")
 {
-  string ret;
+  group_element g;
+  g.start_group(gstate.title + "-tooltip-images");
   for (const point_2t p : points)
     {
       std::ostringstream oss;
@@ -238,13 +239,10 @@ make_line_graph_images(const vrange& points, const graph_rstate& gstate,
       i.start_element(imgid);
       i.add_data(di, "hidden", "anonymous");
       i.finish_element();
-      ret += i.str();
+      g.add_element(i);
     }
-
-  group_element g;
-  g.start_group(gstate.title + "-tooltip-images");
-  g.add_raw(ret);
   g.finish_group();
+  g.flush();
 
   return g.str();
 }
