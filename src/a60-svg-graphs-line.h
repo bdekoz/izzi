@@ -238,6 +238,7 @@ make_line_graph_images(const vrange& points, const graph_rstate& gstate,
       image_element::data di = { isrc, 0, 0, width, height };
       i.start_element(imgid);
       i.add_data(di, "anonymous", "hidden", "");
+      //i.add_data(di, "anonymous", "", "none");
       i.finish_element();
       g.add_element(i);
     }
@@ -579,7 +580,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 svg_element
 make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstate,
 		const point_2t xrange, const point_2t yrange,
-		const string metadata)
+		const string metadata, script_element::scope scontext)
 {
   using namespace std;
   const vrange cpoints = transform_to_graph_points(points, gstate,
@@ -615,13 +616,16 @@ make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstat
 
 	  // Add tool images to graph_rstate.
 	  // Add this plus script at the same layer of the DOM, which varies.
-	  const string tooltipprefix = metadata + k::hyphen + gstate.title + "_";
-	  group_element ttips = make_line_graph_images(tpoints, gstate, tooltipprefix);
+	  const string imgprefix = metadata + k::hyphen + gstate.title + "_";
+	  group_element ttips = make_line_graph_images(tpoints, gstate, imgprefix);
 
-	  // XXX
-	  //gstate.tooltip_images = ttips.str();
-
-	  lgraph.add_element(ttips);
+	  if (scontext == script_element::scope::element)
+	    {
+	      lgraph.add_element(ttips);
+	      lgraph.add_raw(script_element::tooltip_script(scontext).str());
+	    }
+	  else
+	    gstate.tooltip_images = ttips.str();
 	}
     }
 
