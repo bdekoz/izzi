@@ -237,7 +237,7 @@ make_line_graph_images(const vrange& points, const graph_rstate& gstate,
       image_element i;
       image_element::data di = { isrc, 0, 0, width, height };
       i.start_element(imgid);
-      i.add_data(di, "hidden", "anonymous");
+      i.add_data(di, "anonymous", "hidden", "");
       i.finish_element();
       g.add_element(i);
     }

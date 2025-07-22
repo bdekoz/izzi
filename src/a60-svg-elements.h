@@ -134,7 +134,7 @@ struct group_element : virtual public element_base
 
   static string
   finish_group()
-  { return "</g>"; }
+  { return string("</g>") + k::newline; }
 
   void
   start_element()
@@ -181,7 +181,7 @@ struct group_element : virtual public element_base
 
 void
 group_element::finish_element()
-{ _M_sstream << finish_group() << k::newline; }
+{ _M_sstream << finish_group(); }
 
 
 /**
@@ -1102,7 +1102,7 @@ struct image_element : virtual public element_base
   void
   start_element(const string& id)
   {
-    const string simg = "<image ";
+    const string simg = "<image";
     _M_sstream << simg << k::space;
     if (!id.empty())
       _M_sstream << "id=" << k::quote << id << k::quote << k::space;
@@ -1126,8 +1126,7 @@ struct image_element : virtual public element_base
     const string h("__h");
     const string ref("__ref");
 
-    string strip = R"_delimiter_(href="__ref" x="__x" y="__y" width="__w" height="__h"
-)_delimiter_";
+    string strip = R"_delimiter_(href="__ref" x="__x" y="__y" width="__w" height="__h")_delimiter_";
 
     string_replace(strip, ref, d._M_xref);
     string_replace(strip, x, std::to_string(d._M_x_origin));
@@ -1139,14 +1138,20 @@ struct image_element : virtual public element_base
 
   /// Visibility and other HTML/img attributes.
   /// @param vattr = visibility attribute, "visible" or "hidden"
+  /// @param display = display attribute, "non" or "unset" or "initial"
   /// @param cors = CORS, "anonymous" or "use-credentials"
   /// @param lattr = loading attribute, "lazy" or "eager"
   void
-  add_data(const data& d, const string vattr, const string cors)
+  add_data(const data& d, const string cors, const string vattr, const string display)
   {
     add_data(d);
-    _M_sstream << "visibility=" << k::quote << vattr << k::quote << k::space;
-    _M_sstream << "crossorigin=" << k::quote << cors << k::quote << k::space;
+
+    if (!cors.empty())
+      _M_sstream << "crossorigin=" << k::quote << cors << k::quote << k::space;
+    if (!vattr.empty())
+      _M_sstream << "visibility=" << k::quote << vattr << k::quote << k::space;
+    if (!display.empty())
+      _M_sstream << "display=" << k::quote << display << k::quote << k::space;
   }
 };
 
@@ -1450,39 +1455,41 @@ struct script_element : virtual public element_base
       } else {
 	console.error(`Element with ID "${tooltipId}" not found.`);
       }
-    }
-    )";
+    })";
 
     static string js_show_document = R"(
     function showTooltip(event, tooltipId) {
       const tooltipimg = document.getElementById(tooltipId);
       if (tooltipimg) {
+	//tooltipimg.onload = function() {
 	const ge = tooltipimg.parentElement;
 	const svge = ge.parentElement;
 	const brect = ge.getBoundingClientRect();
 	const bx = brect.left;
 	const by = brect.top;
 
+	//const iheight = 150;
+	const iheight = tooltipimg.offsetHeight; //!isNaN(iheight)
 	tooltipimg.setAttribute('x', event.pageX - bx);
-	tooltipimg.setAttribute('y', event.pageY - by - tooltipimg.offsetHeight);
+	tooltipimg.setAttribute('y', event.pageY - by - iheight);
 	tooltipimg.setAttribute('visibility', 'visible');
+	//tooltipimg.setAttribute('display', 'inline');
       } else {
 	console.error(`Element with ID "${tooltipId}" not found.`);
       }
-    }
-    )";
+    })";
 
     static string js_hide = R"(
     function hideTooltip(tooltipId) {
       const tooltipimg = document.getElementById(tooltipId);
       tooltipimg.setAttribute('visibility', 'hidden');
-    }
-    )";
+      //tooltipimg.setAttribute('display', 'none');
+    })";
 
     static string js;
     if (context == scope::element)
       js = js_show_element + k::newline + js_hide;
-    if (context == scope::document)
+    if (context == scope::document || context == scope::parent)
       js = js_show_document + k::newline + js_hide;
 
     return js;
