@@ -215,14 +215,14 @@ transform_to_graph_points(const vrange& points,
 /// sequentially numbered images (say fximage-, for fximage-101 et al)
 /// Expected, zero filled imageid.
 /// 2025-06-26-android-15-ptablet-talkback-4usted-firefox_13188.webp
-string
+group_element
 make_line_graph_images(const vrange& points, const graph_rstate& gstate,
 		       const string imgprefix,
 		       const string imgpath = "../filmstrip/",
 		       const string imgext = ".webp")
 {
   group_element g;
-  g.start_group(gstate.title + "-tooltip-images");
+  g.start_element(gstate.title + "-tooltip-images");
   for (const point_2t p : points)
     {
       std::ostringstream oss;
@@ -241,8 +241,8 @@ make_line_graph_images(const vrange& points, const graph_rstate& gstate,
       i.finish_element();
       g.add_element(i);
     }
-  g.finish_group();
-  return g.str();
+  g.finish_element();
+  return g;
 }
 
 
@@ -616,8 +616,12 @@ make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstat
 	  // Add tool images to graph_rstate.
 	  // Add this plus script at the same layer of the DOM, which varies.
 	  const string tooltipprefix = metadata + k::hyphen + gstate.title + "_";
-	  string ttips = make_line_graph_images(tpoints, gstate, tooltipprefix);
-	  gstate.tooltip_images = ttips;
+	  group_element ttips = make_line_graph_images(tpoints, gstate, tooltipprefix);
+
+	  // XXX
+	  //gstate.tooltip_images = ttips.str();
+
+	  lgraph.add_element(ttips);
 	}
     }
 
