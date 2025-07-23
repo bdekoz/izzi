@@ -4844,9 +4844,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:abfa06ef3bc0a99045eac1a61c80ce46c" id="r_abfa06ef3bc0a99045eac1a61c80ce46c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfa06ef3bc0a99045eac1a61c80ce46c">add_data</a> (const <a class="el" href="#structsvg_1_1image__element_1_1data">data</a> &amp;d)</td></tr>
 <tr class="memdesc:abfa06ef3bc0a99045eac1a61c80ce46c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Either serialize immediately (as below), or create data structure that adds data to data_vec and then finish_element serializes.  <br /></td></tr>
 <tr class="separator:abfa06ef3bc0a99045eac1a61c80ce46c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72752ee59fbf251db12806bb83686b3e" id="r_a72752ee59fbf251db12806bb83686b3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72752ee59fbf251db12806bb83686b3e">add_data</a> (const <a class="el" href="#structsvg_1_1image__element_1_1data">data</a> &amp;d, const string vattr, const string cors)</td></tr>
-<tr class="memdesc:a72752ee59fbf251db12806bb83686b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Visibility and other HTML/img attributes.  <br /></td></tr>
-<tr class="separator:a72752ee59fbf251db12806bb83686b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3a61eb2832e6e2da72f4fdc3a09fc75" id="r_ab3a61eb2832e6e2da72f4fdc3a09fc75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3a61eb2832e6e2da72f4fdc3a09fc75">add_data</a> (const <a class="el" href="#structsvg_1_1image__element_1_1data">data</a> &amp;d, const string cors, const string vattr, const string display)</td></tr>
+<tr class="memdesc:ab3a61eb2832e6e2da72f4fdc3a09fc75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Visibility and other HTML/img attributes.  <br /></td></tr>
+<tr class="separator:ab3a61eb2832e6e2da72f4fdc3a09fc75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_group__elements"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_group__elements')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="group__elements.html#structsvg_1_1element__base">svg::element_base</a></td></tr>
 <tr class="memitem:ad192becf9565fd5d15094d275e207481 inherit pub_methods_group__elements" id="r_ad192becf9565fd5d15094d275e207481"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad192becf9565fd5d15094d275e207481">empty</a> ()</td></tr>
 <tr class="memdesc:ad192becf9565fd5d15094d275e207481 inherit pub_methods_group__elements"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty when the output buffer is.  <br /></td></tr>
@@ -4999,8 +4999,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a72752ee59fbf251db12806bb83686b3e" name="a72752ee59fbf251db12806bb83686b3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72752ee59fbf251db12806bb83686b3e">&#9670;&#160;</a></span>add_data() <span class="overload">[2/2]</span></h2>
+<a id="ab3a61eb2832e6e2da72f4fdc3a09fc75" name="ab3a61eb2832e6e2da72f4fdc3a09fc75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3a61eb2832e6e2da72f4fdc3a09fc75">&#9670;&#160;</a></span>add_data() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -5016,12 +5016,17 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>cors</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>vattr</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>cors</em></span>&#160;)</td>
+          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>display</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -5035,6 +5040,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vattr</td><td>= visibility attribute, "visible" or "hidden" </td></tr>
+    <tr><td class="paramname">display</td><td>= display attribute, "non" or "unset" or "initial" </td></tr>
     <tr><td class="paramname">cors</td><td>= CORS, "anonymous" or "use-credentials" </td></tr>
     <tr><td class="paramname">lattr</td><td>= loading attribute, "lazy" or "eager" </td></tr>
   </table>
@@ -5047,7 +5053,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="dynsection-47-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-47-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__elements_a72752ee59fbf251db12806bb83686b3e_cgraph.svg" width="470" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__elements_ab3a61eb2832e6e2da72f4fdc3a09fc75_cgraph.svg" width="470" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -5183,7 +5189,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Even so, I had to increase the width and height. Why? I don't know. It doesn't seem to be a scale by 2. If someone knows I am curious to know.</p>
 <p>&lt;svg version="1.1" class="center-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="600"  style="border: 1px solid black;"&gt; &lt;g&gt; &lt;g transform="translate(151,104) scale(1,1)"&gt; &lt;rect x="0" y="0" width="300" height="200"&gt;&lt;/rect&gt; &lt;foreignObject x="-151" y="-104" width="500" height="400"&gt; &lt;video xmlns="http://www.w3.org/1999/xhtml" width="300" height="200" controls="" style="position: fixed; left: 151px; top: 104px;"&gt; &lt;source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4" &gt;less &lt;/video&gt; &lt;/foreignObject&gt; &lt;/g&gt; &lt;/g&gt; &lt;/svg&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01189">1189</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01194">1194</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 </div><div id="dynsection-48" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-48-trigger" src="closed.png" alt="+"/> Inheritance diagram for svg::foreign_element:</div>
 <div id="dynsection-48-summary" class="dynsummary" style="display:block;">
@@ -5272,7 +5278,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="#a12a1ba6cce0968102c9112fe7d00bec5">svg::iframe_element</a>, <a class="el" href="#a970fb212622c0599c45ae5f5df51158d">svg::object_element</a>, and <a class="el" href="#a7969615a463acd3b6d07e86ff5219bc5">svg::video_element</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01192">1192</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01197">1197</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -5313,7 +5319,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01199">1199</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01204">1204</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-49" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-49-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-49-summary" class="dynsummary" style="display:block;">
@@ -5340,7 +5346,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>video HTML object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used w/o foreignElement. This approach uses HTML wrapped in foreign element. <a href="https://www.w3.org/TR/SVG2/embedded.html#HTMLElements">https://www.w3.org/TR/SVG2/embedded.html#HTMLElements</a> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01247">1247</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01252">1252</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 </div><div id="dynsection-50" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-50-trigger" src="closed.png" alt="+"/> Inheritance diagram for svg::video_element:</div>
 <div id="dynsection-50-summary" class="dynsummary" style="display:block;">
@@ -5431,7 +5437,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01250">1250</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01255">1255</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-51" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-51-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-51-summary" class="dynsummary" style="display:block;">
@@ -5467,7 +5473,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="#a502ae90babfec5e3707d4bd1c2b3c820">svg::foreign_element</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01260">1260</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01265">1265</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-52" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-52-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-52-summary" class="dynsummary" style="display:block;">
@@ -5518,7 +5524,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Video. a is width and height of video as embedded in page r is the foreign object, with x/y offset and scaled size. </p>
 <p>attr is attribues for <a class="el" href="#structsvg_1_1video__element" title="video HTML object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used ...">video_element</a> autoplay="true" or removed loop="true/false" muted="true/false" controls, controlslist, crossorigin, disablepictureinpicture, disableremoteplayback </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01275">1275</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01280">1280</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-53" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-53-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-53-summary" class="dynsummary" style="display:block;">
@@ -5545,7 +5551,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>iframe HTML object embedded in SVG container. NB: HTML elements video/audio/iframe/canvas can be used w/o foreignElement. This approach uses HTML wrapped in foreign element. <a href="https://www.w3.org/TR/SVG2/embedded.html#HTMLElements">https://www.w3.org/TR/SVG2/embedded.html#HTMLElements</a> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01305">1305</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01310">1310</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 </div><div id="dynsection-54" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-54-trigger" src="closed.png" alt="+"/> Inheritance diagram for svg::iframe_element:</div>
 <div id="dynsection-54-summary" class="dynsummary" style="display:block;">
@@ -5636,7 +5642,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01308">1308</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01313">1313</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-55" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-55-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-55-summary" class="dynsummary" style="display:block;">
@@ -5672,7 +5678,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="#a502ae90babfec5e3707d4bd1c2b3c820">svg::foreign_element</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01318">1318</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01323">1323</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-56" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-56-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-56-summary" class="dynsummary" style="display:block;">
@@ -5722,7 +5728,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>iframe. a is width and height of video as embedded in page r is the foreign object, with x/y offset and scaled size </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01326">1326</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01331">1331</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-57" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-57-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-57-summary" class="dynsummary" style="display:block;">
@@ -5749,7 +5755,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>HTML object embedded in SVG container. Unlike image_elements, object_elements are not locked down for scripting. NB: HTML elements video/audio/object/canvas can be used w/o foreignElement. This approach uses HTML wrapped in foreign element. <a href="https://www.w3.org/TR/SVG2/embedded.html#HTMLElements">https://www.w3.org/TR/SVG2/embedded.html#HTMLElements</a> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01359">1359</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01364">1364</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 </div><div id="dynsection-58" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-58-trigger" src="closed.png" alt="+"/> Inheritance diagram for svg::object_element:</div>
 <div id="dynsection-58-summary" class="dynsummary" style="display:block;">
@@ -5840,7 +5846,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01362">1362</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01367">1367</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-59" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-59-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-59-summary" class="dynsummary" style="display:block;">
@@ -5876,7 +5882,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="#a502ae90babfec5e3707d4bd1c2b3c820">svg::foreign_element</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01372">1372</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01377">1377</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-60" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-60-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-60-summary" class="dynsummary" style="display:block;">
@@ -5935,7 +5941,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01381">1381</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01386">1386</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-61" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-61-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-61-summary" class="dynsummary" style="display:block;">
@@ -5963,7 +5969,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>A SVG script element.</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/script">https://developer.mozilla.org/en-US/docs/Web/SVG/Element/script</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01409">1409</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01414">1414</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 </div><div id="dynsection-62" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-62-trigger" src="closed.png" alt="+"/> Inheritance diagram for svg::script_element:</div>
 <div id="dynsection-62-summary" class="dynsummary" style="display:block;">
@@ -6072,7 +6078,7 @@ Additional Inherited Members</h2></td></tr>
 <tr><td class="fieldname"><a id="accffdf35060151dc31518047a06e13eca8e2dcfd7e7e24b1ca76c1193f645902b" name="accffdf35060151dc31518047a06e13eca8e2dcfd7e7e24b1ca76c1193f645902b"></a>element&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01414">1414</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01419">1419</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -6100,7 +6106,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01417">1417</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01422">1422</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-63" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-63-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-63-summary" class="dynsummary" style="display:block;">
@@ -6136,7 +6142,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="#ab41064b7f4d1885e9ed00f6aa9bbd0ea">svg::element_base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01427">1427</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01432">1432</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-64" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-64-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-64-summary" class="dynsummary" style="display:block;">
@@ -6172,7 +6178,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>showTooltip(id) hideTooltip(id) event.x vs. event.pageX, event.y vs. event.pageY </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01434">1434</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01439">1439</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -6199,7 +6205,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01492">1492</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01499">1499</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-65" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-65-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-65-summary" class="dynsummary" style="display:block;">
@@ -6233,7 +6239,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01504">1504</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01511">1511</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-66" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-66-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-66-summary" class="dynsummary" style="display:block;">
@@ -6275,7 +6281,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01517">1517</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01524">1524</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -6296,7 +6302,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>A SVG object element.</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg">https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg</a> <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_as_an_Image">https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_as_an_Image</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01538">1538</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01545">1545</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 </div><div id="dynsection-67" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-67-trigger" src="closed.png" alt="+"/> Inheritance diagram for svg::svg_element:</div>
 <div id="dynsection-67-summary" class="dynsummary" style="display:block;">
@@ -6407,7 +6413,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01540">1540</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01547">1547</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -6454,7 +6460,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01548">1548</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01555">1555</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-68" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-68-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-68-summary" class="dynsummary" style="display:block;">
@@ -6502,7 +6508,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01559">1559</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01566">1566</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-69" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-69-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-69-summary" class="dynsummary" style="display:block;">
@@ -6536,7 +6542,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01568">1568</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01575">1575</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-70" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-70-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-70-summary" class="dynsummary" style="display:block;">
@@ -6570,7 +6576,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01574">1574</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01581">1581</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-71" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-71-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-71-summary" class="dynsummary" style="display:block;">
@@ -6605,7 +6611,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01581">1581</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01588">1588</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -6723,7 +6729,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01595">1595</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01602">1602</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-73" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-73-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-73-summary" class="dynsummary" style="display:block;">
@@ -6757,7 +6763,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01599">1599</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01606">1606</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-74" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-74-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-74-summary" class="dynsummary" style="display:block;">
@@ -6827,7 +6833,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01614">1614</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01621">1621</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-75" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-75-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-75-summary" class="dynsummary" style="display:block;">
@@ -6861,7 +6867,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01623">1623</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01630">1630</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 <div id="dynsection-76" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-76-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-76-summary" class="dynsummary" style="display:block;">
@@ -6885,7 +6891,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01542">1542</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01549">1549</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -6901,7 +6907,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01543">1543</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01550">1550</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -6917,7 +6923,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01544">1544</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01551">1551</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -6933,7 +6939,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01545">1545</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01552">1552</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -6949,7 +6955,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01546">1546</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01553">1553</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -7586,7 +7592,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="#acfb8d3d8428a8514b821773ed29b7237">svg::element_base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01155">1155</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01160">1160</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -7619,7 +7625,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="#gad7485cadd874d0834ff8677b15893a1e">svg::iframe_element</a>, <a class="el" href="#ga35e85d4376117ed34168ec300c8b95c4">svg::object_element</a>, and <a class="el" href="#ga8b620651716406ac54b1459bf172684d">svg::video_element</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01238">1238</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01243">1243</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -7650,7 +7656,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="#gae373d46dad4a1fd6516db68753e44349">svg::foreign_element</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01296">1296</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01301">1301</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -7681,7 +7687,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="#gae373d46dad4a1fd6516db68753e44349">svg::foreign_element</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01349">1349</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01354">1354</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -7712,7 +7718,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="#gae373d46dad4a1fd6516db68753e44349">svg::foreign_element</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01400">1400</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01405">1405</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
@@ -7743,7 +7749,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="#acfb8d3d8428a8514b821773ed29b7237">svg::element_base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01528">1528</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-elements_8h_source.html#l01535">1535</a> of file <a class="el" href="a60-svg-elements_8h_source.html">a60-svg-elements.h</a>.</p>
 
 </div>
 </div>
