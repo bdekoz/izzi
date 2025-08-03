@@ -3,7 +3,7 @@
 // alpha60
 // bittorrent x scrape x data + analytics
 
-// Copyright (c) 2024, Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (c) 2024-2025, Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60 library.  This library is free
 // software; you can redistribute it and/or modify it under the terms
@@ -359,20 +359,112 @@ static const palette_qi<73> ciecam02_palette =
   color::none
 };
 
+
+/**
+   CIECAM16-UCS color space, perceptually different colors, equally spaced out.
+
+   via DeepSeek:
+   generate a 60 item CIECAM16 color palette with no grays, formatted
+   in RGB (r, g, b) values. Each color includes its approximate
+   CIECAM16 parameters (J, C, h) for perceptual consistency.
+*/
+static const palette_qi<61> ciecam16_palette =
+{
+  // 1. Reds & Pinks
+  color_qi(255, 107, 107), // - J=65, C=45, h=25°
+  color_qi(255, 58, 58), // – J=55, C=60, h=20°
+  color_qi(209, 0, 0), // – J=45, C=70, h=15°
+  color_qi(255, 167, 167), // – J=75, C=30, h=10°
+  color_qi(255, 195, 195), // – J=85, C=20, h=5°
+
+  // 2. Oranges & Yellows
+  color_qi(255, 165, 0), // – J=70, C=65, h=50°
+  color_qi(255, 140, 0), // – J=60, C=70, h=45°
+  color_qi(255, 215, 0), // – J=80, C=60, h=85°
+  color_qi(255, 238, 88), // – J=90, C=50, h=90°
+  color_qi(255, 193, 7), // – J=75, C=55, h=70°
+
+  // 3. Greens
+  color_qi(76, 175, 80), // – J=60, C=40, h=140°
+  color_qi(46, 125, 50), // – J=50, C=45, h=135°
+  color_qi(165, 214, 167), // – J=80, C=25, h=145°
+  color_qi(102, 187, 106), // – J=70, C=35, h=150°
+  color_qi(27, 94, 32), // – J=40, C=50, h=130°
+
+  // 4. Cyans & Teals
+  color_qi(0, 188, 212), // – J=65, C=50, h=210°
+  color_qi(0, 131, 143), // – J=55, C=55, h=205°
+  color_qi(178, 235, 242), // – J=85, C=20, h=215°
+  color_qi(77, 208, 225), // – J=75, C=45, h=220°
+  color_qi(0, 96, 100), // – J=45, C=60, h=200°
+
+  // 5. Blues
+  color_qi(33, 150, 243), // – J=65, C=55, h=260°
+  color_qi(13, 71, 161), // – J=50, C=60, h=255°
+  color_qi(144, 202, 249), // – J=80, C=30, h=265°
+  color_qi(21, 101, 192), // – J=60, C=50, h=250°
+  color_qi(227, 242, 253), // – J=95, C=10, h=270°
+
+  // 6. Purples & Violets
+  color_qi(156, 39, 176), // – J=55, C=65, h=310°
+  color_qi(123, 31, 162), // – J=50, C=70, h=305°
+  color_qi(225, 190, 231), // – J=85, C=25, h=315°
+  color_qi(186, 104, 200), // – J=70, C=40, h=320°
+  color_qi(74, 20, 140), // – J=45, C=75, h=300°
+
+  // 7. Magentas
+  color_qi(233, 30, 99), // – J=60, C=60, h=350°
+  color_qi(194, 24, 91), // – J=55, C=65, h=345°
+  color_qi(248, 187, 208), // – J=85, C=30, h=355°
+  color_qi(240, 98, 146), // – J=75, C=45, h=0°
+  color_qi(136, 14, 79), // – J=45, C=70, h=340°
+
+  // 8. Earth Tones & Browns
+  color_qi(121, 85, 72), // – J=50, C=20, h=30°
+  color_qi(93, 64, 55), // – J=40, C=25, h=25°
+  color_qi(215, 204, 200), // – J=85, C=8, h=20°
+  color_qi(188, 170, 164), // – J=75, C=12, h=15°
+  color_qi(62, 39, 35), // – J=25, C=30, h=10°
+
+  // 9. Extended Vibrant Hues
+  color_qi(255, 112, 67), // – J=65, C=55, h=40°
+  color_qi(255, 171, 64), // – J=75, C=50, h=60°
+  color_qi(141, 110, 99), // – J=55, C=15, h=35°
+  color_qi(106, 27, 154), // – J=50, C=65, h=290°
+  color_qi(0, 172, 193), // – J=70, C=45, h=220°
+  color_qi(124, 179, 66), // – J=75, C=40, h=120°
+  color_qi(253, 216, 53), // – J=85, C=55, h=95°
+  color_qi(255, 82, 82), // – J=70, C=50, h=15°
+  color_qi(216, 27, 96), // – J=60, C=60, h=355°
+  color_qi(57, 73, 171), // – J=60, C=50, h=270°
+  color_qi(0, 137, 123), // – J=65, C=40, h=190°
+  color_qi(67, 160, 71), // – J=70, C=35, h=130°
+  color_qi(255, 214, 0), // – J=80, C=60, h=85°
+  color_qi(251, 140, 0), // – J=75, C=55, h=50°
+  color_qi(94, 53, 177), // – J=55, C=60, h=280°
+  color_qi(255, 77, 77), // – J=65, C=55, h=10°
+  color_qi(255, 152, 0), // – J=70, C=60, h=55°
+  color_qi(0, 150, 136), // – J=60, C=45, h=195°
+  color_qi(198, 40, 40), // – J=55, C=65, h=5°
+  color_qi(142, 36, 170) // – J=50, C=70, h=295°
+};
+
+
 /// Oklab
 /// https://bottosson.github.io/posts/oklab/
 
 /// Set and Get working spectrum, aka default palette.
 /// NB: If colorbands are being used, palette has to be izzi or
-/// izzi_hue, and cannot be sorted (as color bands use colors arranged
+/// izzi_hue, and cannot be sorted color_qi as color bands use colors arranged
 /// in a fixed order with offsets in hue.
 auto&
 active_spectrum(const bool sortbyhuep = false)
 {
   //static auto spectrum = izzi_palette;
-  static auto spectrum = izzi_hue_palette;
+  //static auto spectrum = izzi_hue_palette;
   //static auto  spectrum = jp_palette;
   //static auto spectrum = ciecam02_palette;
+  static auto spectrum = ciecam16_palette;
   //static auto spectrum = colorbrewer2s3s_palette;
   //static auto spectrum = colorbrewer2s9s_palette;
 
