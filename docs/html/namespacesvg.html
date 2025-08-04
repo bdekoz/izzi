@@ -1108,6 +1108,12 @@ Variables</h2></td></tr>
 <tr class="separator:a7d470521db1f45b01629c101669a62dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fcfea1c8e82a6833b5fc95495c3c70e" id="r_a3fcfea1c8e82a6833b5fc95495c3c70e"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="#a0b8a14877328951480552eac5b904979">palette_qi</a>&lt; 73 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fcfea1c8e82a6833b5fc95495c3c70e">ciecam02_palette</a></td></tr>
 <tr class="separator:a3fcfea1c8e82a6833b5fc95495c3c70e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2186d23df1cfca7fc4fa55c61de92053" id="r_a2186d23df1cfca7fc4fa55c61de92053"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="#a0b8a14877328951480552eac5b904979">palette_qi</a>&lt; 61 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2186d23df1cfca7fc4fa55c61de92053">ciecam16_palette</a></td></tr>
+<tr class="memdesc:a2186d23df1cfca7fc4fa55c61de92053"><td class="mdescLeft">&#160;</td><td class="mdescRight">CIECAM16 61 color palette.  <br /></td></tr>
+<tr class="separator:a2186d23df1cfca7fc4fa55c61de92053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9a33afc2c565eb059fbd579553fae3d" id="r_ac9a33afc2c565eb059fbd579553fae3d"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="#a0b8a14877328951480552eac5b904979">palette_qi</a>&lt; 89 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9a33afc2c565eb059fbd579553fae3d">ciecam16j70_palette</a></td></tr>
+<tr class="memdesc:ac9a33afc2c565eb059fbd579553fae3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">CIECAM16 89-color palette, 8 sections x 11 colors each, fixed brightness at j=70 (8 bands x 11 samples) + none.  <br /></td></tr>
+<tr class="separator:ac9a33afc2c565eb059fbd579553fae3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0762dd8ffa369404d94bb6a13032e63b" id="r_a0762dd8ffa369404d94bb6a13032e63b"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0762dd8ffa369404d94bb6a13032e63b">color_max_size</a> = static_cast&lt;<a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a>&gt;(<a class="el" href="#a0e622bba4eee0e6528a9261d6aa251d1a98bd1c45684cf587ac2347a92dd7bb51">color::last</a>)</td></tr>
 <tr class="memdesc:a0762dd8ffa369404d94bb6a13032e63b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of enumerated colors.  <br /></td></tr>
 <tr class="separator:a0762dd8ffa369404d94bb6a13032e63b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2236,9 +2242,9 @@ template&lt;std::size_t N&gt; </div>
 </div><div class="memdoc">
 
 <p>Oklab <a href="https://bottosson.github.io/posts/oklab/">https://bottosson.github.io/posts/oklab/</a>. </p>
-<p>Set and Get working spectrum, aka default palette. NB: If colorbands are being used, palette has to be izzi or izzi_hue, and cannot be sorted (as color bands use colors arranged in a fixed order with offsets in hue. </p>
+<p>Set and Get working spectrum, aka default palette. NB: If colorbands are being used, palette has to be izzi or izzi_hue, and cannot be sorted <a class="el" href="structsvg_1_1color__qi.html" title="Color quantified as integral RGB components in the range [0,255]. aka like Scalar in OpenCV.">color_qi</a> as color bands use colors arranged in a fixed order with offsets in hue. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00370">370</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00596">596</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 <div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -2266,7 +2272,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Random entry from array above. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00392">392</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00620">620</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 <div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -2298,7 +2304,7 @@ template&lt;typename _Spectrm&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00404">404</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00632">632</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 
 </div>
 </div>
@@ -2319,7 +2325,7 @@ template&lt;typename _Spectrm&gt; </div>
 
 <p>Loop through color array starting at position c. Iff klr is not found, return <a class="el" href="#a0e622bba4eee0e6528a9261d6aa251d1a334c4a4c42fdb79d7ebc3e73b517e6f8">color::none</a> as the next color. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00416">416</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00644">644</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 <div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -2347,7 +2353,7 @@ template&lt;typename _Spectrm&gt; </div>
 
 <p>Start at specified color bar entry point. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00433">433</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00661">661</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 <div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -9986,6 +9992,62 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 <p>Hand-picked values for a 67-68 BTIHA, aka cyberwar. Start with color constraints, generate 264 options, hand-pick to n=68. <a href="http://jnnnnn.github.io/category-colors-constrained.html">http://jnnnnn.github.io/category-colors-constrained.html</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00321">321</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+
+</div>
+</div>
+<a id="a2186d23df1cfca7fc4fa55c61de92053" name="a2186d23df1cfca7fc4fa55c61de92053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2186d23df1cfca7fc4fa55c61de92053">&#9670;&#160;</a></span>ciecam16_palette</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="#a0b8a14877328951480552eac5b904979">palette_qi</a>&lt;61&gt; svg::ciecam16_palette</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>CIECAM16 61 color palette. </p>
+<p>CIECAM16-UCS color space, perceptually different colors, equally spaced out.</p>
+<p>DeepSeek v1: generate a 60 item CIECAM16 color palette with no grays, formatted in RGB (r, g, b) values. Each color includes its approximate CIECAM16 parameters (J, C, h) for perceptual consistency.</p>
+<p>DeepSeek v2: generate a 88-color CIECAM16 palette with fixed lightness (J=70), organized into 8 hue categories (6 colors each) plus 40 high-impact bonus colors. No whites/blacks/grays are included.</p>
+<p>DeepSeek v3: generate a 88-color CIECAM16 palette with fixed lightness (J=70), organized into 8 hue categories (11 colors each), formatted as RGB (r,g,b). No whites/blacks/grays are included. </p>
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00384">384</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
+
+</div>
+</div>
+<a id="ac9a33afc2c565eb059fbd579553fae3d" name="ac9a33afc2c565eb059fbd579553fae3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9a33afc2c565eb059fbd579553fae3d">&#9670;&#160;</a></span>ciecam16j70_palette</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="#a0b8a14877328951480552eac5b904979">palette_qi</a>&lt;89&gt; svg::ciecam16j70_palette</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>CIECAM16 89-color palette, 8 sections x 11 colors each, fixed brightness at j=70 (8 bands x 11 samples) + none. </p>
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-palette_8h_source.html#l00470">470</a> of file <a class="el" href="a60-svg-color-palette_8h_source.html">a60-svg-color-palette.h</a>.</p>
 
 </div>
 </div>

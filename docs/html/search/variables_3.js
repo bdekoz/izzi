@@ -12,9 +12,11 @@ var searchData=
   ['ccode_9',['ccode',['../namespacesvg_1_1constants.html#afacacc6476132329c62b61884556b633',1,'svg::constants']]],
   ['ccode_5ftypo_10',['ccode_typo',['../namespacesvg_1_1constants.html#a7bf29a67e7dcc1e6d59db9e354824ec9',1,'svg::constants']]],
   ['ciecam02_5fpalette_11',['ciecam02_palette',['../namespacesvg.html#a3fcfea1c8e82a6833b5fc95495c3c70e',1,'svg']]],
-  ['color_5fgenerated_12',['color_generated',['../structsvg_1_1collection__rstate.html#a692024c8b2572ad0ff25bb2b703b9387',1,'svg::collection_rstate']]],
-  ['color_5fmax_5fsize_13',['color_max_size',['../namespacesvg.html#a0762dd8ffa369404d94bb6a13032e63b',1,'svg']]],
-  ['colorbrewer2s3s_5fpalette_14',['colorbrewer2s3s_palette',['../namespacesvg.html#aeb01ba059732c058d458a9a18980ff76',1,'svg']]],
-  ['colorbrewer2s7s_5fpalette_15',['colorbrewer2s7s_palette',['../namespacesvg.html#a7d470521db1f45b01629c101669a62dd',1,'svg']]],
-  ['colorbrewer2s9s_5fpalette_16',['colorbrewer2s9s_palette',['../namespacesvg.html#a8a078481c8f35f01582ae84ffad2d8ad',1,'svg']]]
+  ['ciecam16_5fpalette_12',['ciecam16_palette',['../namespacesvg.html#a2186d23df1cfca7fc4fa55c61de92053',1,'svg']]],
+  ['ciecam16j70_5fpalette_13',['ciecam16j70_palette',['../namespacesvg.html#ac9a33afc2c565eb059fbd579553fae3d',1,'svg']]],
+  ['color_5fgenerated_14',['color_generated',['../structsvg_1_1collection__rstate.html#a692024c8b2572ad0ff25bb2b703b9387',1,'svg::collection_rstate']]],
+  ['color_5fmax_5fsize_15',['color_max_size',['../namespacesvg.html#a0762dd8ffa369404d94bb6a13032e63b',1,'svg']]],
+  ['colorbrewer2s3s_5fpalette_16',['colorbrewer2s3s_palette',['../namespacesvg.html#aeb01ba059732c058d458a9a18980ff76',1,'svg']]],
+  ['colorbrewer2s7s_5fpalette_17',['colorbrewer2s7s_palette',['../namespacesvg.html#a7d470521db1f45b01629c101669a62dd',1,'svg']]],
+  ['colorbrewer2s9s_5fpalette_18',['colorbrewer2s9s_palette',['../namespacesvg.html#a8a078481c8f35f01582ae84ffad2d8ad',1,'svg']]]
 ];
