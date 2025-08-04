@@ -363,10 +363,21 @@ static const palette_qi<73> ciecam02_palette =
 /**
    CIECAM16-UCS color space, perceptually different colors, equally spaced out.
 
-   via DeepSeek:
+   DeepSeek v1:
    generate a 60 item CIECAM16 color palette with no grays, formatted
    in RGB (r, g, b) values. Each color includes its approximate
    CIECAM16 parameters (J, C, h) for perceptual consistency.
+
+   DeepSeek v2:
+   generate a 88-color CIECAM16 palette with fixed lightness (J=70),
+   organized into 8 hue categories (6 colors each) plus 40 high-impact
+   bonus colors. No whites/blacks/grays are included.
+
+   DeepSeek v3:
+   generate a 88-color CIECAM16 palette with fixed lightness (J=70),
+   organized into 8 hue categories (11 colors each), formatted as RGB (r,g,b). No
+   whites/blacks/grays are included.
+
 */
 static const palette_qi<61> ciecam16_palette =
 {
@@ -446,7 +457,121 @@ static const palette_qi<61> ciecam16_palette =
   color_qi(255, 152, 0), // – J=70, C=60, h=55°
   color_qi(0, 150, 136), // – J=60, C=45, h=195°
   color_qi(198, 40, 40), // – J=55, C=65, h=5°
-  color_qi(142, 36, 170) // – J=50, C=70, h=295°
+  color_qi(142, 36, 170), // – J=50, C=70, h=295°
+
+  color::none
+};
+
+
+//// 88-color palette Fixed brightness at j=70
+static const palette_qi<89> ciecam16j70_palette =
+{
+  //1. Red (H ≈ 0°)
+  //RGB	CIECAM16 (J=70, C, h≈0°)
+  color_qi(255, 179, 179), //	C=20
+  color_qi(255, 158, 158), //	C=23
+  color_qi(255, 135, 135), //	C=26
+  color_qi(255, 109, 109), //	C=29
+  color_qi(255, 79, 79), //	C=32
+  color_qi(255, 43, 43), //	C=35
+  color_qi(255, 0, 0), //	C=38
+  color_qi(232, 0, 0), //	C=41
+  color_qi(209, 0, 0), //	C=44
+  color_qi(185, 0, 0), //	C=47
+  color_qi(160, 0, 0), //	C=50
+  //2. Orange (H ≈ 45°)
+  //RGB	CIECAM16 (J=70, C, h≈45°)
+  color_qi(255, 208, 163), //	C=20
+  color_qi(255, 196, 141), //	C=23
+  color_qi(255, 183, 116), //	C=26
+  color_qi(255, 168, 88), //	C=29
+  color_qi(255, 151, 56), //	C=32
+  color_qi(255, 131, 0), //	C=35
+  color_qi(245, 124, 0), //	C=38
+  color_qi(230, 115, 0), //	C=41
+  color_qi(214, 106, 0), //	C=44
+  color_qi(196, 95, 0), //	C=47
+  color_qi(176, 84, 0), //	C=50
+  //3. Yellow (H ≈ 90°)
+  //RGB	CIECAM16 (J=70, C, h≈90°)
+  color_qi(245, 245, 163), //	C=20
+  color_qi(240, 240, 141), //	C=23
+  color_qi(235, 235, 116), //	C=26
+  color_qi(230, 230, 88), //	C=29
+  color_qi(224, 224, 56), //	C=32
+  color_qi(217, 217, 0), //	C=35
+  color_qi(212, 212, 0), //	C=38
+  color_qi(201, 201, 0), //	C=41
+  color_qi(189, 189, 0), //	C=44
+  color_qi(176, 176, 0), //	C=47
+  color_qi(163, 163, 0), //	C=50
+  //4. Green (H ≈ 135°)
+  //RGB	CIECAM16 (J=70, C, h≈135°)
+  color_qi(194, 224, 163), //	C=20
+  color_qi(181, 219, 141), //	C=23
+  color_qi(166, 213, 116), //	C=26
+  color_qi(148, 207, 88), //	C=29
+  color_qi(127, 200, 56), //	C=32
+  color_qi(102, 192, 0), //	C=35
+  color_qi(76, 179, 0), //	C=38
+  color_qi(47, 163, 0), //	C=41
+  color_qi(0, 144, 0), //	C=44
+  color_qi(0, 122, 0), //	C=47
+  color_qi(0, 96, 0), //	C=50
+  //5. Cyan (H ≈ 180°)
+  //RGB	CIECAM16 (J=70, C, h≈180°)
+  color_qi(163, 224, 224), //	C=20
+  color_qi(141, 219, 219), //	C=23
+  color_qi(116, 213, 213), //	C=26
+  color_qi(88, 207, 207), //	C=29
+  color_qi(56, 200, 200), //	C=32
+  color_qi(0, 192, 192), //	C=35
+  color_qi(0, 179, 179), //	C=38
+  color_qi(0, 163, 163), //	C=41
+  color_qi(0, 144, 144), //	C=44
+  color_qi(0, 122, 122), //	C=47
+  color_qi(0, 96, 96), //	C=50
+  //6. Blue (H ≈ 225°)
+  //RGB	CIECAM16 (J=70, C, h≈225°)
+  color_qi(163, 194, 245), //	C=20
+  color_qi(141, 181, 240), //	C=23
+  color_qi(116, 166, 235), //	C=26
+  color_qi(88, 148, 230), //	C=29
+  color_qi(56, 127, 224), //	C=32
+  color_qi(0, 102, 217), //	C=35
+  color_qi(0, 85, 199), //	C=38
+  color_qi(0, 71, 181), //	C=41
+  color_qi(0, 57, 163), //	C=44
+  color_qi(0, 43, 144), //	C=47
+  color_qi(0, 29, 122), //	C=50
+  //7. Purple (H ≈ 270°)
+  //RGB	CIECAM16 (J=70, C, h≈270°)
+  color_qi(208, 163, 255), //	C=20
+  color_qi(196, 141, 255), //	C=23
+  color_qi(183, 116, 255), //	C=26
+  color_qi(168, 88, 255), //	C=29
+  color_qi(151, 56, 255), //	C=32
+  color_qi(131, 0, 255), //	C=35
+  color_qi(124, 0, 245), //	C=38
+  color_qi(115, 0, 230), //	C=41
+  color_qi(106, 0, 214), //	C=44
+  color_qi(95, 0, 196), //	C=47
+  color_qi(84, 0, 176), //	C=50
+  //8. Magenta (H ≈ 315°)
+  //RGB	CIECAM16 (J=70, C, h≈315°)
+  color_qi(255, 163, 224), //	C=20
+  color_qi(255, 141, 219), //	C=23
+  color_qi(255, 116, 213), //	C=26
+  color_qi(255, 88, 207), //	C=29
+  color_qi(255, 56, 200), //	C=32
+  color_qi(255, 0, 192), //	C=35
+  color_qi(245, 0, 184), //	C=38
+  color_qi(230, 0, 173), //	C=41
+  color_qi(214, 0, 161), //	C=44
+  color_qi(196, 0, 147), //	C=47
+  color_qi(176, 0, 131), //	C=50
+
+  color::none
 };
 
 
@@ -464,7 +589,8 @@ active_spectrum(const bool sortbyhuep = false)
   //static auto spectrum = izzi_hue_palette;
   //static auto  spectrum = jp_palette;
   //static auto spectrum = ciecam02_palette;
-  static auto spectrum = ciecam16_palette;
+  //static auto spectrum = ciecam16_palette;
+  static auto spectrum = ciecam16j70_palette;
   //static auto spectrum = colorbrewer2s3s_palette;
   //static auto spectrum = colorbrewer2s9s_palette;
 
