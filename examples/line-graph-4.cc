@@ -86,14 +86,16 @@ test_chart()
 
   // Draw graph(s).
   const string tpmeta = "2025-06-13-android-15-ptablet-youtube_COU5T_Wafa4-";
-  svg_element chart1 = make_line_graph(vr1, vr1, gs1, rangex, rangey, tpmeta);
+  svg_element chart1 = make_line_graph(vr1, vr1, gs1, rangex, rangey,
+				       tpmeta, script_element::scope::element);
 
-  svg_element chart2 = make_line_graph(vr2, vr2, gs2, rangex, rangey, tpmeta);
+  svg_element chart2 = make_line_graph(vr2, vr2, gs2, rangex, rangey,
+				       tpmeta, script_element::scope::element);
 
   obj.add_element(chart1);
-  obj.add_raw(gs1.tooltip_images);    
+  obj.add_raw(gs1.tooltip_images);
   obj.add_element(chart2);
-  obj.add_raw(gs2.tooltip_images);  
+  obj.add_raw(gs2.tooltip_images);
 
   // Add js to control visibility of images.
   script_element::scope context = script_element::scope::element;

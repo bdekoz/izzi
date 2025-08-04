@@ -1138,11 +1138,12 @@ struct image_element : virtual public element_base
 
   /// Visibility and other HTML/img attributes.
   /// @param vattr = visibility attribute, "visible" or "hidden"
-  /// @param display = display attribute, "non" or "unset" or "initial"
+  /// @param display = display attribute, "none" or "unset" or "initial"
   /// @param cors = CORS, "anonymous" or "use-credentials"
   /// @param lattr = loading attribute, "lazy" or "eager"
   void
-  add_data(const data& d, const string cors, const string vattr, const string display)
+  add_data(const data& d, const string cors, const string vattr,
+	   const string display = "")
   {
     add_data(d);
 

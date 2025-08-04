@@ -20,11 +20,11 @@ test_tooltip(svg_element& obj)
   image_element i;
   image_element::data di = { isrc, 0, 0, 200, 150 };
   i.start_element(imgid);
-  i.add_data(di, "hidden", "anonymous");
+  i.add_data(di, "anonymous", "hidden");
   i.finish_element();
   obj.add_element(i);
 
-  
+
   // circle with text (title) tooltip, image (screenshot) tooltip
   circle_element c;
   circle_element::data dc = { x - 2 * r, y, r };
@@ -52,4 +52,3 @@ int main()
   test_tooltip(obj);
   return 0;
 }
- 

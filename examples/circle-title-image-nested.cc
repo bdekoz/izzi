@@ -25,7 +25,7 @@ test_tooltip(svg_element& obj)
   image_element i;
   image_element::data di = { isrc, 0, 0, 200, 150 };
   i.start_element(imgid);
-  i.add_data(di, "hidden", "anonymous");
+  i.add_data(di, "anonymous", "hidden");
   i.finish_element();
   gobj.add_element(i);
 

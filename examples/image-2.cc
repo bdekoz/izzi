@@ -14,7 +14,7 @@ test_image(std::string ofile)
   image_element i;
   image_element::data di = { isrc, cpx, cpy, 403, 302 };
   i.start_element();
-  i.add_data(di, "visible", "lazy");
+  i.add_data(di, "", "visible", "");
   i.finish_element();
   obj.add_element(i);
 }
