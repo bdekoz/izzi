@@ -596,11 +596,11 @@ auto&
 active_spectrum(const bool sortbyhuep = false)
 {
   //static auto spectrum = izzi_palette;
-  //static auto spectrum = izzi_hue_palette;
+  static auto spectrum = izzi_hue_palette;
   //static auto  spectrum = jp_palette;
   //static auto spectrum = ciecam02_palette;
   //static auto spectrum = ciecam16_palette;
-  static auto spectrum = ciecam16j70_palette;
+  //static auto spectrum = ciecam16j70_palette;
   //static auto spectrum = colorbrewer2s3s_palette;
   //static auto spectrum = colorbrewer2s9s_palette;
 
