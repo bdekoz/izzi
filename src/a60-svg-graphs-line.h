@@ -74,7 +74,7 @@ struct graph_rstate : public render_state_base
   /// Margins/Spaces
   static constexpr uint xmargin		= 100;
   static constexpr uint ymargin		= 100;
-  static constexpr uint xticdigits	= 1; // sig digits xaxis
+  static constexpr uint xticdigits	= 1; // fp sig digits xaxis
   static constexpr uint yticdigits	= 10; // number y tic labelsf
 
   /// Type sizes.
@@ -370,7 +370,9 @@ make_line_graph_annotations(const vrange& points,
 			    const typography typo = k::apercu_typo)
 {
   using namespace std;
-  svg_element lanno(gstate.title, "line graph annotation", gstate.graph_area, false);
+  svg_element lanno(gstate.title, "line graph annotation",
+		    gstate.graph_area, false);
+
 
   // Locate graph area on plate area.
   auto [ pwidth, pheight ] = gstate.graph_area;
@@ -415,8 +417,13 @@ make_line_graph_annotations(const vrange& points,
 
   // Separate tic label values for each (x, y) axis, find ranges for each.
   auto [ maxx, maxy ] = max_vrange(points, gstate.xticdigits, xscale, yscale);
+#if MOZ
   auto minx = 0;
   auto miny = 0;
+#else
+  auto minx = 1;
+  auto miny = 0;
+#endif
 
   const double xrange(maxx - minx);
   const double gxscale(gwidth / xrange);
@@ -427,17 +434,26 @@ make_line_graph_annotations(const vrange& points,
 
   // Use a multiple of 5 to make natural counting easier.
   // Start with an assumption of 20 tic marks for the x axis.
+#if MOZ
   double xtickn(xrange * 2); // .5 sec
   if (xtickn < 10)
     xtickn = 10;
   if (xtickn > 26)
     xtickn = xrange;
+#else
+  double xtickn = 53;
+#endif
 
   // X axis is seconds, xtickn minimum delta is 0.1 sec.
-  double xdelta = std::max(xrange / xtickn, 0.1);
-
+#if MOZ
+  double xticmindelta = 0.1;
+  double xdelta = std::max(xrange / xtickn, xticmindelta);
   // Round up to significant digits, so if xdelta is 0.18 round to 0.2.
   xdelta = std::round(xdelta * gstate.xticdigits * 10) / (gstate.xticdigits * 10);
+#else
+  double xticmindelta = 1;
+  double xdelta = std::max(xrange / xtickn, xticmindelta);
+#endif
 
   // Y axis is simpler, 0, 10, 20, ..., 80, 90, 100 in percent.
   const double ydelta = yrange / gstate.yticdigits;
@@ -448,11 +464,16 @@ make_line_graph_annotations(const vrange& points,
     {
       // X tic labels
       lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
-      for (double x = minx; x < maxx; x += xdelta)
+      for (double x = minx; x <= maxx; x += xdelta)
 	{
 	  const double xto = chartxo + (x * gxscale);
+
 	  ostringstream oss;
+#if MOZ
 	  oss << fixed << setprecision(gstate.xticdigits) << x;
+#else
+	  oss << std::trunc(x);
+#endif
 	  const string sxui = oss.str() + gstate.xticu;
 	  styled_text(lanno, sxui, {xto, ygo}, anntypo);
 	}
