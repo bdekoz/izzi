@@ -1,4 +1,4 @@
-// alpha60 metadata horizontal chord separations -*- mode: C++ -*-
+// alpha60 horizontal chord separations -*- mode: C++ -*-
 
 // alpha60
 // bittorrent x scrape x data + analytics
@@ -16,11 +16,11 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // General Public License for more details.
 
-#ifndef a60_SVG_METADATA_CHORD_GRAPHS_H
-#define a60_SVG_METADATA_CHORD_GRAPHS_H 1
+#ifndef a60_SVG_CHORD_GRAPHS_H
+#define a60_SVG_CHORD_GRAPHS_H 1
 
 
-namespace a60::metadata {
+namespace svg {
 
 //// Distance between center and top/bottom block
 const double vspace(60);
@@ -496,6 +496,6 @@ analyze_metadata_aggregate_chord(const area<> a, const strings& namedkeys,
   render_metadata_aggregate_chord(a, cumulative, namedkeysedit, outname);
 }
 
-} // namepace a60::metadata
+} // namepace svg
 
 #endif

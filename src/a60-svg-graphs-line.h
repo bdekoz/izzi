@@ -13,8 +13,8 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // General Public License for more details.
 
-#ifndef izzi_SVG_GRAPHS_LINE_H
-#define izzi_SVG_GRAPHS_LINE_H 1
+#ifndef izzi_SVG_LINE_GRAPHS_H
+#define izzi_SVG_LINE_GRAPHS_H 1
 
 #include <set>
 
