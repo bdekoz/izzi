@@ -24,5 +24,5 @@ var searchData=
   ['liney_21',['liney',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a22ba1f9d2f01584a436f3e60567247a5',1,'svg']]],
   ['link_5felement_22',['link_element',['../group__elements.html#structsvg_1_1link__element',1,'svg']]],
   ['lstyle_23',['lstyle',['../structsvg_1_1graph__rstate.html#abbbcc01d132bb79b12e3ff82d08e1572',1,'svg::graph_rstate']]],
-  ['lsz_24',['lsz',['../namespacea60_1_1metadata.html#a079351db51cdedcbf4869dc3f0823728',1,'a60::metadata']]]
+  ['lsz_24',['lsz',['../namespacesvg.html#a2eea4b708723491eb8eb89bf62a67011',1,'svg']]]
 ];
