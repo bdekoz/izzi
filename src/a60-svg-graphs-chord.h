@@ -19,16 +19,19 @@
 #ifndef a60_SVG_CHORD_GRAPHS_H
 #define a60_SVG_CHORD_GRAPHS_H 1
 
+#include "a60-metadata.h"
 
 namespace svg {
 
+using namespace a60::metadata;
+
 //// Distance between center and top/bottom block
-const double vspace(60);
+const double ctopspace(60);
 
 /// Distance between label and top/bottom of line or text
-const double vlspace(10);
+const double ltopspace(10);
 
-const double hdenom(k::age_values.size() + 1 + 1 + 1);
+const double hdenom(a60::k::age_values.size() + 1 + 1 + 1);
 
 // Type sizes.
 const auto lsz = 16; // large bold
@@ -38,21 +41,22 @@ const auto ssz = 10; // sub sub headings
 /// Compute xoffset.
 uint
 get_xoffset(const string& id, const uint xstart, const double hspace)
-{ return xstart + (k::age_value_to_multiple(id, true) * hspace); };
+{ return xstart + (a60::k::age_value_to_multiple(id, true) * hspace); };
 
 
 /// Grid, titles, labels for h_chord_graph.
 /// @param yscale == how much to vertically scale the bar graph from center.
-svg_element
-h_chord_graph_labels(const string aggname, const area<> a = svg::k::v1080p_h)
+svg::svg_element
+h_chord_graph_labels(const string aggname,
+		     const svg::area<> a = svg::k::v1080p_h)
 {
   const string viztitle("chord-graph-" + aggname);
   svg_element obj(viztitle, a);
 
   // Starting positions and vertical/horizontal offsets.
   const auto width = a._M_width;
-  const double hspace((width - (k::metamargin * 2)) / hdenom);
-  const uint xstart(k::metamargin + hspace + hspace);
+  const double hspace((width - (a60::k::metamargin * 2)) / hdenom);
+  const uint xstart(a60::k::metamargin + hspace + hspace);
 
   // Vertical have rect, vo number, filler, age, filler, vp number, rect.
   // Middle is age values.
@@ -60,15 +64,15 @@ h_chord_graph_labels(const string aggname, const area<> a = svg::k::v1080p_h)
   const double vcenter(height / 2);
 
   typography typol = get_metadata_typo(lsz, true);
-  sized_text(obj, typol, lsz, "age values", k::metamargin, vcenter);
+  sized_text(obj, typol, lsz, "age values", a60::k::metamargin, vcenter);
 
   typography typoli = get_metadata_typo(asz, false);
   typoli._M_p = svg::typography::property::italic;
-  sized_text(obj, typoli, ssz, "birth age values per decile", k::metamargin,
-	     vcenter - vspace);
-  string playingll("#" + k::playing + " age values per decile");
-  sized_text(obj, typoli, ssz, playingll, k::metamargin,
-	     vcenter + vspace + asz);
+  sized_text(obj, typoli, ssz, "birth age values per decile", a60::k::metamargin,
+	     vcenter - ctopspace);
+  string playingll("#" + a60::k::playing + " age values per decile");
+  sized_text(obj, typoli, ssz, playingll, a60::k::metamargin,
+	     vcenter + ctopspace + asz);
 
   // Draw horizontal labels over connecting lines.
   // Draw h labels, ages with v hair lines up and down at each value.
@@ -77,19 +81,19 @@ h_chord_graph_labels(const string aggname, const area<> a = svg::k::v1080p_h)
   style styll = get_metadata_style(false);
   styll._M_stroke_size = 0.5;
   styll._M_stroke_opacity =  1.0;
-  for (const auto& val : k::age_values)
+  for (const auto& val : a60::k::age_values)
     {
       uint xoff = get_xoffset(val, xstart, hspace);
       sized_text(obj, typol, lsz, val, xoff, vcenter);
 
       // Top line.
-      point_2t topstart(xoff, vcenter - lsz - vlspace);
-      point_2t topend(xoff, vcenter - vspace + vlspace);
+      point_2t topstart(xoff, vcenter - lsz - ltopspace);
+      point_2t topend(xoff, vcenter - ctopspace + ltopspace);
       points_to_line(obj, styll, topstart, topend);
 
       // Bottom line.
-      point_2t bstart(xoff, vcenter + lsz + vlspace);
-      point_2t bend(xoff, vcenter + vspace - vlspace);
+      point_2t bstart(xoff, vcenter + lsz + ltopspace);
+      point_2t bend(xoff, vcenter + ctopspace - ltopspace);
       points_to_line(obj, styll, bstart, bend);
     }
 
@@ -113,18 +117,20 @@ h_chord_graph_labels(const string aggname, const area<> a = svg::k::v1080p_h)
     Use linear scaling for age values, instead of bell shaped scaling for glyph.
     have 10 values (00-09, ..., 90-99) + 100+ + unknown +ambiguous -> 13.
 */
-svg_element
+svg::svg_element
 h_chord_graph(const vumids& cumulative, const string aggname,
 	      const area<> a = svg::k::v1080p_h, const double yscale = 0.7,
 	      const uint rwidth = 10)
 {
+  using id_size = a60::id_size;
+
   // Draw labels, axes, ticks, etc.
   svg_element obj = h_chord_graph_labels(aggname, a);
 
   // Starting positions and vertical/horizontal offsets.
   const auto width = a._M_width;
-  const double hspace((width - (k::metamargin * 2)) / hdenom);
-  const uint xstart(k::metamargin + hspace + hspace);
+  const double hspace((width - (a60::k::metamargin * 2)) / hdenom);
+  const uint xstart(a60::k::metamargin + hspace + hspace);
 
   // Vertical have rect, vo number, filler, age, filler, vp number, rect.
   // Middle is age values.
@@ -138,7 +144,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
      2. ages playing map
      3. largest count value over all of the age values
   */
-  const uint agesi = k::find_id_index("ages");
+  const uint agesi = a60::k::find_id_index("ages");
   const umids& ages = cumulative[agesi];
   umids agesvo;
   umids agesvp;
@@ -147,7 +153,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
     {
       auto [ id, count ] = val;
 
-      if (id.find(k::playing) != string::npos)
+      if (id.find(a60::k::playing) != string::npos)
 	agesvp.insert(val);
       else
 	agesvo.insert(val);
@@ -182,7 +188,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 	{
 	  for (const string& valsp : agesplaying)
 	    {
-	      const string splayings = k::space + k::playing + k::space;
+	      const string splayings = k::space + a60::k::playing + k::space;
 	      const string valpflat = valso + splayings + valsp;
 	      if (agesvpflat.count(valpflat))
 		{
@@ -197,11 +203,11 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 
   // Setup.
   typography typol = get_metadata_typo(lsz, true);
-  sized_text(obj, typol, lsz, "age values", k::metamargin, vcenter);
+  sized_text(obj, typol, lsz, "age values", a60::k::metamargin, vcenter);
 
   typography typov = get_metadata_typo(lsz, false, true);
 
-  const uint ytotalgraphspace(vcenter - vspace - vlspace - k::metamargin);
+  const uint ytotalgraphspace(vcenter - ctopspace - ltopspace - a60::k::metamargin);
   const uint ygraphdelta = std::round(yscale * ytotalgraphspace);
 
   // Size per two of largest values in one v space.
@@ -209,10 +215,11 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 
   // Draw ages.
   // Starting point for above-the-age-values line, above summary count
-  uint voffstart = vcenter - vspace - vlspace - asz;
+  uint voffstart = vcenter - ctopspace - ltopspace - asz;
 
   // Vector of total age_value counts per decile for birth ages.
-  vul vsum(k::age_values.size(), 0);
+  using vul = a60::vul;
+  vul vsum(a60::k::age_values.size(), 0);
   for (const auto& val : agesvo)
     {
       auto [ id, count ] = val;
@@ -225,25 +232,25 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 			     get_metadata_style(), rwidth, rheight);
 
       // text
-      sized_text(obj, typov, asz, to_string(count), xoff,
-		 voffstart - rheight - vlspace);
+      sized_text(obj, typov, asz, std::to_string(count), xoff,
+		 voffstart - rheight - ltopspace);
 
-      const auto indx = k::age_value_to_multiple(id, true);
+      const auto indx = a60::k::age_value_to_multiple(id, true);
       vsum[indx] += count;
     }
 
   // Draw ages playing.
   // Starting point for below-the-age-values line, below summary count.
-  uint vpoffstart = vcenter + vspace + vlspace + asz;
+  uint vpoffstart = vcenter + ctopspace + ltopspace + asz;
 
   style pstyl = { color::gray40, 1.0, color::gray40, 0.0, 0 };
   style pstyll = { color::gray40, 0.0, color::red, 1, 2 };
 
   // Vector of total age_value counts per decile for playing.
-  vul vpsum(k::age_values.size(), 0);
+  vul vpsum(a60::k::age_values.size(), 0);
 
   // Vector of previous vertical offsets, how many "playing" slots already filled.
-  vul vpyoffsets(k::age_values.size(), 0);
+  vul vpyoffsets(a60::k::age_values.size(), 0);
   for (const auto& val : agesvpflat)
     {
       auto [ idp, count ] = val;
@@ -259,7 +266,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
       //     And no 40-49 to 40-49 line
       for (const string& agepv : agesplaying)
 	{
-	  const auto indxp = k::age_value_to_multiple(agepv, true);
+	  const auto indxp = a60::k::age_value_to_multiple(agepv, true);
 
 	  // Check to see if ages playing value is the same as any age value.
 	  const auto aend = ageso.end();
@@ -284,11 +291,11 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 	      point_to_rect_centered(obj, rectcp , pstyl, rwidth, rheight);
 
 	      // text
-	      sized_text(obj, typov, ssz, to_string(count), xoff,
-			 yoff + rheight + vlspace + ssz);
+	      sized_text(obj, typov, ssz, std::to_string(count), xoff,
+			 yoff + rheight + ltopspace + ssz);
 
 	      // Add rectangle, space, text tile to offsets.
-	      yoffset += rheight + vlspace + ssz + vlspace;
+	      yoffset += rheight + ltopspace + ssz + ltopspace;
 
 	      // Draw connnectors.
 	      for (const string& agev : ageso)
@@ -300,8 +307,8 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 
 		  // Dash style if agepv == "ambiguous".
 		  string dashstr;
-		  const bool vback = agepv == k::age_values.back();
-		  const bool vfront = agepv == k::age_values.front();
+		  const bool vback = agepv == a60::k::age_values.back();
+		  const bool vfront = agepv == a60::k::age_values.front();
 		  if (vback || vfront)
 		    dashstr = "4 1";
 
@@ -314,7 +321,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 		    }
 
 		  uint xoffvo = get_xoffset(agev, xstart, hspace);
-		  point_2t bstart(xoffvo, vcenter + vlspace);
+		  point_2t bstart(xoffvo, vcenter + ltopspace);
 		  point_2t bend(xoff, yoff + (pstylage._M_stroke_size / 2));
 
 		  points_to_line(obj, pstylage, bstart, bend, dashstr);
@@ -322,7 +329,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 		  // Add to sum of playing and birth ages.
 		  vpsum[indxp] += count;
 
-		  const auto indx = k::age_value_to_multiple(agev, true);
+		  const auto indx = a60::k::age_value_to_multiple(agev, true);
 		  vsum[indx] += count;
 		}
 	    }
@@ -330,19 +337,19 @@ h_chord_graph(const vumids& cumulative, const string aggname,
     }
 
   // Print out sum of all ages per value, and sum total grey notch.
-  for (const auto& val : k::age_values)
+  for (const auto& val : a60::k::age_values)
     {
-      auto indx = k::age_value_to_multiple(val, true);
+      auto indx = a60::k::age_value_to_multiple(val, true);
       uint xoff = get_xoffset(val, xstart, hspace);
-      uint yoff = vcenter - vspace;
+      uint yoff = vcenter - ctopspace;
       uint total = vsum[indx];
       if (total > 0)
 	{
-	  sized_text(obj, typov, asz, to_string(total), xoff, yoff);
+	  sized_text(obj, typov, asz, std::to_string(total), xoff, yoff);
 
 	  // Notch.
 	  double rheight = scale_value_on_range(total, 1, maxn, 10, ydelta);
-	  double ynotch = voffstart - rheight - vlspace - asz;
+	  double ynotch = voffstart - rheight - ltopspace - asz;
 
 	  // Top line.
 	  point_2t topstart(xoff - (rwidth / 2), ynotch);
@@ -356,14 +363,14 @@ h_chord_graph(const vumids& cumulative, const string aggname,
     }
 
   // Print out sum of all playing ages per value.
-  for (const auto& val : k::age_values)
+  for (const auto& val : a60::k::age_values)
     {
-      auto indx = k::age_value_to_multiple(val, true);
+      auto indx = a60::k::age_value_to_multiple(val, true);
       uint xoff = get_xoffset(val, xstart, hspace);
-      uint yoff = vpoffstart - vlspace;
+      uint yoff = vpoffstart - ltopspace;
       uint total = vpsum[indx];
       if (total > 0)
-	sized_text(obj, typov, asz, to_string(total), xoff, yoff);
+	sized_text(obj, typov, asz, std::to_string(total), xoff, yoff);
     }
 
   // Total counts of birth ages and playing ages and "playing %"
@@ -373,18 +380,18 @@ h_chord_graph(const vumids& cumulative, const string aggname,
   uint playingperi = static_cast<uint>(playingper * 100);
   string playingperstr = std::to_string(playingperi) + "% playing";
 
-  const uint xsumoff = width - k::metamargin;
+  const uint xsumoff = width - a60::k::metamargin;
   typol._M_anchor = svg::typography::anchor::end;
   typol._M_align = svg::typography::align::right;
   sized_text(obj, typol, lsz, "total values found", xsumoff, vcenter);
 
   typol._M_w = svg::typography::weight::normal;
-  sized_text(obj, typol, asz, to_string(avocount), xsumoff,
-	     vcenter - vspace);
-  sized_text(obj, typol, asz, to_string(avpcount), xsumoff,
-	     vcenter + vspace + asz);
+  sized_text(obj, typol, asz, std::to_string(avocount), xsumoff,
+	     vcenter - ctopspace);
+  sized_text(obj, typol, asz, std::to_string(avpcount), xsumoff,
+	     vcenter + ctopspace + asz);
   sized_text(obj, typol, asz, playingperstr, xsumoff,
-	     vcenter + vspace + asz * 3);
+	     vcenter + ctopspace + asz * 3);
   return obj;
 }
 
@@ -396,8 +403,8 @@ render_metadata_aggregate_chord(const area<> a, const vumids& cumulative,
 				const strings& namedkeyso, const string aggname)
 {
   // Rank ids.
-  vsids idsranked(k::id_dimensions.size());
-  for (uint index(0); index < k::id_dimensions.size(); ++index)
+  vsids idsranked(a60::k::id_dimensions.size());
+  for (uint index(0); index < a60::k::id_dimensions.size(); ++index)
     {
       sids& csids = idsranked[index];
       const umids& cumuids = cumulative[index];
@@ -420,13 +427,13 @@ render_metadata_aggregate_chord(const area<> a, const vumids& cumulative,
   typography typot = get_metadata_typo(tsz, true, false);
 
   auto [ width, height ] = obj._M_area;
-  auto xpos = width - k::metamargin;
-  auto ypos = height - k::metamargin;
+  auto xpos = width - a60::k::metamargin;
+  auto ypos = height - a60::k::metamargin;
 
   // Ages / partition titles.
   string title("ages");
   if (!aggname.empty())
-    title += string(k::space + aggname);
+    title += string(a60::k::space + aggname);
   sized_text_r(obj, typot, tsz, title, xpos, ypos, -90);
 
   // Subset.
@@ -443,9 +450,9 @@ analyze_metadata_aggregate_chord(const area<> a,
 				 const string wfield = "", const string wvalue = "")
 {
   // Set of files used for summary.
-  const string idir = io::get_run_time_resources().metadata;
+  const string idir = a60::io::get_run_time_resources().metadata;
   const strings files = field.empty() ?
-			io::populate_files(idir, ".json") :
+    			a60::io::populate_files(idir, ".json") :
 			files_with_field_matching(field, match);
 
   vumids cumulative = cache_metadata(files, wfield, wvalue);
@@ -471,11 +478,11 @@ analyze_metadata_aggregate_chord(const area<> a, const strings& namedkeys,
 				 const string aggname,
 				 const string wfield = "", const string wvalue = "")
 {
-  string idir = io::get_run_time_resources().metadata;
-  idir = io::end_path(idir);
+  string idir = a60::io::get_run_time_resources().metadata;
+  idir = a60::io::end_path(idir);
 
   // Vector with cumulative maps of name to count for each dimension
-  // in k::id_dimensions.
+  // in a60::k::id_dimensions.
   strings files;
   for (const string& s: namedkeys)
     files.push_back(idir + s + ".json");

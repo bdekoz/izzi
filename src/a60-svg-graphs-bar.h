@@ -23,10 +23,10 @@
 namespace svg {
 
 //// Distance between center and top/bottom block
-const double vspace(60);
+const double ctopspace(60);
 
 /// Distance between label and top/bottom of line or text
-const double vlspace(10);
+const double ltopspace(10);
 
 // Type sizes.
 const auto lsz = 16; // large bold
@@ -61,7 +61,7 @@ make_bar_graph(umids agesvo, const area<> a = svg::k::v1080p_h,
 
       // text
       sized_text(obj, typov, asz, to_string(count), xoff,
-		 voffstart - rheight - vlspace);
+		 voffstart - rheight - ltopspace);
 }
 
  
