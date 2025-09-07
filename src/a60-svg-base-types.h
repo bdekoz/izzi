@@ -158,7 +158,7 @@ struct style
 
   /// Convenience function to set all colors at once.
   void
-  set_colors(const svg::color& klr)
+  set_colors(const color_qi& klr)
   {
     _M_fill_color = klr;
     _M_stroke_color = klr;
