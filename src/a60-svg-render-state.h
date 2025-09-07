@@ -24,7 +24,7 @@ namespace svg {
      Make discrete element or layer (visible, outline, etc) if true.
      Used as a (visibility, outline, etc.) bitmask
   */
-  enum class select
+  enum class select : ulong
     {
      none		= 1u << 0, ///< nothing
      cartography	= 1u << 1, ///< cartographic elements
@@ -111,7 +111,6 @@ namespace svg {
   inline void
   flip_select(select& a, const select& b)
   { a |= b; }
-
 
   /**
      Some high-level nobs for rendering: scale tuning.
