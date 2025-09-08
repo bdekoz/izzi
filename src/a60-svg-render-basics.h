@@ -55,6 +55,20 @@ style_text(const string text, const point_2t origin, const typography typo)
 }
 
 
+text_element
+style_text_r(const string text, const point_2t origin, const typography typo,
+	     const double deg)
+{
+  auto [ x, y ] = origin;
+  text_element::data dt = { x, y, text, typo };
+  text_element t;
+  t.start_element();
+  t.add_data(dt, svg::transform::rotate(deg, x, y));
+  t.finish_element();
+  return t;
+}
+
+
 /// Text at @param origin, with style.
 void
 styled_text(element_base& obj, const string text, const point_2t origin,
