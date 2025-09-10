@@ -96,11 +96,19 @@ struct element_base
   add_title(const string& t);
 
   /// Common transforms include rotate(180)
+  string
+  make_transform_attribute(const string s)
+  {
+    std::ostringstream oss;
+    oss << k::space << "transform=" << k::quote << s << k::quote;
+    return oss.str();
+  }
+
   void
   add_transform(const string s)
   {
     if (!s.empty())
-      _M_sstream << k::space << "transform=" << k::quote << s << k::quote;
+      _M_sstream << make_transform_attribute(s);
   }
 };
 
