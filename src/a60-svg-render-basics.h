@@ -651,28 +651,19 @@ make_path_triangle(const point_2t origin, const style styl,
 }
 
 
-/// Center a triangle at this point.
-void
-point_to_triangle(svg_element& obj, const point_2t origin, const style s,
-		  const double r = 4, const double angle = 120)
-{
-  path_element tri = make_path_triangle(origin, s, r, angle);
-  obj.add_element(tri);
-}
-
-
 /// Center an octogon at this point.
 /// radius 4 is pixels to draw out from center point.
 /// pointsn is number of points to draw (8 for octogon)
 path_element
-make_path_octogon(const point_2t origin, const style styl,
-		  const double r = 4, const uint pointsn = 8)
+make_path_polygon(const point_2t origin, const style styl,
+		  const double r = 4, const uint pointsn = 8,
+		  const bool selfclosingtagp = true, const string xattr = "")
 {
   // Find points: orig, orig + (120 x 1), orig + (120 x 2).
-  const double angle(360.0/8);
+  const double angle(360.0/pointsn);
   double zo = zero_angle_north_cw(angle);
 
-  // Eight points on a circle, connnected.
+  // n points on a circle, connnected.
   vrange pointz;
   for (uint i = 0; i < pointsn; ++i)
     {
@@ -684,19 +675,9 @@ make_path_octogon(const point_2t origin, const style styl,
   pointz.push_back(pointz.front());
   string pathda = make_path_data_from_points(pointz);
 
-  const string id = "octogon-" + std::to_string(r);
-  path_element oct = make_path(pathda, styl, id);
-  return oct;
-}
-
-
-/// Center an octogon at this point.
-void
-point_to_octogon(svg_element& obj, const point_2t origin, const style s,
-		  const double r = 4)
-{
-  path_element oct = make_path_octogon(origin, s, r);
-  obj.add_element(oct);
+  const string id = "polygon-n" + std::to_string(pointsn) + "-r" + std::to_string(r);
+  path_element polyg = make_path(pathda, styl, id, selfclosingtagp, xattr);
+  return polyg;
 }
 
 
