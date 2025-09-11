@@ -829,8 +829,7 @@ point_to_crossed_lines(svg_element& obj, const point_2t origin,
 /// @param hexn is the number of hexagons total
 string
 make_hexagon_honeycomb(const point_2t origin, const style styl,
-		       const double r, const uint hexn, const string s = "",
-		       const typography typo = k::apercu_typo)
+		       const double r, const uint hexn)
 {
   std::ostringstream oss;
 
@@ -840,24 +839,50 @@ make_hexagon_honeycomb(const point_2t origin, const style styl,
   uint hexcount(0);
   while (hexcount < hexn)
     {
-      double ringr = ringn + 1;
+      double ringr = (ringn + 1) * r;
       double ringd = 0;
       if (fmod(ringn, 3) == 0)
 	ringd = 60 / 2;
       for (uint i = 0; i < 6 && hexcount < hexn; ++i)
 	{
-	  // Make hexagon.
 	  double angled = (i * 60) + ringd;
 	  auto poct = get_circumference_point_d(angled, ringr, origin);
+
+	  // Make hexagon.
 	  path_element po = make_path_polygon(poct, styl, r, 6);
 	  oss << po.str() << std::endl;
+	  hexcount++;
+	}
+      ringn++;
+    }
+  return oss.str();
+}
+
+string
+make_text_honeycomb(const point_2t origin,
+		    const double r, const uint hexn,
+		    const string s = "", const typography typo = k::apercu_typo)
+{
+  std::ostringstream oss;
+
+  // The origin is ring 0, undrawn.
+  // Start with ring 1, six hexagons in a ring around ring zero.
+  uint ringn = 1;
+  uint hexcount(0);
+  while (!s.empty() && hexcount < hexn)
+    {
+      double ringr = (ringn + 1) * r;
+      double ringd = 0;
+      if (fmod(ringn, 3) == 0)
+	ringd = 60 / 2;
+      for (uint i = 0; i < 6 && hexcount < hexn; ++i)
+	{
+	  double angled = (i * 60) + ringd;
+	  auto poct = get_circumference_point_d(angled, ringr, origin);
 
 	  // Make text, if any.
-	  if (!s.empty())
-	    {
-	      text_element t = style_text_r(s, poct, typo, angled);
-	      oss << t.str() << std::endl;;
-	    }
+	  text_element t = style_text_r(s, poct, typo, angled);
+	  oss << t.str() << std::endl;;
 	  hexcount++;
 	}
       ringn++;
