@@ -824,6 +824,48 @@ point_to_crossed_lines(svg_element& obj, const point_2t origin,
 }
 
 
+/// Center rings of hexogons at this point.
+/// @param r is the radius/side length of hexagon.
+/// @param hexn is the number of hexagons total
+string
+make_hexagon_honeycomb(const point_2t origin, const style styl,
+		       const double r, const uint hexn, const string s = "",
+		       const typography typo = k::apercu_typo)
+{
+  std::ostringstream oss;
+
+  // The origin is ring 0, undrawn.
+  // Start with ring 1, six hexagons in a ring around ring zero.
+  uint ringn = 1;
+  uint hexcount(0);
+  while (hexcount < hexn)
+    {
+      double ringr = ringn + 1;
+      double ringd = 0;
+      if (fmod(ringn, 3) == 0)
+	ringd = 60 / 2;
+      for (uint i = 0; i < 6 && hexcount < hexn; ++i)
+	{
+	  // Make hexagon.
+	  double angled = (i * 60) + ringd;
+	  auto poct = get_circumference_point_d(angled, ringr, origin);
+	  path_element po = make_path_polygon(poct, styl, r, 6);
+	  oss << po.str() << std::endl;
+
+	  // Make text, if any.
+	  if (!s.empty())
+	    {
+	      text_element t = style_text_r(s, poct, typo, angled);
+	      oss << t.str() << std::endl;;
+	    }
+	  hexcount++;
+	}
+      ringn++;
+    }
+  return oss.str();
+}
+
+
 /// Make grid palette for display.
 /// NB @param klrs can be color_qis or array/palette.
 svg_element
