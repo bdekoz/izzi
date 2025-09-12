@@ -824,6 +824,69 @@ point_to_crossed_lines(svg_element& obj, const point_2t origin,
 }
 
 
+/// Radial fill of n hexagons of radius/sidelength r.
+vrange
+generate_radial_hexagons(const int n, const double r, const point_2t origin,
+			 const bool centerfilledp = false)
+{
+  auto [ x, y] = origin;
+
+  vrange hexagons;
+  hexagons.reserve(n);
+
+  const double hexSize = 1.0;
+  const double hexSpacingX = hexSize * 1.5;
+  const double hexSpacingY = hexSize * std::sqrt(3.0);
+
+  // Generate hexagons using spiral pattern
+  auto generate = [&](int maxCount)
+  {
+    // Center hexagon
+    int count = 0;
+    if (centerfilledp && count < maxCount)
+      {
+	hexagons.push_back({x, y});
+	count++;
+      }
+
+    // Spiral outward through rings
+    for (int ring = 1; ring <= r && count < maxCount; ++ring)
+      {
+	// Start at the "east" position and move counterclockwise
+	double angle = 0.0;
+	point_2t currentPos = { x + ring * hexSpacingX, y };
+
+	// There are 6 sides with 'ring' hexagons each
+	for (int side = 0; side < 6 && count < maxCount; ++side)
+	  {
+	    // Calculate direction vector for this side
+	    double dirX = std::cos(angle);
+	    double dirY = std::sin(angle);
+
+	    // Generate hexagons along this side
+	    int hexagonsOnSide = std::min(ring, maxCount - count);
+	    for (int i = 0; i < hexagonsOnSide && count < maxCount; ++i)
+	      {
+		hexagons.push_back({x, y});
+		count++;
+
+		// Move to next position.
+		double nx = std::get<0>(currentPos) + hexSpacingX * dirX;
+		double ny = std::get<1>(currentPos) + hexSpacingY * dirY;
+		currentPos = { nx, ny };
+	      }
+
+	    // Rotate 60 degrees for next side
+	    angle += std::numbers::pi / 3.0;
+	  }
+      }
+  };
+
+  generate(n);
+  return hexagons;
+}
+
+
 /// Center rings of hexogons at this point.
 /// @param r is the radius/side length of hexagon.
 /// @param hexn is the number of hexagons total
@@ -832,31 +895,16 @@ make_hexagon_honeycomb(const point_2t origin, const style styl,
 		       const double r, const uint hexn)
 {
   std::ostringstream oss;
-
-  // The origin is ring 0, undrawn.
-  // Start with ring 1, six hexagons in a ring around ring zero.
-  uint ringn = 1;
-  uint hexcount(0);
-  while (hexcount < hexn)
+  vrange hexpoints = generate_radial_hexagons(hexn, r, origin);
+  for (const auto& p : hexpoints)
     {
-      double ringr = (ringn + 1) * r;
-      double ringd = 0;
-      if (fmod(ringn, 3) == 0)
-	ringd = 60 / 2;
-      for (uint i = 0; i < 6 && hexcount < hexn; ++i)
-	{
-	  double angled = (i * 60) + ringd;
-	  auto poct = get_circumference_point_d(angled, ringr, origin);
-
-	  // Make hexagon.
-	  path_element po = make_path_polygon(poct, styl, r, 6);
-	  oss << po.str() << std::endl;
-	  hexcount++;
-	}
-      ringn++;
+      // Make hexagon spiral.
+      path_element po = make_path_polygon(p, styl, r, 6);
+      oss << po.str() << std::endl;
     }
   return oss.str();
 }
+
 
 string
 make_text_honeycomb(const point_2t origin,
@@ -864,28 +912,12 @@ make_text_honeycomb(const point_2t origin,
 		    const string s = "", const typography typo = k::apercu_typo)
 {
   std::ostringstream oss;
-
-  // The origin is ring 0, undrawn.
-  // Start with ring 1, six hexagons in a ring around ring zero.
-  uint ringn = 1;
-  uint hexcount(0);
-  while (!s.empty() && hexcount < hexn)
+  vrange hexpoints = generate_radial_hexagons(hexn, r, origin);
+  for (const auto& p : hexpoints)
     {
-      double ringr = (ringn + 1) * r;
-      double ringd = 0;
-      if (fmod(ringn, 3) == 0)
-	ringd = 60 / 2;
-      for (uint i = 0; i < 6 && hexcount < hexn; ++i)
-	{
-	  double angled = (i * 60) + ringd;
-	  auto poct = get_circumference_point_d(angled, ringr, origin);
-
-	  // Make text, if any.
-	  text_element t = style_text_r(s, poct, typo, angled);
-	  oss << t.str() << std::endl;;
-	  hexcount++;
-	}
-      ringn++;
+      // Make text, if any.
+      text_element t = style_text(s, p, typo);
+      oss << t.str() << std::endl;
     }
   return oss.str();
 }
