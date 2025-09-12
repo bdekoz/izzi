@@ -1,7 +1,7 @@
  #include "a60-svg.h"
 
 void
-test_oct(std::string ofile)
+test_hex(std::string ofile)
 {
   using namespace std;
   using namespace svg;
@@ -14,23 +14,27 @@ test_oct(std::string ofile)
 
   // Black
   const style bstyl = { color::black, 1.0, color::black, 0.0, 2 };
-  path_element t1 = make_path_polygon(cp, bstyl, len * 3, 8);
+  path_element t1 = make_path_polygon(cp, bstyl, len * 3, 6);
   obj.add_element(t1);
 
   // Red
   const style rstyl = { color::red, 1.0, color::red, 0.0, 2 };
-  path_element t2 = make_path_polygon(cp, rstyl, len * 2, 8);
+  path_element t2 = make_path_polygon(cp, rstyl, len * 2, 6);
   obj.add_element(t2);
 
   // Green
   const style gstyl = { color::green, 1.0, color::green, 0.0, 2 };
-  path_element t3 = make_path_polygon(cp, gstyl, len * 1, 8);
+  path_element t3 = make_path_polygon(cp, gstyl, len * 1, 6);
   obj.add_element(t3);
+
+  // hexagon honeycomb
+  string honey = make_hexagon_honeycomb(cp, k::b_style, 10, 21);
+  obj.add_raw(honey);
 }
 
 
 int main()
 {
-  test_oct("octogon");
+  test_hex("hexagon");
   return 0;
 }
