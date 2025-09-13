@@ -26,10 +26,6 @@ test_hex(std::string ofile)
   const style gstyl = { color::green, 1.0, color::green, 0.0, 2 };
   path_element t3 = make_path_polygon(cp, gstyl, len * 1, 6);
   obj.add_element(t3);
-
-  // hexagon honeycomb
-  string honey = make_hexagon_honeycomb(cp, k::b_style, 10, 21);
-  obj.add_raw(honey);
 }
 
 

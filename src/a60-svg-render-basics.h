@@ -17,6 +17,7 @@
 #define MiL_SVG_RENDER_BASICS_H 1
 
 //#include "a60-svg-codecvt.h"
+#include "a60-svg-radial-fill-hexagon.h"
 
 namespace svg {
 
@@ -41,30 +42,42 @@ scale_proportional_to_weight(double radius, double weight)
 }
 
 
-/// Text elemetn at @param origin, with style.
+/// Text element at @param origin, with style and optional transform.
 text_element
-style_text(const string text, const point_2t origin, const typography typo)
+style_text(const string text, const point_2t origin, const typography typo,
+	   const string xtransf = "")
 {
   auto [ x, y ] = origin;
   text_element::data dt = { x, y, text, typo };
   text_element t;
   t.start_element();
-  t.add_data(dt);
+  t.add_data(dt, xtransf);
   t.finish_element();
   return t;
 }
 
 
+/// Text element at @param origin, rotated with @param deg in a @param
+/// clockwisep direction. With typograph and style via @param typo.
 text_element
 style_text_r(const string text, const point_2t origin, const typography typo,
-	     const double deg)
+	     const double deg, const bool clockwisep = true)
 {
   auto [ x, y ] = origin;
-  text_element::data dt = { x, y, text, typo };
-  text_element t;
-  t.start_element();
-  t.add_data(dt, svg::transform::rotate(deg, x, y));
-  t.finish_element();
+  typography typor(typo);
+  typor._M_baseline = svg::typography::baseline::central;
+  if (clockwisep)
+    {
+      typor._M_anchor = svg::typography::anchor::start;
+      typor._M_align = svg::typography::align::left;
+    }
+  else
+    {
+      typor._M_anchor = svg::typography::anchor::end;
+      typor._M_align = svg::typography::align::right;
+    }
+  const string tx = svg::transform::rotate(deg, x, y);
+  text_element t = style_text(text, origin, typor, tx);
   return t;
 }
 
@@ -824,102 +837,63 @@ point_to_crossed_lines(svg_element& obj, const point_2t origin,
 }
 
 
-/// Radial fill of n hexagons of radius/sidelength r.
-vrange
-generate_radial_hexagons(const int n, const double r, const point_2t origin,
-			 const bool centerfilledp = false)
-{
-  auto [ x, y] = origin;
-
-  vrange hexagons;
-  hexagons.reserve(n);
-
-  const double hexSize = 1.0;
-  const double hexSpacingX = hexSize * 1.5;
-  const double hexSpacingY = hexSize * std::sqrt(3.0);
-
-  // Generate hexagons using spiral pattern
-  auto generate = [&](int maxCount)
-  {
-    // Center hexagon
-    int count = 0;
-    if (centerfilledp && count < maxCount)
-      {
-	hexagons.push_back({x, y});
-	count++;
-      }
-
-    // Spiral outward through rings
-    for (int ring = 1; ring <= r && count < maxCount; ++ring)
-      {
-	// Start at the "east" position and move counterclockwise
-	double angle = 0.0;
-	point_2t currentPos = { x + ring * hexSpacingX, y };
-
-	// There are 6 sides with 'ring' hexagons each
-	for (int side = 0; side < 6 && count < maxCount; ++side)
-	  {
-	    // Calculate direction vector for this side
-	    double dirX = std::cos(angle);
-	    double dirY = std::sin(angle);
-
-	    // Generate hexagons along this side
-	    int hexagonsOnSide = std::min(ring, maxCount - count);
-	    for (int i = 0; i < hexagonsOnSide && count < maxCount; ++i)
-	      {
-		hexagons.push_back({x, y});
-		count++;
-
-		// Move to next position.
-		double nx = std::get<0>(currentPos) + hexSpacingX * dirX;
-		double ny = std::get<1>(currentPos) + hexSpacingY * dirY;
-		currentPos = { nx, ny };
-	      }
-
-	    // Rotate 60 degrees for next side
-	    angle += std::numbers::pi / 3.0;
-	  }
-      }
-  };
-
-  generate(n);
-  return hexagons;
-}
-
+// Hexagon and tessalations.
 
 /// Center rings of hexogons at this point.
 /// @param r is the radius/side length of hexagon.
 /// @param hexn is the number of hexagons total
-string
-make_hexagon_honeycomb(const point_2t origin, const style styl,
-		       const double r, const uint hexn)
+group_element
+make_hexagon_honeycomb(const point_2t origin, const double r,
+		       const uint hexn, const bool cfillp,
+		       const style styl)
 {
-  std::ostringstream oss;
-  vrange hexpoints = generate_radial_hexagons(hexn, r, origin);
-  for (const auto& p : hexpoints)
+  using std::to_string;
+  
+  group_element g;
+  string gbase = "hexagon-honeycomb-";
+  string gname = gbase + to_string(uint(r)) + k::hyphen + to_string(hexn);
+  g.start_element(gname);
+  
+  auto hexpoints = radiate_hexagon_honeycomb(hexn, r, origin, cfillp);
+  for (const auto& phex : hexpoints)
     {
       // Make hexagon spiral.
-      path_element po = make_path_polygon(p, styl, r, 6);
-      oss << po.str() << std::endl;
+      //auto [ p, d ] = phex;
+      path_element pth = make_path_polygon(phex, styl, r, 6);
+      g.add_element(pth);
     }
-  return oss.str();
+
+  g.finish_element();
+  return g;
 }
 
 
-string
-make_text_honeycomb(const point_2t origin,
-		    const double r, const uint hexn,
-		    const string s = "", const typography typo = k::apercu_typo)
+group_element
+make_text_honeycomb(const point_2t origin, const double r,
+		    const uint hexn, const bool cfillp, const string s = "",
+		    const typography typo = k::apercu_typo)
 {
-  std::ostringstream oss;
-  vrange hexpoints = generate_radial_hexagons(hexn, r, origin);
-  for (const auto& p : hexpoints)
+  using std::to_string;
+  
+  group_element g;
+  string gbase = "text-honeycomb-";
+  string gname = gbase + to_string(uint(r)) + k::hyphen + to_string(hexn);
+  g.start_element(gname);
+
+  auto hexpoints = radiate_hexagon_honeycomb(hexn, r, origin, cfillp);
+  auto hexangles = get_honeycomb_angles(hexpoints, origin);
+  for (uint i = 0; !s.empty() && i < hexpoints.size(); i++)
     {
-      // Make text, if any.
-      text_element t = style_text(s, p, typo);
-      oss << t.str() << std::endl;
+      const auto& p = hexpoints[i];
+      auto [ x, y ] = p;
+      //      x += 2 * r;
+      const double d = hexangles[i];
+      text_element t = style_text_r(s, {x, y}, typo, d);
+      g.add_element(t);
     }
-  return oss.str();
+
+  g.finish_element();
+  return g;
 }
 
 
