@@ -50,15 +50,17 @@ struct PointEqual
   }
 };
 
+
+/// Compute set of points for a radial fill of hexograms centered at p.
 vrange
 radiate_hexagon_honeycomb(const uint n, const double r, const point_2t origin,
 			  const bool centerfilledp)
 {
-  vrange hexagon_centers;
+  vrange hexagons;
   if (n == 0)
-    return hexagon_centers;
+    return hexagons;
 
-  auto [origin_x, origin_y] = origin;
+  auto [x, y] = origin;
 
 
   // For hexagonal grid, compute the horizontal and vertical spacing.
@@ -88,24 +90,23 @@ radiate_hexagon_honeycomb(const uint n, const double r, const point_2t origin,
   if (centerfilledp)
     {
       q.push(origin);
-      hexagon_centers.push_back(origin);
+      hexagons.push_back(origin);
     }
   visited.insert(origin);
 
   // Ring 1 (6 hexagons around center)
-  for (const auto& movement : directions)
+  for (uint i = 0; i < directions.size() && hexagons.size() < n; i++)
     {
+      const auto& movement = directions[i];
       auto [dx, dy] = movement;
-      point_2t neighbor = {origin_x + dx, origin_y + dy};
+      point_2t neighbor = { x + dx, y + dy };
       q.push(neighbor);
       visited.insert(neighbor);
-      hexagon_centers.push_back(neighbor);
-      if (hexagon_centers.size() == n)
-	break;
+      hexagons.push_back(neighbor);
     }
 
   // Generate hexagons until we reach n total
-  while (hexagon_centers.size() < n && !q.empty())
+  while (hexagons.size() < n && !q.empty())
     {
       point_2t current = q.front();
       q.pop();
@@ -120,31 +121,31 @@ radiate_hexagon_honeycomb(const uint n, const double r, const point_2t origin,
 
 	  // Check if we haven't visited this point and haven't reached n yet
 	  if (visited.find(neighbor) == visited.end()
-	      && hexagon_centers.size() < n)
+	      && hexagons.size() < n)
 	    {
 	      visited.insert(neighbor);
-	      hexagon_centers.push_back(neighbor);
+	      hexagons.push_back(neighbor);
 	      q.push(neighbor);
 	    }
 	}
     }
 
-  return hexagon_centers;
+  return hexagons;
 }
 
 
 vspace
-get_honeycomb_angles(const vrange& hexagon_centers, const point_2t origin)
+get_honeycomb_angles(const vrange& hexagons, const point_2t origin)
 {
   vspace angles;
-  angles.reserve(hexagon_centers.size());
+  angles.reserve(hexagons.size());
 
-  auto [origin_x, origin_y] = origin;
-  for (const auto& center : hexagon_centers)
+  auto [x, y] = origin;
+  for (const auto& center : hexagons)
     {
       auto [hex_x, hex_y] = center;
-      double dx = hex_x - origin_x;
-      double dy = hex_y - origin_y;
+      double dx = hex_x - x;
+      double dy = hex_y - y;
       double angle_rad = std::atan2(dy, dx);
       double angle_d(180 * (angle_rad / k::pi));
       angles.push_back(angle_d);
