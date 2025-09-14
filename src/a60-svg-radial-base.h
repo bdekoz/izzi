@@ -28,17 +28,6 @@
 #include "a60-svg.h"
 
 
-namespace svg::constants {
-
-/// Radial rotation direction.
-enum class rrotation
-  {
-    cw,			///< Clockwise
-    ccw			///< Counter-clockwise
-  };
-
-} // namespace svg::constants
-
 namespace svg {
 
 /**

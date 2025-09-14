@@ -135,7 +135,8 @@ radiate_hexagon_honeycomb(const point_2t origin, const double r, const uint n,
 
 
 vspace
-get_honeycomb_angles(const point_2t origin, const vrange& hexagons)
+get_honeycomb_angles(const point_2t origin, const vrange& hexagons,
+		     const bool degreesp = false)
 {
   vspace angles;
   angles.reserve(hexagons.size());
@@ -146,9 +147,10 @@ get_honeycomb_angles(const point_2t origin, const vrange& hexagons)
       auto [hex_x, hex_y] = center;
       double dx = hex_x - x;
       double dy = hex_y - y;
-      double angle_rad = std::atan2(dy, dx);
-      double angle_d(180 * (angle_rad / k::pi));
-      angles.push_back(angle_d);
+      double angle = std::atan2(dy, dx);
+      if (degreesp)
+	angle = (180 * (angle / k::pi));
+      angles.push_back(angle);
     }
 
   return angles;

@@ -122,18 +122,13 @@ const typography zslab_typo = { zslab, 12, b_style, a, al, b, w, p };
 const typography mxcllnt_typo = { mexcellent, 12, b_style, a, al, b, w, p };
 const typography hyperl_typo = { hyperl, 12, b_style, a, al, b, w, p };
 
-
-/**
-   Default typography.
-
-   NB: Using a global locale. So, filenames are in multiple
-   languages, not just en_US.
-
-   Make sure that the font with the largest support for random
-   characters is used, ie some variant of Source Sans, Source Han Sans
-   XX, etc. Otherwise, blank spaces in rendered output are likely.
-*/
-const typography d_typo = shsans_typo;
+/// Radial rotation direction.
+enum class rrotation
+  {
+    none,		///< None
+    cw,			///< Clockwise
+    ccw			///< Counter-clockwise
+  };
 
 } // namespace svg::constants
 
