@@ -65,7 +65,7 @@ using space_type = double;
 using point_2t = std::tuple<space_type, space_type>;
 
 /// Point (x,y) in 2D space with weight n.
-using point_2tn = std::tuple<point_2t, ssize_type>;
+using point_2tn = std::tuple<ulong, point_2t>;
 
 
 /// Convert point_2t to string.
@@ -83,7 +83,9 @@ using vspace = std::vector<double>;
 
 /// Latitude and Longitude Ranges.
 using srange = std::set<point_2t>;
+using srangen = std::set<point_2tn>;
 using vrange = std::vector<point_2t>;
+using vrangen = std::vector<point_2tn>;
 using vvranges = std::vector<vrange>;
 
 
