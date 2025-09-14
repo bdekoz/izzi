@@ -57,26 +57,28 @@ style_text(const string text, const point_2t origin, const typography typo,
 }
 
 
-/// Text element at @param origin, rotated with @param deg in a @param
-/// clockwisep direction. With typograph and style via @param typo.
+/// Text element at @param origin, rotated with @param deg centered at
+/// @param rorigin in a @param rr direction. With typograph and style
+/// via @param typo.
 text_element
 style_text_r(const string text, const point_2t origin, const typography typo,
-	     const double deg, const bool clockwisep = true)
+	     const double deg, const point_2t rorigin,
+	     const k::rrotation rr = k::rrotation::none)
 {
-  auto [ x, y ] = origin;
+  auto [ rx, ry ] = rorigin;
   typography typor(typo);
   typor._M_baseline = svg::typography::baseline::central;
-  if (clockwisep)
+  if (rr == k::rrotation::cw)
     {
       typor._M_anchor = svg::typography::anchor::start;
       typor._M_align = svg::typography::align::left;
     }
-  else
+  if (rr == k::rrotation::ccw)
     {
       typor._M_anchor = svg::typography::anchor::end;
       typor._M_align = svg::typography::align::right;
     }
-  const string tx = svg::transform::rotate(deg, x, y);
+  const string tx = svg::transform::rotate(deg, rx, ry);
   text_element t = style_text(text, origin, typor, tx);
   return t;
 }
@@ -892,18 +894,29 @@ make_text_honeycomb(const point_2t origin, const double r,
   string gname = gbase + to_string(uint(r)) + k::hyphen + to_string(hexn);
   g.start_element(gname, xform);
 
+  // Group all text objects here, and specify that rotation for the
+  // group is to be centered at the origin.
+  auto [ x, y ] = origin;
+  const string txrotatepoint = svg::transform::rotate(0, x, y);
+  group_element ginner;
+  ginner.start_element(gbase + "inner", txrotatepoint);
+
   auto hexpoints = radiate_hexagon_honeycomb(origin, r, hexn, cfillp);
-  auto hexangles = get_honeycomb_angles(origin, hexpoints);
+  auto hexangles = get_honeycomb_angles(origin, hexpoints, true);
   for (uint i = 0; !s.empty() && i < hexpoints.size(); i++)
     {
       const auto& p = hexpoints[i];
-      auto [ x, y ] = p;
       const double d = hexangles[i];
-      text_element t = style_text_r(s, {x, y}, typo, d);
-      g.add_element(t);
+      text_element t = style_text_r(s, p, typo, d, p, k::rrotation::cw);
+      //text_element t = style_text_r(s, p, typo, d, origin, k::rrotation::cw);
+      ginner.add_element(t);
     }
 
+  ginner.finish_element();
+
+  g.add_element(ginner);
   g.finish_element();
+
   return g;
 }
 
