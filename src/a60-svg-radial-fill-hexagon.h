@@ -134,9 +134,12 @@ radiate_hexagon_honeycomb(const point_2t origin, const double r, const uint n,
 }
 
 
+/// Compute set of angles, given points for a radial fill of hexograms
+/// centered at p.
+/// @param degreesp return results in degrees, not radians (default).
 vspace
 get_honeycomb_angles(const point_2t origin, const vrange& hexagons,
-		     const bool degreesp = false)
+		     const bool degreesp = true)
 {
   vspace angles;
   angles.reserve(hexagons.size());
