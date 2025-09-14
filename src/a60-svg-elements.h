@@ -144,9 +144,7 @@ struct group_element : virtual public element_base
   finish_group()
   { return string("</g>") + k::newline; }
 
-  void
-  start_element()
-  { _M_sstream << start_group(); }
+
 
   /// For groups of elements that have the same name.
   ///
@@ -154,6 +152,10 @@ struct group_element : virtual public element_base
   /// using an 'image_element', the display quality is lacking in
   /// inkscape. To work around this, insert the contents of the nested
   /// SVG into a named group element instead.
+  void
+  start_element()
+  { _M_sstream << start_group(); }
+
   void
   start_element(string name)
   { _M_sstream << start_group(name); }
@@ -167,10 +169,9 @@ struct group_element : virtual public element_base
     _M_sstream << '>' << k::newline;
   }
 
-  // For groups of elements with transforms and style if specified.
+  // For groups of elements with a transform and style if specified.
   void
-  start_element(string name, const transform, const string ts,
-		const style& sty = k::no_style)
+  start_element(string name, const string ts, const style& sty = k::no_style)
   {
     _M_sstream << "<g id=" << k::quote << name << k::quote;
     add_transform(ts);
@@ -625,12 +626,6 @@ struct text_element : virtual public element_base
     typography		_M_typo;
   };
 
-  // So text_path_element can substitute the text_path part without
-  // duplicating the text formatting and style parts....
-  virtual void
-  add_text(string txt)
-  { _M_sstream << txt; }
-
   /// Either serialize immediately (as below), or create data structure
   /// that adds data to data_vec and then finish_element serializes.
   void
@@ -654,7 +649,7 @@ struct text_element : virtual public element_base
     _M_sstream << '>';
 
     // Add text data.
-    add_text(d._M_text);
+    add_raw(d._M_text);
   }
 
   void
@@ -1210,15 +1205,15 @@ struct foreign_element : virtual public element_base
   // arect == area of displayed video as embedded inside svg element /aka page
   // scale_pair == x/y scaling factor
   void
-  start_element(const point_2t origin, const area<> av, const area<> arect,
+  start_element(const point_2t origin, const area<> av, const area<> /*arect*/,
 		const point_2t scale = std::make_tuple(1.0, 1.0))
   {
     const auto [ scalex, scaley ] = scale;
     const auto [ ox, oy ] = origin;
 
-    const auto [ width, height ] = arect;
-    auto xo = width/2;
-    auto yo = height/2;
+    //const auto [ width, height ] = arect;
+    //auto xo = width/2;
+    //auto yo = height/2;
 
     const auto [ vwidth, vheight ] = av;
 
@@ -1229,10 +1224,9 @@ struct foreign_element : virtual public element_base
 
     // Inner Group.
     group_element gi;
-    const transform txfm;
-    string tx = transform::translate(xo, yo);
+    //string tx = transform::translate(xo, yo);
     string tscl = transform::scale(scalex, scaley);
-    gi.start_element(string("video-wrapper"), txfm, tscl);
+    gi.start_element(string("video-wrapper"), tscl);
     _M_sstream << gi.str() << k::newline;
 
     // Foreign Object

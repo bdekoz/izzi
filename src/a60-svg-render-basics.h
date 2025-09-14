@@ -839,22 +839,26 @@ point_to_crossed_lines(svg_element& obj, const point_2t origin,
 
 // Hexagon and tessalations.
 
-/// Center rings of hexogons at this point.
+/// Center rings of hexagons at this point.
+/// @param origin is the center point
 /// @param r is the radius/side length of hexagon.
 /// @param hexn is the number of hexagons total
+/// @param cfillp is the center of the hexagon filled or open
+/// @param styl apply as style to this element
+/// @param xform any optional transform
 group_element
 make_hexagon_honeycomb(const point_2t origin, const double r,
 		       const uint hexn, const bool cfillp,
-		       const style styl)
+		       const style styl, const string xform = "")
 {
   using std::to_string;
-  
+
   group_element g;
   string gbase = "hexagon-honeycomb-";
   string gname = gbase + to_string(uint(r)) + k::hyphen + to_string(hexn);
-  g.start_element(gname);
-  
-  auto hexpoints = radiate_hexagon_honeycomb(hexn, r, origin, cfillp);
+  g.start_element(gname, xform);
+
+  auto hexpoints = radiate_hexagon_honeycomb(origin, r, hexn, cfillp);
   for (const auto& phex : hexpoints)
     {
       // Make hexagon spiral.
@@ -868,25 +872,32 @@ make_hexagon_honeycomb(const point_2t origin, const double r,
 }
 
 
+/// Center rings of text in a hexagon pattern at this point.
+/// @param origin is the center point
+/// @param r is the radius/side length of hexagon.
+/// @param hexn is the number of hexagons total
+/// @param cfillp is the center of the hexagon filled or open
+/// @param s is the text
+/// @param typo is the typography for the text
+/// @param xform any optional transform
 group_element
 make_text_honeycomb(const point_2t origin, const double r,
-		    const uint hexn, const bool cfillp, const string s = "",
-		    const typography typo = k::apercu_typo)
+		    const uint hexn, const bool cfillp, const string s,
+		    const typography typo, const string xform = "")
 {
   using std::to_string;
-  
+
   group_element g;
   string gbase = "text-honeycomb-";
   string gname = gbase + to_string(uint(r)) + k::hyphen + to_string(hexn);
-  g.start_element(gname);
+  g.start_element(gname, xform);
 
-  auto hexpoints = radiate_hexagon_honeycomb(hexn, r, origin, cfillp);
-  auto hexangles = get_honeycomb_angles(hexpoints, origin);
+  auto hexpoints = radiate_hexagon_honeycomb(origin, r, hexn, cfillp);
+  auto hexangles = get_honeycomb_angles(origin, hexpoints);
   for (uint i = 0; !s.empty() && i < hexpoints.size(); i++)
     {
       const auto& p = hexpoints[i];
       auto [ x, y ] = p;
-      //      x += 2 * r;
       const double d = hexangles[i];
       text_element t = style_text_r(s, {x, y}, typo, d);
       g.add_element(t);

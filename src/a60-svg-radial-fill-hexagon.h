@@ -53,7 +53,7 @@ struct PointEqual
 
 /// Compute set of points for a radial fill of hexograms centered at p.
 vrange
-radiate_hexagon_honeycomb(const uint n, const double r, const point_2t origin,
+radiate_hexagon_honeycomb(const point_2t origin, const double r, const uint n,
 			  const bool centerfilledp)
 {
   vrange hexagons;
@@ -135,7 +135,7 @@ radiate_hexagon_honeycomb(const uint n, const double r, const point_2t origin,
 
 
 vspace
-get_honeycomb_angles(const vrange& hexagons, const point_2t origin)
+get_honeycomb_angles(const point_2t origin, const vrange& hexagons)
 {
   vspace angles;
   angles.reserve(hexagons.size());

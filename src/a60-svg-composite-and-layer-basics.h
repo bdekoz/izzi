@@ -220,7 +220,7 @@ insert_svg_at(svg_element& obj, const string isvg,
   string ts(xformrotate + k::space + xformtranslate + k::space + xformscale);
 
   group_element gsvg;
-  gsvg.start_element("inset svg", transform(), ts, styl);
+  gsvg.start_element("inset svg", ts, styl);
   gsvg.add_raw(isvg);
   gsvg.finish_element();
   obj.add_element(gsvg);
