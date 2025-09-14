@@ -4,7 +4,7 @@ var searchData=
   ['last_1',['last',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a98bd1c45684cf587ac2347a92dd7bb51',1,'svg']]],
   ['lavender_2',['lavender',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a153fa52654465ad67f045dc293f3b16e',1,'svg']]],
   ['left_3',['left',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a811882fecd5c7618d7099ebbd39ea254',1,'svg::typography']]],
-  ['legend_4',['legend',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a3d4dcd6fc8845fa8dfc04c3ea01eb0fb',1,'svg']]],
+  ['legend_4',['legend',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca3d4dcd6fc8845fa8dfc04c3ea01eb0fb',1,'svg']]],
   ['lemonchiffon_5',['lemonchiffon',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3b5720926e81aca08b9343bb338f3583',1,'svg']]],
   ['letter_5f096_5fh_6',['letter_096_h',['../namespacesvg_1_1constants.html#af3d02dba6f3578fa6196594e0ecffca3',1,'svg::constants']]],
   ['letter_5f096_5fv_7',['letter_096_v',['../namespacesvg_1_1constants.html#ab3907c64f2b83822443c07f4dd2fe1b9',1,'svg::constants']]],
@@ -20,9 +20,10 @@ var searchData=
   ['linear_5fgradient_17',['linear_gradient',['../group__elements.html#structsvg_1_1linear__gradient',1,'svg']]],
   ['lineargradient_18',['linearGradient',['../group__elements.html#a7c19a4d45da1acb512fc1c69048253bfa1f95312db58aef3645ec3865b5bd04d0',1,'svg::gradient_element']]],
   ['linecap_19',['linecap',['../structsvg_1_1stroke__style.html#ad47f71fbaac8ba3aa83b5f69227b1082',1,'svg::stroke_style']]],
-  ['linex_20',['linex',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a7af3f32e7f6f3bd3fd8cc047c1ba8ee6',1,'svg']]],
-  ['liney_21',['liney',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a22ba1f9d2f01584a436f3e60567247a5',1,'svg']]],
+  ['linex_20',['linex',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca7af3f32e7f6f3bd3fd8cc047c1ba8ee6',1,'svg']]],
+  ['liney_21',['liney',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca22ba1f9d2f01584a436f3e60567247a5',1,'svg']]],
   ['link_5felement_22',['link_element',['../group__elements.html#structsvg_1_1link__element',1,'svg']]],
   ['lstyle_23',['lstyle',['../structsvg_1_1graph__rstate.html#abbbcc01d132bb79b12e3ff82d08e1572',1,'svg::graph_rstate']]],
-  ['lsz_24',['lsz',['../namespacesvg.html#a2eea4b708723491eb8eb89bf62a67011',1,'svg']]]
+  ['lsz_24',['lsz',['../namespacesvg.html#a2eea4b708723491eb8eb89bf62a67011',1,'svg']]],
+  ['ltopspace_25',['ltopspace',['../namespacesvg.html#a362fbc62daf1dcadc38651ee85b81513',1,'svg']]]
 ];

@@ -4,7 +4,7 @@ var searchData=
   ['last_1',['last',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a98bd1c45684cf587ac2347a92dd7bb51',1,'svg']]],
   ['lavender_2',['lavender',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a153fa52654465ad67f045dc293f3b16e',1,'svg']]],
   ['left_3',['left',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a811882fecd5c7618d7099ebbd39ea254',1,'svg::typography']]],
-  ['legend_4',['legend',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a3d4dcd6fc8845fa8dfc04c3ea01eb0fb',1,'svg']]],
+  ['legend_4',['legend',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca3d4dcd6fc8845fa8dfc04c3ea01eb0fb',1,'svg']]],
   ['lemonchiffon_5',['lemonchiffon',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3b5720926e81aca08b9343bb338f3583',1,'svg']]],
   ['light_6',['light',['../structsvg_1_1typography.html#ac41cf6a133f5b21757130ce5ba72b3d7a2ac43aa43bf473f9a9c09b4b608619d3',1,'svg::typography']]],
   ['lightblue_7',['lightblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a6eed435cb5faa552a3117e7d60ebce8d',1,'svg']]],
@@ -12,6 +12,6 @@ var searchData=
   ['lightskyblue_9',['lightskyblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1aa4fd560e81d368f625763cb684dd348c',1,'svg']]],
   ['limegreen_10',['limegreen',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a8a03233f60c05bc5c3161698a5f78a58',1,'svg']]],
   ['lineargradient_11',['linearGradient',['../group__elements.html#a7c19a4d45da1acb512fc1c69048253bfa1f95312db58aef3645ec3865b5bd04d0',1,'svg::gradient_element']]],
-  ['linex_12',['linex',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a7af3f32e7f6f3bd3fd8cc047c1ba8ee6',1,'svg']]],
-  ['liney_13',['liney',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a22ba1f9d2f01584a436f3e60567247a5',1,'svg']]]
+  ['linex_12',['linex',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca7af3f32e7f6f3bd3fd8cc047c1ba8ee6',1,'svg']]],
+  ['liney_13',['liney',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca22ba1f9d2f01584a436f3e60567247a5',1,'svg']]]
 ];

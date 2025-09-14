@@ -124,7 +124,7 @@
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8" target="_top" xlink:title=" ">
+<g id="a_Node000009"><a xlink:href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8" target="_top" xlink:title="For groups of elements that have the same name.">
 <polygon fill="white" stroke="#666666" points="219.12,-70 127.38,-70 127.38,-38 219.12,-38 219.12,-70"/>
 <text text-anchor="start" x="135.38" y="-58.4" font-family="SourceSans" font-size="8.00">svg::group_element</text>
 <text text-anchor="middle" x="173.25" y="-46.4" font-family="SourceSans" font-size="8.00">::start_element</text>

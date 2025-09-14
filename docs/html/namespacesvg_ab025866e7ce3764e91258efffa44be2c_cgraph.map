@@ -1,62 +1,64 @@
 <map id="svg::make_line_graph_markers" name="svg::make_line_graph_markers">
 <area shape="rect" id="Node000001" title="Return set of paths of marker shapes with text tooltips." alt="" coords="5,501,138,544"/>
 <area shape="rect" id="Node000002" href="$group__elements.html#a519382631540ecedee961bfb53e9ae87" title=" " alt="" coords="200,64,318,107"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,500,80,435,99,341,113,289,132,237,155,186,184,138,206,114,210,118,188,142,160,188,137,239,118,291,104,342,85,435,77,501"/>
-<area shape="rect" id="Node000005" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="201,152,317,195"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="76,500,114,388,145,317,183,248,220,204,224,207,188,251,150,319,119,390,81,502"/>
-<area shape="rect" id="Node000006" href="$group__elements.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="587,341,708,384"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="126,498,185,477,281,450,357,433,433,417,530,393,571,382,572,387,531,399,434,422,358,438,282,455,186,483,128,503"/>
-<area shape="rect" id="Node000007" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="587,659,708,701"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="138,506,222,496,325,494,379,500,432,510,484,528,532,553,551,572,559,594,565,617,580,640,589,647,585,651,576,643,561,619,554,596,547,575,529,557,482,532,431,515,378,505,324,500,223,501,139,512"/>
-<area shape="rect" id="Node000009" href="$group__elements.html#a7995b78d94e1c299065c9dd3569fef7c" title=" " alt="" coords="198,611,320,653"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="109,542,187,590,206,601,203,605,184,594,106,547"/>
-<area shape="rect" id="Node000011" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="580,725,715,752"/>
-<area shape="poly" id="edge31_Node000001_Node000011" title=" " alt="" coords="139,527,368,558,474,577,511,587,532,596,545,610,553,625,558,654,563,683,569,697,580,711,584,715,580,719,576,715,564,700,558,685,553,655,548,627,541,613,529,601,509,592,472,582,367,563,138,533"/>
-<area shape="rect" id="Node000014" href="$structsvg_1_1render__state__base.html#aa16790fbf40ef61f416151c89c267ef3" title=" " alt="" coords="190,677,328,720"/>
-<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="88,543,128,602,156,634,187,663,192,667,189,671,184,667,152,638,124,605,83,546"/>
-<area shape="rect" id="Node000015" href="$namespacesvg.html#a6745faec7f5b60dcb4fc12cbdbf56bd7" title="Center a triangle at this point." alt="" coords="186,349,332,376"/>
-<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="88,499,129,451,184,401,213,381,216,386,187,405,133,455,92,503"/>
-<area shape="rect" id="Node000025" href="$group__elements.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="200,744,318,787"/>
-<area shape="poly" id="edge29_Node000001_Node000025" title=" " alt="" coords="82,544,96,583,118,632,149,684,188,730,190,733,187,737,184,734,144,687,114,635,91,585,77,545"/>
-<area shape="rect" id="Node000026" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="201,811,317,853"/>
-<area shape="poly" id="edge30_Node000001_Node000026" title=" " alt="" coords="79,544,90,595,110,662,142,733,163,767,188,797,190,799,186,803,184,800,158,770,137,736,105,663,84,596,74,545"/>
-<area shape="rect" id="Node000027" href="$group__elements.html#a92c95d94938e6df247213ead1f06ec10" title=" " alt="" coords="199,261,318,304"/>
-<area shape="poly" id="edge32_Node000001_Node000027" title=" " alt="" coords="80,500,121,424,150,378,184,336,209,312,213,316,188,339,154,381,125,426,85,502"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title="Common transforms include rotate(180)" alt="" coords="394,5,516,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,501,80,435,99,342,132,238,155,187,184,140,207,115,211,118,188,143,160,190,137,240,105,343,86,436,77,501"/>
+<area shape="rect" id="Node000006" href="$group__elements.html#a1dd6663d882fb5dd14a47462a77f351b" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="201,153,317,196"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="77,500,115,391,146,321,183,253,222,205,226,209,188,256,151,323,120,393,82,502"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="595,341,716,384"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="126,498,185,477,281,450,357,433,530,393,579,380,580,386,531,399,358,438,282,455,186,483,128,503"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="595,659,716,701"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="138,506,222,496,324,494,379,499,432,510,484,527,532,553,551,573,559,595,565,618,580,641,589,648,585,652,576,644,560,620,554,597,547,576,529,557,482,532,431,515,378,505,324,499,222,501,138,512"/>
+<area shape="rect" id="Node000010" href="$group__elements.html#a7995b78d94e1c299065c9dd3569fef7c" title=" " alt="" coords="198,611,320,653"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="109,542,187,590,206,601,203,605,184,594,106,547"/>
+<area shape="rect" id="Node000012" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="588,725,723,752"/>
+<area shape="poly" id="edge32_Node000001_Node000012" title=" " alt="" coords="139,527,368,558,474,577,511,587,532,596,545,610,553,625,558,654,562,684,569,698,580,711,584,715,581,719,576,715,564,700,557,685,553,655,548,627,541,613,529,601,509,592,472,582,367,563,138,533"/>
+<area shape="rect" id="Node000015" href="$structsvg_1_1render__state__base.html#aa16790fbf40ef61f416151c89c267ef3" title=" " alt="" coords="190,677,328,720"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="88,543,128,602,156,634,187,663,192,667,189,671,184,667,152,638,124,605,83,546"/>
+<area shape="rect" id="Node000016" href="$namespacesvg.html#a6745faec7f5b60dcb4fc12cbdbf56bd7" title="Center a triangle at this point." alt="" coords="186,357,332,384"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="87,499,128,451,155,424,184,400,204,389,206,393,187,405,158,428,132,454,91,502"/>
+<area shape="rect" id="Node000026" href="$group__elements.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="200,744,318,787"/>
+<area shape="poly" id="edge30_Node000001_Node000026" title=" " alt="" coords="82,544,96,583,118,632,149,684,188,730,190,733,187,737,184,734,144,687,114,635,91,585,77,545"/>
+<area shape="rect" id="Node000027" href="$group__elements.html#a1e0ed5e9dfe1244317a87d7e6774348b" title=" " alt="" coords="201,811,317,853"/>
+<area shape="poly" id="edge31_Node000001_Node000027" title=" " alt="" coords="79,544,90,595,110,662,142,733,163,767,188,797,190,799,186,803,184,800,158,770,137,736,105,663,84,596,74,545"/>
+<area shape="rect" id="Node000028" href="$group__elements.html#a92c95d94938e6df247213ead1f06ec10" title=" " alt="" coords="199,267,318,309"/>
+<area shape="poly" id="edge33_Node000001_Node000028" title=" " alt="" coords="81,500,122,427,151,384,184,344,212,317,215,321,188,347,155,387,127,430,86,502"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title=" " alt="" coords="394,5,516,48"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,65,379,47,380,52,319,70"/>
-<area shape="rect" id="Node000004" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="765,148,881,175"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="318,89,717,141,750,146,749,152,716,147,318,95"/>
-<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="317,168,380,165,749,159,749,164,380,171,318,173"/>
-<area shape="rect" id="Node000008" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="778,637,868,664"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="708,667,763,658,764,663,709,672"/>
-<area shape="rect" id="Node000010" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="394,677,516,720"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="321,650,381,671,379,676,319,655"/>
-<area shape="rect" id="Node000012" href="$group__elements.html#ga3d62381f8edcccd3d91f82af55f11274" title=" " alt="" coords="400,744,511,787"/>
-<area shape="poly" id="edge12_Node000009_Node000012" title=" " alt="" coords="317,652,334,663,350,681,358,697,367,714,382,730,388,735,385,739,378,734,362,717,354,700,345,684,330,667,314,656"/>
-<area shape="rect" id="Node000013" href="$group__elements.html#a41dcaa1132c502cb86c01aae1e7b9ff2" title=" " alt="" coords="400,611,511,653"/>
-<area shape="poly" id="edge13_Node000009_Node000013" title=" " alt="" coords="320,629,384,629,384,635,320,635"/>
-<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="517,709,566,719,564,724,515,714"/>
-<area shape="rect" id="Node000016" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="386,224,524,267"/>
-<area shape="poly" id="edge16_Node000015_Node000016" title=" " alt="" coords="281,347,330,314,354,295,379,276,386,272,389,277,381,281,357,299,334,318,284,351"/>
-<area shape="rect" id="Node000018" href="$namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers...." alt="" coords="404,459,506,485"/>
-<area shape="poly" id="edge18_Node000015_Node000018" title=" " alt="" coords="286,374,418,448,415,453,283,379"/>
-<area shape="rect" id="Node000022" href="$namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91" title="Make single path segment." alt="" coords="390,341,520,384"/>
-<area shape="poly" id="edge26_Node000015_Node000022" title=" " alt="" coords="332,360,375,360,375,365,332,365"/>
-<area shape="rect" id="Node000024" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="380,291,530,317"/>
-<area shape="poly" id="edge28_Node000015_Node000024" title=" " alt="" coords="305,346,392,320,394,325,307,351"/>
-<area shape="rect" id="Node000017" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="578,224,717,267"/>
-<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="525,243,563,243,563,248,525,248"/>
-<area shape="poly" id="edge21_Node000018_Node000006" title=" " alt="" coords="494,456,529,438,553,416,577,394,583,390,586,394,580,398,556,420,532,442,497,460"/>
-<area shape="poly" id="edge22_Node000018_Node000007" title=" " alt="" coords="506,484,532,502,546,520,553,537,558,571,562,604,569,621,580,638,589,647,585,651,576,642,564,623,557,605,553,571,548,539,541,523,528,506,503,488"/>
-<area shape="poly" id="edge25_Node000018_Node000008" title=" " alt="" coords="503,484,532,502,549,527,556,551,563,573,580,594,611,609,658,622,763,641,762,646,657,627,609,614,577,598,558,575,551,552,545,529,528,506,501,488"/>
-<area shape="rect" id="Node000019" href="$group__elements.html#a807f3c30f2ace338ad10aaf230b47665" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="587,541,708,584"/>
-<area shape="poly" id="edge19_Node000018_Node000019" title=" " alt="" coords="491,484,532,502,580,527,589,532,586,536,577,532,529,506,489,488"/>
-<area shape="rect" id="Node000020" href="$group__elements.html#gaac30ae99fb1a2542688fa1ffb43cd8e1" title=" " alt="" coords="587,408,708,451"/>
-<area shape="poly" id="edge23_Node000018_Node000020" title=" " alt="" coords="506,458,571,444,572,449,507,463"/>
-<area shape="rect" id="Node000021" href="$group__elements.html#a6dbca7cef2cbc0c10aa44c44ae20b36e" title=" " alt="" coords="587,475,708,517"/>
-<area shape="poly" id="edge24_Node000018_Node000021" title=" " alt="" coords="507,476,572,484,571,489,506,481"/>
-<area shape="poly" id="edge20_Node000019_Node000004" title=" " alt="" coords="702,539,715,528,743,487,766,441,784,394,797,346,813,257,818,190,824,191,818,258,803,347,789,396,771,444,748,489,719,531,706,543"/>
-<area shape="rect" id="Node000023" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="583,291,712,317"/>
-<area shape="poly" id="edge27_Node000022_Node000023" title=" " alt="" coords="519,340,586,320,588,325,521,346"/>
-<area shape="poly" id="edge33_Node000027_Node000004" title=" " alt="" coords="288,259,329,232,379,209,450,194,549,181,749,163,749,169,550,186,451,199,381,215,332,237,290,263"/>
+<area shape="rect" id="Node000005" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="781,148,897,175"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="318,89,503,111,733,141,766,146,765,152,732,147,503,116,318,94"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#ae50258851ebbaf08c7eebc3fbdbf1ac8" title="Common transforms include rotate(180)" alt="" coords="578,5,733,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="516,24,563,24,563,29,516,29"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="317,168,380,165,765,159,765,164,380,171,318,174"/>
+<area shape="rect" id="Node000009" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="794,637,884,664"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="716,668,779,658,780,663,717,673"/>
+<area shape="rect" id="Node000011" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="394,677,516,720"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="321,650,381,671,379,676,319,655"/>
+<area shape="rect" id="Node000013" href="$group__elements.html#ga3d62381f8edcccd3d91f82af55f11274" title=" " alt="" coords="400,744,511,787"/>
+<area shape="poly" id="edge13_Node000010_Node000013" title=" " alt="" coords="317,652,334,663,350,681,358,697,367,714,382,730,388,735,385,739,378,734,362,717,354,700,345,684,330,667,314,656"/>
+<area shape="rect" id="Node000014" href="$group__elements.html#a41dcaa1132c502cb86c01aae1e7b9ff2" title=" " alt="" coords="400,611,511,653"/>
+<area shape="poly" id="edge14_Node000010_Node000014" title=" " alt="" coords="320,629,384,629,384,635,320,635"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="517,708,574,720,572,725,516,713"/>
+<area shape="rect" id="Node000017" href="$namespacesvg.html#ab44508c4aeca591141ebec50145b75cd" title="Angle in degrees." alt="" coords="386,291,524,333"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="305,354,370,335,372,340,307,359"/>
+<area shape="rect" id="Node000019" href="$namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers...." alt="" coords="404,459,506,485"/>
+<area shape="poly" id="edge19_Node000016_Node000019" title=" " alt="" coords="288,382,416,449,413,454,285,387"/>
+<area shape="rect" id="Node000023" href="$namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91" title="Make single path segment." alt="" coords="390,224,520,267"/>
+<area shape="poly" id="edge27_Node000016_Node000023" title=" " alt="" coords="281,354,330,319,354,297,378,277,385,272,388,277,382,281,357,301,334,323,284,359"/>
+<area shape="rect" id="Node000025" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="380,357,530,384"/>
+<area shape="poly" id="edge29_Node000016_Node000025" title=" " alt="" coords="332,368,365,368,365,373,332,373"/>
+<area shape="rect" id="Node000018" href="$namespacesvg.html#aef05ac63d88a6102981d3faf37275297" title="Angle in radians." alt="" coords="586,275,725,317"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="524,304,570,300,571,305,525,309"/>
+<area shape="poly" id="edge22_Node000019_Node000007" title=" " alt="" coords="494,456,529,438,553,416,577,394,584,390,586,394,580,398,556,420,532,442,497,460"/>
+<area shape="poly" id="edge23_Node000019_Node000008" title=" " alt="" coords="506,484,532,502,546,520,553,537,558,571,562,604,568,621,580,638,590,647,586,651,576,642,564,623,557,606,552,572,548,539,541,523,528,506,503,488"/>
+<area shape="poly" id="edge26_Node000019_Node000009" title=" " alt="" coords="503,484,532,502,549,527,556,551,562,573,580,594,614,610,666,623,779,642,778,647,665,628,612,615,577,598,558,576,551,552,544,529,528,506,501,488"/>
+<area shape="rect" id="Node000020" href="$group__elements.html#a807f3c30f2ace338ad10aaf230b47665" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="595,408,716,451"/>
+<area shape="poly" id="edge20_Node000019_Node000020" title=" " alt="" coords="506,459,579,443,580,448,507,464"/>
+<area shape="rect" id="Node000021" href="$group__elements.html#gaac30ae99fb1a2542688fa1ffb43cd8e1" title=" " alt="" coords="595,475,716,517"/>
+<area shape="poly" id="edge24_Node000019_Node000021" title=" " alt="" coords="507,475,580,484,579,490,506,481"/>
+<area shape="rect" id="Node000022" href="$group__elements.html#a6dbca7cef2cbc0c10aa44c44ae20b36e" title=" " alt="" coords="595,541,716,584"/>
+<area shape="poly" id="edge25_Node000019_Node000022" title=" " alt="" coords="491,484,532,502,580,527,590,532,588,537,577,532,529,506,489,488"/>
+<area shape="poly" id="edge21_Node000020_Node000005" title=" " alt="" coords="715,406,731,394,751,371,769,344,798,288,817,233,829,189,834,190,823,235,803,290,774,347,756,374,734,398,718,410"/>
+<area shape="rect" id="Node000024" href="$namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e" title="Formatting character constants." alt="" coords="591,224,720,251"/>
+<area shape="poly" id="edge28_Node000023_Node000024" title=" " alt="" coords="520,240,576,238,576,243,520,245"/>
+<area shape="poly" id="edge34_Node000028_Node000005" title=" " alt="" coords="285,264,327,235,379,209,438,199,541,186,765,165,766,170,541,192,439,204,381,215,330,239,288,269"/>
 </map>

@@ -86,7 +86,7 @@ var sectionId = 'dynsection-18';
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="structsvg_1_1style.html#a67d14f365913125ab597def583559b5c" target="_top" xlink:title="Convenience function to set all colors at once.">
+<g id="a_Node000013"><a xlink:href="structsvg_1_1style.html#a47d5dbf1d4fc430a5248e8925cababcb" target="_top" xlink:title="Convenience function to set all colors at once.">
 <polygon fill="white" stroke="#666666" points="228.5,-154 136.75,-154 136.75,-134 228.5,-134 228.5,-154"/>
 <text text-anchor="middle" x="182.62" y="-142.4" font-family="SourceSans" font-size="8.00">svg::style::set_colors</text>
 </a>

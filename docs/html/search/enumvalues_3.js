@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['cable_0',['cable',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a855923325fa23283dda6da090d10fdf2',1,'svg']]],
-  ['cartography_1',['cartography',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a4b73c04e29ee7f81ee6c7b9712108f53',1,'svg']]],
+  ['cable_0',['cable',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca855923325fa23283dda6da090d10fdf2',1,'svg']]],
+  ['cartography_1',['cartography',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca4b73c04e29ee7f81ee6c7b9712108f53',1,'svg']]],
   ['ccw_2',['ccw',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03ad5e5cf0370b9d10e06756dbb1806e763',1,'svg::constants']]],
   ['center_3',['center',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886aadb115059e28d960fa8badfac5516667',1,'svg::typography']]],
   ['centerweight_4',['centerweight',['../namespacesvg.html#a5fd971345fcede00e46bd1bd8846f12da2c9223a85c6b5fe898679bb68b4f8fca',1,'svg']]],

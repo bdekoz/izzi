@@ -19,10 +19,11 @@ var searchData=
   ['a60_2dsvg_2dradial_2darc_2eh_16',['a60-svg-radial-arc.h',['../a60-svg-radial-arc_8h.html',1,'']]],
   ['a60_2dsvg_2dradial_2dbase_2eh_17',['a60-svg-radial-base.h',['../a60-svg-radial-base_8h.html',1,'']]],
   ['a60_2dsvg_2dradial_2ddirection_2darc_2dglyph_2eh_18',['a60-svg-radial-direction-arc-glyph.h',['../a60-svg-radial-direction-arc-glyph_8h.html',1,'']]],
-  ['a60_2dsvg_2dradial_2dkusama_2eh_19',['a60-svg-radial-kusama.h',['../a60-svg-radial-kusama_8h.html',1,'']]],
-  ['a60_2dsvg_2dradial_2eh_20',['a60-svg-radial.h',['../a60-svg-radial_8h.html',1,'']]],
-  ['a60_2dsvg_2drender_2dbasics_2eh_21',['a60-svg-render-basics.h',['../a60-svg-render-basics_8h.html',1,'']]],
-  ['a60_2dsvg_2drender_2dstate_2eh_22',['a60-svg-render-state.h',['../a60-svg-render-state_8h.html',1,'']]],
-  ['a60_2dsvg_2dsequences_2eh_23',['a60-svg-sequences.h',['../a60-svg-sequences_8h.html',1,'']]],
-  ['a60_2dsvg_2eh_24',['a60-svg.h',['../a60-svg_8h.html',1,'']]]
+  ['a60_2dsvg_2dradial_2dfill_2dhexagon_2eh_19',['a60-svg-radial-fill-hexagon.h',['../a60-svg-radial-fill-hexagon_8h.html',1,'']]],
+  ['a60_2dsvg_2dradial_2dkusama_2eh_20',['a60-svg-radial-kusama.h',['../a60-svg-radial-kusama_8h.html',1,'']]],
+  ['a60_2dsvg_2dradial_2eh_21',['a60-svg-radial.h',['../a60-svg-radial_8h.html',1,'']]],
+  ['a60_2dsvg_2drender_2dbasics_2eh_22',['a60-svg-render-basics.h',['../a60-svg-render-basics_8h.html',1,'']]],
+  ['a60_2dsvg_2drender_2dstate_2eh_23',['a60-svg-render-state.h',['../a60-svg-render-state_8h.html',1,'']]],
+  ['a60_2dsvg_2dsequences_2eh_24',['a60-svg-sequences.h',['../a60-svg-sequences_8h.html',1,'']]],
+  ['a60_2dsvg_2eh_25',['a60-svg.h',['../a60-svg_8h.html',1,'']]]
 ];

@@ -5,7 +5,7 @@ var searchData=
   ['id_5fvalue_5fumap_2',['id_value_umap',['../namespacesvg.html#a11fc43ec6feb4bfda303b00d0e3b7fca',1,'svg']]],
   ['ideographic_3',['ideographic',['../structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9a0de30bfd9180a596227b4e87e94f73a8',1,'svg::typography']]],
   ['iframe_5felement_4',['iframe_element',['../group__elements.html#structsvg_1_1iframe__element',1,'svg']]],
-  ['image_5',['image',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a78805a221a988e79ef3f42d7c5bfd418',1,'svg']]],
+  ['image_5',['image',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca78805a221a988e79ef3f42d7c5bfd418',1,'svg']]],
   ['image_5felement_6',['image_element',['../group__elements.html#structsvg_1_1image__element',1,'svg']]],
   ['in_7',['in',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf',1,'svg']]],
   ['inch_8',['inch',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a7b5459ea3cf12f9c4cfcd23fa54cde07',1,'svg']]],

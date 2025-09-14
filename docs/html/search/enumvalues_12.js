@@ -1,7 +1,7 @@
 var searchData=
 [
   ['salmon_0',['salmon',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a180fd182f9a0742f483619781ccc36c4',1,'svg']]],
-  ['satellite_1',['satellite',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579a53bb79002a8ade0bc488f4469ce3fcd7',1,'svg']]],
+  ['satellite_1',['satellite',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca53bb79002a8ade0bc488f4469ce3fcd7',1,'svg']]],
   ['science_2',['science',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1afb5c7f9bb4b32ce2f3bff4662f1ab27b',1,'svg']]],
   ['seiheki_3',['seiheki',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a2b9d7312f9d6c9eef7dc783e66f11026',1,'svg']]],
   ['seijiiro_4',['seijiiro',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ab79fc1074d3c2858c3794080e16a2369',1,'svg']]],
@@ -15,5 +15,5 @@ var searchData=
   ['start_12',['start',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886aea2b2676c28c0db26d39331a336c6b92',1,'svg::typography::start'],['../structsvg_1_1typography.html#ab466ab5a124304d826cea9c46a46d3b0aea2b2676c28c0db26d39331a336c6b92',1,'svg::typography::start']]],
   ['steelblue_13',['steelblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a53f33c2424d2c6b5652d277d57b2d2c4',1,'svg']]],
   ['stop_14',['stop',['../group__elements.html#a7c19a4d45da1acb512fc1c69048253bfaef399b2d446bb37b7c32ad2cc1b6045b',1,'svg::gradient_element']]],
-  ['svg_15',['svg',['../namespacesvg.html#a5ab95bf715f4785805c5aaaf74d97579aae8eb96df05e788ac39d88948eaf295c',1,'svg']]]
+  ['svg_15',['svg',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bcaae8eb96df05e788ac39d88948eaf295c',1,'svg']]]
 ];

@@ -18,5 +18,6 @@ var searchData=
   ['comma_15',['comma',['../namespacesvg_1_1constants.html#a70757c054f02146f803e0e40071734a9',1,'svg::constants']]],
   ['composite_5fbleed_5fareas_16',['composite_bleed_areas',['../namespacesvg.html#a5b62cd0102843b46d6567fa161b305a3',1,'svg']]],
   ['convert_5f8859_5fto_5futf8_17',['convert_8859_to_utf8',['../namespacesvg.html#aa6054c3bd84135c188814397379edaa2',1,'svg']]],
-  ['convert_5fto_5futf8_18',['convert_to_utf8',['../namespacesvg.html#a9c63493f51e361936d7cb0c33098b494',1,'svg']]]
+  ['convert_5fto_5futf8_18',['convert_to_utf8',['../namespacesvg.html#a9c63493f51e361936d7cb0c33098b494',1,'svg']]],
+  ['ctopspace_19',['ctopspace',['../namespacesvg.html#a764da2292bc40af6c5f68c91f5e761f3',1,'svg']]]
 ];

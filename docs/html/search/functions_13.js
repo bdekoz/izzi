@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['vertical_5fsync_5froll_5fseq_0',['vertical_sync_roll_seq',['../namespacesvg.html#a86609091f372674e0e117d33551cdac8',1,'svg']]],
-  ['vlspace_1',['vlspace',['../namespacesvg.html#a345e95eca7b22692c2432925289ce0df',1,'svg']]],
-  ['vspace_2',['vspace',['../namespacesvg.html#a037447c7655fe0293348691e27cf395f',1,'svg']]]
+  ['union_5fvrange_0',['union_vrange',['../namespacesvg.html#a1920c859565686aa7e28ecf5bf1b7ccc',1,'svg']]],
+  ['use_5fstyle_1',['use_style',['../structsvg_1_1typography.html#ad53dfb81b6702dc2712bc749b0e977ed',1,'svg::typography']]]
 ];

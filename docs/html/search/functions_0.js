@@ -10,7 +10,7 @@ var searchData=
   ['add_5ffilters_7',['add_filters',['../group__elements.html#a950cbe5a602d34d0affc61bb66512c82',1,'svg::svg_element']]],
   ['add_5fraw_8',['add_raw',['../group__elements.html#acafbdd950c6c2639c9d376c3eab696e5',1,'svg::element_base']]],
   ['add_5fstyle_9',['add_style',['../group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99',1,'svg::element_base']]],
-  ['add_5ftext_10',['add_text',['../group__elements.html#a1ed006cabdb9c531c2bd8e27ea9e0966',1,'svg::text_element::add_text()'],['../group__elements.html#a24ac03a5f221e2b4b52d5ec87fbf72f6',1,'svg::text_path_element::add_text()']]],
+  ['add_5ftext_10',['add_text',['../group__elements.html#a24ac03a5f221e2b4b52d5ec87fbf72f6',1,'svg::text_path_element']]],
   ['add_5ftitle_11',['add_title',['../group__elements.html#a7995b78d94e1c299065c9dd3569fef7c',1,'svg::element_base::add_title()'],['../group__elements.html#a26869d2a66e57c0d83f2df21d25cd875',1,'svg::svg_element::add_title()']]],
   ['add_5fto_5fid_5frstate_5fcache_12',['add_to_id_rstate_cache',['../namespacesvg.html#a438c98abba363d5755b9e02acb76b8d0',1,'svg']]],
   ['add_5ftransform_13',['add_transform',['../group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d',1,'svg::element_base']]],
