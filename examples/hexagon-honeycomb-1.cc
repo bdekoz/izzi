@@ -32,6 +32,6 @@ test_hex(std::string ofile)
 
 int main()
 {
-  test_hex("hexagon-honeycomb");
+  test_hex("hexagon-honeycomb-1");
   return 0;
 }
