@@ -1,6 +1,6 @@
 // -*- mode: C++ -*-
 
-// Copyright (C) 2014-2022 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2025 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -80,6 +80,14 @@ constexpr area<> v1080p_v = { 1080, 1920 };
 
 constexpr area<> v4k_h = { 3840, 2160 };
 constexpr area<> v4k_v = { 2160, 3840 };
+
+/// Fine Art max sheet, aka 44 x 30 (1.47:1 ~ 3:2)
+constexpr area<> p44x30_h = { 4224, 2880 };
+constexpr area<> p30x44_v = { 2880, 4224 };
+
+/// Fine Art roll, aka 44 x 22 (2:1)
+constexpr area<> p44x22_h = { 4224, 2112 };
+constexpr area<> p22x44_v = { 2112, 4224 };
 
 
 /// Style constants.
