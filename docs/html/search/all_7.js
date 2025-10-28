@@ -7,7 +7,7 @@ var searchData=
   ['get_5fcircumference_5fpoint_5fr_4',['get_circumference_point_r',['../namespacesvg.html#aef05ac63d88a6102981d3faf37275297',1,'svg']]],
   ['get_5fcolor_5',['get_color',['../structsvg_1_1color__rstate.html#a7023296311a9bcf6197138967fef993b',1,'svg::color_rstate']]],
   ['get_5fdpi_6',['get_dpi',['../namespacesvg.html#ab80d668629ba7db3cf50dc732f0d82b2',1,'svg']]],
-  ['get_5fhoneycomb_5fangles_7',['get_honeycomb_angles',['../namespacesvg.html#a5383a070f60f19654991cdf6de3e5f6c',1,'svg']]],
+  ['get_5fhoneycomb_5fangles_7',['get_honeycomb_angles',['../namespacesvg.html#af7911ee05d0c72fe303f61cca49683ad',1,'svg']]],
   ['get_5fid_5frstate_8',['get_id_rstate',['../namespacesvg.html#af8550758c7d56d550efe4ea83fe21f5b',1,'svg']]],
   ['get_5fid_5frstate_5fcache_9',['get_id_rstate_cache',['../namespacesvg.html#a96dce340dcdb9eed5deb3164b8bb5585',1,'svg']]],
   ['get_5flabel_5fspaces_10',['get_label_spaces',['../namespacesvg.html#a1a3bf270598169ec9826a0e19ea9e758',1,'svg']]],

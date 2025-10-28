@@ -12,8 +12,12 @@ var searchData=
   ['radiate_5fids_5fper_5fvalue_5fon_5farc_9',['radiate_ids_per_value_on_arc',['../namespacesvg.html#ac7e978e6559f45963f7585305a39a35e',1,'svg']]],
   ['radiate_5fline_5fand_5fvalue_10',['radiate_line_and_value',['../namespacesvg.html#abdad6c2ba24dc66439ec827282db4d77',1,'svg']]],
   ['random_5fcolor_11',['random_color',['../namespacesvg.html#aa56d06e856c04fd40424c2c02ee05dfc',1,'svg::random_color(const uint startoffset=0)'],['../namespacesvg.html#a218a128291e7dabce7575fe834d2be26',1,'svg::random_color(const _Spectrm &amp;spectrm, const uint startoffset=0)']]],
-  ['remove_5fmatches_5fid_5fvalue_5fmap_12',['remove_matches_id_value_map',['../namespacesvg.html#a3ce2632db7e0dc229e23fe839a4ca56f',1,'svg']]],
-  ['render_5fmetadata_5faggregate_5fchord_13',['render_metadata_aggregate_chord',['../namespacesvg.html#a8e59007d359abaf8167d995843d2cf0c',1,'svg']]],
-  ['render_5fstate_5fbase_14',['render_state_base',['../structsvg_1_1render__state__base.html#a3410b564d0afbc70c71cd16a2a333680',1,'svg::render_state_base']]],
-  ['rotate_15',['rotate',['../structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0',1,'svg::transform::rotate(int deg)'],['../structsvg_1_1transform.html#a4cac245f50dd098d7afb862503fddd27',1,'svg::transform::rotate(int deg, int x, int y)']]]
+  ['reduce_5fconstrained_5fk_5fmeans_12',['reduce_constrained_k_means',['../classpoint__cluster.html#accf6288c5038a60411e9f1c318df3592',1,'point_cluster']]],
+  ['reduce_5fgrid_13',['reduce_grid',['../classpoint__cluster.html#a3d8f664f29887dd9788e712a2a8c4a61',1,'point_cluster']]],
+  ['reduce_5fhierarchical_5fagglomerative_14',['reduce_hierarchical_agglomerative',['../classpoint__cluster.html#aa3a4c141e84c1ae8f86068d335192681',1,'point_cluster']]],
+  ['reduce_5fvoronoi_15',['reduce_voronoi',['../classpoint__cluster.html#a2784484768b16e7ef43c1120ccab3a25',1,'point_cluster']]],
+  ['remove_5fmatches_5fid_5fvalue_5fmap_16',['remove_matches_id_value_map',['../namespacesvg.html#a3ce2632db7e0dc229e23fe839a4ca56f',1,'svg']]],
+  ['render_5fmetadata_5faggregate_5fchord_17',['render_metadata_aggregate_chord',['../namespacesvg.html#a8e59007d359abaf8167d995843d2cf0c',1,'svg']]],
+  ['render_5fstate_5fbase_18',['render_state_base',['../structsvg_1_1render__state__base.html#a3410b564d0afbc70c71cd16a2a333680',1,'svg::render_state_base']]],
+  ['rotate_19',['rotate',['../structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0',1,'svg::transform::rotate(int deg)'],['../structsvg_1_1transform.html#a4cac245f50dd098d7afb862503fddd27',1,'svg::transform::rotate(int deg, int x, int y)']]]
 ];

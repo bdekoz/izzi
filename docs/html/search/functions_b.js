@@ -40,5 +40,6 @@ var searchData=
   ['matrix_37',['matrix',['../structsvg_1_1transform.html#a357456381323e5c6f936edad79f0827a',1,'svg::transform']]],
   ['max_5fsegment_5fsize_5fn_38',['max_segment_size_n',['../structsvg_1_1area.html#ad9472feaab4b03259f2b6c73b4c86d50',1,'svg::area']]],
   ['max_5fvrange_39',['max_vrange',['../namespacesvg.html#a9316267f4d5030ca298dbbe2d4c55b18',1,'svg::max_vrange(vspace &amp;xpoints, vspace &amp;ypoints, const uint pown)'],['../namespacesvg.html#ac004938f77cd6e1209c04946721f8f43',1,'svg::max_vrange(const vrange &amp;points, const uint pown, const double xscale=1, const double yscale=1)']]],
-  ['mutate_5fcolor_5fqf_40',['mutate_color_qf',['../namespacesvg.html#a729fd8229f85437952bc2607156bb61a',1,'svg']]]
+  ['merge_5fclose_5fsites_40',['merge_close_sites',['../classpoint__cluster.html#add0cd2c5531cc62ceb5fb13b31d7075f',1,'point_cluster']]],
+  ['mutate_5fcolor_5fqf_41',['mutate_color_qf',['../namespacesvg.html#a729fd8229f85437952bc2607156bb61a',1,'svg']]]
 ];
