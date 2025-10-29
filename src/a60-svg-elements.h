@@ -125,7 +125,7 @@ struct element_base
 struct group_element : virtual public element_base
 {
   static string
-  start_group(const string name = "")
+  start_group(const string name)
   {
     string ret("<g");
     if (!name.empty())
@@ -154,7 +154,7 @@ struct group_element : virtual public element_base
   /// SVG into a named group element instead.
   void
   start_element()
-  { _M_sstream << start_group(); }
+  { _M_sstream << start_group(""); }
 
   void
   start_element(string name)
