@@ -29,45 +29,11 @@
 #include <iostream>
 #include <numeric>
 
-struct Point
-{
-  double x, y;
-
-  Point(double x = 0, double y = 0) : x(x), y(y) {}
-
-  double
-  distance(const Point& other) const
-  { return std::hypot(x - other.x, y - other.y); }
-
-  bool
-  operator==(const Point& other) const
-  { return x == other.x && y == other.y; }
-
-  Point
-  operator+(const Point& other) const
-  { return Point(x + other.x, y + other.y); }
-
-  Point
-  operator/(double scalar) const
-  { return Point(x / scalar, y / scalar); }
-};
-
-struct WeightedPoint
-{
-  double x, y;
-  size_t weight;
-
-  WeightedPoint(double x, double y, size_t w) : x(x), y(y), weight(w) {}
-  WeightedPoint(const Point& p, size_t w) : x(p.x), y(p.y), weight(w) {}
-};
-
-using vpoints = std::vector<Point>;
-using vwpoints = std::vector<WeightedPoint>;
 
 /// Voronoi diagram related structures
 struct voronoi_cell
 {
-  Point			site;
+  Point		site;
   vpoints	points;
   vpoints	vertices;
 
@@ -166,53 +132,55 @@ public:
     auto centroids = initialize_centroids();
     std::vector<vpoints> clusters(centroids.size());
 
-    for (size_t iter = 0; iter < max_iterations; ++iter) {
-      // Clear current clusters
-      for (auto& cluster : clusters) {
-	cluster.clear();
-      }
+    for (size_t iter = 0; iter < max_iterations; ++iter)
+      {
+	// Assign points to nearest centroid within cluster radius
+	for (const auto& point : points)
+	  {
+	    double min_dist = std::numeric_limits<double>::max();
+	    int best_cluster = -1;
 
-      // Assign points to nearest centroid within cluster radius
-      for (const auto& point : points) {
-	double min_dist = std::numeric_limits<double>::max();
-	int best_cluster = -1;
+	    for (size_t i = 0; i < centroids.size(); ++i)
+	      {
+		double dist = point.distance(centroids[i]);
+		if (dist <= radius && dist < min_dist)
+		  {
+		    min_dist = dist;
+		    best_cluster = static_cast<int>(i);
+		  }
+	      }
 
-	for (size_t i = 0; i < centroids.size(); ++i) {
-	  double dist = point.distance(centroids[i]);
-	  if (dist <= radius && dist < min_dist) {
-	    min_dist = dist;
-	    best_cluster = static_cast<int>(i);
+	    if (best_cluster != -1)
+	      clusters[best_cluster].push_back(point);
 	  }
-	}
-
-	if (best_cluster != -1) {
-	  clusters[best_cluster].push_back(point);
-	}
-      }
 
       // Update centroids
       vpoints new_centroids;
-      for (size_t i = 0; i < clusters.size(); ++i) {
-	if (!clusters[i].empty()) {
-	  new_centroids.push_back(calculate_centroid(clusters[i]));
-	}
+      for (size_t i = 0; i < clusters.size(); ++i)
+	{
+	  if (!clusters[i].empty())
+	    new_centroids.push_back(calculate_centroid(clusters[i]));
       }
 
       // Check for convergence
-      if (new_centroids.size() == centroids.size()) {
-	bool converged = true;
-	for (size_t i = 0; i < centroids.size(); ++i) {
-	  if (centroids[i].distance(new_centroids[i]) > 1e-6) {
-	    converged = false;
+      if (new_centroids.size() == centroids.size())
+	{
+	  bool converged = true;
+	  for (size_t i = 0; i < centroids.size(); ++i)
+	    {
+	      if (centroids[i].distance(new_centroids[i]) > 1e-6)
+		{
+		  converged = false;
+		  break;
+		}
+	    }
+	  if (converged)
 	    break;
-	  }
 	}
-	if (converged) break;
-      }
 
       centroids = std::move(new_centroids);
       clusters.resize(centroids.size());
-    }
+      }
 
     return weigh_cluster(clusters);
   }
