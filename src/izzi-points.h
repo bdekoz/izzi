@@ -172,10 +172,11 @@ detect_collision(const point_2t& p1, const int r1,
 
 struct Point
 {
-  double x, y;
-  std::string name;
+  double	x, y;
+  std::string	name;
 
-  Point(double x = 0, double y = 0) : x(x), y(y) { }
+  Point(double x = 0, double y = 0, const std::string s = "")
+  : x(x), y(y), name(s) { }
 
   double
   distance(const Point& other) const
@@ -196,11 +197,11 @@ struct Point
 
 struct WeightedPoint
 {
-  double x, y;
-  size_t weight;
+  Point		pt;
+  size_t	weight;
 
-  WeightedPoint(double x, double y, size_t w) : x(x), y(y), weight(w) {}
-  WeightedPoint(const Point& p, size_t w) : x(p.x), y(p.y), weight(w) {}
+  WeightedPoint(const Point& p, size_t w)
+  : pt(p.x, p.y, p.name), weight(w) { }
 };
 
 using vpoints = std::vector<Point>;
@@ -209,40 +210,28 @@ using vwpoints = std::vector<WeightedPoint>;
 
 namespace svg {
 
-/// Convert point_2t to Point.
-
-vpoints
-vrange_to_points(const vrange& inpoints)
-{
-  std::vector<Point> outpoints;
-  outpoints.reserve(inpoints.size());
-
-  auto lconv = [](const point_2t& p){ auto [ x, y ] = p; return Point(x, y); };
-  std::ranges::transform(inpoints, std::back_inserter(outpoints), lconv);
-  return outpoints;
-}
-
 /// Convert point_2ts to Point.
 vpoints
 vrangenamed_to_points(const vrangenamed& inpoints)
 {
-  std::vector<Point> outpoints;
+  vpoints outpoints;
   outpoints.reserve(inpoints.size());
 
   auto lconv = [](const point_2ts& p)
-  { auto [ s, pt ] = p; auto [x, y] = pt; return Point(x, y); };
+  { auto [ s, pt ] = p; auto [x, y] = pt; return Point(x, y, s); };
   std::ranges::transform(inpoints, std::back_inserter(outpoints), lconv);
   return outpoints;
 }
 
 /// Convert Point to point_2t
-vrange
-points_to_vrange(const vpoints& inpoints)
+vrangenamed
+points_to_vrangenamed(const vpoints& inpoints)
 {
-  vrange outpoints;
+  using std::make_tuple;
+  vrangenamed outpoints;
   outpoints.reserve(inpoints.size());
 
-  auto lconv = [](const Point& p){ return std::make_tuple(p.x, p.y); };
+  auto lconv = [](const Point& p){auto pt = make_tuple(p.x, p.y); return make_tuple(p.name, pt); };
   std::ranges::transform(inpoints, std::back_inserter(outpoints), lconv);
   return outpoints;
 }

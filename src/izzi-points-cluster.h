@@ -77,7 +77,7 @@ public:
 	if (!cell_points.empty())
 	  {
 	    auto centroid = calculate_centroid(cell_points);
-	    result.emplace_back(centroid.x, centroid.y, cell_points.size());
+	    result.emplace_back(centroid, cell_points.size());
 	  }
       }
 
@@ -301,13 +301,17 @@ private:
     Point cp(0,0);
     if (!cluster.empty())
       {
-	double sum_x = 0, sum_y = 0;
+	double sum_x = 0;
+	double sum_y = 0;
+	std::string name;
 	for (const auto& point : cluster)
 	  {
 	    sum_x += point.x;
 	    sum_y += point.y;
+	    if (!point.name.empty())
+	      name = point.name;
 	  }
-	cp = Point(sum_x / cluster.size(), sum_y / cluster.size());
+	cp = Point(sum_x / cluster.size(), sum_y / cluster.size(), name);
       }
     return cp;
   }
@@ -319,7 +323,7 @@ private:
     for (const auto& cluster : clusters) {
       if (!cluster.empty()) {
 	auto centroid = calculate_centroid(cluster);
-	result.emplace_back(centroid.x, centroid.y, cluster.size());
+	result.emplace_back(centroid, cluster.size());
       }
     }
     return result;
@@ -443,8 +447,9 @@ printClusters(const vwpoints& clusters)
   for (size_t i = 0; i < clusters.size(); ++i)
     {
       const auto& wp = clusters[i];
-      std::cout << "Cluster " << i + 1 << ": (" << wp.x << ", " << wp.y
-		<< ") weight: " << wp.weight << "\n";
+      std::cout << "Cluster " << i + 1 << ": " << wp.pt.x << "," << wp.pt.y
+		<< " weight: " << wp.weight << " name: " << wp.pt.name
+		<< "\n";
     }
 
   auto lklstr = [](size_t sum, const WeightedPoint& wp)
