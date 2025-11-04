@@ -94,12 +94,12 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7850748ef72bdb03ec47970bee0f0b3b" id="r_a7850748ef72bdb03ec47970bee0f0b3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7850748ef72bdb03ec47970bee0f0b3b">Point</a> (double <a class="el" href="#ab99c56589bc8ad5fa5071387110a5bc7">x</a>=0, double <a class="el" href="#afa38be143ae800e6ad69ce8ed4df62d8">y</a>=0)</td></tr>
-<tr class="separator:a7850748ef72bdb03ec47970bee0f0b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2d3335fcfc180842162c70339b1644e" id="r_ab2d3335fcfc180842162c70339b1644e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2d3335fcfc180842162c70339b1644e">Point</a> (double <a class="el" href="#ab99c56589bc8ad5fa5071387110a5bc7">x</a>=0, double <a class="el" href="#afa38be143ae800e6ad69ce8ed4df62d8">y</a>=0, const std::string s=&quot;&quot;)</td></tr>
+<tr class="separator:ab2d3335fcfc180842162c70339b1644e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55f046664f9be012b8b89800c9d1a836" id="r_a55f046664f9be012b8b89800c9d1a836"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55f046664f9be012b8b89800c9d1a836">distance</a> (const <a class="el" href="structPoint.html">Point</a> &amp;other) const</td></tr>
 <tr class="separator:a55f046664f9be012b8b89800c9d1a836"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c29cd36d1ce448b8e1e56a204fe2b95" id="r_a9c29cd36d1ce448b8e1e56a204fe2b95"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c29cd36d1ce448b8e1e56a204fe2b95">operator==</a> (const <a class="el" href="structPoint.html">Point</a> &amp;other) const</td></tr>
@@ -115,13 +115,15 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab99c56589bc8ad5fa5071387110a5bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa38be143ae800e6ad69ce8ed4df62d8" id="r_afa38be143ae800e6ad69ce8ed4df62d8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa38be143ae800e6ad69ce8ed4df62d8">y</a></td></tr>
 <tr class="separator:afa38be143ae800e6ad69ce8ed4df62d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af52ec9c5dc533d46c1a67b4bbdaeae23" id="r_af52ec9c5dc533d46c1a67b4bbdaeae23"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af52ec9c5dc533d46c1a67b4bbdaeae23">name</a></td></tr>
+<tr class="separator:af52ec9c5dc533d46c1a67b4bbdaeae23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="izzi-points-cluster_8h_source.html#l00032">32</a> of file <a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="izzi-points_8h_source.html#l00173">173</a> of file <a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7850748ef72bdb03ec47970bee0f0b3b" name="a7850748ef72bdb03ec47970bee0f0b3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7850748ef72bdb03ec47970bee0f0b3b">&#9670;&#160;</a></span>Point()</h2>
+<a id="ab2d3335fcfc180842162c70339b1644e" name="ab2d3335fcfc180842162c70339b1644e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2d3335fcfc180842162c70339b1644e">&#9670;&#160;</a></span>Point()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,7 +139,12 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>y</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>y</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string</td>          <td class="paramname"><span class="paramname"><em>s</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -147,7 +154,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="izzi-points-cluster_8h_source.html#l00036">36</a> of file <a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="izzi-points_8h_source.html#l00178">178</a> of file <a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>.</p>
 
 </div>
 </div>
@@ -175,7 +182,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="izzi-points-cluster_8h_source.html#l00039">39</a> of file <a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="izzi-points_8h_source.html#l00182">182</a> of file <a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -209,7 +216,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="izzi-points-cluster_8h_source.html#l00043">43</a> of file <a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="izzi-points_8h_source.html#l00186">186</a> of file <a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>.</p>
 <div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -243,7 +250,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="izzi-points-cluster_8h_source.html#l00047">47</a> of file <a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="izzi-points_8h_source.html#l00190">190</a> of file <a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>.</p>
 <div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -277,7 +284,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="izzi-points-cluster_8h_source.html#l00051">51</a> of file <a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="izzi-points_8h_source.html#l00194">194</a> of file <a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>.</p>
 <div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -301,7 +308,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="izzi-points-cluster_8h_source.html#l00034">34</a> of file <a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="izzi-points_8h_source.html#l00175">175</a> of file <a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>.</p>
 
 </div>
 </div>
@@ -317,12 +324,28 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="izzi-points-cluster_8h_source.html#l00034">34</a> of file <a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="izzi-points_8h_source.html#l00175">175</a> of file <a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>.</p>
+
+</div>
+</div>
+<a id="af52ec9c5dc533d46c1a67b4bbdaeae23" name="af52ec9c5dc533d46c1a67b4bbdaeae23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af52ec9c5dc533d46c1a67b4bbdaeae23">&#9670;&#160;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Point::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="izzi-points_8h_source.html#l00176">176</a> of file <a class="el" href="izzi-points_8h_source.html">izzi-points.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/home/bkoz/src/izzi/src/<a class="el" href="izzi-points-cluster_8h_source.html">izzi-points-cluster.h</a></li>
+<li>/home/bkoz/src/izzi/src/<a class="el" href="izzi-points_8h_source.html">izzi-points.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

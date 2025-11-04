@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../structsvg_1_1id__rstate.html#abaf75e62e9a1166c6855d8af32fe51a9',1,'svg::id_rstate']]],
+  ['name_0',['name',['../structsvg_1_1id__rstate.html#abaf75e62e9a1166c6855d8af32fe51a9',1,'svg::id_rstate::name'],['../structPoint.html#af52ec9c5dc533d46c1a67b4bbdaeae23',1,'Point::name']]],
   ['narrow_5fvspace_1',['narrow_vspace',['../namespacesvg.html#a146854def101fda6cf807910ae725526',1,'svg']]],
   ['navajowhite_2',['navajowhite',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a4f66b601b5bad722855550fb6d0175d3',1,'svg']]],
   ['navy_3',['navy',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1af3311d3d14c8437553bf3e3f90920736',1,'svg']]],

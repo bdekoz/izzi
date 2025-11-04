@@ -25,6 +25,7 @@ var searchData=
   ['ivory_22',['ivory',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ac55c68625ca1da0e1d4a922fc8cb373e',1,'svg']]],
   ['izzi_2djson_2dbasics_2eh_23',['izzi-json-basics.h',['../izzi-json-basics_8h.html',1,'']]],
   ['izzi_2dpoints_2dcluster_2eh_24',['izzi-points-cluster.h',['../izzi-points-cluster_8h.html',1,'']]],
-  ['izzi_5fhue_5fpalette_25',['izzi_hue_palette',['../namespacesvg.html#ade9b17ed678790ae8f018b798160b377',1,'svg']]],
-  ['izzi_5fpalette_26',['izzi_palette',['../namespacesvg.html#aaea796845322874cb98039b1301c39d6',1,'svg']]]
+  ['izzi_2dpoints_2eh_25',['izzi-points.h',['../izzi-points_8h.html',1,'']]],
+  ['izzi_5fhue_5fpalette_26',['izzi_hue_palette',['../namespacesvg.html#ade9b17ed678790ae8f018b798160b377',1,'svg']]],
+  ['izzi_5fpalette_27',['izzi_palette',['../namespacesvg.html#aaea796845322874cb98039b1301c39d6',1,'svg']]]
 ];

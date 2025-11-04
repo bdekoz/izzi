@@ -16,12 +16,14 @@ var searchData=
   ['violet_13',['violet',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad1d813a48d99f0e102f7d0a1b9068001',1,'svg']]],
   ['visible_5fmode_14',['visible_mode',['../structsvg_1_1render__state__base.html#a7036f53a7ab20ebf3e7b32d1890d50f8',1,'svg::render_state_base']]],
   ['voronoi_5fcell_15',['voronoi_cell',['../structvoronoi__cell.html',1,'voronoi_cell'],['../structvoronoi__cell.html#a85ce468975f674fa3689e08514424418',1,'voronoi_cell::voronoi_cell()']]],
-  ['vpoints_16',['vpoints',['../izzi-points-cluster_8h.html#a5968768c0527041a8ed0343b2c259870',1,'izzi-points-cluster.h']]],
+  ['vpoints_16',['vpoints',['../izzi-points_8h.html#a5968768c0527041a8ed0343b2c259870',1,'izzi-points.h']]],
   ['vrange_17',['vrange',['../namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d',1,'svg']]],
   ['vrangen_18',['vrangen',['../namespacesvg.html#a5fcb2bb9c8ea4b7b02e92318ba10b222',1,'svg']]],
-  ['vspace_19',['vspace',['../namespacesvg.html#aa3a977b3ba28e5647518914fdf2ea62e',1,'svg']]],
-  ['vstrings_20',['vstrings',['../namespacesvg.html#aabe2c7e16151253fd5bbbc2a3ddbd170',1,'svg']]],
-  ['vvranges_21',['vvranges',['../namespacesvg.html#a7c943f2610ce0566f8cc86ffd76c2739',1,'svg']]],
-  ['vvstrings_22',['vvstrings',['../namespacesvg.html#a674485c274059679fc6a9c65feb627b9',1,'svg']]],
-  ['vwpoints_23',['vwpoints',['../izzi-points-cluster_8h.html#ac2d89f889b9e719eb68ccee30a98ff1a',1,'izzi-points-cluster.h']]]
+  ['vrangenamed_19',['vrangenamed',['../namespacesvg.html#a1e82db749f392a37115a3abbeef06af1',1,'svg']]],
+  ['vrangenamed_5fto_5fpoints_20',['vrangenamed_to_points',['../namespacesvg.html#ac505dbc9ae310b0b9375806841564cd3',1,'svg']]],
+  ['vspace_21',['vspace',['../namespacesvg.html#ad1570006d7042fe3750d9272e8e3a9cd',1,'svg']]],
+  ['vstrings_22',['vstrings',['../namespacesvg.html#aabe2c7e16151253fd5bbbc2a3ddbd170',1,'svg']]],
+  ['vvranges_23',['vvranges',['../namespacesvg.html#a7c943f2610ce0566f8cc86ffd76c2739',1,'svg']]],
+  ['vvstrings_24',['vvstrings',['../namespacesvg.html#a674485c274059679fc6a9c65feb627b9',1,'svg']]],
+  ['vwpoints_25',['vwpoints',['../izzi-points_8h.html#ac2d89f889b9e719eb68ccee30a98ff1a',1,'izzi-points.h']]]
 ];
