@@ -296,10 +296,10 @@ struct filter_element : virtual public element_base
 {
   enum class type
     {
-     feBlend,
-     feImage,
-     feOffset,	  // dx="0", dy="0"
-     feGaussianBlur,
+     feBlend, ///< Blend
+     feImage, ///< Image
+     feOffset, ///< Offset, dx="0", dy="0"
+     feGaussianBlur, ///< Gaussian Blur
      feColorMatrix,
      feComponentTransfer
     };
@@ -379,10 +379,10 @@ struct gradient_element : virtual public defs_element
 {
   enum class type
     {
-      linearGradient,
-      meshgradient,
-      radialGradient,
-      stop
+      linearGradient, ///< Linear
+      meshgradient, ///< Mesh
+      radialGradient, ///< Radial
+      stop ///< stop, last
     };
 
   void
@@ -1419,7 +1419,13 @@ struct script_element : virtual public element_base
   /// Where is the script element placed? On/within the element
   /// itself, or at the document (global)? Neither (none),
   /// alongside/same level (parent)?
-  enum class scope { none, document, parent, element };
+  enum class scope
+    {
+      none, ///< Script scope removed
+      document, ///< Scripts scoped to toplevel document
+      parent, ///< Scripts scoped to parent
+      element ///< Scripts scoped to element
+    };
 
   void
   start_element(const string& id)
