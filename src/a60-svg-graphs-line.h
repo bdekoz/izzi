@@ -27,6 +27,7 @@
 namespace svg {
 
 /// Polyline/line options.
+///
 /// 1: use one line with css dasharray and markers mid, end points
 /// 2: use two lines: one with css dasharray and no markerspoints, two
 ///    with explicit marker paths and added text tooltips
@@ -92,6 +93,8 @@ struct graph_rstate : public render_state_base
   /// Line/Outline/Markers/Tooltip styles
   style			lstyle;		/// line style
   stroke_style		sstyle;		/// marker stroke style, if any.
+
+  /// Image Tooltip
   area_type		tooltip_area;	/// chart_line_style_3 tooltip size
   string		tooltip_id;	/// chart_line_style_3 toolip id prefix
   string		tooltip_images;	/// chart_line_style 3 set of image elements
@@ -424,6 +427,7 @@ make_line_graph_annotations(const vrange& points,
   auto minx = 1;
   auto miny = 0;
 #endif
+  const bool xaxiszerop = minx == 0;
 
   const double xrange(maxx - minx);
   const double gxscale(gwidth / xrange);
@@ -466,7 +470,9 @@ make_line_graph_annotations(const vrange& points,
       lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
       for (double x = minx; x <= maxx; x += xdelta)
 	{
-	  const double xto = chartxo + (x * gxscale);
+	  // Start leftmost, regardless of starting at 1 or 0.
+	  double xoff = xaxiszerop ? x * gxscale : (x - 1) * gxscale;
+	  const double xto = chartxo + xoff;
 
 	  ostringstream oss;
 #if MOZ
