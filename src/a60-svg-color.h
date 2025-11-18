@@ -42,16 +42,18 @@ enum class color
 {
   none,
 
-  // 13 tints / shades
+  // 18 tints / shades
   white,
   black,
   gray10,
   gray20,
   gray25,		// gainsboro
   gray30,
+  gray33,
   gray40,
   gray50,
   gray60,
+  gray66,
   gray75,		// slategray
   gray70,
   gray80,
@@ -235,10 +237,12 @@ to_string(const color e)
       enum_map[color::gray80] = "rgb(50, 50, 50)";
       enum_map[color::gray75] = "rgb(64, 64, 64)";
       enum_map[color::gray70] = "rgb(77, 77, 77)";
+      enum_map[color::gray66] = "rgb(87, 87, 87)";
       enum_map[color::gray60] = "rgb(100, 100, 100)";
       enum_map[color::gray50] = "rgb(128, 128, 128)";
       enum_map[color::gray40] = "rgb(150, 150, 150)";
       enum_map[color::gray30] = "rgb(180, 180, 180)";
+      enum_map[color::gray33] = "rgb(171, 171, 171)";
       enum_map[color::gray25] = "rgb(191, 191, 191)";
       enum_map[color::gray20] = "rgb(200, 200, 200)";
       enum_map[color::gray10] = "rgb(230, 230, 230)";

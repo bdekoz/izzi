@@ -37,12 +37,13 @@ using palette_qf = palette<color_qf, N>;
 /// Default colors for izzi.
 static const palette_qi<color_max_size - 4> izzi_palette =
 {
- // black to gray to white in 10% and 25% increments
+ // black to white in 10%, 25%, 33% increments
  color::white,
  color::black,
  color::gray10, color::gray20, color::gray25, color::gray30,
- color::gray40, color::gray50, color::gray60, color::gray70,
- color::gray75, color::gray80, color::gray90,
+ color::gray33, color::gray40, color::gray50, color::gray60,
+ color::gray66, color::gray70, color::gray75, color::gray80,
+ color::gray90,
 
  color::wcag_lgray, color::wcag_gray, color::wcag_dgray,
 
@@ -105,7 +106,7 @@ static const palette_qi<color_max_size - 4> izzi_palette =
 };
 
 /// Only color no black and white or gray
-static const palette_qi<color_max_size - 20> izzi_hue_palette =
+static const palette_qi<color_max_size - 22> izzi_hue_palette =
 {
  // yellow
  color::hellayellow, color::navajowhite,
