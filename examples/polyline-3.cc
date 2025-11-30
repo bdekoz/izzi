@@ -47,7 +47,7 @@ test_polyline()
   const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
 
   // Line 1
-  auto xo = 0;
+  auto xo = linelen;
   auto yo = linelen;
 
   vrange points1 = make_points_at({xo, yo});
