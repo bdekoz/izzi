@@ -38,6 +38,7 @@ constexpr colorband cband_brown = std::make_tuple(color::duboisbrown5, 7);
 constexpr colorband cband_r = std::make_tuple(color::red, 17);
 constexpr colorband cband_o = std::make_tuple(color::orange, 10);
 constexpr colorband cband_y = std::make_tuple(color::hellayellow, 10);
+constexpr colorband cband_yo = std::make_tuple(color::hellayellow, 20);
 constexpr colorband cband_g = std::make_tuple(color::green, 21);
 constexpr colorband cband_b = std::make_tuple(color::blue, 34);
 constexpr colorband cband_p = std::make_tuple(color::purple, 33);
@@ -165,7 +166,7 @@ next_in_color_band(const colorband& cb, const ushort bandn = 400)
   // Generate bands.
   static color_qis gband_bw = make_color_band_v1(cband_bw, bandn,
 						 svg::izzi_palette);
-  static color_qis gband_y = make_color_band(cband_y, bandn);
+  static color_qis gband_y = make_color_band(cband_yo, bandn);
   static color_qis gband_r = make_color_band(cband_r, bandn);
   static color_qis gband_g = make_color_band(cband_g, bandn);
   static color_qis gband_b = make_color_band(cband_b, bandn);
