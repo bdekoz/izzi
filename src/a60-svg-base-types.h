@@ -170,19 +170,41 @@ struct style
 /// NB: https://yuanchuan.dev/fun-with-stroke-dasharray
 struct stroke_style
 {
+  /// Marker shapes.
   /// marker-start, marker-mid, marker-end
   string		markerspoints;
 
+  /// Line dash vs. space configuration.
+  /// Options are single value, like 2, meaning 2 sized dash 2 sized space.
+  /// Or, double values with size of dash followed by size of space.
+  /// Or, more elaborate patterns of on, off
   /// https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dasharray
   string		dasharray;
 
+  /// Starting offset for line dashes.
   /// https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-dashoffset
   string		dashoffset;
 
+  /// Shape of end of line segments in line dashes.
+  /// Values are: butt, round, square.
   /// https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-linecap
-  string		linecap; // butt, round, square
+  string		linecap;
 
   string		path_length;
+
+  /// Create dash array variations with exponentially-increasing spaces.
+  /// dasharray 1 = 2 == 2 2
+  /// dasharray 2 = 2 4
+  /// dasharray 3 = 2 6
+  /// @param lsize is style._M_stroke_size
+  static string
+  create_dasharray_n(const uint lsize, const int n)
+  {
+    using std::to_string;
+    const uint da_sz = lsize + 1;
+    const string da = to_string(da_sz) + k::space + to_string(da_sz * n);
+    return da;
+  }
 };
 
 
