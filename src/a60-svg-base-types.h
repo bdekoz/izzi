@@ -193,16 +193,21 @@ struct stroke_style
   string		path_length;
 
   /// Create dash array variations with exponentially-increasing spaces.
-  /// dasharray 1 = 2 == 2 2
-  /// dasharray 2 = 2 4
-  /// dasharray 3 = 2 6
+  /// dasharray 1 = solid line
+  /// dasharray 2 = 1 == 2 2
+  /// dasharray 3 = 2 == 2 4
+  /// dasharray 4 = 3 == 2 6
   /// @param lsize is style._M_stroke_size
   static string
-  create_dasharray_n(const uint lsize, const int n)
+  create_dasharray_n(const uint lsize, const uint n)
   {
     using std::to_string;
-    const uint da_sz = lsize + 1;
-    const string da = to_string(da_sz) + k::space + to_string(da_sz * n);
+    string da;
+    if (n > 1)
+      {
+	const uint da_sz = lsize + 1;
+	da = to_string(da_sz) + k::space + to_string(da_sz * (n - 1));
+      }
     return da;
   }
 };
