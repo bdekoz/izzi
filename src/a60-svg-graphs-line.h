@@ -288,7 +288,12 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       style styl = gstate.lstyle;
       styl._M_fill_opacity = 1;
       if (gstate.is_visible(select::echo))
-	styl._M_fill_color = color::white;
+	{
+	  styl._M_fill_color = color::white;
+	  styl._M_stroke_size = 0.5;
+	}
+      else
+	styl._M_stroke_opacity = 0;
 
 
       // Circle Centered.
@@ -556,7 +561,8 @@ make_line_graph_annotations(const vrange& points,
 /// @param metadata = image filename prefix for tooltips if present
 svg_element
 make_line_graph(const vrange& points, const graph_rstate& gstate,
-		const point_2t xrange, const point_2t yrange)
+		const point_2t xrange, const point_2t yrange,
+		const double marker_radius = 3.0)
 {
   using namespace std;
   const vrange cpoints = transform_to_graph_points(points, gstate,
@@ -588,7 +594,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 
 	  // Markers + text tooltips.
 	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
-	  string markers = make_line_graph_markers(points, cpoints, gstate, 3);
+	  string markers = make_line_graph_markers(points, cpoints, gstate, marker_radius);
 	  lgraph.add_raw(markers);
 	  lgraph.add_raw(group_element::finish_group());
 	}
