@@ -374,15 +374,12 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 /// @param yscale = scale y axis by this ammount
 /// @param typo = typography to use for labels
 svg_element
-make_line_graph_annotations(const vrange& points,
-			    const graph_rstate& gstate,
+make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
+			    const point_2t xrange, const point_2t yrange,
 			    const double xscale = 1, const double yscale = 1,
 			    const typography typo = k::apercu_typo)
 {
   using namespace std;
-  svg_element lanno(gstate.title, "line graph annotation",
-		    gstate.graph_area, false);
-
 
   // Locate graph area on plate area.
   auto [ pwidth, pheight ] = gstate.graph_area;
@@ -396,6 +393,9 @@ make_line_graph_annotations(const vrange& points,
   typography anntypo = typo;
   anntypo._M_style = k::wcagg_style;
   anntypo._M_size = graph_rstate::th1sz;
+
+  svg_element lanno(gstate.title, "line graph annotation",
+		    gstate.graph_area, false);
 
   // Axes and Labels
   if (gstate.is_visible(select::axis))
@@ -426,31 +426,27 @@ make_line_graph_annotations(const vrange& points,
   anntypo._M_baseline = typography::baseline::central;
 
   // Separate tic label values for each (x, y) axis, find ranges for each.
+  const vrange cpoints = transform_to_graph_points(points, gstate,
+						   xrange, yrange);
   auto [ maxx, maxy ] = max_vrange(points, gstate.xticdigits, xscale, yscale);
-#if MOZ
-  auto minx = 0;
-  auto miny = 0;
-#else
-  auto minx = 1;
-  auto miny = 0;
-#endif
-  const bool xaxiszerop = minx == 0;
+  auto [ xmin, xmax ] = xrange;
+  auto [ ymin, ymax ] = yrange;
 
-  const double xrange(maxx - minx);
-  const double gxscale(gwidth / xrange);
-  const double yrange(maxy - miny);
-  const double gyscale(gheight / yrange);
+  const double xrangec(maxx - xmin);
+  const double gxscale(gwidth / xrangec);
+  const double yrangec(maxy - ymin);
+  const double gyscale(gheight / yrangec);
 
   // Derive the number of tick marks.
 
   // Use a multiple of 5 to make natural counting easier.
   // Start with an assumption of 20 tic marks for the x axis.
 #if MOZ
-  double xtickn(xrange * 2); // .5 sec
+  double xtickn(xrangec * 2); // .5 sec
   if (xtickn < 10)
     xtickn = 10;
   if (xtickn > 26)
-    xtickn = xrange;
+    xtickn = xrangec;
 #else
   double xtickn = 53;
 #endif
@@ -458,16 +454,16 @@ make_line_graph_annotations(const vrange& points,
   // X axis is seconds, xtickn minimum delta is 0.1 sec.
 #if MOZ
   double xticmindelta = 0.1;
-  double xdelta = std::max(xrange / xtickn, xticmindelta);
+  double xdelta = std::max(xrangec / xtickn, xticmindelta);
   // Round up to significant digits, so if xdelta is 0.18 round to 0.2.
   xdelta = std::round(xdelta * gstate.xticdigits * 10) / (gstate.xticdigits * 10);
 #else
   double xticmindelta = 1;
-  double xdelta = std::max(xrange / xtickn, xticmindelta);
+  double xdelta = std::max(xrangec / xtickn, xticmindelta);
 #endif
 
   // Y axis is simpler, 0, 10, 20, ..., 80, 90, 100 in percent.
-  const double ydelta = yrange / gstate.yticdigits;
+  const double ydelta = yrangec / gstate.yticdigits;
 
   // Generate tic marks
   const double ygo = gstate.ymargin + gheight + graph_rstate::th1sz;
@@ -475,11 +471,10 @@ make_line_graph_annotations(const vrange& points,
     {
       // X tic labels
       lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
-      for (double x = minx; x <= maxx; x += xdelta)
+      for (uint i = 0; i < points.size(); i++)
 	{
-	  // Start leftmost, regardless of starting at 1 or 0.
-	  double xoff = xaxiszerop ? x * gxscale : (x - 1) * gxscale;
-	  const double xto = chartxo + xoff;
+	  const double xto = std::get<0>(cpoints[i]);
+	  const double x = std::get<0>(points[i]);
 
 	  ostringstream oss;
 #if MOZ
@@ -498,7 +493,7 @@ make_line_graph_annotations(const vrange& points,
       const double yticspacer = graph_rstate::th1sz * 2;
       const double xgol = gstate.xmargin - yticspacer;			// left
       const double xgor = gstate.xmargin + gwidth + yticspacer;         // right
-      const double starty = miny != 0 ? miny : miny + ydelta; // skip zero label
+      const double starty = ymin != 0 ? ymin : ymin + ydelta; // skip zero label
       for (double y = starty; y < maxy + ydelta; y += ydelta)
 	{
 	  const double yto = chartyo - (y * gyscale);
@@ -520,7 +515,7 @@ make_line_graph_annotations(const vrange& points,
 
       anntypo._M_size = 3;
       //anntypo._M_style.set_colors(color::gray20);
-      for (double y = miny + ydelta; y < maxy + ydelta; y += ydelta)
+      for (double y = ymin + ydelta; y < maxy + ydelta; y += ydelta)
 	{
 	  // Base line layer.
 	  const double yto = chartyo - (y * gyscale);
@@ -532,7 +527,7 @@ make_line_graph_annotations(const vrange& points,
 	  if (gstate.is_visible(select::alt))
 	    {
 	      // Skip first and last as covered by either Y-axes tic marks.
-	      for (double x = minx + xdelta; x < maxx - xdelta; x += xdelta)
+	      for (double x = xmin + xdelta; x < maxx - xdelta; x += xdelta)
 		{
 		  const double xto = chartxo + (x * gxscale);
 		  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
