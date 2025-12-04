@@ -186,7 +186,7 @@ struct stroke_style
   string		dashoffset;
 
   /// Shape of end of line segments in line dashes.
-  /// Values are: butt, round, square.
+  /// SVG Values are: butt, round, square.
   /// https://developer.mozilla.org/en-US/docs/Web/CSS/stroke-linecap
   string		linecap;
 

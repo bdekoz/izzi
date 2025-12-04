@@ -67,11 +67,6 @@ struct graph_rstate : public render_state_base
 
   // visible_mode (render_state_base)
 
-  /// Key data: title, area, mode
-  string		title;		/// graph title
-  area_type		graph_area;	/// graph area
-  graph_mode		mode;		/// chart_line_style_n to use
-
   /// Margins/Spaces
   static constexpr uint xmargin		= 100;
   static constexpr uint ymargin		= 100;
@@ -83,6 +78,11 @@ struct graph_rstate : public render_state_base
   static constexpr uint th1sz		= 12; // h1
   static constexpr uint tpsz		= 10; // text, paragraph,
   static constexpr uint tticsz		= 7; // tic text
+
+  /// Key data: title, area, mode
+  string		title;		/// graph title
+  area_type		graph_area;	/// graph area
+  graph_mode		mode;		/// chart_line_style_n to use
 
   /// Labels, tic units.
   string		xlabel;		// x axis label
@@ -149,7 +149,9 @@ find_visual_change_points(const vrange& points)
 }
 
 
-/// Tramsform change points to points where the x-axis (time) matches a value in onlypoints.
+/// Tramsform change points to points where the x-axis (time) matches
+/// a value in onlypoints.
+///
 /// @param points already simplified change points
 vrange
 find_tooltip_points(const vrange& points, const vspace& onlypoints)
