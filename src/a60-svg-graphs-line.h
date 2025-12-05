@@ -65,19 +65,29 @@ struct graph_rstate : public render_state_base
 {
   using area_type = area<space_type>;
 
-  // visible_mode (render_state_base)
-
+#if 0
+  /// 900 x 600
   /// Margins/Spaces
   static constexpr uint xmargin		= 100;
   static constexpr uint ymargin		= 100;
-  static constexpr uint xticdigits	= 1; // fp sig digits xaxis
-  static constexpr uint yticdigits	= 10; // number y tic labelsf
 
-  /// Type sizes.
+  /// Type sizes
   static constexpr uint ttitlesz	= 16; // title large bold
   static constexpr uint th1sz		= 12; // h1
   static constexpr uint tpsz		= 10; // text, paragraph,
   static constexpr uint tticsz		= 7; // tic text
+#else
+  /// 1920 x 1080
+  /// Margins/Spaces
+  static constexpr uint xmargin		= 200;
+  static constexpr uint ymargin		= 200;
+
+  /// Type sizes
+  static constexpr uint ttitlesz	= 26; // title large bold
+  static constexpr uint th1sz		= 18; // h1
+  static constexpr uint tpsz		= 10; // text, paragraph, marker
+  static constexpr uint tticsz		= 14; // tic text
+#endif
 
   /// Key data: title, area, mode
   string		title;		/// graph title
@@ -85,6 +95,8 @@ struct graph_rstate : public render_state_base
   graph_mode		mode;		/// chart_line_style_n to use
 
   /// Labels, tic units.
+  static constexpr uint xticdigits	= 1; // fp sig digits xaxis
+  static constexpr uint yticdigits	= 10; // number y tic labelsf
   string		xlabel;		// x axis label
   string		ylabel;
   string		xticu;		// x axis tick mark units postfix
@@ -389,53 +401,21 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
   const double chartxo = gstate.xmargin;
   const double chartxe = pwidth - gstate.xmargin;
 
-  // Base typo for annotations.
-  typography anntypo = typo;
-  anntypo._M_style = k::wcagg_style;
-  anntypo._M_size = graph_rstate::th1sz;
-
-  svg_element lanno(gstate.title, "line graph annotation",
-		    gstate.graph_area, false);
-
-  // Axes and Labels
-  if (gstate.is_visible(select::axis))
-    {
-      lanno.add_raw(group_element::start_group("axes-" + gstate.title));
-
-      // Add axis labels.
-      point_2t xlabelp = make_tuple(pwidth / 2, chartyo + (gstate.ymargin / 2));
-      styled_text(lanno, gstate.xlabel, xlabelp, anntypo);
-
-      point_2t ylabelp = make_tuple(chartxo / 2, pheight / 2);
-      styled_text(lanno, gstate.ylabel, ylabelp, anntypo);
-
-      // Add axis lines.
-      line_element lx = make_line({chartxo, chartyo}, {chartxe, chartyo},
-				  gstate.lstyle);
-      line_element ly = make_line({chartxo, chartyo}, {chartxo, gstate.ymargin},
-				  gstate.lstyle);
-      lanno.add_element(lx);
-      lanno.add_element(ly);
-
-      lanno.add_raw(group_element::finish_group());
-    }
-
-  // Base typo for tic labels.
-  // NB: Assume pointsx/pointsy are monotonically increasing.
-  anntypo._M_size = graph_rstate::tticsz;
-  anntypo._M_baseline = typography::baseline::central;
+  auto [ xmin, xmax ] = xrange;
+  auto [ ymin, ymax ] = yrange;
 
   // Separate tic label values for each (x, y) axis, find ranges for each.
   const vrange cpoints = transform_to_graph_points(points, gstate,
 						   xrange, yrange);
   auto [ maxx, maxy ] = max_vrange(points, gstate.xticdigits, xscale, yscale);
-  auto [ xmin, xmax ] = xrange;
-  auto [ ymin, ymax ] = yrange;
 
   const double xrangec(maxx - xmin);
   const double gxscale(gwidth / xrangec);
   const double yrangec(maxy - ymin);
   const double gyscale(gheight / yrangec);
+
+  // Y axis is simpler, 0, 10, 20, ..., 80, 90, 100 in percent.
+  const double ydelta = yrangec / gstate.yticdigits;
 
   // Derive the number of tick marks.
 
@@ -462,45 +442,62 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
   double xdelta = std::max(xrangec / xtickn, xticmindelta);
 #endif
 
-  // Y axis is simpler, 0, 10, 20, ..., 80, 90, 100 in percent.
-  const double ydelta = yrangec / gstate.yticdigits;
+  // Base typo for annotations.
+  typography anntypo = typo;
+  anntypo._M_style = k::wcagg_style;
 
-  // Generate tic marks
-  const double ygo = gstate.ymargin + gheight + graph_rstate::th1sz;
-  if (gstate.is_visible(select::ticks))
+  svg_element lanno(gstate.title, "line graph annotation",
+		    gstate.graph_area, false);
+
+  // Chart title.
+  if (gstate.is_visible(select::title))
     {
-      // X tic labels
-      lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
-      for (uint i = 0; i < points.size(); i++)
-	{
-	  const double xto = std::get<0>(cpoints[i]);
-	  const double x = std::get<0>(points[i]);
+      anntypo._M_size = graph_rstate::ttitlesz;
+      anntypo._M_w = typography::weight::bold;
 
-	  ostringstream oss;
-#if MOZ
-	  oss << fixed << setprecision(gstate.xticdigits) << x;
-#else
-	  oss << std::trunc(x);
-#endif
-	  const string sxui = oss.str() + gstate.xticu;
-	  styled_text(lanno, sxui, {xto, ygo}, anntypo);
-	}
-      lanno.add_raw(group_element::finish_group());
+      const double lyo = graph_rstate::ymargin / 2;
+      const double loffset = double(anntypo._M_size);
+      point_2t xlabelp = make_tuple(pwidth / 2, lyo + loffset);
+      styled_text(lanno, gstate.title, xlabelp, anntypo);
+    }
 
-      // Y tic labels
-      // Positions for left and right y-axis tic labels.
-      lanno.add_raw(group_element::start_group("tic-y-" + gstate.title));
-      const double yticspacer = graph_rstate::th1sz * 2;
-      const double xgol = gstate.xmargin - yticspacer;			// left
-      const double xgor = gstate.xmargin + gwidth + yticspacer;         // right
-      const double starty = ymin != 0 ? ymin : ymin + ydelta; // skip zero label
-      for (double y = starty; y < maxy + ydelta; y += ydelta)
+  // Axes Lines and Tic Labels
+  if (gstate.is_visible(select::axis))
+    {
+      lanno.add_raw(group_element::start_group("axes-" + gstate.title));
+
+      anntypo._M_size = graph_rstate::th1sz;
+      anntypo._M_w = typography::weight::medium;
+
+      // Add axis labels.
+      const double loffset = double(anntypo._M_size) * 1.5;
+
+      const double lyo = pheight - graph_rstate::ymargin / 2;
+      point_2t xlabelp = make_tuple(pwidth / 2, lyo + loffset);
+      string xlabel = gstate.xlabel;
+      std::transform(xlabel.begin(), xlabel.end(), xlabel.begin(),
+		     [](unsigned char c){ return std::toupper(c); });
+      styled_text(lanno, xlabel, xlabelp, anntypo);
+
+      const double lxo = graph_rstate::xmargin / 2;
+      point_2t ylabelp = make_tuple(lxo - loffset, pheight / 2);
+      string ylabel = gstate.ylabel;
+      std::transform(ylabel.begin(), ylabel.end(), ylabel.begin(),
+		     [](unsigned char c){ return std::toupper(c); });
+      styled_text_r(lanno, ylabel, ylabelp, anntypo, -90, ylabelp);
+
+      // Add axis lines.
+      if (gstate.is_visible(select::vector))
 	{
-	  const double yto = chartyo - (y * gyscale);
-	  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
-	  styled_text(lanno, syui, {xgol, yto}, anntypo);
-	  styled_text(lanno, syui, {xgor, yto}, anntypo);
+	  line_element lx = make_line({chartxo, chartyo}, {chartxe, chartyo},
+				      gstate.lstyle);
+	  line_element ly = make_line({chartxo, chartyo}, {chartxo, gstate.ymargin},
+				      gstate.lstyle);
+	  lanno.add_element(lx);
+	  lanno.add_element(ly);
 	}
+
+      anntypo._M_w = typography::weight::normal;
       lanno.add_raw(group_element::finish_group());
     }
 
@@ -514,7 +511,8 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
       hlstyl._M_stroke_color = color::gray10;
 
       anntypo._M_size = 3;
-      //anntypo._M_style.set_colors(color::gray20);
+      anntypo._M_w = typography::weight::normal;
+
       for (double y = ymin + ydelta; y < maxy + ydelta; y += ydelta)
 	{
 	  // Base line layer.
@@ -536,6 +534,54 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
 	    }
 	}
 
+      lanno.add_raw(group_element::finish_group());
+    }
+
+  // Generate tic marks
+  const double ygo = gstate.ymargin + gheight + graph_rstate::th1sz;
+  if (gstate.is_visible(select::ticks))
+    {
+      // Base typo for tic labels.
+      // NB: Assume pointsx/pointsy are monotonically increasing.
+      anntypo._M_size = graph_rstate::tticsz;
+      anntypo._M_baseline = typography::baseline::central;
+
+      // X tic labels
+      lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
+      for (uint i = 0; i < points.size(); i++)
+	{
+	  const double xto = std::get<0>(cpoints[i]);
+	  const double x = std::get<0>(points[i]);
+
+	  // Make sure data point range within domain min and max.
+	  if (x <= xmax)
+	    {
+	      ostringstream oss;
+#if MOZ
+	      oss << fixed << setprecision(gstate.xticdigits) << x;
+#else
+	      oss << std::trunc(x);
+#endif
+	      const string sxui = oss.str() + gstate.xticu;
+	      styled_text(lanno, sxui, {xto, ygo}, anntypo);
+	    }
+	}
+      lanno.add_raw(group_element::finish_group());
+
+      // Y tic labels
+      // Positions for left and right y-axis tic labels.
+      lanno.add_raw(group_element::start_group("tic-y-" + gstate.title));
+      const double yticspacer = graph_rstate::th1sz * 2;
+      const double xgol = gstate.xmargin - yticspacer;			// left
+      const double xgor = gstate.xmargin + gwidth + yticspacer;         // right
+      const double starty = ymin != 0 ? ymin : ymin + ydelta; // skip zero label
+      for (double y = starty; y < maxy + ydelta; y += ydelta)
+	{
+	  const double yto = chartyo - (y * gyscale);
+	  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
+	  styled_text(lanno, syui, {xgol, yto}, anntypo);
+	  styled_text(lanno, syui, {xgor, yto}, anntypo);
+	}
       lanno.add_raw(group_element::finish_group());
     }
 
