@@ -265,6 +265,7 @@ make_line_graph_images(const vrange& points, const graph_rstate& gstate,
 
 
 /// Return set of paths of marker shapes with text tooltips.
+/// NB: For graph_mode >= chart_line_style_2
 string
 make_line_graph_markers(const vrange& points, const vrange& cpoints,
 			const graph_rstate& gstate, const double radius,
@@ -294,8 +295,10 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 
       const string& linecap = gstate.sstyle.linecap;
       const bool roundp = linecap == "round" || linecap == "circle";
-      const bool squarep = linecap == "square";
       const bool trianglep = linecap == "triangle";
+      const bool squarep = linecap == "square";
+      //const bool hexap = linecap == "hexagon";
+
 
       // Markers default to closed paths that are filled with no stroke.
       // Setting visible to vector | echo induces outline behavior.

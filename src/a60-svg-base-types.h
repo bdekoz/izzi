@@ -166,12 +166,41 @@ struct style
 };
 
 
+/// Marker shape.
+enum class marker_shape
+  {
+    round,		///< Round
+    triangle,		///< Triangle
+    square,		///< Square
+    octagon		///< Octagon
+  };
+
+const string
+to_string(const marker_shape e)
+{
+  using enum_map_type = std::map<marker_shape, std::string>;
+
+  static enum_map_type enum_map;
+  if (enum_map.empty())
+    {
+      enum_map[marker_shape::round] = "round";
+      enum_map[marker_shape::triangle] = "triangle";
+      enum_map[marker_shape::square] = "square";
+      enum_map[marker_shape::octagon] = "octagon";
+
+    }
+  return enum_map[e];
+}
+
+
 /// Additional path/line/polyline stroke styles.
 /// NB: https://yuanchuan.dev/fun-with-stroke-dasharray
 struct stroke_style
 {
   /// Marker shapes.
+  /// For graph_mode 1, this means the SVG equivalent of CSS elements:
   /// marker-start, marker-mid, marker-end
+  /// For graph_mode 2, this means the marker_shape of the mark
   string		markerspoints;
 
   /// Line dash vs. space configuration.
