@@ -921,6 +921,108 @@ make_text_honeycomb(const point_2t origin, const double r,
 }
 
 
+/// Make octahedron shape (8) in 2D simulated 3D
+std::string
+make_octahedron_3d(int centerX, int centerY, int size)
+{
+  std::stringstream oss;
+
+  // Octahedron vertices (6 vertices)
+  double vertices[6][3] = {
+    {1, 0, 0}, {-1, 0, 0},  // Right/Left
+    {0, 1, 0}, {0, -1, 0},  // Top/Bottom
+    {0, 0, 1}, {0, 0, -1}   // Front/Back
+  };
+
+  // Project vertices
+  int projX[6], projY[6];
+  for (int i = 0; i < 6; i++)
+    {
+      projX[i] = centerX + size * (vertices[i][0] * 0.707 - vertices[i][2] * 0.707);
+      projY[i] = centerY + size * (vertices[i][0] * 0.408 + vertices[i][1] * 0.816 + vertices[i][2] * 0.408);
+  }
+
+  // Octahedron edges (12 edges)
+  int edges[12][2] =
+    {
+      {0,2}, {0,3}, {0,4}, {0,5},  // From right vertex
+      {1,2}, {1,3}, {1,4}, {1,5},  // From left vertex
+      {2,4}, {2,5}, {3,4}, {3,5}   // Top/bottom connections
+    };
+
+  for (int i = 0; i < 12; i++)
+    {
+      int v1 = edges[i][0], v2 = edges[i][1];
+      oss << "<line x1='" << projX[v1] << "' y1='" << projY[v1]
+	  << "' x2='" << projX[v2] << "' y2='" << projY[v2]
+	  << "' stroke='green' stroke-width='2'/>";
+    }
+
+  return oss.str();
+}
+
+
+/// Make icosahedron shape (20) in 2D simulated 3D
+std::string
+make_icosahedron_3d(int centerX, int centerY, int size)
+{
+  std::stringstream oss;
+
+  // Icosahedron vertices (12 vertices)
+  double phi = (1 + sqrt(5)) / 2; // Golden ratio
+  double vertices[12][3] =
+    {
+      {0, 1, phi}, {0, 1, -phi}, {0, -1, phi}, {0, -1, -phi},
+      {1, phi, 0}, {1, -phi, 0}, {-1, phi, 0}, {-1, -phi, 0},
+      {phi, 0, 1}, {phi, 0, -1}, {-phi, 0, 1}, {-phi, 0, -1}
+    };
+
+  // Normalize and scale vertices
+  double normalized[12][3];
+  for (int i = 0; i < 12; i++)
+    {
+      double length = sqrt(vertices[i][0]*vertices[i][0] +
+			   vertices[i][1]*vertices[i][1] +
+			   vertices[i][2]*vertices[i][2]);
+      normalized[i][0] = vertices[i][0] / length;
+      normalized[i][1] = vertices[i][1] / length;
+      normalized[i][2] = vertices[i][2] / length;
+    }
+
+  // Project vertices
+  int projX[12], projY[12];
+  for (int i = 0; i < 12; i++)
+    {
+      projX[i] = centerX + size * (normalized[i][0] * 0.707 - normalized[i][2] * 0.707);
+      projY[i] = centerY + size * (normalized[i][0] * 0.408 + normalized[i][1] * 0.816 + normalized[i][2] * 0.408);
+    }
+
+  // Icosahedron edges (30 edges)
+  int edges[30][2] =
+    {
+      {0,2}, {0,4}, {0,6}, {0,8}, {0,10},    // From vertex 0
+      {1,3}, {1,4}, {1,6}, {1,9}, {1,11},    // From vertex 1
+      {2,5}, {2,7}, {2,8}, {2,10},           // From vertex 2
+      {3,5}, {3,7}, {3,9}, {3,11},           // From vertex 3
+      {4,6}, {4,8}, {4,9},                   // From vertex 4
+      {5,7}, {5,8}, {5,9},                   // From vertex 5
+      {6,10}, {6,11},                        // From vertex 6
+      {7,10}, {7,11},                        // From vertex 7
+      {8,9}, {10,11}                         // Remaining edges
+    };
+
+  for (int i = 0; i < 30; i++)
+    {
+      int v1 = edges[i][0], v2 = edges[i][1];
+      oss << "<line x1='" << projX[v1] << "' y1='" << projY[v1]
+	  << "' x2='" << projX[v2] << "' y2='" << projY[v2]
+	  << "' stroke='orange' stroke-width='2'/>";
+    }
+
+  return oss.str();
+}
+
+
 /// Make grid palette for display.
 /// NB @param klrs can be color_qis or array/palette.
 svg_element

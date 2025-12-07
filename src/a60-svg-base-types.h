@@ -172,7 +172,9 @@ enum class marker_shape
     round,		///< Round
     triangle,		///< Triangle
     square,		///< Square
-    octagon		///< Octagon
+    hexagon,		///< Hexagon
+    octahedron,		///< Octahedron (8) 3D
+    icosahedron		///< Icosahedron (20) 3D
   };
 
 const string
@@ -186,7 +188,8 @@ to_string(const marker_shape e)
       enum_map[marker_shape::round] = "round";
       enum_map[marker_shape::triangle] = "triangle";
       enum_map[marker_shape::square] = "square";
-      enum_map[marker_shape::octagon] = "octagon";
+      enum_map[marker_shape::octahedron] = "octahedron";
+      enum_map[marker_shape::icosahedron] = "icosahedron";
 
     }
   return enum_map[e];
