@@ -54,7 +54,8 @@ test_chart()
   obj.add_element(chart1);
 
   gs1.visible_mode = select::ticks;
-  svg_element anno = make_line_graph_annotations(vr1, gs1, 1000);
+  svg_element anno = make_line_graph_annotations(vr1, gs1, rangex, rangey,
+						 1000);
   obj.add_element(anno);
 }
 

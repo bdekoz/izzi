@@ -62,15 +62,16 @@ test_chart()
   vrange vr2 = deserialize_json_array_object_field_n(jfile, achrome, f1, f2);
   vrange vunion = union_vrange(vr1, vr2);
 
-  // Draw axis, ticks, etc.
-  // NB scale x axis from milliseconds in json to seconds in display.
-  svg_element anno = make_line_graph_annotations(vunion, gsa, 1000);
-  obj.add_element(anno);
-
   // Find combined ranges, assume zero start.
   auto [ maxx, maxy ] = max_vrange(vunion, graph_rstate::xticdigits, 1000);
   point_2t rangex = make_tuple(0, maxx * 1000);
   point_2t rangey = make_tuple(0, maxy);
+
+  // Draw axis, ticks, etc.
+  // NB scale x axis from milliseconds in json to seconds in display.
+  svg_element anno = make_line_graph_annotations(vunion, gsa, rangex, rangey,
+						 1000);
+  obj.add_element(anno);
 
   // Draw graph(s).
   svg_element chart1 = make_line_graph(vr1, gs1, rangex, rangey);
