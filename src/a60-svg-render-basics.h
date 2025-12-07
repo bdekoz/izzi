@@ -923,23 +923,25 @@ make_text_honeycomb(const point_2t origin, const double r,
 
 /// Make octahedron shape (8) in 2D simulated 3D
 std::string
-make_octahedron_3d(int centerX, int centerY, int size)
+make_octahedron_3d(const point_2t origin, const style& s, const double radius)
 {
-  std::stringstream oss;
+  auto [ centerX, centerY ] = origin;
 
   // Octahedron vertices (6 vertices)
-  double vertices[6][3] = {
-    {1, 0, 0}, {-1, 0, 0},  // Right/Left
-    {0, 1, 0}, {0, -1, 0},  // Top/Bottom
-    {0, 0, 1}, {0, 0, -1}   // Front/Back
-  };
+  double vertices[6][3] =
+    {
+      {1, 0, 0}, {-1, 0, 0},  // Right/Left
+      {0, 1, 0}, {0, -1, 0},  // Top/Bottom
+      {0, 0, 1}, {0, 0, -1}   // Front/Back
+    };
 
   // Project vertices
-  int projX[6], projY[6];
+  int projX[6];
+  int projY[6];
   for (int i = 0; i < 6; i++)
     {
-      projX[i] = centerX + size * (vertices[i][0] * 0.707 - vertices[i][2] * 0.707);
-      projY[i] = centerY + size * (vertices[i][0] * 0.408 + vertices[i][1] * 0.816 + vertices[i][2] * 0.408);
+      projX[i] = centerX + radius * (vertices[i][0] * 0.707 - vertices[i][2] * 0.707);
+      projY[i] = centerY + radius * (vertices[i][0] * 0.408 + vertices[i][1] * 0.816 + vertices[i][2] * 0.408);
   }
 
   // Octahedron edges (12 edges)
@@ -950,12 +952,15 @@ make_octahedron_3d(int centerX, int centerY, int size)
       {2,4}, {2,5}, {3,4}, {3,5}   // Top/bottom connections
     };
 
+ std::stringstream oss;
   for (int i = 0; i < 12; i++)
     {
-      int v1 = edges[i][0], v2 = edges[i][1];
-      oss << "<line x1='" << projX[v1] << "' y1='" << projY[v1]
-	  << "' x2='" << projX[v2] << "' y2='" << projY[v2]
-	  << "' stroke='green' stroke-width='2'/>";
+      int v1 = edges[i][0];
+      int v2 = edges[i][1];
+      point_2t p1 = { projX[v1], projY[v1] };
+      point_2t p2 = { projX[v2], projY[v2] };
+      line_element l = make_line(p1, p2, s);
+      oss << l.str();
     }
 
   return oss.str();
@@ -963,10 +968,11 @@ make_octahedron_3d(int centerX, int centerY, int size)
 
 
 /// Make icosahedron shape (20) in 2D simulated 3D
+//make_icosahedron_3d(int centerX, int centerY, int size)
 std::string
-make_icosahedron_3d(int centerX, int centerY, int size)
+make_icosahedron_3d(const point_2t origin, const style& s, const double radius)
 {
-  std::stringstream oss;
+  auto [ centerX, centerY ] = origin;
 
   // Icosahedron vertices (12 vertices)
   double phi = (1 + sqrt(5)) / 2; // Golden ratio
@@ -993,8 +999,8 @@ make_icosahedron_3d(int centerX, int centerY, int size)
   int projX[12], projY[12];
   for (int i = 0; i < 12; i++)
     {
-      projX[i] = centerX + size * (normalized[i][0] * 0.707 - normalized[i][2] * 0.707);
-      projY[i] = centerY + size * (normalized[i][0] * 0.408 + normalized[i][1] * 0.816 + normalized[i][2] * 0.408);
+      projX[i] = centerX + radius * (normalized[i][0] * 0.707 - normalized[i][2] * 0.707);
+      projY[i] = centerY + radius * (normalized[i][0] * 0.408 + normalized[i][1] * 0.816 + normalized[i][2] * 0.408);
     }
 
   // Icosahedron edges (30 edges)
@@ -1011,12 +1017,14 @@ make_icosahedron_3d(int centerX, int centerY, int size)
       {8,9}, {10,11}                         // Remaining edges
     };
 
+  std::stringstream oss;
   for (int i = 0; i < 30; i++)
     {
-      int v1 = edges[i][0], v2 = edges[i][1];
-      oss << "<line x1='" << projX[v1] << "' y1='" << projY[v1]
-	  << "' x2='" << projX[v2] << "' y2='" << projY[v2]
-	  << "' stroke='orange' stroke-width='2'/>";
+      int v1 = edges[i][0];
+      int v2 = edges[i][1];
+      point_2t p1 = { projX[v1], projY[v1] };
+      point_2t p2 = { projX[v2], projY[v2] };
+      line_element l = make_line(p1, p2, s);
     }
 
   return oss.str();

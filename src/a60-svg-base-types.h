@@ -169,7 +169,7 @@ struct style
 /// Marker shape.
 enum class marker_shape
   {
-    round,		///< Round
+    round = 0,		///< Round
     triangle,		///< Triangle
     square,		///< Square
     hexagon,		///< Hexagon
@@ -188,6 +188,7 @@ to_string(const marker_shape e)
       enum_map[marker_shape::round] = "round";
       enum_map[marker_shape::triangle] = "triangle";
       enum_map[marker_shape::square] = "square";
+      enum_map[marker_shape::hexagon] = "hexagon";
       enum_map[marker_shape::octahedron] = "octahedron";
       enum_map[marker_shape::icosahedron] = "icosahedron";
 

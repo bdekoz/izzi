@@ -287,18 +287,11 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       string tipstr(gstate.title);
       tipstr += k::newline;
       tipstr += std::to_string(static_cast<uint>(vy));
-      tipstr += '%';
+      tipstr += gstate.yticu;
       tipstr += k::comma;
       tipstr += k::space;
       tipstr += std::to_string(static_cast<uint>(vx));
-      tipstr += "ms";
-
-      const string& linecap = gstate.sstyle.linecap;
-      const bool roundp = linecap == "round" || linecap == "circle";
-      const bool trianglep = linecap == "triangle";
-      const bool squarep = linecap == "square";
-      //const bool hexap = linecap == "hexagon";
-
+      tipstr += gstate.xticu;
 
       // Markers default to closed paths that are filled with no stroke.
       // Setting visible to vector | echo induces outline behavior.
@@ -312,10 +305,12 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       else
 	styl._M_stroke_opacity = 0;
 
+      const string& linecap = gstate.sstyle.linecap;
+      string pointstr;
 
       // Circle Centered.
       // svg::circle_element c = make_circle(cpoints[i], gstate.lstyle, r);
-      if (roundp)
+      if (linecap == "round" || linecap == "circle")
 	{
 	  circle_element c;
 	  circle_element::data dc = { cx, cy, radius };
@@ -327,12 +322,28 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 	  c.add_raw(element_base::finish_tag_hard);
 	  c.add_title(tipstr);
 	  c.add_raw(string { circle_element::pair_finish_tag } + k::newline);
-	  ret += c.str();
+	  pointstr = c.str();
+	}
+
+      // Triangle Centered.
+      if (linecap == "triangle")
+	{
+	  string xattr;
+	  if (!imgidbase.empty())
+	    xattr = script_element::tooltip_attribute(imgid);
+
+	  // Visual weight of triangle is smaller, so enlarge slightly.
+	  const double tradius = radius * 1.3;
+	  path_element p = make_path_triangle(cpoints[i], styl, tradius, 120,
+					      false, xattr);
+	  p.add_title(tipstr);
+	  p.add_raw(string { path_element::pair_finish_tag } + k::newline);
+	  pointstr = p.str();
 	}
 
       // Square Centered.
       // svg::rect_element r = (cpoints[i], gstate.lstyle, {2 * r, 2 * r});
-      if (squarep)
+      if (linecap == "square")
 	{
 	  rect_element r;
 	  rect_element::data dr = { cx - radius, cy - radius,
@@ -345,33 +356,40 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 	  r.add_raw(element_base::finish_tag_hard);
 	  r.add_title(tipstr);
 	  r.add_raw(string { rect_element::pair_finish_tag } + k::newline);
-	  ret += r.str();
+	  pointstr = r.str();
 	}
 
-      // Triangle Centered.
-      if (trianglep)
+      // Hexagon
+      if (linecap == "hexagon")
 	{
-	  string xattr;
-	  if (!imgidbase.empty())
-	    xattr = script_element::tooltip_attribute(imgid);
-
-	  // Visual weight of triangle is smaller, so enlarge slightly.
-	  const double tradius = radius * 1.3;
-	  path_element p = make_path_triangle(cpoints[i], styl, tradius, 120,
-					      false, xattr);
-	  p.add_title(tipstr);
-	  p.add_raw(string { path_element::pair_finish_tag } + k::newline);
-	  ret += p.str();
+	  path_element p = make_path_polygon(cpoints[i], styl, radius, 6);
+	  pointstr = p.str();
 	}
 
-      // Throw if marker style not supported.
-      if (!roundp && !squarep && !trianglep)
+      // Octahedron
+      if (linecap == "octahedron")
+	{
+	  pointstr = make_octahedron_3d(cpoints[i], styl, radius);
+	}
+
+      // icosahedron
+      if (linecap == "icosahedron")
+	{
+	  pointstr = make_icosahedron_3d(cpoints[i], styl, radius);
+	}
+
+      // Notify if marker style not supported.
+      if (!pointstr.empty())
+	ret += pointstr;
+      else
 	{
 	  string m("make_line_graph_markers:: ");
-	  m += "linecap value invalid or missing, currently set to: ";
+	  m += "linecap (";
 	  m += linecap;
+	  m += ")";
+	  m += "is invalid or missing, skipping...";
 	  m += k::newline;
-	  throw std::runtime_error(m);
+	  std::clog << m << std::endl;
 	}
     }
   return ret;
