@@ -22,5 +22,6 @@ var searchData=
   ['constrain_5fvoronoi_5fclusters_19',['constrain_voronoi_clusters',['../classpoint__cluster.html#a8b681b7eab0b49923d8138782f2d707a',1,'point_cluster']]],
   ['convert_5f8859_5fto_5futf8_20',['convert_8859_to_utf8',['../namespacesvg.html#aa6054c3bd84135c188814397379edaa2',1,'svg']]],
   ['convert_5fto_5futf8_21',['convert_to_utf8',['../namespacesvg.html#a9c63493f51e361936d7cb0c33098b494',1,'svg']]],
-  ['ctopspace_22',['ctopspace',['../namespacesvg.html#a764da2292bc40af6c5f68c91f5e761f3',1,'svg']]]
+  ['create_5fdasharray_5fn_22',['create_dasharray_n',['../structsvg_1_1stroke__style.html#a6a380dc809d171d9854650b3664d845f',1,'svg::stroke_style']]],
+  ['ctopspace_23',['ctopspace',['../namespacesvg.html#a764da2292bc40af6c5f68c91f5e761f3',1,'svg']]]
 ];

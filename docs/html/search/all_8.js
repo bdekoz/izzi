@@ -7,9 +7,10 @@ var searchData=
   ['hanging_4',['hanging',['../structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9a9e549320baf837f4c97466096acc4967',1,'svg::typography']]],
   ['hdenom_5',['hdenom',['../namespacesvg.html#a50cee409872b198b159fcc57222d143b',1,'svg']]],
   ['hellayellow_6',['hellayellow',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3dea492cb4b3329d253abfc905e0dea1',1,'svg']]],
-  ['hiwamoegi_7',['hiwamoegi',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a1b4c8c7339f8315e49def56da9dae0ce',1,'svg']]],
-  ['hotpink_8',['hotpink',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a2ed02e792f8ecd95b6570b687274afeb',1,'svg']]],
-  ['hyperl_9',['hyperl',['../namespacesvg_1_1constants.html#a903dcdd6975fe00befaabbc84487cd6d',1,'svg::constants']]],
-  ['hyperl_5ftypo_10',['hyperl_typo',['../namespacesvg_1_1constants.html#aae4848d32c97705a695bf4f8a9f0ebde',1,'svg::constants']]],
-  ['hyphen_11',['hyphen',['../namespacesvg_1_1constants.html#ae42b583ceed2552c466993683f819ef2',1,'svg::constants']]]
+  ['hexagon_7',['hexagon',['../namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaafcadedce5939367d6558b793607399d8',1,'svg']]],
+  ['hiwamoegi_8',['hiwamoegi',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a1b4c8c7339f8315e49def56da9dae0ce',1,'svg']]],
+  ['hotpink_9',['hotpink',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a2ed02e792f8ecd95b6570b687274afeb',1,'svg']]],
+  ['hyperl_10',['hyperl',['../namespacesvg_1_1constants.html#a903dcdd6975fe00befaabbc84487cd6d',1,'svg::constants']]],
+  ['hyperl_5ftypo_11',['hyperl_typo',['../namespacesvg_1_1constants.html#aae4848d32c97705a695bf4f8a9f0ebde',1,'svg::constants']]],
+  ['hyphen_12',['hyphen',['../namespacesvg_1_1constants.html#ae42b583ceed2552c466993683f819ef2',1,'svg::constants']]]
 ];

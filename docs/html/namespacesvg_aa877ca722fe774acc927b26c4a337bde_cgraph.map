@@ -1,23 +1,23 @@
 <map id="svg::optical_sound_dots_seq" name="svg::optical_sound_dots_seq">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,189,121,232"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a01a6d733d565faa3b230634430da4f3f" title="Randomly create grid of [maxwidth] x [maxheight] grid, and fill with dots." alt="" coords="169,197,279,224"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,208,153,208,153,213,121,213"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#a519382631540ecedee961bfb53e9ae87" title=" " alt="" coords="336,56,453,99"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="235,195,273,154,325,109,331,105,334,109,329,113,277,158,239,198"/>
-<area shape="rect" id="Node000007" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="334,123,455,165"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="259,194,323,169,325,174,261,199"/>
-<area shape="rect" id="Node000009" href="$group__elements.html#ga98a1538c46e39122d8199c12b3a57b5d" title=" " alt="" coords="336,189,453,232"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="280,208,320,208,320,213,280,213"/>
-<area shape="rect" id="Node000010" href="$group__elements.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="336,256,453,299"/>
-<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="261,222,325,247,323,252,259,227"/>
-<area shape="rect" id="Node000011" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="327,323,461,349"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="238,223,276,264,301,288,328,308,337,313,334,318,326,313,297,292,272,268,234,226"/>
-<area shape="rect" id="Node000004" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title=" " alt="" coords="509,5,631,48"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="452,58,493,46,495,51,454,63"/>
-<area shape="rect" id="Node000006" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="512,72,628,99"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="453,77,496,79,496,85,453,83"/>
-<area shape="rect" id="Node000005" href="$group__elements.html#ae50258851ebbaf08c7eebc3fbdbf1ac8" title="Common transforms include rotate(180)" alt="" coords="679,5,833,48"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="631,24,663,24,663,29,631,29"/>
-<area shape="rect" id="Node000008" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="525,131,615,157"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="455,141,510,141,510,147,455,147"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,176,130,213"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a01a6d733d565faa3b230634430da4f3f" title="Randomly create grid of [maxwidth] x [maxheight] grid, and fill with dots." alt="" coords="178,182,295,206"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,192,162,192,162,197,130,197"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a519382631540ecedee961bfb53e9ae87" title=" " alt="" coords="353,53,480,90"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,180,287,142,342,100,350,95,353,100,344,105,290,146,251,184"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="350,115,483,151"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="273,179,345,154,347,159,274,184"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#ga98a1538c46e39122d8199c12b3a57b5d" title=" " alt="" coords="353,176,480,213"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="295,192,337,192,337,197,295,197"/>
+<area shape="rect" id="Node000010" href="$group__elements.html#a793cb6b40b2aea335b11f14fd327cde8" title=" " alt="" coords="353,237,480,274"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="274,204,347,229,345,234,273,209"/>
+<area shape="rect" id="Node000011" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="343,298,490,322"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="251,205,290,244,344,284,356,290,353,295,342,289,286,248,247,209"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#a53d72a7ff728ad1d4d027254530bcf3d" title=" " alt="" coords="538,5,672,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="480,53,522,42,524,47,482,58"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="543,66,667,90"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="481,71,528,73,527,78,481,77"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#ae50258851ebbaf08c7eebc3fbdbf1ac8" title="Common transforms include rotate(180)" alt="" coords="720,5,880,42"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="672,21,704,21,704,26,672,26"/>
+<area shape="rect" id="Node000008" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="557,121,653,145"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="484,130,542,130,542,136,484,136"/>
 </map>

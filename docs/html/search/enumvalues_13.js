@@ -11,5 +11,6 @@ var searchData=
   ['tomato_8',['tomato',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a006f87892f47ef9aa60fa5ed01a440fb',1,'svg']]],
   ['tooltip_9',['tooltip',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bcaddbfc1b6aa0ad4d79c5dac7aa3b44888',1,'svg']]],
   ['top_10',['top',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bcab28354b543375bfa94dabaeda722927f',1,'svg']]],
-  ['tor_11',['tor',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca7c0b1b361a964c9f5a2c89bec5740412',1,'svg']]]
+  ['tor_11',['tor',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bca7c0b1b361a964c9f5a2c89bec5740412',1,'svg']]],
+  ['triangle_12',['triangle',['../namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaacef44b46f16ae8ecf664df4266ffdbf9',1,'svg']]]
 ];

@@ -1,0 +1,19 @@
+<map id="svg::make_octahedron_3d" name="svg::make_octahedron_3d">
+<area shape="rect" id="Node000001" title="Make octahedron shape (8) in 2D simulated 3D." alt="" coords="5,128,169,152"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7" title="Line primitive." alt="" coords="239,104,342,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,127,223,121,224,126,169,133"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="217,152,364,176"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="169,147,202,151,201,156,168,152"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a306eac4c5a7ea755ab6375a65489366f" title=" " alt="" coords="416,5,542,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="314,101,411,52,422,47,424,51,413,57,317,106"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="412,67,545,103"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="341,105,396,96,397,101,342,110"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#ga4769af15793cb308d426abb5fd552df5" title=" " alt="" coords="416,128,542,165"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="342,121,401,131,400,136,341,127"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#aa6b4ba04be5858b4943235801f034943" title=" " alt="" coords="416,189,542,226"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="338,126,365,137,390,156,414,175,421,179,418,184,410,179,387,160,363,142,336,131"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="593,12,718,36"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="542,21,578,21,578,26,542,26"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="608,73,703,97"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="546,82,592,82,592,88,546,88"/>
+</map>
