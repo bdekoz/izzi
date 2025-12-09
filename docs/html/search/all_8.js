@@ -10,7 +10,8 @@ var searchData=
   ['hexagon_7',['hexagon',['../namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaafcadedce5939367d6558b793607399d8',1,'svg']]],
   ['hiwamoegi_8',['hiwamoegi',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a1b4c8c7339f8315e49def56da9dae0ce',1,'svg']]],
   ['hotpink_9',['hotpink',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a2ed02e792f8ecd95b6570b687274afeb',1,'svg']]],
-  ['hyperl_10',['hyperl',['../namespacesvg_1_1constants.html#a903dcdd6975fe00befaabbc84487cd6d',1,'svg::constants']]],
-  ['hyperl_5ftypo_11',['hyperl_typo',['../namespacesvg_1_1constants.html#aae4848d32c97705a695bf4f8a9f0ebde',1,'svg::constants']]],
-  ['hyphen_12',['hyphen',['../namespacesvg_1_1constants.html#ae42b583ceed2552c466993683f819ef2',1,'svg::constants']]]
+  ['hsv_5fto_5frgb_10',['hsv_to_rgb',['../structsvg_1_1color__qf.html#afda5a84e91104dc0aabf79b1d3907f7a',1,'svg::color_qf']]],
+  ['hyperl_11',['hyperl',['../namespacesvg_1_1constants.html#a903dcdd6975fe00befaabbc84487cd6d',1,'svg::constants']]],
+  ['hyperl_5ftypo_12',['hyperl_typo',['../namespacesvg_1_1constants.html#aae4848d32c97705a695bf4f8a9f0ebde',1,'svg::constants']]],
+  ['hyphen_13',['hyphen',['../namespacesvg_1_1constants.html#ae42b583ceed2552c466993683f819ef2',1,'svg::constants']]]
 ];

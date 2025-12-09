@@ -1,5 +1,7 @@
 <map id="svg::color_qf::color_qf" name="svg::color_qf::color_qf">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,12,147,36"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a2e5178befe99e2a7d5ede3c02088055f" title="Scale value from min to max on range (nfloor, nceil)." alt="" coords="195,5,326,42"/>
+<area shape="rect" id="Node000002" href="$structsvg_1_1color__qf.html#a52bde66b39d6ed6f61676662b33e145e" title="Convert RGB to HSV." alt="" coords="195,5,311,42"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,21,179,21,179,26,147,26"/>
+<area shape="rect" id="Node000003" href="$structsvg_1_1color__qf.html#a71b97e4790d97beccdfa456e0ca826ae" title="Value between 0.0 (black) and 1.0." alt="" coords="359,12,500,36"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="311,21,343,21,343,26,311,26"/>
 </map>

@@ -37,12 +37,13 @@ var searchData=
   ['render_5fmetadata_5faggregate_5fchord_34',['render_metadata_aggregate_chord',['../namespacesvg.html#a8e59007d359abaf8167d995843d2cf0c',1,'svg']]],
   ['render_5fstate_5fbase_35',['render_state_base',['../structsvg_1_1render__state__base.html',1,'svg::render_state_base'],['../structsvg_1_1render__state__base.html#a3410b564d0afbc70c71cd16a2a333680',1,'svg::render_state_base::render_state_base()']]],
   ['reverse_5fiterator_36',['reverse_iterator',['../classsvg_1_1string_1_1reverse__iterator.html',1,'svg::string']]],
-  ['right_37',['right',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a7c4f29407893c334a6cb7a87bf045c0d',1,'svg::typography']]],
-  ['rokusho_38',['rokusho',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ae6885b33bb3745c23b3a04cdb5732856',1,'svg']]],
-  ['rotate_39',['rotate',['../structsvg_1_1id__rstate.html#a95e5bdf62cd4e7d4fd4b6478d00cade7',1,'svg::id_rstate::rotate'],['../structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0',1,'svg::transform::rotate(int deg)'],['../structsvg_1_1transform.html#a4cac245f50dd098d7afb862503fddd27',1,'svg::transform::rotate(int deg, int x, int y)']]],
-  ['round_40',['round',['../namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9bbd993d9da7df60b3fd4a4ed721b082',1,'svg']]],
-  ['royalblue_41',['royalblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a231f2b387a5d04315a8c8aff6e042ee7',1,'svg']]],
-  ['rrotation_42',['rrotation',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03',1,'svg::constants']]],
-  ['ruriiro_43',['ruriiro',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ae42b64f7834ad8d8a694495c67698bfa',1,'svg']]],
-  ['rurikon_44',['rurikon',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a779846124c805daa03e1fdbe887f5288',1,'svg']]]
+  ['rgb_5fto_5fhsv_37',['rgb_to_hsv',['../structsvg_1_1color__qf.html#a52bde66b39d6ed6f61676662b33e145e',1,'svg::color_qf']]],
+  ['right_38',['right',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a7c4f29407893c334a6cb7a87bf045c0d',1,'svg::typography']]],
+  ['rokusho_39',['rokusho',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ae6885b33bb3745c23b3a04cdb5732856',1,'svg']]],
+  ['rotate_40',['rotate',['../structsvg_1_1id__rstate.html#a95e5bdf62cd4e7d4fd4b6478d00cade7',1,'svg::id_rstate::rotate'],['../structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0',1,'svg::transform::rotate(int deg)'],['../structsvg_1_1transform.html#a4cac245f50dd098d7afb862503fddd27',1,'svg::transform::rotate(int deg, int x, int y)']]],
+  ['round_41',['round',['../namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9bbd993d9da7df60b3fd4a4ed721b082',1,'svg']]],
+  ['royalblue_42',['royalblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a231f2b387a5d04315a8c8aff6e042ee7',1,'svg']]],
+  ['rrotation_43',['rrotation',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03',1,'svg::constants']]],
+  ['ruriiro_44',['ruriiro',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ae42b64f7834ad8d8a694495c67698bfa',1,'svg']]],
+  ['rurikon_45',['rurikon',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a779846124c805daa03e1fdbe887f5288',1,'svg']]]
 ];
