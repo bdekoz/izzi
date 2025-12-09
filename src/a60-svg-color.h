@@ -556,61 +556,10 @@ struct color_qf
   // Conversion constructor, convert from RGB to HSV.
   color_qf(const color_qi& cqi)
   {
-    // Start by converting rgb to decimal range.
-    // color_qi assumes [0,255], color_qf converts to range [0,1]
-    auto [r, g, b] = cqi;
-    double rf = scale_value_on_range(r, 0, 255, 0, 1);
-    double gf = scale_value_on_range(g, 0, 255, 0, 1);
-    double bf = scale_value_on_range(b, 0, 255, 0, 1);
-    std::initializer_list<double> l1 = { rf, gf, bf };
-    double rgb_max = std::max(l1);
-
-    // Value first.
-    v = rgb_max;
-    if (v != 0)
-      {
-	double nrf(rf / v);
-	double ngf(gf / v);
-	double nbf(bf / v);
-	std::initializer_list<double> l2 = { nrf, ngf, nbf };
-	double nrgb_min = std::min(l2);
-	double nrgb_max = std::max(l2);
-
-	// Saturation second.
-	s = nrgb_max - nrgb_min;
-	if (s != 0)
-	  {
-	    // Hue third.
-	    double srf((nrf - nrgb_min) / s);
-	    double sgf((ngf - nrgb_min) / s);
-	    double sbf((nbf - nrgb_min) / s);
-	    std::initializer_list<double> l3 = { srf, sgf, sbf };
-	    double srgb_max = std::max(l3);
-
-	    if (srgb_max == srf)
-	      {
-		h = 0.0 + 60.0 * (sgf - sbf);
-		if (h < 0.0)
-		  h += 360.0;
-	      }
-	    else if (srgb_max == sgf)
-	      {
-		h = 120.0 + (60.0 * (sbf - srf));
-	      }
-	    else
-	      {
-		// srgb_max == sbf
-		h = 240.0 + (60.0 * (srf - sgf));
-	      }
-	  }
-	else
-	  h = 0;
-      }
-    else
-      {
-	h = 0;
-	s = 0;
-      }
+    auto hsv = rgb_to_hsv(cqi);
+    h = hsv.h;
+    s = hsv.s;
+    v = hsv.v;
   }
 
   color_qf(const color e)
@@ -630,42 +579,134 @@ struct color_qf
 
   /// Back to RGB
   /// https://www.rapidtables.com/convert/color/hsv-to-rgb.html
-  const color_qi
-  to_color_qi()
-  {
-    const ftype c = v * s;
-    const ftype x = c * (1.0 - std::fabs(std::fmod(h / 60.0, 2) - 1.0));
-    const ftype m = v - c;
+  color_qi
+  to_color_qi() const
+  { return hsv_to_rgb({ h, s, v }); }
 
-    float r, g, b;
-    if (h >= 0 && h < 60)
+  /// Convert RGB to HSV
+  color_qf
+  rgb_to_hsv(const color_qi& rgb) const
+  {
+    color_qf hsv;
+
+    double r = rgb.r / 255.0;
+    double g = rgb.g / 255.0;
+    double b = rgb.b / 255.0;
+
+    double max_val = std::max({r, g, b});
+    double min_val = std::min({r, g, b});
+    double delta = max_val - min_val;
+
+    // Hue calculation
+    if (delta == 0.0)
       {
-	r = c, g = c, b = 0;
+	hsv.h = 0.0;
       }
-    else if (h >= 60 && h < 120)
+    else if (max_val == r)
       {
-	r = x, g = c, b = 0;
+	hsv.h = 60.0 * fmod(((g - b) / delta), 6.0);
       }
-    else if (h >= 120 && h < 180)
+    else if (max_val == g)
       {
-	r = 0, g = c, b = x;
-      }
-    else if (h >= 180 && h < 240)
-      {
-	r = 0, g = x, b = c;
-      }
-    else if (h >= 240 && h < 300)
-      {
-	r = x, g = 0, b = c;
+	hsv.h = 60.0 * (((b - r) / delta) + 2.0);
       }
     else
       {
-	r = c, g = 0, b = x;
+	// max_val == b
+	hsv.h = 60.0 * (((r - g) / delta) + 4.0);
       }
 
-    auto lpixel = [m] (float ff) { return color_qi::itype((ff + m) * 255); };
+    if (hsv.h < 0.0)
+      hsv.h += 360.0;
 
-    return color_qi(lpixel(r), lpixel(g), lpixel(b));
+    // Saturation calculation
+    hsv.s = (max_val == 0.0) ? 0.0 : (delta / max_val);
+
+    // Value calculation
+    hsv.v = max_val;
+
+    return hsv;
+  }
+
+
+  /// Convert HSV to RGB
+  color_qi
+  hsv_to_rgb(const color_qf& hsv) const
+  {
+    color_qi rgb;
+
+    double c = hsv.v * hsv.s;
+    double x = c * (1.0 - std::abs(fmod(hsv.h / 60.0, 2.0) - 1.0));
+    double m = hsv.v - c;
+
+    double r_prime, g_prime, b_prime;
+
+    if (hsv.h >= 0.0 && hsv.h < 60.0)
+      {
+	r_prime = c; g_prime = x; b_prime = 0.0;
+      }
+    else if (hsv.h >= 60.0 && hsv.h < 120.0)
+      {
+	r_prime = x; g_prime = c; b_prime = 0.0;
+      }
+    else if (hsv.h >= 120.0 && hsv.h < 180.0)
+      {
+	r_prime = 0.0; g_prime = c; b_prime = x;
+      }
+    else if (hsv.h >= 180.0 && hsv.h < 240.0)
+      {
+	r_prime = 0.0; g_prime = x; b_prime = c;
+      }
+    else if (hsv.h >= 240.0 && hsv.h < 300.0)
+      {
+	r_prime = x; g_prime = 0.0; b_prime = c;
+      }
+    else
+      {
+	// 300° - 360°
+	r_prime = c; g_prime = 0.0; b_prime = x;
+      }
+
+    using itype = color_qi::itype;
+    rgb.r = static_cast<itype>(std::clamp((r_prime + m) * 255.0, 0.0, 255.0));
+    rgb.g = static_cast<itype>(std::clamp((g_prime + m) * 255.0, 0.0, 255.0));
+    rgb.b = static_cast<itype>(std::clamp((b_prime + m) * 255.0, 0.0, 255.0));
+
+    return rgb;
+  }
+
+  /// Interpolated tinting algorithm from palette (ciecam16j70_palette).
+  /// @param n is the [0,10] 11-step perceptual gradation from dark to light.
+  /// Assume that color_qi has been converted to color_qf.
+  color_qi
+  tint_perceptual(const uint n)
+  {
+    // 11 steps total (0-10)
+    uint step = std::min(n, 10u);
+
+    // White is HSV(any, 0.0, 1.0)
+    // const color_qf white_hsv = { h, 0.0, 1.0};
+
+    // Use a custom interpolation curve
+    // First increase value, then decrease saturation
+    color_qf result_hsv(*this);
+    if (step <= 4)
+      {
+	// For steps 0-4, t is interpolate value: base.v → 1.0
+	double t = step / 4.0;
+	result_hsv.s = s; // Keep saturation
+	result_hsv.v = v + t * (1.0 - v);
+      }
+    else
+      {
+	// For steps 5-10, interpolate saturation: 1.0 → 0.3
+	double sat_t = (step - 4) / 6.0; // 0.0 to 1.0
+	double target_sat = 1.0 - 0.7 * sat_t; // 1.0 → 0.3
+	result_hsv.s = s * target_sat;
+	result_hsv.v = 1.0; // Max value
+      }
+
+    return hsv_to_rgb(result_hsv);
   }
 };
 
