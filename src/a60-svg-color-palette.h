@@ -585,6 +585,37 @@ static const palette_qi<89> ciecam16j70_palette =
   color::none
 };
 
+/// ESRI Bathymetry Tints Small
+/// https://www.esri.com/arcgis-blog/products/mapping/mapping/esri-ocean-basemap-color-style-available-for-download
+static const palette_qi<8> esri_s_bathymetry_palette =
+{
+  color_qi(41, 97, 156),
+  color_qi(89, 148, 204),
+  color_qi(115, 116, 224),
+  color_qi(133, 179, 235),
+  color_qi(148, 194, 247),
+  color_qi(166, 206, 245),
+  color_qi(186, 222, 255),
+  color::none
+};
+
+/// ESRI Bathymetry Tints Medium
+static const palette_qi<12> esri_m_bathymetry_palette =
+{
+  color_qi(56, 91, 140),
+  color_qi(43, 102, 166),
+  color_qi(66, 124, 179),
+  color_qi(82, 143, 204),
+  color_qi(98, 159, 217),
+  color_qi(134, 179, 235),
+  color_qi(149, 188, 230),
+  color_qi(170, 207, 242),
+  color_qi(181, 215, 247),
+  color_qi(191, 224, 255),
+  color_qi(209, 233, 255),
+  color::none
+};
+
 
 /// Oklab
 /// https://bottosson.github.io/posts/oklab/
