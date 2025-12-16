@@ -34,8 +34,9 @@ int main()
   svg_element obj("radial-gradient-ring-halo-3", a);
 
   // Add background so that checking transparency is easier with naked eye.
-  point_to_rect(obj, { a._M_width / 2 - rectw / 2, 0 }, k::b_style,
-		rectw, a._M_height);
+  auto r = make_rect({ a._M_width / 2 - rectw / 2, 0 }, k::b_style,
+		     {rectw, a._M_height});
+  obj.add_element(r);
 
   test_radial_gradient(obj);
   return 0;

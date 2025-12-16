@@ -45,10 +45,12 @@ test_text(std::string ofile)
 
   // Background color
   const style dstyl = { color::gray20, 1.0, color::black, 0, 2 };
-  point_to_rect(obj, { 0, 0 }, dstyl, width, height);
+  auto r1 = make_rect({ 0, 0 }, dstyl, {width, height});
+  obj.add_element(r1);
 
   // Small center of radius circle
-  point_to_circle(obj, { x, y }, k::b_style, radius);
+  auto c = make_circle({ x, y }, k::b_style, radius);
+  obj.add_element(c);
 
   // Put together data set.
   svg::id_value_umap ivm;

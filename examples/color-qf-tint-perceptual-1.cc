@@ -20,8 +20,9 @@ draw_klr(svg::svg_element& obj, const svg::color_qi& klr,
   // Draw out colors.
   // Color block
   const style s = { klr, 1.0, klr, 0, 2 };
-  point_to_rect_centered(obj, po, s, rwidth, rheight);
-
+  auto r = make_rect_centered(po, s, {rwidth, rheight});
+  obj.add_element(r);
+  
   auto [ x, y ] = po;
   auto xo = x - rwidth / 2;
   auto yo = y + rheight / 2 + rspace + tsize;

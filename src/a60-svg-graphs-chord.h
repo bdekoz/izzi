@@ -89,12 +89,14 @@ h_chord_graph_labels(const string aggname,
       // Top line.
       point_2t topstart(xoff, vcenter - lsz - ltopspace);
       point_2t topend(xoff, vcenter - ctopspace + ltopspace);
-      points_to_line(obj, styll, topstart, topend);
+      auto l1 = make_line(topstart, topend, styll);
+      obj.add_element(l1);
 
       // Bottom line.
       point_2t bstart(xoff, vcenter + lsz + ltopspace);
       point_2t bend(xoff, vcenter + ctopspace - ltopspace);
-      points_to_line(obj, styll, bstart, bend);
+      auto l2 = make_line(bstart, bend, styll);
+      obj.add_element(l2);
     }
 
   return obj;
@@ -120,7 +122,7 @@ h_chord_graph_labels(const string aggname,
 svg::svg_element
 h_chord_graph(const vumids& cumulative, const string aggname,
 	      const area<> a = svg::k::v1080p_h, const double yscale = 0.7,
-	      const uint rwidth = 10)
+	      const double rwidth = 10)
 {
   using id_size = a60::id_size;
 
@@ -228,8 +230,10 @@ h_chord_graph(const vumids& cumulative, const string aggname,
       // rect
       double rheight = scale_value_on_range(count, 1, maxn, 10, ydelta);
       double rystart = voffstart - (rheight / 2);
-      point_to_rect_centered(obj, std::make_tuple(xoff, rystart),
-			     get_metadata_style(), rwidth, rheight);
+      rect_element r = make_rect_centered({xoff, rystart},
+					  get_metadata_style(),
+					  { rwidth, rheight });
+      obj.add_element(r);
 
       // text
       sized_text(obj, typov, asz, std::to_string(count), xoff,
@@ -288,7 +292,9 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 	      auto normalize_v_o_r = scale_value_on_range;
 	      double rheight = normalize_v_o_r(count, 1, maxn, 10, ydelta);
 	      auto rectcp = std::make_tuple(xoff, yoff + (rheight / 2));
-	      point_to_rect_centered(obj, rectcp , pstyl, rwidth, rheight);
+	      rect_element r = make_rect_centered(rectcp, pstyl,
+						  { rwidth, rheight });
+	      obj.add_element(r);
 
 	      // text
 	      sized_text(obj, typov, ssz, std::to_string(count), xoff,
@@ -324,7 +330,8 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 		  point_2t bstart(xoffvo, vcenter + ltopspace);
 		  point_2t bend(xoff, yoff + (pstylage._M_stroke_size / 2));
 
-		  points_to_line(obj, pstylage, bstart, bend, dashstr);
+		  auto ln = make_line(bstart, bend, pstylage, dashstr);
+		  obj.add_element(ln);
 
 		  // Add to sum of playing and birth ages.
 		  vpsum[indxp] += count;
@@ -358,7 +365,8 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 	  style nstyl = svg::k::w_style;
 	  nstyl._M_stroke_size = 3;
 	  nstyl._M_stroke_opacity = 1.0;
-	  points_to_line(obj, nstyl, topstart, topend);
+	  auto ln = make_line(topstart, topend, nstyl);
+	  obj.add_element(ln);
 	}
     }
 
@@ -452,7 +460,7 @@ analyze_metadata_aggregate_chord(const area<> a,
   // Set of files used for summary.
   const string idir = a60::io::get_run_time_resources().metadata;
   const strings files = field.empty() ?
-    			a60::io::populate_files(idir, ".json") :
+			a60::io::populate_files(idir, ".json") :
 			files_with_field_matching(field, match);
 
   vumids cumulative = cache_metadata(files, wfield, wvalue);

@@ -8,7 +8,8 @@ point_to_line_centered(svg::svg_element& obj, const svg::style styl,
   auto [ x, y ] = p;
   svg::point_2t pb(x - n, y);
   svg::point_2t pe(x + n, y);
-  svg::points_to_line(obj, styl, pb, pe);
+  auto l = svg::make_line(pb, pe, styl);
+  obj.add_element(l);
 }
 
 

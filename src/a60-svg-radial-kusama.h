@@ -78,7 +78,9 @@ radiate_line_and_value(svg_element& obj, const point_2t origin,
   const int rbase(rstart + rspace);
   point_2t pl1 = get_circumference_point_d(angleda, rbase, origin);
   point_2t pl2 = get_circumference_point_d(angleda, rbase + linelen, origin);
-  points_to_line(obj, styl, pl1, pl2);
+  line_element l = make_line(pl1, pl2, styl);
+  obj.add_element(l);
+
 
   // Length used of glyphs along radiated ray from origin, if any.
   int glyphr = rbase + linelen + rspace;
@@ -132,7 +134,8 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
     {
       const int vr = rstart + rspace + kra;
       point_2t p = get_circumference_point_d(angleda, vr, origin);
-      point_to_circle(obj, p, idst.styl, kra);
+      circle_element c = make_circle(p, idst.styl, kra);
+      obj.add_element(c);
       glyphr += (2 * kra);
     }
 
@@ -280,7 +283,8 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
 	  const style rstyl = { color::red, 1.0, color::red, 1.0, 0.5 };
 	  const double delta = adjust_angle_rotation(angled2, k::rrotation::cw);
 	  const point_2t pdbg = get_circumference_point_d(delta, r4, origin);
-	  points_to_line(obj, rstyl, origin, pdbg);
+	  auto l = make_line(origin, pdbg, rstyl);
+	  obj.add_element(l);
 	}
 
       // Advance and bookkeeping for the next round.
@@ -328,7 +332,8 @@ kusama_ids_orbit_low(svg_element& obj, const point_2t origin, const strings& ids
 	  const style rstyl = { color::blue, 1.0, color::blue, 1.0, 0.5 };
 	  const double delta = adjust_angle_rotation(angled, k::rrotation::cw);
 	  const point_2t pdbg = get_circumference_point_d(delta, r4, origin);
-	  points_to_line(obj, rstyl, origin, pdbg);
+	  auto l = make_line(origin, pdbg, rstyl);
+	  obj.add_element(l);
 	}
     }
   else

@@ -13,9 +13,10 @@ void
 test_halo_insert(svg_element& obj)
 {
   // Add background.
-  point_to_rect(obj, { 0, 0 }, bkgstyl,
-		obj._M_area._M_width, obj._M_area._M_height);
-
+  auto r = make_rect({ 0, 0 }, bkgstyl,
+		     {obj._M_area._M_width, obj._M_area._M_height});
+  obj.add_element(r);
+  
   const point_2t cp = obj.center_point();
 
   area<>::atype len = 100;

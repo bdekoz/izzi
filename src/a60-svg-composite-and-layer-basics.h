@@ -102,17 +102,19 @@ paint_edges_with_char_index(svg_element& obj, const area<> a, const char firstc,
   estyl.set_colors(klr);
 
   // Top edge, right to left starting outer to inner
-  point_to_rect(obj, { a._M_width - deltax - rlen - deltac, 0 },
-		estyl, deltac, rlen);
+  point_2t pr1 = { a._M_width - deltax - rlen - deltac, 0 };
+  rect_element r1 = make_rect(pr1, estyl, { deltac, rlen });
+  obj.add_element(r1);
 
   // Bottom edge, left to right starting innner to outer.
-  point_to_rect(obj, { deltax + rlen, a._M_height - rlen },
-		   estyl, deltac, rlen);
+  point_2t pr2 = { deltax + rlen, a._M_height - rlen };
+  rect_element r2 = make_rect(pr2, estyl, { deltac, rlen });
+  obj.add_element(r2);
 
   // Right side edge, up from bottom to top.
-  point_to_rect(obj,
-		{ a._M_width - rlen, a._M_height - deltay - rlen - deltac },
-		estyl, rlen, deltac);
+  point_2t pr3 = { a._M_width - rlen, a._M_height - deltay - rlen - deltac };
+  rect_element r3 = make_rect(pr3, estyl, { rlen, deltac });
+  obj.add_element(r3);
 }
 
 

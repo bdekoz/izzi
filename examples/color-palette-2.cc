@@ -29,7 +29,8 @@ test_color(std::string ofile)
     };
 
    // Gray background.
-  point_to_rect_centered(obj, cp, sgray, width, height);
+  auto r = make_rect_centered(cp, sgray, {width, height});
+  obj.add_element(r);
   svg_element emb = display_color_qis(spectrum, a, k::apercu_typo);
   obj.add_element(emb);
 }

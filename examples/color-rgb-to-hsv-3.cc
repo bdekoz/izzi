@@ -15,8 +15,8 @@ draw_spectrum(svg::svg_element& obj, const svg::color_qis& spktrm,
   typo._M_anchor = typography::anchor::start;
 
   // Draw out colors.
-  auto rwidth = 25;
-  auto rheight = 400;
+  double rwidth = 25;
+  double rheight = 400;
   auto rspace = 5;
 
   auto [ x, y ] = po;
@@ -26,7 +26,8 @@ draw_spectrum(svg::svg_element& obj, const svg::color_qis& spktrm,
       // Color block
       const style s = { klr, 1.0, klr, 1.0, 2 };
       point_2t p = { x + xoffset, y + (rheight / 2)};
-      point_to_rect_centered(obj, p, s, rwidth, rheight);
+      auto r = make_rect_centered(p, s, {rwidth, rheight});
+      obj.add_element(r);
 
       // Label.
       string klrtxt = to_string(klr) + k::hyphen + to_string(color_qf(klr));

@@ -40,7 +40,8 @@ test_arc(std::string ofile)
     {
       auto d = i * 30;
       auto p = get_circumference_point_d(d, rd, cp);
-      point_to_circle(obj, p, rstyl, 6);
+      auto c = make_circle(p, rstyl, 6);
+      obj.add_element(c);
     }
 
   // 4 Outer radial
@@ -60,7 +61,8 @@ test_arc(std::string ofile)
     {
       auto d = i * 30;
       const point_2t pdbg = get_circumference_point_d(d, r4, cp);
-      points_to_line(obj, rstyl, cp, pdbg);
+      auto l = make_line(cp, pdbg, rstyl);
+      obj.add_element(l);
     }
 }
 

@@ -32,8 +32,10 @@ test_arc(std::string ofile)
   point_2t p6 = get_circumference_point_d(d6, r * 1.25, cp);
   point_2t p3 = get_circumference_point_d(d3, r * 1.25, cp);
   point_2t p9 = get_circumference_point_d(d9, r * 1.25, cp);
-  points_to_line(obj, rstyl, p0, p6);
-  points_to_line(obj, rstyl, p9, p3);
+  auto l1 = make_line(p0, p6, rstyl);
+  auto l2 = make_line(p9, p3, rstyl);
+  obj.add_element(l1);
+  obj.add_element(l2);
 }
 
 

@@ -5,7 +5,9 @@ using namespace svg;
 void
 augment_place(svg_element& obj, const point_2t pt, svg::style s, const space_type r)
 {
-  point_to_circle(obj, pt, s, r);
+  auto c = make_circle(pt, s, r);
+  obj.add_element(c);
+  
   const auto [ px, py ] = pt;
 
   std::ostringstream oss;
@@ -44,13 +46,16 @@ test_video(std::string ofile)
   auto [ vpx, vpy ] = vp;
 
   // outline rect
-  point_to_rect_centered(obj, cp, grystyl, page._M_width, page._M_height);
+  auto r1 = make_rect_centered(cp, grystyl, {page._M_width, page._M_height});
+  obj.add_element(r1);
 
   // centered rect in green
-  point_to_rect_centered(obj, cp, gstyl, rwidth, rheight);
+  auto r2 = make_rect_centered(cp, gstyl, {rwidth, rheight});
+  obj.add_element(r2);
 
   // red dot markers, black dot at center
-  point_to_circle(obj, cp, k::b_style, 8);
+  auto c = make_circle(cp, k::b_style, 8);
+  obj.add_element(c);
 
   // center mark in pink overlay
   point_to_crossed_lines(obj, cp, pstyl, 250, 45);

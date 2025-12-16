@@ -306,17 +306,6 @@ make_line(const point_2t origin, const point_2t end, style s,
 }
 
 
-/// Line between two points.
-void
-points_to_line(svg_element& obj, const style s,
-	       const point_2t origin, const point_2t end,
-	       const string dasharray = "")
-{
-  line_element l = make_line(origin, end, s, dasharray);
-  obj.add_element(l);
-}
-
-
 /// Polyline primitive.
 /// @param points the points in the polyline
 /// @param s style for the polyline
@@ -397,28 +386,6 @@ make_rect_marker(const point_2t origin, const style s,
 }
 
 
-/// Rectangle at this point.
-void
-point_to_rect(element_base& obj, const point_2t origin, style s,
-	      double width = 4, double height = 4,
-	      const string filterstr = "")
-{
-  rect_element r = make_rect(origin, s, { width, height}, filterstr);
-  obj.add_element(r);
-}
-
-
-/// Center a rectangle at this point.
-void
-point_to_rect_centered(element_base& obj, const point_2t origin, style s,
-		       double width = 4, double height = 4,
-		       const string filterstr = "")
-{
-  rect_element r = make_rect_centered(origin, s, { width, height}, filterstr);
-  obj.add_element(r);
-}
-
-
 /// Make circle element.
 /// @param origin is the point (x,y) that is the center of the circle
 /// @param s is the visual style
@@ -463,16 +430,6 @@ make_circle_marker(const point_2t origin, const style s,
   c.add_title(title);
   c.add_raw(string { circle_element::pair_finish_tag } + k::newline);
   return c;
-}
-
-
-/// Draws a circle around a point (x,y), of style (s), of radius (r).
-void
-point_to_circle(svg_element& obj, const point_2t origin, style s,
-		   const space_type r = 4, const string xform = "")
-{
-  circle_element c = make_circle(origin, s, r, xform);
-  obj.add_element(c);
 }
 
 
@@ -1106,8 +1063,8 @@ display_color_qis(const auto& klrs,
   typo._M_anchor = typography::anchor::start;
 
   // Draw out colors.
-  auto rwidth = 20;
-  auto rheight = 80;
+  double rwidth = 20;
+  double rheight = 80;
   auto rspace = 4;
   auto typsz = 7;
 
@@ -1123,7 +1080,8 @@ display_color_qis(const auto& klrs,
       // Color block
       const style s = { klr, 1.0, klr, 0.0, 2 };
       point_2t p = { x + xoffset, y };
-      point_to_rect_centered(obj, p, s, rwidth, rheight);
+      rect_element r = make_rect_centered(p, s, { rwidth, rheight});
+      obj.add_element(r);
 
       // Label.
       sized_text_r(obj, typo, typsz, to_string(klr),

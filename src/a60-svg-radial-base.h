@@ -322,7 +322,8 @@ splay_ids_around(svg_element& obj, const typography& typo,
 	  auto rring = rspace / 2;
 	  const id_rstate ridst = get_id_rstate(s);
 	  style rstyl = ridst.styl;
-	  point_to_circle(obj, { x, y }, rstyl, rring);
+	  circle_element c = make_circle({x,y}, rstyl, rring);
+	  obj.add_element(c);
 	}
 
       radial_text_r(obj, s, typo, rprime, origin, angled2);
