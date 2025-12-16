@@ -275,13 +275,19 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
   for (uint i = 0; i < points.size(); i++)
     {
       auto [ vx, vy ] = points[i];
-      auto [ cx, cy ] = cpoints[i];
+      auto cpoint = cpoints[i];
 
-      std::ostringstream oss;
-      oss << std::setfill('0') << std::setw(5);
-      oss << static_cast<uint>(vx);
-      const string xms = oss.str();
-      const string imgid = imgidbase + xms;
+      // If there are tooltip images, link in here.
+      string imgid(imgidbase);
+      if (!imgid.empty())
+	{
+	  std::ostringstream oss;
+	  oss << std::setfill('0') << std::setw(5);
+	  oss << static_cast<uint>(vx);
+	  const string xms = oss.str();
+	  string imgidn(imgid + xms);
+	  imgid = script_element::tooltip_attribute(imgidn);
+	}
 
       // Generate displayed tooltip text....
       string tipstr(gstate.title);
@@ -312,16 +318,8 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       // svg::circle_element c = make_circle(cpoints[i], gstate.lstyle, r);
       if (linecap == "round" || linecap == "circle")
 	{
-	  circle_element c;
-	  circle_element::data dc = { cx, cy, radius };
-	  c.start_element();
-	  c.add_data(dc);
-	  c.add_style(styl);
-	  if (!imgidbase.empty())
-	    c.add_raw(script_element::tooltip_attribute(imgid));
-	  c.add_raw(element_base::finish_tag_hard);
-	  c.add_title(tipstr);
-	  c.add_raw(string { circle_element::pair_finish_tag } + k::newline);
+	  circle_element c = make_circle_marker(cpoint, styl, radius,
+						tipstr, "", imgid);
 	  pointstr = c.str();
 	}
 
@@ -329,12 +327,12 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       if (linecap == "triangle")
 	{
 	  string xattr;
-	  if (!imgidbase.empty())
-	    xattr = script_element::tooltip_attribute(imgid);
+	  if (!imgid.empty())
+	    xattr = imgid;
 
 	  // Visual weight of triangle is smaller, so enlarge slightly.
 	  const double tradius = radius * 1.3;
-	  path_element p = make_path_triangle(cpoints[i], styl, tradius, 120,
+	  path_element p = make_path_triangle(cpoint, styl, tradius, 120,
 					      false, xattr);
 	  p.add_title(tipstr);
 	  p.add_raw(string { path_element::pair_finish_tag } + k::newline);
@@ -345,17 +343,8 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       // svg::rect_element r = (cpoints[i], gstate.lstyle, {2 * r, 2 * r});
       if (linecap == "square")
 	{
-	  rect_element r;
-	  rect_element::data dr = { cx - radius, cy - radius,
-				    2 * radius, 2 * radius };
-	  r.start_element();
-	  r.add_data(dr);
-	  r.add_style(styl);
-	  if (!imgidbase.empty())
-	    r.add_raw(script_element::tooltip_attribute(imgid));
-	  r.add_raw(element_base::finish_tag_hard);
-	  r.add_title(tipstr);
-	  r.add_raw(string { rect_element::pair_finish_tag } + k::newline);
+	  rect_element r = make_rect_marker(cpoint, styl, radius,
+					    tipstr, "", imgid);
 	  pointstr = r.str();
 	}
 
@@ -664,7 +653,9 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 	}
       if (gstate.mode == chart_line_style_3)
 	{
-	  string m("requested mode requires use of different overloaded function");
+	  string m("make_line_graph:: ");
+	  m += "chart_line_style_3 requires use of different overloaded function";
+	  m += k::newline;
 	  throw std::runtime_error(m);
 	}
     }

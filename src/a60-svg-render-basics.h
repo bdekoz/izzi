@@ -318,6 +318,9 @@ points_to_line(svg_element& obj, const style s,
 
 
 /// Polyline primitive.
+/// @param points the points in the polyline
+/// @param s style for the polyline
+/// @param s stroke_style for the polyline
 polyline_element
 make_polyline(const vrange& points, const style s,
 	      const stroke_style sstyle = { })
@@ -339,17 +342,17 @@ make_rect(const point_2t origin, const style s, const area<> a,
   auto [ width, height ] = a;
   auto [ x, y ] = origin;
 
-  rect_element r;
+  rect_element rect;
   rect_element::data dr = { x, y, width, height };
-  r.start_element();
-  r.add_data(dr);
-  r.add_style(s);
+  rect.start_element();
+  rect.add_data(dr);
+  rect.add_style(s);
 
   // Add blur with filter here.
   if (!filterstr.empty())
-    r.add_filter(filterstr);
-  r.finish_element();
-  return r;
+    rect.add_filter(filterstr);
+  rect.finish_element();
+  return rect;
 }
 
 
@@ -364,8 +367,33 @@ make_rect_centered(const point_2t origin, const style s, const area<> a,
   y -= (height / 2);
   point_2t oprime { x, y };
 
-  rect_element r = make_rect(oprime, s, a, filterstr);
-  return r;
+  rect_element rect = make_rect(oprime, s, a, filterstr);
+  return rect;
+}
+
+
+/// Create rectangle element with title and tooltip information.
+rect_element
+make_rect_marker(const point_2t origin, const style s,
+		 const space_type r, const string title,
+		 const string filterstr = "", const string imgid = "")
+{
+  auto [ cx, cy ] = origin;
+
+  rect_element rect;
+  rect_element::data dr = { cx - r, cy - r, 2 * r, 2 * r };
+  rect.start_element();
+  rect.add_data(dr);
+  rect.add_style(s);
+  if (!filterstr.empty())
+    rect.add_filter(filterstr);
+  if (!imgid.empty())
+    rect.add_raw(imgid);
+  rect.add_raw(element_base::finish_tag_hard);
+  rect.add_title(title);
+  rect.add_raw(string { rect_element::pair_finish_tag } + k::newline);
+
+  return rect;
 }
 
 
@@ -392,9 +420,13 @@ point_to_rect_centered(element_base& obj, const point_2t origin, style s,
 
 
 /// Make circle element.
+/// @param origin is the point (x,y) that is the center of the circle
+/// @param s is the visual style
+/// @param r is the circle radius
+/// @param xform is the transform, if any.
 circle_element
-make_circle(const point_2t origin, style s,
-	    const space_type r = 4, const string xform = "")
+make_circle(const point_2t origin, const style s,
+	    const space_type r, const string xform = "")
 {
   circle_element c;
   auto [ x, y ] = origin;
@@ -403,6 +435,33 @@ make_circle(const point_2t origin, style s,
   c.add_data(dc, xform);
   c.add_style(s);
   c.finish_element();
+  return c;
+}
+
+
+/// Make circle element with title and tooltip information.
+/// @param origin is the point (x,y) that is the center of the circle
+/// @param s is the visual style
+/// @param r is the circle radius
+/// @param title is the text to be displayed as a title tooltip
+/// @param img is a link to be displayed as a hover tooltip
+/// @param xform is the transform, if any.
+circle_element
+make_circle_marker(const point_2t origin, const style s,
+		   const space_type r, const string title,
+		   const string xform = "", const string imgid = "")
+{
+  circle_element c;
+  auto [ x, y ] = origin;
+  circle_element::data dc = { x, y, r };
+  c.start_element();
+  c.add_data(dc, xform);
+  c.add_style(s);
+  if (!imgid.empty())
+    c.add_raw(imgid);
+  c.add_raw(element_base::finish_tag_hard);
+  c.add_title(title);
+  c.add_raw(string { circle_element::pair_finish_tag } + k::newline);
   return c;
 }
 
