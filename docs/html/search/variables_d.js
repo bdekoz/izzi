@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['name_0',['name',['../structsvg_1_1id__rstate.html#abaf75e62e9a1166c6855d8af32fe51a9',1,'svg::id_rstate::name'],['../structPoint.html#af52ec9c5dc533d46c1a67b4bbdaeae23',1,'Point::name']]],
-  ['no_5farea_1',['no_area',['../namespacesvg_1_1constants.html#a7ea99d84ad1fa1bcbeb32c206b43c19b',1,'svg::constants']]],
-  ['no_5fstyle_2',['no_style',['../namespacesvg_1_1constants.html#a94e31e0f92ab672062d8ebb87e2c8975',1,'svg::constants']]]
+  ['markerspoints_0',['markerspoints',['../structsvg_1_1stroke__style.html#af048f3a01f3207dbc2368bce6e574797',1,'svg::stroke_style']]],
+  ['matrix_5fmax_5fitems_1',['matrix_max_items',['../namespacesvg.html#a6e1217586a3280e6177a0cec72964241',1,'svg']]],
+  ['mexcellent_2',['mexcellent',['../namespacesvg_1_1constants.html#a92122c98836511057d004b9d7fae1b05',1,'svg::constants']]],
+  ['mode_3',['mode',['../structsvg_1_1graph__rstate.html#a7e9be4e5f8c06ef0468d72549f04861d',1,'svg::graph_rstate']]],
+  ['multiple_4',['multiple',['../structsvg_1_1id__rstate.html#ad33c99bcbe234ebbb0690980cbf7bb54',1,'svg::id_rstate']]],
+  ['mxcllnt_5ftypo_5',['mxcllnt_typo',['../namespacesvg_1_1constants.html#a979b6f66cd4ca6736b19ebb9e42a9d44',1,'svg::constants']]]
 ];

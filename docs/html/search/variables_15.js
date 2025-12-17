@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['x_0',['x',['../structPoint.html#ab99c56589bc8ad5fa5071387110a5bc7',1,'Point']]],
-  ['xlabel_1',['xlabel',['../structsvg_1_1graph__rstate.html#a58d82b1d2be49455aae1f651fd71652b',1,'svg::graph_rstate']]],
-  ['xmargin_2',['xmargin',['../structsvg_1_1graph__rstate.html#aa5947810d45828011cac63e1362918e0',1,'svg::graph_rstate']]],
-  ['xticdigits_3',['xticdigits',['../structsvg_1_1graph__rstate.html#a223cc8e699dc23c757dceef17b73eaee',1,'svg::graph_rstate']]],
-  ['xticu_4',['xticu',['../structsvg_1_1graph__rstate.html#a1760e3298dfc3bc768b37d6e31f60644',1,'svg::graph_rstate']]]
+  ['w_0',['w',['../namespacesvg_1_1constants.html#a153fc852c80e24fb43d07b507c1fa788',1,'svg::constants']]],
+  ['w_5fstyle_1',['w_style',['../namespacesvg_1_1constants.html#ab2976cea7ce500ae5e808aa423d05dd3',1,'svg::constants']]],
+  ['wcagdg_5fstyle_2',['wcagdg_style',['../namespacesvg_1_1constants.html#aea4a0ce48ee8fe04c97032f0dec3f536',1,'svg::constants']]],
+  ['wcagg_5fstyle_3',['wcagg_style',['../namespacesvg_1_1constants.html#a5b87ba5c677f0786cfabe72002f1321e',1,'svg::constants']]],
+  ['wcaglg_5fstyle_4',['wcaglg_style',['../namespacesvg_1_1constants.html#aa515a523182d304ee2b8b07d16036f07',1,'svg::constants']]],
+  ['weigh_5',['weigh',['../structsvg_1_1collection__rstate.html#acd07339f2c51b3d98efbda1038690786',1,'svg::collection_rstate']]],
+  ['weight_6',['weight',['../structWeightedPoint.html#a1e01b60809d749ba7fadbbbc23ae626b',1,'WeightedPoint']]]
 ];

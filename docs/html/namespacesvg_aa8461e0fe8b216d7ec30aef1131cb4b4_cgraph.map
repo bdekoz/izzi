@@ -1,5 +1,5 @@
 <map id="svg::transform_to_graph_points" name="svg::transform_to_graph_points">
-<area shape="rect" id="Node000001" title="Map data points to cartestian points on graph area." alt="" coords="5,5,160,42"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a2e5178befe99e2a7d5ede3c02088055f" title="Scale value from min to max on range (nfloor, nceil)." alt="" coords="208,5,339,42"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,21,192,21,192,26,160,26"/>
+<area shape="rect" id="Node000001" title="Map data points to cartestian points on graph area." alt="" coords="5,5,151,48"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a2e5178befe99e2a7d5ede3c02088055f" title="Scale value from min to max on range (nfloor, nceil)." alt="" coords="199,5,318,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,24,183,24,183,29,151,29"/>
 </map>

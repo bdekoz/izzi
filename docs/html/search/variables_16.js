@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['y_0',['y',['../structPoint.html#afa38be143ae800e6ad69ce8ed4df62d8',1,'Point']]],
-  ['ylabel_1',['ylabel',['../structsvg_1_1graph__rstate.html#aead1e1caa5f1159e17c250658c134707',1,'svg::graph_rstate']]],
-  ['ymargin_2',['ymargin',['../structsvg_1_1graph__rstate.html#a9fe7e8e2d071a0524d1bfb26f92a3180',1,'svg::graph_rstate']]],
-  ['yticdigits_3',['yticdigits',['../structsvg_1_1graph__rstate.html#a0a81e33216a0a0ad601ee9f5659fb19f',1,'svg::graph_rstate']]],
-  ['yticu_4',['yticu',['../structsvg_1_1graph__rstate.html#a1417426a4becdb55544b0d4163811869',1,'svg::graph_rstate']]]
+  ['x_0',['x',['../structPoint.html#ab99c56589bc8ad5fa5071387110a5bc7',1,'Point']]],
+  ['xlabel_1',['xlabel',['../structsvg_1_1graph__rstate.html#a58d82b1d2be49455aae1f651fd71652b',1,'svg::graph_rstate']]],
+  ['xmargin_2',['xmargin',['../structsvg_1_1graph__rstate.html#aa5947810d45828011cac63e1362918e0',1,'svg::graph_rstate']]],
+  ['xticdigits_3',['xticdigits',['../structsvg_1_1graph__rstate.html#a223cc8e699dc23c757dceef17b73eaee',1,'svg::graph_rstate']]],
+  ['xticu_4',['xticu',['../structsvg_1_1graph__rstate.html#a1760e3298dfc3bc768b37d6e31f60644',1,'svg::graph_rstate']]]
 ];

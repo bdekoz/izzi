@@ -1,7 +1,7 @@
 <map id="svg::image_element::add_data" name="svg::image_element::add_data">
-<area shape="rect" id="Node000001" title="Visibility and other HTML/img attributes." alt="" coords="5,5,138,42"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#abfa06ef3bc0a99045eac1a61c80ce46c" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="186,5,318,42"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,21,170,21,170,26,138,26"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="366,12,490,36"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="318,21,351,21,351,26,318,26"/>
+<area shape="rect" id="Node000001" title="Visibility and other HTML/img attributes." alt="" coords="5,5,129,48"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#abfa06ef3bc0a99045eac1a61c80ce46c" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="177,5,300,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,24,161,24,161,29,129,29"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="348,13,464,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="300,24,333,24,333,29,300,29"/>
 </map>

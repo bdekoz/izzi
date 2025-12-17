@@ -1,25 +1,7 @@
 var searchData=
 [
-  ['s_0',['s',['../structsvg_1_1color__qf.html#aad2398a2450789b8464726b8df201d9f',1,'svg::color_qf']]],
-  ['scale_5fmode_1',['scale_mode',['../structsvg_1_1collection__rstate.html#a324479cb9d8e402c21259590f6792221',1,'svg::collection_rstate']]],
-  ['self_5ffinish_5ftag_2',['self_finish_tag',['../group__elements.html#a785e19696376854d206f6b2adc11c032',1,'svg::element_base']]],
-  ['shsans_3',['shsans',['../namespacesvg_1_1constants.html#a860736522e40a2c065cfb352a89177ee',1,'svg::constants']]],
-  ['shsans_5ftypo_4',['shsans_typo',['../namespacesvg_1_1constants.html#a55983a126fa40d9f0beb850ee8954ab2',1,'svg::constants']]],
-  ['side_5',['side',['../group__elements.html#a4ac0be8a11091251c4d9ab94f29ea266',1,'svg::text_path_element']]],
-  ['site_6',['site',['../structvoronoi__cell.html#a7af912441f7dde3b89d4c8883c2436e2',1,'voronoi_cell']]],
-  ['smono_7',['smono',['../namespacesvg_1_1constants.html#a48e95d8cc6a7d9d70ec91974776aab80',1,'svg::constants']]],
-  ['smono_5ftypo_8',['smono_typo',['../namespacesvg_1_1constants.html#a4cefcd0b62ce9c97ae33cffb7f2f9ae4',1,'svg::constants']]],
-  ['square17b_5f096_5fh_9',['square17b_096_h',['../namespacesvg_1_1constants.html#ae89d8d18913038f5f49ed6745980b3b4',1,'svg::constants']]],
-  ['square17b_5f096_5fv_10',['square17b_096_v',['../namespacesvg_1_1constants.html#a15cc5cf09b3551f2fb53f6dd9b5436cb',1,'svg::constants']]],
-  ['square8_5f096_11',['square8_096',['../namespacesvg_1_1constants.html#a2cae54b01c33559bb3339fe017c08e1c',1,'svg::constants']]],
-  ['square8bis_5f096_12',['square8bis_096',['../namespacesvg_1_1constants.html#aa724415123ce948cfa276b99399601e0',1,'svg::constants']]],
-  ['square8bisb_5f096_5fh_13',['square8bisb_096_h',['../namespacesvg_1_1constants.html#a9ebd5da6c76e39a918648c1f43e9f681',1,'svg::constants']]],
-  ['square8bisb_5f096_5fv_14',['square8bisb_096_v',['../namespacesvg_1_1constants.html#abbb9c2c153b474c13e15d069d86c84cc',1,'svg::constants']]],
-  ['ssans_15',['ssans',['../namespacesvg_1_1constants.html#a31e72c3df0b95e0fdfe46ea4ecc6228f',1,'svg::constants']]],
-  ['ssans_5ftypo_16',['ssans_typo',['../namespacesvg_1_1constants.html#a66e2c54aad31fe590e1fdc2c03e83e78',1,'svg::constants']]],
-  ['sserif_17',['sserif',['../namespacesvg_1_1constants.html#a84e6f54162fd84206f045bd2724d5297',1,'svg::constants']]],
-  ['sserif_5ftypo_18',['sserif_typo',['../namespacesvg_1_1constants.html#a4bf0d3a7b5eca48c9f6e1b65f8bba081',1,'svg::constants']]],
-  ['sstyle_19',['sstyle',['../structsvg_1_1graph__rstate.html#a6c23d6a6265d65f07b9025237e17a641',1,'svg::graph_rstate']]],
-  ['ssz_20',['ssz',['../namespacesvg.html#af236a60598b510e9a91706289ae20ed8',1,'svg']]],
-  ['styl_21',['styl',['../structsvg_1_1id__rstate.html#a9a5d6d0eabc3706dd0035b8d3b822710',1,'svg::id_rstate']]]
+  ['r_0',['r',['../structsvg_1_1color__qi.html#ad99a92711cc37231d20e8a5860ba5e06',1,'svg::color_qi']]],
+  ['r_5fstyle_1',['r_style',['../namespacesvg_1_1constants.html#ac982deac44ef3b7d183def15ba56d71d',1,'svg::constants']]],
+  ['radius_2',['radius',['../classpoint__cluster.html#afbe789960f55b70c75a0f32f9df1b480',1,'point_cluster']]],
+  ['rotate_3',['rotate',['../structsvg_1_1id__rstate.html#a95e5bdf62cd4e7d4fd4b6478d00cade7',1,'svg::id_rstate']]]
 ];

@@ -1,7 +1,7 @@
 <map id="svg::extract_object_keys_as_vspace" name="svg::extract_object_keys_as_vspace">
-<area shape="rect" id="Node000001" title="Iterate over json object in data file and return keys as ints." alt="" coords="5,5,130,42"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a5e70da9e68ea73a0fe250439ea5a1b04" title="Deserialize input file." alt="" coords="178,5,314,42"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,21,162,21,162,26,130,26"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#ad8c44f33914f74e752756e210ed904f7" title="Deserialize input string." alt="" coords="362,5,498,42"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="314,21,346,21,346,26,314,26"/>
+<area shape="rect" id="Node000001" title="Iterate over json object in data file and return keys as ints." alt="" coords="5,5,121,48"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a5e70da9e68ea73a0fe250439ea5a1b04" title="Deserialize input file." alt="" coords="169,5,293,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,24,153,24,153,29,121,29"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#ad8c44f33914f74e752756e210ed904f7" title="Deserialize input string." alt="" coords="341,5,465,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="293,24,326,24,326,29,293,29"/>
 </map>

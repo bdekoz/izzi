@@ -13,7 +13,9 @@ var searchData=
   ['empty_10',['empty',['../group__elements.html#ad192becf9565fd5d15094d275e207481',1,'svg::element_base']]],
   ['end_11',['end',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a7f021a1415b86f2d013b2618fb31ae53',1,'svg::typography::end'],['../structsvg_1_1typography.html#ab466ab5a124304d826cea9c46a46d3b0a7f021a1415b86f2d013b2618fb31ae53',1,'svg::typography::end']]],
   ['engineering_12',['engineering',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a5d554bc5f3d2cd182cdd0952b1fb87ca',1,'svg']]],
-  ['even_13',['even',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bcacc935c5faf4c8f7a0468d7552a9b8138',1,'svg']]],
-  ['extract_5fdom_5fvalue_5fto_5fdouble_14',['extract_dom_value_to_double',['../namespacesvg.html#a15455ed7fe8f40160e2f9f5e8ad7a3bd',1,'svg']]],
-  ['extract_5fobject_5fkeys_5fas_5fvspace_15',['extract_object_keys_as_vspace',['../namespacesvg.html#acc04aab3f6af228335c2e6494cd32092',1,'svg']]]
+  ['esri_5fm_5fbathymetry_5fpalette_13',['esri_m_bathymetry_palette',['../namespacesvg.html#a27277ce2b764c0328fdfcc4baffe3579',1,'svg']]],
+  ['esri_5fs_5fbathymetry_5fpalette_14',['esri_s_bathymetry_palette',['../namespacesvg.html#a1142d8e0cce5b4c6170f7c348b1a6012',1,'svg']]],
+  ['even_15',['even',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bcacc935c5faf4c8f7a0468d7552a9b8138',1,'svg']]],
+  ['extract_5fdom_5fvalue_5fto_5fdouble_16',['extract_dom_value_to_double',['../namespacesvg.html#a15455ed7fe8f40160e2f9f5e8ad7a3bd',1,'svg']]],
+  ['extract_5fobject_5fkeys_5fas_5fvspace_17',['extract_object_keys_as_vspace',['../namespacesvg.html#acc04aab3f6af228335c2e6494cd32092',1,'svg']]]
 ];

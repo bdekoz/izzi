@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['offset_0',['offset',['../group__elements.html#a7184ab5b189a87b39ca9fe8899573989',1,'svg::text_path_element']]],
-  ['opacity_1',['opacity',['../structsvg_1_1collection__rstate.html#ad771efd9601196d05178381a21db6d0e',1,'svg::collection_rstate']]],
-  ['outline_5fmode_2',['outline_mode',['../structsvg_1_1collection__rstate.html#a479c4a4cae90f09d39f51dd2d21bd9ea',1,'svg::collection_rstate']]]
+  ['name_0',['name',['../structsvg_1_1id__rstate.html#abaf75e62e9a1166c6855d8af32fe51a9',1,'svg::id_rstate::name'],['../structPoint.html#af52ec9c5dc533d46c1a67b4bbdaeae23',1,'Point::name']]],
+  ['no_5farea_1',['no_area',['../namespacesvg_1_1constants.html#a7ea99d84ad1fa1bcbeb32c206b43c19b',1,'svg::constants']]],
+  ['no_5fstroke_5fstyle_2',['no_stroke_style',['../namespacesvg_1_1constants.html#a1c4966a8fd0c1c2d1b3481e10ffda704',1,'svg::constants']]],
+  ['no_5fstyle_3',['no_style',['../namespacesvg_1_1constants.html#a94e31e0f92ab672062d8ebb87e2c8975',1,'svg::constants']]]
 ];

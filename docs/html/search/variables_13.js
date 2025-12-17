@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['v_0',['v',['../structsvg_1_1color__qf.html#a186bba2de5a59115e59161076a68449c',1,'svg::color_qf']]],
-  ['v1080p_5fh_1',['v1080p_h',['../namespacesvg_1_1constants.html#ad76f7994c99f6c82f8bcf4afa77385fa',1,'svg::constants']]],
-  ['v1080p_5fv_2',['v1080p_v',['../namespacesvg_1_1constants.html#a476fd77ecac33a859404f220c2676314',1,'svg::constants']]],
-  ['v4k_5fh_3',['v4k_h',['../namespacesvg_1_1constants.html#ab183e983bc4cb26dbfa67e600c877eed',1,'svg::constants']]],
-  ['v4k_5fv_4',['v4k_v',['../namespacesvg_1_1constants.html#a4be2c8cd32de6775b1f83c5cf750d6e7',1,'svg::constants']]],
-  ['vertices_5',['vertices',['../structvoronoi__cell.html#afd2417894a94d08a8a6f5b75adc47a26',1,'voronoi_cell']]],
-  ['visible_5fmode_6',['visible_mode',['../structsvg_1_1render__state__base.html#a7036f53a7ab20ebf3e7b32d1890d50f8',1,'svg::render_state_base']]]
+  ['text_5fscale_5fmax_0',['text_scale_max',['../structsvg_1_1collection__rstate.html#af1c018910e0a4c2905c7f3483f895ede',1,'svg::collection_rstate']]],
+  ['th1sz_1',['th1sz',['../structsvg_1_1graph__rstate.html#a445d76414e494b0ba6ac03092e0e7c84',1,'svg::graph_rstate']]],
+  ['title_2',['title',['../structsvg_1_1graph__rstate.html#a0899edc716a47d2277e726e537705f20',1,'svg::graph_rstate']]],
+  ['tooltip_5farea_3',['tooltip_area',['../structsvg_1_1graph__rstate.html#a48836a9d68437c6ac3eaa3c1a316d299',1,'svg::graph_rstate']]],
+  ['tooltip_5fid_4',['tooltip_id',['../structsvg_1_1graph__rstate.html#a2d2511629fbf3388372a9df551839460',1,'svg::graph_rstate']]],
+  ['tooltip_5fimages_5',['tooltip_images',['../structsvg_1_1graph__rstate.html#af4a5eab07b4cc5df360be2b45c99ab49',1,'svg::graph_rstate']]],
+  ['tpsz_6',['tpsz',['../structsvg_1_1graph__rstate.html#ab50de5fec2e0c40e46f4405bf81e6443',1,'svg::graph_rstate']]],
+  ['tticsz_7',['tticsz',['../structsvg_1_1graph__rstate.html#a8a2232baf0c12981fd237488ffbe224d',1,'svg::graph_rstate']]],
+  ['ttitlesz_8',['ttitlesz',['../structsvg_1_1graph__rstate.html#aa92015c49b05310864ba9de1b6e3ba53',1,'svg::graph_rstate']]]
 ];
