@@ -188,12 +188,7 @@ sized_text(element_base& obj, svg::typography typo, const int sz,
 	   const string text, const int tx, const int ty)
 {
   typo._M_size = sz;
-  text_element::data dt = { space_type(tx), space_type(ty), text, typo };
-  text_element t;
-  t.start_element();
-  t.add_data(dt);
-  t.finish_element();
-  obj.add_element(t);
+  styled_text(obj, text, {tx, ty}, typo);
 }
 
 
@@ -203,12 +198,7 @@ sized_text_r(element_base& obj, svg::typography typo, const int sz,
 	     const string text, const int tx, const int ty, const double deg)
 {
   typo._M_size = sz;
-  text_element::data dt = { space_type(tx), space_type(ty), text, typo };
-  text_element t;
-  t.start_element();
-  t.add_data(dt, svg::transform::rotate(deg, tx, ty));
-  t.finish_element();
-  obj.add_element(t);
+  styled_text_r(obj, text, {tx, ty}, typo, deg);
 }
 
 
@@ -529,6 +519,7 @@ point_2d_to_ray(svg_element& obj, double x, double y, style s,
 
       line_element::data dr = { atype(x), xe, atype(y), ye };
       line_element ray;
+
       ray.start_element();
       ray.add_data(dr);
       ray.add_style(s);
