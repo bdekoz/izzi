@@ -332,8 +332,8 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 
 	  // Visual weight of triangle is smaller, so enlarge slightly.
 	  const double tradius = radius * 1.3;
-	  path_element p = make_path_triangle(cpoint, styl, tradius, 120,
-					      false, xattr);
+	  path_element p = make_path_polygon(cpoint, styl, tradius, 3,
+					     true, xattr);
 	  p.add_title(tipstr);
 	  p.add_raw(string { path_element::pair_finish_tag } + k::newline);
 	  pointstr = p.str();

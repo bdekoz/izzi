@@ -61,7 +61,7 @@ make_marker_triangle(const std::string id,
 		   const area<> ma, const point_2t mcp,
 		   const uint radius, const style styl)
 {
-  path_element p = make_path_triangle(mcp, styl, radius);
+  path_element p = make_path_polygon(mcp, styl, radius, 3);
   return make_marker_element(id, ma, mcp, p.str());
 }
 

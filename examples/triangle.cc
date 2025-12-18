@@ -14,17 +14,17 @@ test_tri(std::string ofile)
 
   // Black
   const style bstyl = { color::black, 1.0, color::black, 0.0, 2 };
-  path_element t1 = make_path_triangle(cp, bstyl, len * 3);
+  path_element t1 = make_path_polygon(cp, bstyl, len * 3, 3);
   obj.add_element(t1);
 
   // Red
   const style rstyl = { color::red, 1.0, color::red, 0.0, 2 };
-  path_element t2 = make_path_triangle(cp, rstyl, len * 2);
+  path_element t2 = make_path_polygon(cp, rstyl, len * 2, 3);
   obj.add_element(t2);
 
   // Green
   const style gstyl = { color::green, 1.0, color::green, 0.0, 2 };
-  path_element t3 = make_path_triangle(cp, gstyl, len * 1);
+  path_element t3 = make_path_polygon(cp, gstyl, len * 1, 3);
   obj.add_element(t3);
 }
 

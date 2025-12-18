@@ -662,32 +662,12 @@ make_path(const string& pathda, const style& styl, const string id = "",
 }
 
 
-/// Center a triangle at this point.
-path_element
-make_path_triangle(const point_2t origin, const style styl,
-		   const double r = 4, const double angle = 120,
-		   const bool selfclosingtagp = true, const string xattr = "")
-{
-  // Find points: orig, orig + (120 x 1), orig + (120 x 2).
-  double zo = zero_angle_north_cw(angle);
-  point_2t p1 =  get_circumference_point_d(zo, r, origin);
-  point_2t p2 =  get_circumference_point_d(zo + (angle * 1), r, origin);
-  point_2t p3 =  get_circumference_point_d(zo + (angle * 2), r,  origin);
-  vrange pointz = { p1, p2, p3, p1 };
-  string pathda = make_path_data_from_points(pointz);
-
-  path_element::data pthdata = { pathda, 0 };
-  path_element tri = make_path(pathda, styl, "", selfclosingtagp, xattr);
-  return tri;
-}
-
-
 /// Center an octogon at this point.
 /// radius 4 is pixels to draw out from center point.
 /// pointsn is number of points to draw (8 for octogon)
 path_element
 make_path_polygon(const point_2t origin, const style styl,
-		  const double r = 4, const uint pointsn = 8,
+		  const double r, const uint pointsn,
 		  const bool selfclosingtagp = true, const string xattr = "")
 {
   // Find points: orig, orig + (120 x 1), orig + (120 x 2).
@@ -703,7 +683,8 @@ make_path_polygon(const point_2t origin, const style styl,
     }
 
   // Final point to close path.
-  pointz.push_back(pointz.front());
+  if (selfclosingtagp)
+    pointz.push_back(pointz.front());
   string pathda = make_path_data_from_points(pointz);
 
   const string id = "polygon-n" + std::to_string(pointsn) + "-r" + std::to_string(r);

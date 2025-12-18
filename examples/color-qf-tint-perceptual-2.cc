@@ -3,8 +3,8 @@
 using namespace std;
 using namespace svg;
 
-auto rwidth = 25;
-auto rheight = 200;
+double rwidth = 25;
+double rheight = 200;
 auto rspace = 5;
 
 void
