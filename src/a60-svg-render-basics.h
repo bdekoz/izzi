@@ -61,7 +61,7 @@ style_text(const string text, const point_2t origin, const typography typo,
 /// @param rorigin in a @param rr direction. With typograph and style
 /// via @param typo.
 text_element
-style_text_r(const string text, const point_2t origin, const typography typo,
+style_text_r(const string text, const point_2t origin, const typography& typo,
 	     const double deg, const point_2t rorigin,
 	     const k::rrotation rr = k::rrotation::none)
 {
@@ -84,43 +84,23 @@ style_text_r(const string text, const point_2t origin, const typography typo,
 }
 
 
-/// Text at @param origin, with style.
-void
-styled_text(element_base& obj, const string text, const point_2t origin,
-	    const typography typo)
-{
-  text_element t = style_text(text, origin, typo);
-  obj.add_element(t);
-}
-
-
 /// Text at @param origin, with style and transform
 void
 styled_text(element_base& obj, const string text, const point_2t origin,
-	    const typography typo, const string xform)
+	    const typography typo, const string xform = "")
 {
-  auto [ x, y ] = origin;
-  text_element::data dt = { space_type(x), space_type(y), text, typo };
-  text_element t;
-  t.start_element();
-  t.add_data(dt, xform);
-  t.finish_element();
+  text_element t = style_text(text, origin, typo, xform);
   obj.add_element(t);
 }
 
 
 /// Text at @param origin, with style and ...
-///  a transformation=rotation of @param deg about origin.
+/// a transformation=rotation of @param deg about origin.
 void
 styled_text_r(element_base& obj, const string text, const point_2t origin,
 	      const typography typo, const double deg)
 {
-  auto [ x, y ] = origin;
-  text_element::data dt = { space_type(x), space_type(y), text, typo };
-  text_element t;
-  t.start_element();
-  t.add_data(dt, svg::transform::rotate(deg, x, y));
-  t.finish_element();
+  text_element t = style_text_r(text, origin, typo, deg, origin);
   obj.add_element(t);
 }
 
@@ -131,30 +111,16 @@ void
 styled_text_r(element_base& obj, const string text, const point_2t origin,
 	      const typography typo, const double deg, const point_2t rorigin)
 {
-  auto [ x, y ] = origin;
-  auto [ rx, ry ] = rorigin;
-  text_element::data dt = { space_type(x), space_type(y), text, typo };
-  text_element t;
-  t.start_element();
-  t.add_data(dt, svg::transform::rotate(deg, rx, ry));
-  t.finish_element();
+  text_element t = style_text_r(text, origin, typo, deg, rorigin);
   obj.add_element(t);
 }
 
 
-/// XXX
 /// Text at @param origin, with style and link.
 void
 styled_text_link(element_base& obj, const string text, const point_2t origin,
 		 const typography typo, const string uri)
 {
-  auto [ x, y ] = origin;
-  text_element::data dt = { space_type(x), space_type(y), text, typo };
-  text_element t;
-  t.start_element();
-  t.add_data(dt);
-  t.finish_element();
-
   // Convert uri to utf8 so that it can be inserted into svg_element
   // Fucking '&', mostly.
   // string uriconv = convert_to_utf8(uri);
@@ -174,6 +140,7 @@ styled_text_link(element_base& obj, const string text, const point_2t origin,
   astart += k::newline;
   obj.add_raw(astart);
 
+  text_element t = style_text(text, origin, typo);
   obj.add_element(t);
 
   string afinish = "</a>";
@@ -208,7 +175,6 @@ text_line_n(svg_element& obj, const point_2t origin, const string text,
 	    const svg::typography typo, const int sz, const uint maxlen)
 {
   auto [ x, y ] = origin;
-
   string textcut(text);
   while (textcut.size() > maxlen)
     {
