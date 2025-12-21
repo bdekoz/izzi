@@ -326,16 +326,8 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       // Triangle Centered.
       if (linecap == "triangle")
 	{
-	  string xattr;
-	  if (!imgid.empty())
-	    xattr = imgid;
-
-	  // Visual weight of triangle is smaller, so enlarge slightly.
-	  const double tradius = radius * 1.3;
-	  path_element p = make_path_polygon(cpoint, styl, tradius, 3,
-					     true, xattr);
-	  p.add_title(tipstr);
-	  p.add_raw(string { path_element::pair_finish_tag } + k::newline);
+	  path_element p = make_polygon_marker(cpoint, styl, radius, 3, tipstr,
+					       imgid);
 	  pointstr = p.str();
 	}
 
@@ -351,7 +343,8 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       // Hexagon
       if (linecap == "hexagon")
 	{
-	  path_element p = make_path_polygon(cpoints[i], styl, radius, 6);
+	  path_element p = make_polygon_marker(cpoint, styl, radius, 6, tipstr,
+					       imgid);
 	  pointstr = p.str();
 	}
 

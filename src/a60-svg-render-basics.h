@@ -649,6 +649,7 @@ make_path_polygon(const point_2t origin, const style s,
 }
 
 
+/// Make a polygon marker for line graphs.
 path_element
 make_polygon_marker(const point_2t origin, const style s,
 		    const double r, const uint pointsn, const string title,
