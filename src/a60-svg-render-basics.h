@@ -623,7 +623,7 @@ make_path(const string& pathda, const style& styl, const string id = "",
 /// radius 4 is pixels to draw out from center point.
 /// pointsn is number of points to draw (8 for octogon)
 path_element
-make_path_polygon(const point_2t origin, const style styl,
+make_path_polygon(const point_2t origin, const style s,
 		  const double r, const uint pointsn,
 		  const bool selfclosingtagp = true, const string xattr = "")
 {
@@ -631,7 +631,7 @@ make_path_polygon(const point_2t origin, const style styl,
   const double angle(360.0/pointsn);
   double zo = zero_angle_north_cw(angle);
 
-  // n points on a circle, connnected.
+  // Find n points on a circle, connnected.
   vrange pointz;
   for (uint i = 0; i < pointsn; ++i)
     {
@@ -640,12 +640,24 @@ make_path_polygon(const point_2t origin, const style styl,
     }
 
   // Final point to close path.
-  if (selfclosingtagp)
-    pointz.push_back(pointz.front());
+  pointz.push_back(pointz.front());
   string pathda = make_path_data_from_points(pointz);
 
   const string id = "polygon-n" + std::to_string(pointsn) + "-r" + std::to_string(r);
-  path_element polyg = make_path(pathda, styl, id, selfclosingtagp, xattr);
+  path_element polyg = make_path(pathda, s, id, selfclosingtagp, xattr);
+  return polyg;
+}
+
+
+path_element
+make_polygon_marker(const point_2t origin, const style s,
+		    const double r, const uint pointsn, const string title,
+		    const string xattr = "")
+{
+  // XXX imagid
+  path_element polyg = make_path_polygon(origin, s, r, pointsn, false, xattr);
+  polyg.add_title(title);
+  polyg.add_raw(string { circle_element::pair_finish_tag } + k::newline);
   return polyg;
 }
 
