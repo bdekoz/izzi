@@ -29,7 +29,7 @@ namespace svg {
 /// Polyline/line options.
 ///
 /// 1: use one line with css dasharray and markers mid, end points
-/// 2: use two lines: one with css dasharray and no markerspoints, two
+/// 2: use two lines: one with css dasharray and no marker_shape, two
 ///    with explicit marker paths and added text tooltips
 /// 3: use two lines and add js + image tooltips: like 2 above
 ///    but add image tooltips, with js controlling image visibility.
@@ -621,7 +621,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
     {
       if (gstate.mode == chart_line_style_1)
 	{
-	  // Use polyline and CSS-based markerspoints all in one line on layer 1.
+	  // Use polyline and CSS-based marker_shape all in one line on layer 1.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, gstate.sstyle);
 	  lgraph.add_element(pl1);
@@ -633,7 +633,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 	  // Use set of marker points paths with value as text tooltips on layer 2.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
-	  no_markerstyle.markerspoints = "";
+	  no_markerstyle.marker_shape = "";
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, no_markerstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
@@ -679,7 +679,7 @@ make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstat
 	  // Use set of image points (subset control points) image elements on layer 3.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
-	  no_markerstyle.markerspoints = "";
+	  no_markerstyle.marker_shape = "";
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, no_markerstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());

@@ -205,7 +205,10 @@ struct stroke_style
   /// For graph_mode 1, this means the SVG equivalent of CSS elements:
   /// marker-start, marker-mid, marker-end
   /// For graph_mode 2, this means the marker_shape of the mark
-  string		markerspoints;
+  string		marker_shape;
+
+  /// Marker repetitions, if any. Default is zero.
+  ushort		marker_reps;
 
   /// Line dash vs. space configuration.
   /// Options are single value, like 2, meaning 2 sized dash 2 sized space.

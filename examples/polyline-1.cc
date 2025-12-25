@@ -46,7 +46,7 @@ test_polyline_2()
   //const style styl1 = { color::wcag_lgray, 0.0, color::wcag_lgray, 1.0, 4 };
   //const style styl2 = { color::wcag_gray, 0.0, color::wcag_gray, 1.0, 4 };
   const style styl3 = { color::wcag_dgray, 0.0, color::wcag_dgray, 1.0, 4 };
-  const stroke_style sstyl = {"", "5", "", "", ""};
+  const stroke_style sstyl = {"", 0, "5", "", "", ""};
 
   // Line 1
   x -= 2 * linelen;

@@ -60,26 +60,26 @@ test_polyline()
   auto yo = linelen;
 
   vrange points5 = make_points_at({xo, yo + 3 * linelen});
-  const stroke_style sstyl5 = {"", "", "", "", ""};
+  const stroke_style sstyl5 = {"", 0, "", "", "", ""};
   polyline_element pl5 = make_polyline(points5, lstyl, sstyl5);
   obj.add_element(pl5);
 
   const uint dasize = lsize + 1;
   const string llstr = to_string(dasize);
   vrange points3 = make_points_at({xo, yo + 2 * linelen});
-  const stroke_style sstyl3 = {"", llstr, "", "round", ""};
+  const stroke_style sstyl3 = {"", 0, llstr, "", "round", ""};
   polyline_element pl3 = make_polyline(points3, lstyl, sstyl3);
   obj.add_element(pl3);
 
   const string llstr2 = llstr + k::space + to_string(dasize * 2);
   vrange points2 = make_points_at({xo, yo + linelen});
-  const stroke_style sstyl2 = {"", llstr2, "", "round", ""};
+  const stroke_style sstyl2 = {"", 0, llstr2, "", "round", ""};
   polyline_element pl2 = make_polyline(points2, lstyl, sstyl2);
   obj.add_element(pl2);
 
   const string llstr3 = llstr + k::space + to_string(dasize * 4);
   vrange points1 = make_points_at({xo, yo});
-  const stroke_style slstyl = {"", llstr3, "", "round", ""};
+  const stroke_style slstyl = {"", 0, llstr3, "", "round", ""};
   polyline_element pl1 = make_polyline(points1, lstyl, slstyl);
   obj.add_element(pl1);
 }

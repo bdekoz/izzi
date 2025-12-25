@@ -43,19 +43,19 @@ test_chart()
   graph_rstate gs1 { select::vector,
 		     "firefox", a, chart_line_style_2,
 		     f1, f2, "ms", "%", styl3,
-		     { "r2wcadg", "1 2", "", "triangle", "" },
+		     { "r2wcadg", 0, "1 2", "", "triangle", "" },
 		     {0,0}, "", "" };
 
   graph_rstate gs2 { select::vector | select::echo,
 		     "chrome", a, chart_line_style_2,
 		     f1, f2, "ms", "%", styl1,
-		     { "c2wcaglg", "3", "", "round", "" },
+		     { "c2wcaglg", 0, "3", "", "round", "" },
 		     {0,0}, "", "" };
 
   graph_rstate gsa { select::ticks | select::linex | select::alt,
 		     "annotation", a, chart_line_style_2,
 		     f1, f2, "s", "%", styl2,
-		     { "", "", "", "", "" },
+		     { "", 0, "", "", "", "" },
 		     {0,0}, "", "" };
 
   // Deserialize A/B data.

@@ -43,17 +43,17 @@ test_chart()
   svg::select vlayer { select::vector };
   graph_rstate gs1 { vlayer, "firefox", a, chart_line_style_1, 
 		     f1, f2, "ms", "%",
-		     styl3, { "r2wcadg", "3", "", "square", "" },
+		     styl3, { "r2wcadg", 0, "3", "", "square", "" },
 		     {0,0}, "", "" };
 
   graph_rstate gs2 { vlayer, "chrome", a, chart_line_style_1, 
 		     f1, f2, "ms", "%",
-		     styl1, { "c2wcaglg", "1 2", "", "round", "" },
+		     styl1, { "c2wcaglg", 0, "1 2", "", "round", "" },
 		     {0,0}, "", "" };
 
   graph_rstate gsa { {select::ticks}, "chrome", a, chart_line_style_1, 
 		     f1, f2, "s", "%",
-		     styl2, { "", "", "", "", "" },
+		     styl2, { "", 0, "", "", "", "" },
 		     {0,0}, "", "" };
 
 

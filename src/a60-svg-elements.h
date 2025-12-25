@@ -952,12 +952,12 @@ struct polyline_element : virtual public element_base
 	    _M_sstream << "stroke-linecap=" << k::quote;
 	    _M_sstream << sstyl.linecap << k::quote << k::space;
 	  }
-	if (!sstyl.markerspoints.empty())
+	if (!sstyl.marker_shape.empty())
 	  {
 	    string mkr;
 	    mkr += k::quote;
 	    mkr += "url(#";
-	    mkr += sstyl.markerspoints;
+	    mkr += sstyl.marker_shape;
 	    mkr += ")";
 	    mkr += k::quote;
 
