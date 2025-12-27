@@ -29,7 +29,7 @@ namespace svg {
 /// Polyline/line options.
 ///
 /// 1: use one line with css dasharray and markers mid, end points
-/// 2: use two lines: one with css dasharray and no marker_shape, two
+/// 2: use two lines: one with css dasharray and no marker_form, two
 ///    with explicit marker paths and added text tooltips
 /// 3: use two lines and add js + image tooltips: like 2 above
 ///    but add image tooltips, with js controlling image visibility.
@@ -621,7 +621,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
     {
       if (gstate.mode == chart_line_style_1)
 	{
-	  // Use polyline and CSS-based marker_shape all in one line on layer 1.
+	  // Use polyline and CSS-based marker_form all in one line on layer 1.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, gstate.sstyle);
 	  lgraph.add_element(pl1);
@@ -633,7 +633,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 	  // Use set of marker points paths with value as text tooltips on layer 2.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
-	  no_markerstyle.marker_shape = "";
+	  no_markerstyle.marker_form = "";
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, no_markerstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
@@ -679,7 +679,7 @@ make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstat
 	  // Use set of image points (subset control points) image elements on layer 3.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
-	  no_markerstyle.marker_shape = "";
+	  no_markerstyle.marker_form = "";
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, no_markerstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
@@ -688,7 +688,6 @@ make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstat
 	  // Use simplified points, aka only the visual change points.
 	  const vrange& ctpoints = transform_to_graph_points(tpoints, gstate,
 							     xrange, yrange);
-
 	  lgraph.add_raw(group_element::start_group("markers-" + gstate.title));
 	  string markers = make_line_graph_markers(tpoints, ctpoints, gstate, 3,
 						   gstate.tooltip_id);
@@ -699,7 +698,6 @@ make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstat
 	  // Add this plus script at the same layer of the DOM, which varies.
 	  const string imgprefix = metadata + k::hyphen + gstate.title + "_";
 	  group_element ttips = make_line_graph_images(tpoints, gstate, imgprefix);
-
 	  if (scontext == script_element::scope::element)
 	    {
 	      lgraph.add_element(ttips);
