@@ -264,6 +264,49 @@ make_line_graph_images(const vrange& points, const graph_rstate& gstate,
 }
 
 
+/// Make marker or composite markers for one marker location.
+string
+make_marker_instance(const marker_shape form, const point_2t& cpoint, const style styl,
+		     double radius, string tipstr, string imgid)
+{
+  string pointstr;
+  marker_element mrkr;
+  element_base& mkr = mrkr;
+  switch (form)
+    {
+    case marker_shape::circle:
+      mkr = make_circle_marker(cpoint, styl, radius, tipstr, "", imgid);
+      break;
+    case marker_shape::triangle:
+      mkr = make_polygon_marker(cpoint, styl, radius, 3, tipstr, imgid);
+      break;
+    case marker_shape::square:
+      mkr = make_rect_marker(cpoint, styl, radius, tipstr, "", imgid);
+      break;
+    case marker_shape::hexagon:
+      mkr = make_polygon_marker(cpoint, styl, radius, 6, tipstr, imgid);
+      break;
+    case marker_shape::octahedron:
+      pointstr = make_octahedron_3d(cpoint, styl, radius);
+      break;
+    case marker_shape::icosahedron:
+      pointstr = make_icosahedron_3d(cpoint, styl, radius);
+      break;
+    default:
+      string m("make_marker_instance:: ");
+      m += "marker_shape (";
+      m += to_string(form);
+      m += ")";
+      m += "is invalid or missing, skipping...";
+      m += k::newline;
+      std::clog << m << std::endl;
+      break;
+    }
+  pointstr = mkr.str();
+  return pointstr;
+}
+
+
 /// Return set of paths of marker shapes with text tooltips.
 /// NB: For graph_mode >= chart_line_style_2
 string
@@ -311,68 +354,16 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       else
 	styl._M_stroke_opacity = 0;
 
-      const string& linecap = gstate.sstyle.linecap;
-      string pointstr;
+      const auto& form = gstate.sstyle.marker_form;
+      string pointstr = make_marker_instance(form, cpoint, styl, radius, tipstr, imgid);
 
-      // Circle Centered.
-      // svg::circle_element c = make_circle(cpoints[i], gstate.lstyle, r);
-      if (linecap == "round" || linecap == "circle")
+      // Add additional marker or markers.
+      const ushort rep = gstate.sstyle.marker_reps;
+      if (rep > 0 && i + 1 < points.size())
 	{
-	  circle_element c = make_circle_marker(cpoint, styl, radius,
-						tipstr, "", imgid);
-	  pointstr = c.str();
+	  // Find the next point, and then inch along along the line connecting this to that.
 	}
 
-      // Triangle Centered.
-      if (linecap == "triangle")
-	{
-	  path_element p = make_polygon_marker(cpoint, styl, radius, 3, tipstr,
-					       imgid);
-	  pointstr = p.str();
-	}
-
-      // Square Centered.
-      // svg::rect_element r = (cpoints[i], gstate.lstyle, {2 * r, 2 * r});
-      if (linecap == "square")
-	{
-	  rect_element r = make_rect_marker(cpoint, styl, radius,
-					    tipstr, "", imgid);
-	  pointstr = r.str();
-	}
-
-      // Hexagon
-      if (linecap == "hexagon")
-	{
-	  path_element p = make_polygon_marker(cpoint, styl, radius, 6, tipstr,
-					       imgid);
-	  pointstr = p.str();
-	}
-
-      // Octahedron
-      if (linecap == "octahedron")
-	{
-	  pointstr = make_octahedron_3d(cpoints[i], styl, radius);
-	}
-
-      // icosahedron
-      if (linecap == "icosahedron")
-	{
-	  pointstr = make_icosahedron_3d(cpoints[i], styl, radius);
-	}
-
-      // Notify if marker style not supported.
-      if (!pointstr.empty())
-	ret += pointstr;
-      else
-	{
-	  string m("make_line_graph_markers:: ");
-	  m += "linecap (";
-	  m += linecap;
-	  m += ")";
-	  m += "is invalid or missing, skipping...";
-	  m += k::newline;
-	  std::clog << m << std::endl;
-	}
     }
   return ret;
 }
@@ -633,7 +624,7 @@ make_line_graph(const vrange& points, const graph_rstate& gstate,
 	  // Use set of marker points paths with value as text tooltips on layer 2.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
-	  no_markerstyle.marker_form = "";
+	  no_markerstyle.marker_defs = "";
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, no_markerstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());
@@ -679,7 +670,7 @@ make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstat
 	  // Use set of image points (subset control points) image elements on layer 3.
 	  lgraph.add_raw(group_element::start_group("polyline-" + gstate.title));
 	  stroke_style no_markerstyle = gstate.sstyle;
-	  no_markerstyle.marker_form = "";
+	  no_markerstyle.marker_defs = "";
 	  polyline_element pl1 = make_polyline(cpoints, gstate.lstyle, no_markerstyle);
 	  lgraph.add_element(pl1);
 	  lgraph.add_raw(group_element::finish_group());

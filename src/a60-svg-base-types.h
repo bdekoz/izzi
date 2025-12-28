@@ -169,12 +169,13 @@ struct style
 /// Marker shape.
 enum class marker_shape
   {
-    round = 0,		///< Round
+    none = 0,		///< No marker
+    circle,		///< Circle, Round
     triangle,		///< Triangle
     square,		///< Square
     hexagon,		///< Hexagon
     octahedron,		///< Octahedron (8) 3D
-    icosahedron		///< Icosahedron (20) 3D
+    icosahedron		///< Icosahedron (2
   };
 
 const string
@@ -185,7 +186,8 @@ to_string(const marker_shape e)
   static enum_map_type enum_map;
   if (enum_map.empty())
     {
-      enum_map[marker_shape::round] = "round";
+      enum_map[marker_shape::none] = "none";
+      enum_map[marker_shape::circle] = "circle";
       enum_map[marker_shape::triangle] = "triangle";
       enum_map[marker_shape::square] = "square";
       enum_map[marker_shape::hexagon] = "hexagon";
@@ -201,13 +203,16 @@ to_string(const marker_shape e)
 /// NB: https://yuanchuan.dev/fun-with-stroke-dasharray
 struct stroke_style
 {
-  /// Marker shapes.
+  /// Marker string pointing to definitions elements.
   /// For graph_mode 1, this means the SVG equivalent of CSS elements:
   /// marker-start, marker-mid, marker-end
-  /// For graph_mode 2, this means the marker_shape of the mark
-  string		marker_form;
+  string		marker_defs;
 
-  /// Marker repetitions, if any. Default is zero.
+  /// Marker shapes.
+  /// For graph_mode 2, this means the marker_shape of the mark
+  marker_shape		marker_form;
+
+  /// Marker repetitions, if any. Default is zero, no repitition, single marker.
   ushort		marker_reps;
 
   /// Line dash vs. space configuration.

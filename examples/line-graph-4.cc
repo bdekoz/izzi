@@ -51,20 +51,20 @@ test_chart()
 		     select::vector,
 		     bfirefox, a, chart_line_style_3,
 		     f1, f2, "ms", "%",
-		     styl3, { "r2wcadg", 0, "1 2", "", "triangle", "" },
+		     styl3, { "r2wcadg", marker_shape::none, 0, "1 2", "", "triangle", "" },
 		     aimg, "", ""
 		   };
 
   graph_rstate gs2 { select::vector | select::echo,
 		     bchrome, a, chart_line_style_3,
 		     f1, f2, "ms", "%",
-		     styl1, { "c2wcaglg", 0, "3", "", "round", "" },
+		     styl1, { "c2wcaglg", marker_shape::none, 0, "3", "", "round", "" },
 		     aimg, "", "" };
 
   graph_rstate gsa { select::ticks | select::linex | select::alt,
 		     "annotation", a, chart_line_style_3,
 		     f1, f2, "s", "%",
-		     styl2, { "", 0, "", "", "", "" },
+		     styl2, { "", marker_shape::none, 0, "", "", "", "" },
 		     aimg, "", "" };
 
   // Deserialize A/B data.

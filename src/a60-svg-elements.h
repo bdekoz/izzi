@@ -144,8 +144,6 @@ struct group_element : virtual public element_base
   finish_group()
   { return string("</g>") + k::newline; }
 
-
-
   /// For groups of elements that have the same name.
   ///
   /// Also, although one can nest SVG elements inside another SVG by
@@ -952,13 +950,13 @@ struct polyline_element : virtual public element_base
 	    _M_sstream << "stroke-linecap=" << k::quote;
 	    _M_sstream << sstyl.linecap << k::quote << k::space;
 	  }
-	if (!sstyl.marker_form.empty())
+	if (!sstyl.marker_defs.empty())
 	  {
 	    // line_style 3
 	    string mkr;
 	    mkr += k::quote;
 	    mkr += "url(#";
-	    mkr += sstyl.marker_form;
+	    mkr += sstyl.marker_defs;
 	    mkr += ")";
 	    mkr += k::quote;
 
