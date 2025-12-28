@@ -287,10 +287,10 @@ make_marker_instance(const marker_shape form, const point_2t& cpoint, const styl
       mkr = make_polygon_marker(cpoint, styl, radius, 6, tipstr, imgid);
       break;
     case marker_shape::octahedron:
-      pointstr = make_octahedron_3d(cpoint, styl, radius);
+      mkr = make_octahedron(cpoint, styl, radius);
       break;
     case marker_shape::icosahedron:
-      pointstr = make_icosahedron_3d(cpoint, styl, radius);
+      mkr = make_icosahedron(cpoint, styl, radius);
       break;
     default:
       string m("make_marker_instance:: ");

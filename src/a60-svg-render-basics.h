@@ -889,8 +889,8 @@ make_text_honeycomb(const point_2t origin, const double r,
 
 
 /// Make octahedron shape (8) in 2D simulated 3D
-std::string
-make_octahedron_3d(const point_2t origin, const style& s, const double radius)
+polyline_element
+make_octahedron(const point_2t origin, const style& s, const double radius)
 {
   auto [ centerX, centerY ] = origin;
 
@@ -919,25 +919,25 @@ make_octahedron_3d(const point_2t origin, const style& s, const double radius)
       {2,4}, {2,5}, {3,4}, {3,5}   // Top/bottom connections
     };
 
- std::stringstream oss;
+  vrange points;
   for (int i = 0; i < 12; i++)
     {
       int v1 = edges[i][0];
       int v2 = edges[i][1];
       point_2t p1 = { projX[v1], projY[v1] };
       point_2t p2 = { projX[v2], projY[v2] };
-      line_element l = make_line(p1, p2, s);
-      oss << l.str();
+      points.push_back(p1);
+      points.push_back(p2);
     }
-
-  return oss.str();
+  polyline_element p = make_polyline(points, s);
+  return p;
 }
 
 
 /// Make icosahedron shape (20) in 2D simulated 3D
 //make_icosahedron_3d(int centerX, int centerY, int size)
-std::string
-make_icosahedron_3d(const point_2t origin, const style& s, const double radius)
+polyline_element
+make_icosahedron(const point_2t origin, const style& s, const double radius)
 {
   auto [ centerX, centerY ] = origin;
 
@@ -984,17 +984,18 @@ make_icosahedron_3d(const point_2t origin, const style& s, const double radius)
       {8,9}, {10,11}                         // Remaining edges
     };
 
-  std::stringstream oss;
+  vrange points;
   for (int i = 0; i < 30; i++)
     {
       int v1 = edges[i][0];
       int v2 = edges[i][1];
       point_2t p1 = { projX[v1], projY[v1] };
       point_2t p2 = { projX[v2], projY[v2] };
-      line_element l = make_line(p1, p2, s);
+      points.push_back(p1);
+      points.push_back(p2);
     }
-
-  return oss.str();
+  polyline_element p = make_polyline(points, s);
+  return p;
 }
 
 
