@@ -355,13 +355,36 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 	styl._M_stroke_opacity = 0;
 
       const auto& form = gstate.sstyle.marker_form;
-      string pointstr = make_marker_instance(form, cpoint, styl, radius, tipstr, imgid);
+      ret = make_marker_instance(form, cpoint, styl, radius, tipstr, imgid);
 
       // Add additional marker or markers.
       const ushort rep = gstate.sstyle.marker_reps;
       if (rep > 0 && i + 1 < points.size())
 	{
-	  // Find the next point, and then inch along along the line connecting this to that.
+	  // Find the next point, and then inch along along the line connecting.
+	  auto [ cx1, cy1 ] = cpoint;
+	  auto cpointnext = cpoints[i + 1];
+	  auto [ cx2, cy2 ] = cpointnext;
+
+	  // Calculate the vector from p1 to p2
+	  double dx = cx2 - cx1;
+	  double dy = cy2 - cy1;
+
+	  // Calculate the distance between p1 and p2
+	  double d = distance_cartesian(cpoint, cpointnext);
+
+	  // Calculate the unit vector from p1 to p2
+	  double unit_x = dx / d;
+	  double unit_y = dy / d;
+
+	  // Calculate by moving distance d from p1 in the direction of the unit vector
+	  double x3 = cx1 + radius * unit_x;
+	  double y3 = cy1 + radius * unit_y;
+	  point_2t rpoint(x3, y3);
+
+	  const double shrinkf(0.75);
+	  string rm = make_marker_instance(form, rpoint, styl, radius * shrinkf, "", "");
+	  ret += rm;
 	}
 
     }
