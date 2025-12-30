@@ -358,6 +358,10 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       ret += make_marker_instance(form, cpoint, styl, radius, tipstr, imgid);
 
       // Add additional marker or markers.
+      // dr		== distance from p1 for echo/rep marker
+      // shrinkf	== how much to reduce the echo/rep from the original
+      const double dr = radius * 2;
+      const double shrinkf(0.75);
       const ushort rep = gstate.sstyle.marker_reps;
       if (rep > 0 && i + 1 < points.size())
 	{
@@ -377,12 +381,11 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 	  double unit_x = dx / d;
 	  double unit_y = dy / d;
 
-	  // Calculate by moving distance d from p1 in the direction of the unit vector
-	  double x3 = cx1 + radius * unit_x;
-	  double y3 = cy1 + radius * unit_y;
+	  // Calculate by moving distance dr from p1 in the direction of the unit vector
+	  double x3 = cx1 + dr * unit_x;
+	  double y3 = cy1 + dr * unit_y;
 	  point_2t rpoint(x3, y3);
 
-	  const double shrinkf(0.75);
 	  ret += make_marker_instance(form, rpoint, styl, radius * shrinkf,
 				      "", "");
 	}
