@@ -355,7 +355,7 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 	styl._M_stroke_opacity = 0;
 
       const auto& form = gstate.sstyle.marker_form;
-      ret = make_marker_instance(form, cpoint, styl, radius, tipstr, imgid);
+      ret += make_marker_instance(form, cpoint, styl, radius, tipstr, imgid);
 
       // Add additional marker or markers.
       const ushort rep = gstate.sstyle.marker_reps;
@@ -383,8 +383,8 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 	  point_2t rpoint(x3, y3);
 
 	  const double shrinkf(0.75);
-	  string rm = make_marker_instance(form, rpoint, styl, radius * shrinkf, "", "");
-	  ret += rm;
+	  ret += make_marker_instance(form, rpoint, styl, radius * shrinkf,
+				      "", "");
 	}
 
     }
