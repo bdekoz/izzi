@@ -215,7 +215,8 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="memdesc:a1210fd1e2d44bd05ccad2b95c9fdb887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measurement abstraction for absolute (not relative) measurements.  <a href="#a1210fd1e2d44bd05ccad2b95c9fdb887">More...</a><br /></td></tr>
-<tr class="memitem:a7c30513e0ec17ac816f135b43687f7ea" id="r_a7c30513e0ec17ac816f135b43687f7ea"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c30513e0ec17ac816f135b43687f7ea">marker_shape</a> { <a class="el" href="#a7c30513e0ec17ac816f135b43687f7eaa9bbd993d9da7df60b3fd4a4ed721b082">round</a> = 0
+<tr class="memitem:a7c30513e0ec17ac816f135b43687f7ea" id="r_a7c30513e0ec17ac816f135b43687f7ea"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c30513e0ec17ac816f135b43687f7ea">marker_shape</a> { <a class="el" href="#a7c30513e0ec17ac816f135b43687f7eaa334c4a4c42fdb79d7ebc3e73b517e6f8">none</a> = 0
+, <a class="el" href="#a7c30513e0ec17ac816f135b43687f7eaa9b6ddeba5b33e577c07c35d8505c6072">circle</a>
 , <a class="el" href="#a7c30513e0ec17ac816f135b43687f7eaacef44b46f16ae8ecf664df4266ffdbf9">triangle</a>
 , <a class="el" href="#a7c30513e0ec17ac816f135b43687f7eaa2fc01ec765ec0cb3dcc559126de20b30">square</a>
 , <a class="el" href="#a7c30513e0ec17ac816f135b43687f7eaafcadedce5939367d6558b793607399d8">hexagon</a>
@@ -567,6 +568,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:aa8461e0fe8b216d7ec30aef1131cb4b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map data points to cartestian points on graph area.  <br /></td></tr>
 <tr class="memitem:a039b0ff4b7f740ad7da9c34bab67f148" id="r_a039b0ff4b7f740ad7da9c34bab67f148"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1group__element">group_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a039b0ff4b7f740ad7da9c34bab67f148">make_line_graph_images</a> (const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;points, const <a class="el" href="structsvg_1_1graph__rstate.html">graph_rstate</a> &amp;gstate, const string imgprefix, const string imgpath=&quot;../filmstrip/&quot;, const string imgext=&quot;.webp&quot;)</td></tr>
 <tr class="memdesc:a039b0ff4b7f740ad7da9c34bab67f148"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return set of images for image tooltips, one for each point.  <br /></td></tr>
+<tr class="memitem:a4ab42199e40f9c74a5bbd5fb4f40f6ce" id="r_a4ab42199e40f9c74a5bbd5fb4f40f6ce"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ab42199e40f9c74a5bbd5fb4f40f6ce">make_marker_instance</a> (const <a class="el" href="#a7c30513e0ec17ac816f135b43687f7ea">marker_shape</a> form, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> &amp;cpoint, const <a class="el" href="structsvg_1_1style.html">style</a> styl, double radius, string tipstr, string imgid)</td></tr>
+<tr class="memdesc:a4ab42199e40f9c74a5bbd5fb4f40f6ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make marker or composite markers for one marker location.  <br /></td></tr>
 <tr class="memitem:ab025866e7ce3764e91258efffa44be2c" id="r_ab025866e7ce3764e91258efffa44be2c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab025866e7ce3764e91258efffa44be2c">make_line_graph_markers</a> (const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;points, const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;cpoints, const <a class="el" href="structsvg_1_1graph__rstate.html">graph_rstate</a> &amp;gstate, const double radius, const string imgidbase=&quot;&quot;)</td></tr>
 <tr class="memdesc:ab025866e7ce3764e91258efffa44be2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return set of paths of marker shapes with text tooltips. NB: For <a class="el" href="#a629cd6de1083f53fa0193c7a753db998" title="Polyline/line options.">graph_mode</a> &gt;= chart_line_style_2.  <br /></td></tr>
 <tr class="memitem:a9e853515f6791ac6c13249cef6b0407d" id="r_a9e853515f6791ac6c13249cef6b0407d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e853515f6791ac6c13249cef6b0407d">make_line_graph_annotations</a> (const <a class="el" href="#a915848d2fa32c5a4443025d38f629f5d">vrange</a> &amp;points, const <a class="el" href="structsvg_1_1graph__rstate.html">graph_rstate</a> &amp;gstate, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> xrange, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> yrange, const double xscale=1, const double yscale=1, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo=k::apercu_typo)</td></tr>
@@ -672,18 +675,16 @@ Functions</h2></td></tr>
 <tr class="memitem:aeed2fa83b1f452de1fb409437e4e23af" id="r_aeed2fa83b1f452de1fb409437e4e23af"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeed2fa83b1f452de1fb409437e4e23af">scale_proportional_to_weight</a> (double radius, double weight)</td></tr>
 <tr class="memitem:a74ca2344cea417d9107d56f4f53c5b0b" id="r_a74ca2344cea417d9107d56f4f53c5b0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1text__element">text_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74ca2344cea417d9107d56f4f53c5b0b">style_text</a> (const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo, const string xtransf=&quot;&quot;)</td></tr>
 <tr class="memdesc:a74ca2344cea417d9107d56f4f53c5b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text element at.  <br /></td></tr>
-<tr class="memitem:a4913cf665eb3ffb66376a89e3da53f70" id="r_a4913cf665eb3ffb66376a89e3da53f70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1text__element">text_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4913cf665eb3ffb66376a89e3da53f70">style_text_r</a> (const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo, const double deg, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> rorigin, const k::rrotation rr=k::rrotation::none)</td></tr>
-<tr class="memdesc:a4913cf665eb3ffb66376a89e3da53f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text element at.  <br /></td></tr>
-<tr class="memitem:a67906a7cc5e5a26f54de5d2c2a438b2a" id="r_a67906a7cc5e5a26f54de5d2c2a438b2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67906a7cc5e5a26f54de5d2c2a438b2a">styled_text</a> (<a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a> &amp;obj, const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo)</td></tr>
-<tr class="memdesc:a67906a7cc5e5a26f54de5d2c2a438b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at.  <br /></td></tr>
-<tr class="memitem:ab3898a8ddd70eda92fe8d6ba4cc05aba" id="r_ab3898a8ddd70eda92fe8d6ba4cc05aba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3898a8ddd70eda92fe8d6ba4cc05aba">styled_text</a> (<a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a> &amp;obj, const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo, const string xform)</td></tr>
-<tr class="memdesc:ab3898a8ddd70eda92fe8d6ba4cc05aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at.  <br /></td></tr>
+<tr class="memitem:a43b88f0c7e911161e757ccc5a5ccd607" id="r_a43b88f0c7e911161e757ccc5a5ccd607"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1text__element">text_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43b88f0c7e911161e757ccc5a5ccd607">style_text_r</a> (const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1typography.html">typography</a> &amp;typo, const double deg, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> rorigin, const k::rrotation rr=k::rrotation::none)</td></tr>
+<tr class="memdesc:a43b88f0c7e911161e757ccc5a5ccd607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text element at.  <br /></td></tr>
+<tr class="memitem:a1f7d3202fb81e08877157baf0ad6ccdf" id="r_a1f7d3202fb81e08877157baf0ad6ccdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f7d3202fb81e08877157baf0ad6ccdf">styled_text</a> (<a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a> &amp;obj, const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo, const string xform=&quot;&quot;)</td></tr>
+<tr class="memdesc:a1f7d3202fb81e08877157baf0ad6ccdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at.  <br /></td></tr>
 <tr class="memitem:ad3c5f59f86bb309de4efd1187e5c004b" id="r_ad3c5f59f86bb309de4efd1187e5c004b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3c5f59f86bb309de4efd1187e5c004b">styled_text_r</a> (<a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a> &amp;obj, const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo, const double deg)</td></tr>
 <tr class="memdesc:ad3c5f59f86bb309de4efd1187e5c004b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at.  <br /></td></tr>
 <tr class="memitem:a0ba564abd3f73d12da5b7967405c0a52" id="r_a0ba564abd3f73d12da5b7967405c0a52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ba564abd3f73d12da5b7967405c0a52">styled_text_r</a> (<a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a> &amp;obj, const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo, const double deg, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> rorigin)</td></tr>
 <tr class="memdesc:a0ba564abd3f73d12da5b7967405c0a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at.  <br /></td></tr>
 <tr class="memitem:a8ccdcddfa39a7958693ea522fe98528b" id="r_a8ccdcddfa39a7958693ea522fe98528b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ccdcddfa39a7958693ea522fe98528b">styled_text_link</a> (<a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a> &amp;obj, const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo, const string uri)</td></tr>
-<tr class="memdesc:a8ccdcddfa39a7958693ea522fe98528b"><td class="mdescLeft">&#160;</td><td class="mdescRight">XXX Text at.  <br /></td></tr>
+<tr class="memdesc:a8ccdcddfa39a7958693ea522fe98528b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at.  <br /></td></tr>
 <tr class="memitem:aba9f46c82a468e5594eedb3b4ff14f9e" id="r_aba9f46c82a468e5594eedb3b4ff14f9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba9f46c82a468e5594eedb3b4ff14f9e">sized_text</a> (<a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a> &amp;obj, <a class="el" href="structsvg_1_1typography.html">svg::typography</a> typo, const int sz, const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const int tx, const int ty)</td></tr>
 <tr class="memdesc:aba9f46c82a468e5594eedb3b4ff14f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text at size.  <br /></td></tr>
 <tr class="memitem:a1309ce987f4e87ad97a1f3638a7af541" id="r_a1309ce987f4e87ad97a1f3638a7af541"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1309ce987f4e87ad97a1f3638a7af541">sized_text_r</a> (<a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a> &amp;obj, <a class="el" href="structsvg_1_1typography.html">svg::typography</a> typo, const int sz, const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>, const int tx, const int ty, const double deg)</td></tr>
@@ -723,10 +724,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a2c65de7707b8b7b1bca959a3a2bbba91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make single path segment.  <br /></td></tr>
 <tr class="memitem:a302d3f13fef13ef823b99cfabcfac3ab" id="r_a302d3f13fef13ef823b99cfabcfac3ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1path__element">path_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a302d3f13fef13ef823b99cfabcfac3ab">make_path</a> (const string &amp;pathda, const <a class="el" href="structsvg_1_1style.html">style</a> &amp;styl, const string id=&quot;&quot;, const bool selfclosingtagp=true, const string xattr=&quot;&quot;)</td></tr>
 <tr class="memdesc:a302d3f13fef13ef823b99cfabcfac3ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers. top style defaults: fill opac(0), stroke opac(1), stroke sz 1 bottom style defaults: fill opac(0), stroke opac(1), stroke sz 1.25.  <br /></td></tr>
-<tr class="memitem:a6745faec7f5b60dcb4fc12cbdbf56bd7" id="r_a6745faec7f5b60dcb4fc12cbdbf56bd7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1path__element">path_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6745faec7f5b60dcb4fc12cbdbf56bd7">make_path_triangle</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1style.html">style</a> styl, const double r=4, const double angle=120, const bool selfclosingtagp=true, const string xattr=&quot;&quot;)</td></tr>
-<tr class="memdesc:a6745faec7f5b60dcb4fc12cbdbf56bd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center a triangle at this point.  <br /></td></tr>
-<tr class="memitem:a2dba646eaff00bba42d6cc80161a9a38" id="r_a2dba646eaff00bba42d6cc80161a9a38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1path__element">path_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dba646eaff00bba42d6cc80161a9a38">make_path_polygon</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1style.html">style</a> styl, const double r=4, const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a> pointsn=8, const bool selfclosingtagp=true, const string xattr=&quot;&quot;)</td></tr>
-<tr class="memdesc:a2dba646eaff00bba42d6cc80161a9a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center an octogon at this point. radius 4 is pixels to draw out from center point. pointsn is number of points to draw (8 for octogon)  <br /></td></tr>
+<tr class="memitem:a9f93529d8f92bb1ffb5d84478e22aff4" id="r_a9f93529d8f92bb1ffb5d84478e22aff4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1path__element">path_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f93529d8f92bb1ffb5d84478e22aff4">make_path_polygon</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1style.html">style</a> s, const double r, const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a> pointsn, const bool selfclosingtagp=true, const string xattr=&quot;&quot;)</td></tr>
+<tr class="memdesc:a9f93529d8f92bb1ffb5d84478e22aff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center an octogon at this point. radius 4 is pixels to draw out from center point. pointsn is number of points to draw (8 for octogon)  <br /></td></tr>
+<tr class="memitem:a22b2e19f67569f41bad508296fef7a72" id="r_a22b2e19f67569f41bad508296fef7a72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1path__element">path_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22b2e19f67569f41bad508296fef7a72">make_polygon_marker</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1style.html">style</a> s, const double r, const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a> pointsn, const string <a class="el" href="#ac8061963317131e6bd4d517ed84880bcad5d3db1765287eef77d7927cc956f50a">title</a>, const string xattr=&quot;&quot;)</td></tr>
+<tr class="memdesc:a22b2e19f67569f41bad508296fef7a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a polygon marker for line graphs.  <br /></td></tr>
 <tr class="memitem:abd8e35decc1e56f7243b02174c701d37" id="r_abd8e35decc1e56f7243b02174c701d37"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd8e35decc1e56f7243b02174c701d37">make_path_arc_circumference</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> &amp;start, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> &amp;end, const <a class="el" href="#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a> r, const int arcflag=0, const int sweepflag=1)</td></tr>
 <tr class="memdesc:abd8e35decc1e56f7243b02174c701d37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make path segment between two points on a circumference of radius r. Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin)  <br /></td></tr>
 <tr class="memitem:a8e3421a573ebb8e56428ce8c76f3f9ec" id="r_a8e3421a573ebb8e56428ce8c76f3f9ec"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e3421a573ebb8e56428ce8c76f3f9ec">make_path_arc_closed</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> &amp;origin, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> &amp;start, const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> &amp;end, const <a class="el" href="#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a> r, const int arcflag=0, const int sweepflag=0)</td></tr>
@@ -743,10 +744,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a5cf48c6711ae288e6acffc99a708082d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center rings of hexagons at this point.  <br /></td></tr>
 <tr class="memitem:a1236bc10b35d03f7253af7fc0ad37d63" id="r_a1236bc10b35d03f7253af7fc0ad37d63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1group__element">group_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1236bc10b35d03f7253af7fc0ad37d63">make_text_honeycomb</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const double r, const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a> hexn, const bool cfillp, const string s, const <a class="el" href="structsvg_1_1typography.html">typography</a> typo, const string xform=&quot;&quot;)</td></tr>
 <tr class="memdesc:a1236bc10b35d03f7253af7fc0ad37d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Center rings of text in a hexagon pattern at this point.  <br /></td></tr>
-<tr class="memitem:aaf3635710070dc9a47ef0abb8a816164" id="r_aaf3635710070dc9a47ef0abb8a816164"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf3635710070dc9a47ef0abb8a816164">make_octahedron_3d</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1style.html">style</a> &amp;s, const double radius)</td></tr>
-<tr class="memdesc:aaf3635710070dc9a47ef0abb8a816164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make octahedron shape (8) in 2D simulated 3D.  <br /></td></tr>
-<tr class="memitem:a921dcf12976f6e62a7ce2a7f4a0cf1c7" id="r_a921dcf12976f6e62a7ce2a7f4a0cf1c7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a921dcf12976f6e62a7ce2a7f4a0cf1c7">make_icosahedron_3d</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1style.html">style</a> &amp;s, const double radius)</td></tr>
-<tr class="memdesc:a921dcf12976f6e62a7ce2a7f4a0cf1c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make icosahedron shape (20) in 2D simulated 3D.  <br /></td></tr>
+<tr class="memitem:ac882a94446aa6ca9f8c5046d1d756cc5" id="r_ac882a94446aa6ca9f8c5046d1d756cc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1polyline__element">polyline_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac882a94446aa6ca9f8c5046d1d756cc5">make_octahedron</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1style.html">style</a> &amp;s, const double radius)</td></tr>
+<tr class="memdesc:ac882a94446aa6ca9f8c5046d1d756cc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make octahedron shape (8) in 2D simulated 3D.  <br /></td></tr>
+<tr class="memitem:a896e80375778f382f08aae358d87e164" id="r_a896e80375778f382f08aae358d87e164"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1polyline__element">polyline_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a896e80375778f382f08aae358d87e164">make_icosahedron</a> (const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, const <a class="el" href="structsvg_1_1style.html">style</a> &amp;s, const double radius)</td></tr>
+<tr class="memdesc:a896e80375778f382f08aae358d87e164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make icosahedron shape (20) in 2D simulated 3D.  <br /></td></tr>
 <tr class="memitem:a6a8ae7ad527df23ca7c3586e857276de" id="r_a6a8ae7ad527df23ca7c3586e857276de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__elements.html#structsvg_1_1svg__element">svg_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a8ae7ad527df23ca7c3586e857276de">display_color_qis</a> (const auto &amp;klrs, const <a class="el" href="structsvg_1_1area.html">area</a>&lt;&gt; a, const <a class="el" href="structsvg_1_1typography.html">typography</a> &amp;typobase)</td></tr>
 <tr class="memdesc:a6a8ae7ad527df23ca7c3586e857276de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make grid palette for display. NB.  <br /></td></tr>
 <tr class="memitem:aa898693d71f12c23258b75f619edc045" id="r_aa898693d71f12c23258b75f619edc045"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#ac8061963317131e6bd4d517ed84880bc">select</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa898693d71f12c23258b75f619edc045">operator&amp;</a> (<a class="el" href="#ac8061963317131e6bd4d517ed84880bc">select</a> __a, <a class="el" href="#ac8061963317131e6bd4d517ed84880bc">select</a> __b)</td></tr>
@@ -1461,7 +1462,9 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Marker shape. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7c30513e0ec17ac816f135b43687f7eaa9bbd993d9da7df60b3fd4a4ed721b082" name="a7c30513e0ec17ac816f135b43687f7eaa9bbd993d9da7df60b3fd4a4ed721b082"></a>round&#160;</td><td class="fielddoc"><p>Round. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7c30513e0ec17ac816f135b43687f7eaa334c4a4c42fdb79d7ebc3e73b517e6f8" name="a7c30513e0ec17ac816f135b43687f7eaa334c4a4c42fdb79d7ebc3e73b517e6f8"></a>none&#160;</td><td class="fielddoc"><p>No marker. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7c30513e0ec17ac816f135b43687f7eaa9b6ddeba5b33e577c07c35d8505c6072" name="a7c30513e0ec17ac816f135b43687f7eaa9b6ddeba5b33e577c07c35d8505c6072"></a>circle&#160;</td><td class="fielddoc"><p>Circle, Round. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a7c30513e0ec17ac816f135b43687f7eaacef44b46f16ae8ecf664df4266ffdbf9" name="a7c30513e0ec17ac816f135b43687f7eaacef44b46f16ae8ecf664df4266ffdbf9"></a>triangle&#160;</td><td class="fielddoc"><p>Triangle. </p>
 </td></tr>
@@ -1471,7 +1474,7 @@ template&lt;std::size_t N&gt; </div>
 </td></tr>
 <tr><td class="fieldname"><a id="a7c30513e0ec17ac816f135b43687f7eaa764b06b3283259dcb5fb27107afaed7a" name="a7c30513e0ec17ac816f135b43687f7eaa764b06b3283259dcb5fb27107afaed7a"></a>octahedron&#160;</td><td class="fielddoc"><p>Octahedron (8) 3D. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a7c30513e0ec17ac816f135b43687f7eaadb521769723bc15762db3315e6e54504" name="a7c30513e0ec17ac816f135b43687f7eaadb521769723bc15762db3315e6e54504"></a>icosahedron&#160;</td><td class="fielddoc"><p>Icosahedron (20) 3D. </p>
+<tr><td class="fieldname"><a id="a7c30513e0ec17ac816f135b43687f7eaadb521769723bc15762db3315e6e54504" name="a7c30513e0ec17ac816f135b43687f7eaadb521769723bc15762db3315e6e54504"></a>icosahedron&#160;</td><td class="fielddoc"><p>Icosahedron (2. </p>
 </td></tr>
 </table>
 
@@ -1681,7 +1684,7 @@ template&lt;std::size_t N&gt; </div>
 </div><div class="memdoc">
 
 <p>Polyline/line options. </p>
-<p>1: use one line with css dasharray and markers mid, end points 2: use two lines: one with css dasharray and no markerspoints, two with explicit marker paths and added text tooltips 3: use two lines and add js + image tooltips: like 2 above but add image tooltips, with js controlling image visibility. </p>
+<p>1: use one line with css dasharray and markers mid, end points 2: use two lines: one with css dasharray and no marker_form, two with explicit marker paths and added text tooltips 3: use two lines and add js + image tooltips: like 2 above but add image tooltips, with js controlling image visibility. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a629cd6de1083f53fa0193c7a753db998a1bd74b3cba4b1950bdaf701eb933e607" name="a629cd6de1083f53fa0193c7a753db998a1bd74b3cba4b1950bdaf701eb933e607"></a>chart_line_style_1&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a629cd6de1083f53fa0193c7a753db998ab0bdfe46dd8e01892130545d255b8dc8" name="a629cd6de1083f53fa0193c7a753db998ab0bdfe46dd8e01892130545d255b8dc8"></a>chart_line_style_2&#160;</td><td class="fielddoc"></td></tr>
@@ -1893,7 +1896,7 @@ template&lt;std::size_t N&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-base-types_8h_source.html#l00181">181</a> of file <a class="el" href="a60-svg-base-types_8h_source.html">a60-svg-base-types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-base-types_8h_source.html#l00182">182</a> of file <a class="el" href="a60-svg-base-types_8h_source.html">a60-svg-base-types.h</a>.</p>
 
 </div>
 </div>
@@ -1912,7 +1915,7 @@ template&lt;std::size_t N&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-base-types_8h_source.html#l00250">250</a> of file <a class="el" href="a60-svg-base-types_8h_source.html">a60-svg-base-types.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-base-types_8h_source.html#l00258">258</a> of file <a class="el" href="a60-svg-base-types_8h_source.html">a60-svg-base-types.h</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
@@ -3563,6 +3566,57 @@ to
 
 </div>
 </div>
+<a id="a4ab42199e40f9c74a5bbd5fb4f40f6ce" name="a4ab42199e40f9c74a5bbd5fb4f40f6ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ab42199e40f9c74a5bbd5fb4f40f6ce">&#9670;&#160;</a></span>make_marker_instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string svg::make_marker_instance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a7c30513e0ec17ac816f135b43687f7ea">marker_shape</a></td>          <td class="paramname"><span class="paramname"><em>form</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>cpoint</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structsvg_1_1style.html">style</a></td>          <td class="paramname"><span class="paramname"><em>styl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>radius</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>tipstr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>imgid</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Make marker or composite markers for one marker location. </p>
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00269">269</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<div id="dynsection-30" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-30-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-30-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a4ab42199e40f9c74a5bbd5fb4f40f6ce_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <a id="ab025866e7ce3764e91258efffa44be2c" name="ab025866e7ce3764e91258efffa44be2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab025866e7ce3764e91258efffa44be2c">&#9670;&#160;</a></span>make_line_graph_markers()</h2>
 
@@ -3599,11 +3653,11 @@ to
 
 <p>Return set of paths of marker shapes with text tooltips. NB: For <a class="el" href="#a629cd6de1083f53fa0193c7a753db998" title="Polyline/line options.">graph_mode</a> &gt;= chart_line_style_2. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00270">270</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
-<div id="dynsection-30" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-30-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00313">313</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<div id="dynsection-31" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-31-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-30-content" class="dyncontent" style="display:none;">
+<div id="dynsection-31-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ab025866e7ce3764e91258efffa44be2c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -3666,11 +3720,11 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00399">399</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
-<div id="dynsection-31" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-31-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00409">409</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<div id="dynsection-32" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-32-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-31-content" class="dyncontent" style="display:none;">
+<div id="dynsection-32-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a9e853515f6791ac6c13249cef6b0407d_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -3724,11 +3778,11 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00616">616</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
-<div id="dynsection-32" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-32-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00626">626</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<div id="dynsection-33" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-33-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-32-content" class="dyncontent" style="display:none;">
+<div id="dynsection-33-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ace9576de8d9727b72bd54b8bfd7f1a3f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -3780,11 +3834,11 @@ to
 
 <p>Line graph 3 needs more parameters. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00669">669</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
-<div id="dynsection-33" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-33-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="a60-svg-graphs-line_8h_source.html#l00679">679</a> of file <a class="el" href="a60-svg-graphs-line_8h_source.html">a60-svg-graphs-line.h</a>.</p>
+<div id="dynsection-34" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-34-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-33-content" class="dyncontent" style="display:none;">
+<div id="dynsection-34-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a4e675bc3cd8f3e8d2ab6df4eaed3fe90_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -3859,10 +3913,10 @@ to
 <p>The centerweight <a class="el" href="#a5fd971345fcede00e46bd1bd8846f12d" title="Grid style mode.">matrix_variant</a> has cells arranged as above. The other variant styles, distort the matrix as specified below. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html#l00060">60</a> of file <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html">a60-svg-grid-matrix-systems.h</a>.</p>
-<div id="dynsection-34" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-34-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-35" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-35-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-34-content" class="dyncontent" style="display:none;">
+<div id="dynsection-35-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a116e3e953a52a683b7e4cf010a43f65b_cgraph.svg" width="292" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -4015,10 +4069,10 @@ to
 <p>Default matrix position. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html#l00230">230</a> of file <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html">a60-svg-grid-matrix-systems.h</a>.</p>
-<div id="dynsection-35" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-35-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-36" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-36-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-35-content" class="dyncontent" style="display:none;">
+<div id="dynsection-36-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a775a01d459873fd0c8d2dabb88a889e5_cgraph.svg" width="479" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -4060,10 +4114,10 @@ to
 <p>polyline marker-mid Attribute/marker-mid </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-markers_8h_source.html#l00039">39</a> of file <a class="el" href="a60-svg-markers_8h_source.html">a60-svg-markers.h</a>.</p>
-<div id="dynsection-36" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-36-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-37" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-37-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-36-content" class="dyncontent" style="display:none;">
+<div id="dynsection-37-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a56ab414cf370cb20fa25d06d2a9b07bb_cgraph.svg" width="347" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -4104,10 +4158,10 @@ to
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-markers_8h_source.html#l00051">51</a> of file <a class="el" href="a60-svg-markers_8h_source.html">a60-svg-markers.h</a>.</p>
-<div id="dynsection-37" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-37-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-38" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-38-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-37-content" class="dyncontent" style="display:none;">
+<div id="dynsection-38-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a75c6caa3e403eec96c8e1f39394b7286_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -4148,10 +4202,10 @@ to
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-markers_8h_source.html#l00060">60</a> of file <a class="el" href="a60-svg-markers_8h_source.html">a60-svg-markers.h</a>.</p>
-<div id="dynsection-38" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-38-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-39" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-39-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-38-content" class="dyncontent" style="display:none;">
+<div id="dynsection-39-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_afbe62002c7b769281ddf1a86f62366c7_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -4192,10 +4246,10 @@ to
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-markers_8h_source.html#l00069">69</a> of file <a class="el" href="a60-svg-markers_8h_source.html">a60-svg-markers.h</a>.</p>
-<div id="dynsection-39" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-39-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-40" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-40-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-39-content" class="dyncontent" style="display:none;">
+<div id="dynsection-40-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a8194c44dfb20ae927e1b96d11d88593b_cgraph.svg" width="100%" height="578"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -4231,10 +4285,10 @@ to
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-markers_8h_source.html#l00078">78</a> of file <a class="el" href="a60-svg-markers_8h_source.html">a60-svg-markers.h</a>.</p>
-<div id="dynsection-40" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-40-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-41" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-41-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-40-content" class="dyncontent" style="display:none;">
+<div id="dynsection-41-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a6b53509c8447134239e362c7983fb9b2_cgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -4258,10 +4312,10 @@ to
 <p>Create a set of markers bounded by a rectangle of size n. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-markers_8h_source.html#l00089">89</a> of file <a class="el" href="a60-svg-markers_8h_source.html">a60-svg-markers.h</a>.</p>
-<div id="dynsection-41" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-41-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-42" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-42-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-41-content" class="dyncontent" style="display:none;">
+<div id="dynsection-42-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a42cfc603a1e307158f4830c2128ff77f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -4285,10 +4339,10 @@ to
 <p>Make black/white/wcag markers with sizes 4x4 and 2x2. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-markers_8h_source.html#l00113">113</a> of file <a class="el" href="a60-svg-markers_8h_source.html">a60-svg-markers.h</a>.</p>
-<div id="dynsection-42" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-42-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-43" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-43-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-42-content" class="dyncontent" style="display:none;">
+<div id="dynsection-43-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a8956ce9cc10b1b8598cb5f2a097e0efd_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -4395,11 +4449,11 @@ to
 <p>Draw text on the circumference of a circle of radius r centered at (cx, cy) corresponding to the angle above. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-arc_8h_source.html#l00080">80</a> of file <a class="el" href="a60-svg-radial-arc_8h_source.html">a60-svg-radial-arc.h</a>.</p>
-<div id="dynsection-43" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-43-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-44" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-44-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-43-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a294df0c77f95c8838d7131e4b3ad2716_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-44-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a294df0c77f95c8838d7131e4b3ad2716_cgraph.svg" width="100%" height="598"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -4453,11 +4507,11 @@ to
 <p>rotatep == rotate name text to be on an arc from the origin of the circle. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-arc_8h_source.html#l00108">108</a> of file <a class="el" href="a60-svg-radial-arc_8h_source.html">a60-svg-radial-arc.h</a>.</p>
-<div id="dynsection-44" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-44-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-45" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-45-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-44-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ac7e978e6559f45963f7585305a39a35e_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-45-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ac7e978e6559f45963f7585305a39a35e_cgraph.svg" width="100%" height="598"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -4514,11 +4568,11 @@ to
 <p>Map ids with one value to a point cluster radiating out from a center. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-arc_8h_source.html#l00131">131</a> of file <a class="el" href="a60-svg-radial-arc_8h_source.html">a60-svg-radial-arc.h</a>.</p>
-<div id="dynsection-45" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-45-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-46" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-46-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-45-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_afb1f3c190deba4fd32a0394c61efa26d_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-46-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_afb1f3c190deba4fd32a0394c61efa26d_cgraph.svg" width="100%" height="582"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -4569,10 +4623,10 @@ to
 <p>Radiate as above, but group similar values such that they are splayed, and not written on top of each other on the same arc/angle. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-arc_8h_source.html#l00160">160</a> of file <a class="el" href="a60-svg-radial-arc_8h_source.html">a60-svg-radial-arc.h</a>.</p>
-<div id="dynsection-46" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-46-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-47" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-47-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-46-content" class="dyncontent" style="display:none;">
+<div id="dynsection-47-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ad7935485f47c08768a7106934d73c959_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -4621,10 +4675,10 @@ to
 <p>Convenience for setting radial range. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00053">53</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-47" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-47-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-48" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-48-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-47-content" class="dyncontent" style="display:none;">
+<div id="dynsection-48-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a258a081612c8e9d9fba969ca25c0de15_cgraph.svg" width="318" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -4660,10 +4714,10 @@ to
 <p>Transform a value on a range to an angle on the radial range. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00067">67</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-48" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-48-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-49" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-49-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-48-content" class="dyncontent" style="display:none;">
+<div id="dynsection-49-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a255802f8d9a51515cb44905c4216feaf_cgraph.svg" width="284" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -4699,10 +4753,10 @@ to
 <p>Adjust angle above to CW/CCW orientation. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00078">78</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-49" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-49-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-50" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-50-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-49-content" class="dyncontent" style="display:none;">
+<div id="dynsection-50-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a6b1624bb42af7e9269fc6088e6a26fd7_cgraph.svg" width="370" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -4754,10 +4808,10 @@ to
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00097">97</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-50" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-50-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-51" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-51-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-50-content" class="dyncontent" style="display:none;">
+<div id="dynsection-51-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a3a981b6bbcf7466e6e90eacbe8cf126d_cgraph.svg" width="510" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -4829,10 +4883,10 @@ to
 <p>Set the number of label spaces. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00159">159</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-51" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-51-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-52" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-52-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-51-content" class="dyncontent" style="display:none;">
+<div id="dynsection-52-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ae00e5173f96e324f799a8f2cf2fa861d_cgraph.svg" width="318" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -4926,11 +4980,11 @@ to
 <p>Text with typography, arranged cw around points (x,y) on a circle. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00191">191</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-52" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-52-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-53" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-53-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-52-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a27b1041d0851178e4835e1f623a46161_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-53-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a27b1041d0851178e4835e1f623a46161_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -4972,11 +5026,11 @@ to
 <p>Text with typography, arranged ccw around points (x,y) on a circle. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00204">204</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-53" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-53-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-54" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-54-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-53-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ae7eab6d9ce1f55bcbcc997cd24c5abcf_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-54-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ae7eab6d9ce1f55bcbcc997cd24c5abcf_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -5023,11 +5077,11 @@ to
 <p>Text with typography, arranged cw around points (x,y) on a circle. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00217">217</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-54" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-54-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-55" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-55-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-54-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a60459e6aa2715b8a6256b64c39ee7140_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-55-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a60459e6aa2715b8a6256b64c39ee7140_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -5074,11 +5128,11 @@ to
 <p>Text with typography, arranged ccw around points (x,y) on a circle. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00230">230</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-55" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-55-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-56" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-56-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-55-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a8303be1e4c6178f031600fcd1a9c1ae1_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-56-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a8303be1e4c6178f031600fcd1a9c1ae1_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -5132,11 +5186,11 @@ to
 <p>roriginp is a switch to use a render origin, not the text position, as the rotation origin. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00256">256</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-56" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-56-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-57" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-57-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-56-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a0a0dce44cf8a75daa516cdf9fade5a85_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-57-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a0a0dce44cf8a75daa516cdf9fade5a85_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -5193,10 +5247,10 @@ to
 <p>Spread ids on either side of an origin point, along circumference path. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00299">299</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-57" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-57-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-58" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-58-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-57-content" class="dyncontent" style="display:none;">
+<div id="dynsection-58-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a5ae75b065c6ff4ff3bcba9994493e942_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -5249,11 +5303,11 @@ to
 <p>Spread ids past the origin point, along circumference path. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00337">337</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-58" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-58-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-59" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-59-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-58-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a8f48a6909f52b54cf4a3bfce5e27b59c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-59-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a8f48a6909f52b54cf4a3bfce5e27b59c_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -5305,11 +5359,11 @@ to
 <p>Spread ids after in stepping pattern outward. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00353">353</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-59" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-59-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-60" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-60-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-59-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a95ce7af851cb8dfa4f718ed04b94db93_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-60-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a95ce7af851cb8dfa4f718ed04b94db93_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -5361,11 +5415,11 @@ to
 <p>Rotate and stack ids at origin point, extending radius for each from point of origin. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00373">373</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-60" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-60-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-61" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-61-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-60-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ae052cd57e2e5d8237d0a0287516da2ea_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-61-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ae052cd57e2e5d8237d0a0287516da2ea_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -5412,11 +5466,11 @@ to
 <p>Concatenate ids onto one line. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-base_8h_source.html#l00393">393</a> of file <a class="el" href="a60-svg-radial-base_8h_source.html">a60-svg-radial-base.h</a>.</p>
-<div id="dynsection-61" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-61-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-62" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-62-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-61-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a07c6fad0adddb0908ed4ef00536967c9_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-62-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a07c6fad0adddb0908ed4ef00536967c9_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -5458,10 +5512,10 @@ to
 <p>Arc + arrow glyph that traces path of start to finish trajectory. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-direction-arc-glyph_8h_source.html#l00028">28</a> of file <a class="el" href="a60-svg-radial-direction-arc-glyph_8h_source.html">a60-svg-radial-direction-arc-glyph.h</a>.</p>
-<div id="dynsection-62" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-62-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-63" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-63-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-62-content" class="dyncontent" style="display:none;">
+<div id="dynsection-63-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ac1e28128c6f03cf9cd0248f18c69c496_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -5509,10 +5563,10 @@ to
 <p>Title on same arc. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-direction-arc-glyph_8h_source.html#l00094">94</a> of file <a class="el" href="a60-svg-radial-direction-arc-glyph_8h_source.html">a60-svg-radial-direction-arc-glyph.h</a>.</p>
-<div id="dynsection-63" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-63-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-64" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-64-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-63-content" class="dyncontent" style="display:none;">
+<div id="dynsection-64-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a8c9e93a560521d1896fd166bcf926610_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -5628,10 +5682,10 @@ to
 <p>By observation, type size 12pt = 5, 6pt = 2. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00035">35</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-64" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-64-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-65" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-65-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-64-content" class="dyncontent" style="display:none;">
+<div id="dynsection-65-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_af0c7cb6a824333600e3f109df01d9322_cgraph.svg" width="330" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -5676,10 +5730,10 @@ to
 <p>By observation, 7pt = 5 minimum NB: Make sure distance is at least text height away for lowest values. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00055">55</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-65" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-65-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-66" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-66-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-65-content" class="dyncontent" style="display:none;">
+<div id="dynsection-66-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ac50e5c27a7118b85791b77d75a0588cf_cgraph.svg" width="320" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -5791,10 +5845,10 @@ to
 <p>Draw glyph on ray from origin as part of kusama. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00098">98</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-66" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-66-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-67" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-67-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-66-content" class="dyncontent" style="display:none;">
+<div id="dynsection-67-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a91699dd1391d7fe0f91ba98fde5b97a5_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -5861,10 +5915,10 @@ to
 <p>Returns the length along the arc of the generated glyph. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00160">160</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-67" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-67-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-68" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-68-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-67-content" class="dyncontent" style="display:none;">
+<div id="dynsection-68-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a1f180d83d7e19dc673dc44192839cafe_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -5927,10 +5981,10 @@ to
 <p>Convenience function for above. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00201">201</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-68" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-68-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-69" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-69-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-68-content" class="dyncontent" style="display:none;">
+<div id="dynsection-69-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a2461ede2420e834de59ce6c21a063b2d_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6015,10 +6069,10 @@ to
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00224">224</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-69" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-69-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-70" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-70-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-69-content" class="dyncontent" style="display:none;">
+<div id="dynsection-70-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_aa53e14ab312cd6603afd649a44cba7aa_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6091,10 +6145,10 @@ to
 <p>Simplest version. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00306">306</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-70" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-70-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-71" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-71-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-70-content" class="dyncontent" style="display:none;">
+<div id="dynsection-71-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ac04db45c1bceafa992beba8d17ae8549_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6167,10 +6221,10 @@ to
 <p>Layer one value's glyphs and ids. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00352">352</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-71" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-71-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-72" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-72-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-71-content" class="dyncontent" style="display:none;">
+<div id="dynsection-72-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_abae62a0253b67a62a8f10bfa6ed19464_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6261,10 +6315,10 @@ to
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00406">406</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-72" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-72-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-73" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-73-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-72-content" class="dyncontent" style="display:none;">
+<div id="dynsection-73-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_aaf18e5a2f38330dcf09fc87ceae40b85_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6334,10 +6388,10 @@ to
 <p>When overlap is detected, move outward on radius if true, otherwise move in. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-radial-kusama_8h_source.html#l00489">489</a> of file <a class="el" href="a60-svg-radial-kusama_8h_source.html">a60-svg-radial-kusama.h</a>.</p>
-<div id="dynsection-73" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-73-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-74" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-74-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-73-content" class="dyncontent" style="display:none;">
+<div id="dynsection-74-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_abb23d939c2d9c6cb31cfca3076ad5e9f_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -6427,17 +6481,17 @@ to
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00047">47</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
-<div id="dynsection-74" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-74-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-75" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-75-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-74-content" class="dyncontent" style="display:none;">
+<div id="dynsection-75-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a74ca2344cea417d9107d56f4f53c5b0b_cgraph.svg" width="647" height="296"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="a4913cf665eb3ffb66376a89e3da53f70" name="a4913cf665eb3ffb66376a89e3da53f70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4913cf665eb3ffb66376a89e3da53f70">&#9670;&#160;</a></span>style_text_r()</h2>
+<a id="a43b88f0c7e911161e757ccc5a5ccd607" name="a43b88f0c7e911161e757ccc5a5ccd607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43b88f0c7e911161e757ccc5a5ccd607">&#9670;&#160;</a></span>style_text_r()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -6455,7 +6509,7 @@ to
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structsvg_1_1typography.html">typography</a></td>          <td class="paramname"><span class="paramname"><em>typo</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structsvg_1_1typography.html">typography</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>typo</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -6488,64 +6542,17 @@ to
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00064">64</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
-<div id="dynsection-75" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-75-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-75-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a4913cf665eb3ffb66376a89e3da53f70_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a67906a7cc5e5a26f54de5d2c2a438b2a" name="a67906a7cc5e5a26f54de5d2c2a438b2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67906a7cc5e5a26f54de5d2c2a438b2a">&#9670;&#160;</a></span>styled_text() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void svg::styled_text </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__elements.html#structsvg_1_1element__base">element_base</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a></td>          <td class="paramname"><span class="paramname"><em>origin</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structsvg_1_1typography.html">typography</a></td>          <td class="paramname"><span class="paramname"><em>typo</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Text at. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">origin,with</td><td>style. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00089">89</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-76" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-76-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-76-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a67906a7cc5e5a26f54de5d2c2a438b2a_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a43b88f0c7e911161e757ccc5a5ccd607_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="ab3898a8ddd70eda92fe8d6ba4cc05aba" name="ab3898a8ddd70eda92fe8d6ba4cc05aba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3898a8ddd70eda92fe8d6ba4cc05aba">&#9670;&#160;</a></span>styled_text() <span class="overload">[2/2]</span></h2>
+<a id="a1f7d3202fb81e08877157baf0ad6ccdf" name="a1f7d3202fb81e08877157baf0ad6ccdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f7d3202fb81e08877157baf0ad6ccdf">&#9670;&#160;</a></span>styled_text()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -6573,7 +6580,7 @@ to
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>xform</em></span>&#160;)</td>
+          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>xform</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -6586,12 +6593,12 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00099">99</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00089">89</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-77" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-77-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-77-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ab3898a8ddd70eda92fe8d6ba4cc05aba_cgraph.svg" width="664" height="436"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a1f7d3202fb81e08877157baf0ad6ccdf_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -6639,12 +6646,12 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00115">115</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00100">100</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-78" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-78-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-78-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ad3c5f59f86bb309de4efd1187e5c004b_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ad3c5f59f86bb309de4efd1187e5c004b_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -6698,12 +6705,12 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00131">131</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00111">111</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-79" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-79-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-79-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a0ba564abd3f73d12da5b7967405c0a52_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a0ba564abd3f73d12da5b7967405c0a52_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -6742,7 +6749,7 @@ to
       </table>
 </div><div class="memdoc">
 
-<p>XXX Text at. </p>
+<p>Text at. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">origin,with</td><td>style and link. </td></tr>
@@ -6750,12 +6757,12 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00148">148</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00121">121</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-80" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-80-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-80-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a8ccdcddfa39a7958693ea522fe98528b_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a8ccdcddfa39a7958693ea522fe98528b_cgraph.svg" width="100%" height="550"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -6801,12 +6808,12 @@ to
 
 <p>Text at size. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00187">187</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00154">154</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-81" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-81-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-81-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_aba9f46c82a468e5594eedb3b4ff14f9e_cgraph.svg" width="660" height="436"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_aba9f46c82a468e5594eedb3b4ff14f9e_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -6857,12 +6864,12 @@ to
 
 <p>Text at size, with a transformation=rotation. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00202">202</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00164">164</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-82" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-82-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-82-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a1309ce987f4e87ad97a1f3638a7af541_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a1309ce987f4e87ad97a1f3638a7af541_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -6908,12 +6915,12 @@ to
 
 <p>Text of maxlen length, overflow goes on line below. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00217">217</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00174">174</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-83" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-83-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-83-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a29146a92e98be2f6224559f6eb2740d0_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a29146a92e98be2f6224559f6eb2740d0_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -6964,12 +6971,12 @@ to
 
 <p>Text of maxlen length rotated, overflow goes on line below. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00247">247</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00203">203</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-84" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-84-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-84-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_adc99c746fbbcae97797279e5b5f1ebfb_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_adc99c746fbbcae97797279e5b5f1ebfb_cgraph.svg" width="100%" height="522"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -7005,7 +7012,7 @@ to
 
 <p>Line primitive. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00294">294</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00250">250</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-85" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-85-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7049,7 +7056,7 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00314">314</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00270">270</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 
 </div>
 </div>
@@ -7084,7 +7091,7 @@ to
 
 <p>Create <a class="el" href="group__elements.html#structsvg_1_1rect__element">rect_element</a> at origin. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00328">328</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00284">284</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-86" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-86-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7125,7 +7132,7 @@ to
 
 <p>Create <a class="el" href="group__elements.html#structsvg_1_1rect__element">rect_element</a> centered at origin. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00350">350</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00306">306</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-87" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-87-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7176,7 +7183,7 @@ to
 
 <p>Create rectangle element with title and tooltip information. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00366">366</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00322">322</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-88" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-88-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7226,7 +7233,7 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00395">395</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00351">351</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-89" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-89-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7288,7 +7295,7 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00417">417</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00373">373</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-90" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-90-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7344,7 +7351,7 @@ to
 
 <p>Draws a ring centered at origin of radius r, with outer and inner radial gradient of blurspace in each direction. klr == fade from fadeklr == fade to. Background is transparent if none. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00441">441</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00397">397</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-91" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-91-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7395,7 +7402,7 @@ to
 
 <p>Lines radiating from center point (x,y). </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00511">511</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00467">467</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-92" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-92-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7439,7 +7446,7 @@ to
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00542">542</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00499">499</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-93" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-93-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7475,7 +7482,7 @@ to
 
 <p>Angle in radians. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00567">567</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00524">524</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 
 </div>
 </div>
@@ -7505,7 +7512,7 @@ to
 
 <p>Angle in degrees. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00579">579</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00536">536</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-94" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-94-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7532,7 +7539,7 @@ to
 
 <p>Zero degrees is top, going clockwise (cw). </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00589">589</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00546">546</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 
 </div>
 </div>
@@ -7553,7 +7560,7 @@ to
 
 <p>Zero degrees is top, going clockwise (cw). </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00604">604</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00561">561</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 
 </div>
 </div>
@@ -7574,7 +7581,7 @@ to
 
 <p>Make single path segment. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00616">616</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00573">573</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-95" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-95-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7620,7 +7627,7 @@ to
 
 <p>Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers. top style defaults: fill opac(0), stroke opac(1), stroke sz 1 bottom style defaults: fill opac(0), stroke opac(1), stroke sz 1.25. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00640">640</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00597">597</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-96" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-96-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7630,59 +7637,8 @@ to
 
 </div>
 </div>
-<a id="a6745faec7f5b60dcb4fc12cbdbf56bd7" name="a6745faec7f5b60dcb4fc12cbdbf56bd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6745faec7f5b60dcb4fc12cbdbf56bd7">&#9670;&#160;</a></span>make_path_triangle()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__elements.html#structsvg_1_1path__element">path_element</a> svg::make_path_triangle </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a></td>          <td class="paramname"><span class="paramname"><em>origin</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structsvg_1_1style.html">style</a></td>          <td class="paramname"><span class="paramname"><em>styl</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>r</em></span><span class="paramdefsep"> = </span><span class="paramdefval">4</span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>angle</em></span><span class="paramdefsep"> = </span><span class="paramdefval">120</span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>selfclosingtagp</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>xattr</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Center a triangle at this point. </p>
-
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00667">667</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
-<div id="dynsection-97" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-97-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-97-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a6745faec7f5b60dcb4fc12cbdbf56bd7_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a2dba646eaff00bba42d6cc80161a9a38" name="a2dba646eaff00bba42d6cc80161a9a38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2dba646eaff00bba42d6cc80161a9a38">&#9670;&#160;</a></span>make_path_polygon()</h2>
+<a id="a9f93529d8f92bb1ffb5d84478e22aff4" name="a9f93529d8f92bb1ffb5d84478e22aff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f93529d8f92bb1ffb5d84478e22aff4">&#9670;&#160;</a></span>make_path_polygon()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -7695,17 +7651,17 @@ to
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structsvg_1_1style.html">style</a></td>          <td class="paramname"><span class="paramname"><em>styl</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structsvg_1_1style.html">style</a></td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>r</em></span><span class="paramdefsep"> = </span><span class="paramdefval">4</span>, </td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a></td>          <td class="paramname"><span class="paramname"><em>pointsn</em></span><span class="paramdefsep"> = </span><span class="paramdefval">8</span>, </td>
+          <td class="paramtype">const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a></td>          <td class="paramname"><span class="paramname"><em>pointsn</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -7722,12 +7678,63 @@ to
 
 <p>Center an octogon at this point. radius 4 is pixels to draw out from center point. pointsn is number of points to draw (8 for octogon) </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00689">689</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00626">626</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<div id="dynsection-97" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-97-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-97-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a9f93529d8f92bb1ffb5d84478e22aff4_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a22b2e19f67569f41bad508296fef7a72" name="a22b2e19f67569f41bad508296fef7a72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b2e19f67569f41bad508296fef7a72">&#9670;&#160;</a></span>make_polygon_marker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__elements.html#structsvg_1_1path__element">path_element</a> svg::make_polygon_marker </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a></td>          <td class="paramname"><span class="paramname"><em>origin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structsvg_1_1style.html">style</a></td>          <td class="paramname"><span class="paramname"><em>s</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a></td>          <td class="paramname"><span class="paramname"><em>pointsn</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>title</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>xattr</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Make a polygon marker for line graphs. </p>
+
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00654">654</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-98" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-98-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-98-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a2dba646eaff00bba42d6cc80161a9a38_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a22b2e19f67569f41bad508296fef7a72_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -7768,7 +7775,7 @@ to
 
 <p>Make path segment between two points on a circumference of radius r. Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin) </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00718">718</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00669">669</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-99" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-99-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7819,7 +7826,7 @@ to
 
 <p>Make closed path between two points and the center of a circle of radius r. Points like: get_circumference_point_d(zero_angle_north_cw(0), r, origin) </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00737">737</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00688">688</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-100" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-100-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7870,7 +7877,7 @@ to
 
 <p>Same but with degree range arguments instead of points. NB: Assumes appropriate zero_angle_north_cw/ccw adjustments on startd/endd. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00763">763</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00714">714</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-101" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-101-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7911,7 +7918,7 @@ to
 
 <p>Plus or x tilt mark as closed path that can be filled. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00775">775</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00726">726</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-102" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-102-summary" class="dynsummary" style="display:block;">
 </div>
@@ -7952,7 +7959,7 @@ to
 
 <p>Crossed lines, no fill. X marks the .... </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00824">824</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00775">775</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-103" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-103-summary" class="dynsummary" style="display:block;">
 </div>
@@ -8004,7 +8011,7 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00849">849</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00800">800</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-104" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-104-summary" class="dynsummary" style="display:block;">
 </div>
@@ -8066,7 +8073,7 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00868">868</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00819">819</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-105" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-105-summary" class="dynsummary" style="display:block;">
 </div>
@@ -8134,7 +8141,7 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00902">902</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00853">853</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-106" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-106-summary" class="dynsummary" style="display:block;">
 </div>
@@ -8144,14 +8151,14 @@ to
 
 </div>
 </div>
-<a id="aaf3635710070dc9a47ef0abb8a816164" name="aaf3635710070dc9a47ef0abb8a816164"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf3635710070dc9a47ef0abb8a816164">&#9670;&#160;</a></span>make_octahedron_3d()</h2>
+<a id="ac882a94446aa6ca9f8c5046d1d756cc5" name="ac882a94446aa6ca9f8c5046d1d756cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac882a94446aa6ca9f8c5046d1d756cc5">&#9670;&#160;</a></span>make_octahedron()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string svg::make_octahedron_3d </td>
+          <td class="memname"><a class="el" href="group__elements.html#structsvg_1_1polyline__element">polyline_element</a> svg::make_octahedron </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a></td>          <td class="paramname"><span class="paramname"><em>origin</em></span>, </td>
         </tr>
@@ -8170,24 +8177,24 @@ to
 
 <p>Make octahedron shape (8) in 2D simulated 3D. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00942">942</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00893">893</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-107" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-107-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-107-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_aaf3635710070dc9a47ef0abb8a816164_cgraph.svg" width="100%" height="490"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ac882a94446aa6ca9f8c5046d1d756cc5_cgraph.svg" width="312" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="a921dcf12976f6e62a7ce2a7f4a0cf1c7" name="a921dcf12976f6e62a7ce2a7f4a0cf1c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a921dcf12976f6e62a7ce2a7f4a0cf1c7">&#9670;&#160;</a></span>make_icosahedron_3d()</h2>
+<a id="a896e80375778f382f08aae358d87e164" name="a896e80375778f382f08aae358d87e164"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896e80375778f382f08aae358d87e164">&#9670;&#160;</a></span>make_icosahedron()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string svg::make_icosahedron_3d </td>
+          <td class="memname"><a class="el" href="group__elements.html#structsvg_1_1polyline__element">polyline_element</a> svg::make_icosahedron </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="#af074bb68ac49143551503d72f2bff83e">point_2t</a></td>          <td class="paramname"><span class="paramname"><em>origin</em></span>, </td>
         </tr>
@@ -8206,12 +8213,12 @@ to
 
 <p>Make icosahedron shape (20) in 2D simulated 3D. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00989">989</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l00940">940</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-108" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-108-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-108-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a921dcf12976f6e62a7ce2a7f4a0cf1c7_cgraph.svg" width="647" height="254"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a896e80375778f382f08aae358d87e164_cgraph.svg" width="316" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -8248,7 +8255,7 @@ to
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l01053">1053</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-render-basics_8h_source.html#l01005">1005</a> of file <a class="el" href="a60-svg-render-basics_8h_source.html">a60-svg-render-basics.h</a>.</p>
 <div id="dynsection-109" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-109-summary" class="dynsummary" style="display:block;">
 </div>

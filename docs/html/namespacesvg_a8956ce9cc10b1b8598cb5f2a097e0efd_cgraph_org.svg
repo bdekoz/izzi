@@ -622,9 +622,9 @@
 <!-- Node29 -->
 <g id="Node000029" class="node">
 <title>Node29</title>
-<g id="a_Node000029"><a xlink:href="namespacesvg.html#a6745faec7f5b60dcb4fc12cbdbf56bd7" target="_top" xlink:title="Center a triangle at this point.">
-<polygon fill="white" stroke="#666666" points="542.88,-258 433.12,-258 433.12,-238 542.88,-238 542.88,-258"/>
-<text xml:space="preserve" text-anchor="middle" x="488" y="-246.4" font-family="SourceSans" font-size="8.00">svg::make_path_triangle</text>
+<g id="a_Node000029"><a xlink:href="namespacesvg.html#a9f93529d8f92bb1ffb5d84478e22aff4" target="_top" xlink:title="Center an octogon at this point. radius 4 is pixels to draw out from center point....">
+<polygon fill="white" stroke="#666666" points="543.25,-258 432.75,-258 432.75,-238 543.25,-238 543.25,-258"/>
+<text xml:space="preserve" text-anchor="middle" x="488" y="-246.4" font-family="SourceSans" font-size="8.00">svg::make_path_polygon</text>
 </a>
 </g>
 </g>
@@ -706,8 +706,8 @@
 <g id="edge47_Node000029_Node000038" class="edge">
 <title>Node29&#45;&gt;Node38</title>
 <g id="a_edge47_Node000029_Node000038"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M543.25,-248C553.78,-248 564.94,-248 575.82,-248"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="575.52,-251.5 585.52,-248 575.52,-244.5 575.52,-251.5"/>
+<path fill="none" stroke="#63b8ff" d="M543.68,-248C554.02,-248 564.95,-248 575.63,-248"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="575.56,-251.5 585.56,-248 575.56,-244.5 575.56,-251.5"/>
 </a>
 </g>
 </g>

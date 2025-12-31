@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,241,164,268"/>
 <area shape="rect" id="Node000002" href="$namespacesvg.html#a56ab414cf370cb20fa25d06d2a9b07bb" title="Base function for generating SVG markers in a defs section." alt="" coords="212,101,372,128"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,239,257,135,260,139,108,243"/>
-<area shape="rect" id="Node000006" href="$namespacesvg.html#a6745faec7f5b60dcb4fc12cbdbf56bd7" title="Center a triangle at this point." alt="" coords="219,300,365,327"/>
+<area shape="rect" id="Node000006" href="$namespacesvg.html#a9f93529d8f92bb1ffb5d84478e22aff4" title="Center an octogon at this point. radius 4 is pixels to draw out from center point...." alt="" coords="218,300,366,327"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="135,266,228,293,227,298,134,271"/>
 <area shape="rect" id="Node000003" href="$group__elements.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="627,31,748,73"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="372,99,611,61,612,67,373,105"/>

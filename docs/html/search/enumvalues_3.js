@@ -12,12 +12,13 @@ var searchData=
   ['chart_5fline_5fstyle_5f2_9',['chart_line_style_2',['../namespacesvg.html#a629cd6de1083f53fa0193c7a753db998ab0bdfe46dd8e01892130545d255b8dc8',1,'svg']]],
   ['chart_5fline_5fstyle_5f3_10',['chart_line_style_3',['../namespacesvg.html#a629cd6de1083f53fa0193c7a753db998a23519e7448d9ae30e03caa046ece0846',1,'svg']]],
   ['chartreuse_11',['chartreuse',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3efea3cccdbed48be1f1db03de4fa20e',1,'svg']]],
-  ['cm_12',['cm',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a820eb5b696ea2a657c0db1e258dc7d81',1,'svg']]],
-  ['command_13',['command',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a1dccadfed7bcbb036c56a4afb97e906f',1,'svg']]],
-  ['coral_14',['coral',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad2ebed4eaf58509dcc358e1782c38fea',1,'svg']]],
-  ['cornflowerblue_15',['cornflowerblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ada4a06b7a74d94538ad7da873f073f4c',1,'svg']]],
-  ['crayolacerulean_16',['crayolacerulean',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a193b1032c4d119684d6579dda48e3012',1,'svg']]],
-  ['crimson_17',['crimson',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a5fa3ccc64c973db27e9fcade0810423e',1,'svg']]],
-  ['cw_18',['cw',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03a0707ba092e91260b305c326e6a353593',1,'svg::constants']]],
-  ['cyan_19',['cyan',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a6411532ba4971f378391776a9db629d3',1,'svg']]]
+  ['circle_12',['circle',['../namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9b6ddeba5b33e577c07c35d8505c6072',1,'svg']]],
+  ['cm_13',['cm',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a820eb5b696ea2a657c0db1e258dc7d81',1,'svg']]],
+  ['command_14',['command',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a1dccadfed7bcbb036c56a4afb97e906f',1,'svg']]],
+  ['coral_15',['coral',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad2ebed4eaf58509dcc358e1782c38fea',1,'svg']]],
+  ['cornflowerblue_16',['cornflowerblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ada4a06b7a74d94538ad7da873f073f4c',1,'svg']]],
+  ['crayolacerulean_17',['crayolacerulean',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a193b1032c4d119684d6579dda48e3012',1,'svg']]],
+  ['crimson_18',['crimson',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a5fa3ccc64c973db27e9fcade0810423e',1,'svg']]],
+  ['cw_19',['cw',['../namespacesvg_1_1constants.html#ad4deba697d55091ac784c8a4f0080c03a0707ba092e91260b305c326e6a353593',1,'svg::constants']]],
+  ['cyan_20',['cyan',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a6411532ba4971f378391776a9db629d3',1,'svg']]]
 ];
