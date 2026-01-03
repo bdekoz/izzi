@@ -42,9 +42,12 @@ enum class color
 {
   none,
 
-  // 18 tints / shades
+  // 21 tints / shades
   white,
   black,
+  gray01,
+  gray02,
+  gray05,
   gray10,
   gray20,
   gray25,		// gainsboro
@@ -246,6 +249,9 @@ to_string(const color e)
       enum_map[color::gray25] = "rgb(191, 191, 191)";
       enum_map[color::gray20] = "rgb(200, 200, 200)";
       enum_map[color::gray10] = "rgb(230, 230, 230)";
+      enum_map[color::gray05] = "rgb(242, 242, 242)";
+      enum_map[color::gray02] = "rgb(248, 248, 248)";
+      enum_map[color::gray01] = "rgb(252, 252, 252)";
 
       enum_map[color::wcag_lgray] = "rgb(148, 148, 148)"; // LG TXT on white 3:1
       enum_map[color::wcag_gray] = "rgb(118, 118, 118)"; // min on white 4.5:1
