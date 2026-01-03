@@ -714,6 +714,33 @@ struct color_qf
 
     return hsv_to_rgb(result_hsv);
   }
+
+  /// Procedural tinting algorithm.
+  /// @param tp tint percentage original color remaining
+  /// @param trange upper/lower bounds for percentage range (0, 100)
+  color_qi
+  tint_percentage(const double tp,
+		  const double rmin = 0, const double rmax = 100)
+  {
+    double percentage = std::clamp(tp, rmin, rmax);
+
+    // Convert percentage to adjustment factor
+    // 10% tint = 10% of original saturation
+    // 90% tint = 90% of original saturation
+    double saturationf = percentage / 100.0;
+
+    // Alternative: Mix with white by reducing saturation and increasing value
+    color_qf result_hsv(*this);
+
+    // Reduce saturation based on tint percentage
+    result_hsv.s *= saturationf;
+
+    // Slightly increase value/brightness for tint effect
+    // White has maximum brightness, so tinting moves toward value = 1.0
+    result_hsv.v = v + (1.0 - v) * (1.0 - saturationf) * 0.5;
+
+    return hsv_to_rgb(result_hsv);
+  }
 };
 
 
