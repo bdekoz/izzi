@@ -335,12 +335,17 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       // Generate displayed tooltip text....
       string tipstr(gstate.title);
       tipstr += k::newline;
+      tipstr += "week: ";
       tipstr += std::to_string(static_cast<uint>(vy));
-      tipstr += gstate.yticu;
-      tipstr += k::comma;
-      tipstr += k::space;
-      tipstr += std::to_string(static_cast<uint>(vx));
-      tipstr += gstate.xticu;
+      //tipstr += gstate.yticu;
+      tipstr += k::newline;
+
+      std::ostringstream oss;
+      oss.imbue(std::locale(""));
+      oss << vx;
+      tipstr += oss.str();
+      //tipstr += std::to_string(static_cast<uint>(vx));
+      //tipstr += gstate.xticu;
 
       // Markers default to closed paths that are filled with no stroke.
       // Setting visible to vector | echo induces outline behavior.
@@ -528,7 +533,7 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
       lanno.add_raw(group_element::start_group("tic-y-lines-" + gstate.title));
 
       style hlstyl = gstate.lstyle;
-      hlstyl._M_stroke_color = color::gray10;
+      hlstyl._M_stroke_color = color::gray05;
 
       anntypo._M_size = 3;
       anntypo._M_w = typography::weight::normal;
@@ -537,8 +542,9 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
 	{
 	  // Base line layer.
 	  const double yto = chartyo - (y * gyscale);
-	  line_element lxe = make_line({chartxo + graph_rstate::th1sz, yto},
-				       {chartxe - graph_rstate::th1sz, yto}, hlstyl);
+	  const double ytol = yto - (hlstyl._M_stroke_size / 2);
+	  auto lxe = make_line({chartxo + graph_rstate::th1sz, ytol},
+			       {chartxe - graph_rstate::th1sz, ytol}, hlstyl);
 	  lanno.add_element(lxe);
 
 	  // Add y-axis tic numbers along line for use when magnified.
