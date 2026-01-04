@@ -27,6 +27,6 @@ var searchData=
   ['izzi_2djson_2dbasics_2eh_24',['izzi-json-basics.h',['../izzi-json-basics_8h.html',1,'']]],
   ['izzi_2dpoints_2dcluster_2eh_25',['izzi-points-cluster.h',['../izzi-points-cluster_8h.html',1,'']]],
   ['izzi_2dpoints_2eh_26',['izzi-points.h',['../izzi-points_8h.html',1,'']]],
-  ['izzi_5fhue_5fpalette_27',['izzi_hue_palette',['../namespacesvg.html#a6cb40f6172098a469f542a44a99395c4',1,'svg']]],
+  ['izzi_5fhue_5fpalette_27',['izzi_hue_palette',['../namespacesvg.html#a0a661686960de1e50868e79d4b008de6',1,'svg']]],
   ['izzi_5fpalette_28',['izzi_palette',['../namespacesvg.html#aaea796845322874cb98039b1301c39d6',1,'svg']]]
 ];
