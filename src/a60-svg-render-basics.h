@@ -1,6 +1,6 @@
 // svg render basics -*- mode: C++ -*-
 
-// Copyright (C) 2014-2025 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2026 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -427,6 +427,7 @@ point_to_ring_halo(svg_element& obj, const point_2t origin,
   obj.add_element(ci);
 }
 
+
 /// Make polygon element.
 /// @param origin is the point (x,y) that is the center of the circle
 /// @param s is the visual style
@@ -443,6 +444,30 @@ make_polygon(const vrange& points, const style s)
   return c;
 }
 
+
+/// Make blob shape
+/// @param points the points in the polyline
+/// @param s style for the polyline
+/// @param s stroke_style for the polyline
+polygon_element
+make_polygon_blob(const point_2t origin, const style s, const double size)
+{
+  auto [ cx, cy ] = origin;
+  std::srand(std::time(0));
+  vrange points;
+  for (double angle = 0; angle <= 2 * k::pi; angle += k::pi/8)
+    {
+      // Vary radius randomly for organic appearance
+      double variation = 0.7 + 0.3 * (std::rand() % 100) / 100.0;
+      double radius = size * variation;
+      int x = cx + radius * cos(angle);
+      int y = cy + radius * sin(angle);
+      points.push_back({x, y});
+    }
+
+  polygon_element plyg = make_polygon(points, s);
+  return plyg;
+}
 
 
 /// Line primitive.
@@ -462,6 +487,41 @@ make_line(const point_2t origin, const point_2t end, style s,
 }
 
 
+/// Lines radiating from center point (x,y).
+group_element
+make_line_rays(const point_2t origin, const style s,
+	       const space_type r = 4, const uint nrays = 10)
+{
+  // End points on the ray.
+  // Pick a random ray, use an angle in the range [0, 2pi].
+  static std::mt19937_64 rg(std::random_device{}());
+  auto distr = std::uniform_real_distribution<>(0.0, 2 * 22/7);
+  auto disti = std::uniform_int_distribution<>(-3, 3);
+  auto [ x, y ] = origin;
+
+  group_element g;
+  g.start_element("rays-" + std::to_string(nrays) + "-" + std::to_string(r));
+  for (uint i = 0; i < nrays; ++i)
+    {
+      double theta = distr(rg);
+      double rvary = disti(rg);
+
+      double xe = x + (r + rvary) * std::cos(theta);
+      double ye = y + (r + rvary) * std::sin(theta);
+
+      line_element::data dr = { x, xe, y, ye };
+      line_element ray;
+
+      ray.start_element();
+      ray.add_data(dr);
+      ray.add_style(s);
+      ray.finish_element();
+      g.add_element(ray);
+    }
+  return g;
+}
+
+
 /// Polyline primitive.
 /// @param points the points in the polyline
 /// @param s style for the polyline
@@ -476,63 +536,6 @@ make_polyline(const vrange& points, const style s,
   pl.add_style(s);
   pl.finish_element();
   return pl;
-}
-
-
-/// Lines radiating from center point (x,y).
-void
-point_2d_to_ray(svg_element& obj, double x, double y, style s,
-		space_type r = 4, const uint nrays = 10)
-{
-  using atype = decltype(obj._M_area)::atype;
-
-  // End points on the ray.
-  // Pick a random ray, use an angle in the range [0, 2pi].
-  static std::mt19937_64 rg(std::random_device{}());
-  auto distr = std::uniform_real_distribution<>(0.0, 2 * 22/7);
-  auto disti = std::uniform_int_distribution<>(-3, 3);
-
-  for (uint i = 0; i < nrays; ++i)
-    {
-      double theta = distr(rg);
-      double rvary = disti(rg);
-
-      atype xe = x + (r + rvary) * std::cos(theta);
-      atype ye = y + (r + rvary) * std::sin(theta);
-
-      line_element::data dr = { atype(x), xe, atype(y), ye };
-      line_element ray;
-
-      ray.start_element();
-      ray.add_data(dr);
-      ray.add_style(s);
-      ray.finish_element();
-      obj.add_element(ray);
-    }
-}
-
-
-void
-place_ray_at_angle(svg_element& obj, const point_2t& origin,
-		   const point_2t& circump, const style& s,
-		   const string id = "")
-{
-  using atype = decltype(obj._M_area)::atype;
-
-  auto [xo, yo] = origin;
-  auto [xc, yc] = circump;
-
-  line_element::data dr = { atype(xo), atype(xc), atype(yo), atype(yc) };
-  line_element ray;
-
-  if (id.empty())
-    ray.start_element();
-  else
-    ray.start_element(id);
-  ray.add_data(dr);
-  ray.add_style(s);
-  ray.finish_element();
-  obj.add_element(ray);
 }
 
 
@@ -636,7 +639,7 @@ make_path(const string& pathda, const style& styl, const string id = "",
 }
 
 
-/// Center an octogon at this point.
+/// Center an polygon at this point.
 /// radius 4 is pixels to draw out from center point.
 /// pointsn is number of points to draw (8 for octogon)
 path_element
@@ -784,6 +787,33 @@ make_path_center_mark(const point_2t& origin, const style styl,
 
   path_element cm = make_path(pathdata, styl, id);
   return cm;
+}
+
+
+/// Make waves.
+/// @param points the points in the polyline
+/// @param s style for the polyline
+/// @param s stroke_style for the polyline
+polyline_element
+make_path_ripple(const point_2t origin, const style s,
+		 const double length, const double amp, const double periods)
+{
+  auto [ ox, oy ] = origin;
+  vrange points;
+  points.push_back(origin);
+  for (int i = 0; i <= 100; i++)
+    {
+      double x = ox + (i * length) / 100.0;
+      double y = oy + amp * sin((i * periods * 2 * k::pi) / 100.0);
+      points.push_back({x, y});
+    }
+
+  polyline_element pl(points);
+  pl.start_element();
+  //pl.add_data(sstyle);
+  pl.add_style(s);
+  pl.finish_element();
+  return pl;
 }
 
 

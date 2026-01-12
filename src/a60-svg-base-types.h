@@ -175,7 +175,11 @@ enum class marker_shape
     square,		///< Square
     hexagon,		///< Hexagon
     octahedron,		///< Octahedron (8) 3D
-    icosahedron		///< Icosahedron (2
+    icosahedron,	///< Icosahedron
+    sunburst,		///< Sunburst
+    x,			///< Crossed Lines in x pattern
+    blob,		///< Organic blob form
+    wave		///< Wave
   };
 
 const string
@@ -193,6 +197,10 @@ to_string(const marker_shape e)
       enum_map[marker_shape::hexagon] = "hexagon";
       enum_map[marker_shape::octahedron] = "octahedron";
       enum_map[marker_shape::icosahedron] = "icosahedron";
+      enum_map[marker_shape::sunburst] = "sunburst";
+      enum_map[marker_shape::x] = "x";
+      enum_map[marker_shape::blob] = "blob";
+      enum_map[marker_shape::wave] = "wave";
 
     }
   return enum_map[e];

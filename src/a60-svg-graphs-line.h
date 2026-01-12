@@ -292,6 +292,18 @@ make_marker_instance(const marker_shape form, const point_2t& cpoint, const styl
     case marker_shape::icosahedron:
       mkr = make_icosahedron(cpoint, styl, radius);
       break;
+    case marker_shape::sunburst:
+      mkr = make_line_rays(cpoint, styl, radius, 6);
+      break;
+    case marker_shape::x:
+      mkr = make_path_center_mark(cpoint, styl, radius, radius / 3);
+      break;
+    case marker_shape::blob:
+      mkr = make_polygon_blob(cpoint, styl, radius);
+      break;
+    case marker_shape::wave:
+      mkr = make_path_ripple(cpoint, styl, radius * 1.5, 2, 2);
+      break;
     default:
       string m("make_marker_instance:: ");
       m += "marker_shape (";
