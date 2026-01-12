@@ -116,8 +116,8 @@ $(function() {
 <div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structsvg_1_1PointHash.html#a92b11644c8aa94756238bd8fcc47f525">   33</a></span>  <a class="code hl_function" href="structsvg_1_1PointHash.html#a92b11644c8aa94756238bd8fcc47f525">operator()</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a>&amp; p)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">auto</span> [x, y] = p;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">return</span> std::hash&lt;double&gt;()(x) ^ (std::hash&lt;double&gt;()(y) &lt;&lt; 1);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">auto</span> [<a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y] = p;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">return</span> std::hash&lt;double&gt;()(<a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>) ^ (std::hash&lt;double&gt;()(y) &lt;&lt; 1);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  }</div>
 </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
@@ -151,7 +151,7 @@ $(function() {
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keywordflow">if</span> (n == 0)</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">return</span> hexagons;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">auto</span> [x, y] = origin;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">auto</span> [<a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y] = origin;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="comment">// For hexagonal grid, compute the horizontal and vertical spacing.</span></div>
@@ -190,7 +190,7 @@ $(function() {
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    {</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      <span class="keyword">const</span> <span class="keyword">auto</span>&amp; movement = directions[i];</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      <span class="keyword">auto</span> [dx, dy] = movement;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> neighbor = { x + dx, y + dy };</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> neighbor = { <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> + dx, y + dy };</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>      q.push(neighbor);</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>      visited.insert(neighbor);</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      hexagons.push_back(neighbor);</div>
@@ -237,11 +237,11 @@ $(function() {
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  <a class="code hl_typedef" href="namespacesvg.html#ad1570006d7042fe3750d9272e8e3a9cd">vspace</a> angles;</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  angles.reserve(hexagons.size());</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="keyword">auto</span> [x, y] = origin;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="keyword">auto</span> [<a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y] = origin;</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; center : hexagons)</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    {</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>      <span class="keyword">auto</span> [hex_x, hex_y] = center;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      <span class="keywordtype">double</span> dx = hex_x - x;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      <span class="keywordtype">double</span> dx = hex_x - <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>;</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>      <span class="keywordtype">double</span> dy = hex_y - y;</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>      <span class="keywordtype">double</span> angle = std::atan2(dy, dx);</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>      <span class="keywordflow">if</span> (degreesp)</div>
@@ -257,6 +257,7 @@ $(function() {
 <div class="ttc" id="aa60-svg_8h_html"><div class="ttname"><a href="a60-svg_8h.html">a60-svg.h</a></div></div>
 <div class="ttc" id="anamespacesvg_html"><div class="ttname"><a href="namespacesvg.html">svg</a></div><div class="ttdef"><b>Definition</b> <a href="a60-svg-base-types_8h_source.html#l00027">a60-svg-base-types.h:27</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a4a39a130407d34d7a308106de88f92a3"><div class="ttname"><a href="namespacesvg.html#a4a39a130407d34d7a308106de88f92a3">svg::radiate_hexagon_honeycomb</a></div><div class="ttdeci">vrange radiate_hexagon_honeycomb(const point_2t origin, const double r, const uint n, const bool centerfilledp)</div><div class="ttdoc">Compute set of points for a radial fill of hexograms centered at p.</div><div class="ttdef"><b>Definition</b> <a href="#l00056">a60-svg-radial-fill-hexagon.h:56</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6"><div class="ttname"><a href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">svg::marker_shape::x</a></div><div class="ttdeci">@ x</div><div class="ttdoc">Crossed Lines in x pattern.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-base-types_8h_source.html#l00180">a60-svg-base-types.h:180</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a915848d2fa32c5a4443025d38f629f5d"><div class="ttname"><a href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">svg::vrange</a></div><div class="ttdeci">std::vector&lt; point_2t &gt; vrange</div><div class="ttdef"><b>Definition</b> <a href="izzi-points_8h_source.html#l00046">izzi-points.h:46</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ad1570006d7042fe3750d9272e8e3a9cd"><div class="ttname"><a href="namespacesvg.html#ad1570006d7042fe3750d9272e8e3a9cd">svg::vspace</a></div><div class="ttdeci">std::vector&lt; space_type &gt; vspace</div><div class="ttdoc">Split range, so one dimension of (x,y) cartesian plane.</div><div class="ttdef"><b>Definition</b> <a href="izzi-points_8h_source.html#l00041">izzi-points.h:41</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ad3a7a7a3ad79496a3731622464665776"><div class="ttname"><a href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">svg::uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00057">a60-svg.h:57</a></div></div>

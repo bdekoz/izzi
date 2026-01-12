@@ -16,5 +16,6 @@ var searchData=
   ['start_13',['start',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886aea2b2676c28c0db26d39331a336c6b92',1,'svg::typography::start'],['../structsvg_1_1typography.html#ab466ab5a124304d826cea9c46a46d3b0aea2b2676c28c0db26d39331a336c6b92',1,'svg::typography::start']]],
   ['steelblue_14',['steelblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a53f33c2424d2c6b5652d277d57b2d2c4',1,'svg']]],
   ['stop_15',['stop',['../group__elements.html#a7c19a4d45da1acb512fc1c69048253bfaef399b2d446bb37b7c32ad2cc1b6045b',1,'svg::gradient_element']]],
-  ['svg_16',['svg',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bcaae8eb96df05e788ac39d88948eaf295c',1,'svg']]]
+  ['sunburst_16',['sunburst',['../namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa286d3c33563f9115c9d28e8292842ed3',1,'svg']]],
+  ['svg_17',['svg',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bcaae8eb96df05e788ac39d88948eaf295c',1,'svg']]]
 ];

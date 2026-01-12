@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['x_0',['x',['../structPoint.html#ab99c56589bc8ad5fa5071387110a5bc7',1,'Point']]],
+  ['x_0',['x',['../structPoint.html#ab99c56589bc8ad5fa5071387110a5bc7',1,'Point::x'],['../namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6',1,'svg::x']]],
   ['xbold_1',['xbold',['../structsvg_1_1typography.html#ac41cf6a133f5b21757130ce5ba72b3d7a7cfa5bf74eaa89593bbd5b416e57331a',1,'svg::typography']]],
   ['xlabel_2',['xlabel',['../structsvg_1_1graph__rstate.html#a58d82b1d2be49455aae1f651fd71652b',1,'svg::graph_rstate']]],
   ['xlarge_3',['xlarge',['../namespacesvg.html#adc7e4c413a77264dd28e589407293de8a6b6025d15e9eb8b4de51638f70a168eb',1,'svg']]],

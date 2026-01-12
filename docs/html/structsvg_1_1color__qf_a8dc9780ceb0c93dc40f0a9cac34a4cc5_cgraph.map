@@ -1,8 +1,8 @@
 <map id="svg::color_qf::tint_percentage" name="svg::color_qf::tint_percentage">
-<area shape="rect" id="Node000001" title="Procedural tinting algorithm." alt="" coords="5,5,114,48"/>
-<area shape="rect" id="Node000002" href="$structsvg_1_1color__qf.html#a71b97e4790d97beccdfa456e0ca826ae" title="Value between 0.0 (black) and 1.0." alt="" coords="317,13,447,40"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,21,162,20,269,20,301,21,301,26,269,25,162,25,114,27"/>
-<area shape="rect" id="Node000003" href="$structsvg_1_1color__qf.html#afda5a84e91104dc0aabf79b1d3907f7a" title="Convert HSV to RGB." alt="" coords="162,35,269,77"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="114,34,147,41,146,46,113,39"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="269,44,301,38,302,43,270,49"/>
+<area shape="rect" id="Node000001" title="Procedural tinting algorithm." alt="" coords="5,5,122,42"/>
+<area shape="rect" id="Node000002" href="$structsvg_1_1color__qf.html#a71b97e4790d97beccdfa456e0ca826ae" title="Value between 0.0 (black) and 1.0." alt="" coords="335,12,476,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,19,170,18,287,18,320,19,319,24,287,24,170,24,122,25"/>
+<area shape="rect" id="Node000003" href="$structsvg_1_1color__qf.html#afda5a84e91104dc0aabf79b1d3907f7a" title="Convert HSV to RGB." alt="" coords="170,33,287,70"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,31,155,36,154,42,122,36"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="287,40,319,35,320,40,288,45"/>
 </map>

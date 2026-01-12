@@ -1,15 +1,15 @@
 <map id="point_cluster::reduce_voronoi" name="point_cluster::reduce_voronoi">
-<area shape="rect" id="Node000001" title="Algorithm 4: Voronoi&#45;Based Clustering with Radius Constraint." alt="" coords="5,59,134,102"/>
-<area shape="rect" id="Node000002" href="$classpoint__cluster.html#ab4a7d615782702bf72eae4d7496fb1a4" title=" " alt="" coords="370,26,508,69"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,57,135,31,181,11,227,4,274,4,319,10,361,19,359,24,318,15,273,9,227,9,182,17,137,36,99,61"/>
-<area shape="rect" id="Node000003" href="$classpoint__cluster.html#a8b681b7eab0b49923d8138782f2d707a" title=" " alt="" coords="182,159,322,202"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,100,183,145,192,150,189,154,180,150,104,105"/>
-<area shape="rect" id="Node000005" href="$classpoint__cluster.html#a5400683736645ec67b9f09c6bff8e2ed" title=" " alt="" coords="184,93,320,135"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="135,90,169,96,168,101,134,95"/>
-<area shape="rect" id="Node000006" href="$classpoint__cluster.html#add0cd2c5531cc62ceb5fb13b31d7075f" title=" " alt="" coords="189,26,315,69"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="134,66,173,59,174,64,135,72"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="301,156,321,145,365,112,404,77,407,81,368,116,323,150,304,161"/>
-<area shape="rect" id="Node000004" href="$classpoint__cluster.html#a79c6118d0deb835a0c9f0aa96642ba96" title=" " alt="" coords="382,159,497,202"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="322,178,366,178,366,183,322,183"/>
-<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="315,45,355,45,355,50,315,50"/>
+<area shape="rect" id="Node000001" title="Algorithm 4: Voronoi&#45;Based Clustering with Radius Constraint." alt="" coords="5,57,142,94"/>
+<area shape="rect" id="Node000002" href="$classpoint__cluster.html#ab4a7d615782702bf72eae4d7496fb1a4" title=" " alt="" coords="388,26,537,63"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,54,140,30,189,11,240,4,292,4,342,10,387,19,386,25,341,15,292,9,240,9,190,16,143,35,102,59"/>
+<area shape="rect" id="Node000003" href="$classpoint__cluster.html#a8b681b7eab0b49923d8138782f2d707a" title=" " alt="" coords="190,149,340,186"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,92,191,134,203,140,201,145,188,139,107,96"/>
+<area shape="rect" id="Node000005" href="$classpoint__cluster.html#a5400683736645ec67b9f09c6bff8e2ed" title=" " alt="" coords="192,88,338,124"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="142,83,177,89,176,94,141,89"/>
+<area shape="rect" id="Node000006" href="$classpoint__cluster.html#add0cd2c5531cc62ceb5fb13b31d7075f" title=" " alt="" coords="198,26,332,63"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="141,62,182,55,183,60,142,67"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="315,146,339,134,386,103,427,71,430,75,389,107,341,139,318,151"/>
+<area shape="rect" id="Node000004" href="$classpoint__cluster.html#a79c6118d0deb835a0c9f0aa96642ba96" title=" " alt="" coords="402,149,524,186"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="341,165,386,165,386,170,341,170"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="332,42,372,42,372,47,332,47"/>
 </map>

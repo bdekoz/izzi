@@ -5,5 +5,6 @@ var searchData=
   ['point_5fcluster_2',['point_cluster',['../classpoint__cluster.html',1,'']]],
   ['pointequal_3',['PointEqual',['../structsvg_1_1PointEqual.html',1,'svg']]],
   ['pointhash_4',['PointHash',['../structsvg_1_1PointHash.html',1,'svg']]],
-  ['polyline_5felement_5',['polyline_element',['../group__elements.html#structsvg_1_1polyline__element',1,'svg']]]
+  ['polygon_5felement_5',['polygon_element',['../group__elements.html#structsvg_1_1polygon__element',1,'svg']]],
+  ['polyline_5felement_6',['polyline_element',['../group__elements.html#structsvg_1_1polyline__element',1,'svg']]]
 ];
