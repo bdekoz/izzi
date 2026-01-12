@@ -817,42 +817,6 @@ make_path_ripple(const point_2t origin, const style s,
 }
 
 
-/// Crossed lines, no fill. X marks the ....
-string
-make_crossed_lines(const point_2t origin, const style s,
-		   const double radius, const double tiltd = 0.0)
-{
-  auto d0 = zero_angle_north_cw(0 + tiltd);
-  auto d6 = zero_angle_north_cw(180 + tiltd);
-  auto d3 = zero_angle_north_cw(90 + tiltd);
-  auto d9 = zero_angle_north_cw(270 + tiltd);
-  point_2t p0 = get_circumference_point_d(d0, radius, origin);
-  point_2t p6 = get_circumference_point_d(d6, radius, origin);
-  point_2t p3 = get_circumference_point_d(d3, radius, origin);
-  point_2t p9 = get_circumference_point_d(d9, radius, origin);
-
-  line_element l1 = make_line(p0, p6, s);
-  line_element l2 = make_line(p3, p9, s);
-
-  std::ostringstream oss;
-  oss << l1.str();
-  oss << l2.str();
-  return oss.str();
-}
-
-
-/// Point to center mark as crossed lines.
-/// Default is a plus sign at origin, but @param tiltd can rotate.
-void
-point_to_crossed_lines(svg_element& obj, const point_2t origin,
-		       const style& styl, const int radius,
-		       const double tiltd = 0.0)
-{
-  string pl = make_crossed_lines(origin, styl, radius, tiltd);
-  obj.add_raw(pl);
-}
-
-
 // Hexagon and tessalations.
 
 /// Center rings of hexagons at this point.
