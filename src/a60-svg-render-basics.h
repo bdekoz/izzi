@@ -245,40 +245,6 @@ text_line_n_r(svg_element& obj, const point_2t origin, const string text,
 }
 
 
-/// Line primitive.
-line_element
-make_line(const point_2t origin, const point_2t end, style s,
-	  const string dasharray = "")
-{
-  auto [ xo, yo ] = origin;
-  auto [ xe, ye ] = end;
-  line_element l;
-  line_element::data dr = { xo, xe, yo, ye };
-  l.start_element();
-  l.add_data(dr, dasharray);
-  l.add_style(s);
-  l.finish_element();
-  return l;
-}
-
-
-/// Polyline primitive.
-/// @param points the points in the polyline
-/// @param s style for the polyline
-/// @param s stroke_style for the polyline
-polyline_element
-make_polyline(const vrange& points, const style s,
-	      const stroke_style sstyle = { })
-{
-  polyline_element pl(points);
-  pl.start_element();
-  pl.add_data(sstyle);
-  pl.add_style(s);
-  pl.finish_element();
-  return pl;
-}
-
-
 /// Create rect_element at origin
 rect_element
 make_rect(const point_2t origin, const style s, const area<> a,
@@ -459,6 +425,57 @@ point_to_ring_halo(svg_element& obj, const point_2t origin,
   ci.add_fill(rgradi_name);
   ci.finish_element();
   obj.add_element(ci);
+}
+
+/// Make polygon element.
+/// @param origin is the point (x,y) that is the center of the circle
+/// @param s is the visual style
+/// @param r is the circle radius
+/// @param xform is the transform, if any.
+polygon_element
+make_polygon(const vrange& points, const style s)
+{
+  polygon_element c;
+  c.start_element();
+  c.add_data(points);
+  c.add_style(s);
+  c.finish_element();
+  return c;
+}
+
+
+
+/// Line primitive.
+line_element
+make_line(const point_2t origin, const point_2t end, style s,
+	  const string dasharray = "")
+{
+  auto [ xo, yo ] = origin;
+  auto [ xe, ye ] = end;
+  line_element l;
+  line_element::data dr = { xo, xe, yo, ye };
+  l.start_element();
+  l.add_data(dr, dasharray);
+  l.add_style(s);
+  l.finish_element();
+  return l;
+}
+
+
+/// Polyline primitive.
+/// @param points the points in the polyline
+/// @param s style for the polyline
+/// @param s stroke_style for the polyline
+polyline_element
+make_polyline(const vrange& points, const style s,
+	      const stroke_style sstyle = { })
+{
+  polyline_element pl(points);
+  pl.start_element();
+  pl.add_data(sstyle);
+  pl.add_style(s);
+  pl.finish_element();
+  return pl;
 }
 
 
@@ -889,9 +906,48 @@ make_text_honeycomb(const point_2t origin, const double r,
 
 
 /// Make octahedron shape (8) in 2D simulated 3D
-polyline_element
+/// @ret group element of polygon_elements
+//polyline_element
+group_element
 make_octahedron(const point_2t origin, const style& s, const double radius)
 {
+  auto [ x, y ] = origin;
+  const double PI = 3.14159265358979323846;
+  const uint sides = 8;
+
+  // Calculate all vertices
+  vrange vertices;
+  for (uint i = 0; i < sides; ++i)
+    {
+      double angle = i * (2 * PI / sides);
+      point_2t p = { x + radius * cos(angle), y + radius * sin(angle) };
+      vertices.push_back(p);
+    }
+
+  // Draw faces as polygons, group as meta polygon.
+  // Outer group.
+  group_element go;
+  go.start_element("polygon-oct-r-" + std::to_string(radius));
+
+  for (uint i = 0; i < sides; ++i)
+    {
+      int next = (i + 1) % sides;
+      vrange points;
+      points.push_back({ x, y });
+      point_2t& pvi = vertices[i];
+      points.push_back(pvi);
+      point_2t& pnext = vertices[next];
+      points.push_back(pnext);
+
+      polygon_element plyg = make_polygon(points, s);
+      go.add_element(plyg);
+    }
+
+  go.finish_element();
+  return go;
+
+#if 0
+  /// XXX this isn't ending correctly and cannot be filled
   auto [ centerX, centerY ] = origin;
 
   // Octahedron vertices (6 vertices)
@@ -931,6 +987,56 @@ make_octahedron(const point_2t origin, const style& s, const double radius)
     }
   polyline_element p = make_polyline(points, s);
   return p;
+#endif
+
+#if 0
+  double vertices[6][3] =
+    {
+      {1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}
+    };
+
+  auto [ centerX, centerY ] = origin;
+  int projX[6], projY[6];
+  for (int i = 0; i < 6; i++)
+    {
+      projX[i] = centerX + radius * (vertices[i][0] * 0.707 - vertices[i][2] * 0.707);
+      projY[i] = centerY + radius * (vertices[i][0] * 0.408 + vertices[i][1] * 0.816 + vertices[i][2] * 0.408);
+    }
+
+  // Define faces with colors
+  struct OctaFace
+  {
+    int v[3];
+    std::string color;
+  };
+
+  OctaFace faces[8] =
+    {
+      {{0, 2, 4}, "#FF6B6B"}, {{1, 2, 4}, "#4ECDC4"},
+      {{0, 2, 5}, "#45B7D1"}, {{1, 2, 5}, "#96CEB4"},
+      {{0, 3, 4}, "#FECA57"}, {{1, 3, 4}, "#FF9F43"},
+      {{0, 3, 5}, "#EE5A24"}, {{1, 3, 5}, "#C4E538"}
+    };
+
+  // Draw faces as polygons, group as meta polygon.
+  // Outer group.
+  group_element go;
+  go.start_element("polygon-oct-r-" + std::to_string(radius));
+  for (int i = 0; i < 8; i++)
+    {
+      vrange points;
+      for (int j = 0; j < 3; j++)
+	{
+	  point_2t pt = { projX[faces[i].v[j]], projY[faces[i].v[j]] };
+	  points.push_back(pt);
+	}
+
+      polygon_element plyg = make_polygon(points, s);
+      go.add_element(plyg);
+    }
+  go.finish_element();
+  return go;
+#endif
 }
 
 

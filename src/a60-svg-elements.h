@@ -839,6 +839,41 @@ circle_element::finish_element()
 
 
 /**
+   Polygon SVG element.
+
+   Specification reference:
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon
+
+   Attributes:
+   points
+ */
+struct polygon_element : virtual public element_base
+{
+  void
+  start_element()
+  { _M_sstream << "<polygon "; }
+
+  void
+  add_data(const vrange& points)
+  {
+    _M_sstream << "points=" << k::quote;
+    _M_sstream << std::setprecision(2);
+    for (const auto& [ x, y ]: points)
+      _M_sstream << x << k::comma << y << k::space;
+    _M_sstream << k::quote << k::newline;
+  }
+
+  void
+  finish_element();
+};
+
+
+void
+polygon_element::finish_element()
+{ _M_sstream << self_finish_tag; }
+
+
+/**
    Line SVG element.
 
    Specification reference:
