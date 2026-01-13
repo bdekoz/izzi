@@ -4,7 +4,7 @@
 // static local
 namespace {
 const svg::area<> a = { 1920, 1080 };
-svg::svg_element obj("markers", a);
+svg::svg_element obj("markers-1", a);
 svg::point_2t cp = obj.center_point();
 double cx = std::get<0>(cp);
 const auto spacer = 100;

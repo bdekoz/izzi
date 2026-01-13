@@ -294,7 +294,7 @@ make_marker_instance(const marker_shape form, const point_2t& cpoint,
       mkr = make_icosahedron(cpoint, styl, radius);
       break;
     case marker_shape::sunburst:
-      mkr = make_rect_rays(cpoint, styl, radius, 7);
+      mkr = make_sunburst(cpoint, styl, radius, 11);
       break;
     case marker_shape::x:
       {
@@ -308,7 +308,7 @@ make_marker_instance(const marker_shape form, const point_2t& cpoint,
       mkr = make_path_blob(cpoint, styl, radius, 5);
       break;
     case marker_shape::lauburu:
-      mkr = make_lauburu(cpoint, styl, radius);
+      mkr = make_lauburu(cpoint, styl, radius / 3, 4.0, 6);
       break;
     case marker_shape::wave:
       mkr = make_path_ripple(cpoint, styl, radius * 1.5, 2, 2);
