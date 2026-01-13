@@ -248,7 +248,7 @@ text_line_n_r(svg_element& obj, const point_2t origin, const string text,
 /// Create rect_element at origin
 rect_element
 make_rect(const point_2t origin, const style s, const area<> a,
-	  const string filterstr = "")
+	  const string filterstr = "", const string xform = "")
 {
   auto [ width, height ] = a;
   auto [ x, y ] = origin;
@@ -257,11 +257,16 @@ make_rect(const point_2t origin, const style s, const area<> a,
   rect_element::data dr = { x, y, width, height };
   rect.start_element();
   rect.add_data(dr);
+
+  if (!xform.empty())
+    rect.add_transform(xform);
+
   rect.add_style(s);
 
   // Add blur with filter here.
   if (!filterstr.empty())
     rect.add_filter(filterstr);
+
   rect.finish_element();
   return rect;
 }
@@ -270,7 +275,7 @@ make_rect(const point_2t origin, const style s, const area<> a,
 /// Create rect_element centered at origin
 rect_element
 make_rect_centered(const point_2t origin, const style s, const area<> a,
-		   const string filterstr = "")
+		   const string filterstr = "", const string xform = "")
 {
   auto [ width, height ] = a;
   auto [ x, y ] = origin;
@@ -278,7 +283,7 @@ make_rect_centered(const point_2t origin, const style s, const area<> a,
   y -= (height / 2);
   point_2t oprime { x, y };
 
-  rect_element rect = make_rect(oprime, s, a, filterstr);
+  rect_element rect = make_rect(oprime, s, a, filterstr, xform);
   return rect;
 }
 
@@ -445,31 +450,6 @@ make_polygon(const vrange& points, const style s)
 }
 
 
-/// Make blob shape
-/// @param points the points in the polyline
-/// @param s style for the polyline
-/// @param s stroke_style for the polyline
-polygon_element
-make_polygon_blob(const point_2t origin, const style s, const double size)
-{
-  auto [ cx, cy ] = origin;
-  std::srand(std::time(0));
-  vrange points;
-  for (double angle = 0; angle <= 2 * k::pi; angle += k::pi/8)
-    {
-      // Vary radius randomly for organic appearance
-      double variation = 0.7 + 0.3 * (std::rand() % 100) / 100.0;
-      double radius = size * variation;
-      int x = cx + radius * cos(angle);
-      int y = cy + radius * sin(angle);
-      points.push_back({x, y});
-    }
-
-  polygon_element plyg = make_polygon(points, s);
-  return plyg;
-}
-
-
 /// Line primitive.
 line_element
 make_line(const point_2t origin, const point_2t end, style s,
@@ -511,11 +491,40 @@ make_line_rays(const point_2t origin, const style s,
 
       line_element::data dr = { x, xe, y, ye };
       line_element ray;
-
       ray.start_element();
       ray.add_data(dr);
       ray.add_style(s);
       ray.finish_element();
+
+      g.add_element(ray);
+    }
+  return g;
+}
+
+
+/// Rectangles of varios sizes rotated from center point (x,y).
+group_element
+make_rect_rays(const point_2t origin, const style s,
+	       const space_type r = 4, const uint nrays = 10)
+{
+  // End points on the ray.
+  // Pick a random ray, use an angle in the range [0, 2pi].
+  static std::mt19937_64 rg(std::random_device{}());
+  auto distr = std::uniform_real_distribution<>(0.4, 1.7);
+  //auto disti = std::uniform_int_distribution<>(-3, 3);
+  auto [ x, y ] = origin;
+
+  const int rwidth = 2;
+  group_element g;
+  g.start_element("rrays-" + std::to_string(nrays) + "-" + std::to_string(r));
+  for (uint i = 0; i < nrays; ++i)
+    {
+      //double theta = distr(rg);
+      //double rvary = r + disti(rg);
+      double rvary = r * distr(rg);
+      area<> a = { rwidth, rvary };
+      string rotate = svg::transform::rotate(36 * i, x, y);
+      rect_element ray = make_rect_centered(origin, s, a, "", rotate) ;
       g.add_element(ray);
     }
   return g;
@@ -741,10 +750,75 @@ make_path_arc_closed(const point_2t& origin, const double startd,
 }
 
 
+/// Make blob shape
+/// @param origin center of the shape.
+/// @param s style for the polyline
+/// @param size radius of mark
+path_element
+make_path_blob(const point_2t origin, const style s, const double size)
+{
+  auto [ ox, oy ] = origin;
+  std::srand(std::time(0));
+
+  // Generate main points
+  const int numCurves = 5 + std::rand() % 4; // 5-8 curves
+  vrange points;
+  vrange controlPoints;
+  for (int i = 0; i < numCurves; i++)
+    {
+      double angle = (2 * k::pi * i) / numCurves;
+      double variation = 0.5 + (std::rand() % 100) / 100.0;
+      double radius = size * variation;
+
+      double x = ox + radius * cos(angle);
+      double y = oy + radius * sin(angle);
+      points.push_back({x, y});
+
+      // Generate control point for this segment
+      double controlAngle = angle + k::pi / numCurves;
+      double controlRadius = size * (0.3 + 0.4 * (std::rand() % 100) / 100.0);
+      double cx = ox + controlRadius * cos(controlAngle);
+      double cy = oy + controlRadius * sin(controlAngle);
+      controlPoints.push_back({cx, cy});
+    }
+
+  // Start the path data
+  std::stringstream data;
+  auto [ p0x, p0y ] = points[0];
+  data << "M" << p0x << "," << p0y << k::space;
+
+  // Create smooth quadratic curves
+  for (int i = 0; i < numCurves; i++)
+    {
+      int nextIdx = (i + 1) % numCurves;
+
+      // Use control point from next segment for smooth transition
+      auto [ cx, cy ] = controlPoints[nextIdx];
+      auto [ pix, piy ] = points[i];
+      auto [ pnx, pny ] = points[nextIdx];
+
+      // Adjust control point to ensure smooth connection
+      double smoothX = (pix + pnx) / 2;
+      double smoothY = (piy + pny) / 2;
+
+      cx = cx * 0.6 + smoothX * 0.4;
+      cy = cy * 0.6 + smoothY * 0.4;
+
+      data << " Q" << cx << "," << cy << " " << pnx << "," << pny;
+    }
+
+  data << " Z";
+  string pdata = data.str();
+  path_element pth = make_path(pdata, s);
+  return pth;
+}
+
+
 /// Plus or x tilt mark as closed path that can be filled.
 path_element
 make_path_center_mark(const point_2t& origin, const style styl,
-		      const int len, const int width)
+		      const int len, const int width,
+		      const string xform = "")
 {
   // Define path as starting at origin, move half width up and to left then
   // move around as if making a plus sign.
@@ -785,7 +859,7 @@ make_path_center_mark(const point_2t& origin, const style styl,
   string attr(std::to_string(width) + "-" + std::to_string(len));
   id += attr;
 
-  path_element cm = make_path(pathdata, styl, id);
+  path_element cm = make_path(pathdata, styl, id, true, xform);
   return cm;
 }
 

@@ -266,8 +266,9 @@ make_line_graph_images(const vrange& points, const graph_rstate& gstate,
 
 /// Make marker or composite markers for one marker location.
 string
-make_marker_instance(const marker_shape form, const point_2t& cpoint, const style styl,
-		     double radius, string tipstr, string imgid)
+make_marker_instance(const marker_shape form, const point_2t& cpoint,
+		     const style styl, const double radius,
+		     const string tipstr = "", const string imgid = "")
 {
   string pointstr;
   marker_element mrkr;
@@ -293,13 +294,17 @@ make_marker_instance(const marker_shape form, const point_2t& cpoint, const styl
       mkr = make_icosahedron(cpoint, styl, radius);
       break;
     case marker_shape::sunburst:
-      mkr = make_line_rays(cpoint, styl, radius, 6);
+      mkr = make_rect_rays(cpoint, styl, radius, 6);
       break;
     case marker_shape::x:
-      mkr = make_path_center_mark(cpoint, styl, radius, radius / 3);
-      break;
+      {
+	auto [ cx, cy ] = cpoint;
+	string xform = mkr.make_transform_attribute(transform::rotate(45, cx, cy));
+	mkr = make_path_center_mark(cpoint, styl, radius, radius / 3, xform);
+	break;
+      }
     case marker_shape::blob:
-      mkr = make_polygon_blob(cpoint, styl, radius);
+      mkr = make_path_blob(cpoint, styl, radius);
       break;
     case marker_shape::wave:
       mkr = make_path_ripple(cpoint, styl, radius * 1.5, 2, 2);
