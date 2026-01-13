@@ -16,6 +16,8 @@
 #ifndef MiL_SVG_RENDER_BASICS_H
 #define MiL_SVG_RENDER_BASICS_H 1
 
+#include <numbers>
+#include <format>
 //#include "a60-svg-codecvt.h"
 #include "a60-svg-radial-fill-hexagon.h"
 
@@ -511,11 +513,11 @@ make_rect_rays(const point_2t origin, const style s,
   // End points on the ray.
   // Pick a random ray, use an angle in the range [0, 2pi].
   static std::mt19937_64 rg(std::random_device{}());
-  auto distr = std::uniform_real_distribution<>(0.4, 1.7);
+  auto distr = std::uniform_real_distribution<>(0.4, 2.1);
   //auto disti = std::uniform_int_distribution<>(-3, 3);
   auto [ x, y ] = origin;
 
-  const space_type rwidth = r / 5; // center mark uses r/3
+  const space_type rwidth = r / 6; // center mark uses r/3
   group_element g;
   g.start_element("rrays-" + std::to_string(nrays) + "-" + std::to_string(r));
   for (uint i = 0; i < nrays; ++i)
@@ -756,14 +758,15 @@ make_path_arc_closed(const point_2t& origin, const double startd,
 /// @param origin center of the shape.
 /// @param s style for the polyline
 /// @param size radius of mark
+/// @param numCurves number of curves between 5-8 optimal
 path_element
-make_path_blob(const point_2t origin, const style s, const double size)
+make_path_blob(const point_2t origin, const style s, const double size,
+	       const int numCurves = 5 + std::rand() % 4)
 {
   auto [ ox, oy ] = origin;
   std::srand(std::time(0));
 
   // Generate main points
-  const int numCurves = 5 + std::rand() % 4; // 5-8 curves
   vrange points;
   vrange controlPoints;
   for (int i = 0; i < numCurves; i++)
@@ -870,23 +873,107 @@ make_path_center_mark(const point_2t& origin, const style styl,
 /// @param points the points in the polyline
 /// @param s style for the polyline
 /// @param s stroke_style for the polyline
-polyline_element
+polygon_element
 make_path_ripple(const point_2t origin, const style s,
 		 const double length, const double amp, const double periods)
 {
+  const double rwidth = 3;
   auto [ ox, oy ] = origin;
   vrange points;
   points.push_back(origin);
   for (int i = 0; i <= 100; i++)
     {
       double x = ox + (i * length) / 100.0;
-      double y = oy + amp * sin((i * periods * 2 * k::pi) / 100.0);
+      double y = oy - rwidth + amp * sin((i * periods * 2 * k::pi) / 100.0);
+      points.push_back({x, y});
+    }
+  for (int i = 0; i <= 100; i++)
+    {
+      double x = ox + length - (i * length) / 100.0;
+      double y = oy + rwidth + amp * sin((i * periods * 2 * k::pi) / 100.0);
       points.push_back({x, y});
     }
 
-  polyline_element pl = make_polyline(points, s);
+  polygon_element pl = make_polygon(points, s);
   return pl;
 }
+
+
+/// Make lauburu
+/// @param origin center of the shape.
+/// @param s style for the polyline
+/// @param size radius of mark
+path_element
+make_lauburu(const point_2t origin, const style s, const double size,
+	     double swirlFactor = 0.5, int pointsPerSwirl = 8)
+{
+  using namespace std::numbers;
+  const double pi = pi_v<double>;
+
+  auto [ centerX, centerY ] = origin;
+
+  // Traditional lauburu has 4 comma-shaped swirls
+  const int swirls = 4;
+  const double swirlAngle = 2 * pi / swirls;
+
+  // Start at the outer point of first swirl
+  double startAngle = -pi / 4;
+  double startX = centerX + size * std::cos(startAngle);
+  double startY = centerY + size * std::sin(startAngle);
+
+  std::string svgPath;
+  svgPath = std::format("M{:.2f},{:.2f}", startX, startY);
+
+  // Generate each comma swirl
+  for (int swirl = 0; swirl < swirls; ++swirl)
+    {
+      double baseAngle = startAngle + swirl * swirlAngle;
+
+      // Generate points for one comma swirl
+      std::vector<std::pair<double, double>> points;
+
+      for (int i = 0; i <= pointsPerSwirl; ++i)
+	{
+	  double t = static_cast<double>(i) / pointsPerSwirl;
+	  double angle = baseAngle + t * (3 * pi / 2); // 270 degree swirl
+
+	  // Radius decreases as we swirl inward
+	  double radius = size * (1.0 - t * swirlFactor);
+
+	  double x = centerX + radius * std::cos(angle);
+	  double y = centerY + radius * std::sin(angle);
+	  points.emplace_back(x, y);
+	}
+
+      // Create smooth curve through points
+      for (size_t i = 1; i < points.size(); ++i)
+	{
+	  double prevX = points[i-1].first;
+	  double prevY = points[i-1].second;
+	  double currX = points[i].first;
+	  double currY = points[i].second;
+
+	  // Calculate control point for quadratic Bézier
+	  double midX = (prevX + currX) / 2;
+	  double midY = (prevY + currY) / 2;
+
+	  // Offset control point for smoothness
+	  double offset = size * 0.1;
+	  double ctrlX = midX + offset * std::cos(baseAngle + pi/2);
+	  double ctrlY = midY + offset * std::sin(baseAngle + pi/2);
+
+	  svgPath += std::format(" Q{:.2f},{:.2f} {:.2f},{:.2f}",
+				 ctrlX, ctrlY, currX, currY);
+	}
+    }
+
+    svgPath += " Z";
+
+    string id = "lauburu-" + std::to_string(size);
+    path_element p = make_path(svgPath, s, id);
+    return p;
+}
+
 
 
 // Hexagon and tessalations.
@@ -975,179 +1062,15 @@ make_text_honeycomb(const point_2t origin, const double r,
 /// @ret group element of polygon_elements
 //polyline_element
 group_element
-make_octahedron(const point_2t origin, const style& s, const double radius)
+//make_octahedron(const point_2t origin, const style& s, const double radius)
+make_octahedron(const point_2t, const style&, const double radius)
 {
-  // 1. Define the 6 vertices of a regular octahedron in 3D
-  std::array<point_3t, 6> vertices =
-    {{
-      { radius, 0, 0}, {-radius, 0, 0},  // Right, Left
-      { 0, radius, 0}, { 0, -radius, 0},  // Top, Bottom
-      { 0, 0, radius}, { 0, 0, -radius}  // Front, Back
-    }};
-
-  // 2. Define the 8 triangular faces using vertex indices
-  // Top pyramid faces
-  std::vector<std::array<int, 3>> faces =
-    {
-      {2, 0, 4}, {2, 4, 1}, {2, 1, 5}, {2, 5, 0}, // Top 4
-      {3, 0, 4}, {3, 4, 1}, {3, 1, 5}, {3, 5, 0}  // Bottom 4
-    };
-
-  auto lisoproject = [](const point_3t p3, const point_2t p2)
-  {
-    // Standard isometric projection coefficients
-    auto [ x2, y2 ] = p2;
-    auto [ x3, y3, z3 ] = p3;
-    double x2d = (x3 - z3) * 0.866;
-    double y2d = y3 + (x3 + z3) * 0.5;
-    point_2t pp = { x2 + x2d, y2 - y2d };
-    return pp;
-  };
-
-  group_element go;
-  go.start_element("polygon-oct-r-" + std::to_string(radius));
-  for (const auto& face : faces)
-    {
-      point_2t p1 = lisoproject(vertices[face[0]], origin);
-      point_2t p2 = lisoproject(vertices[face[1]], origin);
-      point_2t p3 = lisoproject(vertices[face[2]], origin);
-      vrange points = { p1, p2, p3 };
-      polygon_element plyg = make_polygon(points, s);
-      go.add_element(plyg);
-    }
-  go.finish_element();
-  return go;
-
-
-
-#if 0
-  auto [ x, y ] = origin;
-  const double PI = 3.14159265358979323846;
-  const uint sides = 8;
-
-  // Calculate all vertices
-  vrange vertices;
-  for (uint i = 0; i < sides; ++i)
-    {
-      double angle = i * (2 * PI / sides);
-      point_2t p = { x + radius * cos(angle), y + radius * sin(angle) };
-      vertices.push_back(p);
-    }
-
   // Draw faces as polygons, group as meta polygon.
   // Outer group.
   group_element go;
   go.start_element("polygon-oct-r-" + std::to_string(radius));
-
-  for (uint i = 0; i < sides; ++i)
-    {
-      int next = (i + 1) % sides;
-      vrange points;
-      points.push_back({ x, y });
-      point_2t& pvi = vertices[i];
-      points.push_back(pvi);
-      point_2t& pnext = vertices[next];
-      points.push_back(pnext);
-
-      polygon_element plyg = make_polygon(points, s);
-      go.add_element(plyg);
-    }
-
   go.finish_element();
   return go;
-#endif
-
-#if 0
-  /// XXX this isn't ending correctly and cannot be filled
-  auto [ centerX, centerY ] = origin;
-
-  // Octahedron vertices (6 vertices)
-  double vertices[6][3] =
-    {
-      {1, 0, 0}, {-1, 0, 0},  // Right/Left
-      {0, 1, 0}, {0, -1, 0},  // Top/Bottom
-      {0, 0, 1}, {0, 0, -1}   // Front/Back
-    };
-
-  // Project vertices
-  int projX[6];
-  int projY[6];
-  for (int i = 0; i < 6; i++)
-    {
-      projX[i] = centerX + radius * (vertices[i][0] * 0.707 - vertices[i][2] * 0.707);
-      projY[i] = centerY + radius * (vertices[i][0] * 0.408 + vertices[i][1] * 0.816 + vertices[i][2] * 0.408);
-  }
-
-  // Octahedron edges (12 edges)
-  int edges[12][2] =
-    {
-      {0,2}, {0,3}, {0,4}, {0,5},  // From right vertex
-      {1,2}, {1,3}, {1,4}, {1,5},  // From left vertex
-      {2,4}, {2,5}, {3,4}, {3,5}   // Top/bottom connections
-    };
-
-  vrange points;
-  for (int i = 0; i < 12; i++)
-    {
-      int v1 = edges[i][0];
-      int v2 = edges[i][1];
-      point_2t p1 = { projX[v1], projY[v1] };
-      point_2t p2 = { projX[v2], projY[v2] };
-      points.push_back(p1);
-      points.push_back(p2);
-    }
-  polyline_element p = make_polyline(points, s);
-  return p;
-#endif
-
-#if 0
-  double vertices[6][3] =
-    {
-      {1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}
-    };
-
-  auto [ centerX, centerY ] = origin;
-  int projX[6], projY[6];
-  for (int i = 0; i < 6; i++)
-    {
-      projX[i] = centerX + radius * (vertices[i][0] * 0.707 - vertices[i][2] * 0.707);
-      projY[i] = centerY + radius * (vertices[i][0] * 0.408 + vertices[i][1] * 0.816 + vertices[i][2] * 0.408);
-    }
-
-  // Define faces with colors
-  struct OctaFace
-  {
-    int v[3];
-    std::string color;
-  };
-
-  OctaFace faces[8] =
-    {
-      {{0, 2, 4}, "#FF6B6B"}, {{1, 2, 4}, "#4ECDC4"},
-      {{0, 2, 5}, "#45B7D1"}, {{1, 2, 5}, "#96CEB4"},
-      {{0, 3, 4}, "#FECA57"}, {{1, 3, 4}, "#FF9F43"},
-      {{0, 3, 5}, "#EE5A24"}, {{1, 3, 5}, "#C4E538"}
-    };
-
-  // Draw faces as polygons, group as meta polygon.
-  // Outer group.
-  group_element go;
-  go.start_element("polygon-oct-r-" + std::to_string(radius));
-  for (int i = 0; i < 8; i++)
-    {
-      vrange points;
-      for (int j = 0; j < 3; j++)
-	{
-	  point_2t pt = { projX[faces[i].v[j]], projY[faces[i].v[j]] };
-	  points.push_back(pt);
-	}
-
-      polygon_element plyg = make_polygon(points, s);
-      go.add_element(plyg);
-    }
-  go.finish_element();
-  return go;
-#endif
 }
 
 

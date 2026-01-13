@@ -177,8 +177,9 @@ enum class marker_shape
     octahedron,		///< Octahedron (8) 3D
     icosahedron,	///< Icosahedron
     sunburst,		///< Sunburst
-    x,			///< Crossed Lines in x pattern
-    blob,		///< Organic blob form
+    x,			///< Crossed Lines
+    blob,		///< Organic Blob form
+    lauburu,		///< Lauburu Curve
     wave		///< Wave
   };
 
@@ -200,6 +201,7 @@ to_string(const marker_shape e)
       enum_map[marker_shape::sunburst] = "sunburst";
       enum_map[marker_shape::x] = "x";
       enum_map[marker_shape::blob] = "blob";
+      enum_map[marker_shape::lauburu] = "lauburu";
       enum_map[marker_shape::wave] = "wave";
 
     }

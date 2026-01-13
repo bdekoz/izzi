@@ -44,11 +44,13 @@ test_markers_1(const double x, const svg::style styl)
   string m4 = make_marker_instance(marker_shape::hexagon, p4, styl, radius);
   obj.add_raw(m4);
 
+#if 0
   // 5
   yp += spacer;
   point_2t p51 = { x, yp };
   string m51 = make_marker_instance(marker_shape::octahedron, p51, styl, radius);
   obj.add_raw(m51);
+#endif
 
   // 5
   yp += spacer;
@@ -79,6 +81,12 @@ test_markers_1(const double x, const svg::style styl)
   point_2t p8 = { x, yp };
   string m8 = make_marker_instance(marker_shape::wave, p8, styl, radius);
   obj.add_raw(m8);
+
+  // 9
+  yp += spacer;
+  point_2t p9 = { x, yp };
+  string m9 = make_marker_instance(marker_shape::lauburu, p9, styl, radius);
+  obj.add_raw(m9);
 }
 
 
