@@ -27,6 +27,10 @@ using point_2tn = std::tuple<ulong, point_2t>;
 /// Named Point (x,y) in 2D space.
 using point_2ts = std::tuple<string, point_2t>;
 
+/// Point (x,y,z) in 3D space, space_type defaults to double.
+using point_3t = std::tuple<space_type, space_type, space_type>;
+
+
 /// Convert point_2t to string.
 string
 to_string(point_2t p)
@@ -36,6 +40,17 @@ to_string(point_2t p)
   oss << x << ',' << y;
   return oss.str();
 }
+
+/// Convert point_3t to string.
+string
+to_string(point_3t p)
+{
+  auto [ x, y, z ] = p;
+  std::ostringstream oss;
+  oss << x << ',' << y << ',' << z;
+  return oss.str();
+}
+
 
 /// Split range, so one dimension of (x,y) cartesian plane.
 using vspace = std::vector<space_type>;

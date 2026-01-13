@@ -46,6 +46,18 @@ test_markers_1(const double x, const svg::style styl)
 
   // 5
   yp += spacer;
+  point_2t p51 = { x, yp };
+  string m51 = make_marker_instance(marker_shape::octahedron, p51, styl, radius);
+  obj.add_raw(m51);
+
+  // 5
+  yp += spacer;
+  point_2t p52 = { x, yp };
+  string m52 = make_marker_instance(marker_shape::icosahedron, p52, styl, radius);
+  obj.add_raw(m52);
+
+  // 5
+  yp += spacer;
   point_2t p5 = { x, yp };
   string m5 = make_marker_instance(marker_shape::sunburst, p5, styl, radius);
   obj.add_raw(m5);
@@ -68,7 +80,6 @@ test_markers_1(const double x, const svg::style styl)
   string m8 = make_marker_instance(marker_shape::wave, p8, styl, radius);
   obj.add_raw(m8);
 }
-
 
 
 int main()

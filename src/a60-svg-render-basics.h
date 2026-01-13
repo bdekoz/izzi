@@ -498,6 +498,7 @@ make_line_rays(const point_2t origin, const style s,
 
       g.add_element(ray);
     }
+  g.finish_element();
   return g;
 }
 
@@ -514,7 +515,7 @@ make_rect_rays(const point_2t origin, const style s,
   //auto disti = std::uniform_int_distribution<>(-3, 3);
   auto [ x, y ] = origin;
 
-  const int rwidth = 2;
+  const space_type rwidth = r / 5; // center mark uses r/3
   group_element g;
   g.start_element("rrays-" + std::to_string(nrays) + "-" + std::to_string(r));
   for (uint i = 0; i < nrays; ++i)
@@ -527,6 +528,7 @@ make_rect_rays(const point_2t origin, const style s,
       rect_element ray = make_rect_centered(origin, s, a, "", rotate) ;
       g.add_element(ray);
     }
+  g.finish_element();
   return g;
 }
 
@@ -882,11 +884,7 @@ make_path_ripple(const point_2t origin, const style s,
       points.push_back({x, y});
     }
 
-  polyline_element pl(points);
-  pl.start_element();
-  //pl.add_data(sstyle);
-  pl.add_style(s);
-  pl.finish_element();
+  polyline_element pl = make_polyline(points, s);
   return pl;
 }
 
@@ -979,6 +977,50 @@ make_text_honeycomb(const point_2t origin, const double r,
 group_element
 make_octahedron(const point_2t origin, const style& s, const double radius)
 {
+  // 1. Define the 6 vertices of a regular octahedron in 3D
+  std::array<point_3t, 6> vertices =
+    {{
+      { radius, 0, 0}, {-radius, 0, 0},  // Right, Left
+      { 0, radius, 0}, { 0, -radius, 0},  // Top, Bottom
+      { 0, 0, radius}, { 0, 0, -radius}  // Front, Back
+    }};
+
+  // 2. Define the 8 triangular faces using vertex indices
+  // Top pyramid faces
+  std::vector<std::array<int, 3>> faces =
+    {
+      {2, 0, 4}, {2, 4, 1}, {2, 1, 5}, {2, 5, 0}, // Top 4
+      {3, 0, 4}, {3, 4, 1}, {3, 1, 5}, {3, 5, 0}  // Bottom 4
+    };
+
+  auto lisoproject = [](const point_3t p3, const point_2t p2)
+  {
+    // Standard isometric projection coefficients
+    auto [ x2, y2 ] = p2;
+    auto [ x3, y3, z3 ] = p3;
+    double x2d = (x3 - z3) * 0.866;
+    double y2d = y3 + (x3 + z3) * 0.5;
+    point_2t pp = { x2 + x2d, y2 - y2d };
+    return pp;
+  };
+
+  group_element go;
+  go.start_element("polygon-oct-r-" + std::to_string(radius));
+  for (const auto& face : faces)
+    {
+      point_2t p1 = lisoproject(vertices[face[0]], origin);
+      point_2t p2 = lisoproject(vertices[face[1]], origin);
+      point_2t p3 = lisoproject(vertices[face[2]], origin);
+      vrange points = { p1, p2, p3 };
+      polygon_element plyg = make_polygon(points, s);
+      go.add_element(plyg);
+    }
+  go.finish_element();
+  return go;
+
+
+
+#if 0
   auto [ x, y ] = origin;
   const double PI = 3.14159265358979323846;
   const uint sides = 8;
@@ -1013,6 +1055,7 @@ make_octahedron(const point_2t origin, const style& s, const double radius)
 
   go.finish_element();
   return go;
+#endif
 
 #if 0
   /// XXX this isn't ending correctly and cannot be filled
@@ -1110,7 +1153,7 @@ make_octahedron(const point_2t origin, const style& s, const double radius)
 
 /// Make icosahedron shape (20) in 2D simulated 3D
 //make_icosahedron_3d(int centerX, int centerY, int size)
-polyline_element
+group_element
 make_icosahedron(const point_2t origin, const style& s, const double radius)
 {
   auto [ centerX, centerY ] = origin;
@@ -1158,18 +1201,19 @@ make_icosahedron(const point_2t origin, const style& s, const double radius)
       {8,9}, {10,11}                         // Remaining edges
     };
 
-  vrange points;
+  group_element g;
+  g.start_element("icosahedron-" + std::to_string(radius));
   for (int i = 0; i < 30; i++)
     {
       int v1 = edges[i][0];
       int v2 = edges[i][1];
       point_2t p1 = { projX[v1], projY[v1] };
       point_2t p2 = { projX[v2], projY[v2] };
-      points.push_back(p1);
-      points.push_back(p2);
+      line_element l = make_line(p1, p2, s);
+      g.add_element(l);
     }
-  polyline_element p = make_polyline(points, s);
-  return p;
+  g.finish_element();
+  return g;
 }
 
 

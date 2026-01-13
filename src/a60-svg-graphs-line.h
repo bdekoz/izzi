@@ -299,8 +299,9 @@ make_marker_instance(const marker_shape form, const point_2t& cpoint,
     case marker_shape::x:
       {
 	auto [ cx, cy ] = cpoint;
-	string xform = mkr.make_transform_attribute(transform::rotate(45, cx, cy));
-	mkr = make_path_center_mark(cpoint, styl, radius, radius / 3, xform);
+	string xform = transform::rotate(45, cx, cy);
+	string xttr = mkr.make_transform_attribute(xform);
+	mkr = make_path_center_mark(cpoint, styl, radius, radius / 3, xttr);
 	break;
       }
     case marker_shape::blob:
