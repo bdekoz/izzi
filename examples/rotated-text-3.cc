@@ -25,9 +25,9 @@ test_text(std::string ofile)
 
   // Red marks at placement points.
   const style rstyl = { color::red, 1.0, color::red, 1.0, 2 };
-  point_to_crossed_lines(obj, cp, rstyl, 10);
-  point_to_crossed_lines(obj, top, rstyl, 10);
-  point_to_crossed_lines(obj, bottom, rstyl, 10);
+  obj.add_element(make_path_center_mark(cp, rstyl, 10, 2));
+  obj.add_element(make_path_center_mark(top, rstyl, 10, 2));
+  obj.add_element(make_path_center_mark(bottom, rstyl, 10, 2));
 }
 
 

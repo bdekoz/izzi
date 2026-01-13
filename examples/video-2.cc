@@ -58,7 +58,7 @@ test_video(std::string ofile)
   obj.add_element(c);
 
   // center mark in pink overlay
-  point_to_crossed_lines(obj, cp, pstyl, 250, 45);
+  obj.add_element(make_path_center_mark(cp, pstyl, 250, 45));
 
   // video in center
   foreign_element fe;
@@ -74,8 +74,8 @@ test_video(std::string ofile)
   obj.add_element(fe);
 
   // video edge mark in pink overlay
-  point_to_crossed_lines(obj, make_tuple(rwidth/2, rheight/2), pstyl, 50);
-  point_to_crossed_lines(obj, make_tuple(rwidth, rheight), pstyl, 50);
+  obj.add_element(make_path_center_mark(make_tuple(rwidth/2, rheight/2), pstyl, 50, 2));
+		  obj.add_element(make_path_center_mark(make_tuple(rwidth, rheight), pstyl, 50, 2));
 
   // coordinates
   augment_place(obj, std::make_tuple(vpx, cpy), rstyl, 4);

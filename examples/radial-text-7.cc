@@ -56,7 +56,7 @@ test_arc(std::string ofile)
 
   // Put in 0/180 and 90/270 guides.
   const int r4 = 1000;
-  point_to_crossed_lines(obj, cp, rstyl, r4);
+  obj.add_element(make_path_center_mark(cp, rstyl, r4, 2));
   for (uint i = 0; i < 12; ++i)
     {
       auto d = i * 30;
