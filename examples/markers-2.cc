@@ -30,6 +30,10 @@ test_markers(const double x, const double y, const svg::style styl)
   // 5
   yp += spacer;
 
+  point_2t p10 = { x, yp };
+  auto m10 = make_sunburst(p10, styl, radius, 1);
+  obj.add_element(m10);
+
   point_2t p11 = { x - spacer, yp };
   auto m1 = make_sunburst(p11, styl, radius, 10);
   obj.add_element(m1);

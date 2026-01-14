@@ -875,27 +875,33 @@ make_sunburst(const point_2t origin, const style s,
 	      const space_type r = 4, const uint nrays = 10)
 {
   auto [ ox, oy ] = origin;
-
-  // End points on the ray.
-  // Pick a random ray, use an angle in the range [0, 2pi].
-  static std::mt19937_64 rg(std::random_device{}());
-  auto distr = std::uniform_real_distribution<>(0.5, 1.5);
   const space_type rwidth = r / 6; // r/6, center mark uses r/3
 
   group_element g;
-  g.start_element("sunburst-" + std::to_string(nrays) + "-" + std::to_string(r));
+  string gid = "sunburst-" + std::to_string(nrays) + "-" + std::to_string(r);
+  string xformg = transform::translate(ox, oy);
+  g.start_element(gid, xformg);
+
+  // Calculate angle step between rectangles
+  double angledelta = 2 * k::pi / nrays;
   for (uint i = 0; i < nrays; ++i)
     {
-      //double theta = distr(rg);
-      //double rvary = r + disti(rg);
-      double rvary = r * distr(rg);
-      area<> a = { rwidth, rvary };
+      double angle = i * angledelta;
 
-      // point 1/2 radius from center at angle d is where the rectangle is placed.
-      double d = i * (360 / nrays);
-      auto [ x, y ] = get_circumference_point_d(d, r / 2, origin);
-      string rotate = svg::transform::rotate(d, ox, oy);
-      rect_element ray = make_rect({x, y}, s, a, "", rotate) ;
+      // Calculate position on circle
+      double xPos = r / 2 * std::cos(angle);
+      double yPos = r / 2 * std::sin(angle);
+
+      // Create transformation string
+      // Translate to position, then rotate around the origin
+      // Rectangles are positioned with their centers at the circle point
+      string xformrt = transform::translate(xPos, yPos);
+      string xformrr = transform::rotate(angle * 180 / k::pi);
+      string xformrmega = xformrt + k::space + xformrr;
+
+      area<> a = { rwidth, r };
+      point_2t rcp  = { -(rwidth / 2), -(r / 2)};
+      rect_element ray = make_rect_centered(rcp, s, a, "", xformrmega);
       g.add_element(ray);
     }
   g.finish_element();
