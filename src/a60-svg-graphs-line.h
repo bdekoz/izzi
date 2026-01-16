@@ -357,13 +357,13 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
       string tipstr(gstate.title);
       tipstr += k::newline;
       tipstr += "week: ";
-      tipstr += std::to_string(static_cast<uint>(vy));
+      tipstr += std::to_string(static_cast<uint>(vx));
       //tipstr += gstate.yticu;
       tipstr += k::newline;
 
       std::ostringstream oss;
       oss.imbue(std::locale(""));
-      oss << vx;
+      oss << vy;
       tipstr += oss.str();
       //tipstr += std::to_string(static_cast<uint>(vx));
       //tipstr += gstate.xticu;
