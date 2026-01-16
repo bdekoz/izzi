@@ -35,9 +35,9 @@ namespace svg {
 ///    but add image tooltips, with js controlling image visibility.
 enum graph_mode : ushort
   {
-    chart_line_style_1	= 100,
-    chart_line_style_2	= 200,
-    chart_line_style_3	= 300
+    chart_line_style_1	= 100, ///< One Element, one path plus css dasharray and markers
+    chart_line_style_2	= 200, ///< Two Element, one path, one marker
+    chart_line_style_3	= 300  ///< Three Element, one path, one marker, image
   };
 
 /**
@@ -492,8 +492,10 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
   typography anntypo = typo;
   anntypo._M_style = k::wcagg_style;
 
-  svg_element lanno(gstate.title, "line graph annotation",
+  // Start adding elements.
+  svg_element lanno(gstate.title, "line graph annotations",
 		    gstate.graph_area, false);
+  lanno.add_raw(group_element::start_group("annotations"));
 
   // Chart title.
   if (gstate.is_visible(select::title))
@@ -510,7 +512,7 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
   // Axes Lines and Tic Labels
   if (gstate.is_visible(select::axis))
     {
-      lanno.add_raw(group_element::start_group("axes-" + gstate.title));
+      lanno.add_raw(group_element::start_group("axes-lines"));
 
       anntypo._M_size = graph_rstate::th1sz;
       anntypo._M_w = typography::weight::medium;
@@ -551,7 +553,7 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
   // perhaps with magnification-ready micro text.
   if (gstate.is_visible(select::linex))
     {
-      lanno.add_raw(group_element::start_group("tic-y-lines-" + gstate.title));
+      lanno.add_raw(group_element::start_group("tic-y-label-lines"));
 
       style hlstyl = gstate.lstyle;
       hlstyl._M_stroke_color = color::gray05;
@@ -594,7 +596,7 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
       anntypo._M_baseline = typography::baseline::central;
 
       // X tic labels
-      lanno.add_raw(group_element::start_group("tic-x-" + gstate.title));
+      lanno.add_raw(group_element::start_group("tic-x-labels"));
       for (uint i = 0; i < points.size(); i++)
 	{
 	  const double xto = std::get<0>(cpoints[i]);
@@ -617,7 +619,7 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
 
       // Y tic labels
       // Positions for left and right y-axis tic labels.
-      lanno.add_raw(group_element::start_group("tic-y-" + gstate.title));
+      lanno.add_raw(group_element::start_group("tic-y-labels"));
       const double yticspacer = graph_rstate::th1sz * 2;
       const double xgol = gstate.xmargin - yticspacer;			// left
       const double xgor = gstate.xmargin + gwidth + yticspacer;         // right
@@ -632,6 +634,7 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
       lanno.add_raw(group_element::finish_group());
     }
 
+  lanno.add_raw(group_element::finish_group());
   return lanno;
 }
 
