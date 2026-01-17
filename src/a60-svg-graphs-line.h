@@ -363,7 +363,7 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 
       std::ostringstream oss;
       oss.imbue(std::locale(""));
-      oss << std::fixed << vy;
+      oss << std::fixed << std::precision(0) << vy;
       tipstr += oss.str();
       //tipstr += std::to_string(static_cast<uint>(vx));
       //tipstr += gstate.xticu;
