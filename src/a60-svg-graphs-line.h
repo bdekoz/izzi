@@ -279,39 +279,39 @@ make_marker_instance(const marker_shape form, const point_2t& cpoint,
       mkr = make_circle_marker(cpoint, styl, radius, tipstr, "", imgid);
       break;
     case marker_shape::triangle:
-      mkr = make_polygon_marker(cpoint, styl, radius, 3, tipstr, imgid);
+      mkr = make_path_marker(cpoint, styl, radius, 3, tipstr, imgid);
       break;
     case marker_shape::square:
       mkr = make_rect_marker(cpoint, styl, radius, tipstr, "", imgid);
       break;
     case marker_shape::hexagon:
-      mkr = make_polygon_marker(cpoint, styl, radius, 6, tipstr, imgid);
+      mkr = make_path_marker(cpoint, styl, radius, 6, tipstr, imgid);
       break;
     case marker_shape::octahedron:
-      mkr = make_octahedron(cpoint, styl, radius);
+      mkr = make_octahedron(cpoint, styl, radius, tipstr);
       break;
     case marker_shape::icosahedron:
-      mkr = make_icosahedron(cpoint, styl, radius);
+      mkr = make_icosahedron(cpoint, styl, radius, tipstr);
       break;
     case marker_shape::sunburst:
-      mkr = make_sunburst(cpoint, styl, radius, 11);
+      mkr = make_sunburst(cpoint, styl, radius, 11, tipstr);
       break;
     case marker_shape::x:
       {
 	auto [ cx, cy ] = cpoint;
 	string xform = transform::rotate(45, cx, cy);
 	string xttr = mkr.make_transform_attribute(xform);
-	mkr = make_path_center_mark(cpoint, styl, radius, radius / 3, xttr);
+	mkr = make_path_center_mark(cpoint, styl, radius, radius / 3, xttr, tipstr);
 	break;
       }
     case marker_shape::blob:
-      mkr = make_path_blob(cpoint, styl, radius, 5);
+      mkr = make_path_blob(cpoint, styl, radius, 5, tipstr);
       break;
     case marker_shape::lauburu:
-      mkr = make_lauburu(cpoint, styl, radius / 3, 4.0, 6);
+      mkr = make_lauburu(cpoint, styl, radius / 3, 4.0, 6, tipstr);
       break;
     case marker_shape::wave:
-      mkr = make_path_ripple(cpoint, styl, radius * 1.5, 2, 2);
+      mkr = make_path_ripple(cpoint, styl, radius * 1.5, 2, 2, tipstr);
       break;
     default:
       string m("make_marker_instance:: ");

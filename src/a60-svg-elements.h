@@ -849,6 +849,11 @@ circle_element::finish_element()
  */
 struct polygon_element : virtual public element_base
 {
+  // Verbose opening/closing pair tags for circle_element.
+  // Default assumes the more compact XML "self-closed tag" for circle element.
+  static constexpr const char*	pair_open_tag = "<polygon>";
+  static constexpr const char*	pair_finish_tag = "</polygon>";
+
   void
   start_element()
   { _M_sstream << "<polygon "; }
@@ -1036,6 +1041,9 @@ struct path_element : virtual public element_base
     atype		_M_length;
   };
 
+  // Verbose opening/closing pair tags for path_element.
+  // Default assumes the more compact XML "self-closed tag" for circle element.
+  static constexpr const char*	pair_open_tag = "<path>";
   static constexpr const char*	pair_finish_tag = "</path>";
 
   /// Either serialize immediately (as below), or create data structure

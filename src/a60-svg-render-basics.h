@@ -436,10 +436,8 @@ point_to_ring_halo(svg_element& obj, const point_2t origin,
 
 
 /// Make polygon element.
-/// @param origin is the point (x,y) that is the center of the circle
+/// @param points vertices in polygon
 /// @param s is the visual style
-/// @param r is the circle radius
-/// @param xform is the transform, if any.
 polygon_element
 make_polygon(const vrange& points, const style s)
 {
@@ -448,6 +446,28 @@ make_polygon(const vrange& points, const style s)
   c.add_data(points);
   c.add_style(s);
   c.finish_element();
+  return c;
+}
+
+
+/// Make polygon element.
+/// @param points vertices in polygon
+/// @param s is the visual style
+polygon_element
+make_polygon_marker(const vrange& points, const style s, const string title,
+		    const string xttr = "", const string imgid = "")
+{
+  polygon_element c;
+  c.start_element();
+  c.add_data(points);
+  c.add_style(s);
+  if (!imgid.empty())
+    c.add_raw(imgid);
+  if (!xttr.empty())
+    c.add_raw(xttr);
+  c.add_raw(element_base::finish_tag_hard);
+  c.add_title(title);
+  c.add_raw(string { polygon_element::pair_finish_tag } + k::newline);
   return c;
 }
 
@@ -654,14 +674,13 @@ make_path_polygon(const point_2t origin, const style s,
 
 /// Make a polygon marker for line graphs.
 path_element
-make_polygon_marker(const point_2t origin, const style s,
+make_path_marker(const point_2t origin, const style s,
 		    const double r, const uint pointsn, const string title,
 		    const string xattr = "")
 {
-  // XXX imagid
   path_element polyg = make_path_polygon(origin, s, r, pointsn, false, xattr);
   polyg.add_title(title);
-  polyg.add_raw(string { circle_element::pair_finish_tag } + k::newline);
+  polyg.add_raw(string { path_element::pair_finish_tag } + k::newline);
   return polyg;
 }
 
@@ -731,7 +750,8 @@ make_path_arc_closed(const point_2t& origin, const double startd,
 /// @param numCurves number of curves between 5-8 optimal
 path_element
 make_path_blob(const point_2t origin, const style s, const double size,
-	       const int numCurves = 5 + std::rand() % 4)
+	       const int numCurves = 5 + std::rand() % 4,
+	       const string tipstr = "")
 {
   auto [ ox, oy ] = origin;
   std::srand(std::time(0));
@@ -784,8 +804,20 @@ make_path_blob(const point_2t origin, const style s, const double size,
 
   data << " Z";
   string pdata = data.str();
-  path_element pth = make_path(pdata, s);
-  return pth;
+
+  string id = "blob-" + std::to_string(size);
+  if (tipstr.empty())
+    {
+      path_element p = make_path(pdata, s, id);
+      return p;
+    }
+  else
+    {
+      path_element p = make_path(pdata, s, id, false);
+      p.add_title(tipstr);
+      p.add_raw(string { path_element::pair_finish_tag } + k::newline);
+      return p;
+    }
 }
 
 
@@ -793,7 +825,7 @@ make_path_blob(const point_2t origin, const style s, const double size,
 path_element
 make_path_center_mark(const point_2t& origin, const style styl,
 		      const int len, const int width,
-		      const string xform = "")
+		      const string xform = "", const string tipstr = "")
 {
   // Define path as starting at origin, move half width up and to left then
   // move around as if making a plus sign.
@@ -834,8 +866,18 @@ make_path_center_mark(const point_2t& origin, const style styl,
   string attr(std::to_string(width) + "-" + std::to_string(len));
   id += attr;
 
-  path_element cm = make_path(pathdata, styl, id, true, xform);
-  return cm;
+  if (tipstr.empty())
+    {
+      path_element p = make_path(pathdata, styl, id, true, xform);
+      return p;
+    }
+  else
+    {
+      path_element p = make_path(pathdata, styl, id, false, xform);
+      p.add_title(tipstr);
+      p.add_raw(string { path_element::pair_finish_tag } + k::newline);
+      return p;
+    }
 }
 
 
@@ -845,7 +887,8 @@ make_path_center_mark(const point_2t& origin, const style styl,
 /// @param s stroke_style for the polyline
 polygon_element
 make_path_ripple(const point_2t origin, const style s,
-		 const double length, const double amp, const double periods)
+		 const double length, const double amp, const double periods,
+		 const string tipstr = "")
 {
   const double rwidth = 3;
   auto [ ox, oy ] = origin;
@@ -864,7 +907,7 @@ make_path_ripple(const point_2t origin, const style s,
       points.push_back({x, y});
     }
 
-  polygon_element pl = make_polygon(points, s);
+  polygon_element pl = make_polygon_marker(points, s, tipstr);
   return pl;
 }
 
@@ -872,7 +915,8 @@ make_path_ripple(const point_2t origin, const style s,
 /// Rectangles of various sizes rotated from center point (x,y).
 group_element
 make_sunburst(const point_2t origin, const style s,
-	      const space_type r = 4, const uint nrays = 10)
+	      const space_type r = 4, const uint nrays = 10,
+	      const string tipstr = "")
 {
   auto [ ox, oy ] = origin;
   const space_type rwidth = r / 6; // r/6, center mark uses r/3
@@ -904,6 +948,9 @@ make_sunburst(const point_2t origin, const style s,
       rect_element ray = make_rect_centered(rcp, s, a, "", xformrmega);
       g.add_element(ray);
     }
+
+  if (!tipstr.empty())
+    g.add_title(tipstr);
   g.finish_element();
   return g;
 }
@@ -915,7 +962,8 @@ make_sunburst(const point_2t origin, const style s,
 /// @param size radius of mark
 path_element
 make_lauburu(const point_2t origin, const style s, const double size,
-	     double swirlFactor = 0.5, int pointsPerSwirl = 8)
+	     double swirlFactor = 0.5, int pointsPerSwirl = 8,
+	     const string tipstr = "")
 {
   using namespace std::numbers;
   const double pi = pi_v<double>;
@@ -977,11 +1025,22 @@ make_lauburu(const point_2t origin, const style s, const double size,
 	}
     }
 
-    svgPath += " Z";
+  svgPath += " Z";
 
-    string id = "lauburu-" + std::to_string(size);
-    path_element p = make_path(svgPath, s, id);
-    return p;
+  string id = "lauburu-" + std::to_string(size);
+
+  if (tipstr.empty())
+    {
+      path_element p = make_path(svgPath, s, id);
+      return p;
+    }
+  else
+    {
+      path_element p = make_path(svgPath, s, id, false);
+      p.add_title(tipstr);
+      p.add_raw(string { path_element::pair_finish_tag } + k::newline);
+      return p;
+    }
 }
 
 
@@ -1073,12 +1132,14 @@ make_text_honeycomb(const point_2t origin, const double r,
 //polyline_element
 group_element
 //make_octahedron(const point_2t origin, const style& s, const double radius)
-make_octahedron(const point_2t, const style&, const double radius)
+make_octahedron(const point_2t, const style&, const double radius,
+		const string tipstr = "")
 {
   // Draw faces as polygons, group as meta polygon.
   // Outer group.
   group_element go;
   go.start_element("polygon-oct-r-" + std::to_string(radius));
+  go.add_title(tipstr);
   go.finish_element();
   return go;
 }
@@ -1087,7 +1148,8 @@ make_octahedron(const point_2t, const style&, const double radius)
 /// Make icosahedron shape (20) in 2D simulated 3D
 //make_icosahedron_3d(int centerX, int centerY, int size)
 group_element
-make_icosahedron(const point_2t origin, const style& s, const double radius)
+make_icosahedron(const point_2t origin, const style& s, const double radius,
+		 const string tipstr = "")
 {
   auto [ centerX, centerY ] = origin;
 
@@ -1145,7 +1207,11 @@ make_icosahedron(const point_2t origin, const style& s, const double radius)
       line_element l = make_line(p1, p2, s);
       g.add_element(l);
     }
+
+  if (!tipstr.empty())
+    g.add_title(tipstr);
   g.finish_element();
+
   return g;
 }
 
