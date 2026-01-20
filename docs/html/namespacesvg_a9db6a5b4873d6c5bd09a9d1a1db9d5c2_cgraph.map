@@ -1,0 +1,20 @@
+<map id="svg::make_lauburu" name="svg::make_lauburu">
+<area shape="rect" id="Node000001" title="Make lauburu." alt="" coords="5,176,124,203"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab" title="Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers...." alt="" coords="172,176,273,203"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,187,156,187,156,192,124,192"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a807f3c30f2ace338ad10aaf230b47665" title="Either serialize immediately (as below), or create data structure that adds data to data_vec and then..." alt="" coords="321,5,442,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="229,174,264,120,290,88,319,58,323,55,326,59,323,62,294,91,269,123,234,177"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#acafbdd950c6c2639c9d376c3eab696e5" title=" " alt="" coords="321,72,442,115"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="243,173,320,124,326,120,329,125,322,129,246,178"/>
+<area shape="rect" id="Node000006" href="$group__elements.html#a238b38ca99a1cf6c2baf80c8e4338d99" title=" " alt="" coords="321,139,442,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="273,177,305,171,306,177,274,183"/>
+<area shape="rect" id="Node000007" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="504,176,593,203"/>
+<area shape="poly" id="edge9_Node000002_Node000007" title=" " alt="" coords="273,189,321,191,442,191,488,189,488,195,442,196,321,196,273,194"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#gaac30ae99fb1a2542688fa1ffb43cd8e1" title=" " alt="" coords="321,256,442,299"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="250,201,330,246,327,250,247,206"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#a6dbca7cef2cbc0c10aa44c44ae20b36e" title=" " alt="" coords="321,323,442,365"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="234,202,270,252,295,282,323,309,326,312,323,316,319,313,291,285,266,255,230,205"/>
+<area shape="rect" id="Node000004" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="490,13,607,40"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="443,24,475,24,475,29,443,29"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="443,168,489,176,488,181,442,173"/>
+</map>

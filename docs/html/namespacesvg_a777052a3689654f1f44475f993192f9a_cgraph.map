@@ -1,0 +1,21 @@
+<map id="svg::make_octahedron" name="svg::make_octahedron">
+<area shape="rect" id="Node000001" title="Make octahedron shape (8) in 2D simulated 3D @ret group element of polygon_elements." alt="" coords="5,213,141,240"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a7995b78d94e1c299065c9dd3569fef7c" title=" " alt="" coords="189,139,310,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,210,176,185,178,190,112,215"/>
+<area shape="rect" id="Node000007" href="$group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955" title=" " alt="" coords="189,205,311,248"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="141,224,173,224,173,229,141,229"/>
+<area shape="rect" id="Node000009" href="$group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8" title="For groups of elements that have the same name." alt="" coords="189,272,311,315"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="112,238,178,264,176,269,110,243"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="360,5,481,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="270,136,309,98,357,58,363,54,366,58,361,62,313,102,274,140"/>
+<area shape="rect" id="Node000005" href="$group__elements.html#ga3d62381f8edcccd3d91f82af55f11274" title=" " alt="" coords="364,72,476,115"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="305,136,349,118,351,123,307,141"/>
+<area shape="rect" id="Node000006" href="$group__elements.html#a41dcaa1132c502cb86c01aae1e7b9ff2" title=" " alt="" coords="364,139,476,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="311,157,349,157,349,163,311,163"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#ad893ef9c13a15464c96d8a85c08af30f" title=" " alt="" coords="529,13,664,40"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="481,24,514,24,514,29,481,29"/>
+<area shape="rect" id="Node000008" href="$group__elements.html#a71cf2eb89a562527f14c4ca4c027c2b9" title=" " alt="" coords="359,205,481,248"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="311,224,344,224,344,229,311,229"/>
+<area shape="rect" id="Node000010" href="$group__elements.html#ab84e1bc08d2d2a71ab05521af65d7585" title=" " alt="" coords="359,272,481,315"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="311,291,344,291,344,296,311,296"/>
+</map>

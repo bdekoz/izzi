@@ -94,7 +94,14 @@ var menudata={children:[
 {text:"v",url:"namespacemembers_vars.html#index_v"},
 {text:"w",url:"namespacemembers_vars.html#index_w"},
 {text:"z",url:"namespacemembers_vars.html#index_z"}]},
-{text:"Typedefs",url:"namespacemembers_type.html"},
+{text:"Typedefs",url:"namespacemembers_type.html",children:[
+{text:"c",url:"namespacemembers_type.html#index_c"},
+{text:"i",url:"namespacemembers_type.html#index_i"},
+{text:"j",url:"namespacemembers_type.html#index_j"},
+{text:"p",url:"namespacemembers_type.html#index_p"},
+{text:"s",url:"namespacemembers_type.html#index_s"},
+{text:"u",url:"namespacemembers_type.html#index_u"},
+{text:"v",url:"namespacemembers_type.html#index_v"}]},
 {text:"Enumerations",url:"namespacemembers_enum.html"},
 {text:"Enumerator",url:"namespacemembers_eval.html"}]}]},
 {text:"Classes",url:"annotated.html",children:[
