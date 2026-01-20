@@ -885,30 +885,65 @@ make_path_center_mark(const point_2t& origin, const style styl,
 /// @param points the points in the polyline
 /// @param s style for the polyline
 /// @param s stroke_style for the polyline
-polygon_element
-make_path_ripple(const point_2t origin, const style s,
-		 const double length, const double amp, const double periods,
+path_element
+make_path_ripple(const point_2t origin, const style s, const double length,
+		 const double amplitude, const double decay,
+		 const int cycles = 3,
 		 const string tipstr = "")
 {
-  const double rwidth = 3;
-  auto [ ox, oy ] = origin;
-  vrange points;
-  points.push_back(origin);
-  for (int i = 0; i <= 100; i++)
+  // Sine Wave with Decay
+  auto [ startX, startY ] = origin;
+
+  // Calculate key inflection points (minimal set)
+  vrange keyPoints;
+  keyPoints.reserve(5);
+
+  // Add start point.
+  keyPoints.emplace_back(startX, startY);
+
+  // Calculate quarter cycle points
+  for (int i = 1; i <= cycles * 4; ++i)
     {
-      double x = ox + (i * length) / 100.0;
-      double y = oy - rwidth + amp * sin((i * periods * 2 * k::pi) / 100.0);
-      points.push_back({x, y});
-    }
-  for (int i = 0; i <= 100; i++)
-    {
-      double x = ox + length - (i * length) / 100.0;
-      double y = oy + rwidth + amp * sin((i * periods * 2 * k::pi) / 100.0);
-      points.push_back({x, y});
+      double t = static_cast<double>(i) / (cycles * 4);
+      double angle = t * cycles * 2 * svg::k::pi;
+      double x = startX + t * length;
+      double decayFactor = exp(-decay * t);
+      double y = startY - amplitude * decayFactor * sin(angle);
+      keyPoints.push_back({x, y});
     }
 
-  polygon_element pl = make_polygon_marker(points, s, tipstr);
-  return pl;
+  // Add end and bottom points for closure
+  keyPoints.push_back({startX + length, startY + amplitude * 0.1});
+  keyPoints.push_back({startX, startY + amplitude * 0.1});
+
+  // Build path with quadratic curves
+  auto [ kp0x, kp0y ] = keyPoints[0];
+  string pdata = std::format("M{:.2f},{:.2f}", kp0x, kp0y);
+  for (size_t i = 1; i < keyPoints.size() - 2; i += 2)
+    {
+      // Use every other point as control point
+      if (i + 1 < keyPoints.size())
+	{
+	  auto [ kpix, kpiy ] = keyPoints[i];
+	  auto [ kpnx, kpny ] = keyPoints[i + 1];
+	  pdata += std::format(" Q{:.2f},{:.2f} {:.2f},{:.2f}", kpix, kpiy, kpnx, kpny);
+	}
+    }
+  pdata += " Z";
+
+  string id = "sine-decay-" + std::to_string(length) + k::hyphen + std::to_string(cycles);
+  if (tipstr.empty())
+    {
+      path_element p = make_path(pdata, s, id);
+      return p;
+    }
+  else
+    {
+      path_element p = make_path(pdata, s, id, false);
+      p.add_title(tipstr);
+      p.add_raw(string { path_element::pair_finish_tag } + k::newline);
+      return p;
+    }
 }
 
 

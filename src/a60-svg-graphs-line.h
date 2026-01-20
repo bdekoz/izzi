@@ -311,7 +311,7 @@ make_marker_instance(const marker_shape form, const point_2t& cpoint,
       mkr = make_lauburu(cpoint, styl, radius / 3, 4.0, 6, tipstr);
       break;
     case marker_shape::wave:
-      mkr = make_path_ripple(cpoint, styl, radius * 1.5, 2, 2, tipstr);
+      mkr = make_path_ripple(cpoint, styl, radius * 1.5, radius, 2.5, 2, tipstr);
       break;
     default:
       string m("make_marker_instance:: ");
