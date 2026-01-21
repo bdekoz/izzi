@@ -10,16 +10,26 @@ test_curve(std::string ofile)
 
   area<> a = k::letter_096_v;
   svg_element obj(ofile, a);
-  //point_2t cp = obj.center_point();
 
   const int cols = 6;
   const int rows = 6;
   const double cell_w = 280.0;
   const double cell_h = 220.0;
   const double margin_left = 220.0; // Space for labels
-
   double total_w = margin_left + (cols * cell_w);
-  //  double total_h = (rows * cell_h) + 100.0;
+
+  const double radius = 200.0;
+
+  // Using 6 strands for clarity in small grid cells
+  int rsize = 1; // 8, 6
+
+  // 1 @ r 200 == 0.2645 mm
+  // 6 @ r 200 == 1.587 mm
+  // implies
+  // 1.89 @ r 200 = 0.5 mm
+  // 3.78 @ r 200 = 1.0 mm
+  // 7.56 @ r 200 = 2.0 mm
+  double rwidth = 1.89; // 1.89[0-8] == 5.03 // 1.88[6-9] = .497
 
   // Baseline Config
   ripple_config base;
@@ -91,7 +101,8 @@ test_curve(std::string ofile)
 
 	  // Generate Ribbon
 	  // Length 200, 8 strands, width 6
-	  string ribbon = make_ripple_ribbon(cx, cy, 200.0, 8, 6.0, config);
+	  double rwidthv = rwidth + c * rwidth;
+	  string ribbon = make_ripple_ribbon(cx, cy, radius, rsize, rwidthv, config);
 	  obj.add_raw(ribbon);
 
 	  // Debug Text

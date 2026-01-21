@@ -269,26 +269,26 @@ make_ripple_ribbon(double origin_x, double origin_y, double length,
     return {x, 0.0, z};
   };
 
-  std::string path_data;  
+  std::string path_data;
   for (int s = 0; s < ribbon_strands; ++s)
     {
       double offset_val = (s * stride) - (total_bundle_width / 2.0);
       std::vector<point_2d> edge_left, edge_right;
-      
+
       for (int i = 0; i <= steps; ++i)
 	{
 	  double t = -1.0 + (2.0 * static_cast<double>(i) / steps);
 	  double epsilon = 0.01;
-	  
+
 	  point_3d p0 = get_spine_3d(t);
 	  point_3d p1 = get_spine_3d(t + epsilon);
 	  auto [p0x, p0y, p0z] = p0;
 	  auto [p1x, p1y, p1z] = p1;
-	  
+
 	  point_3d tangent = normalize({ p1x - p0x, p1y - p0y, p1z - p0z });
 	  point_3d up = {0, 0, 1};
 	  point_3d binormal = normalize(cross_product(tangent, up));
-	  
+
 	  // Ensure consistent orientation
 	  if (std::get<1>(binormal) < 0)
 	    {
@@ -307,18 +307,18 @@ make_ripple_ribbon(double origin_x, double origin_y, double length,
     }
 
     auto [sx, sy] = edge_left[0];
-    path_data += std::format("M {:.1f} {:.1f} ", sx, sy);
+    path_data += std::format("M {:.2f} {:.2f} ", sx, sy);
     for (size_t k = 1; k < edge_left.size(); ++k)
       {
 	auto [lx, ly] = edge_left[k];
-	path_data += std::format("L {:.1f} {:.1f} ", lx, ly);
+	path_data += std::format("L {:.2f} {:.2f} ", lx, ly);
       }
     auto [ex, ey] = edge_right.back();
-    path_data += std::format("L {:.1f} {:.1f} ", ex, ey);
+    path_data += std::format("L {:.2f} {:.2f} ", ex, ey);
     for (int k = static_cast<int>(edge_right.size()) - 2; k >= 0; --k)
       {
 	auto [rx, ry] = edge_right[k];
-	path_data += std::format("L {:.1f} {:.1f} ", rx, ry);
+	path_data += std::format("L {:.2f} {:.2f} ", rx, ry);
       }
     path_data += "Z ";
   }
