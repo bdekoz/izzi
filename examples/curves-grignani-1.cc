@@ -16,7 +16,7 @@ test_curve(std::string ofile)
   const int rows = 6;
   const double cell_size = 300.0;
   const double margin = 50.0;
-  const double radius = 100.0;
+  const double radius = 200.0;
 
   // SVG Header
   double total_w = cols * cell_size + margin;
@@ -59,8 +59,8 @@ test_curve(std::string ofile)
 	  // Apply parameter variations based on Row index
 	  switch(r)
 	    {
-	    case 0: config.fold_amplitude = lerp(0.5, 2.0, t); break;
-	    case 1: config.fold_frequency = lerp(1.0, 6.0, t); break;
+	    case 0: config.fold_amplitude = lerp(0.5, 4.0, t); break;
+	    case 1: config.fold_frequency = lerp(0.1, 5.0, t); break;
 	    case 2: config.torsion        = lerp(0.1, 2.5, t); break;
 	    case 3: config.roll_speed     = lerp(0.0, 5.0, t); break;
 	    case 4: config.view_tilt_x    = lerp(0.0, 3.14, t); break;
@@ -72,7 +72,9 @@ test_curve(std::string ofile)
 
 	  // Generate ribbon
 	  // Using 6 strands for clarity in small grid cells
-	  string ribbon = make_rolling_ribbon(cx, cy, radius, 6, 0.04, config);
+	  double rwidth = 0.04; // ~ 1mm
+	  int ribbons = 6;
+	  string ribbon = make_rolling_ribbon(cx, cy, radius, ribbons, rwidth, config);
 	  obj.add_raw(ribbon);
 
 	  // Optional: Debug value text below each shape
