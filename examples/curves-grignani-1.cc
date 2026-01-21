@@ -14,9 +14,14 @@ test_curve(std::string ofile)
   // Grid Setup
   const int cols = 6;
   const int rows = 6;
-  const double cell_size = 300.0;
   const double margin = 50.0;
-  const double radius = 200.0;
+  const double radius = 100.0;
+  const double cell_size = 400.0; // 300 min
+
+  // Using 6 strands for clarity in small grid cells
+  //double rwidth = 0.04; // 0.04 ~ 1mm @ r 100
+  double rwidth = 0.08; // 0.08 ~ 2mm @ r 100
+  int rsize = 1; // 8, 6
 
   // SVG Header
   double total_w = cols * cell_size + margin;
@@ -71,10 +76,7 @@ test_curve(std::string ofile)
 	  double cy = r * cell_size + (cell_size / 2) + 30;
 
 	  // Generate ribbon
-	  // Using 6 strands for clarity in small grid cells
-	  double rwidth = 0.04; // ~ 1mm
-	  int ribbons = 6;
-	  string ribbon = make_rolling_ribbon(cx, cy, radius, ribbons, rwidth, config);
+	  string ribbon = make_rolling_ribbon(cx, cy, radius, rsize, rwidth, config);
 	  obj.add_raw(ribbon);
 
 	  // Optional: Debug value text below each shape
