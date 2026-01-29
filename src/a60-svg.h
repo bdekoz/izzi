@@ -34,6 +34,7 @@ namespace svg {
 
 /// Base string types.
 using std::string;
+using std::string_view;
 using strings = std::vector<string>;
 using vstrings = strings;
 using vvstrings = std::vector<strings>;
