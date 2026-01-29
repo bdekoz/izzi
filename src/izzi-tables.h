@@ -118,7 +118,9 @@ serialize_meta_collection_table(const string& gtitlelc, const string sdur,
 
       ofs << "<table>" << svg::k::newline;
       ofs << thead << svg::k::newline;
-      //ofs << "<caption>" << description << "</caption>" << svg::k::newline;
+      string tts(gtitlelc);
+      std::ranges::replace(tts, k::hyphen, k::space);
+      ofs << "<caption>" << tts << "</caption>" << svg::k::newline;
       ofs << "<tbody>" << svg::k::newline;
       ofs << "<tr>" << svg::k::newline;
 
