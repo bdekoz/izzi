@@ -21,7 +21,45 @@
 
 namespace svg {
 
-  using std::ostringstream;
+using std::ostringstream;
+
+/// Converts ISO datestamp to human-readable long form with month names.
+string
+iso_datestamp_string_to_html_time(const string ds)
+{
+  // Build the HTML time element
+  string html_element;
+
+  string ds_long("");
+  std::chrono::year_month_day ymd;
+  std::stringstream ss(ds);
+  // %F is the standard specifier for YYYY-MM-DD (ISO 8601)
+  if (std::chrono::from_stream(ss, "%F", ymd))
+    ds_long = std::format("%B %A %Y", ymd);
+  else
+    {
+      std::cerr << "datestamp_to_html_time:: error with datestamp '"
+		<< ds << "'" << std::endl;
+    }
+
+  // <time datetime="YYYY-MM-DD" aria-label="Month Day, Year">Month Day, Year</time>
+  html_element = "<time datetime=";
+  html_element += k::quote;
+  html_element += ds;
+  html_element += k::quote;
+  html_element += k::space;
+  html_element += "aria-label=";
+  html_element += k::quote;
+  html_element += ds_long;
+  html_element += k::quote;
+  html_element += ">";
+  html_element += k::space;
+  html_element += ds;
+  html_element += k::space;
+  html_element += "</time>";
+
+  return html_element;
+}
 
 
 // Image row in table.
