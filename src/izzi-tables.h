@@ -35,7 +35,7 @@ iso_datestamp_string_to_html_time(const string ds)
   std::stringstream ss(ds);
   // %F is the standard specifier for YYYY-MM-DD (ISO 8601)
   if (std::chrono::from_stream(ss, "%F", ymd))
-    ds_long = std::format("%B %A %Y", ymd);
+    ds_long = std::format("{:%B %d, %Y}", ymd);
   else
     {
       std::cerr << "datestamp_to_html_time:: error with datestamp '"
