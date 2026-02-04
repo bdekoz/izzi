@@ -3,5 +3,6 @@ var searchData=
   ['r_0',['r',['../structsvg_1_1color__qi.html#ad99a92711cc37231d20e8a5860ba5e06',1,'svg::color_qi']]],
   ['r_5fstyle_1',['r_style',['../namespacesvg_1_1constants.html#ac982deac44ef3b7d183def15ba56d71d',1,'svg::constants']]],
   ['radius_2',['radius',['../classpoint__cluster.html#afbe789960f55b70c75a0f32f9df1b480',1,'point_cluster']]],
-  ['rotate_3',['rotate',['../structsvg_1_1id__rstate.html#a95e5bdf62cd4e7d4fd4b6478d00cade7',1,'svg::id_rstate']]]
+  ['roll_5fspeed_3',['roll_speed',['../structsvg_1_1ribbon__config.html#af6a9d49e8846a8576153aab0e8a11313',1,'svg::ribbon_config']]],
+  ['rotate_4',['rotate',['../structsvg_1_1id__rstate.html#a95e5bdf62cd4e7d4fd4b6478d00cade7',1,'svg::id_rstate']]]
 ];

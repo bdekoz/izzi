@@ -1039,409 +1039,444 @@ $(function() {
 <div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span><span class="comment">/// @param points the points in the polyline</span></div>
 <div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span><span class="comment">/// @param s style for the polyline</span></div>
 <div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span><span class="comment">/// @param s stroke_style for the polyline</span></div>
-<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>polygon_element</div>
+<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>path_element</div>
 <div class="foldopen" id="foldopen00889" data-start="{" data-end="}">
-<div class="line"><a id="l00889" name="l00889"></a><span class="lineno"><a class="line" href="namespacesvg.html#a90587b062f21f9d0afc9a7c94ad436c8">  889</a></span><a class="code hl_function" href="namespacesvg.html#a90587b062f21f9d0afc9a7c94ad436c8">make_path_ripple</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> s,</div>
-<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>         <span class="keyword">const</span> <span class="keywordtype">double</span> length, <span class="keyword">const</span> <span class="keywordtype">double</span> amp, <span class="keyword">const</span> <span class="keywordtype">double</span> periods,</div>
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>         <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>{</div>
-<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> rwidth = 3;</div>
-<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>  <span class="keyword">auto</span> [ ox, oy ] = origin;</div>
-<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>  <a class="code hl_typedef" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">vrange</a> points;</div>
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>  points.push_back(origin);</div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt;= 100; i++)</div>
-<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>    {</div>
-<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>      <span class="keywordtype">double</span> <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> = ox + (i * length) / 100.0;</div>
-<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>      <span class="keywordtype">double</span> y = oy - rwidth + amp * sin((i * periods * 2 * k::pi) / 100.0);</div>
-<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>      points.push_back({<a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y});</div>
-<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>    }</div>
-<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt;= 100; i++)</div>
-<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>    {</div>
-<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>      <span class="keywordtype">double</span> <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> = ox + length - (i * length) / 100.0;</div>
-<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>      <span class="keywordtype">double</span> y = oy + rwidth + amp * sin((i * periods * 2 * k::pi) / 100.0);</div>
-<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>      points.push_back({<a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y});</div>
-<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>    }</div>
-<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span> </div>
-<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1polygon__element">polygon_element</a> pl = <a class="code hl_function" href="namespacesvg.html#acf7eda46459c57e28e6259cda3821404">make_polygon_marker</a>(points, s, tipstr);</div>
-<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>  <span class="keywordflow">return</span> pl;</div>
-<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>}</div>
+<div class="line"><a id="l00889" name="l00889"></a><span class="lineno"><a class="line" href="namespacesvg.html#a841700121809e584021d614e1b50f629">  889</a></span><a class="code hl_function" href="namespacesvg.html#a841700121809e584021d614e1b50f629">make_path_ripple</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> s, <span class="keyword">const</span> <span class="keywordtype">double</span> length,</div>
+<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>         <span class="keyword">const</span> <span class="keywordtype">double</span> amplitude, <span class="keyword">const</span> <span class="keywordtype">double</span> decay,</div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>         <span class="keyword">const</span> <span class="keywordtype">int</span> cycles = 3,</div>
+<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>         <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>{</div>
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>  <span class="comment">// Sine Wave with Decay</span></div>
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>  <span class="keyword">auto</span> [ startX, startY ] = origin;</div>
+<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span> </div>
+<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>  <span class="comment">// Calculate key inflection points (minimal set)</span></div>
+<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>  <a class="code hl_typedef" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">vrange</a> keyPoints;</div>
+<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>  keyPoints.reserve(5);</div>
+<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span> </div>
+<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>  <span class="comment">// Add start point.</span></div>
+<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>  keyPoints.emplace_back(startX, startY);</div>
+<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span> </div>
+<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>  <span class="comment">// Calculate quarter cycle points</span></div>
+<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= cycles * 4; ++i)</div>
+<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>    {</div>
+<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>      <span class="keywordtype">double</span> t = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(i) / (cycles * 4);</div>
+<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>      <span class="keywordtype">double</span> angle = t * cycles * 2 * <a class="code hl_function" href="namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd">svg::k::pi</a>;</div>
+<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>      <span class="keywordtype">double</span> <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> = startX + t * length;</div>
+<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>      <span class="keywordtype">double</span> decayFactor = exp(-decay * t);</div>
+<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>      <span class="keywordtype">double</span> y = startY - amplitude * decayFactor * sin(angle);</div>
+<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>      keyPoints.push_back({<a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y});</div>
+<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span>    }</div>
+<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span> </div>
+<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>  <span class="comment">// Add end and bottom points for closure</span></div>
+<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>  keyPoints.push_back({startX + length, startY + amplitude * 0.1});</div>
+<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>  keyPoints.push_back({startX, startY + amplitude * 0.1});</div>
+<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span> </div>
+<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>  <span class="comment">// Build path with quadratic curves</span></div>
+<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>  <span class="keyword">auto</span> [ kp0x, kp0y ] = keyPoints[0];</div>
+<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>  <span class="keywordtype">string</span> pdata = std::format(<span class="stringliteral">&quot;M{:.2f},{:.2f}&quot;</span>, kp0x, kp0y);</div>
+<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; keyPoints.size() - 2; i += 2)</div>
+<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>    {</div>
+<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>      <span class="comment">// Use every other point as control point</span></div>
+<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>      <span class="keywordflow">if</span> (i + 1 &lt; keyPoints.size())</div>
+<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>    {</div>
+<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>      <span class="keyword">auto</span> [ kpix, kpiy ] = keyPoints[i];</div>
+<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>      <span class="keyword">auto</span> [ kpnx, kpny ] = keyPoints[i + 1];</div>
+<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>      pdata += std::format(<span class="stringliteral">&quot; Q{:.2f},{:.2f} {:.2f},{:.2f}&quot;</span>, kpix, kpiy, kpnx, kpny);</div>
+<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>    }</div>
+<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>    }</div>
+<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>  pdata += <span class="stringliteral">&quot; Z&quot;</span>;</div>
+<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span> </div>
+<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>  <span class="keywordtype">string</span> <span class="keywordtype">id</span> = <span class="stringliteral">&quot;sine-decay-&quot;</span> + std::to_string(length) + k::hyphen + std::to_string(cycles);</div>
+<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>  <span class="keywordflow">if</span> (tipstr.empty())</div>
+<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span>    {</div>
+<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1path__element">path_element</a> p = <a class="code hl_function" href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab">make_path</a>(pdata, s, <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>      <span class="keywordflow">return</span> p;</div>
+<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>    }</div>
+<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>  <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>    {</div>
+<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1path__element">path_element</a> p = <a class="code hl_function" href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab">make_path</a>(pdata, s, <span class="keywordtype">id</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>      p.add_title(tipstr);</div>
+<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>      p.add_raw(<span class="keywordtype">string</span> { <a class="code hl_variable" href="group__elements.html#abd87248aac0f5ca7228e884d7d303d2c">path_element::pair_finish_tag</a> } + k::newline);</div>
+<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span>      <span class="keywordflow">return</span> p;</div>
+<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>    }</div>
+<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>}</div>
 </div>
-<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span> </div>
-<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span><span class="comment"></span> </div>
-<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span><span class="comment">/// Rectangles of various sizes rotated from center point (x,y).</span></div>
-<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>group_element</div>
-<div class="foldopen" id="foldopen00917" data-start="{" data-end="}">
-<div class="line"><a id="l00917" name="l00917"></a><span class="lineno"><a class="line" href="namespacesvg.html#a370aff08ab78f69dfb960b99122f92c6">  917</a></span><a class="code hl_function" href="namespacesvg.html#a370aff08ab78f69dfb960b99122f92c6">make_sunburst</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> s,</div>
-<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>          <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a> r = 4, <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> nrays = 10,</div>
-<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>          <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>{</div>
-<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>  <span class="keyword">auto</span> [ ox, oy ] = origin;</div>
-<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a> rwidth = r / 6; <span class="comment">// r/6, center mark uses r/3</span></div>
-<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span> </div>
-<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> g;</div>
-<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>  <span class="keywordtype">string</span> gid = <span class="stringliteral">&quot;sunburst-&quot;</span> + std::to_string(nrays) + <span class="stringliteral">&quot;-&quot;</span> + std::to_string(r);</div>
-<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>  <span class="keywordtype">string</span> xformg = <a class="code hl_function" href="structsvg_1_1transform.html#a0c20aee54dbd3136799b17e12d3cb718">transform::translate</a>(ox, oy);</div>
-<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>  g.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(gid, xformg);</div>
-<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span> </div>
-<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>  <span class="comment">// Calculate angle step between rectangles</span></div>
-<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>  <span class="keywordtype">double</span> angledelta = 2 * k::pi / nrays;</div>
-<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> i = 0; i &lt; nrays; ++i)</div>
-<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>    {</div>
-<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span>      <span class="keywordtype">double</span> angle = i * angledelta;</div>
-<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span> </div>
-<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>      <span class="comment">// Calculate position on circle</span></div>
-<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span>      <span class="keywordtype">double</span> xPos = r / 2 * std::cos(angle);</div>
-<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>      <span class="keywordtype">double</span> yPos = r / 2 * std::sin(angle);</div>
-<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span> </div>
-<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>      <span class="comment">// Create transformation string</span></div>
-<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>      <span class="comment">// Translate to position, then rotate around the origin</span></div>
-<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>      <span class="comment">// Rectangles are positioned with their centers at the circle point</span></div>
-<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>      <span class="keywordtype">string</span> xformrt = <a class="code hl_function" href="structsvg_1_1transform.html#a0c20aee54dbd3136799b17e12d3cb718">transform::translate</a>(xPos, yPos);</div>
-<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>      <span class="keywordtype">string</span> xformrr = <a class="code hl_function" href="structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0">transform::rotate</a>(angle * 180 / k::pi);</div>
-<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>      <span class="keywordtype">string</span> xformrmega = xformrt + k::space + xformrr;</div>
-<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span> </div>
-<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>      <a class="code hl_struct" href="structsvg_1_1area.html">area&lt;&gt;</a> a = { rwidth, r };</div>
-<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> rcp  = { -(rwidth / 2), -(r / 2)};</div>
-<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1rect__element">rect_element</a> ray = <a class="code hl_function" href="namespacesvg.html#a4082d485bfd058b5f64aaad7503dba9b">make_rect_centered</a>(rcp, s, a, <span class="stringliteral">&quot;&quot;</span>, xformrmega);</div>
-<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>      g.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(ray);</div>
-<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>    }</div>
-<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span> </div>
-<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>  <span class="keywordflow">if</span> (!tipstr.empty())</div>
-<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>    g.<a class="code hl_function" href="group__elements.html#a7995b78d94e1c299065c9dd3569fef7c">add_title</a>(tipstr);</div>
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>  g.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
-<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>  <span class="keywordflow">return</span> g;</div>
-<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>}</div>
+<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span> </div>
+<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span><span class="comment"></span> </div>
+<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span><span class="comment">/// Rectangles of various sizes rotated from center point (x,y).</span></div>
+<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>group_element</div>
+<div class="foldopen" id="foldopen00952" data-start="{" data-end="}">
+<div class="line"><a id="l00952" name="l00952"></a><span class="lineno"><a class="line" href="namespacesvg.html#a370aff08ab78f69dfb960b99122f92c6">  952</a></span><a class="code hl_function" href="namespacesvg.html#a370aff08ab78f69dfb960b99122f92c6">make_sunburst</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> s,</div>
+<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>          <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a> r = 4, <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> nrays = 10,</div>
+<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>          <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>{</div>
+<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>  <span class="keyword">auto</span> [ ox, oy ] = origin;</div>
+<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">space_type</a> rwidth = r / 6; <span class="comment">// r/6, center mark uses r/3</span></div>
+<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span> </div>
+<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> g;</div>
+<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>  <span class="keywordtype">string</span> gid = <span class="stringliteral">&quot;sunburst-&quot;</span> + std::to_string(nrays) + <span class="stringliteral">&quot;-&quot;</span> + std::to_string(r);</div>
+<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>  <span class="keywordtype">string</span> xformg = <a class="code hl_function" href="structsvg_1_1transform.html#a0c20aee54dbd3136799b17e12d3cb718">transform::translate</a>(ox, oy);</div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>  g.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(gid, xformg);</div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span> </div>
+<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>  <span class="comment">// Calculate angle step between rectangles</span></div>
+<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>  <span class="keywordtype">double</span> angledelta = 2 * k::pi / nrays;</div>
+<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> i = 0; i &lt; nrays; ++i)</div>
+<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>    {</div>
+<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>      <span class="keywordtype">double</span> angle = i * angledelta;</div>
+<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span> </div>
+<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>      <span class="comment">// Calculate position on circle</span></div>
+<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>      <span class="keywordtype">double</span> xPos = r / 2 * std::cos(angle);</div>
+<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>      <span class="keywordtype">double</span> yPos = r / 2 * std::sin(angle);</div>
+<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span> </div>
+<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>      <span class="comment">// Create transformation string</span></div>
+<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>      <span class="comment">// Translate to position, then rotate around the origin</span></div>
+<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>      <span class="comment">// Rectangles are positioned with their centers at the circle point</span></div>
+<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>      <span class="keywordtype">string</span> xformrt = <a class="code hl_function" href="structsvg_1_1transform.html#a0c20aee54dbd3136799b17e12d3cb718">transform::translate</a>(xPos, yPos);</div>
+<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>      <span class="keywordtype">string</span> xformrr = <a class="code hl_function" href="structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0">transform::rotate</a>(angle * 180 / k::pi);</div>
+<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>      <span class="keywordtype">string</span> xformrmega = xformrt + k::space + xformrr;</div>
+<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span> </div>
+<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>      <a class="code hl_struct" href="structsvg_1_1area.html">area&lt;&gt;</a> a = { rwidth, r };</div>
+<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> rcp  = { -(rwidth / 2), -(r / 2)};</div>
+<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1rect__element">rect_element</a> ray = <a class="code hl_function" href="namespacesvg.html#a4082d485bfd058b5f64aaad7503dba9b">make_rect_centered</a>(rcp, s, a, <span class="stringliteral">&quot;&quot;</span>, xformrmega);</div>
+<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>      g.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(ray);</div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>    }</div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span> </div>
+<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>  <span class="keywordflow">if</span> (!tipstr.empty())</div>
+<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>    g.<a class="code hl_function" href="group__elements.html#a7995b78d94e1c299065c9dd3569fef7c">add_title</a>(tipstr);</div>
+<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>  g.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
+<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>  <span class="keywordflow">return</span> g;</div>
+<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>}</div>
 </div>
-<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span> </div>
-<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span><span class="comment"></span> </div>
-<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span><span class="comment">/// Make lauburu</span></div>
-<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span><span class="comment">/// @param origin center of the shape.</span></div>
-<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span><span class="comment">/// @param s style for the polyline</span></div>
-<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span><span class="comment">/// @param size radius of mark</span></div>
-<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>path_element</div>
-<div class="foldopen" id="foldopen00964" data-start="{" data-end="}">
-<div class="line"><a id="l00964" name="l00964"></a><span class="lineno"><a class="line" href="namespacesvg.html#a9db6a5b4873d6c5bd09a9d1a1db9d5c2">  964</a></span><a class="code hl_function" href="namespacesvg.html#a9db6a5b4873d6c5bd09a9d1a1db9d5c2">make_lauburu</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> s, <span class="keyword">const</span> <span class="keywordtype">double</span> size,</div>
-<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>         <span class="keywordtype">double</span> swirlFactor = 0.5, <span class="keywordtype">int</span> pointsPerSwirl = 8,</div>
-<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>         <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>{</div>
-<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>  <span class="keyword">using namespace </span>std::numbers;</div>
-<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> pi = pi_v&lt;double&gt;;</div>
-<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span> </div>
-<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>  <span class="keyword">auto</span> [ centerX, centerY ] = origin;</div>
-<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span> </div>
-<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span>  <span class="comment">// Traditional lauburu has 4 comma-shaped swirls</span></div>
-<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> swirls = 4;</div>
-<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> swirlAngle = 2 * pi / swirls;</div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span> </div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>  <span class="comment">// Start at the outer point of first swirl</span></div>
-<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>  <span class="keywordtype">double</span> startAngle = -pi / 4;</div>
-<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>  <span class="keywordtype">double</span> startX = centerX + size * std::cos(startAngle);</div>
-<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>  <span class="keywordtype">double</span> startY = centerY + size * std::sin(startAngle);</div>
-<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span> </div>
-<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>  std::string svgPath;</div>
-<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>  svgPath = std::format(<span class="stringliteral">&quot;M{:.2f},{:.2f}&quot;</span>, startX, startY);</div>
-<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span> </div>
-<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>  <span class="comment">// Generate each comma swirl</span></div>
-<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> swirl = 0; swirl &lt; swirls; ++swirl)</div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>    {</div>
-<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>      <span class="keywordtype">double</span> baseAngle = startAngle + swirl * swirlAngle;</div>
-<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span> </div>
-<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>      <span class="comment">// Generate points for one comma swirl</span></div>
-<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>      std::vector&lt;std::pair&lt;double, double&gt;&gt; points;</div>
 <div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span> </div>
-<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt;= pointsPerSwirl; ++i)</div>
-<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>    {</div>
-<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>      <span class="keywordtype">double</span> t = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(i) / pointsPerSwirl;</div>
-<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>      <span class="keywordtype">double</span> angle = baseAngle + t * (3 * pi / 2); <span class="comment">// 270 degree swirl</span></div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span> </div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>      <span class="comment">// Radius decreases as we swirl inward</span></div>
-<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>      <span class="keywordtype">double</span> radius = size * (1.0 - t * swirlFactor);</div>
-<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span> </div>
-<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>      <span class="keywordtype">double</span> <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> = centerX + radius * std::cos(angle);</div>
-<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>      <span class="keywordtype">double</span> y = centerY + radius * std::sin(angle);</div>
-<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>      points.emplace_back(<a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y);</div>
-<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>    }</div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span><span class="comment"></span> </div>
+<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span><span class="comment">/// Make lauburu</span></div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span><span class="comment">/// @param origin center of the shape.</span></div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span><span class="comment">/// @param s style for the polyline</span></div>
+<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span><span class="comment">/// @param size radius of mark</span></div>
+<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>path_element</div>
+<div class="foldopen" id="foldopen00999" data-start="{" data-end="}">
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno"><a class="line" href="namespacesvg.html#a9db6a5b4873d6c5bd09a9d1a1db9d5c2">  999</a></span><a class="code hl_function" href="namespacesvg.html#a9db6a5b4873d6c5bd09a9d1a1db9d5c2">make_lauburu</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> s, <span class="keyword">const</span> <span class="keywordtype">double</span> size,</div>
+<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span>         <span class="keywordtype">double</span> swirlFactor = 0.5, <span class="keywordtype">int</span> pointsPerSwirl = 8,</div>
+<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>         <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>{</div>
+<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>  <span class="keyword">using namespace </span>std::numbers;</div>
+<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> pi = pi_v&lt;double&gt;;</div>
 <div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span> </div>
-<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>      <span class="comment">// Create smooth curve through points</span></div>
-<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; points.size(); ++i)</div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>    {</div>
-<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>      <span class="keywordtype">double</span> prevX = points[i-1].first;</div>
-<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>      <span class="keywordtype">double</span> prevY = points[i-1].second;</div>
-<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>      <span class="keywordtype">double</span> currX = points[i].first;</div>
-<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>      <span class="keywordtype">double</span> currY = points[i].second;</div>
-<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span> </div>
-<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>      <span class="comment">// Calculate control point for quadratic Bézier</span></div>
-<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>      <span class="keywordtype">double</span> midX = (prevX + currX) / 2;</div>
-<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>      <span class="keywordtype">double</span> midY = (prevY + currY) / 2;</div>
-<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span> </div>
-<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>      <span class="comment">// Offset control point for smoothness</span></div>
-<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>      <span class="keywordtype">double</span> offset = size * 0.1;</div>
-<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>      <span class="keywordtype">double</span> ctrlX = midX + offset * std::cos(baseAngle + pi/2);</div>
-<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>      <span class="keywordtype">double</span> ctrlY = midY + offset * std::sin(baseAngle + pi/2);</div>
-<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span> </div>
-<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span>      svgPath += std::format(<span class="stringliteral">&quot; Q{:.2f},{:.2f} {:.2f},{:.2f}&quot;</span>,</div>
-<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>                 ctrlX, ctrlY, currX, currY);</div>
-<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>    }</div>
-<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>    }</div>
+<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>  <span class="keyword">auto</span> [ centerX, centerY ] = origin;</div>
+<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span> </div>
+<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>  <span class="comment">// Traditional lauburu has 4 comma-shaped swirls</span></div>
+<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> swirls = 4;</div>
+<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> swirlAngle = 2 * pi / swirls;</div>
+<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span> </div>
+<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>  <span class="comment">// Start at the outer point of first swirl</span></div>
+<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span>  <span class="keywordtype">double</span> startAngle = -pi / 4;</div>
+<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>  <span class="keywordtype">double</span> startX = centerX + size * std::cos(startAngle);</div>
+<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>  <span class="keywordtype">double</span> startY = centerY + size * std::sin(startAngle);</div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span> </div>
+<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>  std::string svgPath;</div>
+<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>  svgPath = std::format(<span class="stringliteral">&quot;M{:.2f},{:.2f}&quot;</span>, startX, startY);</div>
+<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span> </div>
+<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>  <span class="comment">// Generate each comma swirl</span></div>
+<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> swirl = 0; swirl &lt; swirls; ++swirl)</div>
+<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>    {</div>
+<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span>      <span class="keywordtype">double</span> baseAngle = startAngle + swirl * swirlAngle;</div>
+<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span> </div>
+<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>      <span class="comment">// Generate points for one comma swirl</span></div>
+<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>      std::vector&lt;std::pair&lt;double, double&gt;&gt; points;</div>
 <div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span> </div>
-<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>  svgPath += <span class="stringliteral">&quot; Z&quot;</span>;</div>
-<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span> </div>
-<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>  <span class="keywordtype">string</span> <span class="keywordtype">id</span> = <span class="stringliteral">&quot;lauburu-&quot;</span> + std::to_string(size);</div>
-<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span> </div>
-<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span>  <span class="keywordflow">if</span> (tipstr.empty())</div>
-<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>    {</div>
-<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1path__element">path_element</a> p = <a class="code hl_function" href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab">make_path</a>(svgPath, s, <span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>      <span class="keywordflow">return</span> p;</div>
-<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>    }</div>
-<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>  <span class="keywordflow">else</span></div>
-<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>    {</div>
-<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1path__element">path_element</a> p = <a class="code hl_function" href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab">make_path</a>(svgPath, s, <span class="keywordtype">id</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>      p.add_title(tipstr);</div>
-<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>      p.add_raw(<span class="keywordtype">string</span> { <a class="code hl_variable" href="group__elements.html#abd87248aac0f5ca7228e884d7d303d2c">path_element::pair_finish_tag</a> } + k::newline);</div>
-<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>      <span class="keywordflow">return</span> p;</div>
-<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>    }</div>
-<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span>}</div>
+<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt;= pointsPerSwirl; ++i)</div>
+<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>    {</div>
+<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>      <span class="keywordtype">double</span> t = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(i) / pointsPerSwirl;</div>
+<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span>      <span class="keywordtype">double</span> angle = baseAngle + t * (3 * pi / 2); <span class="comment">// 270 degree swirl</span></div>
+<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span> </div>
+<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>      <span class="comment">// Radius decreases as we swirl inward</span></div>
+<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span>      <span class="keywordtype">double</span> radius = size * (1.0 - t * swirlFactor);</div>
+<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span> </div>
+<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>      <span class="keywordtype">double</span> <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> = centerX + radius * std::cos(angle);</div>
+<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>      <span class="keywordtype">double</span> y = centerY + radius * std::sin(angle);</div>
+<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>      points.emplace_back(<a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y);</div>
+<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>    }</div>
+<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span> </div>
+<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>      <span class="comment">// Create smooth curve through points</span></div>
+<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; points.size(); ++i)</div>
+<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>    {</div>
+<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span>      <span class="keywordtype">double</span> prevX = points[i-1].first;</div>
+<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>      <span class="keywordtype">double</span> prevY = points[i-1].second;</div>
+<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>      <span class="keywordtype">double</span> currX = points[i].first;</div>
+<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>      <span class="keywordtype">double</span> currY = points[i].second;</div>
+<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span> </div>
+<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>      <span class="comment">// Calculate control point for quadratic Bézier</span></div>
+<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>      <span class="keywordtype">double</span> midX = (prevX + currX) / 2;</div>
+<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>      <span class="keywordtype">double</span> midY = (prevY + currY) / 2;</div>
+<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span> </div>
+<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>      <span class="comment">// Offset control point for smoothness</span></div>
+<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>      <span class="keywordtype">double</span> offset = size * 0.1;</div>
+<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>      <span class="keywordtype">double</span> ctrlX = midX + offset * std::cos(baseAngle + pi/2);</div>
+<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>      <span class="keywordtype">double</span> ctrlY = midY + offset * std::sin(baseAngle + pi/2);</div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span> </div>
+<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>      svgPath += std::format(<span class="stringliteral">&quot; Q{:.2f},{:.2f} {:.2f},{:.2f}&quot;</span>,</div>
+<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>                 ctrlX, ctrlY, currX, currY);</div>
+<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>    }</div>
+<div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span>    }</div>
+<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span> </div>
+<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>  svgPath += <span class="stringliteral">&quot; Z&quot;</span>;</div>
+<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span> </div>
+<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>  <span class="keywordtype">string</span> <span class="keywordtype">id</span> = <span class="stringliteral">&quot;lauburu-&quot;</span> + std::to_string(size);</div>
+<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span> </div>
+<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span>  <span class="keywordflow">if</span> (tipstr.empty())</div>
+<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>    {</div>
+<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1path__element">path_element</a> p = <a class="code hl_function" href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab">make_path</a>(svgPath, s, <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>      <span class="keywordflow">return</span> p;</div>
+<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>    }</div>
+<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>  <span class="keywordflow">else</span></div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>    {</div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1path__element">path_element</a> p = <a class="code hl_function" href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab">make_path</a>(svgPath, s, <span class="keywordtype">id</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>      p.add_title(tipstr);</div>
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>      p.add_raw(<span class="keywordtype">string</span> { <a class="code hl_variable" href="group__elements.html#abd87248aac0f5ca7228e884d7d303d2c">path_element::pair_finish_tag</a> } + k::newline);</div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>      <span class="keywordflow">return</span> p;</div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>    }</div>
+<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>}</div>
 </div>
-<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span> </div>
-<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span> </div>
-<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span> </div>
-<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span><span class="comment">// Hexagon and tessalations.</span></div>
-<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span><span class="comment"></span> </div>
-<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span><span class="comment">/// Center rings of hexagons at this point.</span></div>
-<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span><span class="comment">/// @param origin is the center point</span></div>
-<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span><span class="comment">/// @param r is the radius/side length of hexagon.</span></div>
-<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span><span class="comment">/// @param hexn is the number of hexagons total</span></div>
-<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span><span class="comment">/// @param cfillp is the center of the hexagon filled or open</span></div>
-<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span><span class="comment">/// @param styl apply as style to this element</span></div>
-<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span><span class="comment">/// @param xform any optional transform</span></div>
-<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>group_element</div>
-<div class="foldopen" id="foldopen01058" data-start="{" data-end="}">
-<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"><a class="line" href="namespacesvg.html#a5cf48c6711ae288e6acffc99a708082d"> 1058</a></span><a class="code hl_function" href="namespacesvg.html#a5cf48c6711ae288e6acffc99a708082d">make_hexagon_honeycomb</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <span class="keywordtype">double</span> r,</div>
-<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>               <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> hexn, <span class="keyword">const</span> <span class="keywordtype">bool</span> cfillp,</div>
-<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>               <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> styl, <span class="keyword">const</span> <span class="keywordtype">string</span> xform = <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span>{</div>
-<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span>  <span class="keyword">using </span>std::to_string;</div>
-<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span> </div>
-<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> g;</div>
-<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>  <span class="keywordtype">string</span> gbase = <span class="stringliteral">&quot;hexagon-honeycomb-&quot;</span>;</div>
-<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span>  <span class="keywordtype">string</span> gname = gbase + <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(<a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a>(r)) + k::hyphen + <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(hexn);</div>
-<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span>  g.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(gname, xform);</div>
-<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span> </div>
-<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>  <span class="keyword">auto</span> hexpoints = <a class="code hl_function" href="namespacesvg.html#a4a39a130407d34d7a308106de88f92a3">radiate_hexagon_honeycomb</a>(origin, r, hexn, cfillp);</div>
-<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; phex : hexpoints)</div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>    {</div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>      <span class="comment">// Make hexagon spiral.</span></div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>      <span class="comment">//auto [ p, d ] = phex;</span></div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1path__element">path_element</a> pth = <a class="code hl_function" href="namespacesvg.html#a9f93529d8f92bb1ffb5d84478e22aff4">make_path_polygon</a>(phex, styl, r, 6);</div>
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>      g.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(pth);</div>
-<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>    }</div>
-<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span> </div>
-<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>  g.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>  <span class="keywordflow">return</span> g;</div>
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>}</div>
-</div>
+<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span> </div>
 <div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span> </div>
-<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span><span class="comment"></span> </div>
-<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span><span class="comment">/// Center rings of text in a hexagon pattern at this point.</span></div>
-<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span><span class="comment">/// @param origin is the center point</span></div>
-<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span><span class="comment">/// @param r is the radius/side length of hexagon.</span></div>
-<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span><span class="comment">/// @param hexn is the number of hexagons total</span></div>
-<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span><span class="comment">/// @param cfillp is the center of the hexagon filled or open</span></div>
-<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span><span class="comment">/// @param s is the text</span></div>
-<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span><span class="comment">/// @param typo is the typography for the text</span></div>
-<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span><span class="comment">/// @param xform any optional transform</span></div>
-<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>group_element</div>
-<div class="foldopen" id="foldopen01092" data-start="{" data-end="}">
-<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"><a class="line" href="namespacesvg.html#a1236bc10b35d03f7253af7fc0ad37d63"> 1092</a></span><a class="code hl_function" href="namespacesvg.html#a1236bc10b35d03f7253af7fc0ad37d63">make_text_honeycomb</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <span class="keywordtype">double</span> r,</div>
-<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> hexn, <span class="keyword">const</span> <span class="keywordtype">bool</span> cfillp, <span class="keyword">const</span> <span class="keywordtype">string</span> s,</div>
-<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1typography.html">typography</a> typo, <span class="keyword">const</span> <span class="keywordtype">string</span> xform = <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>{</div>
-<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>  <span class="keyword">using </span>std::to_string;</div>
-<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span> </div>
-<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> g;</div>
-<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>  <span class="keywordtype">string</span> gbase = <span class="stringliteral">&quot;text-honeycomb-&quot;</span>;</div>
-<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span>  <span class="keywordtype">string</span> gname = gbase + <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(<a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a>(r)) + k::hyphen + <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(hexn);</div>
-<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span>  g.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(gname, xform);</div>
-<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span> </div>
-<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span>  <span class="comment">// Group all text objects here, and specify that rotation for the</span></div>
-<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span>  <span class="comment">// group is to be centered at the origin.</span></div>
-<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>  <span class="keyword">auto</span> [ <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y ] = origin;</div>
-<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span>  <span class="keyword">const</span> <span class="keywordtype">string</span> txrotatepoint = <a class="code hl_function" href="structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0">svg::transform::rotate</a>(0, <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y);</div>
-<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> ginner;</div>
-<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>  ginner.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(gbase + <span class="stringliteral">&quot;inner&quot;</span>, txrotatepoint);</div>
-<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span> </div>
-<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>  <span class="keyword">auto</span> hexpoints = <a class="code hl_function" href="namespacesvg.html#a4a39a130407d34d7a308106de88f92a3">radiate_hexagon_honeycomb</a>(origin, r, hexn, cfillp);</div>
-<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span>  <span class="keyword">auto</span> hexangles = <a class="code hl_function" href="namespacesvg.html#af7911ee05d0c72fe303f61cca49683ad">get_honeycomb_angles</a>(origin, hexpoints, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> i = 0; !s.empty() &amp;&amp; i &lt; hexpoints.size(); i++)</div>
-<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span>    {</div>
-<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span>      <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p = hexpoints[i];</div>
-<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span>      <span class="keyword">const</span> <span class="keywordtype">double</span> d = hexangles[i];</div>
-<div class="line"><a id="l01116" name="l01116"></a><span class="lineno"> 1116</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1text__element">text_element</a> t = <a class="code hl_function" href="namespacesvg.html#a43b88f0c7e911161e757ccc5a5ccd607">style_text_r</a>(s, p, typo, d, p, k::rrotation::cw);</div>
-<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"> 1117</span>      <span class="comment">//text_element t = style_text_r(s, p, typo, d, origin, k::rrotation::cw);</span></div>
-<div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span>      ginner.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(t);</div>
-<div class="line"><a id="l01119" name="l01119"></a><span class="lineno"> 1119</span>    }</div>
-<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span> </div>
-<div class="line"><a id="l01121" name="l01121"></a><span class="lineno"> 1121</span>  ginner.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
-<div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span> </div>
-<div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span>  g.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(ginner);</div>
-<div class="line"><a id="l01124" name="l01124"></a><span class="lineno"> 1124</span>  g.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
-<div class="line"><a id="l01125" name="l01125"></a><span class="lineno"> 1125</span> </div>
-<div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span>  <span class="keywordflow">return</span> g;</div>
-<div class="line"><a id="l01127" name="l01127"></a><span class="lineno"> 1127</span>}</div>
+<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span> </div>
+<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span><span class="comment">// Hexagon and tessalations.</span></div>
+<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span><span class="comment"></span> </div>
+<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span><span class="comment">/// Center rings of hexagons at this point.</span></div>
+<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span><span class="comment">/// @param origin is the center point</span></div>
+<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span><span class="comment">/// @param r is the radius/side length of hexagon.</span></div>
+<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span><span class="comment">/// @param hexn is the number of hexagons total</span></div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span><span class="comment">/// @param cfillp is the center of the hexagon filled or open</span></div>
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span><span class="comment">/// @param styl apply as style to this element</span></div>
+<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span><span class="comment">/// @param xform any optional transform</span></div>
+<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>group_element</div>
+<div class="foldopen" id="foldopen01093" data-start="{" data-end="}">
+<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"><a class="line" href="namespacesvg.html#a5cf48c6711ae288e6acffc99a708082d"> 1093</a></span><a class="code hl_function" href="namespacesvg.html#a5cf48c6711ae288e6acffc99a708082d">make_hexagon_honeycomb</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <span class="keywordtype">double</span> r,</div>
+<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>               <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> hexn, <span class="keyword">const</span> <span class="keywordtype">bool</span> cfillp,</div>
+<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>               <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> styl, <span class="keyword">const</span> <span class="keywordtype">string</span> xform = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>{</div>
+<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span>  <span class="keyword">using </span>std::to_string;</div>
+<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span> </div>
+<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> g;</div>
+<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span>  <span class="keywordtype">string</span> gbase = <span class="stringliteral">&quot;hexagon-honeycomb-&quot;</span>;</div>
+<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span>  <span class="keywordtype">string</span> gname = gbase + <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(<a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a>(r)) + k::hyphen + <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(hexn);</div>
+<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span>  g.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(gname, xform);</div>
+<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span> </div>
+<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span>  <span class="keyword">auto</span> hexpoints = <a class="code hl_function" href="namespacesvg.html#a4a39a130407d34d7a308106de88f92a3">radiate_hexagon_honeycomb</a>(origin, r, hexn, cfillp);</div>
+<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; phex : hexpoints)</div>
+<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span>    {</div>
+<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>      <span class="comment">// Make hexagon spiral.</span></div>
+<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>      <span class="comment">//auto [ p, d ] = phex;</span></div>
+<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1path__element">path_element</a> pth = <a class="code hl_function" href="namespacesvg.html#a9f93529d8f92bb1ffb5d84478e22aff4">make_path_polygon</a>(phex, styl, r, 6);</div>
+<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>      g.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(pth);</div>
+<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span>    }</div>
+<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span> </div>
+<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span>  g.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
+<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span>  <span class="keywordflow">return</span> g;</div>
+<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span>}</div>
 </div>
-<div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span> </div>
-<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span><span class="comment"></span> </div>
-<div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span><span class="comment">/// Make octahedron shape (8) in 2D simulated 3D</span></div>
-<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span><span class="comment">/// @ret group element of polygon_elements</span></div>
-<div class="line"><a id="l01132" name="l01132"></a><span class="lineno"> 1132</span><span class="comment">//polyline_element</span></div>
-<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span>group_element</div>
-<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span><span class="comment">//make_octahedron(const point_2t origin, const style&amp; s, const double radius)</span></div>
-<div class="foldopen" id="foldopen01135" data-start="{" data-end="}">
-<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"><a class="line" href="namespacesvg.html#a777052a3689654f1f44475f993192f9a"> 1135</a></span><a class="code hl_function" href="namespacesvg.html#a777052a3689654f1f44475f993192f9a">make_octahedron</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a>, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span> radius,</div>
-<div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span>{</div>
-<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>  <span class="comment">// Draw faces as polygons, group as meta polygon.</span></div>
-<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span>  <span class="comment">// Outer group.</span></div>
-<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> go;</div>
-<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>  go.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(<span class="stringliteral">&quot;polygon-oct-r-&quot;</span> + std::to_string(radius));</div>
-<div class="line"><a id="l01142" name="l01142"></a><span class="lineno"> 1142</span>  go.<a class="code hl_function" href="group__elements.html#a7995b78d94e1c299065c9dd3569fef7c">add_title</a>(tipstr);</div>
-<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span>  go.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
-<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"> 1144</span>  <span class="keywordflow">return</span> go;</div>
-<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"> 1145</span>}</div>
-</div>
-<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span> </div>
-<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span><span class="comment"></span> </div>
-<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span><span class="comment">/// Make icosahedron shape (20) in 2D simulated 3D</span></div>
-<div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span><span class="comment">//make_icosahedron_3d(int centerX, int centerY, int size)</span></div>
-<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>group_element</div>
-<div class="foldopen" id="foldopen01151" data-start="{" data-end="}">
-<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"><a class="line" href="namespacesvg.html#ad72755f0dd754c3f21db502b5a1aa626"> 1151</a></span><a class="code hl_function" href="namespacesvg.html#ad72755f0dd754c3f21db502b5a1aa626">make_icosahedron</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a>&amp; s, <span class="keyword">const</span> <span class="keywordtype">double</span> radius,</div>
-<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>         <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>{</div>
-<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>  <span class="keyword">auto</span> [ centerX, centerY ] = origin;</div>
+<div class="line"><a id="l01116" name="l01116"></a><span class="lineno"> 1116</span> </div>
+<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"> 1117</span><span class="comment"></span> </div>
+<div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span><span class="comment">/// Center rings of text in a hexagon pattern at this point.</span></div>
+<div class="line"><a id="l01119" name="l01119"></a><span class="lineno"> 1119</span><span class="comment">/// @param origin is the center point</span></div>
+<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span><span class="comment">/// @param r is the radius/side length of hexagon.</span></div>
+<div class="line"><a id="l01121" name="l01121"></a><span class="lineno"> 1121</span><span class="comment">/// @param hexn is the number of hexagons total</span></div>
+<div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span><span class="comment">/// @param cfillp is the center of the hexagon filled or open</span></div>
+<div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span><span class="comment">/// @param s is the text</span></div>
+<div class="line"><a id="l01124" name="l01124"></a><span class="lineno"> 1124</span><span class="comment">/// @param typo is the typography for the text</span></div>
+<div class="line"><a id="l01125" name="l01125"></a><span class="lineno"> 1125</span><span class="comment">/// @param xform any optional transform</span></div>
+<div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span>group_element</div>
+<div class="foldopen" id="foldopen01127" data-start="{" data-end="}">
+<div class="line"><a id="l01127" name="l01127"></a><span class="lineno"><a class="line" href="namespacesvg.html#a1236bc10b35d03f7253af7fc0ad37d63"> 1127</a></span><a class="code hl_function" href="namespacesvg.html#a1236bc10b35d03f7253af7fc0ad37d63">make_text_honeycomb</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <span class="keywordtype">double</span> r,</div>
+<div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span>            <span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> hexn, <span class="keyword">const</span> <span class="keywordtype">bool</span> cfillp, <span class="keyword">const</span> <span class="keywordtype">string</span> s,</div>
+<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1typography.html">typography</a> typo, <span class="keyword">const</span> <span class="keywordtype">string</span> xform = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span>{</div>
+<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span>  <span class="keyword">using </span>std::to_string;</div>
+<div class="line"><a id="l01132" name="l01132"></a><span class="lineno"> 1132</span> </div>
+<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> g;</div>
+<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span>  <span class="keywordtype">string</span> gbase = <span class="stringliteral">&quot;text-honeycomb-&quot;</span>;</div>
+<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span>  <span class="keywordtype">string</span> gname = gbase + <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(<a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a>(r)) + k::hyphen + <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(hexn);</div>
+<div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>  g.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(gname, xform);</div>
+<div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span> </div>
+<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>  <span class="comment">// Group all text objects here, and specify that rotation for the</span></div>
+<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span>  <span class="comment">// group is to be centered at the origin.</span></div>
+<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span>  <span class="keyword">auto</span> [ <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y ] = origin;</div>
+<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>  <span class="keyword">const</span> <span class="keywordtype">string</span> txrotatepoint = <a class="code hl_function" href="structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0">svg::transform::rotate</a>(0, <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, y);</div>
+<div class="line"><a id="l01142" name="l01142"></a><span class="lineno"> 1142</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> ginner;</div>
+<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span>  ginner.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(gbase + <span class="stringliteral">&quot;inner&quot;</span>, txrotatepoint);</div>
+<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"> 1144</span> </div>
+<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"> 1145</span>  <span class="keyword">auto</span> hexpoints = <a class="code hl_function" href="namespacesvg.html#a4a39a130407d34d7a308106de88f92a3">radiate_hexagon_honeycomb</a>(origin, r, hexn, cfillp);</div>
+<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span>  <span class="keyword">auto</span> hexangles = <a class="code hl_function" href="namespacesvg.html#af7911ee05d0c72fe303f61cca49683ad">get_honeycomb_angles</a>(origin, hexpoints, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span>  <span class="keywordflow">for</span> (<a class="code hl_typedef" href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">uint</a> i = 0; !s.empty() &amp;&amp; i &lt; hexpoints.size(); i++)</div>
+<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span>    {</div>
+<div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span>      <span class="keyword">const</span> <span class="keyword">auto</span>&amp; p = hexpoints[i];</div>
+<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>      <span class="keyword">const</span> <span class="keywordtype">double</span> d = hexangles[i];</div>
+<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1text__element">text_element</a> t = <a class="code hl_function" href="namespacesvg.html#a43b88f0c7e911161e757ccc5a5ccd607">style_text_r</a>(s, p, typo, d, p, k::rrotation::cw);</div>
+<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>      <span class="comment">//text_element t = style_text_r(s, p, typo, d, origin, k::rrotation::cw);</span></div>
+<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>      ginner.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(t);</div>
+<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>    }</div>
 <div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span> </div>
-<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>  <span class="comment">// Icosahedron vertices (12 vertices)</span></div>
-<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span>  <span class="keywordtype">double</span> phi = (1 + sqrt(5)) / 2; <span class="comment">// Golden ratio</span></div>
-<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span>  <span class="keywordtype">double</span> vertices[12][3] =</div>
-<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>    {</div>
-<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span>      {0, 1, phi}, {0, 1, -phi}, {0, -1, phi}, {0, -1, -phi},</div>
-<div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span>      {1, phi, 0}, {1, -phi, 0}, {-1, phi, 0}, {-1, -phi, 0},</div>
-<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>      {phi, 0, 1}, {phi, 0, -1}, {-phi, 0, 1}, {-phi, 0, -1}</div>
-<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span>    };</div>
-<div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span> </div>
-<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span>  <span class="comment">// Normalize and scale vertices</span></div>
-<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>  <span class="keywordtype">double</span> normalized[12][3];</div>
-<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++)</div>
-<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span>    {</div>
-<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span>      <span class="keywordtype">double</span> length = sqrt(vertices[i][0]*vertices[i][0] +</div>
-<div class="line"><a id="l01170" name="l01170"></a><span class="lineno"> 1170</span>               vertices[i][1]*vertices[i][1] +</div>
-<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span>               vertices[i][2]*vertices[i][2]);</div>
-<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>      normalized[i][0] = vertices[i][0] / length;</div>
-<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span>      normalized[i][1] = vertices[i][1] / length;</div>
-<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>      normalized[i][2] = vertices[i][2] / length;</div>
-<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>    }</div>
-<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span> </div>
-<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span>  <span class="comment">// Project vertices</span></div>
-<div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span>  <span class="keywordtype">int</span> projX[12], projY[12];</div>
-<div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++)</div>
-<div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>    {</div>
-<div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span>      projX[i] = centerX + radius * (normalized[i][0] * 0.707 - normalized[i][2] * 0.707);</div>
-<div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span>      projY[i] = centerY + radius * (normalized[i][0] * 0.408 + normalized[i][1] * 0.816 + normalized[i][2] * 0.408);</div>
-<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span>    }</div>
-<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span> </div>
-<div class="line"><a id="l01185" name="l01185"></a><span class="lineno"> 1185</span>  <span class="comment">// Icosahedron edges (30 edges)</span></div>
-<div class="line"><a id="l01186" name="l01186"></a><span class="lineno"> 1186</span>  <span class="keywordtype">int</span> edges[30][2] =</div>
-<div class="line"><a id="l01187" name="l01187"></a><span class="lineno"> 1187</span>    {</div>
-<div class="line"><a id="l01188" name="l01188"></a><span class="lineno"> 1188</span>      {0,2}, {0,4}, {0,6}, {0,8}, {0,10},    <span class="comment">// From vertex 0</span></div>
-<div class="line"><a id="l01189" name="l01189"></a><span class="lineno"> 1189</span>      {1,3}, {1,4}, {1,6}, {1,9}, {1,11},    <span class="comment">// From vertex 1</span></div>
-<div class="line"><a id="l01190" name="l01190"></a><span class="lineno"> 1190</span>      {2,5}, {2,7}, {2,8}, {2,10},           <span class="comment">// From vertex 2</span></div>
-<div class="line"><a id="l01191" name="l01191"></a><span class="lineno"> 1191</span>      {3,5}, {3,7}, {3,9}, {3,11},           <span class="comment">// From vertex 3</span></div>
-<div class="line"><a id="l01192" name="l01192"></a><span class="lineno"> 1192</span>      {4,6}, {4,8}, {4,9},                   <span class="comment">// From vertex 4</span></div>
-<div class="line"><a id="l01193" name="l01193"></a><span class="lineno"> 1193</span>      {5,7}, {5,8}, {5,9},                   <span class="comment">// From vertex 5</span></div>
-<div class="line"><a id="l01194" name="l01194"></a><span class="lineno"> 1194</span>      {6,10}, {6,11},                        <span class="comment">// From vertex 6</span></div>
-<div class="line"><a id="l01195" name="l01195"></a><span class="lineno"> 1195</span>      {7,10}, {7,11},                        <span class="comment">// From vertex 7</span></div>
-<div class="line"><a id="l01196" name="l01196"></a><span class="lineno"> 1196</span>      {8,9}, {10,11}                         <span class="comment">// Remaining edges</span></div>
-<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span>    };</div>
-<div class="line"><a id="l01198" name="l01198"></a><span class="lineno"> 1198</span> </div>
-<div class="line"><a id="l01199" name="l01199"></a><span class="lineno"> 1199</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> g;</div>
-<div class="line"><a id="l01200" name="l01200"></a><span class="lineno"> 1200</span>  g.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(<span class="stringliteral">&quot;icosahedron-&quot;</span> + std::to_string(radius));</div>
-<div class="line"><a id="l01201" name="l01201"></a><span class="lineno"> 1201</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 30; i++)</div>
-<div class="line"><a id="l01202" name="l01202"></a><span class="lineno"> 1202</span>    {</div>
-<div class="line"><a id="l01203" name="l01203"></a><span class="lineno"> 1203</span>      <span class="keywordtype">int</span> v1 = edges[i][0];</div>
-<div class="line"><a id="l01204" name="l01204"></a><span class="lineno"> 1204</span>      <span class="keywordtype">int</span> v2 = edges[i][1];</div>
-<div class="line"><a id="l01205" name="l01205"></a><span class="lineno"> 1205</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> p1 = { projX[v1], projY[v1] };</div>
-<div class="line"><a id="l01206" name="l01206"></a><span class="lineno"> 1206</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> p2 = { projX[v2], projY[v2] };</div>
-<div class="line"><a id="l01207" name="l01207"></a><span class="lineno"> 1207</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1line__element">line_element</a> l = <a class="code hl_function" href="namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7">make_line</a>(p1, p2, s);</div>
-<div class="line"><a id="l01208" name="l01208"></a><span class="lineno"> 1208</span>      g.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(l);</div>
-<div class="line"><a id="l01209" name="l01209"></a><span class="lineno"> 1209</span>    }</div>
-<div class="line"><a id="l01210" name="l01210"></a><span class="lineno"> 1210</span> </div>
-<div class="line"><a id="l01211" name="l01211"></a><span class="lineno"> 1211</span>  <span class="keywordflow">if</span> (!tipstr.empty())</div>
-<div class="line"><a id="l01212" name="l01212"></a><span class="lineno"> 1212</span>    g.<a class="code hl_function" href="group__elements.html#a7995b78d94e1c299065c9dd3569fef7c">add_title</a>(tipstr);</div>
-<div class="line"><a id="l01213" name="l01213"></a><span class="lineno"> 1213</span>  g.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
-<div class="line"><a id="l01214" name="l01214"></a><span class="lineno"> 1214</span> </div>
-<div class="line"><a id="l01215" name="l01215"></a><span class="lineno"> 1215</span>  <span class="keywordflow">return</span> g;</div>
-<div class="line"><a id="l01216" name="l01216"></a><span class="lineno"> 1216</span>}</div>
+<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>  ginner.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
+<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span> </div>
+<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span>  g.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(ginner);</div>
+<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>  g.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
+<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span> </div>
+<div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span>  <span class="keywordflow">return</span> g;</div>
+<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>}</div>
 </div>
-<div class="line"><a id="l01217" name="l01217"></a><span class="lineno"> 1217</span> </div>
-<div class="line"><a id="l01218" name="l01218"></a><span class="lineno"> 1218</span><span class="comment"></span> </div>
-<div class="line"><a id="l01219" name="l01219"></a><span class="lineno"> 1219</span><span class="comment">/// Make grid palette for display.</span></div>
-<div class="line"><a id="l01220" name="l01220"></a><span class="lineno"> 1220</span><span class="comment">/// NB @param klrs can be color_qis or array/palette.</span></div>
-<div class="line"><a id="l01221" name="l01221"></a><span class="lineno"> 1221</span>svg_element</div>
-<div class="foldopen" id="foldopen01222" data-start="{" data-end="}">
-<div class="line"><a id="l01222" name="l01222"></a><span class="lineno"><a class="line" href="namespacesvg.html#a6a8ae7ad527df23ca7c3586e857276de"> 1222</a></span><a class="code hl_function" href="namespacesvg.html#a6a8ae7ad527df23ca7c3586e857276de">display_color_qis</a>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; klrs,</div>
-<div class="line"><a id="l01223" name="l01223"></a><span class="lineno"> 1223</span>          <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1area.html">area&lt;&gt;</a> a, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1typography.html">typography</a>&amp; typobase)</div>
-<div class="line"><a id="l01224" name="l01224"></a><span class="lineno"> 1224</span>{</div>
-<div class="line"><a id="l01225" name="l01225"></a><span class="lineno"> 1225</span>  <span class="keyword">const</span> <span class="keyword">auto</span> [ awidth, aheight ] = a;</div>
-<div class="line"><a id="l01226" name="l01226"></a><span class="lineno"> 1226</span> </div>
-<div class="line"><a id="l01227" name="l01227"></a><span class="lineno"> 1227</span>  <a class="code hl_struct" href="structsvg_1_1typography.html">typography</a> typo = typobase;</div>
-<div class="line"><a id="l01228" name="l01228"></a><span class="lineno"> 1228</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a4fd2a0b2d026430853e01df19ea55293">_M_style</a> = k::w_style;</div>
-<div class="line"><a id="l01229" name="l01229"></a><span class="lineno"> 1229</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a113237c27d8bb2b8e95e2b7da9f45d4d">_M_size</a> = 9;</div>
-<div class="line"><a id="l01230" name="l01230"></a><span class="lineno"> 1230</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a85ace51671fb9a00122c805196d50dbf">_M_align</a> = <a class="code hl_enumvalue" href="structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a811882fecd5c7618d7099ebbd39ea254">typography::align::left</a>;</div>
-<div class="line"><a id="l01231" name="l01231"></a><span class="lineno"> 1231</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a7756a6a9058274ed5920d69316afd3ef">_M_baseline</a> = <a class="code hl_enumvalue" href="structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9aa42a6c7fb85673fff8937f8543a589a2">typography::baseline::central</a>;</div>
-<div class="line"><a id="l01232" name="l01232"></a><span class="lineno"> 1232</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a1b2544cd54610a3c3df16391e76fce1e">_M_anchor</a> = <a class="code hl_enumvalue" href="structsvg_1_1typography.html#ab466ab5a124304d826cea9c46a46d3b0aea2b2676c28c0db26d39331a336c6b92">typography::anchor::start</a>;</div>
+<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span> </div>
+<div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span><span class="comment"></span> </div>
+<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span><span class="comment">/// Make octahedron shape (8) in 2D simulated 3D</span></div>
+<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span><span class="comment">/// @ret group element of polygon_elements</span></div>
+<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span><span class="comment">//polyline_element</span></div>
+<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span>group_element</div>
+<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span><span class="comment">//make_octahedron(const point_2t origin, const style&amp; s, const double radius)</span></div>
+<div class="foldopen" id="foldopen01170" data-start="{" data-end="}">
+<div class="line"><a id="l01170" name="l01170"></a><span class="lineno"><a class="line" href="namespacesvg.html#a777052a3689654f1f44475f993192f9a"> 1170</a></span><a class="code hl_function" href="namespacesvg.html#a777052a3689654f1f44475f993192f9a">make_octahedron</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a>, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span> radius,</div>
+<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>{</div>
+<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span>  <span class="comment">// Draw faces as polygons, group as meta polygon.</span></div>
+<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>  <span class="comment">// Outer group.</span></div>
+<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> go;</div>
+<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>  go.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(<span class="stringliteral">&quot;polygon-oct-r-&quot;</span> + std::to_string(radius));</div>
+<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span>  go.<a class="code hl_function" href="group__elements.html#a7995b78d94e1c299065c9dd3569fef7c">add_title</a>(tipstr);</div>
+<div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span>  go.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
+<div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>  <span class="keywordflow">return</span> go;</div>
+<div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>}</div>
+</div>
+<div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span> </div>
+<div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span><span class="comment"></span> </div>
+<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span><span class="comment">/// Make icosahedron shape (20) in 2D simulated 3D</span></div>
+<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span><span class="comment">//make_icosahedron_3d(int centerX, int centerY, int size)</span></div>
+<div class="line"><a id="l01185" name="l01185"></a><span class="lineno"> 1185</span>group_element</div>
+<div class="foldopen" id="foldopen01186" data-start="{" data-end="}">
+<div class="line"><a id="l01186" name="l01186"></a><span class="lineno"><a class="line" href="namespacesvg.html#ad72755f0dd754c3f21db502b5a1aa626"> 1186</a></span><a class="code hl_function" href="namespacesvg.html#ad72755f0dd754c3f21db502b5a1aa626">make_icosahedron</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> origin, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a>&amp; s, <span class="keyword">const</span> <span class="keywordtype">double</span> radius,</div>
+<div class="line"><a id="l01187" name="l01187"></a><span class="lineno"> 1187</span>         <span class="keyword">const</span> <span class="keywordtype">string</span> tipstr = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l01188" name="l01188"></a><span class="lineno"> 1188</span>{</div>
+<div class="line"><a id="l01189" name="l01189"></a><span class="lineno"> 1189</span>  <span class="keyword">auto</span> [ centerX, centerY ] = origin;</div>
+<div class="line"><a id="l01190" name="l01190"></a><span class="lineno"> 1190</span> </div>
+<div class="line"><a id="l01191" name="l01191"></a><span class="lineno"> 1191</span>  <span class="comment">// Icosahedron vertices (12 vertices)</span></div>
+<div class="line"><a id="l01192" name="l01192"></a><span class="lineno"> 1192</span>  <span class="keywordtype">double</span> phi = (1 + sqrt(5)) / 2; <span class="comment">// Golden ratio</span></div>
+<div class="line"><a id="l01193" name="l01193"></a><span class="lineno"> 1193</span>  <span class="keywordtype">double</span> vertices[12][3] =</div>
+<div class="line"><a id="l01194" name="l01194"></a><span class="lineno"> 1194</span>    {</div>
+<div class="line"><a id="l01195" name="l01195"></a><span class="lineno"> 1195</span>      {0, 1, phi}, {0, 1, -phi}, {0, -1, phi}, {0, -1, -phi},</div>
+<div class="line"><a id="l01196" name="l01196"></a><span class="lineno"> 1196</span>      {1, phi, 0}, {1, -phi, 0}, {-1, phi, 0}, {-1, -phi, 0},</div>
+<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span>      {phi, 0, 1}, {phi, 0, -1}, {-phi, 0, 1}, {-phi, 0, -1}</div>
+<div class="line"><a id="l01198" name="l01198"></a><span class="lineno"> 1198</span>    };</div>
+<div class="line"><a id="l01199" name="l01199"></a><span class="lineno"> 1199</span> </div>
+<div class="line"><a id="l01200" name="l01200"></a><span class="lineno"> 1200</span>  <span class="comment">// Normalize and scale vertices</span></div>
+<div class="line"><a id="l01201" name="l01201"></a><span class="lineno"> 1201</span>  <span class="keywordtype">double</span> normalized[12][3];</div>
+<div class="line"><a id="l01202" name="l01202"></a><span class="lineno"> 1202</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++)</div>
+<div class="line"><a id="l01203" name="l01203"></a><span class="lineno"> 1203</span>    {</div>
+<div class="line"><a id="l01204" name="l01204"></a><span class="lineno"> 1204</span>      <span class="keywordtype">double</span> length = sqrt(vertices[i][0]*vertices[i][0] +</div>
+<div class="line"><a id="l01205" name="l01205"></a><span class="lineno"> 1205</span>               vertices[i][1]*vertices[i][1] +</div>
+<div class="line"><a id="l01206" name="l01206"></a><span class="lineno"> 1206</span>               vertices[i][2]*vertices[i][2]);</div>
+<div class="line"><a id="l01207" name="l01207"></a><span class="lineno"> 1207</span>      normalized[i][0] = vertices[i][0] / length;</div>
+<div class="line"><a id="l01208" name="l01208"></a><span class="lineno"> 1208</span>      normalized[i][1] = vertices[i][1] / length;</div>
+<div class="line"><a id="l01209" name="l01209"></a><span class="lineno"> 1209</span>      normalized[i][2] = vertices[i][2] / length;</div>
+<div class="line"><a id="l01210" name="l01210"></a><span class="lineno"> 1210</span>    }</div>
+<div class="line"><a id="l01211" name="l01211"></a><span class="lineno"> 1211</span> </div>
+<div class="line"><a id="l01212" name="l01212"></a><span class="lineno"> 1212</span>  <span class="comment">// Project vertices</span></div>
+<div class="line"><a id="l01213" name="l01213"></a><span class="lineno"> 1213</span>  <span class="keywordtype">int</span> projX[12], projY[12];</div>
+<div class="line"><a id="l01214" name="l01214"></a><span class="lineno"> 1214</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++)</div>
+<div class="line"><a id="l01215" name="l01215"></a><span class="lineno"> 1215</span>    {</div>
+<div class="line"><a id="l01216" name="l01216"></a><span class="lineno"> 1216</span>      projX[i] = centerX + radius * (normalized[i][0] * 0.707 - normalized[i][2] * 0.707);</div>
+<div class="line"><a id="l01217" name="l01217"></a><span class="lineno"> 1217</span>      projY[i] = centerY + radius * (normalized[i][0] * 0.408 + normalized[i][1] * 0.816 + normalized[i][2] * 0.408);</div>
+<div class="line"><a id="l01218" name="l01218"></a><span class="lineno"> 1218</span>    }</div>
+<div class="line"><a id="l01219" name="l01219"></a><span class="lineno"> 1219</span> </div>
+<div class="line"><a id="l01220" name="l01220"></a><span class="lineno"> 1220</span>  <span class="comment">// Icosahedron edges (30 edges)</span></div>
+<div class="line"><a id="l01221" name="l01221"></a><span class="lineno"> 1221</span>  <span class="keywordtype">int</span> edges[30][2] =</div>
+<div class="line"><a id="l01222" name="l01222"></a><span class="lineno"> 1222</span>    {</div>
+<div class="line"><a id="l01223" name="l01223"></a><span class="lineno"> 1223</span>      {0,2}, {0,4}, {0,6}, {0,8}, {0,10},    <span class="comment">// From vertex 0</span></div>
+<div class="line"><a id="l01224" name="l01224"></a><span class="lineno"> 1224</span>      {1,3}, {1,4}, {1,6}, {1,9}, {1,11},    <span class="comment">// From vertex 1</span></div>
+<div class="line"><a id="l01225" name="l01225"></a><span class="lineno"> 1225</span>      {2,5}, {2,7}, {2,8}, {2,10},           <span class="comment">// From vertex 2</span></div>
+<div class="line"><a id="l01226" name="l01226"></a><span class="lineno"> 1226</span>      {3,5}, {3,7}, {3,9}, {3,11},           <span class="comment">// From vertex 3</span></div>
+<div class="line"><a id="l01227" name="l01227"></a><span class="lineno"> 1227</span>      {4,6}, {4,8}, {4,9},                   <span class="comment">// From vertex 4</span></div>
+<div class="line"><a id="l01228" name="l01228"></a><span class="lineno"> 1228</span>      {5,7}, {5,8}, {5,9},                   <span class="comment">// From vertex 5</span></div>
+<div class="line"><a id="l01229" name="l01229"></a><span class="lineno"> 1229</span>      {6,10}, {6,11},                        <span class="comment">// From vertex 6</span></div>
+<div class="line"><a id="l01230" name="l01230"></a><span class="lineno"> 1230</span>      {7,10}, {7,11},                        <span class="comment">// From vertex 7</span></div>
+<div class="line"><a id="l01231" name="l01231"></a><span class="lineno"> 1231</span>      {8,9}, {10,11}                         <span class="comment">// Remaining edges</span></div>
+<div class="line"><a id="l01232" name="l01232"></a><span class="lineno"> 1232</span>    };</div>
 <div class="line"><a id="l01233" name="l01233"></a><span class="lineno"> 1233</span> </div>
-<div class="line"><a id="l01234" name="l01234"></a><span class="lineno"> 1234</span>  <span class="comment">// Draw out colors.</span></div>
-<div class="line"><a id="l01235" name="l01235"></a><span class="lineno"> 1235</span>  <span class="keywordtype">double</span> rwidth = 20;</div>
-<div class="line"><a id="l01236" name="l01236"></a><span class="lineno"> 1236</span>  <span class="keywordtype">double</span> rheight = 80;</div>
-<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"> 1237</span>  <span class="keyword">auto</span> rspace = 4;</div>
-<div class="line"><a id="l01238" name="l01238"></a><span class="lineno"> 1238</span>  <span class="keyword">auto</span> typsz = 7;</div>
-<div class="line"><a id="l01239" name="l01239"></a><span class="lineno"> 1239</span> </div>
-<div class="line"><a id="l01240" name="l01240"></a><span class="lineno"> 1240</span>  <span class="comment">// Turn off RAII.</span></div>
-<div class="line"><a id="l01241" name="l01241"></a><span class="lineno"> 1241</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> obj(<span class="stringliteral">&quot;color_qis_&quot;</span> + std::to_string(klrs.size()) + <span class="stringliteral">&quot;_palette&quot;</span>,</div>
-<div class="line"><a id="l01242" name="l01242"></a><span class="lineno"> 1242</span>          a, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l01243" name="l01243"></a><span class="lineno"> 1243</span>  obj.<a class="code hl_function" href="group__elements.html#ad47933f8c0bfc36987493c7e3b3bbcbd">start</a>();</div>
-<div class="line"><a id="l01244" name="l01244"></a><span class="lineno"> 1244</span> </div>
-<div class="line"><a id="l01245" name="l01245"></a><span class="lineno"> 1245</span>  <span class="keyword">auto</span> <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> = rwidth, y = rheight;</div>
-<div class="line"><a id="l01246" name="l01246"></a><span class="lineno"> 1246</span>  <span class="keyword">auto</span> xoffset = 0;</div>
-<div class="line"><a id="l01247" name="l01247"></a><span class="lineno"> 1247</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; klr : klrs)</div>
-<div class="line"><a id="l01248" name="l01248"></a><span class="lineno"> 1248</span>    {</div>
-<div class="line"><a id="l01249" name="l01249"></a><span class="lineno"> 1249</span>      <span class="comment">// Color block</span></div>
-<div class="line"><a id="l01250" name="l01250"></a><span class="lineno"> 1250</span>      <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> s = { klr, 1.0, klr, 0.0, 2 };</div>
-<div class="line"><a id="l01251" name="l01251"></a><span class="lineno"> 1251</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> p = { <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> + xoffset, y };</div>
-<div class="line"><a id="l01252" name="l01252"></a><span class="lineno"> 1252</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1rect__element">rect_element</a> r = <a class="code hl_function" href="namespacesvg.html#a4082d485bfd058b5f64aaad7503dba9b">make_rect_centered</a>(p, s, { rwidth, rheight});</div>
-<div class="line"><a id="l01253" name="l01253"></a><span class="lineno"> 1253</span>      obj.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(r);</div>
-<div class="line"><a id="l01254" name="l01254"></a><span class="lineno"> 1254</span> </div>
-<div class="line"><a id="l01255" name="l01255"></a><span class="lineno"> 1255</span>      <span class="comment">// Label.</span></div>
-<div class="line"><a id="l01256" name="l01256"></a><span class="lineno"> 1256</span>      <a class="code hl_function" href="namespacesvg.html#a1309ce987f4e87ad97a1f3638a7af541">sized_text_r</a>(obj, typo, typsz, <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(klr),</div>
-<div class="line"><a id="l01257" name="l01257"></a><span class="lineno"> 1257</span>           <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> + xoffset, y - rheight / 2 + rspace, 90);</div>
-<div class="line"><a id="l01258" name="l01258"></a><span class="lineno"> 1258</span> </div>
-<div class="line"><a id="l01259" name="l01259"></a><span class="lineno"> 1259</span>      <span class="keywordflow">if</span> (xoffset + rwidth + rspace &lt; awidth - rwidth - rspace)</div>
-<div class="line"><a id="l01260" name="l01260"></a><span class="lineno"> 1260</span>    xoffset += rwidth + rspace;</div>
-<div class="line"><a id="l01261" name="l01261"></a><span class="lineno"> 1261</span>      <span class="keywordflow">else</span></div>
-<div class="line"><a id="l01262" name="l01262"></a><span class="lineno"> 1262</span>    {</div>
-<div class="line"><a id="l01263" name="l01263"></a><span class="lineno"> 1263</span>      xoffset = 0;</div>
-<div class="line"><a id="l01264" name="l01264"></a><span class="lineno"> 1264</span>      y += (rheight + rspace + rspace);</div>
-<div class="line"><a id="l01265" name="l01265"></a><span class="lineno"> 1265</span>    }</div>
-<div class="line"><a id="l01266" name="l01266"></a><span class="lineno"> 1266</span>    }</div>
-<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span> </div>
-<div class="line"><a id="l01268" name="l01268"></a><span class="lineno"> 1268</span>  obj.<a class="code hl_function" href="group__elements.html#a3f7b6a0f29695c76b8a9e0c6d939f1b6">finish_element</a>();</div>
-<div class="line"><a id="l01269" name="l01269"></a><span class="lineno"> 1269</span>  <span class="keywordflow">return</span> obj;</div>
-<div class="line"><a id="l01270" name="l01270"></a><span class="lineno"> 1270</span>}</div>
+<div class="line"><a id="l01234" name="l01234"></a><span class="lineno"> 1234</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1group__element">group_element</a> g;</div>
+<div class="line"><a id="l01235" name="l01235"></a><span class="lineno"> 1235</span>  g.<a class="code hl_function" href="group__elements.html#a5c8c4f93df6e84523f788aa7f98bcab8">start_element</a>(<span class="stringliteral">&quot;icosahedron-&quot;</span> + std::to_string(radius));</div>
+<div class="line"><a id="l01236" name="l01236"></a><span class="lineno"> 1236</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 30; i++)</div>
+<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"> 1237</span>    {</div>
+<div class="line"><a id="l01238" name="l01238"></a><span class="lineno"> 1238</span>      <span class="keywordtype">int</span> v1 = edges[i][0];</div>
+<div class="line"><a id="l01239" name="l01239"></a><span class="lineno"> 1239</span>      <span class="keywordtype">int</span> v2 = edges[i][1];</div>
+<div class="line"><a id="l01240" name="l01240"></a><span class="lineno"> 1240</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> p1 = { projX[v1], projY[v1] };</div>
+<div class="line"><a id="l01241" name="l01241"></a><span class="lineno"> 1241</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> p2 = { projX[v2], projY[v2] };</div>
+<div class="line"><a id="l01242" name="l01242"></a><span class="lineno"> 1242</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1line__element">line_element</a> l = <a class="code hl_function" href="namespacesvg.html#a0352c1350268fb7ecd96ea81908417e7">make_line</a>(p1, p2, s);</div>
+<div class="line"><a id="l01243" name="l01243"></a><span class="lineno"> 1243</span>      g.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(l);</div>
+<div class="line"><a id="l01244" name="l01244"></a><span class="lineno"> 1244</span>    }</div>
+<div class="line"><a id="l01245" name="l01245"></a><span class="lineno"> 1245</span> </div>
+<div class="line"><a id="l01246" name="l01246"></a><span class="lineno"> 1246</span>  <span class="keywordflow">if</span> (!tipstr.empty())</div>
+<div class="line"><a id="l01247" name="l01247"></a><span class="lineno"> 1247</span>    g.<a class="code hl_function" href="group__elements.html#a7995b78d94e1c299065c9dd3569fef7c">add_title</a>(tipstr);</div>
+<div class="line"><a id="l01248" name="l01248"></a><span class="lineno"> 1248</span>  g.<a class="code hl_function" href="group__elements.html#gaab139e518fe9d07003dbcc1fdfdad955">finish_element</a>();</div>
+<div class="line"><a id="l01249" name="l01249"></a><span class="lineno"> 1249</span> </div>
+<div class="line"><a id="l01250" name="l01250"></a><span class="lineno"> 1250</span>  <span class="keywordflow">return</span> g;</div>
+<div class="line"><a id="l01251" name="l01251"></a><span class="lineno"> 1251</span>}</div>
 </div>
-<div class="line"><a id="l01271" name="l01271"></a><span class="lineno"> 1271</span> </div>
-<div class="line"><a id="l01272" name="l01272"></a><span class="lineno"> 1272</span>} <span class="comment">// namespace svg</span></div>
-<div class="line"><a id="l01273" name="l01273"></a><span class="lineno"> 1273</span> </div>
-<div class="line"><a id="l01274" name="l01274"></a><span class="lineno"> 1274</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l01252" name="l01252"></a><span class="lineno"> 1252</span> </div>
+<div class="line"><a id="l01253" name="l01253"></a><span class="lineno"> 1253</span><span class="comment"></span> </div>
+<div class="line"><a id="l01254" name="l01254"></a><span class="lineno"> 1254</span><span class="comment">/// Make grid palette for display.</span></div>
+<div class="line"><a id="l01255" name="l01255"></a><span class="lineno"> 1255</span><span class="comment">/// NB @param klrs can be color_qis or array/palette.</span></div>
+<div class="line"><a id="l01256" name="l01256"></a><span class="lineno"> 1256</span>svg_element</div>
+<div class="foldopen" id="foldopen01257" data-start="{" data-end="}">
+<div class="line"><a id="l01257" name="l01257"></a><span class="lineno"><a class="line" href="namespacesvg.html#a6a8ae7ad527df23ca7c3586e857276de"> 1257</a></span><a class="code hl_function" href="namespacesvg.html#a6a8ae7ad527df23ca7c3586e857276de">display_color_qis</a>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; klrs,</div>
+<div class="line"><a id="l01258" name="l01258"></a><span class="lineno"> 1258</span>          <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1area.html">area&lt;&gt;</a> a, <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1typography.html">typography</a>&amp; typobase)</div>
+<div class="line"><a id="l01259" name="l01259"></a><span class="lineno"> 1259</span>{</div>
+<div class="line"><a id="l01260" name="l01260"></a><span class="lineno"> 1260</span>  <span class="keyword">const</span> <span class="keyword">auto</span> [ awidth, aheight ] = a;</div>
+<div class="line"><a id="l01261" name="l01261"></a><span class="lineno"> 1261</span> </div>
+<div class="line"><a id="l01262" name="l01262"></a><span class="lineno"> 1262</span>  <a class="code hl_struct" href="structsvg_1_1typography.html">typography</a> typo = typobase;</div>
+<div class="line"><a id="l01263" name="l01263"></a><span class="lineno"> 1263</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a4fd2a0b2d026430853e01df19ea55293">_M_style</a> = k::w_style;</div>
+<div class="line"><a id="l01264" name="l01264"></a><span class="lineno"> 1264</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a113237c27d8bb2b8e95e2b7da9f45d4d">_M_size</a> = 9;</div>
+<div class="line"><a id="l01265" name="l01265"></a><span class="lineno"> 1265</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a85ace51671fb9a00122c805196d50dbf">_M_align</a> = <a class="code hl_enumvalue" href="structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a811882fecd5c7618d7099ebbd39ea254">typography::align::left</a>;</div>
+<div class="line"><a id="l01266" name="l01266"></a><span class="lineno"> 1266</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a7756a6a9058274ed5920d69316afd3ef">_M_baseline</a> = <a class="code hl_enumvalue" href="structsvg_1_1typography.html#a13d320c2ae85f1d4f3ea33806e60a7b9aa42a6c7fb85673fff8937f8543a589a2">typography::baseline::central</a>;</div>
+<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span>  typo.<a class="code hl_variable" href="structsvg_1_1typography.html#a1b2544cd54610a3c3df16391e76fce1e">_M_anchor</a> = <a class="code hl_enumvalue" href="structsvg_1_1typography.html#ab466ab5a124304d826cea9c46a46d3b0aea2b2676c28c0db26d39331a336c6b92">typography::anchor::start</a>;</div>
+<div class="line"><a id="l01268" name="l01268"></a><span class="lineno"> 1268</span> </div>
+<div class="line"><a id="l01269" name="l01269"></a><span class="lineno"> 1269</span>  <span class="comment">// Draw out colors.</span></div>
+<div class="line"><a id="l01270" name="l01270"></a><span class="lineno"> 1270</span>  <span class="keywordtype">double</span> rwidth = 20;</div>
+<div class="line"><a id="l01271" name="l01271"></a><span class="lineno"> 1271</span>  <span class="keywordtype">double</span> rheight = 80;</div>
+<div class="line"><a id="l01272" name="l01272"></a><span class="lineno"> 1272</span>  <span class="keyword">auto</span> rspace = 4;</div>
+<div class="line"><a id="l01273" name="l01273"></a><span class="lineno"> 1273</span>  <span class="keyword">auto</span> typsz = 7;</div>
+<div class="line"><a id="l01274" name="l01274"></a><span class="lineno"> 1274</span> </div>
+<div class="line"><a id="l01275" name="l01275"></a><span class="lineno"> 1275</span>  <span class="comment">// Turn off RAII.</span></div>
+<div class="line"><a id="l01276" name="l01276"></a><span class="lineno"> 1276</span>  <a class="code hl_struct" href="group__elements.html#structsvg_1_1svg__element">svg_element</a> obj(<span class="stringliteral">&quot;color_qis_&quot;</span> + std::to_string(klrs.size()) + <span class="stringliteral">&quot;_palette&quot;</span>,</div>
+<div class="line"><a id="l01277" name="l01277"></a><span class="lineno"> 1277</span>          a, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l01278" name="l01278"></a><span class="lineno"> 1278</span>  obj.<a class="code hl_function" href="group__elements.html#ad47933f8c0bfc36987493c7e3b3bbcbd">start</a>();</div>
+<div class="line"><a id="l01279" name="l01279"></a><span class="lineno"> 1279</span> </div>
+<div class="line"><a id="l01280" name="l01280"></a><span class="lineno"> 1280</span>  <span class="keyword">auto</span> <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> = rwidth, y = rheight;</div>
+<div class="line"><a id="l01281" name="l01281"></a><span class="lineno"> 1281</span>  <span class="keyword">auto</span> xoffset = 0;</div>
+<div class="line"><a id="l01282" name="l01282"></a><span class="lineno"> 1282</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; klr : klrs)</div>
+<div class="line"><a id="l01283" name="l01283"></a><span class="lineno"> 1283</span>    {</div>
+<div class="line"><a id="l01284" name="l01284"></a><span class="lineno"> 1284</span>      <span class="comment">// Color block</span></div>
+<div class="line"><a id="l01285" name="l01285"></a><span class="lineno"> 1285</span>      <span class="keyword">const</span> <a class="code hl_struct" href="structsvg_1_1style.html">style</a> s = { klr, 1.0, klr, 0.0, 2 };</div>
+<div class="line"><a id="l01286" name="l01286"></a><span class="lineno"> 1286</span>      <a class="code hl_typedef" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">point_2t</a> p = { <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> + xoffset, y };</div>
+<div class="line"><a id="l01287" name="l01287"></a><span class="lineno"> 1287</span>      <a class="code hl_struct" href="group__elements.html#structsvg_1_1rect__element">rect_element</a> r = <a class="code hl_function" href="namespacesvg.html#a4082d485bfd058b5f64aaad7503dba9b">make_rect_centered</a>(p, s, { rwidth, rheight});</div>
+<div class="line"><a id="l01288" name="l01288"></a><span class="lineno"> 1288</span>      obj.<a class="code hl_function" href="group__elements.html#ada0333b46b2547c6152f3f5811016a12">add_element</a>(r);</div>
+<div class="line"><a id="l01289" name="l01289"></a><span class="lineno"> 1289</span> </div>
+<div class="line"><a id="l01290" name="l01290"></a><span class="lineno"> 1290</span>      <span class="comment">// Label.</span></div>
+<div class="line"><a id="l01291" name="l01291"></a><span class="lineno"> 1291</span>      <a class="code hl_function" href="namespacesvg.html#a1309ce987f4e87ad97a1f3638a7af541">sized_text_r</a>(obj, typo, typsz, <a class="code hl_function" href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">to_string</a>(klr),</div>
+<div class="line"><a id="l01292" name="l01292"></a><span class="lineno"> 1292</span>           <a class="code hl_enumvalue" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a> + xoffset, y - rheight / 2 + rspace, 90);</div>
+<div class="line"><a id="l01293" name="l01293"></a><span class="lineno"> 1293</span> </div>
+<div class="line"><a id="l01294" name="l01294"></a><span class="lineno"> 1294</span>      <span class="keywordflow">if</span> (xoffset + rwidth + rspace &lt; awidth - rwidth - rspace)</div>
+<div class="line"><a id="l01295" name="l01295"></a><span class="lineno"> 1295</span>    xoffset += rwidth + rspace;</div>
+<div class="line"><a id="l01296" name="l01296"></a><span class="lineno"> 1296</span>      <span class="keywordflow">else</span></div>
+<div class="line"><a id="l01297" name="l01297"></a><span class="lineno"> 1297</span>    {</div>
+<div class="line"><a id="l01298" name="l01298"></a><span class="lineno"> 1298</span>      xoffset = 0;</div>
+<div class="line"><a id="l01299" name="l01299"></a><span class="lineno"> 1299</span>      y += (rheight + rspace + rspace);</div>
+<div class="line"><a id="l01300" name="l01300"></a><span class="lineno"> 1300</span>    }</div>
+<div class="line"><a id="l01301" name="l01301"></a><span class="lineno"> 1301</span>    }</div>
+<div class="line"><a id="l01302" name="l01302"></a><span class="lineno"> 1302</span> </div>
+<div class="line"><a id="l01303" name="l01303"></a><span class="lineno"> 1303</span>  obj.<a class="code hl_function" href="group__elements.html#a3f7b6a0f29695c76b8a9e0c6d939f1b6">finish_element</a>();</div>
+<div class="line"><a id="l01304" name="l01304"></a><span class="lineno"> 1304</span>  <span class="keywordflow">return</span> obj;</div>
+<div class="line"><a id="l01305" name="l01305"></a><span class="lineno"> 1305</span>}</div>
+</div>
+<div class="line"><a id="l01306" name="l01306"></a><span class="lineno"> 1306</span> </div>
+<div class="line"><a id="l01307" name="l01307"></a><span class="lineno"> 1307</span>} <span class="comment">// namespace svg</span></div>
+<div class="line"><a id="l01308" name="l01308"></a><span class="lineno"> 1308</span> </div>
+<div class="line"><a id="l01309" name="l01309"></a><span class="lineno"> 1309</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aa60-svg-radial-fill-hexagon_8h_html"><div class="ttname"><a href="a60-svg-radial-fill-hexagon_8h.html">a60-svg-radial-fill-hexagon.h</a></div></div>
 <div class="ttc" id="agroup__elements_html_a07790e8550473d1447f5b3b7c97e134e"><div class="ttname"><a href="group__elements.html#a07790e8550473d1447f5b3b7c97e134e">svg::radial_gradient::start_element</a></div><div class="ttdeci">void start_element()</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-elements_8h_source.html#l00428">a60-svg-elements.h:428</a></div></div>
 <div class="ttc" id="agroup__elements_html_a0851c2d363a8e2baecf23bba861f6453"><div class="ttname"><a href="group__elements.html#a0851c2d363a8e2baecf23bba861f6453">svg::polygon_element::pair_finish_tag</a></div><div class="ttdeci">static constexpr const char * pair_finish_tag</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-elements_8h_source.html#l00855">a60-svg-elements.h:855</a></div></div>
@@ -1497,6 +1532,7 @@ $(function() {
 <div class="ttc" id="agroup__elements_html_structsvg_1_1svg__element"><div class="ttname"><a href="group__elements.html#structsvg_1_1svg__element">svg::svg_element</a></div><div class="ttdef"><b>Definition</b> <a href="a60-svg-elements_8h_source.html#l01596">a60-svg-elements.h:1597</a></div></div>
 <div class="ttc" id="agroup__elements_html_structsvg_1_1text__element"><div class="ttname"><a href="group__elements.html#structsvg_1_1text__element">svg::text_element</a></div><div class="ttdef"><b>Definition</b> <a href="a60-svg-elements_8h_source.html#l00617">a60-svg-elements.h:618</a></div></div>
 <div class="ttc" id="agroup__elements_html_structsvg_1_1text__element_1_1data"><div class="ttname"><a href="group__elements.html#structsvg_1_1text__element_1_1data">svg::text_element::data</a></div><div class="ttdef"><b>Definition</b> <a href="a60-svg-elements_8h_source.html#l00619">a60-svg-elements.h:620</a></div></div>
+<div class="ttc" id="anamespacesvg_1_1constants_html_a0e0b0d9314bc47324ee39884bf8bb2fd"><div class="ttname"><a href="namespacesvg_1_1constants.html#a0e0b0d9314bc47324ee39884bf8bb2fd">svg::constants::pi</a></div><div class="ttdeci">constexpr double pi(3.14159265358979323846)</div></div>
 <div class="ttc" id="anamespacesvg_1_1constants_html_ac460bc8db60d85c3ae1cf8b1a903405e"><div class="ttname"><a href="namespacesvg_1_1constants.html#ac460bc8db60d85c3ae1cf8b1a903405e">svg::constants::space</a></div><div class="ttdeci">constexpr char space(&#39; &#39;)</div><div class="ttdoc">Formatting character constants.</div></div>
 <div class="ttc" id="anamespacesvg_html"><div class="ttname"><a href="namespacesvg.html">svg</a></div><div class="ttdef"><b>Definition</b> <a href="a60-svg-base-types_8h_source.html#l00027">a60-svg-base-types.h:27</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a010fea242a289d173d521b501140cd72"><div class="ttname"><a href="namespacesvg.html#a010fea242a289d173d521b501140cd72">svg::zero_angle_north_ccw</a></div><div class="ttdeci">double zero_angle_north_ccw(double angled)</div><div class="ttdoc">Zero degrees is top, going clockwise (cw).</div><div class="ttdef"><b>Definition</b> <a href="#l00584">a60-svg-render-basics.h:584</a></div></div>
@@ -1508,7 +1544,7 @@ $(function() {
 <div class="ttc" id="anamespacesvg_html_a0e622bba4eee0e6528a9261d6aa251d1"><div class="ttname"><a href="namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1">svg::color</a></div><div class="ttdeci">color</div><div class="ttdoc">Color enumerated as types.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-color_8h_source.html#l00041">a60-svg-color.h:42</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a0e622bba4eee0e6528a9261d6aa251d1a334c4a4c42fdb79d7ebc3e73b517e6f8"><div class="ttname"><a href="namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a334c4a4c42fdb79d7ebc3e73b517e6f8">svg::color::none</a></div><div class="ttdeci">@ none</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-color_8h_source.html#l00043">a60-svg-color.h:43</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a0e622bba4eee0e6528a9261d6aa251d1ad508fe45cecaf653904a0e774084bb5c"><div class="ttname"><a href="namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ad508fe45cecaf653904a0e774084bb5c">svg::color::white</a></div><div class="ttdeci">@ white</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-color_8h_source.html#l00046">a60-svg-color.h:46</a></div></div>
-<div class="ttc" id="anamespacesvg_html_a1236bc10b35d03f7253af7fc0ad37d63"><div class="ttname"><a href="namespacesvg.html#a1236bc10b35d03f7253af7fc0ad37d63">svg::make_text_honeycomb</a></div><div class="ttdeci">group_element make_text_honeycomb(const point_2t origin, const double r, const uint hexn, const bool cfillp, const string s, const typography typo, const string xform=&quot;&quot;)</div><div class="ttdoc">Center rings of text in a hexagon pattern at this point.</div><div class="ttdef"><b>Definition</b> <a href="#l01092">a60-svg-render-basics.h:1092</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a1236bc10b35d03f7253af7fc0ad37d63"><div class="ttname"><a href="namespacesvg.html#a1236bc10b35d03f7253af7fc0ad37d63">svg::make_text_honeycomb</a></div><div class="ttdeci">group_element make_text_honeycomb(const point_2t origin, const double r, const uint hexn, const bool cfillp, const string s, const typography typo, const string xform=&quot;&quot;)</div><div class="ttdoc">Center rings of text in a hexagon pattern at this point.</div><div class="ttdef"><b>Definition</b> <a href="#l01127">a60-svg-render-basics.h:1127</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a1309ce987f4e87ad97a1f3638a7af541"><div class="ttname"><a href="namespacesvg.html#a1309ce987f4e87ad97a1f3638a7af541">svg::sized_text_r</a></div><div class="ttdeci">void sized_text_r(element_base &amp;obj, svg::typography typo, const int sz, const string text, const int tx, const int ty, const double deg)</div><div class="ttdoc">Text at size, with a transformation=rotation.</div><div class="ttdef"><b>Definition</b> <a href="#l00166">a60-svg-render-basics.h:166</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a14d1296f069224df8ade8ed9e40b4ba7"><div class="ttname"><a href="namespacesvg.html#a14d1296f069224df8ade8ed9e40b4ba7">svg::make_path_center_mark</a></div><div class="ttdeci">path_element make_path_center_mark(const point_2t &amp;origin, const style styl, const int len, const int width, const string xform=&quot;&quot;, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Plus or x tilt mark as closed path that can be filled.</div><div class="ttdef"><b>Definition</b> <a href="#l00826">a60-svg-render-basics.h:826</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a1f7d3202fb81e08877157baf0ad6ccdf"><div class="ttname"><a href="namespacesvg.html#a1f7d3202fb81e08877157baf0ad6ccdf">svg::styled_text</a></div><div class="ttdeci">void styled_text(element_base &amp;obj, const string text, const point_2t origin, const typography typo, const string xform=&quot;&quot;)</div><div class="ttdoc">Text at.</div><div class="ttdef"><b>Definition</b> <a href="#l00091">a60-svg-render-basics.h:91</a></div></div>
@@ -1516,27 +1552,27 @@ $(function() {
 <div class="ttc" id="anamespacesvg_html_a2c65de7707b8b7b1bca959a3a2bbba91"><div class="ttname"><a href="namespacesvg.html#a2c65de7707b8b7b1bca959a3a2bbba91">svg::make_path_data_from_points</a></div><div class="ttdeci">string make_path_data_from_points(const vrange &amp;lpoints)</div><div class="ttdoc">Make single path segment.</div><div class="ttdef"><b>Definition</b> <a href="#l00596">a60-svg-render-basics.h:596</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a302d3f13fef13ef823b99cfabcfac3ab"><div class="ttname"><a href="namespacesvg.html#a302d3f13fef13ef823b99cfabcfac3ab">svg::make_path</a></div><div class="ttdeci">path_element make_path(const string &amp;pathda, const style &amp;styl, const string id=&quot;&quot;, const bool selfclosingtagp=true, const string xattr=&quot;&quot;)</div><div class="ttdoc">Draw path given serialized path data. Can be used to make pinstripes, ie top and bottom line layers....</div><div class="ttdef"><b>Definition</b> <a href="#l00620">a60-svg-render-basics.h:620</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a36b1c48ad4601b205790e3772ad0a7b6"><div class="ttname"><a href="namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6">svg::to_string</a></div><div class="ttdeci">const string to_string(const unit e)</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-base-types_8h_source.html#l00041">a60-svg-base-types.h:41</a></div></div>
-<div class="ttc" id="anamespacesvg_html_a370aff08ab78f69dfb960b99122f92c6"><div class="ttname"><a href="namespacesvg.html#a370aff08ab78f69dfb960b99122f92c6">svg::make_sunburst</a></div><div class="ttdeci">group_element make_sunburst(const point_2t origin, const style s, const space_type r=4, const uint nrays=10, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Rectangles of various sizes rotated from center point (x,y).</div><div class="ttdef"><b>Definition</b> <a href="#l00917">a60-svg-render-basics.h:917</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a370aff08ab78f69dfb960b99122f92c6"><div class="ttname"><a href="namespacesvg.html#a370aff08ab78f69dfb960b99122f92c6">svg::make_sunburst</a></div><div class="ttdeci">group_element make_sunburst(const point_2t origin, const style s, const space_type r=4, const uint nrays=10, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Rectangles of various sizes rotated from center point (x,y).</div><div class="ttdef"><b>Definition</b> <a href="#l00952">a60-svg-render-basics.h:952</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a3b4b07213c6b39323069da0ee61cd4f0"><div class="ttname"><a href="namespacesvg.html#a3b4b07213c6b39323069da0ee61cd4f0">svg::make_circle</a></div><div class="ttdeci">circle_element make_circle(const point_2t origin, const style s, const space_type r, const string xform=&quot;&quot;)</div><div class="ttdoc">Make circle element.</div><div class="ttdef"><b>Definition</b> <a href="#l00324">a60-svg-render-basics.h:324</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a4082d485bfd058b5f64aaad7503dba9b"><div class="ttname"><a href="namespacesvg.html#a4082d485bfd058b5f64aaad7503dba9b">svg::make_rect_centered</a></div><div class="ttdeci">rect_element make_rect_centered(const point_2t origin, const style s, const area&lt;&gt; a, const string filterstr=&quot;&quot;, const string xform=&quot;&quot;)</div><div class="ttdoc">Create rect_element centered at origin.</div><div class="ttdef"><b>Definition</b> <a href="#l00279">a60-svg-render-basics.h:279</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a43b88f0c7e911161e757ccc5a5ccd607"><div class="ttname"><a href="namespacesvg.html#a43b88f0c7e911161e757ccc5a5ccd607">svg::style_text_r</a></div><div class="ttdeci">text_element style_text_r(const string text, const point_2t origin, const typography &amp;typo, const double deg, const point_2t rorigin, const k::rrotation rr=k::rrotation::none)</div><div class="ttdoc">Text element at.</div><div class="ttdef"><b>Definition</b> <a href="#l00066">a60-svg-render-basics.h:66</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a46164d75fd5109e4ed8879abbacd5c11"><div class="ttname"><a href="namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11">svg::zero_angle_north_cw</a></div><div class="ttdeci">double zero_angle_north_cw(double angled)</div><div class="ttdoc">Zero degrees is top, going clockwise (cw).</div><div class="ttdef"><b>Definition</b> <a href="#l00569">a60-svg-render-basics.h:569</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a4a39a130407d34d7a308106de88f92a3"><div class="ttname"><a href="namespacesvg.html#a4a39a130407d34d7a308106de88f92a3">svg::radiate_hexagon_honeycomb</a></div><div class="ttdeci">vrange radiate_hexagon_honeycomb(const point_2t origin, const double r, const uint n, const bool centerfilledp)</div><div class="ttdoc">Compute set of points for a radial fill of hexograms centered at p.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-radial-fill-hexagon_8h_source.html#l00056">a60-svg-radial-fill-hexagon.h:56</a></div></div>
-<div class="ttc" id="anamespacesvg_html_a4f79a4a4180e8e8d6a1d850d3f38138e"><div class="ttname"><a href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">svg::space_type</a></div><div class="ttdeci">double space_type</div><div class="ttdoc">Base floating point type.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00062">a60-svg.h:62</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a4f79a4a4180e8e8d6a1d850d3f38138e"><div class="ttname"><a href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">svg::space_type</a></div><div class="ttdeci">double space_type</div><div class="ttdoc">Base floating point type.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00063">a60-svg.h:63</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a52054df8f2e44924b8a9fc0adfe600cb"><div class="ttname"><a href="namespacesvg.html#a52054df8f2e44924b8a9fc0adfe600cb">svg::make_polygon</a></div><div class="ttdeci">polygon_element make_polygon(const vrange &amp;points, const style s)</div><div class="ttdoc">Make polygon element.</div><div class="ttdef"><b>Definition</b> <a href="#l00442">a60-svg-render-basics.h:442</a></div></div>
-<div class="ttc" id="anamespacesvg_html_a5cf48c6711ae288e6acffc99a708082d"><div class="ttname"><a href="namespacesvg.html#a5cf48c6711ae288e6acffc99a708082d">svg::make_hexagon_honeycomb</a></div><div class="ttdeci">group_element make_hexagon_honeycomb(const point_2t origin, const double r, const uint hexn, const bool cfillp, const style styl, const string xform=&quot;&quot;)</div><div class="ttdoc">Center rings of hexagons at this point.</div><div class="ttdef"><b>Definition</b> <a href="#l01058">a60-svg-render-basics.h:1058</a></div></div>
-<div class="ttc" id="anamespacesvg_html_a6a8ae7ad527df23ca7c3586e857276de"><div class="ttname"><a href="namespacesvg.html#a6a8ae7ad527df23ca7c3586e857276de">svg::display_color_qis</a></div><div class="ttdeci">svg_element display_color_qis(const auto &amp;klrs, const area&lt;&gt; a, const typography &amp;typobase)</div><div class="ttdoc">Make grid palette for display. NB.</div><div class="ttdef"><b>Definition</b> <a href="#l01222">a60-svg-render-basics.h:1222</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a5cf48c6711ae288e6acffc99a708082d"><div class="ttname"><a href="namespacesvg.html#a5cf48c6711ae288e6acffc99a708082d">svg::make_hexagon_honeycomb</a></div><div class="ttdeci">group_element make_hexagon_honeycomb(const point_2t origin, const double r, const uint hexn, const bool cfillp, const style styl, const string xform=&quot;&quot;)</div><div class="ttdoc">Center rings of hexagons at this point.</div><div class="ttdef"><b>Definition</b> <a href="#l01093">a60-svg-render-basics.h:1093</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a6a8ae7ad527df23ca7c3586e857276de"><div class="ttname"><a href="namespacesvg.html#a6a8ae7ad527df23ca7c3586e857276de">svg::display_color_qis</a></div><div class="ttdeci">svg_element display_color_qis(const auto &amp;klrs, const area&lt;&gt; a, const typography &amp;typobase)</div><div class="ttdoc">Make grid palette for display. NB.</div><div class="ttdef"><b>Definition</b> <a href="#l01257">a60-svg-render-basics.h:1257</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a6d74164865f0ce78569fa2bc5ca5dff8"><div class="ttname"><a href="namespacesvg.html#a6d74164865f0ce78569fa2bc5ca5dff8">svg::make_rect_marker</a></div><div class="ttdeci">rect_element make_rect_marker(const point_2t origin, const style s, const space_type r, const string title, const string filterstr=&quot;&quot;, const string imgid=&quot;&quot;)</div><div class="ttdoc">Create rectangle element with title and tooltip information.</div><div class="ttdef"><b>Definition</b> <a href="#l00295">a60-svg-render-basics.h:295</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a74ca2344cea417d9107d56f4f53c5b0b"><div class="ttname"><a href="namespacesvg.html#a74ca2344cea417d9107d56f4f53c5b0b">svg::style_text</a></div><div class="ttdeci">text_element style_text(const string text, const point_2t origin, const typography typo, const string xtransf=&quot;&quot;)</div><div class="ttdoc">Text element at.</div><div class="ttdef"><b>Definition</b> <a href="#l00049">a60-svg-render-basics.h:49</a></div></div>
-<div class="ttc" id="anamespacesvg_html_a777052a3689654f1f44475f993192f9a"><div class="ttname"><a href="namespacesvg.html#a777052a3689654f1f44475f993192f9a">svg::make_octahedron</a></div><div class="ttdeci">group_element make_octahedron(const point_2t, const style &amp;, const double radius, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Make octahedron shape (8) in 2D simulated 3D @ret group element of polygon_elements.</div><div class="ttdef"><b>Definition</b> <a href="#l01135">a60-svg-render-basics.h:1135</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a777052a3689654f1f44475f993192f9a"><div class="ttname"><a href="namespacesvg.html#a777052a3689654f1f44475f993192f9a">svg::make_octahedron</a></div><div class="ttdeci">group_element make_octahedron(const point_2t, const style &amp;, const double radius, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Make octahedron shape (8) in 2D simulated 3D @ret group element of polygon_elements.</div><div class="ttdef"><b>Definition</b> <a href="#l01170">a60-svg-render-basics.h:1170</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6"><div class="ttname"><a href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">svg::marker_shape::x</a></div><div class="ttdeci">@ x</div><div class="ttdoc">Crossed Lines.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-base-types_8h_source.html#l00180">a60-svg-base-types.h:180</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a841700121809e584021d614e1b50f629"><div class="ttname"><a href="namespacesvg.html#a841700121809e584021d614e1b50f629">svg::make_path_ripple</a></div><div class="ttdeci">path_element make_path_ripple(const point_2t origin, const style s, const double length, const double amplitude, const double decay, const int cycles=3, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Make waves.</div><div class="ttdef"><b>Definition</b> <a href="#l00889">a60-svg-render-basics.h:889</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a89b4e26d36f84efbbbb4de0b1c86efd4"><div class="ttname"><a href="namespacesvg.html#a89b4e26d36f84efbbbb4de0b1c86efd4">svg::make_path_marker</a></div><div class="ttdeci">path_element make_path_marker(const point_2t origin, const style s, const double r, const uint pointsn, const string title, const string xattr=&quot;&quot;)</div><div class="ttdoc">Make a polygon marker for line graphs.</div><div class="ttdef"><b>Definition</b> <a href="#l00677">a60-svg-render-basics.h:677</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a8ccdcddfa39a7958693ea522fe98528b"><div class="ttname"><a href="namespacesvg.html#a8ccdcddfa39a7958693ea522fe98528b">svg::styled_text_link</a></div><div class="ttdeci">void styled_text_link(element_base &amp;obj, const string text, const point_2t origin, const typography typo, const string uri)</div><div class="ttdoc">Text at.</div><div class="ttdef"><b>Definition</b> <a href="#l00123">a60-svg-render-basics.h:123</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a8e3421a573ebb8e56428ce8c76f3f9ec"><div class="ttname"><a href="namespacesvg.html#a8e3421a573ebb8e56428ce8c76f3f9ec">svg::make_path_arc_closed</a></div><div class="ttdeci">string make_path_arc_closed(const point_2t &amp;origin, const point_2t &amp;start, const point_2t &amp;end, const space_type r, const int arcflag=0, const int sweepflag=0)</div><div class="ttdoc">Make closed path between two points and the center of a circle of radius r. Points like: get_circumfe...</div><div class="ttdef"><b>Definition</b> <a href="#l00710">a60-svg-render-basics.h:710</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a8f747b5f5b60729f77c04ae1a2507dcc"><div class="ttname"><a href="namespacesvg.html#a8f747b5f5b60729f77c04ae1a2507dcc">svg::make_path_blob</a></div><div class="ttdeci">path_element make_path_blob(const point_2t origin, const style s, const double size, const int numCurves=5+std::rand() % 4, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Make blob shape.</div><div class="ttdef"><b>Definition</b> <a href="#l00752">a60-svg-render-basics.h:752</a></div></div>
-<div class="ttc" id="anamespacesvg_html_a90587b062f21f9d0afc9a7c94ad436c8"><div class="ttname"><a href="namespacesvg.html#a90587b062f21f9d0afc9a7c94ad436c8">svg::make_path_ripple</a></div><div class="ttdeci">polygon_element make_path_ripple(const point_2t origin, const style s, const double length, const double amp, const double periods, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Make waves.</div><div class="ttdef"><b>Definition</b> <a href="#l00889">a60-svg-render-basics.h:889</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a915848d2fa32c5a4443025d38f629f5d"><div class="ttname"><a href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">svg::vrange</a></div><div class="ttdeci">std::vector&lt; point_2t &gt; vrange</div><div class="ttdef"><b>Definition</b> <a href="izzi-points_8h_source.html#l00061">izzi-points.h:61</a></div></div>
-<div class="ttc" id="anamespacesvg_html_a9db6a5b4873d6c5bd09a9d1a1db9d5c2"><div class="ttname"><a href="namespacesvg.html#a9db6a5b4873d6c5bd09a9d1a1db9d5c2">svg::make_lauburu</a></div><div class="ttdeci">path_element make_lauburu(const point_2t origin, const style s, const double size, double swirlFactor=0.5, int pointsPerSwirl=8, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Make lauburu.</div><div class="ttdef"><b>Definition</b> <a href="#l00964">a60-svg-render-basics.h:964</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a9db6a5b4873d6c5bd09a9d1a1db9d5c2"><div class="ttname"><a href="namespacesvg.html#a9db6a5b4873d6c5bd09a9d1a1db9d5c2">svg::make_lauburu</a></div><div class="ttdeci">path_element make_lauburu(const point_2t origin, const style s, const double size, double swirlFactor=0.5, int pointsPerSwirl=8, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Make lauburu.</div><div class="ttdef"><b>Definition</b> <a href="#l00999">a60-svg-render-basics.h:999</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a9f93529d8f92bb1ffb5d84478e22aff4"><div class="ttname"><a href="namespacesvg.html#a9f93529d8f92bb1ffb5d84478e22aff4">svg::make_path_polygon</a></div><div class="ttdeci">path_element make_path_polygon(const point_2t origin, const style s, const double r, const uint pointsn, const bool selfclosingtagp=true, const string xattr=&quot;&quot;)</div><div class="ttdoc">Center an polygon at this point. radius 4 is pixels to draw out from center point....</div><div class="ttdef"><b>Definition</b> <a href="#l00649">a60-svg-render-basics.h:649</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ab44508c4aeca591141ebec50145b75cd"><div class="ttname"><a href="namespacesvg.html#ab44508c4aeca591141ebec50145b75cd">svg::get_circumference_point_d</a></div><div class="ttdeci">point_2t get_circumference_point_d(const double ad, const double r, const point_2t origin)</div><div class="ttdoc">Angle in degrees.</div><div class="ttdef"><b>Definition</b> <a href="#l00559">a60-svg-render-basics.h:559</a></div></div>
 <div class="ttc" id="anamespacesvg_html_aba9f46c82a468e5594eedb3b4ff14f9e"><div class="ttname"><a href="namespacesvg.html#aba9f46c82a468e5594eedb3b4ff14f9e">svg::sized_text</a></div><div class="ttdeci">void sized_text(element_base &amp;obj, svg::typography typo, const int sz, const string text, const int tx, const int ty)</div><div class="ttdoc">Text at size.</div><div class="ttdef"><b>Definition</b> <a href="#l00156">a60-svg-render-basics.h:156</a></div></div>
@@ -1544,9 +1580,9 @@ $(function() {
 <div class="ttc" id="anamespacesvg_html_ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1"><div class="ttname"><a href="namespacesvg.html#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">svg::select::text</a></div><div class="ttdeci">@ text</div><div class="ttdoc">metadata, header</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-render-state_8h_source.html#l00036">a60-svg-render-state.h:36</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ac8061963317131e6bd4d517ed84880bcad5d3db1765287eef77d7927cc956f50a"><div class="ttname"><a href="namespacesvg.html#ac8061963317131e6bd4d517ed84880bcad5d3db1765287eef77d7927cc956f50a">svg::select::title</a></div><div class="ttdeci">@ title</div><div class="ttdoc">title</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-render-state_8h_source.html#l00037">a60-svg-render-state.h:37</a></div></div>
 <div class="ttc" id="anamespacesvg_html_acf7eda46459c57e28e6259cda3821404"><div class="ttname"><a href="namespacesvg.html#acf7eda46459c57e28e6259cda3821404">svg::make_polygon_marker</a></div><div class="ttdeci">polygon_element make_polygon_marker(const vrange &amp;points, const style s, const string title, const string xttr=&quot;&quot;, const string imgid=&quot;&quot;)</div><div class="ttdoc">Make polygon element.</div><div class="ttdef"><b>Definition</b> <a href="#l00457">a60-svg-render-basics.h:457</a></div></div>
-<div class="ttc" id="anamespacesvg_html_ad3a7a7a3ad79496a3731622464665776"><div class="ttname"><a href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">svg::uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00057">a60-svg.h:57</a></div></div>
+<div class="ttc" id="anamespacesvg_html_ad3a7a7a3ad79496a3731622464665776"><div class="ttname"><a href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">svg::uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00058">a60-svg.h:58</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ad3c5f59f86bb309de4efd1187e5c004b"><div class="ttname"><a href="namespacesvg.html#ad3c5f59f86bb309de4efd1187e5c004b">svg::styled_text_r</a></div><div class="ttdeci">void styled_text_r(element_base &amp;obj, const string text, const point_2t origin, const typography typo, const double deg)</div><div class="ttdoc">Text at.</div><div class="ttdef"><b>Definition</b> <a href="#l00102">a60-svg-render-basics.h:102</a></div></div>
-<div class="ttc" id="anamespacesvg_html_ad72755f0dd754c3f21db502b5a1aa626"><div class="ttname"><a href="namespacesvg.html#ad72755f0dd754c3f21db502b5a1aa626">svg::make_icosahedron</a></div><div class="ttdeci">group_element make_icosahedron(const point_2t origin, const style &amp;s, const double radius, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Make icosahedron shape (20) in 2D simulated 3D.</div><div class="ttdef"><b>Definition</b> <a href="#l01151">a60-svg-render-basics.h:1151</a></div></div>
+<div class="ttc" id="anamespacesvg_html_ad72755f0dd754c3f21db502b5a1aa626"><div class="ttname"><a href="namespacesvg.html#ad72755f0dd754c3f21db502b5a1aa626">svg::make_icosahedron</a></div><div class="ttdeci">group_element make_icosahedron(const point_2t origin, const style &amp;s, const double radius, const string tipstr=&quot;&quot;)</div><div class="ttdoc">Make icosahedron shape (20) in 2D simulated 3D.</div><div class="ttdef"><b>Definition</b> <a href="#l01186">a60-svg-render-basics.h:1186</a></div></div>
 <div class="ttc" id="anamespacesvg_html_adc99c746fbbcae97797279e5b5f1ebfb"><div class="ttname"><a href="namespacesvg.html#adc99c746fbbcae97797279e5b5f1ebfb">svg::text_line_n_r</a></div><div class="ttdeci">uint text_line_n_r(svg_element &amp;obj, const point_2t origin, const string text, const svg::typography typo, const uint sz, const uint maxlen, const uint lettingsz=0)</div><div class="ttdoc">Text of maxlen length rotated, overflow goes on line below.</div><div class="ttdef"><b>Definition</b> <a href="#l00205">a60-svg-render-basics.h:205</a></div></div>
 <div class="ttc" id="anamespacesvg_html_adf30eb5f1fae457163e5fb44f311385b"><div class="ttname"><a href="namespacesvg.html#adf30eb5f1fae457163e5fb44f311385b">svg::make_line_rays</a></div><div class="ttdeci">group_element make_line_rays(const point_2t origin, const style s, const space_type r=4, const uint nrays=10)</div><div class="ttdoc">Lines radiating from center point (x,y).</div><div class="ttdef"><b>Definition</b> <a href="#l00494">a60-svg-render-basics.h:494</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ae3cd801991d2b329b8c49d8e9393ea6d"><div class="ttname"><a href="namespacesvg.html#ae3cd801991d2b329b8c49d8e9393ea6d">svg::make_polyline</a></div><div class="ttdeci">polyline_element make_polyline(const vrange &amp;points, const style s, const stroke_style sstyle={ })</div><div class="ttdoc">Polyline primitive.</div><div class="ttdef"><b>Definition</b> <a href="#l00533">a60-svg-render-basics.h:533</a></div></div>

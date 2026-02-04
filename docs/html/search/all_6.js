@@ -21,9 +21,12 @@ var searchData=
   ['finish_5ftag_5fhard_18',['finish_tag_hard',['../group__elements.html#afa94c382491379bfd02f3ebd16bb4192',1,'svg::element_base']]],
   ['finish_5ftspan_19',['finish_tspan',['../group__elements.html#a5148bd1fef414dc3e19178676adb5f33',1,'svg::text_element']]],
   ['flip_5fselect_20',['flip_select',['../namespacesvg.html#ab75502788176ed4dfd1ea73e38eef7e2',1,'svg']]],
-  ['foreign_5felement_21',['foreign_element',['../group__elements.html#structsvg_1_1foreign__element',1,'svg']]],
-  ['foreigncrimson_22',['foreigncrimson',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ab0ed08f51595f81841c56901776ceec8',1,'svg']]],
-  ['from_5fstring_23',['from_string',['../structsvg_1_1color__qi.html#acc30d5e29a06124b1a8ff4d528f2a440',1,'svg::color_qi']]],
-  ['ftype_24',['ftype',['../structsvg_1_1color__qf.html#a7d632f87f71dd224733efd02856429c2',1,'svg::color_qf']]],
-  ['futaai_25',['futaai',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3013e15655b013c7483949bb0ca16edc',1,'svg']]]
+  ['fold_5famplitude_21',['fold_amplitude',['../structsvg_1_1ribbon__config.html#a61cb4d57f456e8ec0283ca0e64e8c6ad',1,'svg::ribbon_config']]],
+  ['fold_5ffrequency_22',['fold_frequency',['../structsvg_1_1ribbon__config.html#a7badb337aca1650707f0856754223b3b',1,'svg::ribbon_config']]],
+  ['foreign_5felement_23',['foreign_element',['../group__elements.html#structsvg_1_1foreign__element',1,'svg']]],
+  ['foreigncrimson_24',['foreigncrimson',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ab0ed08f51595f81841c56901776ceec8',1,'svg']]],
+  ['frequency_25',['frequency',['../structsvg_1_1ripple__config.html#ae80fb9085c08b44e7a055c6ea7fcb767',1,'svg::ripple_config']]],
+  ['from_5fstring_26',['from_string',['../structsvg_1_1color__qi.html#acc30d5e29a06124b1a8ff4d528f2a440',1,'svg::color_qi']]],
+  ['ftype_27',['ftype',['../structsvg_1_1color__qf.html#a7d632f87f71dd224733efd02856429c2',1,'svg::color_qf']]],
+  ['futaai_28',['futaai',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a3013e15655b013c7483949bb0ca16edc',1,'svg']]]
 ];

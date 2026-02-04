@@ -15,9 +15,10 @@ var searchData=
   ['a6_5fmm_5fh_12',['a6_mm_h',['../namespacesvg_1_1constants.html#a974b91586faa49d16dd3b2814ba60d2b',1,'svg::constants']]],
   ['al_13',['al',['../namespacesvg_1_1constants.html#a8367d729b134b34ffe866dd756b1dab4',1,'svg::constants']]],
   ['alt_14',['alt',['../structsvg_1_1collection__rstate.html#a344ab1e64e172e1d22ed23ba6dc3f40b',1,'svg::collection_rstate']]],
-  ['apercu_5ftypo_15',['apercu_typo',['../namespacesvg_1_1constants.html#aa8fd50affcf4fa829e85235ac317f16f',1,'svg::constants']]],
-  ['apercumo_5ftypo_16',['apercumo_typo',['../namespacesvg_1_1constants.html#a1056b67ee1d5fca1fdd470363d2a6a75',1,'svg::constants']]],
-  ['aprcu_17',['aprcu',['../namespacesvg_1_1constants.html#ad82fdfa899faf1a29518bc5ae9d6f568',1,'svg::constants']]],
-  ['aprcumo_18',['aprcumo',['../namespacesvg_1_1constants.html#ade7b4502715f847625ea7babf6f6ebef',1,'svg::constants']]],
-  ['asz_19',['asz',['../namespacesvg.html#a17b061adfa2c341ce3e70c647e136036',1,'svg']]]
+  ['amplitude_15',['amplitude',['../structsvg_1_1ripple__config.html#ac0291a65fe8ab024d412fd19abd024b5',1,'svg::ripple_config']]],
+  ['apercu_5ftypo_16',['apercu_typo',['../namespacesvg_1_1constants.html#aa8fd50affcf4fa829e85235ac317f16f',1,'svg::constants']]],
+  ['apercumo_5ftypo_17',['apercumo_typo',['../namespacesvg_1_1constants.html#a1056b67ee1d5fca1fdd470363d2a6a75',1,'svg::constants']]],
+  ['aprcu_18',['aprcu',['../namespacesvg_1_1constants.html#ad82fdfa899faf1a29518bc5ae9d6f568',1,'svg::constants']]],
+  ['aprcumo_19',['aprcumo',['../namespacesvg_1_1constants.html#ade7b4502715f847625ea7babf6f6ebef',1,'svg::constants']]],
+  ['asz_20',['asz',['../namespacesvg.html#a17b061adfa2c341ce3e70c647e136036',1,'svg']]]
 ];

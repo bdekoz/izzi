@@ -6,7 +6,8 @@ var searchData=
   ['tooltip_5farea_3',['tooltip_area',['../structsvg_1_1graph__rstate.html#a48836a9d68437c6ac3eaa3c1a316d299',1,'svg::graph_rstate']]],
   ['tooltip_5fid_4',['tooltip_id',['../structsvg_1_1graph__rstate.html#a2d2511629fbf3388372a9df551839460',1,'svg::graph_rstate']]],
   ['tooltip_5fimages_5',['tooltip_images',['../structsvg_1_1graph__rstate.html#af4a5eab07b4cc5df360be2b45c99ab49',1,'svg::graph_rstate']]],
-  ['tpsz_6',['tpsz',['../structsvg_1_1graph__rstate.html#ab50de5fec2e0c40e46f4405bf81e6443',1,'svg::graph_rstate']]],
-  ['tticsz_7',['tticsz',['../structsvg_1_1graph__rstate.html#a8a2232baf0c12981fd237488ffbe224d',1,'svg::graph_rstate']]],
-  ['ttitlesz_8',['ttitlesz',['../structsvg_1_1graph__rstate.html#aa92015c49b05310864ba9de1b6e3ba53',1,'svg::graph_rstate']]]
+  ['torsion_6',['torsion',['../structsvg_1_1ribbon__config.html#ab59570a5c6f95158b28d613112d84c6a',1,'svg::ribbon_config']]],
+  ['tpsz_7',['tpsz',['../structsvg_1_1graph__rstate.html#ab50de5fec2e0c40e46f4405bf81e6443',1,'svg::graph_rstate']]],
+  ['tticsz_8',['tticsz',['../structsvg_1_1graph__rstate.html#a8a2232baf0c12981fd237488ffbe224d',1,'svg::graph_rstate']]],
+  ['ttitlesz_9',['ttitlesz',['../structsvg_1_1graph__rstate.html#aa92015c49b05310864ba9de1b6e3ba53',1,'svg::graph_rstate']]]
 ];

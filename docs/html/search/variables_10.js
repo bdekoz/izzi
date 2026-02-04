@@ -11,7 +11,8 @@ var searchData=
   ['pair_5fopen_5ftag_8',['pair_open_tag',['../group__elements.html#af4bd051c0433d1d1d310ac3649dfc9f6',1,'svg::rect_element::pair_open_tag'],['../group__elements.html#a16d9f4a93d34d3650831854d5bb14f94',1,'svg::circle_element::pair_open_tag'],['../group__elements.html#a5872e0421431464aba3ccea199505dac',1,'svg::polygon_element::pair_open_tag'],['../group__elements.html#ad2a1317e12518da099e754ca2733dce2',1,'svg::path_element::pair_open_tag']]],
   ['path_5flength_9',['path_length',['../structsvg_1_1stroke__style.html#a223610515f8f7cd358a2ffb72103bb75',1,'svg::stroke_style']]],
   ['path_5fname_10',['path_name',['../group__elements.html#a587c09f176fe7379d00f62fca012cbe2',1,'svg::text_path_element']]],
-  ['points_11',['points',['../structvoronoi__cell.html#ac1523510be75139282abd182fb249c53',1,'voronoi_cell::points'],['../classpoint__cluster.html#af9ff27e7af8f5e9d27db54f63d7dc4e3',1,'point_cluster::points']]],
-  ['polypoints_12',['polypoints',['../group__elements.html#abbf4dfafa978f54d4227a104fe805023',1,'svg::polyline_element']]],
-  ['pt_13',['pt',['../structWeightedPoint.html#a820e6b0c2d35a408a7efa360b6893190',1,'WeightedPoint']]]
+  ['phase_5fshift_11',['phase_shift',['../structsvg_1_1ripple__config.html#aad05fc3bb4c0a756de6c0764c42bec32',1,'svg::ripple_config']]],
+  ['points_12',['points',['../structvoronoi__cell.html#ac1523510be75139282abd182fb249c53',1,'voronoi_cell::points'],['../classpoint__cluster.html#af9ff27e7af8f5e9d27db54f63d7dc4e3',1,'point_cluster::points']]],
+  ['polypoints_13',['polypoints',['../group__elements.html#abbf4dfafa978f54d4227a104fe805023',1,'svg::polyline_element']]],
+  ['pt_14',['pt',['../structWeightedPoint.html#a820e6b0c2d35a408a7efa360b6893190',1,'WeightedPoint']]]
 ];

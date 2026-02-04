@@ -20,5 +20,6 @@ var searchData=
   ['render_5fmetadata_5faggregate_5fchord_17',['render_metadata_aggregate_chord',['../namespacesvg.html#a8e59007d359abaf8167d995843d2cf0c',1,'svg']]],
   ['render_5fstate_5fbase_18',['render_state_base',['../structsvg_1_1render__state__base.html#a3410b564d0afbc70c71cd16a2a333680',1,'svg::render_state_base']]],
   ['rgb_5fto_5fhsv_19',['rgb_to_hsv',['../structsvg_1_1color__qf.html#a52bde66b39d6ed6f61676662b33e145e',1,'svg::color_qf']]],
-  ['rotate_20',['rotate',['../structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0',1,'svg::transform::rotate(int deg)'],['../structsvg_1_1transform.html#a4cac245f50dd098d7afb862503fddd27',1,'svg::transform::rotate(int deg, int x, int y)']]]
+  ['rotate_20',['rotate',['../structsvg_1_1transform.html#acf9836f4ba647f0dd2b53963a0f714d0',1,'svg::transform::rotate(int deg)'],['../structsvg_1_1transform.html#a4cac245f50dd098d7afb862503fddd27',1,'svg::transform::rotate(int deg, int x, int y)']]],
+  ['rotate_5fpoint_21',['rotate_point',['../namespacesvg.html#a813caf6c5c3ee13aab6b019d29040284',1,'svg']]]
 ];
