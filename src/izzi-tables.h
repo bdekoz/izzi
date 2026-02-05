@@ -23,7 +23,8 @@ namespace svg {
 
 using std::ostringstream;
 
-/// Converts ISO datestamp to human-readable long form with month names.
+/// Converts ISO datestamp to HTML time element with accessible-readable
+/// long form with month names, instead of just a list of digits.
 string
 iso_datestamp_string_to_html_time(const string ds)
 {
@@ -59,6 +60,67 @@ iso_datestamp_string_to_html_time(const string ds)
   html_element += "</time>";
 
   return html_element;
+}
+
+
+/// Cleanup Pandas HTML table export.
+/// Pandas html table export from properly constructed json is excellent.
+/// However, knowing the data, it can be made more legible with a smarter table head.
+/// So, strip thead and simplify names, make multi-column, multi-row for clarity.
+string
+simplify_pandas_table(const string minimetricf)
+{
+  string html;
+  std::ifstream ifs(minimetricf);
+  if (ifs.good())
+    {
+      /*
+	<thead>
+	  <tr style="text-align: right;">
+	  <th>metric</th>
+	  <th>firefox_median</th>
+	  <th>firefox_rsd</th>
+	  <th>chrome_median</th>
+	  <th>chrome_rsd</th>
+	  <th>difference</th>
+	  </tr>
+	</thead>
+      */
+      ostringstream oss;
+      oss << ifs.rdbuf();
+      html = oss.str();
+
+      const string thead_start("<thead>");
+      const string thead_end("</thead>");
+      auto startpos = html.find(thead_start);
+      auto endpos = html.find(thead_end);
+
+      const string theadnu = R"_delimiter_(
+	<thead>
+	  <tr>
+	    <th rowspan="2" width="25%">metric</th>
+	    <th colspan="2" width="25%">firefox</th>
+	    <th colspan="2" width="25%">chrome</th>
+	    <th rowspan="2" width="25%">difference</th>
+	  </tr>
+	  <tr>
+	    <th>median</th>
+	    <th>rsd</th>
+	    <th>median</th>
+	    <th>rsd</th>
+	   </tr>
+	</thead>
+      )_delimiter_";
+
+      if (startpos != string::npos && endpos != string::npos)
+	{
+	  auto length = endpos + thead_end.size() - startpos;
+	  html.replace(startpos, length, theadnu);
+	}
+      else
+	std::cout << "cannot find table heads to swap" << std::endl;
+    }
+  return html;
 }
 
 
