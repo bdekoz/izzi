@@ -124,10 +124,30 @@ simplify_pandas_table(const string minimetricf)
 }
 
 
-// Image row in table.
+/// Link row in table.
 string
-serialize_row_2c_4f(string_view img1src, string_view img1alt,
-		    string_view img2src, string_view img2alt)
+serialize_link_row_2c_4f(string_view uri1, string_view link1,
+			 string_view uri2, string_view link2)
+{
+  // td elements == left
+  // th elements == center
+
+  // NB: Use {{}} for literal quoting, as src may have '/' and '&' etc.
+  constexpr const char* tdblank = R"_delimiter_(<th style="padding: 5px;"><a href="{}"> {} </a></th>)_delimiter_";
+
+  ostringstream oss;
+  oss << "<tr>" << svg::k::newline;
+  oss << std::format(tdblank, uri1, link1) << svg::k::newline;
+  oss << std::format(tdblank, uri2, link2) << svg::k::newline;
+  oss << "</tr>" << svg::k::newline;
+  return oss.str();
+}
+
+
+/// Image row in table.
+string
+serialize_image_row_2c_4f(string_view img1src, string_view img1alt,
+			  string_view img2src, string_view img2alt)
 {
   // td elements == left
   // th elements == center
@@ -158,7 +178,7 @@ serialize_2_image_table(const string& gtitlelc)
 
   ostringstream oss;
   oss << tblstart << svg::k::newline;
-  oss << serialize_row_2c_4f(img1, img1alt, img2, img2alt);
+  oss << serialize_image_row_2c_4f(img1, img1alt, img2, img2alt);
   oss << tblend << svg::k::newline;
 
   const string metricf = gtitlelc + "-image-table.html";
