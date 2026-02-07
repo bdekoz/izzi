@@ -187,6 +187,11 @@ serialize_2_image_table(const string& gtitlelc)
     ofs << oss.str() << svg::k::newline;
 }
 
+/// Caption element, both without styling and as H3 element in markdown.
+const string cap = "<caption>";
+const string capH3 = R"_delimiter_(<caption style="font-size: 1.17em; font-weight: bold; margin: 1em 0; text-align: left;">)_delimiter_";
+
+
 
 /// Serialize information about the analysis passes as an html table.
 /// Flatten all objects into one total number.
@@ -238,9 +243,15 @@ serialize_meta_collection_table(const string& gtitlelc, const string sdur,
 
       ofs << "<table>" << svg::k::newline;
       ofs << thead << svg::k::newline;
+
+#if 0
       string tts(gtitlelc);
       std::ranges::replace(tts, k::hyphen, k::space);
-      ofs << "<caption>" << tts << "</caption>" << svg::k::newline;
+      ofs << cap << tts << "</caption>" << svg::k::newline;
+#else
+      ofs << capH3 << "Aggregate Table" << "</caption>" << svg::k::newline;
+#endif
+
       ofs << "<tbody>" << svg::k::newline;
       ofs << "<tr>" << svg::k::newline;
 
