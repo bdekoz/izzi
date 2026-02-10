@@ -126,7 +126,8 @@ make_color_band_v2(const colorband& cb, const ushort neededh)
       color_qi klrnu = hhsv.to_color_qi();
       if (klrnu == klro)
 	{
-	  string m("make_color_band_v2:: colorband looping error" + k::newline);
+	  string m("make_color_band_v2:: colorband looping error");
+	  m += k::newline;
 	  m += "starting color: ";
 	  m += to_string(klro) + k::newline;
 	  m += "starting color band size: ";
