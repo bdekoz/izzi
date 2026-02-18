@@ -23,25 +23,53 @@ namespace svg {
 
 using std::ostringstream;
 
+/// Arithmetic on date stamps and date hour stamps.
+/// Return time_point associated with that iso-date string and hour.
+std::chrono::year_month_day
+date_stamp_to_year_month_day(const string dstamp)
+{
+  string ddate = dstamp.substr(0, 10);
+
+#ifndef __clang__
+  std::chrono::year_month_day ymd;
+  std::istringstream iss(ddate);
+  iss >> std::chrono::parse("%F", ymd);
+  if (iss.fail())
+    {
+      string m("date_stamp_to_year_month_day: failed to parse (");
+      m += ddate;
+      m += ")";
+      m += k::newline;
+      throw std::runtime_error(m);
+    }
+#else
+  // emscripten
+  // Extract parts as integers
+  int y = std::stoi(ddate.substr(0, 4));
+  int m = std::stoi(ddate.substr(5, 2));
+  int d = std::stoi(ddate.substr(8, 2));
+
+  // Construct the object directly
+  std::chrono::year_month_day ymd {
+    std::chrono::year{y},
+    std::chrono::month(static_cast<unsigned int>(m)),
+    std::chrono::day(static_cast<unsigned int>(d))
+  };
+#endif
+  return ymd;
+}
+
+
 /// Converts ISO datestamp to HTML time element with accessible-readable
 /// long form with month names, instead of just a list of digits.
 string
 iso_datestamp_string_to_html_time(const string ds)
 {
+  std::chrono::year_month_day ymd = date_stamp_to_year_month_day(ds);
+  string ds_long = std::format("{:%B %d, %Y}", ymd);
+
   // Build the HTML time element
   string html_element;
-
-  string ds_long("");
-  std::chrono::year_month_day ymd;
-  std::stringstream ss(ds);
-  // %F is the standard specifier for YYYY-MM-DD (ISO 8601)
-  if (std::chrono::from_stream(ss, "%F", ymd))
-    ds_long = std::format("{:%B %d, %Y}", ymd);
-  else
-    {
-      std::cerr << "datestamp_to_html_time:: error with datestamp '"
-		<< ds << "'" << std::endl;
-    }
 
   // <time datetime="YYYY-MM-DD" aria-label="Month Day, Year">Month Day, Year</time>
   html_element = "<time datetime=";
