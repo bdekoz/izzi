@@ -3,7 +3,9 @@
 /*
 <table id="myTable">
     <thead>
-    <tr><th onclick="sortTable(0)">A</th><th>B</th></tr>
+      <tr>
+        <th onclick="sortTable(0)">A</th><th>B</th>
+      </tr>
     </thead>
   <tbody>
     <tr><td>Banana</td><td>2</td></tr>
@@ -12,8 +14,8 @@
 </table>
 */
 
-function sortTable(colIndex) {
-  const table = document.getElementById("myTable");
+function sortTable(tID, colIndex) {
+  const table = document.getElementById(tID);
   const rows = Array.from(table.tBodies[0].rows);
   const asc = table.dataset.sortAsc !== "true";
   table.dataset.sortAsc = asc;
