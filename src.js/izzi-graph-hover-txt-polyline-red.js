@@ -1,12 +1,7 @@
 /**
- * izzi-script-graph-hover-txt-polyline.js
- * Version 20.1
- *
- * Fixed:
- * - Attached event listeners to the root <svg> to prevent "mouseleave" drop-offs
- * when traversing empty space between SVG group nodes.
- * - Transformed polyline local points to strict screen coordinates (getScreenCTM)
- * to ensure vec_radius matches exact mouse pixel positions.
+ * izzi-script-graph-hover-txt-polyline-red.js
+ * Version 20.2
+ * gemini
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const originalStyles = new Map();
     const text_radius = 5;
-    const vec_radius = 15; // Set to 15px for a smoother, more forgiving hover traverse
+    const vec_radius = 15;
 
     // Store original styling for restoration
     lineGraphs.forEach(g => {
@@ -72,11 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	    let p1 = pts.getItem(i);
 	    let p2 = pts.getItem(i + 1);
 
-	    // Transform point 1 to screen pixels
 	    pt.x = p1.x; pt.y = p1.y;
 	    let sp1 = pt.matrixTransform(ctm);
 
-	    // Transform point 2 to screen pixels
 	    pt.x = p2.x; pt.y = p2.y;
 	    let sp2 = pt.matrixTransform(ctm);
 
@@ -89,17 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function isInTextActivationArea(clientX, clientY, g) {
 	const texts = originalStyles.get(g).texts;
 	return texts.some(t => {
-	    const rect = t.el.getBoundingClientRect(); // getBoundingClientRect is natively in screen space
+	    const rect = t.el.getBoundingClientRect();
 	    return (clientX >= rect.left - text_radius && clientX <= rect.right + text_radius &&
 		    clientY >= rect.top - text_radius && clientY <= rect.bottom + text_radius);
 	});
     }
 
     function isInExtendedActivationArea(clientX, clientY, g) {
-	// Union Part 1: Text Activation area
 	if (isInTextActivationArea(clientX, clientY, g)) return true;
 
-	// Union Part 2: Polyline Activation area (+ vec_radius)
 	const polylines = originalStyles.get(g).polylines;
 	return polylines.some(p => {
 	    return getScreenDistanceToPolyline(clientX, clientY, p.el) <= vec_radius;
@@ -109,9 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function applyRestStyling() {
 	lineGraphs.forEach(g => {
 	    const data = originalStyles.get(g);
-	    data.markers.forEach(m => m.el.style.fillOpacity = '0');
+	    data.markers.forEach(m => {
+		m.el.style.fillOpacity = '0';
+	    });
 	    data.polylines.forEach(p => {
-		p.el.style.stroke = 'rgba(128, 128, 128, 0.2)'; // Gray 20%
+		p.el.style.stroke = 'rgba(128, 128, 128, 0.2)';
 	    });
 	    data.texts.forEach(t => {
 		t.el.style.fontSize = t.fontSize;
@@ -143,31 +136,38 @@ document.addEventListener("DOMContentLoaded", () => {
     function applyOriginalStyling() {
 	lineGraphs.forEach(g => {
 	    const data = originalStyles.get(g);
+
 	    data.markers.forEach(m => {
 		m.el.style.fillOpacity = m.fillOpacity;
+
+		// Clear inline styles to allow attributes to show, or re-apply original style
+		m.el.style.fill = m.fill || '';
+		m.el.style.stroke = m.stroke || '';
+
 		if(m.fill) m.el.setAttribute("fill", m.fill);
 		if(m.stroke) m.el.setAttribute("stroke", m.stroke);
 	    });
+
 	    data.polylines.forEach(p => {
+		p.el.style.stroke = p.stroke || '';
 		if(p.stroke) p.el.setAttribute("stroke", p.stroke);
-		p.el.style.stroke = p.stroke;
 	    });
+
 	    data.texts.forEach(t => {
 		t.el.style.fontSize = t.fontSize;
+		t.el.style.fill = t.fill || '';
 		if(t.fill) t.el.setAttribute("fill", t.fill);
-		t.el.style.fill = t.fill;
 	    });
 	});
     }
 
-    // Attach events to the Root SVG to maintain a contiguous bounding box hit-area
+    // Attach events to the Root SVG
     svgElement.addEventListener("mouseenter", () => {
 	isResting = true;
 	applyRestStyling();
     });
 
     svgElement.addEventListener("mousemove", (e) => {
-	// Fallback for cases where mouse is already inside SVG upon page load
 	if (!isResting) {
 	    isResting = true;
 	    applyRestStyling();
@@ -176,18 +176,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	const cx = e.clientX;
 	const cy = e.clientY;
 
-	// If a graph is currently active
 	if (activeGraph) {
 	    if (isInExtendedActivationArea(cx, cy, activeGraph)) {
-		return; // Maintain current active graph
+		return;
 	    } else {
-		// Left extended active area -> revert active graph back to rest styling
 		activeGraph = null;
 		applyRestStyling();
 	    }
 	}
 
-	// Check if we entered any Text Activation Area
 	if (!activeGraph) {
 	    for (let g of lineGraphs) {
 		if (isInTextActivationArea(cx, cy, g)) {
@@ -202,6 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
     svgElement.addEventListener("mouseleave", () => {
 	isResting = false;
 	activeGraph = null;
-	applyOriginalStyling(); // Left SVG bounds entirely -> revert to default
+	applyOriginalStyling();
     });
 });
