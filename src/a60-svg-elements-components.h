@@ -47,8 +47,9 @@ svg_element::write()
 
 /// SVG element beginning boilerplate for outermost (containing) svg_element.
 /// Variable: unit, x=0, y=0, width, height
+/// @param autoszp if true, then width=100% and height=auto
 void
-svg_element::start_element()
+svg_element::start_element(const bool autoszp)
 {
   const string start = R"_delimiter_(<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -70,6 +71,14 @@ viewBox="0 0 __width __height" enable-background="new 0 0 __width __height" role
 )_delimiter_";
 
   string_replace(strip, id, _M_name);
+
+  if (autoszp)
+    {
+      const string wunit = width + unit;
+      const string hunit = height + unit;
+      string_replace(strip, wunit, "100%");
+      string_replace(strip, hunit, "auto");
+    }
   string_replace(strip, unit, to_string(_M_unit));
   string_replace(strip, width, std::to_string(_M_area._M_width));
   string_replace(strip, height, std::to_string(_M_area._M_height));
@@ -77,6 +86,12 @@ viewBox="0 0 __width __height" enable-background="new 0 0 __width __height" role
   _M_sstream << start;
   _M_sstream << strip << std::endl;
 }
+
+
+/// Default
+void
+svg_element::start_element()
+{ start_element(false); }
 
 
 /// SVG element for nested svg_element.

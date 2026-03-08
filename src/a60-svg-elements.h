@@ -1615,12 +1615,12 @@ struct svg_element : virtual public element_base
   }
 
   svg_element(const string __title, const string desc, const area& __cv,
-	      const bool lifetime = true)
+	      const bool lifetime = true, const bool autoszp = false)
   : _M_name(__title), _M_area(__cv), _M_unit(svg::unit::pixel),
     _M_typo(svg::k::smono_typo), _M_lifetime(lifetime)
   {
     if (_M_lifetime)
-      start(desc);
+      start(desc, autoszp);
   }
 
   svg_element(const svg_element& other)
@@ -1640,7 +1640,10 @@ struct svg_element : virtual public element_base
   { return _M_area.center_point(); }
 
   void
-  start_element();
+  start_element(void);
+
+  void
+  start_element(const bool autoszp);
 
   void
   start_element(const point_2t p, const area destarea,
@@ -1669,9 +1672,9 @@ struct svg_element : virtual public element_base
   write();
 
   void
-  start(const string& desc = "")
+  start(const string& desc = "", const bool autoszp = false)
   {
-    this->start_element();
+    this->start_element(autoszp);
     this->add_title();
     if (!desc.empty())
       this->add_desc(desc);
