@@ -91,6 +91,32 @@ iso_datestamp_string_to_html_time(const string ds)
 }
 
 
+/// Wrap table in HTML details element, containing an H3 media object
+/// @param tbl is the tbody element from an HTML table element
+/// @param htitle is the H3 title element to use for the summary title
+string
+detail_summary_table(const string& tbl, const string& htitle)
+{
+  std::ostringstream oss;
+  if (oss.good())
+    {
+      constexpr const char* dtlstart = R"_delimiter_(
+<details>
+  <summary>
+    <h3>{}</h3>
+  </summary>
+  <div class="table-container">
+      )_delimiter_";
+      const string dtlend = R"_delimiter_(</div></details>)_delimiter_";
+
+      oss << std::format(dtlstart, htitle) << k::newline;
+      oss << tbl;
+      oss << dtlend << k::newline;
+    }
+  return oss.str();
+}
+
+
 /// Cleanup Pandas HTML table export.
 /// Pandas html table export from properly constructed json is excellent.
 /// However, knowing the data, it can be made more legible with a smarter table head.
