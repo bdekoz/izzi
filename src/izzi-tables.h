@@ -152,16 +152,16 @@ simplify_pandas_table(const string minimetricf)
       const string theadnu = R"_delimiter_(
 	<thead>
 	  <tr>
-	    <th rowspan="2" width="25%">metric</th>
-	    <th colspan="2" width="25%">firefox</th>
-	    <th colspan="2" width="25%">chrome</th>
-	    <th rowspan="2" width="25%">difference</th>
+	    <th scope="col" rowspan="2" width="25%">metric</th>
+	    <th scope="col" colspan="2" width="25%">firefox</th>
+	    <th scope="col" colspan="2" width="25%">chrome</th>
+	    <th scope="col" rowspan="2" width="25%">difference</th>
 	  </tr>
 	  <tr>
-	    <th>median</th>
-	    <th>rsd</th>
-	    <th>median</th>
-	    <th>rsd</th>
+	    <th scope="col">median</th>
+	    <th scope="col">rsd</th>
+	    <th scope="col">median</th>
+	    <th scope="col">rsd</th>
 	   </tr>
 	</thead>
       )_delimiter_";
@@ -278,16 +278,16 @@ serialize_meta_collection_table(const string& gtitlelc, const string sdur,
       const string thead = R"_delimiter_(
 	<thead>
 	  <tr>
-	    <th rowspan="2" width="25%">duration</th>
-	    <th rowspan="2" width="25%">btiha size</th>
-	    <th colspan="2" width="25%">downloaders</th>
-	    <th colspan="2" width="25%">uploaders</th>
+	    <th scope="col" rowspan="2" width="25%">duration</th>
+	    <th scope="col" rowspan="2" width="25%">btiha size</th>
+	    <th scope="col" colspan="2" width="25%">downloaders</th>
+	    <th scope="col" colspan="2" width="25%">uploaders</th>
 	  </tr>
 	  <tr>
-	    <th>total</th>
-	    <th>per btiha</th>
-	    <th>total</th>
-	    <th>per btiha</th>
+	    <th scope="col">total</th>
+	    <th scope="col">per btiha</th>
+	    <th scope="col">total</th>
+	    <th scope="col">per btiha</th>
 	   </tr>
 	</thead>
       )_delimiter_";
