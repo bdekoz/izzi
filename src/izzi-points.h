@@ -21,8 +21,11 @@ namespace svg {
 /// Point (x,y) in 2D space, space_type defaults to double.
 using point_2t = std::tuple<space_type, space_type>;
 
-/// Point (x,y) in 2D space with weight n.
-using point_2tn = std::tuple<ulong, point_2t>;
+/// Point (x,y) in 2D space with integer weight n.
+using point_2ti = std::tuple<ulong, point_2t>;
+
+/// Point (x,y) in 2D space with integer weight n.
+using point_2td = std::tuple<space_type, point_2t>;
 
 /// Named Point (x,y) in 2D space.
 using point_2ts = std::tuple<string, point_2t>;
@@ -57,9 +60,12 @@ using vspace = std::vector<space_type>;
 
 /// Latitude and Longitude Ranges.
 using srange = std::set<point_2t>;
-using srangen = std::set<point_2tn>;
+using srangen = std::set<point_2ti>;
+
 using vrange = std::vector<point_2t>;
-using vrangen = std::vector<point_2tn>;
+using vrangei = std::vector<point_2ti>;
+using vranged = std::vector<point_2td>;
+
 using vvranges = std::vector<vrange>;
 
 using vrangenamed = std::vector<point_2ts>;
