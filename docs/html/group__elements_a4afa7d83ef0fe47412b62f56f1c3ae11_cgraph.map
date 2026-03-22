@@ -1,16 +1,12 @@
 <map id="svg::svg_element::start_element" name="svg::svg_element::start_element">
-<area shape="rect" id="Node000001" title="SVG element beginning boilerplate for outermost (containing) svg_element. Variable: unit,..." alt="" coords="5,114,143,157"/>
-<area shape="rect" id="Node000002" href="$group__elements.html#ad47933f8c0bfc36987493c7e3b3bbcbd" title=" " alt="" coords="191,97,328,123"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,132,199,124,200,129,143,137"/>
-<area shape="rect" id="Node000012" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="201,147,318,174"/>
-<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="143,142,186,148,186,153,142,147"/>
-<area shape="rect" id="Node000013" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="215,198,304,225"/>
-<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="124,155,192,184,207,189,205,194,190,188,122,160"/>
-<area shape="poly" id="edge12_Node000002_Node000001" title=" " alt="" coords="191,113,158,118,158,112,190,108"/>
+<area shape="rect" id="Node000001" title="Default." alt="" coords="5,91,143,134"/>
+<area shape="rect" id="Node000002" href="$group__elements.html#a427e385a78a537bf24b6c3bcb6320365" title=" " alt="" coords="191,99,328,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,119,175,119,175,124,143,124"/>
+<area shape="poly" id="edge12_Node000002_Node000001" title=" " alt="" coords="190,107,158,106,158,101,190,101"/>
 <area shape="rect" id="Node000003" href="$group__elements.html#a4a6af4e23b9f79f07d58780c128c5638" title=" " alt="" coords="376,66,538,93"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="328,97,360,92,361,97,329,102"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="328,98,360,93,361,98,329,104"/>
 <area shape="rect" id="Node000008" href="$group__elements.html#a26869d2a66e57c0d83f2df21d25cd875" title=" " alt="" coords="390,121,524,163"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="329,118,375,126,374,131,328,124"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="329,120,375,127,374,132,328,126"/>
 <area shape="rect" id="Node000004" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="756,13,877,55"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="476,63,524,34,554,20,586,10,625,4,666,3,741,12,740,17,665,8,626,9,587,15,556,25,527,39,479,68"/>
 <area shape="rect" id="Node000006" href="$group__elements.html#ga03da556ae8f749df1cf8463111e996d3" title=" " alt="" coords="587,25,707,67"/>

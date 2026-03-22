@@ -874,9 +874,18 @@ Functions</h2></td></tr>
 <tr class="memdesc:ac505dbc9ae310b0b9375806841564cd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert <a class="el" href="#ac637e866d81fd235fe1d1162a6f8f30f" title="Named Point (x,y) in 2D space.">point_2ts</a> to <a class="el" href="structPoint.html">Point</a>.  <br /></td></tr>
 <tr class="memitem:ae317364014df49ea84470872b1bf7f8c" id="r_ae317364014df49ea84470872b1bf7f8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a1e82db749f392a37115a3abbeef06af1">vrangenamed</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae317364014df49ea84470872b1bf7f8c">points_to_vrangenamed</a> (const <a class="el" href="izzi-points_8h.html#a5968768c0527041a8ed0343b2c259870">vpoints</a> &amp;inpoints)</td></tr>
 <tr class="memdesc:ae317364014df49ea84470872b1bf7f8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert <a class="el" href="structPoint.html">Point</a> to <a class="el" href="#af074bb68ac49143551503d72f2bff83e" title="Point (x,y) in 2D space, space_type defaults to double.">point_2t</a>.  <br /></td></tr>
+<tr class="memitem:a3e08767c334fb8d9e5c734a28c6c03ef" id="r_a3e08767c334fb8d9e5c734a28c6c03ef"><td class="memItemLeft" align="right" valign="top">std::chrono::year_month_day&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e08767c334fb8d9e5c734a28c6c03ef">date_stamp_to_year_month_day</a> (const string dstamp)</td></tr>
+<tr class="memdesc:a3e08767c334fb8d9e5c734a28c6c03ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arithmetic on date stamps and date hour stamps. Return time_point associated with that iso-date string and hour.  <br /></td></tr>
 <tr class="memitem:a906b9218c85fdf471a699426ed5fdecb" id="r_a906b9218c85fdf471a699426ed5fdecb"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a906b9218c85fdf471a699426ed5fdecb">iso_datestamp_string_to_html_time</a> (const string ds)</td></tr>
-<tr class="memdesc:a906b9218c85fdf471a699426ed5fdecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts ISO datestamp to human-readable long form with month names.  <br /></td></tr>
-<tr class="memitem:aa7a85c2d64c0fe33580503f3e6fc1c16" id="r_aa7a85c2d64c0fe33580503f3e6fc1c16"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7a85c2d64c0fe33580503f3e6fc1c16">serialize_row_2c_4f</a> (string_view img1src, string_view img1alt, string_view img2src, string_view img2alt)</td></tr>
+<tr class="memdesc:a906b9218c85fdf471a699426ed5fdecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts ISO datestamp to HTML time element with accessible-readable long form with month names, instead of just a list of digits.  <br /></td></tr>
+<tr class="memitem:afdc35047e21a1263c705159997b6db96" id="r_afdc35047e21a1263c705159997b6db96"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdc35047e21a1263c705159997b6db96">detail_summary_table</a> (const string &amp;tbl, const string &amp;htitle)</td></tr>
+<tr class="memdesc:afdc35047e21a1263c705159997b6db96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap table in HTML details element, containing an H3 media object.  <br /></td></tr>
+<tr class="memitem:a9d8971c272e683be303f7b8463c0cc1b" id="r_a9d8971c272e683be303f7b8463c0cc1b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d8971c272e683be303f7b8463c0cc1b">simplify_pandas_table</a> (const string minimetricf)</td></tr>
+<tr class="memdesc:a9d8971c272e683be303f7b8463c0cc1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleanup Pandas HTML table export. Pandas html table export from properly constructed json is excellent. However, knowing the data, it can be made more legible with a smarter table head. So, strip thead and simplify names, make multi-column, multi-row for clarity.  <br /></td></tr>
+<tr class="memitem:a57386c04655178744dfeb55113f08f2b" id="r_a57386c04655178744dfeb55113f08f2b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57386c04655178744dfeb55113f08f2b">serialize_link_row_2c_4f</a> (string_view uri1, string_view link1, string_view uri2, string_view link2)</td></tr>
+<tr class="memdesc:a57386c04655178744dfeb55113f08f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Link row in table.  <br /></td></tr>
+<tr class="memitem:a4103f3247747fa523a9de3f1390c686b" id="r_a4103f3247747fa523a9de3f1390c686b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4103f3247747fa523a9de3f1390c686b">serialize_image_row_2c_4f</a> (string_view img1src, string_view img1alt, string_view img2src, string_view img2alt)</td></tr>
+<tr class="memdesc:a4103f3247747fa523a9de3f1390c686b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image row in table.  <br /></td></tr>
 <tr class="memitem:a5f40f6e9343a1e8c9052a7e43182a84a" id="r_a5f40f6e9343a1e8c9052a7e43182a84a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f40f6e9343a1e8c9052a7e43182a84a">serialize_2_image_table</a> (const string &amp;gtitlelc)</td></tr>
 <tr class="memdesc:a5f40f6e9343a1e8c9052a7e43182a84a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize borderless image table.  <br /></td></tr>
 <tr class="memitem:ae1d6cbc9577a8e5e99546fb6a6ed4b79" id="r_ae1d6cbc9577a8e5e99546fb6a6ed4b79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1d6cbc9577a8e5e99546fb6a6ed4b79">serialize_meta_collection_table</a> (const string &amp;gtitlelc, const string sdur, const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a> btihasz, const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a> dl, const <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a> ul)</td></tr>
@@ -925,6 +934,9 @@ Variables</h2></td></tr>
 <tr class="memitem:af236a60598b510e9a91706289ae20ed8" id="r_af236a60598b510e9a91706289ae20ed8"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af236a60598b510e9a91706289ae20ed8">ssz</a> = 10</td></tr>
 <tr class="memitem:a6e1217586a3280e6177a0cec72964241" id="r_a6e1217586a3280e6177a0cec72964241"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#ad3a7a7a3ad79496a3731622464665776">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e1217586a3280e6177a0cec72964241">matrix_max_items</a> = 8</td></tr>
 <tr class="memdesc:a6e1217586a3280e6177a0cec72964241"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of individual items to be placed in grid cells. A 1x4 grid can contain up to 4 items. A 2x4 grid can contain up to 8 items. A 3x3 grid can contain up to 9 items.  <br /></td></tr>
+<tr class="memitem:a767b8537116472581d4f45911a9af70d" id="r_a767b8537116472581d4f45911a9af70d"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a767b8537116472581d4f45911a9af70d">cap</a> = &quot;&lt;caption&gt;&quot;</td></tr>
+<tr class="memdesc:a767b8537116472581d4f45911a9af70d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Caption element, both without styling and as H3 element in markdown.  <br /></td></tr>
+<tr class="memitem:a9a8081a6569270be718f40f2ab660fb3" id="r_a9a8081a6569270be718f40f2ab660fb3"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a8081a6569270be718f40f2ab660fb3">capH3</a> = R&quot;_delimiter_(&lt;caption <a class="el" href="structsvg_1_1style.html">style</a>=&quot;font-size: 1.17em; font-weight: bold; margin: 1em 0; <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>-align: left;&quot;&gt;)_delimiter_&quot;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Scalable Vector Graphics (SVG) namespace </p>
@@ -2176,7 +2188,7 @@ template&lt;std::size_t N&gt; </div>
 
 <p>Forwarding function. </p>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-band_8h_source.html#l00154">154</a> of file <a class="el" href="a60-svg-color-band_8h_source.html">a60-svg-color-band.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-band_8h_source.html#l00155">155</a> of file <a class="el" href="a60-svg-color-band_8h_source.html">a60-svg-color-band.h</a>.</p>
 <div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
@@ -2213,7 +2225,7 @@ template&lt;std::size_t N&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="a60-svg-color-band_8h_source.html#l00164">164</a> of file <a class="el" href="a60-svg-color-band_8h_source.html">a60-svg-color-band.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="a60-svg-color-band_8h_source.html#l00165">165</a> of file <a class="el" href="a60-svg-color-band_8h_source.html">a60-svg-color-band.h</a>.</p>
 <div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
@@ -10419,6 +10431,27 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 </div>
 </div>
+<a id="a3e08767c334fb8d9e5c734a28c6c03ef" name="a3e08767c334fb8d9e5c734a28c6c03ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e08767c334fb8d9e5c734a28c6c03ef">&#9670;&#160;</a></span>date_stamp_to_year_month_day()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::year_month_day svg::date_stamp_to_year_month_day </td>
+          <td>(</td>
+          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>dstamp</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Arithmetic on date stamps and date hour stamps. Return time_point associated with that iso-date string and hour. </p>
+
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00029">29</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+
+</div>
+</div>
 <a id="a906b9218c85fdf471a699426ed5fdecb" name="a906b9218c85fdf471a699426ed5fdecb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a906b9218c85fdf471a699426ed5fdecb">&#9670;&#160;</a></span>iso_datestamp_string_to_html_time()</h2>
 
@@ -10434,20 +10467,114 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
       </table>
 </div><div class="memdoc">
 
-<p>Converts ISO datestamp to human-readable long form with month names. </p>
+<p>Converts ISO datestamp to HTML time element with accessible-readable long form with month names, instead of just a list of digits. </p>
 
-<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00028">28</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00066">66</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+<div id="dynsection-133" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-133-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-133-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a906b9218c85fdf471a699426ed5fdecb_cgraph.svg" width="307" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
-<a id="aa7a85c2d64c0fe33580503f3e6fc1c16" name="aa7a85c2d64c0fe33580503f3e6fc1c16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7a85c2d64c0fe33580503f3e6fc1c16">&#9670;&#160;</a></span>serialize_row_2c_4f()</h2>
+<a id="afdc35047e21a1263c705159997b6db96" name="afdc35047e21a1263c705159997b6db96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdc35047e21a1263c705159997b6db96">&#9670;&#160;</a></span>detail_summary_table()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">string svg::serialize_row_2c_4f </td>
+          <td class="memname">string svg::detail_summary_table </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>htitle</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wrap table in HTML details element, containing an H3 media object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tbl</td><td>is the tbody element from an HTML table element </td></tr>
+    <tr><td class="paramname">htitle</td><td>is the H3 title element to use for the summary title </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00098">98</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+
+</div>
+</div>
+<a id="a9d8971c272e683be303f7b8463c0cc1b" name="a9d8971c272e683be303f7b8463c0cc1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d8971c272e683be303f7b8463c0cc1b">&#9670;&#160;</a></span>simplify_pandas_table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string svg::simplify_pandas_table </td>
+          <td>(</td>
+          <td class="paramtype">const string</td>          <td class="paramname"><span class="paramname"><em>minimetricf</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cleanup Pandas HTML table export. Pandas html table export from properly constructed json is excellent. However, knowing the data, it can be made more legible with a smarter table head. So, strip thead and simplify names, make multi-column, multi-row for clarity. </p>
+
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00119">119</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+
+</div>
+</div>
+<a id="a57386c04655178744dfeb55113f08f2b" name="a57386c04655178744dfeb55113f08f2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57386c04655178744dfeb55113f08f2b">&#9670;&#160;</a></span>serialize_link_row_2c_4f()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string svg::serialize_link_row_2c_4f </td>
+          <td>(</td>
+          <td class="paramtype">string_view</td>          <td class="paramname"><span class="paramname"><em>uri1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string_view</td>          <td class="paramname"><span class="paramname"><em>link1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string_view</td>          <td class="paramname"><span class="paramname"><em>uri2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string_view</td>          <td class="paramname"><span class="paramname"><em>link2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Link row in table. </p>
+
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00162">162</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+
+</div>
+</div>
+<a id="a4103f3247747fa523a9de3f1390c686b" name="a4103f3247747fa523a9de3f1390c686b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4103f3247747fa523a9de3f1390c686b">&#9670;&#160;</a></span>serialize_image_row_2c_4f()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string svg::serialize_image_row_2c_4f </td>
           <td>(</td>
           <td class="paramtype">string_view</td>          <td class="paramname"><span class="paramname"><em>img1src</em></span>, </td>
         </tr>
@@ -10469,12 +10596,14 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00067">67</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
-<div id="dynsection-133" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-133-summary" class="dynsummary" style="display:block;">
+<p>Image row in table. </p>
+
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00182">182</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+<div id="dynsection-134" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-134-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-133-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_aa7a85c2d64c0fe33580503f3e6fc1c16_cgraph.svg" width="307" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-134-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a4103f3247747fa523a9de3f1390c686b_cgraph.svg" width="320" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -10496,12 +10625,12 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Serialize borderless image table. </p>
 
-<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00087">87</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
-<div id="dynsection-134" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-134-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00202">202</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+<div id="dynsection-135" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-135-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-134-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a5f40f6e9343a1e8c9052a7e43182a84a_cgraph.svg" width="488" height="83"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-135-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a5f40f6e9343a1e8c9052a7e43182a84a_cgraph.svg" width="332" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -10542,11 +10671,11 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 
 <p>Serialize information about the analysis passes as an html table. Flatten all objects into one total number. </p>
 
-<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00112">112</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
-<div id="dynsection-135" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-135-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00232">232</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+<div id="dynsection-136" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-136-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-135-content" class="dyncontent" style="display:none;">
+<div id="dynsection-136-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_ae1d6cbc9577a8e5e99546fb6a6ed4b79_cgraph.svg" width="315" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -10596,11 +10725,11 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 <li>= total, per btiha </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00169">169</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
-<div id="dynsection-136" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
-<div id="dynsection-136-summary" class="dynsummary" style="display:block;">
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00295">295</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+<div id="dynsection-137" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Here is the call graph for this function:</div>
+<div id="dynsection-137-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-136-content" class="dyncontent" style="display:none;">
+<div id="dynsection-137-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="namespacesvg_a4b038ca25bfed0389265efa873661c1a_cgraph.svg" width="307" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -11286,6 +11415,40 @@ at the lab." Kyle Westphal, Andy Warhol's Magic Trick</p>
 <p>Maximum number of individual items to be placed in grid cells. A 1x4 grid can contain up to 4 items. A 2x4 grid can contain up to 8 items. A 3x3 grid can contain up to 9 items. </p>
 
 <p class="definition">Definition at line <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html#l00025">25</a> of file <a class="el" href="a60-svg-grid-matrix-systems_8h_source.html">a60-svg-grid-matrix-systems.h</a>.</p>
+
+</div>
+</div>
+<a id="a767b8537116472581d4f45911a9af70d" name="a767b8537116472581d4f45911a9af70d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a767b8537116472581d4f45911a9af70d">&#9670;&#160;</a></span>cap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string svg::cap = &quot;&lt;caption&gt;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Caption element, both without styling and as H3 element in markdown. </p>
+
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00224">224</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
+
+</div>
+</div>
+<a id="a9a8081a6569270be718f40f2ab660fb3" name="a9a8081a6569270be718f40f2ab660fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a8081a6569270be718f40f2ab660fb3">&#9670;&#160;</a></span>capH3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string svg::capH3 = R&quot;_delimiter_(&lt;caption <a class="el" href="structsvg_1_1style.html">style</a>=&quot;font-size: 1.17em; font-weight: bold; margin: 1em 0; <a class="el" href="#ac8061963317131e6bd4d517ed84880bca1cb251ec0d568de6a929b520c4aed8d1">text</a>-align: left;&quot;&gt;)_delimiter_&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="izzi-tables_8h_source.html#l00225">225</a> of file <a class="el" href="izzi-tables_8h_source.html">izzi-tables.h</a>.</p>
 
 </div>
 </div>

@@ -1,20 +1,16 @@
 <map id="svg::composite_bleed_areas" name="svg::composite_bleed_areas">
-<area shape="rect" id="Node000001" title="Composite frame on bleed. For printed objects with a center gutter, some intra&#45;page adjustments are n..." alt="" coords="5,85,136,127"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#ab80d668629ba7db3cf50dc732f0d82b2" title="Resolution of output display device." alt="" coords="211,63,294,90"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,93,195,83,195,88,136,98"/>
-<area shape="rect" id="Node000003" href="$group__elements.html#a83eb3152f92ca357473c2ef8f23ced98" title="SVG element beginning boilerplate for outermost (containing) svg_element. Variable: unit,..." alt="" coords="184,114,321,157"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,114,168,119,168,124,136,119"/>
-<area shape="rect" id="Node000004" href="$group__elements.html#ad47933f8c0bfc36987493c7e3b3bbcbd" title=" " alt="" coords="369,97,506,123"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="321,132,377,124,378,129,322,137"/>
-<area shape="rect" id="Node000014" href="$namespacesvg.html#a48ac748e89e22789d1772326a98dd7b6" title=" " alt="" coords="380,147,496,174"/>
-<area shape="poly" id="edge15_Node000003_Node000014" title=" " alt="" coords="322,142,365,148,364,153,321,147"/>
-<area shape="rect" id="Node000015" href="$namespacesvg.html#a36b1c48ad4601b205790e3772ad0a7b6" title=" " alt="" coords="393,198,482,225"/>
-<area shape="poly" id="edge16_Node000003_Node000015" title=" " alt="" coords="303,155,370,184,385,189,383,194,368,188,301,160"/>
-<area shape="poly" id="edge14_Node000004_Node000003" title=" " alt="" coords="369,113,337,118,336,112,368,108"/>
+<area shape="rect" id="Node000001" title="Composite frame on bleed. For printed objects with a center gutter, some intra&#45;page adjustments are n..." alt="" coords="5,62,136,105"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#ab80d668629ba7db3cf50dc732f0d82b2" title="Resolution of output display device." alt="" coords="211,41,294,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,70,195,61,195,66,136,75"/>
+<area shape="rect" id="Node000003" href="$group__elements.html#a4afa7d83ef0fe47412b62f56f1c3ae11" title="Default." alt="" coords="184,91,321,134"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,91,168,96,168,102,136,96"/>
+<area shape="rect" id="Node000004" href="$group__elements.html#a427e385a78a537bf24b6c3bcb6320365" title=" " alt="" coords="369,99,506,126"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="321,119,353,119,353,124,321,124"/>
+<area shape="poly" id="edge14_Node000004_Node000003" title=" " alt="" coords="368,107,336,106,336,101,369,101"/>
 <area shape="rect" id="Node000005" href="$group__elements.html#a4a6af4e23b9f79f07d58780c128c5638" title=" " alt="" coords="554,66,717,93"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="506,97,539,92,539,97,507,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="506,98,539,93,539,98,507,104"/>
 <area shape="rect" id="Node000010" href="$group__elements.html#a26869d2a66e57c0d83f2df21d25cd875" title=" " alt="" coords="568,121,703,163"/>
-<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="507,118,553,126,552,131,506,124"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="507,120,553,127,552,132,506,126"/>
 <area shape="rect" id="Node000006" href="$group__elements.html#ada0333b46b2547c6152f3f5811016a12" title=" " alt="" coords="934,13,1055,55"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="655,63,703,34,733,20,764,10,804,4,844,3,919,12,919,17,844,8,804,9,765,15,735,25,705,39,657,68"/>
 <area shape="rect" id="Node000008" href="$group__elements.html#ga03da556ae8f749df1cf8463111e996d3" title=" " alt="" coords="765,25,886,67"/>
