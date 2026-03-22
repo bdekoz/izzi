@@ -21,8 +21,8 @@ namespace svg {
 /// Point (x,y) in 2D space, space_type defaults to double.
 using point_2t = std::tuple<space_type, space_type>;
 
-/// Point (x,y) in 2D space with integer weight n.
-using point_2ti = std::tuple<ulong, point_2t>;
+/// Point (x,y) in 2D space with signed integer weight n.
+using point_2ti = std::tuple<long, point_2t>;
 
 /// Point (x,y) in 2D space with integer weight n.
 using point_2td = std::tuple<space_type, point_2t>;
