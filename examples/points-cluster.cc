@@ -24,21 +24,21 @@ test()
   std::cout << "Original points: " << points.size() << "\n\n";
 
   // Test different algorithms
-  auto grid_clusters = clusterPoints(points, radius, "grid");
+  auto grid_clusters = cluster_points_by(points, radius, "grid");
   std::cout << "Grid-based clustering:\n";
-  printClusters(grid_clusters);
+  print_clusters(grid_clusters);
 
-  auto hierarchical_clusters = clusterPoints(points, radius, "hierarchical");
+  auto hierarchical_clusters = cluster_points_by(points, radius, "hierarchical");
   std::cout << "Hierarchical clustering:\n";
-  printClusters(hierarchical_clusters);
+  print_clusters(hierarchical_clusters);
 
-  auto kmeans_clusters = clusterPoints(points, radius, "kmeans");
+  auto kmeans_clusters = cluster_points_by(points, radius, "kmeans");
   std::cout << "Constrained K-Means clustering:\n";
-  printClusters(kmeans_clusters);
+  print_clusters(kmeans_clusters);
 
-  auto voronoi_clusters = clusterPoints(points, radius, "voronoi");
+  auto voronoi_clusters = cluster_points_by(points, radius, "voronoi");
   std::cout << "Voronoi-based clustering:\n";
-  printClusters(voronoi_clusters);
+  print_clusters(voronoi_clusters);
 }
 
 

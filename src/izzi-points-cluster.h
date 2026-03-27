@@ -56,31 +56,31 @@ public:
   vwpoints
   reduce_grid()
   {
-    if (points.empty()) return {};
-
-    // Create grid cells
-    std::unordered_map<std::pair<int, int>, vpoints,
-		       decltype([](const auto& p) {
-			 return std::hash<int>{}(p.first) ^ (std::hash<int>{}(p.second) << 1);
-		       })> grid;
-
-    for (const auto& point : points)
-      {
-	int grid_x = static_cast<int>(point.x / radius);
-	int grid_y = static_cast<int>(point.y / radius);
-	grid[{grid_x, grid_y}].push_back(point);
-      }
-
     vwpoints result;
-    for (const auto& [cell, cell_points] : grid)
+    if (!points.empty())
       {
-	if (!cell_points.empty())
+	// Create grid cells
+	// XXX lambda
+	std::unordered_map<std::pair<int, int>, vpoints,
+			   decltype([](const auto& p) {
+			     return std::hash<int>{}(p.first) ^ (std::hash<int>{}(p.second) << 1);
+			   })> grid;
+
+	for (const auto& point : points)
 	  {
-	    auto centroid = calculate_centroid(cell_points);
-	    result.emplace_back(centroid, cell_points.size());
+	    int grid_x = static_cast<int>(point.x / radius);
+	    int grid_y = static_cast<int>(point.y / radius);
+	    grid[{grid_x, grid_y}].push_back(point);
+	  }
+	for (const auto& [cell, cell_points] : grid)
+	  {
+	    if (!cell_points.empty())
+	      {
+		auto centroid = calculate_centroid(cell_points);
+		result.emplace_back(centroid, cell_points.size());
+	      }
 	  }
       }
-
     return result;
   }
 
@@ -421,8 +421,8 @@ private:
 
 // Main function interface
 vwpoints
-clusterPoints(const vpoints& points, double radius,
-	      const std::string& method)
+cluster_points_by(const vpoints& points, double radius,
+		  const std::string& method)
 {
   point_cluster clusterer(points, radius);
 
@@ -441,7 +441,7 @@ clusterPoints(const vpoints& points, double radius,
 
 // Example usage and test function
 void
-printClusters(const vwpoints& clusters)
+print_clusters(const vwpoints& clusters)
 {
   std::cout << "Clusters found: " << clusters.size() << "\n";
   for (size_t i = 0; i < clusters.size(); ++i)
