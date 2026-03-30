@@ -1,4 +1,5 @@
-// baseline-v7 - Function-generated geojson map
+// deepthink 20260330
+// baseline-v7.3 - Function-generated geojson map with new window wrapper
 function leaflet_map_geojson(geojsonUrl) {
     // Extract title from URL (remove "cumulative.geojson" and clean up)
     function getTitleFromUrl(url) {
@@ -301,9 +302,9 @@ function leaflet_map_geojson(geojsonUrl) {
 
 	// Configuration
 	let config = {
-	    minRadius: 5,
+	    minRadius: 2,
 	    maxRadius: 100,
-	    fillOpacity: 0.5
+	    fillOpacity: 0.2
 	};
 
 	let geoJsonData = null;
@@ -525,9 +526,9 @@ function leaflet_map_geojson(geojsonUrl) {
 			<div style="max-width: 300px;">
 			    <h4>Merged Point (\${props.merged_count} locations)</h4>
 			    <table style="border-collapse: collapse; width: 100%;">
-				<tr><th>Total \${currentCategory}.\${currentProperty}:</th><td><strong>\${props.total_value.toFixed(2)}</strong></td></tr>
-				<tr><th>Average:</th><td>\${props.avg_value.toFixed(2)}</td></tr>
-				<tr><th colspan="2" style="padding-top: 10px;">Original values:</th></tr>
+				 <tr><th>Total \${currentCategory}.\${currentProperty}:</th><td><strong>\${props.total_value.toFixed(2)}</strong></td></tr>
+				 <tr><th>Average:</th><td>\${props.avg_value.toFixed(2)}</td></tr>
+				 <tr><th colspan="2" style="padding-top: 10px;">Original values:</th></tr>
 		    \`;
 
 		    props.original_properties.slice(0, 5).forEach((origProps, idx) => {
@@ -540,9 +541,9 @@ function leaflet_map_geojson(geojsonUrl) {
 			}
 
 			popupContent += \`
-			    <tr><td colspan="2" style="border-top: 1px solid #eee; padding: 5px 0;">
+			     <tr><td colspan="2" style="border-top: 1px solid #eee; padding: 5px 0;">
 				Point \${idx + 1}: \${origValue}
-			    </td></tr>
+			     </td></tr>
 			\`;
 		    });
 
