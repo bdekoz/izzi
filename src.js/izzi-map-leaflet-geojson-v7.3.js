@@ -232,7 +232,7 @@ function leaflet_map_geojson(geojsonUrl) {
 	    <h4>Circle Style</h4>
 	    <div class="config-row">
 		<label for="min-radius">Min radius:</label>
-		<input type="number" id="min-radius" min="1" max="50" value="5" step="1">
+		<input type="number" id="min-radius" min="1" max="50" value="2" step="1">
 		<span>pixels</span>
 	    </div>
 	    <div class="config-row">
@@ -242,7 +242,7 @@ function leaflet_map_geojson(geojsonUrl) {
 	    </div>
 	    <div class="config-row">
 		<label for="fill-opacity">Fill opacity:</label>
-		<input type="number" id="fill-opacity" min="0" max="100" value="50" step="5">
+		<input type="number" id="fill-opacity" min="0" max="100" value="20" step="5">
 		<span>%</span>
 	    </div>
 	    <button id="apply-style" class="secondary" style="margin: 5px 0 0;">Apply Style</button>
