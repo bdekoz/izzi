@@ -1,0 +1,106 @@
+/* izzi-table-wcag-22.css - WCAG 2.2 compliant table styles */
+
+/* Screen reader only class - visually hidden but accessible */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Accessibility improvements for links */
+.map-link {
+    display: inline-block;
+    padding: 8px 12px;
+    color: #0066cc;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* Focus indicator for keyboard navigation */
+.map-link:focus {
+    outline: 3px solid #0066cc;
+    outline-offset: 3px;
+    background-color: #f0f7ff;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+/* Hover state for mouse users */
+.map-link:hover {
+    color: #004499;
+    text-decoration: none;
+    background-color: #f0f7ff;
+    border-radius: 3px;
+}
+
+/* Ensure sufficient color contrast (WCAG AA: 4.5:1) */
+.map-link:visited {
+    color: #6b4c9b;
+}
+
+/* Table cell focus styles */
+td:focus-within, th:focus-within {
+    outline: none;
+    background-color: #f8f9fa;
+}
+
+/* Ensure table is responsive */
+@media (max-width: 768px) {
+    .map-link {
+        display: block;
+        text-align: center;
+        margin: 5px 0;
+    }
+    
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    .sr-only {
+        display: none;
+    }
+    
+    tr {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    
+    td, th {
+        display: block;
+        text-align: center;
+        width: 100% !important;
+        padding: 8px !important;
+    }
+}
+
+/* Optional: Add zebra striping for better readability */
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Ensure table has proper spacing */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
