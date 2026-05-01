@@ -14,7 +14,15 @@
     border-width: 0;
 }
 
-/* Accessibility improvements for links */
+/* H3 Caption */
+.caption-h3 {
+    text-align: left;
+    padding: 8px;
+    font-weight: bold;
+    caption-side: top;
+}
+
+/* Accessibility improvements for Table Cells */
 .table-cell {
     display: inline-block;
     padding: 8px 12px;
