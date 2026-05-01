@@ -243,8 +243,7 @@ serialize_2_image_table(const string& gtitlelc)
 
 /// Caption element, both without styling and as H3 element in markdown.
 const string cap = "<caption>";
-const string capH3 = R"_delimiter_(<caption style="font-size: 1.17em; font-weight: bold; margin: 1em 0; text-align: left;">)_delimiter_";
-
+const string capH3 = R"_delimiter_(<caption class="caption-h3">)_delimiter_";
 
 
 /// Serialize information about the analysis passes as an html table.
@@ -298,23 +297,18 @@ serialize_meta_collection_table(const string& gtitlelc, const string sdur,
       ofs << "<table>" << svg::k::newline;
       ofs << thead << svg::k::newline;
 
-#if 0
-      string tts(gtitlelc);
-      std::ranges::replace(tts, k::hyphen, k::space);
-      ofs << cap << tts << "</caption>" << svg::k::newline;
-#else
       ofs << capH3 << "Aggregate Table" << "</caption>" << svg::k::newline;
-#endif
 
       ofs << "<tbody>" << svg::k::newline;
       ofs << "<tr>" << svg::k::newline;
 
-      ofs << "<td>" << sdur << "</td>" << svg::k::newline;
-      ofs << "<td>" << btihasz << "</td>" << svg::k::newline;
-      ofs << "<td>" << dl << "</td>" << svg::k::newline;
-      ofs << "<td>" << dl / btihasz << "</td>" << svg::k::newline;
-      ofs << "<td>" << ul << "</td>" << svg::k::newline;
-      ofs << "<td>" << ul / btihasz << "</td>" << svg::k::newline;
+      const string td = R"_delimiter_(<td scope="row" class="table-cell")_delimiter_";
+      ofs << td << sdur << "</td>" << svg::k::newline;
+      ofs << td << btihasz << "</td>" << svg::k::newline;
+      ofs << td << dl << "</td>" << svg::k::newline;
+      ofs << td << dl / btihasz << "</td>" << svg::k::newline;
+      ofs << td << ul << "</td>" << svg::k::newline;
+      ofs << td << ul / btihasz << "</td>" << svg::k::newline;
 
       ofs << "</tr>" << svg::k::newline;
       ofs << "</tbody>" << svg::k::newline;
