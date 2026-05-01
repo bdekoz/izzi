@@ -187,7 +187,7 @@ serialize_link_row_2c_4f(string_view uri1, string_view link1,
   // th elements == center
 
   // NB: Use {{}} for literal quoting, as src may have '/' and '&' etc.
-  constexpr const char* tdblank = R"_delimiter_(<th style="padding: 5px;"><a href="{}"> {} </a></th>)_delimiter_";
+  constexpr const char* tdblank = R"_delimiter_(<td style="padding: 5px;"><a href="{}"> {} </a></td>)_delimiter_";
 
   ostringstream oss;
   oss << "<tr>" << svg::k::newline;
@@ -207,7 +207,7 @@ serialize_image_row_2c_4f(string_view img1src, string_view img1alt,
   // th elements == center
 
   // NB: Use {{}} for literal quoting, as src may have '/' and '&' etc.
-  constexpr const char* tdblank = R"_delimiter_(<th style="padding: 5px;"><img src="{{}}" alt="{{}}" width="50%"></th>)_delimiter_";
+  constexpr const char* tdblank = R"_delimiter_(<td style="padding: 5px;"><img src="{{}}" alt="{{}}" width="50%"></td>)_delimiter_";
 
   ostringstream oss;
   oss << "<tr>" << svg::k::newline;
@@ -310,7 +310,7 @@ serialize_meta_collection_table(const string& gtitlelc, const string sdur,
       ofs << "<tr>" << svg::k::newline;
 
       ofs << "<td>" << sdur << "</td>" << svg::k::newline;
-      ofs << "<th>" << btihasz << "</th>" << svg::k::newline;
+      ofs << "<td>" << btihasz << "</td>" << svg::k::newline;
       ofs << "<td>" << dl << "</td>" << svg::k::newline;
       ofs << "<td>" << dl / btihasz << "</td>" << svg::k::newline;
       ofs << "<td>" << ul << "</td>" << svg::k::newline;
