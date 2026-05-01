@@ -1,5 +1,5 @@
-/* izzi-table-wcag-22.css - WCAG 2.2 compliant table styles */
-/* 20260430 deepseek wcag 2.2 audit */
+/* izzi-table-wcag-22.1.css - WCAG 2.2 compliant table styles */
+/* 20260501 deepseek wcag 2.2 audit | v2.1 Zebra class refactored */
 
 /* Screen reader only class - visually hidden but accessible */
 .sr-only {
@@ -22,8 +22,14 @@
     caption-side: top;
 }
 
-/* Accessibility improvements for Table Cells */
+/* Accessibility improvements for Tables */
 .table-cell {
+    padding: 8px 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.table-link {
     display: inline-block;
     padding: 8px 12px;
     color: #0066cc;
@@ -33,7 +39,8 @@
 }
 
 /* Focus indicator for keyboard navigation */
-.table-cell:focus {
+.table-cell:focus,
+.table-link:focus {
     outline: 3px solid #0066cc;
     outline-offset: 3px;
     background-color: #f0f7ff;
@@ -42,58 +49,29 @@
 }
 
 /* Hover state for mouse users */
-.table-cell:hover {
+.table-cell:hover,
+.table-link:hover {
     color: #004499;
-    text-decoration: none;
     background-color: #f0f7ff;
     border-radius: 3px;
+    text-decoration: none;
 }
 
 /* Ensure sufficient color contrast (WCAG AA: 4.5:1) */
-.table-cell:visited {
+.table-cell:visited,
+.table-link:visited {
     color: #6b4c9b;
 }
 
-/* Table cell focus styles */
-td:focus-within, th:focus-within {
-    outline: none;
+/* table body striping */
+/* Add class="tbody-zebra" to <tbody> for alternating row colors */
+.tbody-zebra tr:nth-child(even) {
     background-color: #f8f9fa;
 }
 
-/* Ensure table is responsive */
-@media (max-width: 768px) {
-    .table-cell {
-	display: block;
-	text-align: center;
-	margin: 5px 0;
-    }
-
-    table, thead, tbody, th, td, tr {
-	display: block;
-    }
-
-    .sr-only {
-	display: none;
-    }
-
-    tr {
-	margin-bottom: 20px;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	padding: 10px;
-    }
-
-    td, th {
-	display: block;
-	text-align: center;
-	width: 100% !important;
-	padding: 8px !important;
-    }
-}
-
-/* Optional: Add zebra striping for better readability */
-tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
+/* Optional: Darker hover on zebra rows for better interaction */
+.tbody-zebra tr:hover {
+    background-color: #e9ecef;
 }
 
 /* Ensure table has proper spacing */
@@ -112,4 +90,41 @@ th, td {
 th {
     background-color: #f8f9fa;
     font-weight: 600;
+}
+
+/* Ensure table is responsive */
+@media (max-width: 768px) {
+    .table-cell {
+        display: block;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .table-link {
+        display: block;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    .sr-only {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    td, th {
+        display: block;
+        text-align: center;
+        width: 100% !important;
+        padding: 8px !important;
+    }
 }
