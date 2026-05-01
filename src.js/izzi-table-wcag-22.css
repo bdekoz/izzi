@@ -15,7 +15,7 @@
 }
 
 /* Accessibility improvements for links */
-.map-link {
+.table-cell {
     display: inline-block;
     padding: 8px 12px;
     color: #0066cc;
@@ -25,7 +25,7 @@
 }
 
 /* Focus indicator for keyboard navigation */
-.map-link:focus {
+.table-cell:focus {
     outline: 3px solid #0066cc;
     outline-offset: 3px;
     background-color: #f0f7ff;
@@ -34,7 +34,7 @@
 }
 
 /* Hover state for mouse users */
-.map-link:hover {
+.table-cell:hover {
     color: #004499;
     text-decoration: none;
     background-color: #f0f7ff;
@@ -42,7 +42,7 @@
 }
 
 /* Ensure sufficient color contrast (WCAG AA: 4.5:1) */
-.map-link:visited {
+.table-cell:visited {
     color: #6b4c9b;
 }
 
@@ -54,32 +54,32 @@ td:focus-within, th:focus-within {
 
 /* Ensure table is responsive */
 @media (max-width: 768px) {
-    .map-link {
-        display: block;
-        text-align: center;
-        margin: 5px 0;
+    .table-cell {
+	display: block;
+	text-align: center;
+	margin: 5px 0;
     }
-    
+
     table, thead, tbody, th, td, tr {
-        display: block;
+	display: block;
     }
-    
+
     .sr-only {
-        display: none;
+	display: none;
     }
-    
+
     tr {
-        margin-bottom: 20px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 10px;
     }
-    
+
     td, th {
-        display: block;
-        text-align: center;
-        width: 100% !important;
-        padding: 8px !important;
+	display: block;
+	text-align: center;
+	width: 100% !important;
+	padding: 8px !important;
     }
 }
 
@@ -96,7 +96,7 @@ table {
 }
 
 th, td {
-    padding: 12px;
+    padding: 6px;
     text-align: left;
     border: 1px solid #dee2e6;
 }
