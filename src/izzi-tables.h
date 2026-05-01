@@ -332,16 +332,15 @@ serialize_row_6c_8f(const string moname, const uint btihasz,
 
   oss << "<tr>" << svg::k::newline;
 
-  // td elements == left
-  // th elements == center
-  oss << "<td>" << moname << "</td>" << svg::k::newline;
-  oss << "<td>" << weeksn << "</td>" << svg::k::newline;
-  oss << "<td>" << sdates << "</td>" << svg::k::newline;
-  oss << "<td>" << btihasz << "</td>" << svg::k::newline;
-  oss << "<td>" << dl << "</td>" << svg::k::newline;
-  oss << "<td>" << dl / btihasz << "</td>" << svg::k::newline;
-  oss << "<td>" << ul << "</td>" << svg::k::newline;
-  oss << "<td>" << ul / btihasz << "</td>" << svg::k::newline;
+  const string td = R"_delimiter_(<td scope="row" class="table-cell")_delimiter_";
+  oss << td << moname << "</td>" << svg::k::newline;
+  oss << td << weeksn << "</td>" << svg::k::newline;
+  oss << td << sdates << "</td>" << svg::k::newline;
+  oss << td << btihasz << "</td>" << svg::k::newline;
+  oss << td << dl << "</td>" << svg::k::newline;
+  oss << td << dl / btihasz << "</td>" << svg::k::newline;
+  oss << td << ul << "</td>" << svg::k::newline;
+  oss << td << ul / btihasz << "</td>" << svg::k::newline;
 
   oss << "</tr>" << svg::k::newline;
 
