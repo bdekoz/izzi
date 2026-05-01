@@ -302,7 +302,7 @@ serialize_meta_collection_table(const string& gtitlelc, const string sdur,
       ofs << "<tbody>" << svg::k::newline;
       ofs << "<tr>" << svg::k::newline;
 
-      const string td = R"_delimiter_(<td scope="row" class="table-cell")_delimiter_";
+      const string td = R"_delimiter_(<td scope="row" class="table-cell">)_delimiter_";
       ofs << td << sdur << "</td>" << svg::k::newline;
       ofs << td << btihasz << "</td>" << svg::k::newline;
       ofs << td << dl << "</td>" << svg::k::newline;
@@ -332,7 +332,7 @@ serialize_row_6c_8f(const string moname, const uint btihasz,
 
   oss << "<tr>" << svg::k::newline;
 
-  const string td = R"_delimiter_(<td scope="row" class="table-cell")_delimiter_";
+  const string td = R"_delimiter_(<td scope="row" class="table-cell">)_delimiter_";
   oss << td << moname << "</td>" << svg::k::newline;
   oss << td << weeksn << "</td>" << svg::k::newline;
   oss << td << sdates << "</td>" << svg::k::newline;
