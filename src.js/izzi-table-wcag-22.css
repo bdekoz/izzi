@@ -1,5 +1,5 @@
 /* izzi-table-wcag-22.1.css - WCAG 2.2 compliant table styles */
-/* 20260501 deepseek wcag 2.2 audit | v2.1 Zebra class refactored */
+/* 20260503 deepseek x gemini wcag 2.2 audit | v2.3 h3 summary */
 
 /* Screen reader only class - visually hidden but accessible */
 .sr-only {
@@ -12,6 +12,12 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+}
+
+/* Make summary h3 inherit whatever the page's h3 styles are */
+summary h3 {
+    all: revert;
+    display: inline-block;  /* optional: keeps summary inline behavior */
 }
 
 /* H3 Caption */
@@ -95,36 +101,36 @@ th {
 /* Ensure table is responsive */
 @media (max-width: 768px) {
     .table-cell {
-        display: block;
-        text-align: center;
-        margin: 5px 0;
+	display: block;
+	text-align: center;
+	margin: 5px 0;
     }
 
     .table-link {
-        display: block;
-        text-align: center;
-        margin: 5px 0;
+	display: block;
+	text-align: center;
+	margin: 5px 0;
     }
 
     table, thead, tbody, th, td, tr {
-        display: block;
+	display: block;
     }
 
     .sr-only {
-        display: none;
+	display: none;
     }
 
     tr {
-        margin-bottom: 20px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 10px;
     }
 
     td, th {
-        display: block;
-        text-align: center;
-        width: 100% !important;
-        padding: 8px !important;
+	display: block;
+	text-align: center;
+	width: 100% !important;
+	padding: 8px !important;
     }
 }
