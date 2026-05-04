@@ -14,10 +14,14 @@
     border-width: 0;
 }
 
-/* Make summary h3 inherit whatever the page's h3 styles are */
+/* Revert only font properties for summary h3 */
 summary h3 {
-    all: revert;
-    display: inline-block;  /* optional: keeps summary inline behavior */
+    font: revert-layer;
+    font-size: revert-layer;
+    font-weight: revert-layer;
+    font-family: revert-layer;
+    font-style: revert-layer;
+    line-height: revert-layer;
 }
 
 /* H3 Caption */
