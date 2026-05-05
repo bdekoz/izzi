@@ -14,22 +14,25 @@
     border-width: 0;
 }
 
-/* Revert only font properties for summary h3 */
-summary h3 {
+/* Remove background and border from details container */
+summary {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/* There are two table types, one with a hide button or not. */
+/* Revert these properties for matching h3 styles in both */
+details summary h3,
+table caption h3 {
+    text-align: left;
+    color:revert-layer;
     font: revert-layer;
     font-size: revert-layer;
     font-weight: revert-layer;
     font-family: revert-layer;
     font-style: revert-layer;
     line-height: revert-layer;
-}
-
-/* H3 Caption */
-.caption-h3 {
-    text-align: left;
-    padding: 8px;
-    font-weight: bold;
-    caption-side: top;
 }
 
 /* Accessibility improvements for Tables */
