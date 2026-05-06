@@ -1,13 +1,13 @@
 /*
- *   File:  izzi-table-stort-wcag-22.js
- *   Desc:  Adds sorting to a HTML data table that implements ARIA Authoring Practices
+ *
+ *   File:  izzi-table-sort-22.js
+ *   Info:  Adds style-free sorting to a HTML data table with ARIA tags
  *   URL:   https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
- *   ver:   20260506:6
+ *   Ver:   20260506:9
  *
- *   This content is derived from sources originally licensed according to:
- *   the W3C Software License at
+ *   This content is derived from
+ *   Sources licensed according to the W3C Software License at
  *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
  */
 
 'use strict';
@@ -16,47 +16,70 @@ class SortableTable {
   constructor(tableNode) {
     this.tableNode = tableNode;
 
-    this.columnHeaders = tableNode.querySelectorAll('thead th');
+    // Get ALL header cells in the thead (including all rows)
+    this.allHeaders = tableNode.querySelectorAll('thead th');
 
+    // Find which header cells actually contain buttons (these are the sortable columns)
+    this.columnHeaders = [];
     this.sortColumns = [];
 
-    for (var i = 0; i < this.columnHeaders.length; i++) {
-      var ch = this.columnHeaders[i];
+    for (var i = 0; i < this.allHeaders.length; i++) {
+      var ch = this.allHeaders[i];
       var buttonNode = ch.querySelector('button');
       if (buttonNode) {
-	this.sortColumns.push(i);
-	buttonNode.setAttribute('data-column-index', i);
+	// Store the actual DOM element and its logical column index
+	this.columnHeaders.push({
+	  element: ch,
+	  button: buttonNode,
+	  columnIndex: this.getActualColumnIndex(ch)
+	});
+
+	buttonNode.setAttribute('data-column-index', this.columnHeaders[this.columnHeaders.length - 1].columnIndex);
 	buttonNode.addEventListener('click', this.handleClick.bind(this));
-      }
-    }
-
-    this.optionCheckbox = document.querySelector(
-      'input[type="checkbox"][value="show-unsorted-icon"]'
-    );
-
-    if (this.optionCheckbox) {
-      this.optionCheckbox.addEventListener(
-	'change',
-	this.handleOptionChange.bind(this)
-      );
-      if (this.optionCheckbox.checked) {
-	this.tableNode.classList.add('show-unsorted-icon');
       }
     }
   }
 
-  // Exact copy of the working parseNumber function from izzi-table-sort-inline.js
+  // Helper to find the actual data column index for a header cell (handles colspan)
+  getActualColumnIndex(headerCell) {
+    // Get the table body rows to determine column count
+    var firstDataRow = this.tableNode.querySelector('tbody tr');
+    if (!firstDataRow) return 0;
+
+    // Find which column in the data row aligns with this header
+    var headerRow = headerCell.parentElement;
+    var headerCellsInRow = headerRow.querySelectorAll('th, td');
+
+    var colSpanOffset = 0;
+    for (var i = 0; i < headerCellsInRow.length; i++) {
+      if (headerCellsInRow[i] === headerCell) {
+	return colSpanOffset;
+      }
+      // Account for colspan in previous header cells
+      var colspan = parseInt(headerCellsInRow[i].getAttribute('colspan'));
+      if (!isNaN(colspan)) {
+	colSpanOffset += colspan;
+      } else {
+	colSpanOffset += 1;
+      }
+    }
+
+    return colSpanOffset;
+  }
+
   parseNumber(str) {
     if (!str) return null;
 
     // Remove commas and trim whitespace
-    const cleaned = str.replace(/,/g, '').trim();
+    var cleaned = str.replace(/,/g, '').trim();
 
     // Check if it's a valid number
-    if (cleaned === '' || isNaN(cleaned)) return null;
+    if (cleaned === '') return null;
 
-    const num = Number(cleaned);
-    return isNaN(num) ? null : num;
+    var num = Number(cleaned);
+    if (isNaN(num)) return null;
+
+    return num;
   }
 
   setColumnHeaderSort(columnIndex) {
@@ -64,10 +87,22 @@ class SortableTable {
       columnIndex = parseInt(columnIndex);
     }
 
+    // Find the header element that corresponds to this column index
+    var targetHeader = null;
     for (var i = 0; i < this.columnHeaders.length; i++) {
-      var ch = this.columnHeaders[i];
-      var buttonNode = ch.querySelector('button');
-      if (i === columnIndex) {
+      if (this.columnHeaders[i].columnIndex === columnIndex) {
+	targetHeader = this.columnHeaders[i].element;
+	break;
+      }
+    }
+
+    if (!targetHeader) return;
+
+    for (var i = 0; i < this.columnHeaders.length; i++) {
+      var ch = this.columnHeaders[i].element;
+      var buttonNode = this.columnHeaders[i].button;
+
+      if (ch === targetHeader) {
 	var value = ch.getAttribute('aria-sort');
 	if (value === 'descending') {
 	  ch.setAttribute('aria-sort', 'ascending');
@@ -85,34 +120,58 @@ class SortableTable {
   }
 
   sortColumn(columnIndex, sortValue) {
-    var tbodyNode = this.tableNode.querySelector('tbody');
-    var rows = Array.from(tbodyNode.rows);
+    // Get the main tbody (skip any thead or tfoot)
+    var tbodyNode = this.tableNode.querySelector('tbody:not(.sr-only)');
+    if (!tbodyNode) return;
 
-    // Convert sortValue to boolean asc (true for ascending, false for descending)
-    var asc = (sortValue === 'ascending');
-
-    var self = this;
-    rows.sort(function(a, b) {
-      // Get cell values - use innerText like the working version
-      var x = a.cells[columnIndex].innerText.trim();
-      var y = b.cells[columnIndex].innerText.trim();
-
-      // Check if both values are numbers (including formatted numbers with commas)
-      var xNum = self.parseNumber(x);
-      var yNum = self.parseNumber(y);
-
-      if (xNum !== null && yNum !== null) {
-	// Both are numbers - sort numerically
-	return asc ? xNum - yNum : yNum - xNum;
-      } else {
-	// At least one is text - sort as strings
-	return asc ? x.localeCompare(y) : y.localeCompare(x);
-      }
+    // Get all rows in the tbody
+    var rows = Array.from(tbodyNode.children).filter(function(el) {
+      return el.tagName === 'TR';
     });
 
-    // Re-append sorted rows
-    rows.forEach(function(row) {
-      tbodyNode.appendChild(row);
+    if (rows.length === 0) return;
+
+    var asc = (sortValue === 'ascending');
+    var self = this;
+
+    // Create array of objects with row and its value
+    var rowsWithValues = rows.map(function(row, idx) {
+      var cell = row.cells[columnIndex];
+      var rawValue = cell ? cell.innerText.trim() : '';
+      var numericValue = self.parseNumber(rawValue);
+
+      return {
+	row: row,
+	originalIndex: idx,
+	rawValue: rawValue,
+	value: numericValue !== null ? numericValue : rawValue,
+	isNumeric: numericValue !== null
+      };
+    });
+
+    // Sort the array
+    rowsWithValues.sort(function(a, b) {
+      var result = 0;
+
+      if (a.isNumeric && b.isNumeric) {
+	// Both are numbers
+	result = a.value - b.value;
+      } else if (!a.isNumeric && !b.isNumeric) {
+	// Both are strings
+	result = a.value.localeCompare(b.value);
+      } else {
+	// Mixed type - numbers come before strings? Actually let's treat numbers as smaller
+	if (a.isNumeric) result = -1;
+	else result = 1;
+      }
+
+      // Reverse for descending
+      return asc ? result : -result;
+    });
+
+    // Reorder the DOM
+    rowsWithValues.forEach(function(item) {
+      tbodyNode.appendChild(item.row);
     });
   }
 
@@ -120,17 +179,8 @@ class SortableTable {
 
   handleClick(event) {
     var tgt = event.currentTarget;
-    this.setColumnHeaderSort(tgt.getAttribute('data-column-index'));
-  }
-
-  handleOptionChange(event) {
-    var tgt = event.currentTarget;
-
-    if (tgt.checked) {
-      this.tableNode.classList.add('show-unsorted-icon');
-    } else {
-      this.tableNode.classList.remove('show-unsorted-icon');
-    }
+    var columnIndex = parseInt(tgt.getAttribute('data-column-index'));
+    this.setColumnHeaderSort(columnIndex);
   }
 }
 
