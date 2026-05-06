@@ -5,7 +5,7 @@
  *   File:  sortable-table.js
  *   Desc:  Adds sorting to a HTML data table that implements ARIA Authoring Practices
  *   URL:   https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
- *   ver:   20260505:2
+ *   ver:   20260505:3
  */
 
 'use strict';
@@ -22,9 +22,9 @@ class SortableTable {
       var ch = this.columnHeaders[i];
       var buttonNode = ch.querySelector('button');
       if (buttonNode) {
-	this.sortColumns.push(i);
-	buttonNode.setAttribute('data-column-index', i);
-	buttonNode.addEventListener('click', this.handleClick.bind(this));
+        this.sortColumns.push(i);
+        buttonNode.setAttribute('data-column-index', i);
+        buttonNode.addEventListener('click', this.handleClick.bind(this));
       }
     }
 
@@ -34,13 +34,27 @@ class SortableTable {
 
     if (this.optionCheckbox) {
       this.optionCheckbox.addEventListener(
-	'change',
-	this.handleOptionChange.bind(this)
+        'change',
+        this.handleOptionChange.bind(this)
       );
       if (this.optionCheckbox.checked) {
-	this.tableNode.classList.add('show-unsorted-icon');
+        this.tableNode.classList.add('show-unsorted-icon');
       }
     }
+  }
+
+  // Helper function to parse numbers from strings (handles commas, decimals, etc.)
+  parseNumber(str) {
+    if (!str) return null;
+
+    // Remove commas and trim whitespace
+    const cleaned = str.replace(/,/g, '').trim();
+
+    // Check if it's a valid number
+    if (cleaned === '' || isNaN(cleaned)) return null;
+
+    const num = Number(cleaned);
+    return isNaN(num) ? null : num;
   }
 
   setColumnHeaderSort(columnIndex) {
@@ -52,57 +66,45 @@ class SortableTable {
       var ch = this.columnHeaders[i];
       var buttonNode = ch.querySelector('button');
       if (i === columnIndex) {
-	var value = ch.getAttribute('aria-sort');
-	if (value === 'descending') {
-	  ch.setAttribute('aria-sort', 'ascending');
-	  this.sortColumn(
-	    columnIndex,
-	    'ascending',
-	    ch.classList.contains('num')
-	  );
-	} else {
-	  ch.setAttribute('aria-sort', 'descending');
-	  this.sortColumn(
-	    columnIndex,
-	    'descending',
-	    ch.classList.contains('num')
-	  );
-	}
+        var value = ch.getAttribute('aria-sort');
+        if (value === 'descending') {
+          ch.setAttribute('aria-sort', 'ascending');
+          this.sortColumn(columnIndex, 'ascending');
+        } else {
+          ch.setAttribute('aria-sort', 'descending');
+          this.sortColumn(columnIndex, 'descending');
+        }
       } else {
-	if (ch.hasAttribute('aria-sort') && buttonNode) {
-	  ch.removeAttribute('aria-sort');
-	}
+        if (ch.hasAttribute('aria-sort') && buttonNode) {
+          ch.removeAttribute('aria-sort');
+        }
       }
     }
   }
 
-  sortColumn(columnIndex, sortValue, isNumber) {
-    function compareValues(a, b) {
-      if (sortValue === 'ascending') {
-	if (a.value === b.value) {
-	  return 0;
-	} else {
-	  if (isNumber) {
-	    return a.value - b.value;
-	  } else {
-	      return a.localeCompare(b);
-	  }
-	}
-      } else {
-	if (a.value === b.value) {
-	  return 0;
-	} else {
-	  if (isNumber) {
-	    return b.value - a.value;
-	  } else {
-	      return b.localeCompare(a);
-	  }
-	}
-      }
-    }
+  sortColumn(columnIndex, sortValue) {
+    function compareValues(a, b, sortValue, parseNumberFn) {
+      const x = a.value;
+      const y = b.value;
+      
+      const xNum = parseNumberFn(x);
+      const yNum = parseNumberFn(y);
 
-    if (typeof isNumber !== 'boolean') {
-      isNumber = false;
+      if (xNum !== null && yNum !== null) {
+        // Both are numbers - sort numerically
+        if (sortValue === 'ascending') {
+          return xNum - yNum;
+        } else {
+          return yNum - xNum;
+        }
+      } else {
+        // At least one is text - sort as strings
+        if (sortValue === 'ascending') {
+          return x.localeCompare(y);
+        } else {
+          return y.localeCompare(x);
+        }
+      }
     }
 
     var tbodyNode = this.tableNode.querySelector('tbody');
@@ -120,15 +122,16 @@ class SortableTable {
       var data = {};
       data.index = index;
       data.value = dataCell.textContent.toLowerCase().trim();
-      if (isNumber) {
-	data.value = parseFloat(data.value);
-      }
       dataCells.push(data);
       rowNode = rowNode.nextElementSibling;
       index += 1;
     }
 
-    dataCells.sort(compareValues);
+    // Bind the parseNumber function and sortValue to the compare function
+    var self = this;
+    dataCells.sort(function(a, b) {
+      return compareValues(a, b, sortValue, self.parseNumber.bind(self));
+    });
 
     // remove rows
     while (tbodyNode.firstChild) {
