@@ -1,11 +1,13 @@
 /*
- *   This content is licensed according to the W3C Software License at
- *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- *
- *   File:  sortable-table.js
+ *   File:  izzi-table-stort-wcag-22.js
  *   Desc:  Adds sorting to a HTML data table that implements ARIA Authoring Practices
  *   URL:   https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
- *   ver:   20260506:5
+ *   ver:   20260506:6
+ *
+ *   This content is derived from sources originally licensed according to:
+ *   the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ *
  */
 
 'use strict';
@@ -22,9 +24,9 @@ class SortableTable {
       var ch = this.columnHeaders[i];
       var buttonNode = ch.querySelector('button');
       if (buttonNode) {
-        this.sortColumns.push(i);
-        buttonNode.setAttribute('data-column-index', i);
-        buttonNode.addEventListener('click', this.handleClick.bind(this));
+	this.sortColumns.push(i);
+	buttonNode.setAttribute('data-column-index', i);
+	buttonNode.addEventListener('click', this.handleClick.bind(this));
       }
     }
 
@@ -34,31 +36,27 @@ class SortableTable {
 
     if (this.optionCheckbox) {
       this.optionCheckbox.addEventListener(
-        'change',
-        this.handleOptionChange.bind(this)
+	'change',
+	this.handleOptionChange.bind(this)
       );
       if (this.optionCheckbox.checked) {
-        this.tableNode.classList.add('show-unsorted-icon');
+	this.tableNode.classList.add('show-unsorted-icon');
       }
     }
   }
 
-  // Fixed: Proper number parsing that actually works
-  getNumericValue(str) {
-    if (!str || str === '') return null;
-    
-    // Remove commas and trim
-    var cleaned = str.replace(/,/g, '').trim();
-    
-    // Try to convert to number
-    var num = parseFloat(cleaned);
-    
-    // Check if it's a valid number (not NaN and finite)
-    if (!isNaN(num) && isFinite(num)) {
-      return num;
-    }
-    
-    return null;
+  // Exact copy of the working parseNumber function from izzi-table-sort-inline.js
+  parseNumber(str) {
+    if (!str) return null;
+
+    // Remove commas and trim whitespace
+    const cleaned = str.replace(/,/g, '').trim();
+
+    // Check if it's a valid number
+    if (cleaned === '' || isNaN(cleaned)) return null;
+
+    const num = Number(cleaned);
+    return isNaN(num) ? null : num;
   }
 
   setColumnHeaderSort(columnIndex) {
@@ -70,88 +68,52 @@ class SortableTable {
       var ch = this.columnHeaders[i];
       var buttonNode = ch.querySelector('button');
       if (i === columnIndex) {
-        var value = ch.getAttribute('aria-sort');
-        if (value === 'descending') {
-          ch.setAttribute('aria-sort', 'ascending');
-          this.sortColumn(columnIndex, 'ascending');
-        } else {
-          ch.setAttribute('aria-sort', 'descending');
-          this.sortColumn(columnIndex, 'descending');
-        }
+	var value = ch.getAttribute('aria-sort');
+	if (value === 'descending') {
+	  ch.setAttribute('aria-sort', 'ascending');
+	  this.sortColumn(columnIndex, 'ascending');
+	} else {
+	  ch.setAttribute('aria-sort', 'descending');
+	  this.sortColumn(columnIndex, 'descending');
+	}
       } else {
-        if (ch.hasAttribute('aria-sort') && buttonNode) {
-          ch.removeAttribute('aria-sort');
-        }
+	if (ch.hasAttribute('aria-sort') && buttonNode) {
+	  ch.removeAttribute('aria-sort');
+	}
       }
     }
   }
 
   sortColumn(columnIndex, sortValue) {
     var tbodyNode = this.tableNode.querySelector('tbody');
-    var rowNodes = [];
-    var dataCells = [];
+    var rows = Array.from(tbodyNode.rows);
 
-    var rowNode = tbodyNode.firstElementChild;
+    // Convert sortValue to boolean asc (true for ascending, false for descending)
+    var asc = (sortValue === 'ascending');
 
-    var index = 0;
-    while (rowNode) {
-      rowNodes.push(rowNode);
-      var rowCells = rowNode.querySelectorAll('th, td');
-      var dataCell = rowCells[columnIndex];
-      
-      // Get the raw text and try to parse as number
-      var rawValue = dataCell.textContent.trim();
-      var numericValue = this.getNumericValue(rawValue);
-      
-      var data = {
-        index: index,
-        rawValue: rawValue,
-        numericValue: numericValue,
-        isNumeric: numericValue !== null
-      };
-      
-      dataCells.push(data);
-      rowNode = rowNode.nextElementSibling;
-      index += 1;
-    }
-
-    // Sort the data
     var self = this;
-    dataCells.sort(function(a, b) {
-      var result = 0;
-      
-      // Check if both values are numeric
-      if (a.isNumeric && b.isNumeric) {
-        // Numeric comparison
-        if (sortValue === 'ascending') {
-          result = a.numericValue - b.numericValue;
-        } else {
-          result = b.numericValue - a.numericValue;
-        }
+    rows.sort(function(a, b) {
+      // Get cell values - use innerText like the working version
+      var x = a.cells[columnIndex].innerText.trim();
+      var y = b.cells[columnIndex].innerText.trim();
+
+      // Check if both values are numbers (including formatted numbers with commas)
+      var xNum = self.parseNumber(x);
+      var yNum = self.parseNumber(y);
+
+      if (xNum !== null && yNum !== null) {
+	// Both are numbers - sort numerically
+	return asc ? xNum - yNum : yNum - xNum;
       } else {
-        // String comparison - use lower case for case-insensitive
-        var aStr = a.rawValue.toLowerCase();
-        var bStr = b.rawValue.toLowerCase();
-        
-        if (sortValue === 'ascending') {
-          result = aStr.localeCompare(bStr);
-        } else {
-          result = bStr.localeCompare(aStr);
-        }
+	// At least one is text - sort as strings
+	return asc ? x.localeCompare(y) : y.localeCompare(x);
       }
-      
-      return result;
     });
 
-    // Remove all rows
-    while (tbodyNode.firstChild) {
-      tbodyNode.removeChild(tbodyNode.firstChild);
-    }
-
-    // Append sorted rows
-    for (var i = 0; i < dataCells.length; i += 1) {
-      tbodyNode.appendChild(rowNodes[dataCells[i].index]);
-    }
+    // Re-append sorted rows
+    rows.forEach(function(row) {
+      tbodyNode.appendChild(row);
+    });
   }
 
   /* EVENT HANDLERS */
