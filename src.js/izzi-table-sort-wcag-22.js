@@ -2,11 +2,10 @@
  *   This content is licensed according to the W3C Software License at
  *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
- *   File:   sortable-table.js
- *
- *   Desc:   Adds sorting to a HTML data table that implements ARIA Authoring Practices
- *   URL: https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
- *
+ *   File:  sortable-table.js
+ *   Desc:  Adds sorting to a HTML data table that implements ARIA Authoring Practices
+ *   URL:   https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
+ *   ver:   20260505:2
  */
 
 'use strict';
@@ -86,7 +85,7 @@ class SortableTable {
 	  if (isNumber) {
 	    return a.value - b.value;
 	  } else {
-	    return a.value < b.value ? -1 : 1;
+	      return a.localeCompare(b);
 	  }
 	}
       } else {
@@ -96,7 +95,7 @@ class SortableTable {
 	  if (isNumber) {
 	    return b.value - a.value;
 	  } else {
-	    return a.value > b.value ? -1 : 1;
+	      return b.localeCompare(a);
 	  }
 	}
       }
