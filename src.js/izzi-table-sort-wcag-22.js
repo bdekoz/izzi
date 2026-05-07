@@ -1,12 +1,15 @@
 /*
- *   This content is licensed according to the W3C Software License at
- *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  *
- *   File:  sortable-table.js
- *   Desc:  Adds sorting to a HTML data table that implements ARIA Authoring Practices
+ *   File:  izzi-table-sort-22.js
+ *   Info:  Sort a HTML data table with ARIA and column-idx attributes
  *   URL:   https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
- *   ver:   20260506:12
+ *   Ver:   20260506:14
+ *
+ *   This content is derived from
+ *   sources licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  */
+
 
 'use strict';
 
@@ -16,9 +19,9 @@ class SortableTable {
   constructor(tableNode) {
     this.tableNode = tableNode;
 
-    // Get ALL header cells in the thead (including all rows)
+    // Get ALL header cells in the thead
     this.allHeaders = tableNode.querySelectorAll('thead th');
-    
+
     // Find which header cells actually contain buttons (these are the sortable columns)
     this.columnHeaders = [];
 
@@ -26,63 +29,31 @@ class SortableTable {
       var ch = this.allHeaders[i];
       var buttonNode = ch.querySelector('button');
       if (buttonNode) {
-        // Store the actual DOM element and its logical column index
-        this.columnHeaders.push({
-          element: ch,
-          button: buttonNode,
-          columnIndex: this.getActualColumnIndex(ch)
-        });
-        
-        if (VERBOSE) {
-          var buttonText = buttonNode.innerText.trim();
-          console.log(`Button "${buttonText}" assigned to column index: ${this.columnHeaders[this.columnHeaders.length - 1].columnIndex}`);
-        }
-        
-        buttonNode.setAttribute('data-column-index', this.columnHeaders[this.columnHeaders.length - 1].columnIndex);
-        buttonNode.addEventListener('click', this.handleClick.bind(this));
-      }
-    }
-  }
+	// Get the column ID from the column-idx attribute
+	var columnId = ch.getAttribute('column-idx');
 
-  // Helper to find the actual data column index for a header cell (handles colspan)
-  getActualColumnIndex(headerCell) {
-    // Get the first data row to count columns
-    var firstDataRow = this.tableNode.querySelector('tbody tr');
-    if (!firstDataRow) return 0;
-    
-    // Get all header cells in the same row
-    var headerRow = headerCell.parentElement;
-    var allHeaderCells = Array.from(headerRow.querySelectorAll('th'));
-    
-    // Find the position of this header cell in its row
-    var cellIndex = allHeaderCells.indexOf(headerCell);
-    if (cellIndex === -1) return 0;
-    
-    // Find the corresponding cell in the data row
-    // For complex headers with colspans, we need to map header cells to data columns
-    var dataRowCells = Array.from(firstDataRow.cells);
-    
-    // If the count matches, use direct index
-    if (allHeaderCells.length === dataRowCells.length) {
-      return cellIndex;
-    }
-    
-    // Otherwise, we need to account for colspans in the header
-    var colOffset = 0;
-    for (var i = 0; i <= cellIndex; i++) {
-      var header = allHeaderCells[i];
-      var colspan = header.getAttribute('colspan');
-      if (i === cellIndex) {
-        return colOffset;
-      }
-      if (colspan) {
-        colOffset += parseInt(colspan);
-      } else {
-        colOffset += 1;
+	if (columnId === null) {
+	  console.error('Sortable th element missing column-idx attribute:', ch);
+	  continue;
+	}
+
+	var columnIndex = parseInt(columnId);
+
+	this.columnHeaders.push({
+	  element: ch,
+	  button: buttonNode,
+	  columnIndex: columnIndex
+	});
+
+	if (VERBOSE) {
+	  var buttonText = buttonNode.innerText.trim();
+	  console.log(`Button "${buttonText}" assigned to column index: ${columnIndex}`);
+	}
+
+	buttonNode.setAttribute('data-column-index', columnIndex);
+	buttonNode.addEventListener('click', this.handleClick.bind(this));
       }
     }
-    
-    return colOffset;
   }
 
   parseNumber(str) {
@@ -93,10 +64,10 @@ class SortableTable {
 
     // Check if it's a valid number
     if (cleaned === '') return null;
-    
+
     var num = Number(cleaned);
     if (isNaN(num)) return null;
-    
+
     return num;
   }
 
@@ -113,30 +84,30 @@ class SortableTable {
     var targetHeader = null;
     for (var i = 0; i < this.columnHeaders.length; i++) {
       if (this.columnHeaders[i].columnIndex === columnIndex) {
-        targetHeader = this.columnHeaders[i].element;
-        break;
+	targetHeader = this.columnHeaders[i].element;
+	break;
       }
     }
-    
+
     if (!targetHeader) return;
 
     for (var i = 0; i < this.columnHeaders.length; i++) {
       var ch = this.columnHeaders[i].element;
       var buttonNode = this.columnHeaders[i].button;
-      
+
       if (ch === targetHeader) {
-        var value = ch.getAttribute('aria-sort');
-        if (value === 'descending') {
-          ch.setAttribute('aria-sort', 'ascending');
-          this.sortColumn(columnIndex, 'ascending');
-        } else {
-          ch.setAttribute('aria-sort', 'descending');
-          this.sortColumn(columnIndex, 'descending');
-        }
+	var value = ch.getAttribute('aria-sort');
+	if (value === 'descending') {
+	  ch.setAttribute('aria-sort', 'ascending');
+	  this.sortColumn(columnIndex, 'ascending');
+	} else {
+	  ch.setAttribute('aria-sort', 'descending');
+	  this.sortColumn(columnIndex, 'descending');
+	}
       } else {
-        if (ch.hasAttribute('aria-sort') && buttonNode) {
-          ch.removeAttribute('aria-sort');
-        }
+	if (ch.hasAttribute('aria-sort') && buttonNode) {
+	  ch.removeAttribute('aria-sort');
+	}
       }
     }
   }
@@ -145,79 +116,79 @@ class SortableTable {
     // Get the main tbody
     var tbodyNode = this.tableNode.querySelector('tbody');
     if (!tbodyNode) return;
-    
+
     // Get all rows in the tbody
     var rows = Array.from(tbodyNode.querySelectorAll('tr'));
-    
+
     if (rows.length === 0) return;
-    
+
     var asc = (sortValue === 'ascending');
     var self = this;
-    
+
     if (VERBOSE) {
       console.log(`sortColumn called with columnIndex: ${columnIndex}, sortValue: ${sortValue}`);
       if (rows[0] && rows[0].cells[columnIndex]) {
-        console.log(`First row cell values for column ${columnIndex}: "${rows[0].cells[columnIndex].innerText.trim()}"`);
+	console.log(`First row cell values for column ${columnIndex}: "${rows[0].cells[columnIndex].innerText.trim()}"`);
       }
     }
-    
+
     // Create array of objects with row and its value
     var rowsWithValues = rows.map(function(row, idx) {
       var cell = row.cells[columnIndex];
       if (!cell) {
-        if (VERBOSE) console.warn(`Row ${idx} has no cell at column ${columnIndex}`);
-        return {
-          row: row,
-          originalIndex: idx,
-          rawValue: '',
-          sortValue: '',
-          isNumeric: false,
-          numericValue: null
-        };
+	if (VERBOSE) console.warn(`Row ${idx} has no cell at column ${columnIndex}`);
+	return {
+	  row: row,
+	  originalIndex: idx,
+	  rawValue: '',
+	  sortValue: '',
+	  isNumeric: false,
+	  numericValue: null
+	};
       }
-      
+
       var rawValue = cell.innerText.trim();
       var numericValue = self.parseNumber(rawValue);
       var sortValue = numericValue !== null ? numericValue : rawValue;
-      
+
       return {
-        row: row,
-        originalIndex: idx,
-        rawValue: rawValue,
-        sortValue: sortValue,
-        isNumeric: numericValue !== null,
-        numericValue: numericValue
+	row: row,
+	originalIndex: idx,
+	rawValue: rawValue,
+	sortValue: sortValue,
+	isNumeric: numericValue !== null,
+	numericValue: numericValue
       };
     });
-    
+
     // Sort the array
     rowsWithValues.sort(function(a, b) {
       var result = 0;
-      
+
       if (a.isNumeric && b.isNumeric) {
-        // Both are numbers
-        result = a.numericValue - b.numericValue;
+	// Both are numbers
+	result = a.numericValue - b.numericValue;
       } else if (!a.isNumeric && !b.isNumeric) {
-        // Both are strings
-        result = a.sortValue.localeCompare(b.sortValue);
+	// Both are strings
+	result = a.sortValue.localeCompare(b.sortValue);
       } else {
-        // Mixed type - numbers come before strings
-        if (a.isNumeric) result = -1;
-        else result = 1;
+	// Mixed type - numbers come before strings
+	if (a.isNumeric) result = -1;
+	else result = 1;
       }
-      
+
       // Reverse for descending
       return asc ? result : -result;
     });
-    
+
     if (VERBOSE) {
       console.log('Sorted values:');
       rowsWithValues.forEach(function(item, idx) {
-        var mediaObject = item.row.cells[0] ? item.row.cells[0].innerText.trim() : '';
-        console.log(`${idx}: ${mediaObject} - ${item.rawValue} (parsed: ${item.numericValue})`);
+	var mediaObject = item.row.cells[0] ? item.row.cells[0].innerText.trim() : '';
+	console.log(`${idx}: ${mediaObject} - "${item.rawValue}" (parsed: ${item.numericValue})`);
       });
     }
-    
+
     // Reorder the DOM
     rowsWithValues.forEach(function(item) {
       tbodyNode.appendChild(item.row);
