@@ -5,12 +5,12 @@
  *   File:  sortable-table.js
  *   Desc:  Adds sorting to a HTML data table that implements ARIA Authoring Practices
  *   URL:   https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
- *   ver:   20260506:11
+ *   ver:   20260506:12
  */
 
 'use strict';
 
-const VERBOSE = true; // Set to true to enable console logging for debugging
+const VERBOSE = false; // Set to true to enable console logging for debugging
 
 class SortableTable {
   constructor(tableNode) {
@@ -33,6 +33,11 @@ class SortableTable {
           columnIndex: this.getActualColumnIndex(ch)
         });
         
+        if (VERBOSE) {
+          var buttonText = buttonNode.innerText.trim();
+          console.log(`Button "${buttonText}" assigned to column index: ${this.columnHeaders[this.columnHeaders.length - 1].columnIndex}`);
+        }
+        
         buttonNode.setAttribute('data-column-index', this.columnHeaders[this.columnHeaders.length - 1].columnIndex);
         buttonNode.addEventListener('click', this.handleClick.bind(this));
       }
@@ -45,24 +50,39 @@ class SortableTable {
     var firstDataRow = this.tableNode.querySelector('tbody tr');
     if (!firstDataRow) return 0;
     
-    // Get the position by finding which column this header aligns with
-    // by checking the DOM structure and colspan attributes
+    // Get all header cells in the same row
     var headerRow = headerCell.parentElement;
-    var headerCellsInRow = Array.from(headerRow.querySelectorAll('th, td'));
+    var allHeaderCells = Array.from(headerRow.querySelectorAll('th'));
     
-    var currentCol = 0;
-    for (var i = 0; i < headerCellsInRow.length; i++) {
-      var cell = headerCellsInRow[i];
-      var colspan = cell.getAttribute('colspan');
-      var colWidth = colspan ? parseInt(colspan) : 1;
-      
-      if (cell === headerCell) {
-        return currentCol;
-      }
-      currentCol += colWidth;
+    // Find the position of this header cell in its row
+    var cellIndex = allHeaderCells.indexOf(headerCell);
+    if (cellIndex === -1) return 0;
+    
+    // Find the corresponding cell in the data row
+    // For complex headers with colspans, we need to map header cells to data columns
+    var dataRowCells = Array.from(firstDataRow.cells);
+    
+    // If the count matches, use direct index
+    if (allHeaderCells.length === dataRowCells.length) {
+      return cellIndex;
     }
     
-    return currentCol;
+    // Otherwise, we need to account for colspans in the header
+    var colOffset = 0;
+    for (var i = 0; i <= cellIndex; i++) {
+      var header = allHeaderCells[i];
+      var colspan = header.getAttribute('colspan');
+      if (i === cellIndex) {
+        return colOffset;
+      }
+      if (colspan) {
+        colOffset += parseInt(colspan);
+      } else {
+        colOffset += 1;
+      }
+    }
+    
+    return colOffset;
   }
 
   parseNumber(str) {
@@ -136,9 +156,8 @@ class SortableTable {
     
     if (VERBOSE) {
       console.log(`sortColumn called with columnIndex: ${columnIndex}, sortValue: ${sortValue}`);
-      console.log(`First row cell values for column ${columnIndex}:`);
       if (rows[0] && rows[0].cells[columnIndex]) {
-        console.log(`  Value: "${rows[0].cells[columnIndex].innerText.trim()}"`);
+        console.log(`First row cell values for column ${columnIndex}: "${rows[0].cells[columnIndex].innerText.trim()}"`);
       }
     }
     
