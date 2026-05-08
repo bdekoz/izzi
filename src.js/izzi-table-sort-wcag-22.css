@@ -1,3 +1,4 @@
+/* 20260507:3 */
 
 table.sortable td,
 table.sortable th {
@@ -63,10 +64,6 @@ table.show-unsorted-icon th:not([aria-sort]) button span::after {
   position: relative;
   top: -3px;
   left: -4px;
-}
-
-table.sortable td.num {
-  text-align: right;
 }
 
 table.sortable tbody tr:nth-child(odd) {
