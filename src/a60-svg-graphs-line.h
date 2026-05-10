@@ -624,10 +624,12 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
       const double xgol = gstate.xmargin - yticspacer;			// left
       const double xgor = gstate.xmargin + gwidth + yticspacer;         // right
       const double starty = ymin != 0 ? ymin : ymin + ydelta; // skip zero label
+
       for (double y = starty; y < maxy + ydelta; y += ydelta)
 	{
 	  const double yto = chartyo - (y * gyscale);
-	  const string syui = std::to_string(static_cast<uint>(y)) + gstate.yticu;
+	  const string syui = format("{:.1f}", y) + gstate.yticu; // 0.1
+	  // const string syui = format("{:.0f}", y) + gstate.yticu; // 0
 	  styled_text(lanno, syui, {xgol, yto}, anntypo);
 	  styled_text(lanno, syui, {xgor, yto}, anntypo);
 	}
