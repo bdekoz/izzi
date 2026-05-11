@@ -625,11 +625,23 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
       const double xgor = gstate.xmargin + gwidth + yticspacer;         // right
       const double starty = ymin != 0 ? ymin : ymin + ydelta; // skip zero label
 
+      // Deduce the decimal digits of precision needed for the tic numbers.
+      constexpr const char* ccp0f = "{:.0f}";
+      constexpr const char* ccp1f = "{:.1f}";
+      set<string> yticu;
+      for (double y = starty; y < maxy + ydelta; y += ydelta)
+	yticu.insert(format(ccp0f, y));
+      const bool usedecp = yticu.size() < gstate.yticdigits;
+
       for (double y = starty; y < maxy + ydelta; y += ydelta)
 	{
+	  string syui;
+	  if (usedecp)
+	    syui = format(ccp1f, y);
+	  else
+	    syui = format(ccp0f, y);
+	  syui += gstate.yticu;
 	  const double yto = chartyo - (y * gyscale);
-	  const string syui = format("{:.1f}", y) + gstate.yticu; // 0.1
-	  // const string syui = format("{:.0f}", y) + gstate.yticu; // 0
 	  styled_text(lanno, syui, {xgol, yto}, anntypo);
 	  styled_text(lanno, syui, {xgor, yto}, anntypo);
 	}
