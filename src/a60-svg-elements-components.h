@@ -1,6 +1,6 @@
 // svg element parts -*- mode: C++ -*-
 
-// Copyright (C) 2014-2025 Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (C) 2014-2026 Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60-MiL SVG library.  This library is
 // free software; you can redistribute it and/or modify it under the
@@ -51,10 +51,7 @@ svg_element::write()
 void
 svg_element::start_element(const bool autoszp)
 {
-  const string start = R"_delimiter_(<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1"
-     xml:space="preserve"
+  const string start = R"_delimiter_(<svg xml:space="preserve"
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
      xmlns:html="http://www.w3.org/1999/xhtml"
@@ -65,20 +62,25 @@ svg_element::start_element(const bool autoszp)
   const string width("__width");
   const string height("__height");
 
-  string strip = R"_delimiter_(id="__id" x="0__unit" y="0__unit"
+  string stripsz = R"_delimiter_(id="__id" x="0__unit" y="0__unit"
 width="__width__unit" height="__height__unit"
 viewBox="0 0 __width __height" enable-background="new 0 0 __width __height" role="img">
-)_delimiter_";
+s)_delimiter_";
 
-  string_replace(strip, id, _M_name);
+  // For width=100% and other percentage value, eilide height.
+  string stripauto = R"_delimiter_(id="__id" x="0__unit" y="0__unit"
+width="__width__unit"
+viewBox="0 0 __width __height" enable-background="new 0 0 __width __height" role="img">
+s)_delimiter_";
 
+  string strip(stripsz);
   if (autoszp)
     {
+      strip = stripauto;
       const string wunit = width + unit;
-      const string hunit = height + unit;
       string_replace(strip, wunit, "100%");
-      string_replace(strip, hunit, "auto");
     }
+  string_replace(strip, id, _M_name);
   string_replace(strip, unit, to_string(_M_unit));
   string_replace(strip, width, std::to_string(_M_area._M_width));
   string_replace(strip, height, std::to_string(_M_area._M_height));
