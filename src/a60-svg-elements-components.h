@@ -47,7 +47,7 @@ svg_element::write()
 
 /// SVG element beginning boilerplate for outermost (containing) svg_element.
 /// Variable: unit, x=0, y=0, width, height
-/// @param autoszp if true, then width=100% and height=auto
+/// @param autoszp if true, then width=100% and height is elided.
 void
 svg_element::start_element(const bool autoszp)
 {
