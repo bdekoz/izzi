@@ -1,0 +1,30 @@
+<map id="cluster_points_by" name="cluster_points_by">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,281,114,308"/>
+<area shape="rect" id="Node000002" href="$classpoint__cluster.html#accf6288c5038a60411e9f1c318df3592" title="Algorithm 3: K&#45;Means Inspired with Distance Constraint." alt="" coords="175,240,312,283"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,282,160,274,161,279,115,287"/>
+<area shape="rect" id="Node000006" href="$classpoint__cluster.html#a3d8f664f29887dd9788e712a2a8c4a61" title="Algorithm 1: Grid&#45;based Clustering (Simple and Fast)" alt="" coords="166,373,320,400"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="80,306,117,333,163,359,177,365,175,370,160,364,114,337,77,311"/>
+<area shape="rect" id="Node000007" href="$classpoint__cluster.html#aa3a4c141e84c1ae8f86068d335192681" title="Algorithm 2: Hierarchical Agglomerative Clustering (More Accurate)" alt="" coords="162,307,325,349"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="115,302,147,308,146,313,114,307"/>
+<area shape="rect" id="Node000008" href="$classpoint__cluster.html#a2784484768b16e7ef43c1120ccab3a25" title="Algorithm 4: Voronoi&#45;Based Clustering with Radius Constraint." alt="" coords="179,123,308,165"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="76,279,203,173,206,177,79,283"/>
+<area shape="rect" id="Node000003" href="$classpoint__cluster.html#ab4a7d615782702bf72eae4d7496fb1a4" title=" " alt="" coords="561,185,700,228"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,259,408,255,513,241,556,231,557,236,514,247,408,260,312,264"/>
+<area shape="rect" id="Node000004" href="$classpoint__cluster.html#a5400683736645ec67b9f09c6bff8e2ed" title=" " alt="" coords="375,189,511,232"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="311,241,359,229,361,234,313,247"/>
+<area shape="rect" id="Node000005" href="$classpoint__cluster.html#a6f85cdf1cd6edfd034d93bff0442f2d2" title=" " alt="" coords="381,307,505,349"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="310,281,367,300,366,305,308,286"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="482,304,512,286,586,235,589,239,515,290,485,308"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="321,393,366,393,416,389,466,378,512,359,545,334,573,304,595,271,611,240,616,243,599,273,577,307,549,338,515,364,467,383,417,394,367,399,321,398"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="325,325,366,325,366,331,325,331"/>
+<area shape="poly" id="edge11_Node000008_Node000003" title=" " alt="" coords="301,119,348,107,402,98,459,97,514,108,540,120,564,136,603,172,599,176,561,141,537,125,512,113,458,102,403,103,349,112,303,125"/>
+<area shape="poly" id="edge15_Node000008_Node000004" title=" " alt="" coords="309,163,363,181,362,186,307,168"/>
+<area shape="rect" id="Node000009" href="$classpoint__cluster.html#a8b681b7eab0b49923d8138782f2d707a" title=" " alt="" coords="373,5,513,48"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="279,120,372,64,390,54,392,58,374,69,282,124"/>
+<area shape="rect" id="Node000011" href="$classpoint__cluster.html#add0cd2c5531cc62ceb5fb13b31d7075f" title=" " alt="" coords="380,123,506,165"/>
+<area shape="poly" id="edge16_Node000008_Node000011" title=" " alt="" coords="308,141,364,141,364,147,308,147"/>
+<area shape="poly" id="edge13_Node000009_Node000003" title=" " alt="" coords="489,46,515,65,567,118,608,171,604,174,563,122,512,69,486,51"/>
+<area shape="rect" id="Node000010" href="$classpoint__cluster.html#a79c6118d0deb835a0c9f0aa96642ba96" title=" " alt="" coords="573,5,688,48"/>
+<area shape="poly" id="edge14_Node000009_Node000010" title=" " alt="" coords="514,24,557,24,557,29,514,29"/>
+<area shape="poly" id="edge17_Node000011_Node000003" title=" " alt="" coords="507,163,551,177,549,182,506,168"/>
+</map>
