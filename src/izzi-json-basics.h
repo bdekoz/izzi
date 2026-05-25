@@ -16,8 +16,8 @@
 #ifndef izzi_JSON_BASICS_H
 #define izzi_JSON_BASICS_H 1
 
+#include "a60-svg.h"
 #include <iostream>
-#include <sstream>
 #include <fstream>
 
 #define RAPIDJSON_HAS_STDSTRING 1
@@ -291,6 +291,86 @@ extract_object_keys_as_vspace(const string jdata, const string jobjpath)
   return ret;
 }
 
+
+
+/// Convert from input file name to an in-memory vector of strings
+/// representing identifiers/names to match against field names in a
+/// JSON file.
+/// @param ifile input file, each line is an element of the returned vector.
+sstrings
+deserialize_file_to_strings(string ifile)
+{
+  sstrings probes;
+  if (!ifile.empty())
+    {
+      std::ifstream ifs(ifile);
+      if (ifs.good())
+	{
+	  string line;
+	  do
+	    {
+	      std::getline(ifs, line);
+	      if (ifs.good())
+		probes.insert(line);
+	    }
+	  while (!ifs.eof());
+
+	  std::clog << probes.size() << " names found in: " << std::endl;
+	  std::clog << ifile << std::endl;
+	  std::clog << std::endl;
+	}
+      else
+	{
+	  std::cerr << "deserialize_file_to_strings:: "
+		    << "cannot open input file: "
+		    << ifile << std::endl;
+	}
+    }
+  else
+    {
+      std::clog << "deserialize_file_to_strings:: input file is empty: "
+		<< ifile
+		<< std::endl;
+    }
+  return probes;
+}
+
+
+/// Convert a comma-space-separated list of strings to a vector of strings
+/// @delim is the delimiter used inbetween values
+/// @cssvp is if there is a space between delimiter and value
+strings
+deserialize_dsv_file_to_strings(const string& fin, const char delim = k::comma,
+				const bool cssvp = false)
+{
+  std::ifstream ifs(fin);
+  string in;
+  if (ifs.good())
+    {
+      std::ostringstream oss;
+      oss << ifs.rdbuf();
+      in = oss.str();
+    }
+  else
+    {
+      std::ostringstream mss;
+      mss << "csv_file_to_strings:: cannot open input file ("
+	  << fin << ")" << std::endl;
+      throw std::runtime_error(mss.str());
+    }
+
+  strings vv;
+  auto commapos = in.find(delim);
+  while (commapos != string::npos)
+    {
+      string agepv = in.substr(0, commapos);
+      vv.push_back(agepv);
+      in = in.substr(commapos + 1 + static_cast<ushort>(cssvp));
+      commapos = in.find(delim);
+    }
+  vv.push_back(in);
+  return vv;
+}
 
 } // namespace svg
 #endif

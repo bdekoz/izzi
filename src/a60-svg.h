@@ -25,6 +25,7 @@
 #include <vector>
 #include <set>
 #include <unordered_map>
+#include <unordered_set>
 #include <sstream>
 
 /**
@@ -38,6 +39,13 @@ using std::string_view;
 using strings = std::vector<string>;
 using vstrings = strings;
 using vvstrings = std::vector<strings>;
+
+/// Durational searching and sorting.
+using sstrings = std::set<string>;
+using msstrings = std::multiset<string>;
+
+using umstrings = std::unordered_map<string, string>;
+using usstrings = std::unordered_set<string>;
 
 // Utility function, like regex_replace.
 inline void
