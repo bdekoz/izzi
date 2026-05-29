@@ -184,6 +184,9 @@ struct group_element : virtual public element_base
 
   void
   finish_element();
+
+  group_element(const string& id)
+  { start_element(id) }
 };
 
 void
