@@ -628,18 +628,33 @@ make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
       // Deduce the decimal digits of precision needed for the tic numbers.
       constexpr const char* ccp0f = "{:.0f}";
       constexpr const char* ccp1f = "{:.1f}";
-      set<string> yticu;
-      for (double y = starty; y < maxy + ydelta; y += ydelta)
-	yticu.insert(format(ccp0f, y));
-      const bool usedecp = yticu.size() < gstate.yticdigits;
+      constexpr const char* ccp2f = "{:.2f}";
+
+      auto lsizedp = [&](const char* ffmt) -> bool
+      {
+	set<string> yticu;
+	for (double y = starty; y < maxy + ydelta; y += ydelta)
+	  yticu.insert(vformat(ffmt, make_format_args(y)));
+	const bool okp = yticu.size() >= gstate.yticdigits;
+	return okp;
+      };
+
+      //const char* yfmt = lsizedp(ccp0f) ? ( lsizedp(ccp1f) ? ccp2f : ccp1f ) : ccp0f;
+      const bool f0p = lsizedp(ccp0f);
+      const bool f1p = lsizedp(ccp1f);
 
       for (double y = starty; y < maxy + ydelta; y += ydelta)
 	{
 	  string syui;
-	  if (usedecp)
-	    syui = format(ccp1f, y);
-	  else
+	  if (f0p)
 	    syui = format(ccp0f, y);
+	  else
+	    {
+	      if (f1p)
+		syui = format(ccp1f, y);
+	      else
+		syui = format(ccp2f, y);
+	    }
 	  syui += gstate.yticu;
 	  const double yto = chartyo - (y * gyscale);
 	  styled_text(lanno, syui, {xgol, yto}, anntypo);

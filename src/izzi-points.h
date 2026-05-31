@@ -98,7 +98,8 @@ union_vrange(const vrange& r1, const vrange& r2)
 /// For each dimension of vrnage, find min/max and return (xmax, ymax)
 /// NB: Assumes zero is min.
 point_2t
-max_vrange(vspace& xpoints, vspace& ypoints, const uint pown)
+max_vrange(vspace& xpoints, vspace& ypoints, const uint pown,
+	   const bool padp = true)
 {
   point_2t rangemaxx = { 0, 0 };
   if (!xpoints.empty() && !ypoints.empty())
@@ -108,7 +109,6 @@ max_vrange(vspace& xpoints, vspace& ypoints, const uint pown)
 
       // For x axis, need to insert padding iff axes are scaled down
       // and/or have values with truncated significant digits.
-      const bool padp(true);
       if (padp)
 	{
 	  const double sigd = pow(10, pown);
@@ -134,12 +134,13 @@ max_vrange(vspace& xpoints, vspace& ypoints, const uint pown)
 /// Just the range info, none of the temporary objects.
 point_2t
 max_vrange(const vrange& points, const uint pown,
-	   const double xscale = 1, const double yscale = 1)
+	   const double xscale = 1, const double yscale = 1,
+	   const bool padp = true)
 {
   vspace pointsx;
   vspace pointsy;
   split_vrange(points, pointsx, pointsy, xscale, yscale);
-  point_2t ret = max_vrange(pointsx, pointsy, pown);
+  point_2t ret = max_vrange(pointsx, pointsy, pown, padp);
   return ret;
 }
 
