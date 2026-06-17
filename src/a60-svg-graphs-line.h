@@ -1,6 +1,6 @@
 // izzi line graphs -*- mode: C++ -*-
 
-// Copyright (c) 2025, Benjamin De Kosnik <b.dekosnik@gmail.com>
+// Copyright (c) 2025-2026, Benjamin De Kosnik <b.dekosnik@gmail.com>
 
 // This file is part of the alpha60 library.  This library is free
 // software; you can redistribute it and/or modify it under the terms
@@ -85,7 +85,7 @@ struct graph_rstate : public render_state_base
   /// Type sizes
   static constexpr uint ttitlesz	= 26; // title large bold
   static constexpr uint th1sz		= 18; // h1
-  static constexpr uint tpsz		= 10; // text, paragraph, marker
+  static constexpr uint tpsz		= 12; // text, paragraph, marker
   static constexpr uint tticsz		= 14; // tic text
 #endif
 
