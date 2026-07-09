@@ -3,11 +3,13 @@ var searchData=
   ['uint_0',['uint',['../namespacesvg.html#ad3a7a7a3ad79496a3731622464665776',1,'svg']]],
   ['ulong_1',['ulong',['../namespacesvg.html#a5d8ed438627c8edf46937bcf81fd6249',1,'svg']]],
   ['ultramarine_2',['ultramarine',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ae5f4b215ed23da020835202065e395c4',1,'svg']]],
-  ['union_5fvrange_3',['union_vrange',['../namespacesvg.html#a1920c859565686aa7e28ecf5bf1b7ccc',1,'svg']]],
-  ['unit_4',['unit',['../structsvg_1_1area.html#aab04d2a57f1164b9da92297a31a16bd3',1,'svg::area::unit'],['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887',1,'svg::unit']]],
-  ['unset_5',['unset',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886ae2181b5014a67159cc230c8fe0d6c5b6',1,'svg::typography']]],
-  ['use_5fstyle_6',['use_style',['../structsvg_1_1typography.html#ad53dfb81b6702dc2712bc749b0e977ed',1,'svg::typography']]],
-  ['ushort_7',['ushort',['../namespacesvg.html#a128598af8ab3a73f5d25ddd8575b8b99',1,'svg']]],
-  ['usuiro_8',['usuiro',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a690a344a4907b2471aa61bbe91ee8797',1,'svg']]],
-  ['usumoegi_9',['usumoegi',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ada2eaa7225fb08f6971264158c70f423',1,'svg']]]
+  ['umstrings_3',['umstrings',['../namespacesvg.html#a7bfdbb7f292003f1fd43e7908f326608',1,'svg']]],
+  ['union_5fvrange_4',['union_vrange',['../namespacesvg.html#a1920c859565686aa7e28ecf5bf1b7ccc',1,'svg']]],
+  ['unit_5',['unit',['../structsvg_1_1area.html#aab04d2a57f1164b9da92297a31a16bd3',1,'svg::area::unit'],['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887',1,'svg::unit']]],
+  ['unset_6',['unset',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886ae2181b5014a67159cc230c8fe0d6c5b6',1,'svg::typography']]],
+  ['use_5fstyle_7',['use_style',['../structsvg_1_1typography.html#ad53dfb81b6702dc2712bc749b0e977ed',1,'svg::typography']]],
+  ['ushort_8',['ushort',['../namespacesvg.html#a128598af8ab3a73f5d25ddd8575b8b99',1,'svg']]],
+  ['usstrings_9',['usstrings',['../namespacesvg.html#a6d7bf8d3dcb43c3d09e8ae61ed77874d',1,'svg']]],
+  ['usuiro_10',['usuiro',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a690a344a4907b2471aa61bbe91ee8797',1,'svg']]],
+  ['usumoegi_11',['usumoegi',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1ada2eaa7225fb08f6971264158c70f423',1,'svg']]]
 ];

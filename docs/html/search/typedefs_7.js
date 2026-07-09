@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['uint_0',['uint',['../namespacesvg.html#ad3a7a7a3ad79496a3731622464665776',1,'svg']]],
-  ['ulong_1',['ulong',['../namespacesvg.html#a5d8ed438627c8edf46937bcf81fd6249',1,'svg']]],
-  ['unit_2',['unit',['../structsvg_1_1area.html#aab04d2a57f1164b9da92297a31a16bd3',1,'svg::area']]],
-  ['ushort_3',['ushort',['../namespacesvg.html#a128598af8ab3a73f5d25ddd8575b8b99',1,'svg']]]
+  ['space_5ftype_0',['space_type',['../namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e',1,'svg']]],
+  ['srange_1',['srange',['../namespacesvg.html#a2a9b52ac4ee45aafd265a70c3abb5542',1,'svg']]],
+  ['srangen_2',['srangen',['../namespacesvg.html#a3152efa4b31179d66bb3de19d1d89d66',1,'svg']]],
+  ['ssize_5ftype_3',['ssize_type',['../namespacesvg.html#a2e51e6e3358d1a2f03411e7b815f7192',1,'svg']]],
+  ['sstrings_4',['sstrings',['../namespacesvg.html#a077d9ef0579183badd53a852bad4f33e',1,'svg']]],
+  ['stream_5ftype_5',['stream_type',['../group__elements.html#ab9bba04874246f881c7632225c173ff6',1,'svg::element_base']]],
+  ['strings_6',['strings',['../namespacesvg.html#af5f869581be4b983df188993df43f2c4',1,'svg']]]
 ];

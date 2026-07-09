@@ -63,7 +63,7 @@ var searchData=
   ['matrix_5fmax_5fitems_60',['matrix_max_items',['../namespacesvg.html#a6e1217586a3280e6177a0cec72964241',1,'svg']]],
   ['matrix_5fvariant_61',['matrix_variant',['../namespacesvg.html#a5fd971345fcede00e46bd1bd8846f12d',1,'svg']]],
   ['max_5fsegment_5fsize_5fn_62',['max_segment_size_n',['../structsvg_1_1area.html#ad9472feaab4b03259f2b6c73b4c86d50',1,'svg::area']]],
-  ['max_5fvrange_63',['max_vrange',['../namespacesvg.html#a9316267f4d5030ca298dbbe2d4c55b18',1,'svg::max_vrange(vspace &amp;xpoints, vspace &amp;ypoints, const uint pown)'],['../namespacesvg.html#ac004938f77cd6e1209c04946721f8f43',1,'svg::max_vrange(const vrange &amp;points, const uint pown, const double xscale=1, const double yscale=1)']]],
+  ['max_5fvrange_63',['max_vrange',['../namespacesvg.html#a15f29dd860caa1a370ceae3274561afc',1,'svg::max_vrange(vspace &amp;xpoints, vspace &amp;ypoints, const uint pown, const bool padp=true)'],['../namespacesvg.html#a619c43aea5a4cbeec13f0684aa1b99a2',1,'svg::max_vrange(const vrange &amp;points, const uint pown, const double xscale=1, const double yscale=1, const bool padp=true)']]],
   ['medium_64',['medium',['../structsvg_1_1typography.html#ac41cf6a133f5b21757130ce5ba72b3d7a075a3e36a0a52dcbc568c05788e8a713',1,'svg::typography::medium'],['../namespacesvg.html#adc7e4c413a77264dd28e589407293de8a075a3e36a0a52dcbc568c05788e8a713',1,'svg::medium']]],
   ['mediumblue_65',['mediumblue',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a56f0b1fbfc4968e21e0954555646a5b9',1,'svg']]],
   ['mediumorchid_66',['mediumorchid',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a025a653c5fc64110513169a13e797f77',1,'svg']]],
@@ -80,8 +80,9 @@ var searchData=
   ['mm_77',['mm',['../namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887ab3cd915d758008bd19d0f2428fbb354a',1,'svg']]],
   ['mode_78',['mode',['../structsvg_1_1graph__rstate.html#a7e9be4e5f8c06ef0468d72549f04861d',1,'svg::graph_rstate']]],
   ['moegi_79',['moegi',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a80fea0f370f7a85847d0a11ecfcd9daf',1,'svg']]],
-  ['multiple_80',['multiple',['../structsvg_1_1id__rstate.html#ad33c99bcbe234ebbb0690980cbf7bb54',1,'svg::id_rstate']]],
-  ['murasaki_81',['murasaki',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a51bd83111913cc5c74f28db9d31713c4',1,'svg']]],
-  ['mutate_5fcolor_5fqf_82',['mutate_color_qf',['../namespacesvg.html#a729fd8229f85437952bc2607156bb61a',1,'svg']]],
-  ['mxcllnt_5ftypo_83',['mxcllnt_typo',['../namespacesvg_1_1constants.html#a979b6f66cd4ca6736b19ebb9e42a9d44',1,'svg::constants']]]
+  ['msstrings_80',['msstrings',['../namespacesvg.html#abe3de46b42053e9956066e64887b4fd8',1,'svg']]],
+  ['multiple_81',['multiple',['../structsvg_1_1id__rstate.html#ad33c99bcbe234ebbb0690980cbf7bb54',1,'svg::id_rstate']]],
+  ['murasaki_82',['murasaki',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a51bd83111913cc5c74f28db9d31713c4',1,'svg']]],
+  ['mutate_5fcolor_5fqf_83',['mutate_color_qf',['../namespacesvg.html#a729fd8229f85437952bc2607156bb61a',1,'svg']]],
+  ['mxcllnt_5ftypo_84',['mxcllnt_typo',['../namespacesvg_1_1constants.html#a979b6f66cd4ca6736b19ebb9e42a9d44',1,'svg::constants']]]
 ];

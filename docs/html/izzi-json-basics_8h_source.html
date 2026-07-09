@@ -98,8 +98,8 @@ $(function() {
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#ifndef izzi_JSON_BASICS_H</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define izzi_JSON_BASICS_H 1</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="a60-svg_8h.html">a60-svg.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="izzi-json-basics_8h.html#a2f2eef0ee4477f3fe5874703a66e997f">   23</a></span><span class="preprocessor">#define RAPIDJSON_HAS_STDSTRING 1</span></div>
@@ -394,26 +394,117 @@ $(function() {
 </div>
 <div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
 <div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>} <span class="comment">// namespace svg</span></div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="comment"></span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="comment">/// Convert from input file name to an in-memory vector of strings</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="comment">/// representing identifiers/names to match against field names in a</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="comment">/// JSON file.</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="comment">/// @param ifile input file, each line is an element of the returned vector.</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><a class="code hl_typedef" href="namespacesvg.html#a077d9ef0579183badd53a852bad4f33e">sstrings</a></div>
+<div class="foldopen" id="foldopen00301" data-start="{" data-end="}">
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno"><a class="line" href="namespacesvg.html#ae0c501ebca814954d640e6760e401c38">  301</a></span><a class="code hl_function" href="namespacesvg.html#ae0c501ebca814954d640e6760e401c38">deserialize_file_to_strings</a>(<span class="keywordtype">string</span> ifile)</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>{</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>  <a class="code hl_typedef" href="namespacesvg.html#a077d9ef0579183badd53a852bad4f33e">sstrings</a> probes;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>  <span class="keywordflow">if</span> (!ifile.empty())</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    {</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>      std::ifstream ifs(ifile);</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>      <span class="keywordflow">if</span> (ifs.good())</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    {</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>      <span class="keywordtype">string</span> line;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>      <span class="keywordflow">do</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        {</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>          std::getline(ifs, line);</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>          <span class="keywordflow">if</span> (ifs.good())</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        probes.insert(line);</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        }</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>      <span class="keywordflow">while</span> (!ifs.eof());</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>      std::clog &lt;&lt; probes.size() &lt;&lt; <span class="stringliteral">&quot; names found in: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>      std::clog &lt;&lt; ifile &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>      std::clog &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    }</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>      <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    {</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>      std::cerr &lt;&lt; <span class="stringliteral">&quot;deserialize_file_to_strings:: &quot;</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>            &lt;&lt; <span class="stringliteral">&quot;cannot open input file: &quot;</span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>            &lt;&lt; ifile &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    }</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    }</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>  <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    {</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>      std::clog &lt;&lt; <span class="stringliteral">&quot;deserialize_file_to_strings:: input file is empty: &quot;</span></div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        &lt;&lt; ifile</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    }</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>  <span class="keywordflow">return</span> probes;</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>}</div>
+</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="comment"></span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="comment">/// Convert a comma-space-separated list of strings to a vector of strings</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="comment">/// @delim is the delimiter used inbetween values</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="comment">/// @cssvp is if there is a space between delimiter and value</span></div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><a class="code hl_typedef" href="namespacesvg.html#af5f869581be4b983df188993df43f2c4">strings</a></div>
+<div class="foldopen" id="foldopen00343" data-start="{" data-end="}">
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno"><a class="line" href="namespacesvg.html#a640b3a96fa9ed2b9c3f4957a014c8d1d">  343</a></span><a class="code hl_function" href="namespacesvg.html#a640b3a96fa9ed2b9c3f4957a014c8d1d">deserialize_dsv_file_to_strings</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; fin, <span class="keyword">const</span> <span class="keywordtype">char</span> delim = k::comma,</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>                <span class="keyword">const</span> <span class="keywordtype">bool</span> cssvp = <span class="keyword">false</span>)</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>{</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>  std::ifstream ifs(fin);</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>  <span class="keywordtype">string</span> <a class="code hl_enumvalue" href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf">in</a>;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>  <span class="keywordflow">if</span> (ifs.good())</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    {</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>      std::ostringstream oss;</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>      oss &lt;&lt; ifs.rdbuf();</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>      <a class="code hl_enumvalue" href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf">in</a> = oss.str();</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    }</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>  <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    {</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>      std::ostringstream mss;</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>      mss &lt;&lt; <span class="stringliteral">&quot;csv_file_to_strings:: cannot open input file (&quot;</span></div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>      &lt;&lt; fin &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>      <span class="keywordflow">throw</span> std::runtime_error(mss.str());</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    }</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>  <a class="code hl_typedef" href="namespacesvg.html#af5f869581be4b983df188993df43f2c4">strings</a> vv;</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>  <span class="keyword">auto</span> commapos = <a class="code hl_enumvalue" href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf">in</a>.find(delim);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  <span class="keywordflow">while</span> (commapos != string::npos)</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    {</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>      <span class="keywordtype">string</span> agepv = <a class="code hl_enumvalue" href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf">in</a>.substr(0, commapos);</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>      vv.push_back(agepv);</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>      <a class="code hl_enumvalue" href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf">in</a> = <a class="code hl_enumvalue" href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf">in</a>.substr(commapos + 1 + <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespacesvg.html#a128598af8ab3a73f5d25ddd8575b8b99">ushort</a><span class="keyword">&gt;</span>(cssvp));</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>      commapos = <a class="code hl_enumvalue" href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf">in</a>.find(delim);</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    }</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>  vv.push_back(<a class="code hl_enumvalue" href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf">in</a>);</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>  <span class="keywordflow">return</span> vv;</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>}</div>
+</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span> </div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>} <span class="comment">// namespace svg</span></div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aa60-svg_8h_html"><div class="ttname"><a href="a60-svg_8h.html">a60-svg.h</a></div></div>
 <div class="ttc" id="anamespacesvg_html"><div class="ttname"><a href="namespacesvg.html">svg</a></div><div class="ttdef"><b>Definition</b> <a href="a60-svg-base-types_8h_source.html#l00027">a60-svg-base-types.h:27</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a077d9ef0579183badd53a852bad4f33e"><div class="ttname"><a href="namespacesvg.html#a077d9ef0579183badd53a852bad4f33e">svg::sstrings</a></div><div class="ttdeci">std::set&lt; string &gt; sstrings</div><div class="ttdoc">Durational searching and sorting.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00044">a60-svg.h:44</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf"><div class="ttname"><a href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a13b5bfe96f3e2fe411c9f66f4a582adf">svg::unit::in</a></div><div class="ttdeci">@ in</div><div class="ttdoc">Inch.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-base-types_8h_source.html#l00035">a60-svg-base-types.h:35</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a1210fd1e2d44bd05ccad2b95c9fdb887a6f8f57715090da2632453988d9a1501b"><div class="ttname"><a href="namespacesvg.html#a1210fd1e2d44bd05ccad2b95c9fdb887a6f8f57715090da2632453988d9a1501b">svg::unit::m</a></div><div class="ttdeci">@ m</div><div class="ttdoc">Meter.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-base-types_8h_source.html#l00032">a60-svg-base-types.h:32</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a128598af8ab3a73f5d25ddd8575b8b99"><div class="ttname"><a href="namespacesvg.html#a128598af8ab3a73f5d25ddd8575b8b99">svg::ushort</a></div><div class="ttdeci">unsigned short ushort</div><div class="ttdoc">Base integer type: positive and negative, signed integral value.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00065">a60-svg.h:65</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a15455ed7fe8f40160e2f9f5e8ad7a3bd"><div class="ttname"><a href="namespacesvg.html#a15455ed7fe8f40160e2f9f5e8ad7a3bd">svg::extract_dom_value_to_double</a></div><div class="ttdeci">double extract_dom_value_to_double(const rj::Value &amp;v)</div><div class="ttdoc">Extract from raw JSON value to double.</div><div class="ttdef"><b>Definition</b> <a href="#l00179">izzi-json-basics.h:179</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a2d5d91568fc7a3989ae43ac8e51e4400"><div class="ttname"><a href="namespacesvg.html#a2d5d91568fc7a3989ae43ac8e51e4400">svg::search_dom_for_int_field</a></div><div class="ttdeci">int search_dom_for_int_field(const rj::Document &amp;dom, const string finds)</div><div class="ttdoc">Search DOM for integer values.</div><div class="ttdef"><b>Definition</b> <a href="#l00164">izzi-json-basics.h:164</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a41e70dea5dd667e1702f20c79338b5f8"><div class="ttname"><a href="namespacesvg.html#a41e70dea5dd667e1702f20c79338b5f8">svg::jsonstream</a></div><div class="ttdeci">rj::PrettyWriter&lt; rj::StringBuffer &gt; jsonstream</div><div class="ttdoc">Aliases/using.</div><div class="ttdef"><b>Definition</b> <a href="#l00045">izzi-json-basics.h:45</a></div></div>
-<div class="ttc" id="anamespacesvg_html_a4f79a4a4180e8e8d6a1d850d3f38138e"><div class="ttname"><a href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">svg::space_type</a></div><div class="ttdeci">double space_type</div><div class="ttdoc">Base floating point type.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00063">a60-svg.h:63</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a4f79a4a4180e8e8d6a1d850d3f38138e"><div class="ttname"><a href="namespacesvg.html#a4f79a4a4180e8e8d6a1d850d3f38138e">svg::space_type</a></div><div class="ttdeci">double space_type</div><div class="ttdoc">Base floating point type.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00071">a60-svg.h:71</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a5e70da9e68ea73a0fe250439ea5a1b04"><div class="ttname"><a href="namespacesvg.html#a5e70da9e68ea73a0fe250439ea5a1b04">svg::deserialize_json_to_dom</a></div><div class="ttdeci">rj::Document deserialize_json_to_dom(const string input_file)</div><div class="ttdoc">Deserialize input file.</div><div class="ttdef"><b>Definition</b> <a href="#l00095">izzi-json-basics.h:95</a></div></div>
+<div class="ttc" id="anamespacesvg_html_a640b3a96fa9ed2b9c3f4957a014c8d1d"><div class="ttname"><a href="namespacesvg.html#a640b3a96fa9ed2b9c3f4957a014c8d1d">svg::deserialize_dsv_file_to_strings</a></div><div class="ttdeci">strings deserialize_dsv_file_to_strings(const string &amp;fin, const char delim=k::comma, const bool cssvp=false)</div><div class="ttdoc">Convert a comma-space-separated list of strings to a vector of strings @delim is the delimiter used i...</div><div class="ttdef"><b>Definition</b> <a href="#l00343">izzi-json-basics.h:343</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6"><div class="ttname"><a href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">svg::marker_shape::x</a></div><div class="ttdeci">@ x</div><div class="ttdoc">Crossed Lines.</div><div class="ttdef"><b>Definition</b> <a href="a60-svg-base-types_8h_source.html#l00180">a60-svg-base-types.h:180</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a8cecd49974d6565cea2c2097b3b3e9e5"><div class="ttname"><a href="namespacesvg.html#a8cecd49974d6565cea2c2097b3b3e9e5">svg::deserialize_json_to_dom_array</a></div><div class="ttdeci">rj::Document deserialize_json_to_dom_array(const string input_file)</div><div class="ttdoc">Load JSON file to in-memory DOM array.</div><div class="ttdef"><b>Definition</b> <a href="#l00133">izzi-json-basics.h:133</a></div></div>
 <div class="ttc" id="anamespacesvg_html_a915848d2fa32c5a4443025d38f629f5d"><div class="ttname"><a href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">svg::vrange</a></div><div class="ttdeci">std::vector&lt; point_2t &gt; vrange</div><div class="ttdef"><b>Definition</b> <a href="izzi-points_8h_source.html#l00065">izzi-points.h:65</a></div></div>
 <div class="ttc" id="anamespacesvg_html_aba9acbce4adf29a0e213d526fe2eba23"><div class="ttname"><a href="namespacesvg.html#aba9acbce4adf29a0e213d526fe2eba23">svg::deserialize_json_to_dom_object</a></div><div class="ttdeci">rj::Document deserialize_json_to_dom_object(const string input_file)</div><div class="ttdoc">Load JSON file to in-memory DOM.</div><div class="ttdef"><b>Definition</b> <a href="#l00117">izzi-json-basics.h:117</a></div></div>
 <div class="ttc" id="anamespacesvg_html_acc04aab3f6af228335c2e6494cd32092"><div class="ttname"><a href="namespacesvg.html#acc04aab3f6af228335c2e6494cd32092">svg::extract_object_keys_as_vspace</a></div><div class="ttdeci">vspace extract_object_keys_as_vspace(const string jdata, const string jobjpath)</div><div class="ttdoc">Iterate over json object in data file and return keys as ints.</div><div class="ttdef"><b>Definition</b> <a href="#l00268">izzi-json-basics.h:268</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ad1570006d7042fe3750d9272e8e3a9cd"><div class="ttname"><a href="namespacesvg.html#ad1570006d7042fe3750d9272e8e3a9cd">svg::vspace</a></div><div class="ttdeci">std::vector&lt; space_type &gt; vspace</div><div class="ttdoc">Split range, so one dimension of (x,y) cartesian plane.</div><div class="ttdef"><b>Definition</b> <a href="izzi-points_8h_source.html#l00059">izzi-points.h:59</a></div></div>
-<div class="ttc" id="anamespacesvg_html_ad3a7a7a3ad79496a3731622464665776"><div class="ttname"><a href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">svg::uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00058">a60-svg.h:58</a></div></div>
+<div class="ttc" id="anamespacesvg_html_ad3a7a7a3ad79496a3731622464665776"><div class="ttname"><a href="namespacesvg.html#ad3a7a7a3ad79496a3731622464665776">svg::uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00066">a60-svg.h:66</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ad5e7f60c9b2ff5b5789730e8566640ac"><div class="ttname"><a href="namespacesvg.html#ad5e7f60c9b2ff5b5789730e8566640ac">svg::serialize_id_types_json</a></div><div class="ttdeci">void serialize_id_types_json(jsonstream &amp;writer, const auto &amp;ids, const string tag)</div><div class="ttdoc">Serialize set of id_type.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">izzi-json-basics.h:50</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ad799f750b3b52c60d60fb4ac98c05eca"><div class="ttname"><a href="namespacesvg.html#ad799f750b3b52c60d60fb4ac98c05eca">svg::search_dom_for_string_field</a></div><div class="ttdeci">string search_dom_for_string_field(const rj::Document &amp;dom, const string finds)</div><div class="ttdoc">Search DOM for string literals.</div><div class="ttdef"><b>Definition</b> <a href="#l00149">izzi-json-basics.h:149</a></div></div>
 <div class="ttc" id="anamespacesvg_html_ad8c44f33914f74e752756e210ed904f7"><div class="ttname"><a href="namespacesvg.html#ad8c44f33914f74e752756e210ed904f7">svg::deserialize_json_string_to_dom</a></div><div class="ttdeci">rj::Document deserialize_json_string_to_dom(const string &amp;json)</div><div class="ttdoc">Deserialize input string.</div><div class="ttdef"><b>Definition</b> <a href="#l00078">izzi-json-basics.h:78</a></div></div>
+<div class="ttc" id="anamespacesvg_html_ae0c501ebca814954d640e6760e401c38"><div class="ttname"><a href="namespacesvg.html#ae0c501ebca814954d640e6760e401c38">svg::deserialize_file_to_strings</a></div><div class="ttdeci">sstrings deserialize_file_to_strings(string ifile)</div><div class="ttdoc">Convert from input file name to an in-memory vector of strings representing identifiers/names to matc...</div><div class="ttdef"><b>Definition</b> <a href="#l00301">izzi-json-basics.h:301</a></div></div>
 <div class="ttc" id="anamespacesvg_html_af03b1719fd5cdac21c93d6faf91f2be5"><div class="ttname"><a href="namespacesvg.html#af03b1719fd5cdac21c93d6faf91f2be5">svg::deserialize_json_array_object_field_n</a></div><div class="ttdeci">vrange deserialize_json_array_object_field_n(const string jdata, const string afield, const string field1, const string field2, const bool verbosep=true)</div><div class="ttdoc">Deserialize json array, extract specific fields from array objects, return as vec of point_2t.</div><div class="ttdef"><b>Definition</b> <a href="#l00211">izzi-json-basics.h:211</a></div></div>
+<div class="ttc" id="anamespacesvg_html_af5f869581be4b983df188993df43f2c4"><div class="ttname"><a href="namespacesvg.html#af5f869581be4b983df188993df43f2c4">svg::strings</a></div><div class="ttdeci">std::vector&lt; string &gt; strings</div><div class="ttdef"><b>Definition</b> <a href="a60-svg_8h_source.html#l00039">a60-svg.h:39</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

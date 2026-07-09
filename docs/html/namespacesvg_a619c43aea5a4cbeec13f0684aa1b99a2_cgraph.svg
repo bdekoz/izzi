@@ -31,7 +31,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacesvg.html#a9316267f4d5030ca298dbbe2d4c55b18" target="_top" xlink:title="For each dimension of vrnage, find min/max and return (xmax, ymax) NB: Assumes zero is min.">
+<g id="a_Node000002"><a xlink:href="namespacesvg.html#a15f29dd860caa1a370ceae3274561afc" target="_top" xlink:title="For each dimension of vrnage, find min/max and return (xmax, ymax) NB: Assumes zero is min.">
 <polygon fill="white" stroke="#666666" points="195.5,-58 115.75,-58 115.75,-38 195.5,-38 195.5,-58"/>
 <text xml:space="preserve" text-anchor="middle" x="155.62" y="-46.4" font-family="SourceSans" font-size="8.00">svg::max_vrange</text>
 </a>

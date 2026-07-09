@@ -85,8 +85,8 @@ $(function() {
   <div class="headertitle"><div class="title">izzi-json-basics.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;sstream&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &quot;rapidjson/prettywriter.h&quot;</code><br />
 <code>#include &quot;rapidjson/pointer.h&quot;</code><br />
@@ -98,7 +98,7 @@ $(function() {
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="izzi-json-basics_8h__incl.svg" width="100%" height="396"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="izzi-json-basics_8h__incl.svg" width="100%" height="588"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div>
 <p><a href="izzi-json-basics_8h_source.html">Go to the source code of this file.</a></p>
@@ -138,6 +138,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:af03b1719fd5cdac21c93d6faf91f2be5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize json array, extract specific fields from array objects, return as vec of <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e" title="Point (x,y) in 2D space, space_type defaults to double.">point_2t</a>.  <br /></td></tr>
 <tr class="memitem:acc04aab3f6af228335c2e6494cd32092" id="r_acc04aab3f6af228335c2e6494cd32092"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#ad1570006d7042fe3750d9272e8e3a9cd">vspace</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#acc04aab3f6af228335c2e6494cd32092">svg::extract_object_keys_as_vspace</a> (const string jdata, const string jobjpath)</td></tr>
 <tr class="memdesc:acc04aab3f6af228335c2e6494cd32092"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterate over json object in data file and return keys as ints.  <br /></td></tr>
+<tr class="memitem:ae0c501ebca814954d640e6760e401c38" id="r_ae0c501ebca814954d640e6760e401c38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#a077d9ef0579183badd53a852bad4f33e">sstrings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#ae0c501ebca814954d640e6760e401c38">svg::deserialize_file_to_strings</a> (string ifile)</td></tr>
+<tr class="memdesc:ae0c501ebca814954d640e6760e401c38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert from input file name to an in-memory vector of strings representing identifiers/names to match against field names in a JSON file.  <br /></td></tr>
+<tr class="memitem:a640b3a96fa9ed2b9c3f4957a014c8d1d" id="r_a640b3a96fa9ed2b9c3f4957a014c8d1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#af5f869581be4b983df188993df43f2c4">strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a640b3a96fa9ed2b9c3f4957a014c8d1d">svg::deserialize_dsv_file_to_strings</a> (const string &amp;fin, const char delim=k::comma, const bool cssvp=false)</td></tr>
+<tr class="memdesc:a640b3a96fa9ed2b9c3f4957a014c8d1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a comma-space-separated list of strings to a vector of strings @delim is the delimiter used inbetween values @cssvp is if there is a space between delimiter and value.  <br /></td></tr>
 </table>
 <a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
 <a id="a2f2eef0ee4477f3fe5874703a66e997f" name="a2f2eef0ee4477f3fe5874703a66e997f"></a>
