@@ -40,11 +40,13 @@ namespace svg::hamonshu {
  * Deterministic procedural interpretations of the wave studies in Mori
  * Yuzan's 1903 Hamonshu, volume 2.
  *
- * `pattern_specs` is the source-indexed catalogue. Pass any entry and a
- * finite, positive `pattern_box` to `make_motif_path()` to obtain SVG path
- * data suitable for `svg::make_path()`. Motifs use normalized coordinates,
- * then scale independently in x and y to the requested box. A seeded rotation
- * of at most four degrees may carry linework just outside that box; callers
+ * `pattern_specs` is the source-indexed catalogue. Pass any entry, a finite
+ * positive `pattern_box`, and an optional `motif_config` to
+ * `make_motif_path()` to obtain SVG path data suitable for
+ * `svg::make_path()`. The configuration changes line density, curvature,
+ * phase, orientation, reflection, and sampling without changing styling.
+ * Motifs use normalized coordinates, then scale independently in x and y to
+ * the requested box. Rotation may carry linework outside that box; callers
  * that require a hard boundary should apply an SVG clip path.
  *
  * The routines construct only motif linework. Projection, geographic data,
@@ -123,11 +125,28 @@ enum class motif_kind
   cell,
 };
 
+/// Form and sampling parameters shared by every Hamonshu motif family.
+struct motif_config
+{
+  /// Multiplier for the number of repeated lines or constituent shapes.
+  double density = 1.0;
+  /// Multiplier for wave height, curl radius, and transverse displacement.
+  double curvature = 1.0;
+  /// Angular offset added to the catalogue motif's canonical phase, radians.
+  double phase = 0.0;
+  /// Rotation added to the catalogue motif's canonical orientation, radians.
+  double rotation = 0.0;
+  /// Reflect normalized motif coordinates around the box's vertical axis.
+  bool reflected = false;
+  /// Relative sampling resolution; 48 preserves the canonical resolution.
+  std::size_t samples_per_curve = 48;
+};
+
 inline void
 require(const bool condition, const std::string& message)
 {
   if (!condition)
-    throw std::runtime_error(message);
+    throw std::invalid_argument(message);
 }
 
 inline std::string
@@ -206,86 +225,170 @@ validate_pattern_spec(const pattern_spec& spec)
 }
 
 inline bool
-contains(const std::string_view text, const std::string_view token)
-{ return text.find(token) != std::string_view::npos; }
+has_token_prefix(const std::string_view text, const std::string_view prefix)
+{
+  std::size_t begin = 0;
+  while (begin < text.size())
+    {
+      const std::size_t end = text.find('-', begin);
+      const std::string_view token = text.substr(
+        begin, end == std::string_view::npos ? end : end - begin);
+      if (token.size() >= prefix.size()
+          && token.substr(0, prefix.size()) == prefix)
+        return true;
+      if (end == std::string_view::npos)
+        break;
+      begin = end + 1;
+    }
+  return false;
+}
 
 inline motif_kind
 classify_pattern(const pattern_spec& spec)
 {
   const std::string_view name = spec.name;
-  if (contains(name, "bubble") || contains(name, "droplet"))
+  if (has_token_prefix(name, "bubble")
+      || has_token_prefix(name, "droplet"))
     return motif_kind::bubble;
-  if (contains(name, "cell"))
+  if (has_token_prefix(name, "cell"))
     return motif_kind::cell;
-  if (contains(name, "fountain") || contains(name, "reed")
-      || contains(name, "spear"))
+  if (has_token_prefix(name, "fountain")
+      || has_token_prefix(name, "reed")
+      || has_token_prefix(name, "spear"))
     return motif_kind::fountain;
-  if (contains(name, "chevron") || contains(name, "herringbone")
-      || contains(name, "diamond") || contains(name, "lattice")
-      || contains(name, "crosshatch"))
+  if (has_token_prefix(name, "chevron")
+      || has_token_prefix(name, "herringbone")
+      || has_token_prefix(name, "diamond")
+      || has_token_prefix(name, "lattice")
+      || has_token_prefix(name, "crosshatch"))
     return motif_kind::lattice;
-  if (contains(name, "spiral") || contains(name, "eddy")
-      || contains(name, "whirlpool"))
+  if (has_token_prefix(name, "spiral")
+      || has_token_prefix(name, "eddy")
+      || has_token_prefix(name, "whirlpool"))
     return motif_kind::spiral;
-  if (contains(name, "ripple") || contains(name, "ring")
-      || contains(name, "pool"))
+  if (has_token_prefix(name, "ripple")
+      || has_token_prefix(name, "ring")
+      || has_token_prefix(name, "pool"))
     return motif_kind::ripple;
-  if (contains(name, "scallop") || contains(name, "scale")
-      || contains(name, "arc"))
+  if (has_token_prefix(name, "scallop")
+      || has_token_prefix(name, "scale")
+      || has_token_prefix(name, "arc"))
     return motif_kind::arc;
-  if (contains(name, "spray") || contains(name, "foam"))
+  if (has_token_prefix(name, "spray")
+      || has_token_prefix(name, "foam"))
     return motif_kind::spray;
-  if (contains(name, "breaking") || contains(name, "breaker"))
+  if (has_token_prefix(name, "break"))
     return motif_kind::breaker;
-  if (contains(name, "cloud"))
+  if (has_token_prefix(name, "cloud"))
     return motif_kind::cloud;
-  if (contains(name, "braid") || contains(name, "interwoven")
-      || contains(name, "linked") || contains(name, "knot"))
+  if (has_token_prefix(name, "braid")
+      || has_token_prefix(name, "interwoven")
+      || has_token_prefix(name, "link")
+      || has_token_prefix(name, "knot"))
     return motif_kind::braid;
-  if (contains(name, "cascade") || contains(name, "folded"))
+  if (has_token_prefix(name, "cascade")
+      || has_token_prefix(name, "fold"))
     return motif_kind::cascade;
-  if (contains(name, "fan"))
+  if (has_token_prefix(name, "fan"))
     return motif_kind::fan;
-  if (contains(name, "scroll") || contains(name, "curl")
-      || contains(name, "hook"))
+  if (has_token_prefix(name, "scroll")
+      || has_token_prefix(name, "curl")
+      || has_token_prefix(name, "hook"))
     return motif_kind::scroll;
-  if (contains(name, "crest") || contains(name, "ridge")
-      || contains(name, "swell") || contains(name, "wave")
-      || contains(name, "sea"))
+  if (has_token_prefix(name, "crest")
+      || has_token_prefix(name, "ridge")
+      || has_token_prefix(name, "swell")
+      || has_token_prefix(name, "wave")
+      || has_token_prefix(name, "sea"))
     return motif_kind::crest;
   return motif_kind::waterline;
 }
 
+namespace detail {
+
 inline unsigned
-pattern_seed(const pattern_spec& spec)
+catalogue_key(const pattern_spec& spec)
 {
-  unsigned seed = spec.first_page * 131 + spec.last_page * 17
-                  + spec.motif * 43;
+  unsigned key = spec.first_page * 131 + spec.last_page * 17
+                 + spec.motif * 43;
   for (const unsigned char character : spec.name)
-    seed = seed * 33U ^ character;
-  return seed;
+    key = key * 33U ^ character;
+  return key;
+}
+
+inline constexpr std::size_t minimum_samples_per_curve = 8;
+inline constexpr std::size_t maximum_samples_per_curve = 4096;
+inline constexpr int maximum_repetition_count = 128;
+
+inline void
+validate_config(const motif_config& config)
+{
+  require(std::isfinite(config.density) && config.density >= 0.25
+            && config.density <= 4.0,
+          "Hamonshu density must be finite and between 0.25 and 4");
+  require(std::isfinite(config.curvature) && config.curvature >= 0.20
+            && config.curvature <= 4.0,
+          "Hamonshu curvature must be finite and between 0.20 and 4");
+  require(std::isfinite(config.phase),
+          "Hamonshu phase must be finite");
+  require(std::isfinite(config.rotation),
+          "Hamonshu rotation must be finite");
+  require(config.samples_per_curve >= minimum_samples_per_curve
+            && config.samples_per_curve <= maximum_samples_per_curve,
+          "Hamonshu samples_per_curve must be between 8 and 4096");
 }
 
 struct pattern_context
 {
   pattern_box box;
-  unsigned seed;
+  unsigned key;
+  motif_config config;
+
+  int
+  repetition_count(const int canonical, const int minimum = 1) const
+  {
+    const double requested = canonical * config.density;
+    require(std::isfinite(requested)
+              && requested <= maximum_repetition_count,
+            "Hamonshu repetition count exceeds the supported limit");
+    return std::max(minimum, static_cast<int>(std::lround(requested)));
+  }
+
+  int
+  sample_count(const int canonical) const
+  {
+    const double requested
+      = canonical * static_cast<double>(config.samples_per_curve) / 48.0;
+    require(std::isfinite(requested)
+              && requested <= maximum_samples_per_curve,
+            "Hamonshu sample count exceeds the supported limit");
+    return std::max(
+      static_cast<int>(minimum_samples_per_curve),
+      static_cast<int>(std::lround(requested)));
+  }
 
   svg::point_2t
-  point(const double u, const double v) const
+  point(double u, const double v) const
   {
+    if (config.reflected)
+      u = 1 - u;
     const double angle
-      = (static_cast<int>(seed % 9) - 4) * (pi / 180);
+      = (static_cast<int>(key % 9) - 4) * (pi / 180)
+        + config.rotation;
     const double du = u - 0.5;
     const double dv = v - 0.5;
     const double rotated_u = 0.5 + std::cos(angle) * du
                              - std::sin(angle) * dv;
     const double rotated_v = 0.5 + std::sin(angle) * du
                              + std::cos(angle) * dv;
-    return {
+    const svg::point_2t result {
       box.left + rotated_u * box.width(),
       box.top + rotated_v * box.height(),
     };
+    const auto [x, y] = result;
+    require(std::isfinite(x) && std::isfinite(y),
+            "Hamonshu calculation produced a non-finite coordinate");
+    return result;
   }
 };
 
@@ -303,8 +406,9 @@ append_polyline(std::string& path_data, const svg::vrange& points,
 template<typename Function>
 inline void
 append_curve(std::string& path_data, const pattern_context& context,
-             const int samples, Function function)
+             const int canonical_samples, Function function)
 {
+  const int samples = context.sample_count(canonical_samples);
   svg::vrange points;
   points.reserve(static_cast<std::size_t>(samples + 1));
   for (int index = 0; index <= samples; ++index)
@@ -320,8 +424,9 @@ inline void
 append_ellipse(std::string& path_data, const pattern_context& context,
                const double center_u, const double center_v,
                const double radius_u, const double radius_v,
-               const int samples = 28)
+               const int canonical_samples = 28)
 {
+  const int samples = context.sample_count(canonical_samples);
   svg::vrange points;
   points.reserve(static_cast<std::size_t>(samples));
   for (int index = 0; index != samples; ++index)
@@ -355,16 +460,20 @@ append_spiral(std::string& path_data, const pattern_context& context,
 inline void
 make_waterlines(std::string& data, const pattern_context& context)
 {
-  const int rows = 5 + static_cast<int>(context.seed % 4);
-  const double phase = (context.seed % 29) * 0.19;
+  const int rows = context.repetition_count(
+    5 + static_cast<int>(context.key % 4));
+  const double phase = (context.key % 29) * 0.19
+                       + context.config.phase;
   for (int row = 0; row != rows; ++row)
     append_curve(
       data, context, 36,
       [=](const double t) {
         const double center = (row + 1.0) / (rows + 1.0);
-        const double wave = 0.035 * std::sin((2.0 + row % 3) * 2 * pi * t
-                                             + phase + row * 0.7);
-        const double ripple = 0.012 * std::sin(11 * pi * t + phase);
+        const double wave = context.config.curvature * 0.035
+          * std::sin((2.0 + row % 3) * 2 * pi * t
+                     + phase + row * 0.7);
+        const double ripple = context.config.curvature * 0.012
+          * std::sin(11 * pi * t + phase);
         return std::pair {t, center + wave + ripple};
       });
 }
@@ -372,15 +481,23 @@ make_waterlines(std::string& data, const pattern_context& context)
 inline void
 make_crests(std::string& data, const pattern_context& context)
 {
-  const int rows = 3 + static_cast<int>(context.seed % 2);
-  const int repeats = 3 + static_cast<int>((context.seed / 3) % 3);
+  const int rows = context.repetition_count(
+    3 + static_cast<int>(context.key % 2));
+  const int repeats = context.repetition_count(
+    3 + static_cast<int>((context.key / 3) % 3));
+  const double phase = context.config.phase / (2 * pi);
   for (int row = 0; row != rows; ++row)
     append_curve(
       data, context, 48,
       [=](const double t) {
-        const double local = std::fmod(t * repeats + 0.5 * (row % 2), 1.0);
+        double local = std::fmod(
+          t * repeats + 0.5 * (row % 2) + phase, 1.0);
+        if (local < 0)
+          local += 1;
         const double arch = std::sin(pi * local);
-        const double y = 0.2 + row * 0.22 - 0.13 * arch * arch;
+        const double center = (row + 1.0) / (rows + 1.0);
+        const double y = center
+          - context.config.curvature * 0.13 * arch * arch;
         return std::pair {t, y};
       });
 }
@@ -388,13 +505,21 @@ make_crests(std::string& data, const pattern_context& context)
 inline void
 make_spirals(std::string& data, const pattern_context& context)
 {
-  const double phase = (context.seed % 31) * 0.2;
-  const int count = 4 + static_cast<int>(context.seed % 3);
+  const double phase = (context.key % 31) * 0.2
+                       + context.config.phase;
+  const int count = context.repetition_count(
+    4 + static_cast<int>(context.key % 3));
+  const int rows = (count + 2) / 3;
+  const double radius = 0.16 * context.config.curvature
+                        / std::sqrt(context.config.density);
   for (int index = 0; index != count; ++index)
     {
       const double u = 0.18 + (index % 3) * 0.32;
-      const double v = 0.28 + (index / 3) * 0.42;
-      append_spiral(data, context, u, v, 0.16, phase + index * 0.8,
+      const int row = index / 3;
+      const double v = rows <= 2
+        ? 0.28 + row * 0.42
+        : 0.16 + row * 0.68 / (rows - 1.0);
+      append_spiral(data, context, u, v, radius, phase + index * 0.8,
                     1.4 + 0.2 * (index % 3));
     }
 }
@@ -402,40 +527,48 @@ make_spirals(std::string& data, const pattern_context& context)
 inline void
 make_spray(std::string& data, const pattern_context& context)
 {
-  const double phase = (context.seed % 17) * 0.11;
-  const int branches = 5 + static_cast<int>(context.seed % 3);
+  const double phase = (context.key % 17) * 0.11
+                       + context.config.phase;
+  const int branches = context.repetition_count(
+    5 + static_cast<int>(context.key % 3), 2);
   for (int branch = 0; branch != branches; ++branch)
     {
       const double base = 0.1 + 0.8 * branch / (branches - 1.0);
       append_curve(
         data, context, 24,
         [=](const double t) {
-          const double u = base + 0.10 * std::sin(pi * t + phase + branch);
+          const double u = base + context.config.curvature * 0.10
+            * std::sin(pi * t + phase + branch);
           const double v = 0.88 - 0.70 * t
-                           + 0.08 * std::sin(3 * pi * t + branch);
+            + context.config.curvature * 0.08
+              * std::sin(3 * pi * t + branch + context.config.phase);
           return std::pair {u, v};
         });
       append_ellipse(data, context,
                      base + 0.08 * std::sin(phase + branch),
-                     0.12 + 0.03 * (branch % 2), 0.018, 0.025, 16);
+                     0.12 + 0.03 * (branch % 2),
+                     context.config.curvature * 0.018,
+                     context.config.curvature * 0.025, 16);
     }
 }
 
 inline void
 make_arcs(std::string& data, const pattern_context& context)
 {
-  const int rows = 4 + static_cast<int>(context.seed % 2);
-  const int columns = 5;
+  const int rows = context.repetition_count(
+    4 + static_cast<int>(context.key % 2));
+  const int columns = context.repetition_count(5);
   for (int row = 0; row != rows; ++row)
     for (int column = -1; column <= columns; ++column)
       append_curve(
         data, context, 16,
         [=](const double t) {
           const double center = (column + 0.5 * (row % 2)) / columns;
-          const double angle = pi + pi * t;
+          const double angle = pi + pi * t + context.config.phase;
           return std::pair {
-            center + 0.13 * std::cos(angle),
-            0.12 + row * 0.21 + 0.10 * std::sin(angle),
+            center + context.config.curvature * 0.13 * std::cos(angle),
+            (row + 1.0) / (rows + 1.0)
+              + context.config.curvature * 0.10 * std::sin(angle),
           };
         });
 }
@@ -443,7 +576,8 @@ make_arcs(std::string& data, const pattern_context& context)
 inline void
 make_lattice(std::string& data, const pattern_context& context)
 {
-  const int lines = 7 + static_cast<int>(context.seed % 3);
+  const int lines = context.repetition_count(
+    7 + static_cast<int>(context.key % 3));
   for (int line = -2; line < lines; ++line)
     for (const double direction : {-1.0, 1.0})
       append_curve(
@@ -451,7 +585,10 @@ make_lattice(std::string& data, const pattern_context& context)
         [=](const double t) {
           const double offset = line / static_cast<double>(lines);
           const double u = t;
-          const double v = 0.5 + direction * (t - 0.5) + offset - 0.35;
+          const double v = 0.5
+            + context.config.curvature * direction * (t - 0.5)
+            + offset - 0.35
+            + 0.05 * std::sin(context.config.phase);
           return std::pair {u, v};
         });
 }
@@ -459,51 +596,65 @@ make_lattice(std::string& data, const pattern_context& context)
 inline void
 make_bubbles(std::string& data, const pattern_context& context)
 {
-  const int count = 8 + static_cast<int>(context.seed % 5);
+  const int count = context.repetition_count(
+    8 + static_cast<int>(context.key % 5));
   for (int index = 0; index != count; ++index)
     {
-      const unsigned mixed = context.seed + static_cast<unsigned>(index * 97);
+      const unsigned mixed = context.key + static_cast<unsigned>(index * 97);
       const double u = 0.12 + (mixed % 73) / 73.0 * 0.76;
       const double v = 0.12 + ((mixed / 73) % 67) / 67.0 * 0.76;
-      const double radius = 0.035 + ((mixed / 491) % 5) * 0.012;
-      append_ellipse(data, context, u, v, radius, radius * 0.8, 20);
+      const double radius = context.config.curvature
+        * (0.035 + ((mixed / 491) % 5) * 0.012)
+        / std::sqrt(context.config.density);
+      append_ellipse(data, context, u, v, radius,
+                     radius * (0.8 + 0.12 * std::sin(context.config.phase)),
+                     20);
     }
 }
 
 inline void
 make_scrolls(std::string& data, const pattern_context& context)
 {
-  const int rows = 3 + static_cast<int>(context.seed % 2);
-  const double phase = (context.seed % 23) * 0.13;
+  const int rows = context.repetition_count(
+    3 + static_cast<int>(context.key % 2));
+  const double phase = (context.key % 23) * 0.13
+                       + context.config.phase;
   for (int row = 0; row != rows; ++row)
     {
       append_curve(
         data, context, 38,
         [=](const double t) {
           const double u = t;
-          const double v = 0.2 + row * 0.25
-                           + 0.09 * std::sin(2 * pi * (2 * t) + phase);
+          const double v = (row + 1.0) / (rows + 1.0)
+            + context.config.curvature * 0.09
+              * std::sin(2 * pi * (2 * t) + phase);
           return std::pair {u, v};
         });
-      append_spiral(data, context, 0.2 + row * 0.25,
-                    0.2 + row * 0.22, 0.10, phase + row, 1.25);
+      append_spiral(data, context,
+                    0.18 + 0.64 * row / std::max(1, rows - 1),
+                    (row + 1.0) / (rows + 1.0),
+                    context.config.curvature * 0.10,
+                    phase + row, 1.25);
     }
 }
 
 inline void
 make_fans(std::string& data, const pattern_context& context)
 {
-  const bool reverse = context.seed % 2 != 0;
-  for (int line = 0; line != 8; ++line)
+  const bool reverse = context.key % 2 != 0;
+  const int lines = context.repetition_count(8, 2);
+  for (int line = 0; line != lines; ++line)
     append_curve(
       data, context, 30,
       [=](const double t) {
         double u = 0.05 + 0.9 * t;
         if (reverse)
           u = 1 - u;
-        const double height = 0.10 + line * 0.045;
-        const double v = 0.88 - height * std::sin(pi * t)
-                         - 0.28 * t;
+        const double height = 0.10 + line * 0.315 / (lines - 1.0);
+        const double v = 0.88
+          - context.config.curvature * height
+            * std::sin(pi * t + context.config.phase)
+          - 0.28 * t;
         return std::pair {u, v};
       });
 }
@@ -511,36 +662,48 @@ make_fans(std::string& data, const pattern_context& context)
 inline void
 make_breakers(std::string& data, const pattern_context& context)
 {
-  const bool reverse = context.seed % 2 != 0;
-  const double phase = (context.seed % 19) * 0.17;
-  for (int line = 0; line != 6; ++line)
+  const bool reverse = context.key % 2 != 0;
+  const double phase = (context.key % 19) * 0.17
+                       + context.config.phase;
+  const int lines = context.repetition_count(6, 2);
+  for (int line = 0; line != lines; ++line)
     append_curve(
       data, context, 38,
       [=](const double t) {
         double u = 0.04 + 0.78 * t;
         if (reverse)
           u = 1 - u;
-        const double v = 0.84 - 0.55 * std::sin(0.72 * pi * t)
-                         + line * 0.025 + 0.02 * std::sin(phase + 5 * t);
+        const double v = 0.84
+          - context.config.curvature * 0.55
+            * std::sin(0.72 * pi * t)
+          + line * 0.125 / (lines - 1.0)
+          + context.config.curvature * 0.02 * std::sin(phase + 5 * t);
         return std::pair {u, v};
       });
   append_spiral(data, context, reverse ? 0.22 : 0.78, 0.30,
-                0.17, reverse ? pi : 0, 1.4);
-  for (int drop = 0; drop != 4; ++drop)
-    append_ellipse(data, context, 0.42 + drop * 0.10,
-                   0.16 + 0.04 * (drop % 2), 0.012, 0.018, 14);
+                context.config.curvature * 0.17,
+                (reverse ? pi : 0) + context.config.phase, 1.4);
+  const int drops = context.repetition_count(4, 2);
+  for (int drop = 0; drop != drops; ++drop)
+    append_ellipse(data, context,
+                   0.42 + drop * 0.30 / (drops - 1.0),
+                   0.16 + 0.04 * (drop % 2),
+                   context.config.curvature * 0.012,
+                   context.config.curvature * 0.018, 14);
 }
 
 inline void
 make_braids(std::string& data, const pattern_context& context)
 {
-  const int strands = 4 + static_cast<int>(context.seed % 3);
-  const double phase = (context.seed % 13) * 0.23;
+  const int strands = context.repetition_count(
+    4 + static_cast<int>(context.key % 3), 2);
+  const double phase = (context.key % 13) * 0.23
+                       + context.config.phase;
   for (int strand = 0; strand != strands; ++strand)
     append_curve(
       data, context, 44,
       [=](const double t) {
-        const double v = 0.5 + 0.22 * std::sin(
+        const double v = 0.5 + context.config.curvature * 0.22 * std::sin(
           2 * pi * (1.5 + strand % 2) * t + phase
           + strand * 2 * pi / strands);
         return std::pair {t, v};
@@ -550,12 +713,14 @@ make_braids(std::string& data, const pattern_context& context)
 inline void
 make_cascade(std::string& data, const pattern_context& context)
 {
-  for (int line = 0; line != 9; ++line)
+  const int lines = context.repetition_count(9, 2);
+  for (int line = 0; line != lines; ++line)
     append_curve(
       data, context, 32,
       [=](const double t) {
-        const double u = 0.12 + line * 0.09
-                         + 0.07 * std::sin(pi * t + line * 0.4);
+        const double u = 0.12 + line * 0.72 / (lines - 1.0)
+          + context.config.curvature * 0.07
+            * std::sin(pi * t + line * 0.4 + context.config.phase);
         const double v = 0.05 + 0.9 * t;
         return std::pair {u, v};
       });
@@ -564,43 +729,64 @@ make_cascade(std::string& data, const pattern_context& context)
 inline void
 make_ripples(std::string& data, const pattern_context& context)
 {
-  const int centers = 2 + static_cast<int>(context.seed % 2);
+  const int centers = context.repetition_count(
+    2 + static_cast<int>(context.key % 2), 2);
+  const int rings = context.repetition_count(4);
   for (int center = 0; center != centers; ++center)
-    for (int ring = 1; ring <= 4; ++ring)
+    for (int ring = 1; ring <= rings; ++ring)
       append_ellipse(data, context,
-                     0.28 + center * 0.43,
+                     0.28 + center * 0.43 / (centers - 1.0),
                      0.35 + 0.25 * (center % 2),
-                     0.035 * ring, 0.022 * ring, 28);
+                     context.config.curvature * 0.035 * ring,
+                     context.config.curvature * 0.022 * ring
+                       * (1 + 0.12 * std::sin(context.config.phase)),
+                     28);
 }
 
 inline void
 make_fountains(std::string& data, const pattern_context& context)
 {
-  for (int line = 0; line != 7; ++line)
+  const int lines = context.repetition_count(7, 2);
+  for (int line = 0; line != lines; ++line)
     {
-      const double spread = 0.12 + line * 0.055;
+      const double spread = context.config.curvature
+        * (0.12 + line * 0.33 / (lines - 1.0));
       for (const double direction : {-1.0, 1.0})
         append_curve(
           data, context, 28,
           [=](const double t) {
             const double u = 0.5 + direction * spread * std::sin(pi * t / 2);
-            const double v = 0.92 - 0.78 * t + 0.18 * t * t;
+            const double v = 0.92 - 0.78 * t
+              + context.config.curvature * 0.18 * t * t;
             return std::pair {u, v};
           });
     }
-  append_spiral(data, context, 0.24, 0.72, 0.10, pi, 1.1);
-  append_spiral(data, context, 0.76, 0.72, 0.10, 0, 1.1);
+  append_spiral(data, context, 0.24, 0.72,
+                context.config.curvature * 0.10,
+                pi + context.config.phase, 1.1);
+  append_spiral(data, context, 0.76, 0.72,
+                context.config.curvature * 0.10,
+                context.config.phase, 1.1);
 }
 
 inline void
 make_clouds(std::string& data, const pattern_context& context)
 {
-  const double phase = (context.seed % 31) * 0.1;
-  for (int index = 0; index != 7; ++index)
+  const double phase = (context.key % 31) * 0.1
+                       + context.config.phase;
+  const int count = context.repetition_count(7);
+  const int rows = (count + 3) / 4;
+  for (int index = 0; index != count; ++index)
     {
       const double u = 0.12 + (index % 4) * 0.25;
-      const double v = 0.30 + (index / 4) * 0.38;
-      append_spiral(data, context, u, v, 0.13, phase + index * 0.7, 1.35);
+      const int row = index / 4;
+      const double v = rows <= 2
+        ? 0.30 + row * 0.38
+        : 0.18 + row * 0.64 / (rows - 1.0);
+      append_spiral(data, context, u, v,
+                    context.config.curvature * 0.13
+                      / std::sqrt(context.config.density),
+                    phase + index * 0.7, 1.35);
     }
   make_waterlines(data, context);
 }
@@ -608,24 +794,26 @@ make_clouds(std::string& data, const pattern_context& context)
 inline void
 make_cells(std::string& data, const pattern_context& context)
 {
-  for (int row = 0; row != 4; ++row)
-    for (int column = 0; column != 5; ++column)
+  const int rows = context.repetition_count(4, 2);
+  const int columns = context.repetition_count(5, 2);
+  for (int row = 0; row != rows; ++row)
+    for (int column = 0; column != columns; ++column)
       {
-        const double u = 0.10 + column * 0.20 + 0.10 * (row % 2);
-        const double v = 0.14 + row * 0.24;
-        const double r = 0.07 + 0.01 * ((context.seed + row + column) % 3);
+        const double u = 0.10 + column * 0.80 / (columns - 1.0)
+                         + 0.10 * (row % 2);
+        const double v = 0.14 + row * 0.72 / (rows - 1.0);
+        const double r = context.config.curvature
+          * (0.07 + 0.01 * ((context.key + row + column) % 3))
+          / std::sqrt(context.config.density);
         append_ellipse(data, context, u, v, r, r * 0.75, 22);
       }
 }
 
-inline std::string
-make_motif_path(const pattern_spec& spec, const pattern_box& box)
+inline void
+make_motif(std::string& data, const motif_kind kind,
+           const pattern_context& context)
 {
-  validate_pattern_spec(spec);
-  require(box.valid(), "Hamonshu motif box must be finite and positive");
-  pattern_context context {box, pattern_seed(spec)};
-  std::string data;
-  switch (classify_pattern(spec))
+  switch (kind)
     {
     case motif_kind::waterline: make_waterlines(data, context); break;
     case motif_kind::crest: make_crests(data, context); break;
@@ -644,6 +832,28 @@ make_motif_path(const pattern_spec& spec, const pattern_box& box)
     case motif_kind::cloud: make_clouds(data, context); break;
     case motif_kind::cell: make_cells(data, context); break;
     }
+}
+
+} // namespace detail
+
+/// Generate one source-indexed Hamonshu motif with explicit form parameters.
+/// @param spec Catalogue identity and descriptive source label.
+/// @param box Finite SVG bounds with positive width and height.
+/// @param config Density, curvature, phase, orientation, and sampling data.
+/// @return SVG path data containing the motif's constituent polylines.
+/// @throws std::invalid_argument for invalid catalogue or form parameters.
+inline std::string
+make_motif_path(const pattern_spec& spec, const pattern_box& box,
+                const motif_config& config = {})
+{
+  validate_pattern_spec(spec);
+  require(box.valid(), "Hamonshu motif box must be finite and positive");
+  detail::validate_config(config);
+  const detail::pattern_context context {
+    box, detail::catalogue_key(spec), config,
+  };
+  std::string data;
+  detail::make_motif(data, classify_pattern(spec), context);
   require(!data.empty(), "Hamonshu motif generated no SVG path data");
   return data;
 }

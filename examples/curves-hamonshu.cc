@@ -1,4 +1,4 @@
-// Render the complete Hamonshu catalogue and ten deterministic seed variants.
+// Explore the form parameter space of Izzi's Hamonshu motif API.
 // -*- mode: C++ -*-
 
 #include <array>
@@ -17,80 +17,38 @@ namespace {
 
 namespace hamonshu = svg::hamonshu;
 
-// Every catalogue entry occupies one column. Row zero preserves the seed used
-// by make_motif_path(); the following rows sample ten alternate seeds. Keeping
-// the boxes fixed makes changes in seeded rotation, phase, direction, density,
-// row count, and repeat count directly comparable down each column.
-constexpr std::size_t variant_count = 10;
-constexpr std::size_t row_count = variant_count + 1;
-constexpr double label_width = 120;
-constexpr double header_height = 28;
-constexpr double cell_width = 88;
-constexpr double cell_height = 70;
-constexpr double cell_padding = 7;
+// Each column changes only curvature: wave height, curl radius, and transverse
+// displacement. Density, phase, orientation, sampling, and every SVG color
+// remain fixed, so differences across a row are differences in form alone.
+constexpr std::array curvature_ratios {
+  0.25, 0.45, 0.70, 1.0, 1.30, 1.65, 2.10,
+};
 
-static_assert(std::numeric_limits<unsigned>::digits >= 32);
+constexpr double label_width = 310;
+constexpr double header_height = 50;
+constexpr double cell_width = 150;
+constexpr double cell_height = 96;
+constexpr double cell_padding = 11;
 
-/// Avalanche an unsigned value so adjacent variant numbers exercise unrelated
-/// residues in the many modulo-based Hamonshu curve parameters.
-unsigned
-mix_seed(unsigned value)
+template<typename Function>
+void
+expect_invalid_argument(Function function, const std::string_view operation)
 {
-  value ^= value >> 16;
-  value *= 0x7feb352dU;
-  value ^= value >> 15;
-  value *= 0x846ca68bU;
-  value ^= value >> 16;
-  return value;
+  try
+    { function(); }
+  catch (const std::invalid_argument&)
+    { return; }
+  throw std::runtime_error(
+    std::string(operation) + " did not reject invalid input");
 }
 
-/// Preserve the catalogue seed in row zero and derive ten repeatable samples.
-unsigned
-seed_for_row(const hamonshu::pattern_spec& spec, const std::size_t row)
-{
-  const unsigned canonical = hamonshu::pattern_seed(spec);
-  if (row == 0)
-    return canonical;
-  return mix_seed(canonical ^ (0x9e3779b9U * static_cast<unsigned>(row)));
-}
-
-/// Dispatch a motif with an explicit seed instead of the catalogue seed.
 std::string
-make_seeded_motif_path(const hamonshu::pattern_spec& spec,
-                       const hamonshu::pattern_box& box,
-                       const unsigned seed)
+number(const double value)
 {
-  using enum hamonshu::motif_kind;
-
-  hamonshu::validate_pattern_spec(spec);
-  if (!box.valid())
-    throw std::runtime_error("Hamonshu motif box must be finite and positive");
-
-  const hamonshu::pattern_context context {box, seed};
-  std::string data;
-  switch (hamonshu::classify_pattern(spec))
-    {
-    case waterline: hamonshu::make_waterlines(data, context); break;
-    case crest: hamonshu::make_crests(data, context); break;
-    case spiral: hamonshu::make_spirals(data, context); break;
-    case spray: hamonshu::make_spray(data, context); break;
-    case arc: hamonshu::make_arcs(data, context); break;
-    case lattice: hamonshu::make_lattice(data, context); break;
-    case bubble: hamonshu::make_bubbles(data, context); break;
-    case scroll: hamonshu::make_scrolls(data, context); break;
-    case fan: hamonshu::make_fans(data, context); break;
-    case breaker: hamonshu::make_breakers(data, context); break;
-    case braid: hamonshu::make_braids(data, context); break;
-    case cascade: hamonshu::make_cascade(data, context); break;
-    case ripple: hamonshu::make_ripples(data, context); break;
-    case fountain: hamonshu::make_fountains(data, context); break;
-    case cloud: hamonshu::make_clouds(data, context); break;
-    case cell: hamonshu::make_cells(data, context); break;
-    }
-
-  if (data.empty())
-    throw std::runtime_error("Hamonshu motif generated no SVG path data");
-  return data;
+  std::ostringstream output;
+  output.precision(3);
+  output << value;
+  return output.str();
 }
 
 std::string
@@ -108,15 +66,15 @@ clip_path_markup(const std::string& id, const double left, const double top)
 }
 
 std::string
-cell_markup(const double left, const double top, const std::string_view fill)
+cell_markup(const double left, const double top)
 {
   std::ostringstream output;
   output << "<rect x=\"" << left
          << "\" y=\"" << top
          << "\" width=\"" << cell_width
          << "\" height=\"" << cell_height
-         << "\" fill=\"" << fill
-         << "\" stroke=\"#cbd5da\" stroke-width=\"0.35\"/>\n";
+         << "\" fill=\"#f7fafb\""
+         << " stroke=\"#cbd5da\" stroke-width=\"0.45\"/>\n";
   return output.str();
 }
 
@@ -134,101 +92,191 @@ text_markup(const double x, const double y, const std::string_view text,
 }
 
 std::string
-column_label(const hamonshu::pattern_spec& spec)
+row_label(const hamonshu::pattern_spec& spec)
 {
   std::string label = hamonshu::zero_padded(spec.first_page, 3);
   if (spec.last_page != spec.first_page)
     label += "-" + hamonshu::zero_padded(spec.last_page, 3);
-  label += "/" + hamonshu::zero_padded(spec.motif, 2);
+  label += "/" + hamonshu::zero_padded(spec.motif, 2) + "  ";
+  label += hamonshu::display_name(spec.name);
   return label;
+}
+
+std::string
+configuration_title(const hamonshu::pattern_spec& spec,
+                    const hamonshu::motif_config& config)
+{
+  return hamonshu::pattern_title(spec)
+    + "; density=" + number(config.density)
+    + "; curvature=" + number(config.curvature)
+    + "; phase=" + number(config.phase)
+    + "; rotation=" + number(config.rotation)
+    + "; reflected=" + (config.reflected ? "true" : "false");
+}
+
+void
+validate_public_api()
+{
+  const auto& spec = hamonshu::pattern_specs.front();
+  const hamonshu::pattern_box box {0, 0, 120, 80};
+
+  if (hamonshu::pattern_id(spec)
+        != "hamonshu-page-001-motif-01-nested-current-scrolls"
+      || hamonshu::pdf_scan_page(1) != 2
+      || hamonshu::pdf_scan_page(51) != 27)
+    throw std::runtime_error("Hamonshu source-index mapping changed");
+
+  const std::string canonical_path = hamonshu::make_motif_path(spec, box);
+  if (canonical_path
+      != hamonshu::make_motif_path(spec, box, hamonshu::motif_config {}))
+    throw std::runtime_error(
+      "default Hamonshu configuration changed the canonical form");
+
+  const auto expect_changed_form
+    = [&](const hamonshu::motif_config& config,
+          const std::string_view parameter) {
+        if (canonical_path == hamonshu::make_motif_path(spec, box, config))
+          throw std::runtime_error(
+            "Hamonshu " + std::string(parameter)
+            + " did not change the canonical path");
+      };
+  hamonshu::motif_config changed;
+  changed.density = 1.5;
+  expect_changed_form(changed, "density");
+  changed = {};
+  changed.curvature = 1.5;
+  expect_changed_form(changed, "curvature");
+  changed = {};
+  changed.phase = 0.5;
+  expect_changed_form(changed, "phase");
+  changed = {};
+  changed.rotation = 0.2;
+  expect_changed_form(changed, "rotation");
+  changed = {};
+  changed.reflected = true;
+  expect_changed_form(changed, "reflection");
+
+  if (hamonshu::classify_pattern(
+        hamonshu::pattern_spec {3, 3, 3, "towering-breaking-wave"})
+        != hamonshu::motif_kind::breaker
+      || hamonshu::classify_pattern(
+           hamonshu::pattern_spec {49, 49, 2, "ringed-current"})
+           != hamonshu::motif_kind::ripple)
+    throw std::runtime_error(
+      "Hamonshu classifier matched a token fragment instead of a word stem");
+
+  expect_invalid_argument(
+    [&] { (void)hamonshu::make_motif_path(spec, hamonshu::pattern_box {}); },
+    "invalid Hamonshu pattern box");
+  expect_invalid_argument(
+    [&] {
+      (void)hamonshu::make_motif_path(
+        hamonshu::pattern_spec {50, 50, 1, "colophon"}, box);
+    },
+    "invalid Hamonshu catalogue entry");
+
+  hamonshu::motif_config invalid;
+  invalid.density = 0;
+  expect_invalid_argument(
+    [&] { (void)hamonshu::make_motif_path(spec, box, invalid); },
+    "zero Hamonshu density");
+
+  invalid = {};
+  invalid.curvature = std::numeric_limits<double>::infinity();
+  expect_invalid_argument(
+    [&] { (void)hamonshu::make_motif_path(spec, box, invalid); },
+    "non-finite Hamonshu curvature");
+
+  invalid = {};
+  invalid.samples_per_curve = 7;
+  expect_invalid_argument(
+    [&] { (void)hamonshu::make_motif_path(spec, box, invalid); },
+    "undersampled Hamonshu motif");
+
+  std::set<hamonshu::motif_kind> kinds;
+  for (const auto& catalogue_spec : hamonshu::pattern_specs)
+    {
+      hamonshu::validate_pattern_spec(catalogue_spec);
+      kinds.insert(hamonshu::classify_pattern(catalogue_spec));
+    }
+  constexpr std::size_t motif_kind_count = 16;
+  if (kinds.size() != motif_kind_count)
+    throw std::runtime_error(
+      "Hamonshu catalogue does not exercise every motif family");
 }
 
 void
 render_parameter_grid(const std::string& output_name)
 {
-  const double grid_width = hamonshu::pattern_specs.size() * cell_width;
+  validate_public_api();
+
   const svg::area<> canvas {
-    label_width + grid_width,
-    header_height + row_count * cell_height,
+    label_width + curvature_ratios.size() * cell_width,
+    header_height + hamonshu::pattern_specs.size() * cell_height,
   };
   svg::svg_element document(
     output_name,
-    "Mori Yuzan Hamonshu volume 2: canonical curves and ten seed variants",
+    "Mori Yuzan Hamonshu volume 2: monochrome curvature parameter explorer",
     canvas);
 
   svg::defs_element definitions;
   definitions.start_element();
-  for (std::size_t row = 0; row != row_count; ++row)
+  for (std::size_t row = 0; row != hamonshu::pattern_specs.size(); ++row)
     for (std::size_t column = 0;
-         column != hamonshu::pattern_specs.size(); ++column)
+         column != curvature_ratios.size(); ++column)
       {
         const std::string clip_id
-          = "clip-hamonshu-column-" + hamonshu::zero_padded(
-              static_cast<unsigned>(column + 1), 3)
-            + "-row-" + hamonshu::zero_padded(
-              static_cast<unsigned>(row), 2);
-        const double left = label_width + column * cell_width;
-        const double top = header_height + row * cell_height;
-        definitions.add_raw(clip_path_markup(clip_id, left, top));
+          = "clip-hamonshu-row-" + std::to_string(row)
+            + "-column-" + std::to_string(column);
+        definitions.add_raw(clip_path_markup(
+          clip_id, label_width + column * cell_width,
+          header_height + row * cell_height));
       }
   definitions.finish_element();
   document.add_element(definitions);
 
+  const svg::style motif_style {
+    svg::color::none, 0, svg::color_qi {31, 66, 79}, 0.94, 0.82,
+  };
+
   svg::group_element grid;
   grid.start_element("hamonshu-parameter-grid");
-  grid.add_raw(text_markup(label_width - 8, header_height - 9,
-                           "seed sample", "end", 9));
+  grid.add_raw(text_markup(label_width - 12, header_height - 17,
+                           "source motif / form ratio", "end", 11));
   for (std::size_t column = 0;
-       column != hamonshu::pattern_specs.size(); ++column)
+       column != curvature_ratios.size(); ++column)
     {
       const double center_x
         = label_width + column * cell_width + cell_width / 2;
+      const double curvature = curvature_ratios[column];
       grid.add_raw(text_markup(
-        center_x, header_height - 9,
-        column_label(hamonshu::pattern_specs[column]),
-        "middle", 7));
+        center_x, header_height - 17,
+        "curvature = " + number(curvature)
+          + (curvature == 1.0 ? " (canonical)" : ""),
+        "middle", 10));
     }
-
-  const std::array ink_colors {
-    svg::color_qi {24, 54, 68},
-    svg::color_qi {61, 72, 125},
-    svg::color_qi {100, 67, 121},
-    svg::color_qi {133, 64, 105},
-    svg::color_qi {153, 72, 77},
-    svg::color_qi {151, 95, 49},
-    svg::color_qi {126, 119, 43},
-    svg::color_qi {77, 130, 62},
-    svg::color_qi {41, 127, 104},
-    svg::color_qi {31, 111, 137},
-    svg::color_qi {39, 83, 139},
-  };
 
   std::set<std::string> identifiers;
   std::size_t rendered_count = 0;
-  for (std::size_t row = 0; row != row_count; ++row)
+  for (std::size_t row = 0; row != hamonshu::pattern_specs.size(); ++row)
     {
+      const auto& spec = hamonshu::pattern_specs[row];
       const double top = header_height + row * cell_height;
-      const std::string row_label = row == 0
-        ? "catalogue seed"
-        : "variant " + hamonshu::zero_padded(
-            static_cast<unsigned>(row), 2);
-      grid.add_raw(text_markup(label_width - 8,
+      grid.add_raw(text_markup(label_width - 12,
                                top + cell_height / 2 + 4,
-                               row_label, "end", 10));
+                               row_label(spec), "end", 9));
 
-      const std::string_view background
-        = row % 2 == 0 ? "#f7fafb" : "#eef4f6";
-      const svg::style motif_style {
-        svg::color::none, 0, ink_colors[row], 0.9, 0.6,
+      std::set<std::string> forms;
+      const hamonshu::pattern_box comparison_box {
+        0, 0,
+        cell_width - 2 * cell_padding,
+        cell_height - 2 * cell_padding,
       };
-
       for (std::size_t column = 0;
-           column != hamonshu::pattern_specs.size(); ++column)
+           column != curvature_ratios.size(); ++column)
         {
-          const hamonshu::pattern_spec& spec
-            = hamonshu::pattern_specs[column];
           const double left = label_width + column * cell_width;
-          grid.add_raw(cell_markup(left, top, background));
+          grid.add_raw(cell_markup(left, top));
 
           const hamonshu::pattern_box box {
             left + cell_padding,
@@ -236,45 +284,50 @@ render_parameter_grid(const std::string& output_name)
             left + cell_width - cell_padding,
             top + cell_height - cell_padding,
           };
-          const unsigned seed = seed_for_row(spec, row);
+          hamonshu::motif_config config;
+          config.curvature = curvature_ratios[column];
           const std::string path_data
-            = make_seeded_motif_path(spec, box, seed);
-
-          if (row == 0 && path_data != hamonshu::make_motif_path(spec, box))
+            = hamonshu::make_motif_path(spec, box, config);
+          const std::string form_signature
+            = hamonshu::make_motif_path(spec, comparison_box, config);
+          if (path_data.empty()
+              || path_data.find("nan") != std::string::npos
+              || path_data.find("inf") != std::string::npos
+              || form_signature.empty()
+              || form_signature.find("nan") != std::string::npos
+              || form_signature.find("inf") != std::string::npos)
             throw std::runtime_error(
-              "canonical seeded dispatch diverged for "
-              + hamonshu::pattern_id(spec));
-          if (path_data.find("nan") != std::string::npos
-              || path_data.find("inf") != std::string::npos)
+              "invalid Hamonshu path data for " + hamonshu::pattern_id(spec));
+          if (!forms.insert(form_signature).second)
             throw std::runtime_error(
-              "non-finite Hamonshu path coordinate for "
+              "curvature produced a duplicate Hamonshu form for "
               + hamonshu::pattern_id(spec));
 
-          const std::string suffix
-            = "-variant-" + hamonshu::zero_padded(
-                static_cast<unsigned>(row), 2);
-          const std::string id = hamonshu::pattern_id(spec) + suffix;
+          if (curvature_ratios[column] == 1.0
+              && path_data != hamonshu::make_motif_path(spec, box))
+            throw std::runtime_error(
+              "canonical Hamonshu parameter sample diverged for "
+              + hamonshu::pattern_id(spec));
+
+          const std::string id = hamonshu::pattern_id(spec)
+            + "-curvature-" + std::to_string(column);
           if (!identifiers.insert(id).second)
             throw std::runtime_error(
-              "duplicate Hamonshu variant identifier: " + id);
+              "duplicate Hamonshu parameter-cell identifier: " + id);
           const std::string clip_id
-            = "clip-hamonshu-column-" + hamonshu::zero_padded(
-                static_cast<unsigned>(column + 1), 3)
-              + "-row-" + hamonshu::zero_padded(
-                static_cast<unsigned>(row), 2);
+            = "clip-hamonshu-row-" + std::to_string(row)
+              + "-column-" + std::to_string(column);
 
-          svg::group_element motif;
-          motif.start_element(id);
-          motif.add_title(
-            hamonshu::pattern_title(spec) + "; " + row_label
-            + "; seed " + std::to_string(seed));
-          motif.add_element(svg::make_path(
+          svg::group_element cell;
+          cell.start_element(id);
+          cell.add_title(configuration_title(spec, config));
+          cell.add_element(svg::make_path(
             path_data, motif_style, id + "-path", true,
             "clip-path=\"url(#" + clip_id
               + ")\" stroke-linecap=\"round\" "
                 "stroke-linejoin=\"round\""));
-          motif.finish_element();
-          grid.add_element(motif);
+          cell.finish_element();
+          grid.add_element(cell);
           ++rendered_count;
         }
     }
@@ -283,7 +336,7 @@ render_parameter_grid(const std::string& output_name)
   document.add_element(grid);
 
   const std::size_t expected_count
-    = hamonshu::pattern_specs.size() * row_count;
+    = hamonshu::pattern_specs.size() * curvature_ratios.size();
   if (rendered_count != expected_count || identifiers.size() != expected_count)
     throw std::runtime_error("Hamonshu parameter grid is incomplete");
 }
@@ -295,12 +348,16 @@ main(const int argc, char** argv)
 {
   try
     {
+      if (argc > 2)
+        throw std::invalid_argument(
+          "usage: curves-hamonshu [output-name-without-extension]");
       const std::string output_name
-        = argc == 2 ? argv[1] : "curves-hamonshu-variants";
+        = argc == 2 ? argv[1] : "curves-hamonshu";
       render_parameter_grid(output_name);
-      std::cout << "generated " << hamonshu::pattern_specs.size()
-                << " canonical Hamonshu motifs and " << variant_count
-                << " variants per motif in " << output_name << ".svg\n";
+      std::cout << "generated "
+                << hamonshu::pattern_specs.size() * curvature_ratios.size()
+                << " monochrome Hamonshu form samples in "
+                << output_name << ".svg\n";
       return 0;
     }
   catch (const std::exception& error)

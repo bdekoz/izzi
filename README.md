@@ -27,13 +27,15 @@ See the files in the [examples](https://github.com/bdekoz/izzi/tree/main/example
 
 [`src/a60-svg-curves-hamonshu.h`](src/a60-svg-curves-hamonshu.h) provides a
 C++20, header-only catalogue and deterministic procedural SVG paths for 153
-wave studies indexed to Mori Yuzan's 1903 *Hamonshu*, volume 2. The API emits
-normalized motif linework inside a caller-supplied `svg::hamonshu::pattern_box`;
-map projection, clipping, styling, and SVG layer assembly remain with the
-caller.
+wave studies indexed to Mori Yuzan's 1903 *Hamonshu*, volume 2. The
+`svg::hamonshu::motif_config` API parameterizes line density, curvature, phase,
+rotation, reflection, and sampling resolution. It emits normalized motif
+linework inside a caller-supplied `svg::hamonshu::pattern_box`; clipping,
+styling, and SVG layer assembly remain with the caller.
 
 [`examples/curves-hamonshu.cc`](examples/curves-hamonshu.cc) validates the
-catalogue and renders every motif. Build and run it from the repository root:
+public API and renders every motif at seven curvature ratios with one fixed
+ink style. Build and run it from the repository root:
 
 ```sh
 g++ -Isrc -std=c++20 -Wall -Wextra -Wpedantic -Werror \
@@ -41,6 +43,7 @@ g++ -Isrc -std=c++20 -Wall -Wextra -Wpedantic -Werror \
 (cd /tmp && ./curves-hamonshu)
 ```
 
-The generated `curves-hamonshu.svg` contains one titled group per source
-specimen. The Smithsonian Libraries scan is CC0; the descriptive English
-labels are not translations of historical captions.
+The generated `curves-hamonshu.svg` is a monochrome parameter grid containing
+one titled group per source specimen and curvature ratio. The Smithsonian
+Libraries scan is CC0; the descriptive English labels are not translations of
+historical captions.
