@@ -34,8 +34,8 @@ linework inside a caller-supplied `svg::hamonshu::pattern_box`; clipping,
 styling, and SVG layer assembly remain with the caller.
 
 [`examples/curves-hamonshu.cc`](examples/curves-hamonshu.cc) validates the
-public API and renders every motif at seven curvature ratios with one fixed
-ink style. Build and run it from the repository root:
+public API and renders the fifteen curated source motifs at seven curvature
+ratios with one fixed ink style. Build and run it from the repository root:
 
 ```sh
 g++ -Isrc -std=c++20 -Wall -Wextra -Wpedantic -Werror \
@@ -44,6 +44,6 @@ g++ -Isrc -std=c++20 -Wall -Wextra -Wpedantic -Werror \
 ```
 
 The generated `curves-hamonshu.svg` is a monochrome parameter grid containing
-one titled group per source specimen and curvature ratio. The Smithsonian
-Libraries scan is CC0; the descriptive English labels are not translations of
-historical captions.
+one titled group per selected source specimen and curvature ratio. The
+Smithsonian Libraries scan is CC0; the descriptive English labels are not
+translations of historical captions.

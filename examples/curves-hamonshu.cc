@@ -1,6 +1,7 @@
 // Explore the form parameter space of Izzi's Hamonshu motif API.
 // -*- mode: C++ -*-
 
+#include <algorithm>
 #include <array>
 #include <cstddef>
 #include <iostream>
@@ -17,6 +18,34 @@ namespace {
 
 namespace hamonshu = svg::hamonshu;
 
+struct motif_selection
+{
+  unsigned first_page;
+  unsigned last_page;
+  unsigned motif;
+};
+
+// The grey markers drawn beside titles in examples/curves-hamonshu.svg select
+// these fifteen source motifs. Store source coordinates instead of catalogue
+// offsets so insertions elsewhere in the catalogue cannot change the set.
+constexpr std::array selected_motifs {
+  motif_selection {1, 1, 1},
+  motif_selection {2, 2, 1},
+  motif_selection {3, 3, 1},
+  motif_selection {3, 3, 2},
+  motif_selection {6, 6, 2},
+  motif_selection {6, 6, 3},
+  motif_selection {9, 9, 1},
+  motif_selection {17, 17, 3},
+  motif_selection {18, 18, 4},
+  motif_selection {20, 20, 4},
+  motif_selection {23, 23, 2},
+  motif_selection {39, 39, 2},
+  motif_selection {40, 40, 1},
+  motif_selection {46, 47, 2},
+  motif_selection {51, 51, 5},
+};
+
 // Each column changes only curvature: wave height, curl radius, and transverse
 // displacement. Density, phase, orientation, sampling, and every SVG color
 // remain fixed, so differences across a row are differences in form alone.
@@ -29,6 +58,21 @@ constexpr double header_height = 50;
 constexpr double cell_width = 150;
 constexpr double cell_height = 96;
 constexpr double cell_padding = 11;
+
+const hamonshu::pattern_spec&
+selected_pattern(const motif_selection selection)
+{
+  const auto match = std::find_if(
+    hamonshu::pattern_specs.begin(), hamonshu::pattern_specs.end(),
+    [=](const hamonshu::pattern_spec& spec) {
+      return spec.first_page == selection.first_page
+        && spec.last_page == selection.last_page
+        && spec.motif == selection.motif;
+    });
+  if (match == hamonshu::pattern_specs.end())
+    throw std::runtime_error("selected Hamonshu motif is not in the catalogue");
+  return *match;
+}
 
 template<typename Function>
 void
@@ -193,6 +237,17 @@ validate_public_api()
     [&] { (void)hamonshu::make_motif_path(spec, box, invalid); },
     "undersampled Hamonshu motif");
 
+  std::set<std::string> selected_ids;
+  for (const auto selection : selected_motifs)
+    {
+      const auto& selected_spec = selected_pattern(selection);
+      hamonshu::validate_pattern_spec(selected_spec);
+      selected_ids.insert(hamonshu::pattern_id(selected_spec));
+    }
+  if (selected_ids.size() != selected_motifs.size())
+    throw std::runtime_error(
+      "Hamonshu motif selection contains a duplicate source entry");
+
   std::set<hamonshu::motif_kind> kinds;
   for (const auto& catalogue_spec : hamonshu::pattern_specs)
     {
@@ -212,16 +267,16 @@ render_parameter_grid(const std::string& output_name)
 
   const svg::area<> canvas {
     label_width + curvature_ratios.size() * cell_width,
-    header_height + hamonshu::pattern_specs.size() * cell_height,
+    header_height + selected_motifs.size() * cell_height,
   };
   svg::svg_element document(
     output_name,
-    "Mori Yuzan Hamonshu volume 2: monochrome curvature parameter explorer",
+    "Mori Yuzan Hamonshu volume 2: curated monochrome curvature explorer",
     canvas);
 
   svg::defs_element definitions;
   definitions.start_element();
-  for (std::size_t row = 0; row != hamonshu::pattern_specs.size(); ++row)
+  for (std::size_t row = 0; row != selected_motifs.size(); ++row)
     for (std::size_t column = 0;
          column != curvature_ratios.size(); ++column)
       {
@@ -258,9 +313,9 @@ render_parameter_grid(const std::string& output_name)
 
   std::set<std::string> identifiers;
   std::size_t rendered_count = 0;
-  for (std::size_t row = 0; row != hamonshu::pattern_specs.size(); ++row)
+  for (std::size_t row = 0; row != selected_motifs.size(); ++row)
     {
-      const auto& spec = hamonshu::pattern_specs[row];
+      const auto& spec = selected_pattern(selected_motifs[row]);
       const double top = header_height + row * cell_height;
       grid.add_raw(text_markup(label_width - 12,
                                top + cell_height / 2 + 4,
@@ -336,7 +391,7 @@ render_parameter_grid(const std::string& output_name)
   document.add_element(grid);
 
   const std::size_t expected_count
-    = hamonshu::pattern_specs.size() * curvature_ratios.size();
+    = selected_motifs.size() * curvature_ratios.size();
   if (rendered_count != expected_count || identifiers.size() != expected_count)
     throw std::runtime_error("Hamonshu parameter grid is incomplete");
 }
@@ -355,7 +410,7 @@ main(const int argc, char** argv)
         = argc == 2 ? argv[1] : "curves-hamonshu";
       render_parameter_grid(output_name);
       std::cout << "generated "
-                << hamonshu::pattern_specs.size() * curvature_ratios.size()
+                << selected_motifs.size() * curvature_ratios.size()
                 << " monochrome Hamonshu form samples in "
                 << output_name << ".svg\n";
       return 0;
