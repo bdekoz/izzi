@@ -47,3 +47,8 @@ The generated `curves-hamonshu.svg` is a monochrome parameter grid containing
 one titled group per selected source specimen and curvature ratio. The
 Smithsonian Libraries scan is CC0; the descriptive English labels are not
 translations of historical captions.
+
+The
+[Hamonshū wave-pattern catalogue and rendering notes](docs/hamonshu-wave-patterns.md)
+document the source-page convention, motif naming, procedural interpretation,
+cartographic clipping, rebuild workflow, and provenance.
