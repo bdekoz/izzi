@@ -31,7 +31,7 @@ enum class unit
   {
     meter, m,		///< Meter
     centimeter, cm,	///< Centimeter
-    millimeter, mm,	///< Milliimeter
+    millimeter, mm,	///< Millimeter
     inch, in,		///< Inch
     pixel, px,		///< Pixel where 1 pixel x 96 PPI = .26 mm
     point, pt		///< Point where 1 pixel x 1/72 dpi x 96 PPI = .26 mm
@@ -64,7 +64,7 @@ to_string(const unit e)
 
 /**
    Area/Page/Canvas/Drawing area description.
-   Size, origin location in 2D (x,y), heigh, width
+   Size, origin location in 2D (x,y), height, width
 
    ANSI Letter mm == (unit::millimeter, 215.9, 279.4);
    ANSI Letter pixels == (unit::pixel, 765, 990);
@@ -222,7 +222,7 @@ struct stroke_style
   /// For graph_mode 2, this means the marker_shape of the mark
   marker_shape		marker_form;
 
-  /// Marker repetitions, if any. Default is zero, no repitition, single marker.
+  /// Marker repetitions, if any. Default is zero, no repetition, single marker.
   ushort		marker_reps;
 
   /// Line dash vs. space configuration.

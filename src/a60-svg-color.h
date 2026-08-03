@@ -470,7 +470,7 @@ struct color_qi
     // Kill rgb() enclosing, if be.
     if (s.empty() || s.size() < 5 || s[0] != 'r')
       {
-	string m("color_qi::from_string input is not in rbg form: ");
+	string m("color_qi::from_string input is not in RGB form: ");
 	m += s;
 	m += k::newline;
 	throw std::runtime_error(m);
@@ -861,7 +861,7 @@ mutate_color_qf(const color_qf& k)
 /**
   Combine color a with color b in percentages ad and ab, respectively.
 
-  To average, constrain paramters ad and ab such that: ad + ab == 2.
+  To average, constrain parameters ad and ab such that: ad + ab == 2.
 
   Like so:
   ushort ur = (a.r + b.r) / 2;

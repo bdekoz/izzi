@@ -1,5 +1,4 @@
 // Explore the parameter space of Izzi's roulette-curve path API.
-// The filename preserves the requested "routlette" spelling.
 // -*- mode: C++ -*-
 
 #include <algorithm>
@@ -401,9 +400,9 @@ main(const int argc, char** argv)
     {
       if (argc > 2)
         throw std::invalid_argument(
-          "usage: curves-routlette [output-name-without-extension]");
+          "usage: curves-roulette [output-name-without-extension]");
       const std::string output_name
-        = argc == 2 ? argv[1] : "curves-routlette";
+        = argc == 2 ? argv[1] : "curves-roulette";
       render_parameter_grid(output_name);
       std::cout << "generated "
                 << experiments.size() * point_distance_ratios.size()
@@ -413,7 +412,7 @@ main(const int argc, char** argv)
     }
   catch (const std::exception& error)
     {
-      std::cerr << "curves-routlette: " << error.what() << '\n';
+      std::cerr << "curves-roulette: " << error.what() << '\n';
       return 1;
     }
 }

@@ -31,6 +31,6 @@ test_oct(std::string ofile)
 
 int main()
 {
-  test_oct("octogon");
+  test_oct("octagon");
   return 0;
 }

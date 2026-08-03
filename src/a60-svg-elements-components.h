@@ -67,7 +67,7 @@ width="__width__unit" height="__height__unit"
 viewBox="0 0 __width __height" enable-background="new 0 0 __width __height" role="img">
 s)_delimiter_";
 
-  // For width=100% and other percentage value, eilide height.
+  // For width=100% and other percentage value, elide height.
   string stripauto = R"_delimiter_(id="__id" x="0__unit" y="0__unit"
 width="__width__unit"
 viewBox="0 0 __width __height" enable-background="new 0 0 __width __height" role="img">

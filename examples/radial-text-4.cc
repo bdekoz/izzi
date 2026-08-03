@@ -17,8 +17,8 @@ test_arc(std::string ofile)
 
   // Have two concepts for rotation of objects around a circle.
   // 1. location of the radial points == clockwise starting at zero north
-  // 2. radial text switches orientation at 180 degrees for readibility,
-  //    aka 6'oclock south
+  // 2. radial text switches orientation at 180 degrees for readability,
+  //    aka 6 o'clock south
   //     a. clockwise, 0 < d < 180
   //     b. counter clockwise 180 < d < 360
   for (uint i = 0; i < 12; ++i)

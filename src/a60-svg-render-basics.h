@@ -180,7 +180,7 @@ text_line_n(svg_element& obj, const point_2t origin, const string text,
   string textcut(text);
   while (textcut.size() > maxlen)
     {
-      // Find last space character in the specified maxium range, aka mark.
+      // Find last space character in the specified maximum range, aka mark.
       auto sppos = textcut.find_last_of(k::space, maxlen);
       if (sppos == string::npos)
 	sppos = maxlen;
@@ -225,7 +225,7 @@ text_line_n_r(svg_element& obj, const point_2t origin, const string text,
 	epos = textcut.size();
       else
 	{
-	  // Find last space character in the specified maxium range, aka mark.
+	  // Find last space character in the specified maximum range, aka mark.
 	  auto sppos = textcut.find_last_of(k::space, maxlen);
 	  if (sppos == string::npos)
 	    sppos = maxlen;
@@ -395,7 +395,7 @@ point_to_ring_halo(svg_element& obj, const point_2t origin,
 
   // outer
   // strategy: make a bigger circle cprime, then do a radial gradient to it
-  // starting gradient from color at radius to 100% white/tranparent at cprime.
+  // starting gradient from color at radius to 100% white/transparent at cprime.
   const string rgrado_name(string("radialout") + k::hyphen + mangle);
   radial_gradient rgrado;
   rgrado.start_element(rgrado_name);
@@ -644,7 +644,7 @@ make_path(const string& pathda, const style& styl, const string id = "",
 
 /// Center an polygon at this point.
 /// radius 4 is pixels to draw out from center point.
-/// pointsn is number of points to draw (8 for octogon)
+/// pointsn is number of points to draw (8 for octagon)
 path_element
 make_path_polygon(const point_2t origin, const style s,
 		  const double r, const uint pointsn,
@@ -654,7 +654,7 @@ make_path_polygon(const point_2t origin, const style s,
   const double angle(360.0/pointsn);
   double zo = zero_angle_north_cw(angle);
 
-  // Find n points on a circle, connnected.
+  // Find n points on a circle, connected.
   vrange pointz;
   for (uint i = 0; i < pointsn; ++i)
     {
@@ -712,7 +712,7 @@ make_path_arc_closed(const point_2t& origin, const point_2t& start,
 		     const int arcflag = 0, const int sweepflag = 0)
 {
   // Define path as starting at origin, line to circumference point start,
-  // arc to circumfernce point end, line back to origin.
+  // arc to circumference point end, line back to origin.
   // A rx ry x-axis-rotation large-arc-flag sweep-flag x y
   // where (large) arc flag is true if arc angle delta is > 180
   // where sweep flag is
@@ -1080,7 +1080,7 @@ make_lauburu(const point_2t origin, const style s, const double size,
 
 
 
-// Hexagon and tessalations.
+// Hexagon and tessellations.
 
 /// Center rings of hexagons at this point.
 /// @param origin is the center point

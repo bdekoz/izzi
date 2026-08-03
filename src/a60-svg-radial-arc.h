@@ -48,7 +48,7 @@ remove_matches_id_value_map(id_value_umap& ivm, const strings& matches)
 	  // Insert found element into return map....
 	  foundmap.insert(*iter);
 
-	  // Remove found elment from originating map (ivm)
+	  // Remove found element from originating map (ivm)
 	  ivm.erase(iter);
 	}
     }

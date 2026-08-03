@@ -488,7 +488,7 @@
 2020-08-21  Benjamin De Kosnik  <bkoz@rizal>
 
 	* examples/filter-gaussian-blur.cc: Examples of circles with offsets.
-	* src/a60-svg-elements.h (filter_elment): Here.
+	* src/a60-svg-elements.h (filter_element): Here.
 
 2020-08-21  Benjamin De Kosnik  <bkoz@rizal>
 
@@ -502,7 +502,7 @@
 	* src/a60-svg-base.h (filter): Re-work, add support
 	for constructing gaussian_blur directly.
 
-	* src/a60-svg-color.h: Fix none not having a rbg color.
+	* src/a60-svg-color.h: Fix none not having an RGB color.
 	* src/a60-svg-elements.h: Adjust constants.
 	* src/a60-svg.h: Same.
 
@@ -525,7 +525,7 @@
 
 2020-08-17  Benjamin De Kosnik  <bkoz@rizal>
 
-	Nest into sub diretories...
+	Nest into subdirectories...
 	* src: New.
 	* examples: new.
 
@@ -548,7 +548,7 @@
 2020-07-15  Benjamin De Kosnik  <bkoz@rizal>
 
 	* a60-svg-radial.h (kusama_id_by_uvalue_1, _2): Add parameter byvaluep
-	to controll radius weighing by value.
+	to control radius weighing by value.
 
 2020-07-XX  Benjamin De Kosnik  <bkoz@rizal>
 

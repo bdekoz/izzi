@@ -48,7 +48,7 @@ test_color(std::string ofile)
   // Output file.
   svg_element obj(ofile, k::letter_096_v);
 
-  // Color specturm slice.
+  // Color spectrum slice.
   auto& spectrum = active_spectrum();
   color_qis klrs(spectrum.begin(), spectrum.end());
 

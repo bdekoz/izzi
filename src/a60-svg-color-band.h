@@ -100,7 +100,7 @@ make_color_band_v1(const colorband& cb, const ushort neededh,
 }
 
 
-/// Algorightm is HSV generation.
+/// Algorithm is HSV generation.
 color_qis
 make_color_band_v2(const colorband& cb, const ushort neededh)
 {

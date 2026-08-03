@@ -245,7 +245,7 @@ radial_text_ccw(svg_element& obj, string text, const typography& typo,
 
    Text with typography, arranged around an origin of a circle with radius r.
    Text is align left CW (1,180)
-   Text is aligh right CCW (181, 359)
+   Text is aligned right CCW (181, 359)
 
    NB: Assume value is un-adjusted, aka from get_angle
 
@@ -292,7 +292,7 @@ radial_text_r(svg_element& obj, string text, const typography& typo,
 
 // Radiate clockwise from 0 to 35x degrees about origin, placing each
 // id at a point on the circumference. Duplicate ids splay, stack,
-// or append/concatencate at, after, or around that point.
+// or append/concatenate at, after, or around that point.
 /// Spread ids on either side of an origin point, along circumference
 /// path.
 void

@@ -21,7 +21,7 @@ test_markers(const double x, const double y, const svg::style styl)
   const double radius = 250;
 
   point_2t p10 = { x, y };
-  double amp = spacer; // 10-100 hight of wave
+  double amp = spacer; // 10-100 height of wave
   double decay = 2.5; // 0.1-5.0  Rate of amplitude decrease 
   int cycles = 2;
   auto m10 = make_path_ripple(p10, styl, radius, amp, decay, cycles);

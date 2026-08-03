@@ -106,7 +106,7 @@ paint_edges_with_char_index(svg_element& obj, const area<> a, const char firstc,
   rect_element r1 = make_rect(pr1, estyl, { deltac, rlen });
   obj.add_element(r1);
 
-  // Bottom edge, left to right starting innner to outer.
+  // Bottom edge, left to right starting inner to outer.
   point_2t pr2 = { deltax + rlen, a._M_height - rlen };
   rect_element r2 = make_rect(pr2, estyl, { deltac, rlen });
   obj.add_element(r2);
@@ -185,7 +185,7 @@ element_to_svg_insert(const string isvgpre)
 /// @param origsize is original file width/height constant
 /// @param isize is final  width/height
 /// @param isvg is the raw svg string to insert, assumes _M_lifetime == false.
-/// @param styl is overide style information: defaults to no_style.
+/// @param styl is override style information: defaults to no_style.
 ///
 /// NB This only works is the file has no styles set in svg, group, or
 /// individual element definitions (like circle, path, rectangle,

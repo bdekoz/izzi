@@ -197,7 +197,7 @@ struct collection_rstate : public render_state_base
   // Values with similar geo coordinates counted in as one meta coordinate.
   bool		weigh;
 
-  // Genderate colors from color bands (true) or use finite colors (false).
+  // Generate colors from color bands (true) or use finite colors (false).
   bool		color_generated;
 
   // Alternate output naming mode via scheme (true = info, false = map)
@@ -356,7 +356,7 @@ get_id_rstate(const string id)
 }
 
 
-/// Roll through render states given in values squentially,
+/// Roll through render states given in values sequentially,
 /// index starts with zero.
 const id_rstate
 traverse_states(const strings& values)

@@ -146,7 +146,7 @@ constexpr double pi(3.14159265358979323846);
 
 } // namespace constants
 
-/// Inject nested namepace constants into svg namespace with alias k.
+/// Inject nested namespace constants into svg namespace with alias k.
 namespace k = constants;
 
 } // namespace svg

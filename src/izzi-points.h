@@ -95,7 +95,7 @@ union_vrange(const vrange& r1, const vrange& r2)
 }
 
 
-/// For each dimension of vrnage, find min/max and return (xmax, ymax)
+/// For each dimension of vrange, find min/max and return (xmax, ymax)
 /// NB: Assumes zero is min.
 point_2t
 max_vrange(vspace& xpoints, vspace& ypoints, const uint pown,
@@ -145,7 +145,7 @@ max_vrange(const vrange& points, const uint pown,
 }
 
 
-/// Truncate double to double with pown signifigant digits.
+/// Truncate double to double with pown significant digits.
 vspace
 narrow_vspace(const vspace& points, uint pown)
 {

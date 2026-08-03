@@ -196,7 +196,7 @@ wink_to_color_seq(const rect_element::data& dr, const color klr,
 			     dr._M_width, 0 };
 
   // Wink.
-  // Step is ammount to move from eyes open to closed and back again.
+  // Step is amount to move from eyes open to closed and back again.
   const double step = 2 * ymax / winkframesn;
 
   // Wink down.

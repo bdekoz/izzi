@@ -65,6 +65,6 @@ make_bar_graph(umids agesvo, const area<> a = svg::k::v1080p_h,
 }
 
  
-} // namepace a60::metadata
+} // namespace a60::metadata
 
 #endif

@@ -12,7 +12,7 @@
 namespace svg {
 
 /**
-   write a c++ function that tessalates hexagons, named
+   write a c++ function that tessellates hexagons, named
    generate_radial_hexagons_v3. The arguments are (const int n, const
    double r, const point_2t origin, const bool centerfilledp = false)
    where n is the number of hexagons total, r is the radius a hexagon
@@ -51,7 +51,7 @@ struct PointEqual
 };
 
 
-/// Compute set of points for a radial fill of hexograms centered at p.
+/// Compute set of points for a radial fill of hexagons centered at p.
 vrange
 radiate_hexagon_honeycomb(const point_2t origin, const double r, const uint n,
 			  const bool centerfilledp)
@@ -134,7 +134,7 @@ radiate_hexagon_honeycomb(const point_2t origin, const double r, const uint n,
 }
 
 
-/// Compute set of angles, given points for a radial fill of hexograms
+/// Compute set of angles, given points for a radial fill of hexagons
 /// centered at p.
 /// @param degreesp return results in degrees, not radians (default).
 vspace

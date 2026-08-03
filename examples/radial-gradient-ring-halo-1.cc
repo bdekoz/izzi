@@ -90,7 +90,7 @@ test_radial_gradient(std::string ofile)
 
   // outer
   // strategy: make a bigger circle cprime, then do a radial gradient to it
-  // starting gradient from color at radius to 100% white/tranparent at cprime.
+  // starting gradient from color at radius to 100% white/transparent at cprime.
   const string rgrad3o_name("radialout");
   radial_gradient rgrad3o;
   rgrad3o.start_element(rgrad3o_name);

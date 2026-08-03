@@ -22,7 +22,7 @@
 
 namespace svg {
 
-/// The smallest (sattelite) radius size allowed in a kusama orbit.
+/// The smallest (satellite) radius size allowed in a kusama orbit.
 int&
 get_min_ring_size()
 {
@@ -99,7 +99,7 @@ radiate_glyph(svg_element& obj, const point_2t origin, const double angled,
 	      const id_rstate idst,
 	      const int kr, const int rspace, const int rstart)
 {
-  // Kusama circle radius, enforce miniumum size.
+  // Kusama circle radius, enforce minimum size.
   const int kra = std::max(kr, get_min_ring_size());
 
   // Assumed to scale per value/value_max ratio.
@@ -258,7 +258,7 @@ kusama_ids_orbit_high(svg_element& obj, const point_2t origin, const strings& id
   else
     kr = get_min_ring_size();
 
-  // Find distance betwen two satellites spheres on high-orbit kusama.
+  // Find distance between two satellite spheres on high-orbit kusama.
   // Want equivalent distances between satellites of different radius (values),
   // so this cannot be strictly a multiple of various radius from v0 to vmax.
   // NB: For lowest values, make sure distance is at least text height away.
@@ -389,9 +389,9 @@ kusama_ids_at_uvalue(svg_element& obj, const point_2t origin, const strings& ids
      - render the first value at rprime, remove it from the list.
      - save the second value and continue
 
-   A point cluster is a circle whos radius is proportionate to the
+   A point cluster is a circle whose radius is proportionate to the
    number of duplicate ids at that point.  Duplicate ids splay, stack,
-   or append/concatencate at, after, or around that point cluster.
+   or append/concatenate at, after, or around that point cluster.
 
    NB: invariant that @vuvalues > 1
 
@@ -480,7 +480,7 @@ kusama_collision_transforms(svg_element& obj, const point_2t origin,
    Framing circle radius is the result of dividing page dimensions by (rdenom).
 
    Satellite circle radius is the product of the number of ids with
-   the same value times a base multipler (rbase).
+   the same value times a base multiplier (rbase).
 
    When overlap is detected, move outward on radius if true, otherwise
    move in.
@@ -505,7 +505,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   // - short to long
   //
   // - VPOINTNS
-  // - constuct a vector of points on the circumference with weight
+  // - construct a vector of points on the circumference with weight
   std::vector<ssize_type> vuvalues(uvalues.begin(), uvalues.end());
   std::vector<strings> vids;
   for (const auto& v : vuvalues)
@@ -541,7 +541,7 @@ kusama_ids_per_uvalue_on_arc(svg_element& obj, const point_2t origin,
   // With aggregates with ivm.size() > 350, threshold 2-4 is best.
   if (collisionp && vuvalues.size() > 1)
     {
-      // Approximate scaling given default typograhics.
+      // Approximate scaling given default typography.
       ssize_type threshold(1);
       if (value_max >= 20 && value_max < 190)
 	threshold = 2;

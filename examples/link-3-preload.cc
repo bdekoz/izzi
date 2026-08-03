@@ -8,7 +8,7 @@ test_link(std::string ofile)
   using namespace std;
   using namespace svg;
 
-  // Raser image resource.
+  // Raster image resource.
   const string isrc = "image/floor-angle-shadow-blur.jpg";
   
   area<> a = k::letter_096_v;

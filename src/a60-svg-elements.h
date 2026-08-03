@@ -313,7 +313,7 @@ struct filter_element : virtual public element_base
 	       << k::newline;
   }
 
-  // Some filter effects get clipped when appied to an element's area,
+  // Some filter effects get clipped when applied to an element's area,
   // so this allows filters to have an element + filter area instead.
   void
   start_element(const string id, const area<> blur_area, const point_2t p)
@@ -1314,7 +1314,7 @@ struct video_element : virtual public foreign_element
   /// a is width and height of video as embedded in page
   /// r is the foreign object, with x/y offset and scaled size
   ///
-  /// attr is attribues for video_element
+  /// attr is attributes for video_element
   /// autoplay="true" or removed
   /// loop="true/false"
   /// muted="true/false"

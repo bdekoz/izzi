@@ -303,7 +303,7 @@ h_chord_graph(const vumids& cumulative, const string aggname,
 	      // Add rectangle, space, text tile to offsets.
 	      yoffset += rheight + ltopspace + ssz + ltopspace;
 
-	      // Draw connnectors.
+	      // Draw connectors.
 	      for (const string& agev : ageso)
 		{
 		  // Style from agepv.
@@ -511,6 +511,6 @@ analyze_metadata_aggregate_chord(const area<> a, const strings& namedkeys,
   render_metadata_aggregate_chord(a, cumulative, namedkeysedit, outname);
 }
 
-} // namepace svg
+} // namespace svg
 
 #endif

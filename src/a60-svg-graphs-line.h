@@ -108,7 +108,7 @@ struct graph_rstate : public render_state_base
 
   /// Image Tooltip
   area_type		tooltip_area;	/// chart_line_style_3 tooltip size
-  string		tooltip_id;	/// chart_line_style_3 toolip id prefix
+  string		tooltip_id;	/// chart_line_style_3 tooltip id prefix
   string		tooltip_images;	/// chart_line_style 3 set of image elements
 };
 
@@ -118,7 +118,7 @@ vrange
 find_change_points(const vrange& vr)
 {
   // Transform range to the simplest expression, where multiple points
-  // without significant vertical change are coalesed to starting
+  // without significant vertical change are coalesced to starting
   // control point and ending control point.
   vrange simplevr;
   point_2t last = { -1.0, -1.0 };
@@ -143,7 +143,7 @@ find_change_points(const vrange& vr)
 }
 
 
-/// Tramsform change points to points where the y-axis (% visual complete) changes
+/// Transform change points to points where the y-axis (% visual complete) changes
 /// @param points already simplified change points
 vrange
 find_visual_change_points(const vrange& points)
@@ -161,7 +161,7 @@ find_visual_change_points(const vrange& points)
 }
 
 
-/// Tramsform change points to points where the x-axis (time) matches
+/// Transform change points to points where the x-axis (time) matches
 /// a value in onlypoints.
 ///
 /// @param points already simplified change points
@@ -185,7 +185,7 @@ find_tooltip_points(const vrange& points, const vspace& onlypoints)
 }
 
 
-/// Map data points to cartestian points on graph area.
+/// Map data points to Cartesian points on graph area.
 /// @param data points
 vrange
 transform_to_graph_points(const vrange& points,
@@ -204,7 +204,7 @@ transform_to_graph_points(const vrange& points,
   double gheight = pheight - (2 * gstate.ymargin);
   const double chartyo = pheight - gstate.ymargin;
 
-  // Transform data points to scaled cartasian points in graph area.
+  // Transform data points to scaled Cartesian points in graph area.
   vrange cpoints;
   for (uint i = 0; i < points.size(); i++)
     {
@@ -422,14 +422,14 @@ make_line_graph_markers(const vrange& points, const vrange& cpoints,
 
 
 /// Axis Labels
-/// Axis X/Y Ticmarks
+/// Axis X/Y tick marks
 /// X line increments
 ///
 /// @param aplate = total size of graph area
 /// @param points = vector of {x,y} points to graph
 /// @param gstate = graph render state
-/// @param xscale = scale x axis by this ammount (1000 if converting ms to s)
-/// @param yscale = scale y axis by this ammount
+/// @param xscale = scale x axis by this amount (1000 if converting ms to s)
+/// @param yscale = scale y axis by this amount
 /// @param typo = typography to use for labels
 svg_element
 make_line_graph_annotations(const vrange& points, const graph_rstate& gstate,
@@ -787,6 +787,6 @@ make_line_graph(const vrange& points, const vrange& tpoints, graph_rstate& gstat
   return lgraph;
 }
 
-} // namepace svg
+} // namespace svg
 
 #endif
