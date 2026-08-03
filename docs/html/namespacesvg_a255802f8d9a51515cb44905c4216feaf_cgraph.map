@@ -1,7 +1,7 @@
 <map id="svg::get_angle" name="svg::get_angle">
-<area shape="rect" id="Node000001" title="Transform a value on a range to an angle on the radial range." alt="" coords="5,35,101,61"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a37b1e7c40b54ff3cdd4e2929cb6b7ba2" title=" " alt="" coords="149,5,279,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,37,133,31,134,36,101,42"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#a2e5178befe99e2a7d5ede3c02088055f" title="Scale value from min to max on range (nfloor, nceil)." alt="" coords="154,56,274,99"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="101,54,139,61,138,66,100,59"/>
+<area shape="rect" id="Node000001" title="Transform a value on a range to an angle on the radial range." alt="" coords="5,33,108,57"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a37b1e7c40b54ff3cdd4e2929cb6b7ba2" title=" " alt="" coords="156,5,295,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,34,140,29,141,34,109,39"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a2e5178befe99e2a7d5ede3c02088055f" title="Scale value from min to max on range (nfloor, nceil)." alt="" coords="160,54,291,90"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,51,145,56,144,62,108,56"/>
 </map>

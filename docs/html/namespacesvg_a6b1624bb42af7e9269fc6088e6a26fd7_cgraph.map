@@ -1,7 +1,7 @@
 <map id="svg::adjust_angle_rotation" name="svg::adjust_angle_rotation">
-<area shape="rect" id="Node000001" title="Adjust angle above to CW/CCW orientation." alt="" coords="5,31,161,57"/>
-<area shape="rect" id="Node000002" href="$namespacesvg.html#a010fea242a289d173d521b501140cd72" title="Zero degrees is top, going clockwise (cw)." alt="" coords="209,5,364,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,32,193,28,193,33,161,37"/>
-<area shape="rect" id="Node000003" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="211,56,362,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,51,196,55,195,61,160,56"/>
+<area shape="rect" id="Node000001" title="Adjust angle above to CW/CCW orientation." alt="" coords="5,29,171,53"/>
+<area shape="rect" id="Node000002" href="$namespacesvg.html#a010fea242a289d173d521b501140cd72" title="Zero degrees is top, going clockwise (cw)." alt="" coords="219,5,386,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,29,203,26,204,31,171,35"/>
+<area shape="rect" id="Node000003" href="$namespacesvg.html#a46164d75fd5109e4ed8879abbacd5c11" title="Zero degrees is top, going clockwise (cw)." alt="" coords="222,53,383,77"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="171,48,206,52,206,57,171,53"/>
 </map>
