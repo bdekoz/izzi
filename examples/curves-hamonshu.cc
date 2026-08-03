@@ -26,7 +26,7 @@ struct motif_selection
 };
 
 // The grey markers drawn beside titles in examples/curves-hamonshu.svg select
-// these fifteen source motifs. Store source coordinates instead of catalogue
+// these thirteen source motifs. Store source coordinates instead of catalogue
 // offsets so insertions elsewhere in the catalogue cannot change the set.
 constexpr std::array selected_motifs {
   motif_selection {1, 1, 1},
@@ -34,10 +34,8 @@ constexpr std::array selected_motifs {
   motif_selection {3, 3, 1},
   motif_selection {3, 3, 2},
   motif_selection {6, 6, 2},
-  motif_selection {6, 6, 3},
   motif_selection {9, 9, 1},
   motif_selection {17, 17, 3},
-  motif_selection {18, 18, 4},
   motif_selection {20, 20, 4},
   motif_selection {23, 23, 2},
   motif_selection {39, 39, 2},
