@@ -488,12 +488,12 @@ $(function() {
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>  {</div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    std::vector&lt;vpoints&gt; subclusters;</div>
 <div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    <span class="keywordflow">if</span> (cell.<a class="code hl_variable" href="structvoronoi__cell.html#ac1523510be75139282abd182fb249c53">points</a>.empty()) <span class="keywordflow">return</span> subclusters;</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    <span class="keywordflow">if</span> (cell.points.empty()) <span class="keywordflow">return</span> subclusters;</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    <span class="comment">// Check if cell needs splitting (points too far from centroid)</span></div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>    std::vector&lt;bool&gt; assigned(cell.<a class="code hl_variable" href="structvoronoi__cell.html#ac1523510be75139282abd182fb249c53">points</a>.size(), <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>    std::vector&lt;bool&gt; assigned(cell.points.size(), <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span> </div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; cell.<a class="code hl_variable" href="structvoronoi__cell.html#ac1523510be75139282abd182fb249c53">points</a>.size(); ++i) {</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; cell.points.size(); ++i) {</div>
 <div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>      <span class="keywordflow">if</span> (assigned[i]) <span class="keywordflow">continue</span>;</div>
 <div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
 <div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>      <a class="code hl_typedef" href="izzi-points_8h.html#a5968768c0527041a8ed0343b2c259870">vpoints</a> current_subcluster;</div>
@@ -504,12 +504,12 @@ $(function() {
 <div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>      <span class="keywordflow">while</span> (!to_process.empty()) {</div>
 <div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    <span class="keywordtype">size_t</span> current_idx = to_process.front();</div>
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>    to_process.pop();</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>    current_subcluster.push_back(cell.<a class="code hl_variable" href="structvoronoi__cell.html#ac1523510be75139282abd182fb249c53">points</a>[current_idx]);</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>    current_subcluster.push_back(cell.points[current_idx]);</div>
 <div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span> </div>
 <div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>    <span class="comment">// Find all unassigned points within cluster radius</span></div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; cell.<a class="code hl_variable" href="structvoronoi__cell.html#ac1523510be75139282abd182fb249c53">points</a>.size(); ++j) {</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; cell.points.size(); ++j) {</div>
 <div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>      <span class="keywordflow">if</span> (!assigned[j] &amp;&amp;</div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>          cell.<a class="code hl_variable" href="structvoronoi__cell.html#ac1523510be75139282abd182fb249c53">points</a>[current_idx].distance(cell.<a class="code hl_variable" href="structvoronoi__cell.html#ac1523510be75139282abd182fb249c53">points</a>[j]) &lt;= <a class="code hl_variable" href="classpoint__cluster.html#afbe789960f55b70c75a0f32f9df1b480">radius</a>) {</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>          cell.points[current_idx].distance(cell.points[j]) &lt;= <a class="code hl_variable" href="classpoint__cluster.html#afbe789960f55b70c75a0f32f9df1b480">radius</a>) {</div>
 <div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>        assigned[j] = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>        to_process.push(j);</div>
 <div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>      }</div>

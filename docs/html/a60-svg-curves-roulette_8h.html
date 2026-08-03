@@ -77,11 +77,82 @@ $(function() {
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">a60-svg-curves-roulette.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
+<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;numeric&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;tuple&gt;</code><br />
+<code>#include &quot;<a class="el" href="a60-svg_8h_source.html">a60-svg.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Include dependency graph for a60-svg-curves-roulette.h:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="a60-svg-curves-roulette_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div>
 <p><a href="a60-svg-curves-roulette_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:svg_3A_3Atrochoid_5Fconfig" id="r_svg_3A_3Atrochoid_5Fconfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsvg_1_1trochoid__config.html">svg::trochoid_config</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for a circle rolling along a straight line.  <a href="structsvg_1_1trochoid__config.html#details">More...</a><br /></td></tr>
+<tr class="memitem:svg_3A_3Aroulette_5Fconfig" id="r_svg_3A_3Aroulette_5Fconfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsvg_1_1roulette__config.html">svg::roulette_config</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for epi- and hypotrochoids with an automatically closed path.  <a href="structsvg_1_1roulette__config.html#details">More...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:svg" id="r_svg"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html">svg</a></td></tr>
+<tr class="memitem:svg_3A_3Aroulette_5Fdetail" id="r_svg_3A_3Aroulette_5Fdetail"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1roulette__detail.html">svg::roulette_detail</a></td></tr>
+<tr class="memdesc:namespacesvg_1_1roulette__detail"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal validation and point-sampling helpers. <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a978c7f7996979004dba26b8037e5a118" id="r_a978c7f7996979004dba26b8037e5a118"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a978c7f7996979004dba26b8037e5a118">svg::roulette_kind</a> { <a class="el" href="namespacesvg.html#a978c7f7996979004dba26b8037e5a118a526db06f3949eb435c9b7a1b0583f93f">svg::epitrochoid</a>
+, <a class="el" href="namespacesvg.html#a978c7f7996979004dba26b8037e5a118a35a69a981bdcc6ee2ef683b89fc29e86">svg::hypotrochoid</a>
+ }</td></tr>
+<tr class="memdesc:a978c7f7996979004dba26b8037e5a118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the moving circle rolls outside or inside the fixed circle.  <a href="namespacesvg.html#a978c7f7996979004dba26b8037e5a118">More...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a1974dae5ac3ee3738b0c1f9f85908483" id="r_a1974dae5ac3ee3738b0c1f9f85908483"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1roulette__detail.html#a1974dae5ac3ee3738b0c1f9f85908483">svg::roulette_detail::require</a> (const bool condition, const std::string &amp;message)</td></tr>
+<tr class="memitem:a1d2c427cf10ded2febf6d73c1fc4e81e" id="r_a1d2c427cf10ded2febf6d73c1fc4e81e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1roulette__detail.html#a1d2c427cf10ded2febf6d73c1fc4e81e">svg::roulette_detail::validate_output_transform</a> (const <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a> origin, const double <a class="el" href="namespacesvg.html#adc7e4c413a77264dd28e589407293de8">scale</a>)</td></tr>
+<tr class="memitem:a20d529b903ac307c6b96af4d3255ee10" id="r_a20d529b903ac307c6b96af4d3255ee10"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1roulette__detail.html#a20d529b903ac307c6b96af4d3255ee10">svg::roulette_detail::sample_count</a> (const double turns, const std::size_t samples_per_turn)</td></tr>
+<tr class="memitem:ac93c014b9ca21e5c63c11e5eab2a5fa3" id="r_ac93c014b9ca21e5c63c11e5eab2a5fa3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1roulette__detail.html#ac93c014b9ca21e5c63c11e5eab2a5fa3">svg::roulette_detail::to_svg_point</a> (const <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a> origin, const double <a class="el" href="namespacesvg.html#adc7e4c413a77264dd28e589407293de8">scale</a>, const double <a class="el" href="namespacesvg.html#a7c30513e0ec17ac816f135b43687f7eaa9dd4e461268c8034f5c8564e155c67a6">x</a>, const double y)</td></tr>
+<tr class="memitem:a903d171af2fe93b0ec7319ca408f8949" id="r_a903d171af2fe93b0ec7319ca408f8949"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1roulette__detail.html#a903d171af2fe93b0ec7319ca408f8949">svg::roulette_detail::path_from_points</a> (const <a class="el" href="namespacesvg.html#a915848d2fa32c5a4443025d38f629f5d">svg::vrange</a> &amp;points, const bool close)</td></tr>
+<tr class="memitem:abcd86c47fb67c0e505cd7bda9857c806" id="r_abcd86c47fb67c0e505cd7bda9857c806"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#abcd86c47fb67c0e505cd7bda9857c806">svg::roulette_completion_turns</a> (const <a class="el" href="structsvg_1_1roulette__config.html">roulette_config</a> &amp;config)</td></tr>
+<tr class="memdesc:abcd86c47fb67c0e505cd7bda9857c806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of fixed-circle orbits required to close a centered roulette whose two radius terms are integers.  <br /></td></tr>
+<tr class="memitem:ae05f667a3f0b3de09709d331f94cae30" id="r_ae05f667a3f0b3de09709d331f94cae30"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#ae05f667a3f0b3de09709d331f94cae30">svg::make_trochoid_path</a> (const <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a> origin, const double <a class="el" href="namespacesvg.html#adc7e4c413a77264dd28e589407293de8">scale</a>, const <a class="el" href="structsvg_1_1trochoid__config.html">trochoid_config</a> &amp;config={})</td></tr>
+<tr class="memdesc:ae05f667a3f0b3de09709d331f94cae30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a trochoid from a circle rolling along a straight line.  <br /></td></tr>
+<tr class="memitem:a0907dc9613a802b5bb7456638d2305e3" id="r_a0907dc9613a802b5bb7456638d2305e3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a0907dc9613a802b5bb7456638d2305e3">svg::make_cycloid_path</a> (const <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a> origin, const double <a class="el" href="namespacesvg.html#adc7e4c413a77264dd28e589407293de8">scale</a>, <a class="el" href="structsvg_1_1trochoid__config.html">trochoid_config</a> config={})</td></tr>
+<tr class="memdesc:a0907dc9613a802b5bb7456638d2305e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a cycloid, the common trochoid traced at the circle's edge.  <br /></td></tr>
+<tr class="memitem:a5b41d405ff3c441988bab89a40d6627f" id="r_a5b41d405ff3c441988bab89a40d6627f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a5b41d405ff3c441988bab89a40d6627f">svg::make_roulette_path</a> (const <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a> origin, const double <a class="el" href="namespacesvg.html#adc7e4c413a77264dd28e589407293de8">scale</a>, const <a class="el" href="namespacesvg.html#a978c7f7996979004dba26b8037e5a118">roulette_kind</a> kind, const <a class="el" href="structsvg_1_1roulette__config.html">roulette_config</a> &amp;config={})</td></tr>
+<tr class="memdesc:a5b41d405ff3c441988bab89a40d6627f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an automatically closed epi- or hypotrochoid.  <br /></td></tr>
+<tr class="memitem:ae1998f2ada4869b02c03fbf3c9440699" id="r_ae1998f2ada4869b02c03fbf3c9440699"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#ae1998f2ada4869b02c03fbf3c9440699">svg::make_epitrochoid_path</a> (const <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a> origin, const double <a class="el" href="namespacesvg.html#adc7e4c413a77264dd28e589407293de8">scale</a>, const <a class="el" href="structsvg_1_1roulette__config.html">roulette_config</a> &amp;config={})</td></tr>
+<tr class="memdesc:ae1998f2ada4869b02c03fbf3c9440699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an epitrochoid from a circle rolling outside a fixed circle.  <br /></td></tr>
+<tr class="memitem:af0365f6ff16248f5c2bb7636df8709ef" id="r_af0365f6ff16248f5c2bb7636df8709ef"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#af0365f6ff16248f5c2bb7636df8709ef">svg::make_epicycloid_path</a> (const <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a> origin, const double <a class="el" href="namespacesvg.html#adc7e4c413a77264dd28e589407293de8">scale</a>, <a class="el" href="structsvg_1_1roulette__config.html">roulette_config</a> config={})</td></tr>
+<tr class="memdesc:af0365f6ff16248f5c2bb7636df8709ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an epicycloid by placing the tracing point on the rolling circle.  <br /></td></tr>
+<tr class="memitem:ac5047aaa0fa923cf37cb2117453713ae" id="r_ac5047aaa0fa923cf37cb2117453713ae"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#ac5047aaa0fa923cf37cb2117453713ae">svg::make_hypotrochoid_path</a> (const <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a> origin, const double <a class="el" href="namespacesvg.html#adc7e4c413a77264dd28e589407293de8">scale</a>, const <a class="el" href="structsvg_1_1roulette__config.html">roulette_config</a> &amp;config={})</td></tr>
+<tr class="memdesc:ac5047aaa0fa923cf37cb2117453713ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a hypotrochoid from a circle rolling inside a fixed circle.  <br /></td></tr>
+<tr class="memitem:a9059de67515280a57e5ee9735cb46899" id="r_a9059de67515280a57e5ee9735cb46899"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg.html#a9059de67515280a57e5ee9735cb46899">svg::make_hypocycloid_path</a> (const <a class="el" href="namespacesvg.html#af074bb68ac49143551503d72f2bff83e">svg::point_2t</a> origin, const double <a class="el" href="namespacesvg.html#adc7e4c413a77264dd28e589407293de8">scale</a>, <a class="el" href="structsvg_1_1roulette__config.html">roulette_config</a> config={})</td></tr>
+<tr class="memdesc:a9059de67515280a57e5ee9735cb46899"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a hypocycloid by placing the tracing point on the rolling circle.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a51c3fc2e26756d05d35e07ffe69f498b" id="r_a51c3fc2e26756d05d35e07ffe69f498b"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1roulette__detail.html#a51c3fc2e26756d05d35e07ffe69f498b">svg::roulette_detail::pi</a> = 3.141592653589793238462643383279502884</td></tr>
+<tr class="memitem:abac735f3ae7ac934852b58870093b358" id="r_abac735f3ae7ac934852b58870093b358"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1roulette__detail.html#abac735f3ae7ac934852b58870093b358">svg::roulette_detail::minimum_samples_per_turn</a> = 8</td></tr>
+<tr class="memitem:ac8a00a8b6f6f10fdc4d25a477e644b22" id="r_ac8a00a8b6f6f10fdc4d25a477e644b22"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesvg_1_1roulette__detail.html#ac8a00a8b6f6f10fdc4d25a477e644b22">svg::roulette_detail::maximum_sample_count</a> = 2'000'000</td></tr>
+</table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

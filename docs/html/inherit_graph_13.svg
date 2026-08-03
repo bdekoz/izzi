@@ -11,9 +11,9 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="group__elements.html#structsvg_1_1rect__element_1_1data" target="_top" xlink:title=" ">
+<g id="a_Node000000"><a xlink:href="group__elements.html#structsvg_1_1line__element_1_1data" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="104.5,-20 0,-20 0,0 104.5,0 104.5,-20"/>
-<text xml:space="preserve" text-anchor="middle" x="52.25" y="-8.4" font-family="SourceSans" font-size="8.00">svg::rect_element::data</text>
+<text xml:space="preserve" text-anchor="middle" x="52.25" y="-8.4" font-family="SourceSans" font-size="8.00">svg::line_element::data</text>
 </a>
 </g>
 </g>

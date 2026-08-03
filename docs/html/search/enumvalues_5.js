@@ -9,5 +9,6 @@ var searchData=
   ['element_6',['element',['../group__elements.html#accffdf35060151dc31518047a06e13eca8e2dcfd7e7e24b1ca76c1193f645902b',1,'svg::script_element']]],
   ['end_7',['end',['../structsvg_1_1typography.html#a93bca2e6c4e32784def555d27487f886a7f021a1415b86f2d013b2618fb31ae53',1,'svg::typography::end'],['../structsvg_1_1typography.html#ab466ab5a124304d826cea9c46a46d3b0a7f021a1415b86f2d013b2618fb31ae53',1,'svg::typography::end']]],
   ['engineering_8',['engineering',['../namespacesvg.html#a0e622bba4eee0e6528a9261d6aa251d1a5d554bc5f3d2cd182cdd0952b1fb87ca',1,'svg']]],
-  ['even_9',['even',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bcacc935c5faf4c8f7a0468d7552a9b8138',1,'svg']]]
+  ['epitrochoid_9',['epitrochoid',['../namespacesvg.html#a978c7f7996979004dba26b8037e5a118a526db06f3949eb435c9b7a1b0583f93f',1,'svg']]],
+  ['even_10',['even',['../namespacesvg.html#ac8061963317131e6bd4d517ed84880bcacc935c5faf4c8f7a0468d7552a9b8138',1,'svg']]]
 ];

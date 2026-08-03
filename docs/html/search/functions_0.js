@@ -17,6 +17,10 @@ var searchData=
   ['adjust_5fangle_5fat_5forbit_5ffor_5fdistance_14',['adjust_angle_at_orbit_for_distance',['../namespacesvg.html#a3a981b6bbcf7466e6e90eacbe8cf126d',1,'svg']]],
   ['adjust_5fangle_5frotation_15',['adjust_angle_rotation',['../namespacesvg.html#a6b1624bb42af7e9269fc6088e6a26fd7',1,'svg']]],
   ['analyze_5fmetadata_5faggregate_5fchord_16',['analyze_metadata_aggregate_chord',['../namespacesvg.html#af8bf040fa1e31057a9c49783bd09ea9c',1,'svg::analyze_metadata_aggregate_chord(const area&lt;&gt; a, const string field=&quot;&quot;, const string match=&quot;&quot;, const string wfield=&quot;&quot;, const string wvalue=&quot;&quot;)'],['../namespacesvg.html#a34bb8f3bba75cd1503d98207e42a3246',1,'svg::analyze_metadata_aggregate_chord(const area&lt;&gt; a, const strings &amp;namedkeys, const string aggname, const string wfield=&quot;&quot;, const string wvalue=&quot;&quot;)']]],
-  ['append_5fids_5fat_17',['append_ids_at',['../namespacesvg.html#a07c6fad0adddb0908ed4ef00536967c9',1,'svg']]],
-  ['average_5fcolor_5fqi_18',['average_color_qi',['../namespacesvg.html#a6b68820eb6cd88da7e306ff812bca857',1,'svg']]]
+  ['append_5fcurve_17',['append_curve',['../namespacesvg_1_1hamonshu_1_1detail.html#a83ed0ef257494bb7997fc5998fc203a3',1,'svg::hamonshu::detail']]],
+  ['append_5fellipse_18',['append_ellipse',['../namespacesvg_1_1hamonshu_1_1detail.html#acb49bfc216010236af8d789025525234',1,'svg::hamonshu::detail']]],
+  ['append_5fids_5fat_19',['append_ids_at',['../namespacesvg.html#a07c6fad0adddb0908ed4ef00536967c9',1,'svg']]],
+  ['append_5fpolyline_20',['append_polyline',['../namespacesvg_1_1hamonshu_1_1detail.html#a5a9871c7a19078a8567197918ac75c84',1,'svg::hamonshu::detail']]],
+  ['append_5fspiral_21',['append_spiral',['../namespacesvg_1_1hamonshu_1_1detail.html#a9a66bb88482321b8c24b1db3023e9dbe',1,'svg::hamonshu::detail']]],
+  ['average_5fcolor_5fqi_22',['average_color_qi',['../namespacesvg.html#a6b68820eb6cd88da7e306ff812bca857',1,'svg']]]
 ];

@@ -11,8 +11,12 @@ var searchData=
   ['pair_5fopen_5ftag_8',['pair_open_tag',['../group__elements.html#af4bd051c0433d1d1d310ac3649dfc9f6',1,'svg::rect_element::pair_open_tag'],['../group__elements.html#a16d9f4a93d34d3650831854d5bb14f94',1,'svg::circle_element::pair_open_tag'],['../group__elements.html#a5872e0421431464aba3ccea199505dac',1,'svg::polygon_element::pair_open_tag'],['../group__elements.html#ad2a1317e12518da099e754ca2733dce2',1,'svg::path_element::pair_open_tag']]],
   ['path_5flength_9',['path_length',['../structsvg_1_1stroke__style.html#a223610515f8f7cd358a2ffb72103bb75',1,'svg::stroke_style']]],
   ['path_5fname_10',['path_name',['../group__elements.html#a587c09f176fe7379d00f62fca012cbe2',1,'svg::text_path_element']]],
-  ['phase_5fshift_11',['phase_shift',['../structsvg_1_1ripple__config.html#aad05fc3bb4c0a756de6c0764c42bec32',1,'svg::ripple_config']]],
-  ['points_12',['points',['../structvoronoi__cell.html#ac1523510be75139282abd182fb249c53',1,'voronoi_cell::points'],['../classpoint__cluster.html#af9ff27e7af8f5e9d27db54f63d7dc4e3',1,'point_cluster::points']]],
-  ['polypoints_13',['polypoints',['../group__elements.html#abbf4dfafa978f54d4227a104fe805023',1,'svg::polyline_element']]],
-  ['pt_14',['pt',['../structWeightedPoint.html#a820e6b0c2d35a408a7efa360b6893190',1,'WeightedPoint']]]
+  ['pattern_5fspecs_11',['pattern_specs',['../namespacesvg_1_1hamonshu.html#a5e8881a5e6fa3076013dfdd16ceb2e2a',1,'svg::hamonshu']]],
+  ['phase_12',['phase',['../structsvg_1_1hamonshu_1_1motif__config.html#aee1d42f062cb4b8083f227dde023dd1c',1,'svg::hamonshu::motif_config::phase'],['../structsvg_1_1trochoid__config.html#a9e48580ff51704e746cc26e938066c27',1,'svg::trochoid_config::phase'],['../structsvg_1_1roulette__config.html#ab95c7520c630a5e1deced94e232b0001',1,'svg::roulette_config::phase']]],
+  ['phase_5fshift_13',['phase_shift',['../structsvg_1_1ripple__config.html#aad05fc3bb4c0a756de6c0764c42bec32',1,'svg::ripple_config']]],
+  ['pi_14',['pi',['../namespacesvg_1_1hamonshu.html#aa3056c7304c2cc395353d9dd22d27f16',1,'svg::hamonshu::pi'],['../namespacesvg_1_1roulette__detail.html#a51c3fc2e26756d05d35e07ffe69f498b',1,'svg::roulette_detail::pi']]],
+  ['point_5fdistance_15',['point_distance',['../structsvg_1_1trochoid__config.html#aaf669a50382aa7c5ddf3b11ffb993b48',1,'svg::trochoid_config::point_distance'],['../structsvg_1_1roulette__config.html#a85f137f788b71a02694125e22ed5c50b',1,'svg::roulette_config::point_distance']]],
+  ['points_16',['points',['../structvoronoi__cell.html#ac1523510be75139282abd182fb249c53',1,'voronoi_cell::points'],['../classpoint__cluster.html#af9ff27e7af8f5e9d27db54f63d7dc4e3',1,'point_cluster::points']]],
+  ['polypoints_17',['polypoints',['../group__elements.html#abbf4dfafa978f54d4227a104fe805023',1,'svg::polyline_element']]],
+  ['pt_18',['pt',['../structWeightedPoint.html#a820e6b0c2d35a408a7efa360b6893190',1,'WeightedPoint']]]
 ];

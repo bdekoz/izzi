@@ -6,5 +6,6 @@ var searchData=
   ['color_5fqi_3',['color_qi',['../structsvg_1_1color__qi.html',1,'svg']]],
   ['color_5frstate_4',['color_rstate',['../structsvg_1_1color__rstate.html',1,'svg']]],
   ['const_5fiterator_5',['const_iterator',['../classsvg_1_1string_1_1const__iterator.html',1,'svg::string::const_iterator'],['../classsvg_1_1string__view_1_1const__iterator.html',1,'svg::string_view::const_iterator']]],
-  ['const_5freverse_5fiterator_6',['const_reverse_iterator',['../classsvg_1_1string_1_1const__reverse__iterator.html',1,'svg::string::const_reverse_iterator'],['../classsvg_1_1string__view_1_1const__reverse__iterator.html',1,'svg::string_view::const_reverse_iterator']]]
+  ['const_5freverse_5fiterator_6',['const_reverse_iterator',['../classsvg_1_1string_1_1const__reverse__iterator.html',1,'svg::string::const_reverse_iterator'],['../classsvg_1_1string__view_1_1const__reverse__iterator.html',1,'svg::string_view::const_reverse_iterator']]],
+  ['curated_5fmotif_5fselection_7',['curated_motif_selection',['../structsvg_1_1hamonshu_1_1curated__motif__selection.html',1,'svg::hamonshu']]]
 ];

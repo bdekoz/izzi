@@ -5,5 +5,6 @@ var searchData=
   ['render_5fstate_5fbase_2',['render_state_base',['../structsvg_1_1render__state__base.html',1,'svg']]],
   ['reverse_5fiterator_3',['reverse_iterator',['../classsvg_1_1string_1_1reverse__iterator.html',1,'svg::string::reverse_iterator'],['../classsvg_1_1string__view_1_1reverse__iterator.html',1,'svg::string_view::reverse_iterator']]],
   ['ribbon_5fconfig_4',['ribbon_config',['../structsvg_1_1ribbon__config.html',1,'svg']]],
-  ['ripple_5fconfig_5',['ripple_config',['../structsvg_1_1ripple__config.html',1,'svg']]]
+  ['ripple_5fconfig_5',['ripple_config',['../structsvg_1_1ripple__config.html',1,'svg']]],
+  ['roulette_5fconfig_6',['roulette_config',['../structsvg_1_1roulette__config.html',1,'svg']]]
 ];

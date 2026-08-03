@@ -19,5 +19,10 @@ var searchData=
   ['color_5fmax_5fsize_16',['color_max_size',['../namespacesvg.html#a0762dd8ffa369404d94bb6a13032e63b',1,'svg']]],
   ['colorbrewer2s3s_5fpalette_17',['colorbrewer2s3s_palette',['../namespacesvg.html#aeb01ba059732c058d458a9a18980ff76',1,'svg']]],
   ['colorbrewer2s7s_5fpalette_18',['colorbrewer2s7s_palette',['../namespacesvg.html#a7d470521db1f45b01629c101669a62dd',1,'svg']]],
-  ['colorbrewer2s9s_5fpalette_19',['colorbrewer2s9s_palette',['../namespacesvg.html#a8a078481c8f35f01582ae84ffad2d8ad',1,'svg']]]
+  ['colorbrewer2s9s_5fpalette_19',['colorbrewer2s9s_palette',['../namespacesvg.html#a8a078481c8f35f01582ae84ffad2d8ad',1,'svg']]],
+  ['config_20',['config',['../structsvg_1_1hamonshu_1_1detail_1_1pattern__context.html#a21285e9a6d944a244ce0962c831d8ca6',1,'svg::hamonshu::detail::pattern_context']]],
+  ['curated_5fcurvature_5fratios_21',['curated_curvature_ratios',['../namespacesvg_1_1hamonshu.html#aad886fe2a64ee897cf1c21e0d333f386',1,'svg::hamonshu']]],
+  ['curated_5fmotif_5fselections_22',['curated_motif_selections',['../namespacesvg_1_1hamonshu.html#ac516c40e5db1c6c58b712c707607e30e',1,'svg::hamonshu']]],
+  ['curated_5fvariation_5fcount_23',['curated_variation_count',['../namespacesvg_1_1hamonshu.html#aecd43374ebd1a4ed11ca8103a05f2965',1,'svg::hamonshu']]],
+  ['curvature_24',['curvature',['../structsvg_1_1hamonshu_1_1motif__config.html#a663f33209f11413af60ad2a04afde5b8',1,'svg::hamonshu::motif_config']]]
 ];
