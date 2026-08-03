@@ -51,7 +51,9 @@ namespace svg::hamonshu {
  *
  * The routines construct only motif linework. Projection, geographic data,
  * clipping, fill color, stroke style, and document/layer assembly remain the
- * caller's responsibility.
+ * caller's responsibility. `curated_motif_selections` and
+ * `curated_curvature_ratios` define the shared 13-by-7 form set rendered by
+ * the parameter-grid example and cartofreako's ocean maps.
  */
 
 inline constexpr double pi
@@ -75,6 +77,44 @@ inline constexpr std::array pattern_specs {
 };
 
 static_assert(pattern_specs.size() == 153);
+
+/// Source coordinates for one motif in the curated form-exploration set.
+struct curated_motif_selection
+{
+  unsigned first_page;
+  unsigned last_page;
+  unsigned motif;
+};
+
+// These thirteen motifs are the deliberately selected rows in
+// examples/curves-hamonshu.cc. Source coordinates, rather than catalogue
+// offsets, keep the selection stable when unrelated entries are inserted.
+inline constexpr std::array curated_motif_selections {
+  curated_motif_selection {1, 1, 1},
+  curated_motif_selection {2, 2, 1},
+  curated_motif_selection {3, 3, 1},
+  curated_motif_selection {3, 3, 2},
+  curated_motif_selection {6, 6, 2},
+  curated_motif_selection {9, 9, 1},
+  curated_motif_selection {17, 17, 3},
+  curated_motif_selection {20, 20, 4},
+  curated_motif_selection {23, 23, 2},
+  curated_motif_selection {39, 39, 2},
+  curated_motif_selection {40, 40, 1},
+  curated_motif_selection {46, 47, 2},
+  curated_motif_selection {51, 51, 5},
+};
+
+// Each value changes only wave height, curl radius, and transverse
+// displacement. The value 1.0 is the catalogue motif's canonical form.
+inline constexpr std::array curated_curvature_ratios {
+  0.25, 0.45, 0.70, 1.0, 1.30, 1.65, 2.10,
+};
+
+inline constexpr std::size_t curated_variation_count
+  = curated_motif_selections.size() * curated_curvature_ratios.size();
+
+static_assert(curated_variation_count == 91);
 
 struct pattern_box
 {
@@ -222,6 +262,23 @@ validate_pattern_spec(const pattern_spec& spec)
                    || character == '-';
           }),
           "Hamonshu catalogue motif names must be lowercase ASCII slugs");
+}
+
+/// Resolve one stable source-coordinate selection into the full catalogue.
+inline const pattern_spec&
+curated_pattern(const curated_motif_selection selection)
+{
+  const auto match = std::find_if(
+    pattern_specs.begin(), pattern_specs.end(),
+    [=](const pattern_spec& spec) {
+      return spec.first_page == selection.first_page
+        && spec.last_page == selection.last_page
+        && spec.motif == selection.motif;
+    });
+  require(match != pattern_specs.end(),
+          "curated Hamonshu motif is not in the catalogue");
+  validate_pattern_spec(*match);
+  return *match;
 }
 
 inline bool

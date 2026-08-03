@@ -15,6 +15,12 @@ and
 Cartofreako supplies the geographic tiling, projection, ocean clipping,
 palette, and layer assembly around those paths.
 
+The header also owns the deliberately curated set rendered by
+[`examples/curves-hamonshu.cc`](../examples/curves-hamonshu.cc) and the
+cartofreako ocean generator: 13 selected source motifs at seven curvature
+ratios, for 91 variations. Keeping that selection beside the full catalogue
+prevents the two consumers from drifting apart.
+
 ## Page and name conventions
 
 The cartofreako provenance PDF has 28 scan pages, while the bound work
@@ -35,17 +41,24 @@ such as pattern names (`文様名などの注記なし`).  There are therefore n
 Japanese motif captions to translate.  Labels such as `nested-current-scrolls`
 are concise descriptive English catalogue names, not historical titles.
 
-Every generated layer has this stable form:
+Every catalogue motif has this stable source ID:
 
 ```text
 hamonshu-page-PPP[-PPP]-motif-MM-descriptive-english-name
 ```
 
-Each layer contains a water-region path and an Izzi-generated line path.  Its
-SVG `<title>` records the illustrated page or page span, the corresponding
-PDF scan, the motif ordinal, and the descriptive name.  Clip paths use the
-same ID with a `clip-` prefix.  This makes source lookup possible from either
-an SVG editor's layer panel or the XML itself.
+Curated ocean layers append the zero-based curvature-column index:
+
+```text
+hamonshu-page-PPP[-PPP]-motif-MM-descriptive-english-name-curvature-C
+```
+
+Each ocean layer contains a water-region path and an Izzi-generated line
+path. Its SVG `<title>` records the illustrated page or page span, the
+corresponding PDF scan, the motif ordinal, descriptive name, and curvature
+ratio. Clip paths use the same variation ID with a `clip-` prefix. This makes
+source and form lookup possible from either an SVG editor's layer panel or
+the XML itself.
 
 ## Vector interpretation
 
@@ -57,6 +70,15 @@ waterlines, crests, spirals, spray, arcs, lattices, bubbles, scrolls, fans,
 breakers, braids, cascades, ripples, fountains, clouds, and cells.  Page and
 motif metadata seed the spacing, phase, direction, and density, so each
 catalogued specimen produces a distinct path treatment.
+
+The public `curated_motif_selections` array identifies page/motif rows
+`001/01`, `002/01`, `003/01`, `003/02`, `006/02`, `009/01`,
+`017/03`, `020/04`, `023/02`, `039/02`, `040/01`, `046-047/02`,
+and `051/05`. The public `curated_curvature_ratios` array contains
+`0.25`, `0.45`, `0.70`, `1.0`, `1.30`, `1.65`, and `2.10`.
+Across a row, only wave height, curl radius, and transverse displacement
+change; the `1.0` column preserves the canonical form. Density, phase,
+orientation, reflection, sampling, and SVG color remain fixed.
 
 These paths are clean vector interpretations intended for map texture, not
 pixel-by-pixel facsimile tracings of the paper scans.  Curves, ellipses, and
@@ -75,15 +97,15 @@ each exact planar triangle. Segmentation before the forward transform keeps
 curved projected edges smooth.
 
 The surviving water-only pieces form a non-overlapping mosaic.  They are
-assigned across all 153 motif layers, while a pale complete-ocean path covers
-small coastal and polar fragments omitted from the mosaic.  Each motif's
-linework is clipped to precisely its assigned Natural Earth water regions;
-no land geometry is loaded or drawn.
+assigned across the 91 curated motif/curvature layers, while a pale
+complete-ocean path covers small coastal and polar fragments omitted from the
+mosaic. Each variation's linework is clipped to precisely its assigned Natural
+Earth water regions; no land geometry is loaded or drawn.
 
 Each output preserves its projection's exact aspect ratio with a largest
 dimension of 44 units. `main()` verifies the projection-specific view box,
-base ocean groups, all 153 motif groups, all 153 clip paths, two paths per
-motif layer, catalogue IDs and titles, and finite coordinates.
+base ocean groups, all 91 variation groups, all 91 clip paths, two paths per
+variation, curated IDs and source/curvature titles, and finite coordinates.
 
 ## Rebuild
 
