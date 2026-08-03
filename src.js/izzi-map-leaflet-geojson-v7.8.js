@@ -1,0 +1,1067 @@
+// 20260803
+// baseline-v7.8 - Width-fitted map with detachable, docked controls.
+// Based on v7.5, retaining gzip input, week/cumulative title generation,
+// point reduction, category/property controls, and the new-window wrapper.
+// The WASM projection derives from work by Mary Jo Graça and Gene Keyes;
+// commercial users should contact Gene Keyes. See the cartofreako source.
+
+function leaflet_map_geojson(geojsonUrl) {
+    // Extract title from URL – handles -cumulative, -week-*, extensions, query strings
+    function getTitleFromUrl(url) {
+        let cleanUrl = url.split('?')[0];                 // strip query params
+        let fileName = cleanUrl.split('/').pop();         // get base filename
+        fileName = fileName.replace(
+            /(?:\.(?:geojson|json|zip|gz|gzip|bz2))+$/i, ''
+        ); // strip stacked data/compression extensions
+        fileName = fileName.replace(/-cumulative$/i, ''); // remove "-cumulative" if present
+        return fileName.split(/[-_]/).map(word =>
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+    }
+
+    const pageTitle = getTitleFromUrl(geojsonUrl);
+    const mapScript = document.getElementById('geojson-map');
+    const mapScriptUrl = mapScript && mapScript.src
+        ? mapScript.src
+        : document.baseURI;
+    const wasmModuleUrl = new URL(
+        'cartofreako-cahill-keyes.mjs', mapScriptUrl
+    ).href;
+    const wasmBinaryUrl = new URL(
+        'cartofreako-cahill-keyes.wasm', mapScriptUrl
+    ).href;
+    const landGeoJsonUrl = new URL(
+        'cartofreako-cahill-keyes-land-110m.geojson', mapScriptUrl
+    ).href;
+
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>${pageTitle}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style id="map-page-styles">
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        .map-layout {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+        #map {
+            flex: 1 1 auto;
+            min-width: 0;
+            height: 100%;
+            background: #f8f8f6;
+        }
+        .control-panel {
+            position: relative;
+            z-index: 1000;
+            flex: 0 0 360px;
+            width: 360px;
+            max-width: 40vw;
+            box-sizing: border-box;
+            background: white;
+            padding: 15px;
+            border-left: 1px solid #d5d9dd;
+            box-shadow: -3px 0 12px rgba(0,0,0,0.12);
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+        .panel-toolbar {
+            display: flex;
+            justify-content: flex-end;
+            margin: -5px -5px 8px;
+        }
+        .panel-toolbar button {
+            width: auto;
+            margin: 0;
+            padding: 6px 10px;
+            font-size: 0.8em;
+        }
+        .legend-circle {
+            border-radius: 50%;
+            background: #3388ff;
+            display: inline-block;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+        .legend-item {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        .property-selector {
+            margin: 15px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        .property-selector select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+        .category-selector {
+            margin: 10px 0;
+            display: flex;
+            gap: 10px;
+        }
+        .category-btn {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #3388ff;
+            background: white;
+            color: #3388ff;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .category-btn.active {
+            background: #3388ff;
+            color: white;
+        }
+        .reduction-info {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f0f7ff;
+            border-radius: 5px;
+            border-left: 3px solid #3388ff;
+        }
+        button {
+            background: #3388ff;
+            color: white;
+            border: none;
+            padding: 10px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #2868c7;
+        }
+        button.secondary {
+            background: #6c757d;
+        }
+        button.secondary:hover {
+            background: #5a6268;
+        }
+        .slider-container {
+            margin: 20px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .slider-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .slider-container input {
+            width: 100%;
+            margin: 5px 0;
+        }
+        .slider-value {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #3388ff;
+            margin: 5px 0;
+        }
+        .config-section {
+            margin: 15px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+        .config-section h4 {
+            margin: 0 0 10px 0;
+            color: #495057;
+        }
+        .config-row {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        .config-row label {
+            width: 100px;
+            font-size: 0.9em;
+        }
+        .config-row input {
+            width: 80px;
+            padding: 4px;
+            border: 1px solid #ced4da;
+            border-radius: 3px;
+        }
+        .config-row span {
+            margin-left: 8px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        .note {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        .warning-info {
+            font-size: 0.9em;
+            color: #856404;
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid #ffc107;
+        }
+        .success-info {
+            font-size: 0.9em;
+            color: #155724;
+            background: #d4edda;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid #28a745;
+        }
+        .data-source {
+            font-size: 0.8em;
+            color: #6c757d;
+            margin-top: 5px;
+            padding: 5px;
+            background: #f8f9fa;
+            border-radius: 3px;
+            word-break: break-all;
+        }
+        .detached-controls-document,
+        .detached-controls-document body {
+            height: auto;
+            min-height: 100%;
+            overflow: auto;
+            background: #f8f8f6;
+        }
+        .detached-controls-document .control-panel {
+            display: block;
+            width: auto;
+            max-width: none;
+            max-height: none;
+            padding: 15px;
+            border: 0;
+            box-shadow: none;
+        }
+        @media (max-width: 700px) {
+            .map-layout {
+                flex-direction: column;
+            }
+            #map {
+                min-height: 55vh;
+            }
+            .control-panel {
+                flex: 0 0 45vh;
+                width: 100%;
+                max-width: none;
+                max-height: 45vh;
+                border-top: 1px solid #d5d9dd;
+                border-left: 0;
+                box-shadow: 0 -3px 12px rgba(0,0,0,0.12);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="map-layout" class="map-layout">
+    <div id="map"></div>
+    <aside id="control-panel" class="control-panel">
+        <div class="panel-toolbar">
+            <button id="detach-controls" class="secondary"
+                    type="button" aria-pressed="false">
+                Pop out controls
+            </button>
+        </div>
+        <h3 id="panel-title">${pageTitle}</h3>
+
+        <div class="category-selector">
+            <button id="category-downloaders" class="category-btn active">Downloaders</button>
+            <button id="category-uploaders" class="category-btn">Uploaders</button>
+        </div>
+
+        <div class="property-selector">
+            <label for="property-select"><strong>Visualize by:</strong></label>
+            <select id="property-select">
+                <option value="size">size (total)</option>
+                <option value="mobile">mobile</option>
+                <option value="satellite">satellite</option>
+                <option value="tor">tor</option>
+                <option value="tor_exit_nodes">tor_exit_nodes</option>
+                <option value="vpn">vpn</option>
+                <option value="relay">relay</option>
+                <option value="proxy">proxy</option>
+                <option value="hosting">hosting</option>
+                <option value="service">service</option>
+            </select>
+        </div>
+
+        <div id="status-message"></div>
+
+        <div class="slider-container">
+            <label for="distance-slider"><strong>Max Merge Distance:</strong></label>
+            <input type="range" id="distance-slider" min="1" max="500" value="250" step="1">
+            <div class="slider-value" id="distance-value">250 km</div>
+            <p style="font-size: 0.8em; margin: 5px 0;">Points within this distance will be merged to prevent overlap (1-500km)</p>
+        </div>
+
+        <div class="config-section">
+            <h4>Circle Style</h4>
+            <div class="config-row">
+                <label for="min-radius">Min radius:</label>
+                <input type="number" id="min-radius" min="1" max="50" value="2" step="1">
+                <span>pixels</span>
+            </div>
+            <div class="config-row">
+                <label for="max-radius">Max radius:</label>
+                <input type="number" id="max-radius" min="10" max="200" value="100" step="1">
+                <span>pixels</span>
+            </div>
+            <div class="config-row">
+                <label for="fill-opacity">Fill opacity:</label>
+                <input type="number" id="fill-opacity" min="0" max="100" value="20" step="5">
+                <span>%</span>
+            </div>
+            <button id="apply-style" class="secondary" style="margin: 5px 0 0;">Apply Style</button>
+        </div>
+
+        <button id="apply-reduction">Update Map</button>
+        <button id="reset-view" class="secondary">Reset View</button>
+
+        <div id="legend">
+            <h4>Legend</h4>
+            <div id="legend-content"></div>
+        </div>
+
+        <div class="reduction-info" id="reduction-info">
+            <strong>Statistics</strong>
+            <p id="point-counts">Original: 0 | Filtered: 0 | Current: 0</p>
+            <p id="reduction-percent">Reduction: 0%</p>
+            <p id="merge-distance">Merge distance: 0 km</p>
+            <p id="value-range">Value range: 0 - 0</p>
+            <p id="zero-count">Zero values: 0 points hidden</p>
+        </div>
+
+        <div class="data-source" id="data-source"></div>
+        <div class="data-source">
+            <strong>Projection:</strong>
+            <a href="https://github.com/bdekoz/cartofreako"
+               target="_blank" rel="noopener">cartofreako Cahill-Keyes</a>
+            <br>
+            <strong>Base map:</strong> generated in C++/WebAssembly from
+            <a href="https://www.naturalearthdata.com/"
+               target="_blank" rel="noopener">Natural Earth</a>
+            <br>
+            <small>Forward construction derived from work by Mary Jo Graça
+            and Gene Keyes.</small>
+        </div>
+
+        <div class="note">Click circles for details • Zero values are hidden • 0.5pt stroke</div>
+    </aside>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // GeoJSON data source URL (passed in)
+        const GEOJSON_URL = ${JSON.stringify(geojsonUrl)};
+        const WASM_MODULE_URL = ${JSON.stringify(wasmModuleUrl)};
+        const WASM_BINARY_URL = ${JSON.stringify(wasmBinaryUrl)};
+        const LAND_GEOJSON_URL = ${JSON.stringify(landGeoJsonUrl)};
+
+        // ============================================================
+        //  loadData() – fetches and decompresses if .gz / .gzip
+        // ============================================================
+        async function loadData() {
+            const isGzip = GEOJSON_URL.endsWith('.gz') || GEOJSON_URL.endsWith('.gzip');
+            const response = await fetch(GEOJSON_URL);
+            if (!response.ok) throw new Error(\`HTTP \${response.status}\`);
+
+            if (isGzip) {
+                const blob = await response.blob();
+                const ds = new DecompressionStream('gzip');
+                const stream = blob.stream().pipeThrough(ds);
+                const decompressedBlob = await new Response(stream).blob();
+                const text = await decompressedBlob.text();
+                return JSON.parse(text);
+            } else {
+                return await response.json();
+            }
+        }
+
+        // Default settings
+        const DEFAULT_CATEGORY = 'downloaders';
+        const DEFAULT_PROPERTY = 'size';
+
+        // Cartofreako accepts any exact 2:1 frame. This is its 44 x 22 inch,
+        // 96-DPI logical frame.
+        const MAP_WIDTH = 4224;
+        const MAP_HEIGHT = 2112;
+        const MAP_HORIZONTAL_PADDING = 8;
+        let cartofreakoModule = null;
+        let cahillKeyes = null;
+        let baseMapObjectUrl = null;
+        window.cartofreakoWasmReady = false;
+        window.cartofreakoMapState = {wasmReady: false};
+        const mapBounds = L.latLngBounds(
+            [0, 0], [MAP_HEIGHT, MAP_WIDTH]
+        );
+        const mapLayout = document.getElementById('map-layout');
+        const controlPanel = document.getElementById('control-panel');
+        let detachedControlWindow = null;
+
+        function controlElement(id) {
+            const element = controlPanel.querySelector('[id="' + id + '"]');
+            if (!element) {
+                throw new Error('Missing control panel element: ' + id);
+            }
+            return element;
+        }
+
+        // Leaflet handles interaction in a flat coordinate space. Geographic
+        // points are projected explicitly before they enter a Leaflet layer.
+        const map = L.map('map', {
+            crs: L.CRS.Simple,
+            minZoom: -4,
+            maxZoom: 2,
+            // Preserve the exact fractional zoom needed to fit the 2:1 map
+            // carrier to the popup width.
+            zoomSnap: 0,
+            zoomDelta: 0.5,
+            maxBounds: mapBounds.pad(0.04),
+            maxBoundsViscosity: 1,
+            preferCanvas: true
+        });
+
+        map.attributionControl.addAttribution(
+            'Projection: <a href="https://github.com/bdekoz/cartofreako"'
+            + ' target="_blank" rel="noopener">cartofreako C++/WASM</a>; '
+            + 'geography: <a href="https://www.naturalearthdata.com/"'
+            + ' target="_blank" rel="noopener">Natural Earth</a>'
+        );
+
+        async function loadCartofreako() {
+            const status = controlElement('status-message');
+            status.className = 'warning-info';
+            status.textContent = 'Loading cartofreako C++/WebAssembly…';
+
+            const [moduleNamespace, landResponse] = await Promise.all([
+                import(WASM_MODULE_URL),
+                fetch(LAND_GEOJSON_URL)
+            ]);
+            if (!landResponse.ok) {
+                throw new Error('Natural Earth HTTP ' + landResponse.status);
+            }
+
+            cartofreakoModule = await moduleNamespace.default({
+                locateFile(path) {
+                    return path.endsWith('.wasm')
+                        ? WASM_BINARY_URL
+                        : new URL(path, WASM_MODULE_URL).href;
+                }
+            });
+            const landGeoJson = await landResponse.json();
+            cahillKeyes = new cartofreakoModule.CahillKeyesProjection(
+                MAP_WIDTH, MAP_HEIGHT
+            );
+
+            const baseMapSvg = cahillKeyes.generateBaseMapSvg(landGeoJson);
+            baseMapObjectUrl = URL.createObjectURL(new Blob(
+                [baseMapSvg], {type: 'image/svg+xml'}
+            ));
+            L.imageOverlay(baseMapObjectUrl, mapBounds, {
+                alt: 'Cahill-Keyes world map generated by cartofreako WASM',
+                interactive: false
+            }).addTo(map);
+
+            window.cartofreakoWasmReady = true;
+            window.cartofreakoImplementation
+                = cartofreakoModule.implementationName();
+            Object.assign(window.cartofreakoMapState, {
+                wasmReady: true,
+                implementation: window.cartofreakoImplementation,
+                generatedSvgBytes: new TextEncoder().encode(baseMapSvg).length,
+                landFeatures: landGeoJson.features.length
+            });
+            status.className = 'success-info';
+            status.textContent = 'Cahill-Keyes map generated by C++/WASM.';
+        }
+
+        function cahillKeyesWidthZoom() {
+            const viewportWidth = map.getSize().x;
+            const availableWidth = Math.max(
+                1, viewportWidth - 2 * MAP_HORIZONTAL_PADDING
+            );
+            const requestedZoom = map.options.crs.zoom(
+                availableWidth / MAP_WIDTH
+            );
+            return Math.max(
+                map.getMinZoom(),
+                Math.min(map.getMaxZoom(), requestedZoom)
+            );
+        }
+
+        function resetCahillKeyesView() {
+            const viewportWidth = map.getSize().x;
+            const zoom = cahillKeyesWidthZoom();
+            const projectedMapWidth = MAP_WIDTH
+                * map.options.crs.scale(zoom);
+            map.setView(mapBounds.getCenter(), zoom, {animate: false});
+            Object.assign(window.cartofreakoMapState, {
+                fitMode: 'width',
+                viewportWidth,
+                projectedMapWidth,
+                widthFitZoom: zoom
+            });
+        }
+
+        function refitMapAfterPanelMove() {
+            window.requestAnimationFrame(function() {
+                map.invalidateSize({animate: false});
+                resetCahillKeyesView();
+            });
+        }
+
+        function setControlPanelDetached(detached) {
+            const button = controlElement('detach-controls');
+            button.textContent = detached
+                ? 'Dock controls'
+                : 'Pop out controls';
+            button.setAttribute('aria-pressed', String(detached));
+            button.title = detached
+                ? 'Return controls to the map window'
+                : 'Open controls in a separate window';
+            window.cartofreakoMapState.controlsDetached = detached;
+        }
+
+        function dockControlPanel(detachedWindowIsClosing) {
+            const panelWindow = detachedControlWindow;
+            detachedControlWindow = null;
+            mapLayout.appendChild(controlPanel);
+            setControlPanelDetached(false);
+            refitMapAfterPanelMove();
+
+            if (!detachedWindowIsClosing
+                    && panelWindow && !panelWindow.closed) {
+                panelWindow.close();
+            }
+        }
+
+        function detachControlPanel() {
+            if (detachedControlWindow && !detachedControlWindow.closed) {
+                detachedControlWindow.focus();
+                return;
+            }
+
+            const panelWindow = window.open(
+                '', '_blank',
+                'popup=yes,width=390,height=760,resizable=yes,scrollbars=yes'
+            );
+            if (!panelWindow) {
+                const status = controlElement('status-message');
+                status.className = 'warning-info';
+                status.textContent = 'Allow pop-ups to detach the controls.';
+                return;
+            }
+
+            detachedControlWindow = panelWindow;
+            panelWindow.document.documentElement.className
+                = 'detached-controls-document';
+
+            const viewport = panelWindow.document.createElement('meta');
+            viewport.name = 'viewport';
+            viewport.content = 'width=device-width, initial-scale=1.0';
+            const styles = panelWindow.document.createElement('style');
+            styles.textContent
+                = document.getElementById('map-page-styles').textContent;
+            panelWindow.document.head.replaceChildren(viewport, styles);
+            panelWindow.document.title = document.title + ' controls';
+            panelWindow.document.body.replaceChildren(controlPanel);
+
+            setControlPanelDetached(true);
+            panelWindow.addEventListener('beforeunload', function() {
+                if (detachedControlWindow === panelWindow) {
+                    dockControlPanel(true);
+                }
+            }, {once: true});
+            panelWindow.focus();
+            refitMapAfterPanelMove();
+        }
+
+        function projectLongitudeLatitude(longitude, latitude) {
+            if (!cahillKeyes) {
+                throw new Error('cartofreako WebAssembly is not ready');
+            }
+            const point = cahillKeyes.project(latitude, longitude);
+            // Leaflet's simple CRS grows upward; SVG/pixel y grows downward.
+            return L.latLng(MAP_HEIGHT - point.y, point.x);
+        }
+
+        function geoJsonCoordinatesToLatLng(coordinates) {
+            return projectLongitudeLatitude(coordinates[0], coordinates[1]);
+        }
+
+        map.on('resize', resetCahillKeyesView);
+        resetCahillKeyesView();
+
+        // Display data source
+        controlElement('data-source').innerHTML = \`📁 <strong>Data:</strong> \${GEOJSON_URL.split('/').pop()}\`;
+
+        // Configuration
+        let config = {
+            minRadius: 2,
+            maxRadius: 100,
+            fillOpacity: 0.2
+        };
+
+        let geoJsonData = null;
+        let currentLayer = null;
+        let currentCategory = DEFAULT_CATEGORY;
+        let currentProperty = DEFAULT_PROPERTY;
+        let originalFeatures = [];
+        let currentReducedPoints = [];
+
+        // Helper function to get property value (for new GeoJSON structure)
+        function getPropertyValue(feature, category, property) {
+            try {
+                const val = feature.properties[category]?.[property];
+                return val !== undefined && val !== null ? parseFloat(val) : 0;
+            } catch (e) {
+                console.warn(\`Error getting property \${category}.\${property}:\`, e);
+                return 0;
+            }
+        }
+
+        // Helper functions for distance and overlap
+        function deg2km(lat) {
+            const latKm = 111.32;
+            const lngKm = 111.32 * Math.cos(lat * Math.PI / 180);
+            return { latKm, lngKm };
+        }
+
+        function geographicCoordinates(point) {
+            return point.geometry
+                ? [point.geometry.coordinates[0], point.geometry.coordinates[1]]
+                : [point.lng, point.lat];
+        }
+
+        function calculateDistance(point1, point2) {
+            const [lng1, lat1] = geographicCoordinates(point1);
+            const [lng2, lat2] = geographicCoordinates(point2);
+
+            const { latKm, lngKm } = deg2km((lat1 + lat2) / 2);
+
+            const dLat = (lat2 - lat1) * latKm;
+            const longitudeDelta = ((lng2 - lng1 + 540) % 360) - 180;
+            const dLng = longitudeDelta * lngKm;
+
+            return Math.sqrt(dLat * dLat + dLng * dLng);
+        }
+
+        function weightedLongitude(first, firstWeight, second, secondWeight) {
+            const firstRadians = first * Math.PI / 180;
+            const secondRadians = second * Math.PI / 180;
+            const x = Math.cos(firstRadians) * firstWeight
+                + Math.cos(secondRadians) * secondWeight;
+            const y = Math.sin(firstRadians) * firstWeight
+                + Math.sin(secondRadians) * secondWeight;
+            return Math.atan2(y, x) * 180 / Math.PI;
+        }
+
+        function circlesOverlap(point1, point2, value1, value2, minVal, maxVal) {
+            const scaleFactor1 = maxVal > minVal ? (value1 - minVal) / (maxVal - minVal) : 0.5;
+            const scaleFactor2 = maxVal > minVal ? (value2 - minVal) / (maxVal - minVal) : 0.5;
+
+            const radiusPixels1 = config.minRadius + (config.maxRadius - config.minRadius) * scaleFactor1;
+            const radiusPixels2 = config.minRadius + (config.maxRadius - config.minRadius) * scaleFactor2;
+
+            const [lng1, lat1] = geographicCoordinates(point1);
+            const [lng2, lat2] = geographicCoordinates(point2);
+            const pixel1 = map.latLngToLayerPoint(
+                projectLongitudeLatitude(lng1, lat1)
+            );
+            const pixel2 = map.latLngToLayerPoint(
+                projectLongitudeLatitude(lng2, lat2)
+            );
+
+            return pixel1.distanceTo(pixel2)
+                < radiusPixels1 + radiusPixels2;
+        }
+
+        function filterFeaturesByValue(features, category, property) {
+            return features.filter(f => {
+                const val = getPropertyValue(f, category, property);
+                return !isNaN(val) && val >= 1;
+            });
+        }
+
+        function reducePointsToEliminateOverlaps(features, category, property, maxDistance) {
+            if (features.length === 0) return [];
+
+            const values = features.map(f => getPropertyValue(f, category, property));
+            const maxVal = Math.max(...values);
+            const minVal = Math.min(...values);
+
+            let points = features.map(f => ({
+                feature: f,
+                lat: f.geometry.coordinates[1],
+                lng: f.geometry.coordinates[0],
+                value: getPropertyValue(f, category, property) || 0,
+                originalFeatures: [f]
+            }));
+
+            points.sort((a, b) => b.value - a.value);
+
+            let changed = true;
+            let iterations = 0;
+            const maxIterations = 50;
+
+            while (changed && iterations < maxIterations) {
+                changed = false;
+                iterations++;
+
+                for (let i = 0; i < points.length; i++) {
+                    if (!points[i]) continue;
+
+                    for (let j = i + 1; j < points.length; j++) {
+                        if (!points[j]) continue;
+
+                        const distance = calculateDistance(points[i], points[j]);
+                        if (distance > maxDistance) continue;
+
+                        if (circlesOverlap(
+                            points[i], points[j],
+                            points[i].value, points[j].value,
+                            minVal, maxVal
+                        )) {
+                            const totalValue = points[i].value + points[j].value;
+
+                            points[i].lat = (points[i].lat * points[i].value + points[j].lat * points[j].value) / totalValue;
+                            points[i].lng = weightedLongitude(
+                                points[i].lng, points[i].value,
+                                points[j].lng, points[j].value
+                            );
+                            points[i].value = totalValue;
+
+                            points[i].originalFeatures = points[i].originalFeatures.concat(points[j].originalFeatures);
+
+                            points.splice(j, 1);
+                            j--;
+                            changed = true;
+                        }
+                    }
+                }
+            }
+
+            return points;
+        }
+
+        function updateMap() {
+            if (!originalFeatures.length) return;
+
+            const maxDistance = parseFloat(controlElement('distance-slider').value);
+
+            config.minRadius = parseInt(controlElement('min-radius').value);
+            config.maxRadius = parseInt(controlElement('max-radius').value);
+            config.fillOpacity = parseFloat(
+                controlElement('fill-opacity').value
+            ) / 100;
+
+            const filteredFeatures = filterFeaturesByValue(originalFeatures, currentCategory, currentProperty);
+            const zeroValueCount = originalFeatures.length - filteredFeatures.length;
+
+            const statusDiv = controlElement('status-message');
+            if (filteredFeatures.length === 0) {
+                statusDiv.className = 'warning-info';
+                statusDiv.innerHTML = \`⚠️ No points with \${currentCategory}.\${currentProperty} >= 1 found. Try another property.\`;
+            } else {
+                statusDiv.className = 'success-info';
+                statusDiv.innerHTML = \`✅ Found \${filteredFeatures.length} points with \${currentCategory}.\${currentProperty} >= 1\`;
+            }
+
+            currentReducedPoints = reducePointsToEliminateOverlaps(
+                filteredFeatures,
+                currentCategory,
+                currentProperty,
+                maxDistance
+            );
+
+            if (currentLayer) {
+                map.removeLayer(currentLayer);
+            }
+
+            const values = currentReducedPoints.map(p => p.value);
+            const maxVal = Math.max(...values, 1);
+            const minVal = Math.min(...values, 1);
+
+            const reducedGeoJson = {
+                type: "FeatureCollection",
+                features: currentReducedPoints.map(point => ({
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: [point.lng, point.lat]
+                    },
+                    properties: {
+                        merged_count: point.originalFeatures.length,
+                        total_value: point.value,
+                        avg_value: point.value / point.originalFeatures.length,
+                        original_properties: point.originalFeatures.map(f => f.properties)
+                    }
+                }))
+            };
+
+            currentLayer = L.geoJSON(reducedGeoJson, {
+                coordsToLatLng: geoJsonCoordinatesToLatLng,
+
+                pointToLayer: function(feature, latlng) {
+                    const value = feature.properties.total_value;
+
+                    let radius = config.minRadius;
+
+                    if (maxVal > minVal) {
+                        const scaleFactor = (value - minVal) / (maxVal - minVal);
+                        radius = config.minRadius + (config.maxRadius - config.minRadius) * scaleFactor;
+                    } else {
+                        radius = (config.minRadius + config.maxRadius) / 2;
+                    }
+
+                    return L.circleMarker(latlng, {
+                        radius: radius,
+                        fillColor: '#3388ff',
+                        color: '#000',
+                        weight: 0.5,
+                        opacity: 0.8,
+                        fillOpacity: config.fillOpacity
+                    });
+                },
+
+                onEachFeature: function(feature, layer) {
+                    const props = feature.properties;
+
+                    let popupContent = \`
+                        <div style="max-width: 300px;">
+                            <h4>Merged Point (\${props.merged_count} locations)</h4>
+                            <table style="border-collapse: collapse; width: 100%;">
+                                 <tr><th>Total \${currentCategory}.\${currentProperty}:</th><td><strong>\${props.total_value.toFixed(2)}</strong></td></tr>
+                                 <tr><th>Average:</th><td>\${props.avg_value.toFixed(2)}</td></tr>
+                                 <tr><th colspan="2" style="padding-top: 10px;">Original values:</th></tr>
+                    \`;
+
+                    props.original_properties.slice(0, 5).forEach((origProps, idx) => {
+                        let origValue = 'N/A';
+                        try {
+                            origValue = origProps[currentCategory]?.[currentProperty];
+                        } catch (e) {
+                            origValue = 'Error';
+                        }
+
+                        popupContent += \`
+                             <tr><td colspan="2" style="border-top: 1px solid #eee; padding: 5px 0;">
+                                Point \${idx + 1}: \${origValue}
+                             </td></tr>
+                        \`;
+                    });
+
+                    if (props.original_properties.length > 5) {
+                        popupContent += \`<tr><td colspan="2">...and \${props.original_properties.length - 5} more</td></tr>\`;
+                    }
+
+                    popupContent += \`</table></div>\`;
+
+                    layer.bindPopup(popupContent);
+                }
+            }).addTo(map);
+
+            updateLegend(currentCategory, currentProperty, minVal, maxVal, currentReducedPoints.length);
+
+            const reductionPercent = filteredFeatures.length > 0 ?
+                ((1 - currentReducedPoints.length/filteredFeatures.length) * 100).toFixed(1) : 0;
+
+            controlElement('point-counts').innerHTML =
+                \`Original: \${originalFeatures.length} | Filtered: \${filteredFeatures.length} | Current: \${currentReducedPoints.length}\`;
+            controlElement('reduction-percent').innerHTML =
+                \`Reduction: \${reductionPercent}%\`;
+            controlElement('merge-distance').innerHTML =
+                \`Merge distance: \${maxDistance} km\`;
+            controlElement('value-range').innerHTML =
+                \`Value range: \${minVal.toFixed(2)} - \${maxVal.toFixed(2)}\`;
+            controlElement('zero-count').innerHTML =
+                \`Zero values: \${zeroValueCount} points hidden\`;
+
+            // Keep the projection carrier tied to the popup width. Fitting
+            // the data bounds made world-spanning datasets appear smaller
+            // and shifted the base map according to the selected property.
+            resetCahillKeyesView();
+            window.cartofreakoMapState.renderedPointCount
+                = currentReducedPoints.length;
+        }
+
+        function updateLegend(category, property, minVal, maxVal, numPoints) {
+            const smallRadius = config.minRadius;
+            const mediumRadius = (config.minRadius + config.maxRadius) / 2;
+            const largeRadius = config.maxRadius;
+
+            let legendHtml = \`
+                <div class="legend-item">
+                    <strong>Category:</strong> \${category}
+                </div>
+                <div class="legend-item">
+                    <strong>Property:</strong> \${property}
+                </div>
+                <div class="legend-item">
+                    <span>Min value: \${minVal.toFixed(2)}</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="width: \${smallRadius}px; height: \${smallRadius}px; opacity: \${config.fillOpacity}; border: 0.5px solid #000;"></div>
+                    <span>Small (\${smallRadius}px)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="width: \${mediumRadius}px; height: \${mediumRadius}px; opacity: \${config.fillOpacity}; border: 0.5px solid #000;"></div>
+                    <span>Medium (\${Math.round(mediumRadius)}px)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="width: \${largeRadius}px; height: \${largeRadius}px; opacity: \${config.fillOpacity}; border: 0.5px solid #000;"></div>
+                    <span>Max: \${maxVal.toFixed(2)} (\${largeRadius}px)</span>
+                </div>
+                <div class="legend-item">
+                    <span>Fill opacity: \${(config.fillOpacity * 100).toFixed(0)}%</span>
+                </div>
+                <div class="legend-item">
+                    <span>Stroke: 0.5pt black</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <strong>Visible points:</strong> \${numPoints}
+                </div>
+            \`;
+
+            controlElement('legend-content').innerHTML = legendHtml;
+        }
+
+        // ============================================================
+        // Load data and initialise map
+        // ============================================================
+        Promise.all([loadCartofreako(), loadData()])
+            .then(([, data]) => {
+                geoJsonData = data;
+                originalFeatures = data.features;
+                window.cartofreakoMapState.originalFeatureCount
+                    = originalFeatures.length;
+
+                console.log('First feature:', originalFeatures[0]);
+                console.log('Downloaders size:', originalFeatures[0].properties.downloaders?.size);
+                console.log('Uploaders size:', originalFeatures[0].properties.uploaders?.size);
+
+                // Set default category buttons
+                if (DEFAULT_CATEGORY === 'uploaders') {
+                    controlElement('category-downloaders').classList.remove('active');
+                    controlElement('category-uploaders').classList.add('active');
+                }
+
+                controlElement('property-select').value = DEFAULT_PROPERTY;
+                currentProperty = DEFAULT_PROPERTY;
+
+                controlElement('min-radius').value = config.minRadius;
+                controlElement('max-radius').value = config.maxRadius;
+                controlElement('fill-opacity').value = config.fillOpacity * 100;
+
+                map.whenReady(() => {
+                    setTimeout(updateMap, 500);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading map:', error);
+                window.cartofreakoMapState.error = error.message;
+                document.body.innerHTML += \`<p style="color: red; position: absolute; top: 50px; left: 50px; background: white; padding: 10px; z-index: 2000; border-radius: 5px; box-shadow: 0 0 15px rgba(0,0,0,0.2);">❌ Error loading map: \${error.message}</p>\`;
+            });
+
+        // ============================================================
+        // Event listeners
+        // ============================================================
+        controlElement('category-downloaders').addEventListener('click', function() {
+            this.classList.add('active');
+            controlElement('category-uploaders').classList.remove('active');
+            currentCategory = 'downloaders';
+            updateMap();
+        });
+
+        controlElement('category-uploaders').addEventListener('click', function() {
+            this.classList.add('active');
+            controlElement('category-downloaders').classList.remove('active');
+            currentCategory = 'uploaders';
+            updateMap();
+        });
+
+        controlElement('property-select').addEventListener('change', function(e) {
+            currentProperty = e.target.value;
+            updateMap();
+        });
+
+        controlElement('distance-slider').addEventListener('input', function(e) {
+            const value = e.target.value;
+            controlElement('distance-value').textContent = value + ' km';
+        });
+
+        controlElement('apply-reduction').addEventListener('click', function() {
+            updateMap();
+        });
+
+        controlElement('apply-style').addEventListener('click', function() {
+            updateMap();
+        });
+
+        controlElement('reset-view').addEventListener('click', function() {
+            resetCahillKeyesView();
+        });
+
+        controlElement('detach-controls').addEventListener('click', function() {
+            if (detachedControlWindow && !detachedControlWindow.closed) {
+                dockControlPanel(false);
+            } else {
+                detachControlPanel();
+            }
+        });
+        setControlPanelDetached(false);
+
+        window.addEventListener('unload', function() {
+            if (detachedControlWindow && !detachedControlWindow.closed) {
+                const panelWindow = detachedControlWindow;
+                detachedControlWindow = null;
+                panelWindow.close();
+            }
+            if (cahillKeyes) cahillKeyes.delete();
+            if (baseMapObjectUrl) URL.revokeObjectURL(baseMapObjectUrl);
+        });
+    </script>
+</body>
+</html>`;
+}
+
+
+// ============================================================
+// Open a new window with the map – pass the URL only
+// ============================================================
+function leaflet_map_open_window(geojsonUrl, title) {
+    const htmlContent = leaflet_map_geojson(geojsonUrl);
+    const windowspec = 'width=1200,height=800,resizable=yes,scrollbars=yes';
+    const newWindow = window.open('', '_blank', windowspec);
+    if (!newWindow) {
+        throw new Error('The map window was blocked by the browser');
+    }
+    newWindow.document.write(htmlContent);
+    newWindow.document.title = title || 'Map';
+    newWindow.document.close();
+}
