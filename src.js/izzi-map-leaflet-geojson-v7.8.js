@@ -96,45 +96,59 @@ function leaflet_map_geojson(geojsonUrl) {
             align-items: center;
         }
         .property-selector {
+            margin: 24px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        .visualize-control {
+            margin-top: 10px;
+        }
+        .visualize-control label {
+            display: block;
+            margin-bottom: 4px;
+            color: #495057;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .property-selector select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 3px;
+            border: 1px solid #adb5bd;
+            background: white;
+            color: #343a40;
+        }
+        .status-summary {
+            font-size: 0.9em;
+            color: #666;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            border-left: 3px solid #adb5bd;
+        }
+        .status-statistics {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid currentColor;
+        }
+        .status-statistics p {
+            margin: 6px 0;
+        }
+        .collapsible-section {
             margin: 15px 0;
             padding: 10px;
             background: #f5f5f5;
             border-radius: 5px;
         }
-        .property-selector select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border-radius: 3px;
-            border: 1px solid #ccc;
-        }
-        .category-selector {
-            margin: 10px 0;
-            display: flex;
-            gap: 10px;
-        }
-        .category-btn {
-            flex: 1;
-            padding: 8px;
-            border: 1px solid #3388ff;
-            background: white;
-            color: #3388ff;
-            border-radius: 3px;
+        .collapsible-section summary {
+            color: #495057;
             cursor: pointer;
             font-weight: bold;
         }
-        .category-btn.active {
-            background: #3388ff;
-            color: white;
-        }
-        .reduction-info {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 15px;
-            padding: 10px;
-            background: #f0f7ff;
-            border-radius: 5px;
-            border-left: 3px solid #3388ff;
+        .collapsible-section[open] summary {
+            margin-bottom: 10px;
         }
         button {
             background: #3388ff;
@@ -157,7 +171,7 @@ function leaflet_map_geojson(geojsonUrl) {
             background: #5a6268;
         }
         .slider-container {
-            margin: 20px 0;
+            margin: 24px 0;
             padding: 10px;
             background: #f9f9f9;
             border-radius: 5px;
@@ -179,7 +193,7 @@ function leaflet_map_geojson(geojsonUrl) {
             margin: 5px 0;
         }
         .config-section {
-            margin: 15px 0;
+            margin: 24px 0;
             padding: 10px;
             background: #e9ecef;
             border-radius: 5px;
@@ -288,35 +302,53 @@ function leaflet_map_geojson(geojsonUrl) {
         </div>
         <h3 id="panel-title">${pageTitle}</h3>
 
-        <div class="category-selector">
-            <button id="category-downloaders" class="category-btn active">Downloaders</button>
-            <button id="category-uploaders" class="category-btn">Uploaders</button>
-        </div>
-
         <div class="property-selector">
-            <label for="property-select"><strong>Visualize by:</strong></label>
-            <select id="property-select">
-                <option value="size">size (total)</option>
-                <option value="mobile">mobile</option>
-                <option value="satellite">satellite</option>
-                <option value="tor">tor</option>
-                <option value="tor_exit_nodes">tor_exit_nodes</option>
-                <option value="vpn">vpn</option>
-                <option value="relay">relay</option>
-                <option value="proxy">proxy</option>
-                <option value="hosting">hosting</option>
-                <option value="service">service</option>
-            </select>
+            <strong>Visualize by:</strong>
+            <div class="visualize-control">
+                <label for="category-select">Category</label>
+                <select id="category-select">
+                    <option value="downloaders">Downloaders</option>
+                    <option value="uploaders">Uploaders</option>
+                </select>
+            </div>
+            <div class="visualize-control">
+                <label for="property-select">Metric</label>
+                <select id="property-select">
+                    <option value="size">size (total)</option>
+                    <option value="mobile">mobile</option>
+                    <option value="satellite">satellite</option>
+                    <option value="tor">tor</option>
+                    <option value="tor_exit_nodes">tor_exit_nodes</option>
+                    <option value="vpn">vpn</option>
+                    <option value="relay">relay</option>
+                    <option value="proxy">proxy</option>
+                    <option value="hosting">hosting</option>
+                    <option value="service">service</option>
+                </select>
+            </div>
         </div>
-
-        <div id="status-message"></div>
 
         <div class="slider-container">
-            <label for="distance-slider"><strong>Max Merge Distance:</strong></label>
+            <label for="distance-slider"><strong>Cluster Distance:</strong></label>
             <input type="range" id="distance-slider" min="1" max="500" value="250" step="1">
             <div class="slider-value" id="distance-value">250 km</div>
             <p style="font-size: 0.8em; margin: 5px 0;">Points within this distance will be merged to prevent overlap (1-500km)</p>
         </div>
+
+        <div class="status-summary" id="status-summary">
+            <div id="status-message"></div>
+            <div class="status-statistics">
+                <strong>Statistics</strong>
+                <p id="point-counts">Original: 0 | Filtered: 0 | Current: 0</p>
+                <p id="reduction-percent">Reduction: 0%</p>
+                <p id="merge-distance">Merge distance: 0 km</p>
+                <p id="value-range">Value range: 0 - 0</p>
+                <p id="zero-count">Zero values: 0 points hidden</p>
+            </div>
+        </div>
+
+        <button id="apply-reduction">Update Map</button>
+        <button id="reset-view" class="secondary">Reset View</button>
 
         <div class="config-section">
             <h4>Circle Style</h4>
@@ -338,22 +370,10 @@ function leaflet_map_geojson(geojsonUrl) {
             <button id="apply-style" class="secondary" style="margin: 5px 0 0;">Apply Style</button>
         </div>
 
-        <button id="apply-reduction">Update Map</button>
-        <button id="reset-view" class="secondary">Reset View</button>
-
-        <div id="legend">
-            <h4>Legend</h4>
+        <details id="legend" class="collapsible-section">
+            <summary>Legend</summary>
             <div id="legend-content"></div>
-        </div>
-
-        <div class="reduction-info" id="reduction-info">
-            <strong>Statistics</strong>
-            <p id="point-counts">Original: 0 | Filtered: 0 | Current: 0</p>
-            <p id="reduction-percent">Reduction: 0%</p>
-            <p id="merge-distance">Merge distance: 0 km</p>
-            <p id="value-range">Value range: 0 - 0</p>
-            <p id="zero-count">Zero values: 0 points hidden</p>
-        </div>
+        </details>
 
         <div class="data-source" id="data-source"></div>
         <div class="data-source">
@@ -481,10 +501,22 @@ function leaflet_map_geojson(geojsonUrl) {
             + ' target="_blank" rel="noopener">Natural Earth</a>'
         );
 
-        async function loadCartofreako() {
+        function setPanelStatus(className, message, htmlp = false) {
+            const summary = controlElement('status-summary');
             const status = controlElement('status-message');
-            status.className = 'warning-info';
-            status.textContent = 'Loading cartofreako C++/WebAssembly…';
+            summary.className = 'status-summary ' + className;
+            if (htmlp) {
+                status.innerHTML = message;
+            } else {
+                status.textContent = message;
+            }
+        }
+
+        async function loadCartofreako() {
+            setPanelStatus(
+                'warning-info',
+                'Loading cartofreako C++/WebAssembly…'
+            );
 
             const [moduleNamespace, landResponse] = await Promise.all([
                 import(WASM_MODULE_URL),
@@ -524,8 +556,10 @@ function leaflet_map_geojson(geojsonUrl) {
                 generatedSvgBytes: new TextEncoder().encode(baseMapSvg).length,
                 landFeatures: landGeoJson.features.length
             });
-            status.className = 'success-info';
-            status.textContent = 'Cahill-Keyes map generated by C++/WASM.';
+            setPanelStatus(
+                'success-info',
+                'Cahill-Keyes map generated by C++/WASM.'
+            );
         }
 
         function cahillKeyesWidthZoom() {
@@ -819,13 +853,18 @@ function leaflet_map_geojson(geojsonUrl) {
             const filteredFeatures = filterFeaturesByValue(originalFeatures, currentCategory, currentProperty);
             const zeroValueCount = originalFeatures.length - filteredFeatures.length;
 
-            const statusDiv = controlElement('status-message');
             if (filteredFeatures.length === 0) {
-                statusDiv.className = 'warning-info';
-                statusDiv.innerHTML = \`⚠️ No points with \${currentCategory}.\${currentProperty} >= 1 found. Try another property.\`;
+                setPanelStatus(
+                    'warning-info',
+                    \`⚠️ No points with \${currentCategory}.\${currentProperty} >= 1 found. Try another property.\`,
+                    true
+                );
             } else {
-                statusDiv.className = 'success-info';
-                statusDiv.innerHTML = \`✅ Found \${filteredFeatures.length} points with \${currentCategory}.\${currentProperty} >= 1\`;
+                setPanelStatus(
+                    'success-info',
+                    \`✅ Found \${filteredFeatures.length} points with \${currentCategory}.\${currentProperty} >= 1\`,
+                    true
+                );
             }
 
             currentReducedPoints = reducePointsToEliminateOverlaps(
@@ -1001,12 +1040,8 @@ function leaflet_map_geojson(geojsonUrl) {
                 console.log('Downloaders size:', originalFeatures[0].properties.downloaders?.size);
                 console.log('Uploaders size:', originalFeatures[0].properties.uploaders?.size);
 
-                // Set default category buttons
-                if (DEFAULT_CATEGORY === 'uploaders') {
-                    controlElement('category-downloaders').classList.remove('active');
-                    controlElement('category-uploaders').classList.add('active');
-                }
-
+                controlElement('category-select').value = DEFAULT_CATEGORY;
+                currentCategory = DEFAULT_CATEGORY;
                 controlElement('property-select').value = DEFAULT_PROPERTY;
                 currentProperty = DEFAULT_PROPERTY;
 
@@ -1028,20 +1063,9 @@ function leaflet_map_geojson(geojsonUrl) {
         // Event listeners
         // ============================================================
         function bindControlPanelEvents() {
-            controlElement('category-downloaders').addEventListener(
-                'click', function() {
-                    this.classList.add('active');
-                    controlElement('category-uploaders').classList.remove('active');
-                    currentCategory = 'downloaders';
-                    updateMap();
-                }
-            );
-
-            controlElement('category-uploaders').addEventListener(
-                'click', function() {
-                    this.classList.add('active');
-                    controlElement('category-downloaders').classList.remove('active');
-                    currentCategory = 'uploaders';
+            controlElement('category-select').addEventListener(
+                'change', function(e) {
+                    currentCategory = e.target.value;
                     updateMap();
                 }
             );
