@@ -420,7 +420,7 @@ function leaflet_map_geojson(geojsonUrl) {
             [0, 0], [MAP_HEIGHT, MAP_WIDTH]
         );
         const mapLayout = document.getElementById('map-layout');
-        const controlPanel = document.getElementById('control-panel');
+        let controlPanel = document.getElementById('control-panel');
         let detachedControlWindow = null;
 
         function controlElement(id) {
@@ -429,6 +429,34 @@ function leaflet_map_geojson(geojsonUrl) {
                 throw new Error('Missing control panel element: ' + id);
             }
             return element;
+        }
+
+        // Form controls can lose their browser-owned interaction state when
+        // their live nodes are adopted by another window. Create the panel in
+        // its destination document instead, then restore values that are not
+        // reliably copied by importNode(), notably select and input values.
+        function cloneControlPanel(targetDocument) {
+            const clonedPanel = targetDocument.importNode(controlPanel, true);
+            const controls = controlPanel.querySelectorAll(
+                'input[id], select[id], textarea[id]'
+            );
+
+            controls.forEach(function(sourceControl) {
+                const clonedControl = clonedPanel.querySelector(
+                    '[id="' + sourceControl.id + '"]'
+                );
+                if (!clonedControl) return;
+
+                clonedControl.value = sourceControl.value;
+                if ('checked' in sourceControl) {
+                    clonedControl.checked = sourceControl.checked;
+                }
+                if (sourceControl.tagName === 'SELECT') {
+                    clonedControl.selectedIndex = sourceControl.selectedIndex;
+                }
+            });
+
+            return clonedPanel;
         }
 
         // Leaflet handles interaction in a flat coordinate space. Geographic
@@ -549,8 +577,11 @@ function leaflet_map_geojson(geojsonUrl) {
 
         function dockControlPanel(detachedWindowIsClosing) {
             const panelWindow = detachedControlWindow;
+            const dockedPanel = cloneControlPanel(document);
             detachedControlWindow = null;
+            controlPanel = dockedPanel;
             mapLayout.appendChild(controlPanel);
+            bindControlPanelEvents();
             setControlPanelDetached(false);
             refitMapAfterPanelMove();
 
@@ -589,7 +620,12 @@ function leaflet_map_geojson(geojsonUrl) {
                 = document.getElementById('map-page-styles').textContent;
             panelWindow.document.head.replaceChildren(viewport, styles);
             panelWindow.document.title = document.title + ' controls';
+
+            const detachedPanel = cloneControlPanel(panelWindow.document);
+            controlPanel.remove();
+            controlPanel = detachedPanel;
             panelWindow.document.body.replaceChildren(controlPanel);
+            bindControlPanelEvents();
 
             setControlPanelDetached(true);
             panelWindow.addEventListener('beforeunload', function() {
@@ -991,49 +1027,70 @@ function leaflet_map_geojson(geojsonUrl) {
         // ============================================================
         // Event listeners
         // ============================================================
-        controlElement('category-downloaders').addEventListener('click', function() {
-            this.classList.add('active');
-            controlElement('category-uploaders').classList.remove('active');
-            currentCategory = 'downloaders';
-            updateMap();
-        });
+        function bindControlPanelEvents() {
+            controlElement('category-downloaders').addEventListener(
+                'click', function() {
+                    this.classList.add('active');
+                    controlElement('category-uploaders').classList.remove('active');
+                    currentCategory = 'downloaders';
+                    updateMap();
+                }
+            );
 
-        controlElement('category-uploaders').addEventListener('click', function() {
-            this.classList.add('active');
-            controlElement('category-downloaders').classList.remove('active');
-            currentCategory = 'uploaders';
-            updateMap();
-        });
+            controlElement('category-uploaders').addEventListener(
+                'click', function() {
+                    this.classList.add('active');
+                    controlElement('category-downloaders').classList.remove('active');
+                    currentCategory = 'uploaders';
+                    updateMap();
+                }
+            );
 
-        controlElement('property-select').addEventListener('change', function(e) {
-            currentProperty = e.target.value;
-            updateMap();
-        });
+            controlElement('property-select').addEventListener(
+                'change', function(e) {
+                    currentProperty = e.target.value;
+                    updateMap();
+                }
+            );
 
-        controlElement('distance-slider').addEventListener('input', function(e) {
-            const value = e.target.value;
-            controlElement('distance-value').textContent = value + ' km';
-        });
+            controlElement('distance-slider').addEventListener(
+                'input', function(e) {
+                    const value = e.target.value;
+                    controlElement('distance-value').textContent = value + ' km';
+                }
+            );
 
-        controlElement('apply-reduction').addEventListener('click', function() {
-            updateMap();
-        });
+            controlElement('apply-reduction').addEventListener(
+                'click', function() {
+                    updateMap();
+                }
+            );
 
-        controlElement('apply-style').addEventListener('click', function() {
-            updateMap();
-        });
+            controlElement('apply-style').addEventListener(
+                'click', function() {
+                    updateMap();
+                }
+            );
 
-        controlElement('reset-view').addEventListener('click', function() {
-            resetCahillKeyesView();
-        });
+            controlElement('reset-view').addEventListener(
+                'click', function() {
+                    resetCahillKeyesView();
+                }
+            );
 
-        controlElement('detach-controls').addEventListener('click', function() {
-            if (detachedControlWindow && !detachedControlWindow.closed) {
-                dockControlPanel(false);
-            } else {
-                detachControlPanel();
-            }
-        });
+            controlElement('detach-controls').addEventListener(
+                'click', function() {
+                    if (detachedControlWindow
+                            && !detachedControlWindow.closed) {
+                        dockControlPanel(false);
+                    } else {
+                        detachControlPanel();
+                    }
+                }
+            );
+        }
+
+        bindControlPanelEvents();
         setControlPanelDetached(false);
 
         window.addEventListener('unload', function() {
